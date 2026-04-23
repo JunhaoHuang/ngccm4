@@ -1,0 +1,5 @@
+elf/
+obj/
+bin/
+Out/
+.build-platform
