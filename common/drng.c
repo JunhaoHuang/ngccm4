@@ -65,7 +65,10 @@ extern void sm3_bit_compress_asm(unsigned int dgst[8], const unsigned char *msg,
 static void sm3_bit_compress(unsigned int dgst[8], const unsigned char *msg, unsigned long long blocks)
 {
 #ifdef SM3_ASM
-    sm3_bit_compress_asm(dgst, msg, blocks);
+    unsigned int W[76];
+    memcpy(W, dgst, 8*sizeof(unsigned int)); // init memory for bit compress.
+    sm3_bit_compress_asm(W, msg, blocks);
+    memcpy(dgst, W, 8 * sizeof(unsigned int));
 #else
 
     unsigned int A, B, C, D, E, F, G, H;
@@ -83,7 +86,7 @@ static void sm3_bit_compress(unsigned int dgst[8], const unsigned char *msg, uns
         for (; i < 68; i++)
         {
             W[i] = P1(W[i - 16] ^ W[i - 9] ^ L_SHIFT(W[i - 3], 15)) ^ L_SHIFT(W[i - 13], 7) ^ W[i - 6];
-        }
+        } // merge these two steps and avoid the following xor for on-the-fly approach.
         for (i = 0; i < 64; i++)
         {
             W_prime[i] = W[i] ^ W[i + 4];

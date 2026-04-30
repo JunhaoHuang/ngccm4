@@ -43,6 +43,18 @@ endif
 SCHEMES := $(patsubst %/,%,$(IMPLS))
 SUPPORTED_APPS := $(sort $(foreach family,$(SUPPORTED_FAMILIES),$(call family_available_apps,$(family))))
 
+ifneq ($(strip $(APP)),)
+ifneq ($(strip $(FAMILY)),)
+ifeq ($(filter $(APP),$(call family_available_apps,$(FAMILY))),)
+$(error Unsupported APP '$(APP)' for FAMILY '$(FAMILY)'; available apps: $(call family_available_apps,$(FAMILY)))
+endif
+else
+ifeq ($(filter $(APP),$(SUPPORTED_APPS)),)
+$(error Unsupported APP '$(APP)'; available apps: $(SUPPORTED_APPS))
+endif
+endif
+endif
+
 define selected_apps_for_impl
 $(if $(strip $(APP)),$(filter $(APP),$(call family_available_apps,$(call family_of_impl,$(1)))),$(call family_available_apps,$(call family_of_impl,$(1))))
 endef

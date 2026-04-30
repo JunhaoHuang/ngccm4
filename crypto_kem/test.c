@@ -15,14 +15,6 @@
 #endif
 #endif
 
-#ifndef NGCC_ITERATIONS
-#define NGCC_ITERATIONS 30
-#endif
-
-#if NGCC_ITERATIONS < 1
-#error "NGCC_ITERATIONS must be at least 1"
-#endif
-
 DRNG_ctx drng_algorithm;
 
 static const unsigned char test_seed[] = {
@@ -63,6 +55,11 @@ static int test_roundtrip(void) {
     if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) {
         return -1;
     }
+    free(pk);
+    free(sk);
+    free(ct);
+    free(ss_a);
+    free(ss_b);
     return memcmp(ss_a, ss_b, ss_len);
 }
 

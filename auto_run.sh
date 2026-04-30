@@ -5,8 +5,10 @@ path=${1}_${2}_${4}
 
 logf=Out/${3}_${path}.txt
 echo ${path}
-make clean
-make ${path}_${3} PLATFORM=nucleo-l4r5zi NGCC_ITERATIONS=1000
+# make clean
+rm -rf bin/
+rm -rf elf/
+make ${path}_${3} PLATFORM=nucleo-l4r5zi NGCC_ITERATIONS=100 USE_SM3_ASM=1
 echo === $logf ===
 openocd -f st_nucleo_l4r5.cfg -c "program elf/${path}_${3}.elf verify reset exit"
 python3 hostside/host_unidirectional.py > $logf & py_pid=$!

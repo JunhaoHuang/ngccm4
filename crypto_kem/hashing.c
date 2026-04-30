@@ -82,5 +82,10 @@ int main(void) {
     hal_send_str("OK KEYS");
     hal_send_str("+");
     hal_send_str("#");
+    free(pk);
+    free(sk);
+    free(ct);
+    free(ss_a);
+    free(ss_b);
     return 0;
 }

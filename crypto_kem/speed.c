@@ -7,14 +7,6 @@
 #include "sendfn.h"
 #include "KEM_AlgorithmInstance.h"
 
-#ifndef NGCC_ITERATIONS
-#define NGCC_ITERATIONS 30
-#endif
-
-#if NGCC_ITERATIONS < 1
-#error "NGCC_ITERATIONS must be at least 1"
-#endif
-
 DRNG_ctx drng_algorithm;
 
 static const unsigned char speed_seed[] = {
@@ -95,7 +87,11 @@ int main(void) {
         hal_send_str("OK KEYS");
         hal_send_str("+");
     }
-    
+    free(pk);
+    free(sk);
+    free(ct);
+    free(ss_enc);
+    free(ss_dec);
     hal_send_str("#");
     return 0;
 }

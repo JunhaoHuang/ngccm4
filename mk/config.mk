@@ -23,6 +23,7 @@ Q ?=
 OPT ?= speed
 LTO ?= 0
 NGCC_ITERATIONS ?= 30
+USE_SM3_ASM ?= 0
 
 CROSS_PREFIX ?= arm-none-eabi
 CC := $(CROSS_PREFIX)-gcc
@@ -36,6 +37,12 @@ CPPFLAGS += -I$(CURDIR)
 CPPFLAGS += -DNGCC_ITERATIONS=$(NGCC_ITERATIONS)
 CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -g3
 LDFLAGS += -Wl,--gc-sections
+
+ifeq ($(USE_SM3_ASM),1)
+CPPFLAGS += -DSM3_ASM
+else ifneq ($(USE_SM3_ASM),0)
+$(error Unsupported USE_SM3_ASM '$(USE_SM3_ASM)'; use 0 or 1)
+endif
 
 ifeq ($(OPT),size)
 CFLAGS += -Os
@@ -65,28 +72,13 @@ ENTRY_kem := KEM_AlgorithmInstance.c
 ENTRY_kex := KEX_AlgorithmInstance.c
 ENTRY_sign := SIGN_AlgorithmInstance.c
 
-APPS_kem := test speed stack testvectors hashing
-APPS_kex := test speed stack testvectors hashing
-APPS_sign := test speed stack testvectors hashing
+APP_SRCS_kem := $(sort $(wildcard crypto_kem/*.c))
+APP_SRCS_kex := $(sort $(wildcard crypto_kex/*.c))
+APP_SRCS_sign := $(sort $(wildcard crypto_sign/*.c))
 
-APP_SRCS_kem := $(wildcard \
-	crypto_kem/test.c \
-	crypto_kem/speed.c \
-	crypto_kem/stack.c \
-	crypto_kem/testvectors.c \
-	crypto_kem/hashing.c)
-APP_SRCS_kex := $(wildcard \
-	crypto_kex/test.c \
-	crypto_kex/speed.c \
-	crypto_kex/stack.c \
-	crypto_kex/testvectors.c \
-	crypto_kex/hashing.c)
-APP_SRCS_sign := $(wildcard \
-	crypto_sign/test.c \
-	crypto_sign/speed.c \
-	crypto_sign/stack.c \
-	crypto_sign/testvectors.c \
-	crypto_sign/hashing.c)
+APPS_kem := $(basename $(notdir $(APP_SRCS_kem)))
+APPS_kex := $(basename $(notdir $(APP_SRCS_kex)))
+APPS_sign := $(basename $(notdir $(APP_SRCS_sign)))
 
 SUPPORTED_APPS := $(sort $(APPS_kem) $(APPS_kex) $(APPS_sign))
 

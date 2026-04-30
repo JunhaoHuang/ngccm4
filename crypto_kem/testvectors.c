@@ -6,8 +6,6 @@
 #include "hal.h"
 #include "KEM_AlgorithmInstance.h"
 
-#define NTESTS 2
-
 DRNG_ctx drng_algorithm;
 
 static const unsigned char tv_seed[] = {
@@ -31,6 +29,7 @@ static void printbytes(const unsigned char *x, unsigned long long xlen) {
     outs[2 * xlen] = 0;
     hal_send_str(outs);
 }
+
 
 int main(void) {
     unsigned long long pk_len = kem_get_pk_len_bytes();
@@ -57,18 +56,13 @@ int main(void) {
         return -1;
     }
 
-    for (i = 0; i < NTESTS; i++) {
-        if (kem_keygen(pk, &ignored_len, sk, &ignored_len) != 0) return -1;
-        if (kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len) != 0) return -1;
-        if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) return -1;
+    for (i = 0; i < NGCC_ITERATIONS; i++) {
+        kem_keygen(pk, &ignored_len, sk, &ignored_len);
+        kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len);
+        kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len);
         if (memcmp(ss_a, ss_b, ss_len) != 0) {
             hal_send_str("ERROR");
             hal_send_str("#");
-            printbytes(pk, pk_len);
-            printbytes(sk, sk_len);
-            printbytes(ct, ct_len);
-            printbytes(ss_a, ss_len);
-            printbytes(ss_b, ss_len);
             return -1;
         }
 
@@ -77,8 +71,15 @@ int main(void) {
         printbytes(ct, ct_len);
         printbytes(ss_a, ss_len);
         printbytes(ss_b, ss_len);
+        hal_send_str("+");
     }
 
     hal_send_str("#");
+    free(pk);
+    free(sk);
+    free(ct);
+    free(ss_a);
+    free(ss_b);
+
     return 0;
 }

@@ -8,29 +8,17 @@
     eor.w \res, \res, \xi2
 .endm
 
+.macro FF1_rot xi0, xi1, xi2, rot2, res
+    eor.w \res, \xi0, \xi1
+    eor.w \res, \res, \xi2, ror \rot2
+.endm
+
 // (((x) & (y)) | ((x) & (z)) | ((y) & (z)))=(((x) & (y)) | ((x) | (y)) & (z))
 .macro FF2 xi0, xi1, xi2, tmp, res
     and.w \tmp, \xi0, \xi1
     orr.w \res, \xi0, \xi1
     and.w \res, \res, \xi2
     orr.w \res, \res, \tmp 
-.endm
-//((x) ^ (y) ^ (z))
-.macro GG1 xi0, xi1, xi2, res
-    eor.w \res, \xi0, \xi1
-    eor.w \res, \res, \xi2
-.endm
-//((((y) ^ (z)) & (x)) ^ (z))
-.macro GG2 xi0, xi1, xi2, tmp, res
-    eor.w \res, \xi1, \xi2
-    and.w \res, \res, \xi0
-    eor.w \res, \res, \xi2
-.endm
-
-// for unrolled version.
-.macro FF1_rot xi0, xi1, xi2, rot2, res
-    eor.w \res, \xi0, \xi1
-    eor.w \res, \res, \xi2, ror \rot2
 .endm
 
 .macro FF2_rot xi0, xi1, xi2, rot2, tmp, res
@@ -40,15 +28,28 @@
     orr.w \res, \res, \tmp 
 .endm
 
+//((x) ^ (y) ^ (z))
+.macro GG1 xi0, xi1, xi2, res
+    eor.w \res, \xi0, \xi1
+    eor.w \res, \res, \xi2
+.endm
+
 .macro GG1_rot xi0, xi1, xi2, rot2, res
     eor.w \res, \xi0, \xi1
     eor.w \res, \res, \xi2, ror \rot2
 .endm
 
-.macro GG2_rot xi0, xi1, xi2, rot2, tmp, res
-    eor.w \res, \xi1, \xi2, ror \rot2
+//((((y) ^ (z)) & (x)) ^ (z))
+.macro GG2 xi0, xi1, xi2, tmp, res
+    eor.w \res, \xi1, \xi2
     and.w \res, \res, \xi0
-    eor.w \res, \res, \xi2, ror \rot2
+    eor.w \res, \res, \xi2
+.endm
+
+.macro GG2_rot xi0, xi1, xi2, rot2, tmp, res
+    eor.w \res, \xi1, \xi2, \rot2
+    and.w \res, \res, \xi0
+    eor.w \res, \res, \xi2, \rot2
 .endm
 
 //P0(x) ((x) ^ L_SHIFT((x), 9) ^ L_SHIFT((x), 17))
@@ -138,55 +139,12 @@
     sub.w \wptr, #68*4 //return to index 0
 .endm
 
-.macro compute_ssi_0_15 ss1, ss2, sst, ssA, ssE 
+.macro comput_ssi ss1, ss2, sst, ssA, ssE 
     add \ss1, \ssE, \ssA, ror #(32-12)
     add \ss1, \ss1, \sst
     ror \ss1, \ss1, #(32-7)
     eor \ss2, \ss1, \ssA, ror #(32-12)
     ror \sst, \sst, #31
-.endm
-
-// require s2
-.macro compute_tti_0_15 tt1, tt2, ss1, ss2, ssA, ssB, ssC, rotC, ssD, rotD, ssE, ssF, ssG, rotG, ssH, rotH, sptr
-    FF1_rot \ssA, \ssB, \ssC, \rotC, \tt1
-    add \tt1, \tt1, \ssD, ror \rotD
-    add \tt1, \tt1, \ss2
-    GG1_rot \ssE, \ssF, \ssG, \rotG, \tt2
-    add \tt2, \tt2, \ssH, ror \rotH
-    add \tt2, \tt2, \ss1
-    //ss1 and ss2 free
-    vmov \sptr, s2
-    ldr.w \ss2, [\sptr, #4*4]
-    ldr.w \ss1, [\sptr], #4
-    vmov s2, \sptr // save w[i]
-    eor \ss2, \ss2, \ss1
-    add \tt1, \tt1, \ss2
-    add \tt2, \tt2, \ss1
-.endm
-
-.macro compute_ssi_16_63 ss1, ss2, sst, ssA, ssE
-    add \ss1, \ssE, \ssA, ror #(32-12)
-    add \ss1, \ss1, \sst
-    ror \ss1, \ss1, #(32-7)
-    eor \ss2, \ss1, \ssA, ror #(32-12)
-    ror \sst, \sst, #31
-.endm
-
-.macro compute_tti_16_63 tt1, tt2, ss1, ss2, ssA, ssB, ssC, rotC, ssD, rotD, ssE, ssF, ssG, rotG, ssH, rotH, sptr
-    FF2_rot \ssA, \ssB, \ssC, \rotC, \sptr \tt1
-    add \tt1, \tt1, \ssD, ror \rotD
-    add \tt1, \tt1, \ss2
-    GG2_rot \ssE, \ssF, \ssG, \rotG, \sptr, \tt2
-    add \tt2, \tt2, \ssH, ror \rotH
-    add \tt2, \tt2, \ss1
-    //ss1 and ss2 free
-    vmov \sptr, s2
-    ldr.w \ss2, [\sptr, #4*4]
-    ldr.w \ss1, [\sptr], #4
-    vmov s2, \sptr // save w[i]
-    eor \ss2, \ss2, \ss1
-    add \tt1, \tt1, \ss2
-    add \tt2, \tt2, \ss1
 .endm
 
 // void sm3_bit_compress(unsigned int dgst[8+68], const unsigned char *msg, unsigned int blocks): only supporting 32-bit for PQC support.
@@ -247,37 +205,39 @@ sm3_bit_compress_asm:
     movw msg_ptr, #0x4519
     movt msg_ptr, #0x79cc // constant T0
 
-    mov.w loop, #4
+    mov.w loop, #16
 .Lsm3_round_0_15:
     vmov s4, loop
+    add ss1, ssE, ssA, ror #(32-12)
+    add ss1, ss1, msg_ptr
+    ror ss1, ss1, #(32-7)
+    eor ss2, ss1, ssA, ror #(32-12)
+    ror msg_ptr, msg_ptr, #31
 
-    // 0
-    compute_ssi_0_15 ss1, ss2, msg_ptr, ssA, ssE
-    compute_tti_0_15 tt1, tt2, ss1, ss2, ssA, ssB, ssC, 0, ssD, 0, ssE, ssF, ssG, 0, ssH, 0, sptr
-    // one register (ssD) is free; as tt1 is used to pass value
+    // tt1 and tt2
+    FF1 ssA, ssB, ssC, tt1
+    add tt1, tt1, ssD
+    add tt1, tt1, ss2
+    GG1 ssE, ssF, ssG, tt2
+    add tt2, tt2, ssH
+    add tt2, tt2, ss1
+    //ss1 and ss2 free
+    vmov sptr, s2
+    ldr.w ss2, [sptr, #4*4]
+    ldr.w ss1, [sptr], #4
+    vmov s2, sptr // save w[i]
+    eor ss2, ss2, ss1
+    add tt1, tt1, ss2
+    add tt2, tt2, ss1
 
-    // 1
-    P0 tt2, ssD // ssD is free
-    compute_ssi_0_15 ss1, ss2, msg_ptr, tt1, ssD
-    compute_tti_0_15 ssH, tt2, ss1, ss2, tt1, ssA, ssB, 23, ssC, 0, ssD, ssE, ssF, 13, ssG, 0, sptr
-    
-    // 2
-    P0 tt2, ssC //ssC is free
-    compute_ssi_0_15 ss1, ss2, msg_ptr, ssH, ssC
-    compute_tti_0_15 ssG, tt2, ss1, ss2, ssH, tt1, ssA, 23, ssB, 23, ssC, ssD, ssE, 13, ssF, 13, sptr
-
-    // 3
-    P0 tt2, ssB //ssB is free
-    compute_ssi_0_15 ss1, ss2, msg_ptr, ssG, ssB
-    compute_tti_0_15 ssF, tt2, ss1, ss2, ssG, ssH, tt1, 23, ssA, 23, ssB, ssC, ssD, 13, ssE, 13, sptr
-
-    mov ssA, ssF
-    mov ssF, ssB
-    mov ssB, ssG
-    ror ssG, ssC, #13
-    ror ssC, ssH, #23
-    ror ssH, ssD, #13
-    ror ssD, tt1, #23
+    //A~H
+    mov ssD, ssC
+    ror ssC, ssB, #(32-9)
+    mov ssB, ssA
+    mov ssA, tt1
+    mov ssH, ssG
+    ror ssG, ssF, #(32-19)
+    mov ssF, ssE
     P0 tt2, ssE
 
     vmov loop, s4
@@ -287,36 +247,40 @@ sm3_bit_compress_asm:
     movw msg_ptr, #0x7a87
     movt msg_ptr, #0x9d8a // constant T1 right shift by 16
     
-    mov.w loop, #12
+    mov.w loop, #(64-16) 
 .Lsm3_round_16_63:
     vmov s4, loop
+    //ss1 ss2
+    add ss1, ssE, ssA, ror #(32-12)
+    add ss1, ss1, msg_ptr
+    ror ss1, ss1, #(32-7)
+    eor ss2, ss1, ssA, ror #(32-12)
+    ror msg_ptr, msg_ptr, #31
 
-    // 0
-    compute_ssi_16_63 ss1, ss2, msg_ptr, ssA, ssE
-    compute_tti_16_63 tt1, tt2, ss1, ss2, ssA, ssB, ssC, 0, ssD, 0, ssE, ssF, ssG, 0, ssH, 0, sptr
+    // tt1 and tt2
+    FF2 ssA, ssB, ssC, msg_ptr, tt1
+    add tt1, tt1, ssD
+    add tt1, tt1, ss2
+    GG2 ssE, ssF, ssG, msg_ptr, tt2
+    add tt2, tt2, ssH
+    add tt2, tt2, ss1
+    //ss1 and ss2 free
+    vmov sptr, s2
+    ldr.w ss2, [sptr, #4*4]
+    ldr.w ss1, [sptr], #4
+    vmov s2, sptr // save w[i]
+    eor ss2, ss2, ss1
+    add tt1, tt1, ss2
+    add tt2, tt2, ss1
 
-    // 1
-    P0 tt2, ssD // ssD is free
-    compute_ssi_16_63 ss1, ss2, msg_ptr, tt1, ssD
-    compute_tti_16_63 ssH, tt2, ss1, ss2, tt1, ssA, ssB, 23, ssC, 0, ssD, ssE, ssF, 13, ssG, 0, sptr
-    
-    // 2
-    P0 tt2, ssC //ssC is free
-    compute_ssi_16_63 ss1, ss2, msg_ptr, ssH, ssC
-    compute_tti_16_63 ssG, tt2, ss1, ss2, ssH, tt1, ssA, 23, ssB, 23, ssC, ssD, ssE, 13, ssF, 13, sptr
-       
-    // 3
-    P0 tt2, ssB //ssB is free
-    compute_ssi_16_63 ss1, ss2, msg_ptr, ssG, ssB
-    compute_tti_16_63 ssF, tt2, ss1, ss2, ssG, ssH, tt1, 23, ssA, 23, ssB, ssC, ssD, 13, ssE, 13, sptr
-
-    mov ssA, ssF
-    mov ssF, ssB
-    mov ssB, ssG
-    ror ssG, ssC, #13
-    ror ssC, ssH, #23
-    ror ssH, ssD, #13
-    ror ssD, tt1, #23
+    //A~H
+    mov ssD, ssC
+    ror ssC, ssB, #(32-9)
+    mov ssB, ssA
+    mov ssA, tt1
+    mov ssH, ssG
+    ror ssG, ssF, #(32-19)
+    mov ssF, ssE
     P0 tt2, ssE
 
     vmov loop, s4

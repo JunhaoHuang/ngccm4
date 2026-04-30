@@ -81,6 +81,11 @@ static int test_keys(void) {
     send_unsigned("encaps stack usage:", stack_encaps);
     send_unsigned("decaps stack usage:", stack_decaps);
     hal_send_str("OK KEYS");
+    free(pk);
+    free(sk);
+    free(ct);
+    free(ss_a);
+    free(ss_b);
     return 0;
 }
 
