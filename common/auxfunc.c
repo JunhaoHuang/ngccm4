@@ -568,3 +568,43 @@ int pseudoXOF(unsigned long long output_len_bits, const unsigned char *msg, unsi
 #endif
 	return XOF_SUCCESS;
 }
+
+// msg should be msg_len_bits+32 long to cascade msg+ct; ct is the counter for cascade, which should be set by users. The output is the same as pseudoXOF.
+int pseudoXOF_squeeze(unsigned long long output_len_bits, unsigned char *cascade_msg_ct, unsigned long long msg_len_bits, unsigned int* ct, unsigned char *output)
+{
+#ifdef HASHING_PROFILE
+	uint64_t t0 = hal_get_time();
+#endif
+	// unsigned int ct = 1;
+	
+	for (unsigned int i = 0; i < (output_len_bits + 255) / 256; i++)
+	{
+		if (msg_len_bits % 8 == 0)
+		{
+			cascade_msg_ct[(msg_len_bits + 7) / 8] = *ct >> 24;
+			cascade_msg_ct[(msg_len_bits + 7) / 8 + 1] = (*ct & 0xffffff) >> 16;
+			cascade_msg_ct[(msg_len_bits + 7) / 8 + 2] = (*ct & 0xffff) >> 8;
+			cascade_msg_ct[(msg_len_bits + 7) / 8 + 3] = *ct & 0xff;
+		}
+		else
+		{
+			normalize(cascade_msg_ct, msg_len_bits);
+			cascade_msg_ct[(msg_len_bits + 7) / 8 - 1] = cascade_msg_ct[(msg_len_bits + 7) / 8 - 1] ^ (*ct >> (32 - (8 - (msg_len_bits % 8))));
+			cascade_msg_ct[(msg_len_bits + 7) / 8] = ((*ct << (8 - (msg_len_bits % 8))) & 0xffffffff) >> 24;
+			cascade_msg_ct[(msg_len_bits + 7) / 8 + 1] = ((*ct << (16 - (msg_len_bits % 8))) & 0xffffffff) >> 24;
+			cascade_msg_ct[(msg_len_bits + 7) / 8 + 2] = ((*ct << (24 - (msg_len_bits % 8))) & 0xffffffff) >> 24;
+			cascade_msg_ct[(msg_len_bits + 7) / 8 + 3] = ((*ct << (32 - (msg_len_bits % 8))) & 0xffffffff) >> 24;
+		}
+		sm3_bit(cascade_msg_ct, msg_len_bits + 32, output + i * 32);
+		(*ct)++;
+	}
+	if (output_len_bits % 256 != 0)
+	{
+		normalize(output, output_len_bits);
+	}
+#ifdef HASHING_PROFILE
+	uint64_t t1 = hal_get_time();
+	hash_cycles += (t1 - t0);
+#endif
+	return XOF_SUCCESS;
+}

@@ -1,24 +1,12 @@
 .syntax unified
 .cpu cortex-m4
 .thumb
-// Code size: 844 bytes.
-//FF1(x, y, z) ((x) ^ (y) ^ (z))
-.macro FF1 xi0, xi1, xi2, res
-    eor.w \res, \xi0, \xi1
-    eor.w \res, \res, \xi2
-.endm
+//  Code size: 956 Bytes
 
+// for unrolled version.
 .macro FF1_rot xi0, xi1, xi2, rot2, res
     eor.w \res, \xi0, \xi1
     eor.w \res, \res, \xi2, ror \rot2
-.endm
-
-// (((x) & (y)) | ((x) & (z)) | ((y) & (z)))=(((x) & (y)) | ((x) | (y)) & (z))
-.macro FF2 xi0, xi1, xi2, tmp, res
-    and.w \tmp, \xi0, \xi1
-    orr.w \res, \xi0, \xi1
-    and.w \res, \res, \xi2
-    orr.w \res, \res, \tmp 
 .endm
 
 .macro FF2_rot xi0, xi1, xi2, rot2, tmp, res
@@ -28,28 +16,15 @@
     orr.w \res, \res, \tmp 
 .endm
 
-//((x) ^ (y) ^ (z))
-.macro GG1 xi0, xi1, xi2, res
-    eor.w \res, \xi0, \xi1
-    eor.w \res, \res, \xi2
-.endm
-
 .macro GG1_rot xi0, xi1, xi2, rot2, res
     eor.w \res, \xi0, \xi1
     eor.w \res, \res, \xi2, ror \rot2
 .endm
 
-//((((y) ^ (z)) & (x)) ^ (z))
-.macro GG2 xi0, xi1, xi2, tmp, res
-    eor.w \res, \xi1, \xi2
-    and.w \res, \res, \xi0
-    eor.w \res, \res, \xi2
-.endm
-
 .macro GG2_rot xi0, xi1, xi2, rot2, tmp, res
-    eor.w \res, \xi1, \xi2, \rot2
+    eor.w \res, \xi1, \xi2, ror \rot2
     and.w \res, \res, \xi0
-    eor.w \res, \res, \xi2, \rot2
+    eor.w \res, \res, \xi2, ror \rot2
 .endm
 
 //P0(x) ((x) ^ L_SHIFT((x), 9) ^ L_SHIFT((x), 17))
@@ -139,12 +114,55 @@
     sub.w \wptr, #68*4 //return to index 0
 .endm
 
-.macro comput_ssi ss1, ss2, sst, ssA, ssE 
+// lazy rotation of ss1; merge it with ss2; ss2=(ss1'<<7)^(ssA<<12)=(ss1'^ssA<<5)<<7; omit explicit ss1'<<7 using inline rotation for ss1' and ss2 in compute_tti;
+.macro compute_ssi_0_15 ss1, ss2, sst, ssA, ssE 
     add \ss1, \ssE, \ssA, ror #(32-12)
     add \ss1, \ss1, \sst
-    ror \ss1, \ss1, #(32-7)
-    eor \ss2, \ss1, \ssA, ror #(32-12)
+    //ror \ss1, \ss1, #(32-7)
+    eor \ss2, \ss1, \ssA, ror #(32-5)
     ror \sst, \sst, #31
+.endm
+
+.macro compute_tti_0_15 tt1, tt2, ss1, ss2, ssA, ssB, ssC, rotC, ssD, rotD, ssE, ssF, ssG, rotG, ssH, rotH, sptr
+    FF1_rot \ssA, \ssB, \ssC, \rotC, \tt1
+    add \tt1, \tt1, \ssD, ror \rotD
+    add \tt1, \tt1, \ss2, ror #(32-7)
+    GG1_rot \ssE, \ssF, \ssG, \rotG, \tt2
+    add \tt2, \tt2, \ssH, ror \rotH
+    add \tt2, \tt2, \ss1, ror #(32-7)
+    //ss1 and ss2 free
+    ldr.w \ss2, [\sptr, #4*4]
+    ldr.w \ss1, [\sptr], #4
+    eor \ss2, \ss2, \ss1
+    add \tt1, \tt1, \ss2
+    add \tt2, \tt2, \ss1
+.endm
+
+// lazy rotation of ss1; merge it with ss2; ss2=(ss1'<<7)^(ssA<<12)=(ss1'^ssA<<5)<<7; omit explicit ss1'<<7 using inline rotation for ss1' and ss2 in compute_tti; reduce 1 ror for each round.
+.macro compute_ssi_16_63 ss1, ss2, sst, ssA, ssE
+    add \ss1, \ssE, \ssA, ror #(32-12)
+    add \ss1, \ss1, \sst
+    //ror \ss1, \ss1, #(32-7)
+    eor \ss2, \ss1, \ssA, ror #(32-5)
+    ror \sst, \sst, #31
+.endm
+
+// require s2
+.macro compute_tti_16_63 tt1, tt2, ss1, ss2, ssA, ssB, ssC, rotC, ssD, rotD, ssE, ssF, ssG, rotG, ssH, rotH, sptr
+    FF2_rot \ssA, \ssB, \ssC, \rotC, \sptr \tt1
+    add \tt1, \tt1, \ssD, ror \rotD
+    add \tt1, \tt1, \ss2, ror #(32-7)
+    GG2_rot \ssE, \ssF, \ssG, \rotG, \sptr, \tt2
+    add \tt2, \tt2, \ssH, ror \rotH
+    add \tt2, \tt2, \ss1, ror #(32-7)
+    //ss1 and ss2 free
+    vmov \sptr, s2
+    ldr.w \ss2, [\sptr, #4*4]
+    ldr.w \ss1, [\sptr], #4
+    vmov s2, \sptr // save w[i]
+    eor \ss2, \ss2, \ss1
+    add \tt1, \tt1, \ss2
+    add \tt2, \tt2, \ss1
 .endm
 
 // void sm3_bit_compress(unsigned int dgst[8+68], const unsigned char *msg, unsigned int blocks): only supporting 32-bit for PQC support.
@@ -190,55 +208,37 @@ sm3_bit_compress_asm:
     load_msg_expand msg_ptr, sptr, ssA, ssB, ssC, ssD, ssE, ssF, ssG, ssH 
     vmov s3, msg_ptr // update msg_ptr
 
-    //extract state
-    // load state
+    // extract state
     vmov sptr, s1
-    ldr.w ssA, [sptr, #4*0]
-    ldr.w ssB, [sptr, #4*1]
-    ldr.w ssC, [sptr, #4*2]
-    ldr.w ssD, [sptr, #4*3]
-    ldr.w ssE, [sptr, #4*4]
-    ldr.w ssF, [sptr, #4*5]
-    ldr.w ssG, [sptr, #4*6]
-    ldr.w ssH, [sptr, #4*7]
+    ldm.w sptr, {ssA, ssB, ssC, ssD, ssE, ssF, ssG, ssH}
 
     movw msg_ptr, #0x4519
     movt msg_ptr, #0x79cc // constant T0
 
-    mov.w loop, #16
+    mov.w loop, #8
 .Lsm3_round_0_15:
     vmov s4, loop
-    add ss1, ssE, ssA, ror #(32-12)
-    add ss1, ss1, msg_ptr
-    ror ss1, ss1, #(32-7)
-    eor ss2, ss1, ssA, ror #(32-12)
-    ror msg_ptr, msg_ptr, #31
 
-    // tt1 and tt2
-    FF1 ssA, ssB, ssC, tt1
-    add tt1, tt1, ssD
-    add tt1, tt1, ss2
-    GG1 ssE, ssF, ssG, tt2
-    add tt2, tt2, ssH
-    add tt2, tt2, ss1
-    //ss1 and ss2 free
-    vmov sptr, s2
-    ldr.w ss2, [sptr, #4*4]
-    ldr.w ss1, [sptr], #4
-    vmov s2, sptr // save w[i]
-    eor ss2, ss2, ss1
-    add tt1, tt1, ss2
-    add tt2, tt2, ss1
+    vmov sptr, s2 // word ptr
+    // 0
+    compute_ssi_0_15 ss1, ss2, msg_ptr, ssA, ssE
+    compute_tti_0_15 tt1, tt2, ss1, ss2, ssA, ssB, ssC, 0, ssD, 0, ssE, ssF, ssG, 0, ssH, 0, sptr
+    // one register (ssD) is free; as tt1 is used to pass value
 
-    //A~H
-    mov ssD, ssC
-    ror ssC, ssB, #(32-9)
-    mov ssB, ssA
-    mov ssA, tt1
-    mov ssH, ssG
-    ror ssG, ssF, #(32-19)
-    mov ssF, ssE
+    // 1
+    P0 tt2, ssD // ssD is free
+    compute_ssi_0_15 ss1, ss2, msg_ptr, tt1, ssD
+    compute_tti_0_15 ssH, tt2, ss1, ss2, tt1, ssA, ssB, 23, ssC, 0, ssD, ssE, ssF, 13, ssG, 0, sptr
+    
+    vmov s2, sptr 
+    ror ssG, ssE, #13
     P0 tt2, ssE
+    ror ssC, ssA, #23
+    mov ssA, ssH
+    ror ssH, ssF, #13
+    mov ssF, ssD
+    ror ssD, ssB, #23
+    mov ssB, tt1
 
     vmov loop, s4
     subs loop, #1
@@ -247,41 +247,28 @@ sm3_bit_compress_asm:
     movw msg_ptr, #0x7a87
     movt msg_ptr, #0x9d8a // constant T1 right shift by 16
     
-    mov.w loop, #(64-16) 
+    mov.w loop, #24
 .Lsm3_round_16_63:
     vmov s4, loop
-    //ss1 ss2
-    add ss1, ssE, ssA, ror #(32-12)
-    add ss1, ss1, msg_ptr
-    ror ss1, ss1, #(32-7)
-    eor ss2, ss1, ssA, ror #(32-12)
-    ror msg_ptr, msg_ptr, #31
 
-    // tt1 and tt2
-    FF2 ssA, ssB, ssC, sptr, tt1
-    add tt1, tt1, ssD
-    add tt1, tt1, ss2
-    GG2 ssE, ssF, ssG, sptr, tt2
-    add tt2, tt2, ssH
-    add tt2, tt2, ss1
-    //ss1 and ss2 free
-    vmov sptr, s2
-    ldr.w ss2, [sptr, #4*4]
-    ldr.w ss1, [sptr], #4
-    vmov s2, sptr // save w[i]
-    eor ss2, ss2, ss1
-    add tt1, tt1, ss2
-    add tt2, tt2, ss1
+    // 0
+    compute_ssi_16_63 ss1, ss2, msg_ptr, ssA, ssE
+    compute_tti_16_63 tt1, tt2, ss1, ss2, ssA, ssB, ssC, 0, ssD, 0, ssE, ssF, ssG, 0, ssH, 0, sptr
 
-    //A~H
-    mov ssD, ssC
-    ror ssC, ssB, #(32-9)
-    mov ssB, ssA
-    mov ssA, tt1
-    mov ssH, ssG
-    ror ssG, ssF, #(32-19)
-    mov ssF, ssE
+    // 1
+    P0 tt2, ssD // ssD is free
+    compute_ssi_16_63 ss1, ss2, msg_ptr, tt1, ssD
+    compute_tti_16_63 ssH, tt2, ss1, ss2, tt1, ssA, ssB, 23, ssC, 0, ssD, ssE, ssF, 13, ssG, 0, sptr
+    
+    vmov s2, sptr 
+    ror ssG, ssE, #13
     P0 tt2, ssE
+    ror ssC, ssA, #23
+    mov ssA, ssH
+    ror ssH, ssF, #13
+    mov ssF, ssD
+    ror ssD, ssB, #23
+    mov ssB, tt1
 
     vmov loop, s4
     subs loop, #1
@@ -290,33 +277,21 @@ sm3_bit_compress_asm:
     // xor with original dgst; update w index s2
     // use ss0,ss1,tt0,tt1 
     vmov sptr, s1
-    ldr.w ss1, [sptr, #4*0]
-    ldr.w ss2, [sptr, #4*1]
-    ldr.w tt1, [sptr, #4*2]
-    ldr.w tt2, [sptr, #4*3]
+
+    ldm.w sptr!, {ss1, ss2, tt1, tt2}
     eor ssA, ssA, ss1
     eor ssB, ssB, ss2
     eor ssC, ssC, tt1
     eor ssD, ssD, tt2
 
-    ldr.w ss1, [sptr, #4*4]
-    ldr.w ss2, [sptr, #4*5]
-    ldr.w tt1, [sptr, #4*6]
-    ldr.w tt2, [sptr, #4*7]
+    ldm.w sptr!, {ss1, ss2, tt1, tt2}
     eor ssE, ssE, ss1
     eor ssF, ssF, ss2
     eor ssG, ssG, tt1
     eor ssH, ssH, tt2
 
-    str.w ssA, [sptr], #4
-    str.w ssB, [sptr], #4
-    str.w ssC, [sptr], #4
-    str.w ssD, [sptr], #4
-    str.w ssE, [sptr], #4
-    str.w ssF, [sptr], #4
-    str.w ssG, [sptr], #4
-    str.w ssH, [sptr], #4
-    
+    sub.w sptr, sptr, #4*8
+    stm.w sptr!, {ssA, ssB, ssC, ssD, ssE, ssF, ssG, ssH}
 
     vmov s2, sptr
 

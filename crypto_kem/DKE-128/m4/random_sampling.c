@@ -58,7 +58,11 @@ void DKE1_getsecretA(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const 
     uint8_t coins[CBD3_BYTES];
     memcpy(msg, rand, DKE1_SEEDBYTES);
     msg[DKE1_SEEDBYTES] = nonce;
+#ifdef USE_KECCAK
+    shake256(coins, CBD3_BYTES, msg, DKE1_SEEDBYTES + 1);
+#else
     pseudoXOF(CBD3_BYTES*8, msg,(DKE1_SEEDBYTES + 1)*8, coins); // bytes*8 = bits
+#endif
     centered_binomial3(pol, coins);
 }
 void DKE1_geterrorA(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce) {
@@ -95,143 +99,54 @@ unsigned int rej_uniform(int16_t *res,
     }
     return ctr;
 }
-#define POLY_UNIFORM_BUF_BYTES      1024 //TODO: optimize (or optimize DKE1_gen_matrix directly).
-// bigger POLY_UNIFORM_BUF_BYTES ----> smaller number of rounds
 
-void poly_uniform(poly* pol,
-                  const uint8_t seed[DKE1_SEEDBYTES],
-                  const uint8_t i,
-                  const uint8_t j){
-    uint32_t round = 0;
-    unsigned int ctr = 0;
-    uint8_t input[DKE1_SEEDBYTES + 2 + 4]; // will be input = seed || i(1 byte) || j(1 byte) || round(4 bytes)
-    uint8_t buf[POLY_UNIFORM_BUF_BYTES];
-    while (ctr < DKE1_N) {
-        memcpy(input, seed, DKE1_SEEDBYTES);
-        input[DKE1_SEEDBYTES] = i;
-        input[DKE1_SEEDBYTES + 1] = j;
-        memcpy(input + DKE1_SEEDBYTES + 2, &round, 4);
-
-        pseudoXOF(sizeof(buf)*8,
-                  input,
-                  sizeof(input)*8,
-                  buf);
-        ctr += rej_uniform(
-            pol -> coeffs + ctr,
-            DKE1_N - ctr,
-            buf,
-            sizeof(buf)
-        );
-        round++;
-    }
-}
-
-//
-/* This was a preliminar implementation, using XOF directly. Highly inefficient.
-void DKE1_gen_matrix(polyvec *res,
-                     const uint8_t seed[DKE1_SEEDBYTES],
-                     const int transposed) {
-    // for (unsigned int i = 0; i < DKE1_K; i++) {
-    //     for (unsigned int j = 0; j < DKE1_K; j++) {
-    //         if (transposed) {
-    //             poly_uniform(&res[i].vec[j], seed, i, j);
-    //         } else {
-    //             poly_uniform(&res[i].vec[j], seed, j, i);
-    //         }
-    //     }
-    // }
-
-    // note (Sergio): optimized removing conditional from inner loop and splitting into two cases
-    if (transposed) {
-        for (unsigned int i = 0; i < DKE1_K; ++i) {
-            for (unsigned int j = 0; j < DKE1_K; ++j) {
-                poly_uniform(&res[i].vec[j], seed, i, j);
-            }
-        }
-    }
-    else {
-        for (unsigned int i = 0; i < DKE1_K; ++i) {
-            for (unsigned int j = 0; j < DKE1_K; ++j) {
-                poly_uniform(&res[i].vec[j], seed, j, i);
-            }
-        }
-    }
-}
-*/
 
 // Improving XOF utilities: --------------------------------------------------------------------------------------
 
-#define DKE1_XOF_BLOCKBYTES 168
-#define DKE1_GEN_MATRIX_NBLOCKS ((12 * DKE1_N / 8 * (1 << 12) / DKE1_Q + DKE1_XOF_BLOCKBYTES) / DKE1_XOF_BLOCKBYTES)
 
-typedef struct {
-    uint8_t extseed[DKE1_SEEDBYTES + 2];
-    size_t generated_bytes;
-} dke1_xof_state;
-
-// copying just the newly requested slice
-static void dke1_xof_copy_slice(uint8_t *out,
-                               size_t start,
-                               size_t count,
-                               const uint8_t *prefix) {
-    if (count == 0) {
-        return;
-    }
-
-    memcpy(out, prefix + start, count);
-}
 
 // storing seed and matrix coordinates for later squeezes
-static void dke1_xof_absorb(dke1_xof_state *state,
+void dke1_xof_absorb(dke1_xof_state *state,
                            const uint8_t seed[DKE1_SEEDBYTES],
                            uint8_t x,
                            uint8_t y) {
     memcpy(state->extseed, seed, DKE1_SEEDBYTES);
     state->extseed[DKE1_SEEDBYTES + 0] = x;
     state->extseed[DKE1_SEEDBYTES + 1] = y;
-    state->generated_bytes = 0;
+#ifdef USE_KECCAK
+    shake128_absorb(&state->state, state->extseed, DKE1_SEEDBYTES + 2);
+#else
+    state->counter = 1;
+#endif
 }
 
 // rebuilding the requested prefix with pseudoXOF and returning the fresh tail
-static void dke1_xof_squeezeblocks(uint8_t *out,
+void dke1_xof_squeezeblocks(uint8_t *out,
                                   size_t outblocks,
                                   dke1_xof_state *state) {
+#ifdef USE_KECCAK
+    shake128_squeezeblocks(out, outblocks, &state->state);
+#else
     size_t outlen = outblocks * (size_t)DKE1_XOF_BLOCKBYTES;
-    size_t needed = state->generated_bytes + outlen;
-    unsigned char *prefix;
-
     if (outlen == 0) {
         return;
     }
 
-    if (needed > (size_t)(ULLONG_MAX / 8ULL)) {
-        memset(out, 0, outlen);
-        return;
-    }
-
-    prefix = (unsigned char *)malloc(needed);
-    if (prefix == NULL) {
-        memset(out, 0, outlen);
-        return;
-    }
-
-    if (pseudoXOF((unsigned long long)needed * 8ULL,
-                  state->extseed,
-                  (unsigned long long)sizeof(state->extseed) * 8ULL,
-                  prefix) != 0) {
-        memset(out, 0, outlen);
-        free(prefix);
-        return;
-                  }
-
-    dke1_xof_copy_slice(out, state->generated_bytes, outlen, prefix);
-    state->generated_bytes += outlen;
-    free(prefix);
+    pseudoXOF_squeeze((unsigned long long)outlen * 8ULL,
+                      state->extseed,
+                      (unsigned long long)(DKE1_SEEDBYTES + 2) * 8ULL,
+                      &state->counter,
+                      out);
+#endif
 }
 
 // clearing the local xof bookkeeping
-static void dke1_xof_release(dke1_xof_state *state) {
-    state->generated_bytes = 0;
+void dke1_xof_release(dke1_xof_state *state) {
+#ifdef USE_KECCAK
+    shake128_ctx_release(&state->state);
+#else
+    state->counter = 0;
+#endif
 }
 
 // -----------------------------------------------------------------------------------------

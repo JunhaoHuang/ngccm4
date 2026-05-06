@@ -5,6 +5,9 @@
 #include <stdint.h>
 #include <string.h>
 #include "verify.h"
+#ifdef USE_KECCAK
+#include "fips202.h"
+#endif
 
 void DKE1CCA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
                           uint8_t sk[DKE1_SKBYTES],
@@ -34,7 +37,11 @@ void DKE1CCA_enc_derand(uint8_t ct[DKE1_CTBYTES],
     memcpy(buffer + DKE1_SEEDBYTES, pk, DKE1_PKBYTES);
 
     // TODO: I used this auxiliary hash as KDF (provisional).
+#ifdef USE_KECCAK
+    shake256(kr, DKE1_SSBYTES + DKE1_SEEDBYTES + DKE1_N/8, buffer, DKE1_SEEDBYTES + DKE1_PKBYTES);
+#else
     pseudoXOF((DKE1_SSBYTES + DKE1_SEEDBYTES)*8 + DKE1_N, buffer, (DKE1_SEEDBYTES + DKE1_PKBYTES)*8 , kr);
+#endif
     // kr <- (K | r) = HASH(buffer) = HASH(coins | pk)
 
     // CPA protocol
@@ -133,6 +140,5 @@ void DKE1CCA_dec(uint8_t ss[DKE1_SSBYTES],
     DKE1_cmov(ss, ss0, DKE1_SSBYTES, (uint8_t) (1 - fail));
 
 }
-
 
 

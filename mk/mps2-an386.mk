@@ -6,6 +6,7 @@ LDFLAGS += \
 	$(ARCH_FLAGS) \
 	--specs=nosys.specs \
 	-Wl,--wrap=_sbrk \
+	-Wl,-u,__wrap__sbrk \
 	-Wl,--wrap=_open \
 	-Wl,--wrap=_close \
 	-Wl,--wrap=_isatty \

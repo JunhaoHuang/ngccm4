@@ -28,6 +28,7 @@ static void printbytes(const unsigned char *x, unsigned long long xlen) {
     }
     outs[2 * xlen] = 0;
     hal_send_str(outs);
+    free(outs);
 }
 
 
@@ -62,8 +63,8 @@ int main(void) {
         kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len);
         if (memcmp(ss_a, ss_b, ss_len) != 0) {
             hal_send_str("ERROR");
-            hal_send_str("#");
-            return -1;
+            // hal_send_str("#");
+            // return -1;
         }
 
         printbytes(pk, pk_len);

@@ -11,6 +11,10 @@ typedef struct {
     int16_t coeffs[DKE1_N];
 } poly;             // Represents polynomials
 
+typedef struct
+{
+    int16_t coeffs[DKE1_N / 2];
+} poly_half;
 
 // Basic arithmetic -------------------------------------------------------
 
@@ -80,6 +84,46 @@ void DKE1_poly_tobytes(uint8_t bytes[DKE1_POLYBYTES], const poly *pol);
 /// @param[in]  bytes     pointer to the beginning of the byte array
 void DKE1_poly_frombytes_mul(poly *pol, const poly *b, const unsigned char *bytes);
 
+void DKE1_poly_frombytes(poly *pol, const uint8_t bytes[DKE1_POLYBYTES]);
+
+void DKE1_poly_basemul_opt_16_32(int32_t *r, const poly *a, const poly *b, const poly *a_prime);
+void DKE1_poly_basemul_acc_opt_32_32(int32_t *r, const poly *a, const poly *b, const poly *a_prime);
+void DKE1_poly_basemul_acc_opt_32_16(poly *r, const poly *a, const poly *b, const poly *a_prime, const int32_t *r_tmp);
+
+/*************************************************
+ * Name:        DKE1_poly_frombytes_mul_16_32
+ *
+ * Description: Multiplication of a polynomial with a de-serialization of another polynomial
+ *              Using strategy of better accumulation.
+ * Arguments:   - const poly *b:          pointer to input polynomial
+ *              - int32_t *r_tmp:         array for accumulating unreduced results
+ *              - const unsigned char *a: pointer to input byte array (of KYBER_POLYBYTES bytes)
+ **************************************************/
+void DKE1_poly_frombytes_mul_16_32(int32_t *r_tmp, const poly *b, const unsigned char *a);
+
+/*************************************************
+ * Name:        DKE1_poly_frombytes_mul_32_32
+ *
+ * Description: Multiplication of a polynomial with a de-serialization of another polynomial
+ *              Using strategy of better accumulation.
+ * Arguments:   - const poly *b:          pointer to input polynomial
+ *              - int32_t *r_tmp:         array for accumulating unreduced results
+ *              - const unsigned char *a: pointer to input byte array (of KYBER_POLYBYTES bytes)
+ **************************************************/
+
+void DKE1_poly_frombytes_mul_32_32(int32_t *r_tmp, const poly *b, const unsigned char *a);
+
+/*************************************************
+ * Name:        DKE1_poly_frombytes_mul_32_16
+ *
+ * Description: Multiplication of a polynomial with a de-serialization of another polynomial
+ *              Using strategy of better accumulation.
+ * Arguments:   - poly *r:                pointer to output polynomial
+ *              - const poly *b:          pointer to input polynomial
+ *              - const int32_t *r_tmp:   array containing unreduced results
+ *              - const unsigned char *a: pointer to input byte array (of KYBER_POLYBYTES bytes)
+ **************************************************/
+void DKE1_poly_frombytes_mul_32_16(poly *r, const poly *b, const unsigned char *a, const int32_t *r_tmp);
 /// @brief Multiplication of a polynomial with a de-serialization of another polynomial Accumulation in r.
  /// @param[out] pol      pointer to output polynomial
  /// @param[out] b        pointer to input polynomial

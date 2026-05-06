@@ -19,14 +19,15 @@ $(SHORT_TARGETS): %: platform-sync bin/%.bin
 
 platform-sync:
 	@prev=''; \
+	current='PLATFORM=$(PLATFORM) OPT=$(OPT) LTO=$(LTO) NGCC_ITERATIONS=$(NGCC_ITERATIONS) USE_SM3_ASM=$(USE_SM3_ASM) USE_KECCAK=$(USE_KECCAK)'; \
 	if [ -f $(PLATFORM_STATE) ]; then \
 		prev=$$(cat $(PLATFORM_STATE)); \
 	fi; \
-	if [ "$$prev" != "" ] && [ "$$prev" != "$(PLATFORM)" ]; then \
-		printf '  CLEAN   platform changed: %s -> %s\n' "$$prev" "$(PLATFORM)"; \
+	if [ "$$prev" != "" ] && [ "$$prev" != "$$current" ]; then \
+		printf '  CLEAN   build config changed: %s -> %s\n' "$$prev" "$$current"; \
 		rm -rf bin elf obj; \
 	fi; \
-	printf '%s\n' "$(PLATFORM)" > $(PLATFORM_STATE)
+	printf '%s\n' "$$current" > $(PLATFORM_STATE)
 
 list schemes:
 	@printf '%s\n' $(SCHEMES)
@@ -40,7 +41,7 @@ help:
 	@printf '  %s\n' $(SCHEMES)
 	@printf 'Available apps: %s\n' "$(SUPPORTED_APPS)"
 
-qemu-run: platform-sync
+qemu-run: platform-sync $(QEMU_ELFS)
 	@if [ "$(PLATFORM)" != "mps2-an386" ]; then \
 		printf 'qemu-run is only supported for PLATFORM=mps2-an386\n' >&2; \
 		exit 1; \

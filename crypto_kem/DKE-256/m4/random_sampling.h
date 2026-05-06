@@ -2,54 +2,33 @@
 #define RANDOM_SAMPLING_H
 
 #include "parameters.h"
-#include "polyvec.h"
-#include "poly.h"
-#include <stdlib.h>
+#include "../arithmetic/polyvec.h"
+#include "../arithmetic/poly.h"
+#include "../auxfunc.h"
 
-// Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean
+// Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-1024/clean
 
-# define CBD3_BYTES (3*DKE1_N/4)
-
-#ifdef USE_KECCAK
-    #include "fips202.h"
-    #define DKE1_XOF_BLOCKBYTES SHAKE128_RATE
-#else
-  #define DKE1_XOF_BLOCKBYTES 96 
-#endif
-// DKE1_XOF_BLOCKBYTES need to be the multiple of 3. Otherwise, some tails are not considered in matacc assembly implementation.
-
-#define DKE1_GEN_MATRIX_NBLOCKS ((12 * DKE1_N / 8 * (1 << 12) / DKE1_Q + DKE1_XOF_BLOCKBYTES) / DKE1_XOF_BLOCKBYTES)
-
-typedef struct
-{
-#ifdef USE_KECCAK
-  uint8_t extseed[DKE1_SEEDBYTES + 2];
-  shake128ctx state;
-#else 
-  uint8_t extseed[DKE1_SEEDBYTES + 2 + 4]; // seed + x + y + counter (4 bytes)
-  unsigned int counter;
-#endif
-} dke1_xof_state;
+# define CBD2_BYTES (2*DKE2_N/4)
 
 /// @brief generates a polynomial in Rq according to the centered binomial distribution
-/// with parameter eta = 3.
-/// @param[in]  coins   random coins array (we need 3 * DKE1_N / 4 bytes
+/// with parameter eta = 2.
+/// @param[in]  coins   random coins array (we need eta * DKE1_N / 4 bytes
 /// since eta random bytes ----> 4 random coeffs in {-eta, ..., eta}):
 /// @param[out] pol     pointer to output polynomial
-void centered_binomial3(poly* pol, const unsigned char coins[CBD3_BYTES]);
+void centered_binomial2(poly* pol, const unsigned char coins[CBD2_BYTES]);
 
 
 // As used in the protocol:
 
 // TODO: comment
-void DKE1_cbdA(poly* pol, const unsigned char coins[CBD3_BYTES]);
-void DKE1_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]);
+void DKE2_cbdA(poly* pol, const unsigned char coins[CBD2_BYTES]);
+void DKE2_cbdB(poly* pol, const unsigned char coins[CBD2_BYTES]);
 
 // TODO: comment
-void DKE1_getsecretA(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce);
-void DKE1_geterrorA(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce);
-void DKE1_getsecretB(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce);
-void DKE1_geterrorB(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce);
+void DKE2_getsecretA(poly* pol, const unsigned char rand[DKE2_SEEDBYTES], const uint8_t nonce);
+void DKE2_geterrorA(poly* pol, const unsigned char rand[DKE2_SEEDBYTES], const uint8_t nonce);
+void DKE2_getsecretB(poly* pol, const unsigned char rand[DKE2_SEEDBYTES], const uint8_t nonce);
+void DKE2_geterrorB(poly* pol, const unsigned char rand[DKE2_SEEDBYTES], const uint8_t nonce);
 
 // ---------------------------------------------------------------------------
 // Random sampling in Zq:
@@ -79,7 +58,7 @@ unsigned int rej_uniform(int16_t *res,
 /// @param[in] j        used to modify seed
 /// @param[out] pol     pointer to output polynomial pol in Rq
 void poly_uniform(poly* pol,
-                  const uint8_t seed[DKE1_SEEDBYTES],
+                  const uint8_t seed[DKE2_SEEDBYTES],
                   const uint8_t i,
                   const uint8_t j);
 
@@ -100,18 +79,12 @@ void poly_uniform(poly* pol,
   of this function with respect to PQClean -letting the auxiliar function poly_uniform
   to handle pseudoXOF- because we are using a XOF provided by ICCS,
   with a different interface with respect to SHAKE */
-#define gen_a(A,B)  DKE1_gen_matrix(A,B,0)
-#define gen_at(A,B) DKE1_gen_matrix(A,B,1)
-void DKE1_gen_matrix(polyvec *res,
-                     const uint8_t seed[DKE1_SEEDBYTES],
+#define gen_a(A,B)  DKE2_gen_matrix(A,B,0)
+#define gen_at(A,B) DKE2_gen_matrix(A,B,1)
+void DKE2_gen_matrix(polyvec *res,
+                     const uint8_t seed[DKE2_SEEDBYTES],
                      const int transposed);
 
-void dke1_xof_squeezeblocks(uint8_t *out,
-                            size_t outblocks,
-                            dke1_xof_state *state);
-void dke1_xof_absorb(dke1_xof_state *state,
-                     const uint8_t seed[DKE1_SEEDBYTES],
-                     uint8_t x,
-                     uint8_t y);
-void dke1_xof_release(dke1_xof_state *state);
+
+
 #endif //RANDOM_SAMPLING_H

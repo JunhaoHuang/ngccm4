@@ -7,30 +7,14 @@
 #include <string.h>
 #include <stdio.h>
 
-// TODO: TEST AND VERIFY CONSTANT TIME
 
-//Derived from PQCLEAN_MLKEM512_CLEAN_cmov_int16 in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/verify.c
-
-static void DKE1_cmov_int16(int16_t *r, int16_t v, uint16_t b) {
-    /* Copy input v to *r if b is 1, don't modify *r if b is 0.
-*              Requires b to be in {0,1};
-*              Runs in constant time.
-*/
-    b = -b;
-    *r ^= b & ((*r) ^ v);
-}
-
-// Derived from poly_frommsg in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/poly.c
+extern void rand_to_poly_asm(int16_t *coeffs, const uint8_t *coins);
+extern void mod2_asm(uint8_t *ss, const int16_t *coeffs);
 // TODO: TEST. THIS UTILITY IS PROVISIONAL
 static void DKE1_rand_to_poly(poly *b, const uint8_t coins[DKE1_N/8]) {
-    size_t i, j;
-    for (i = 0; i < DKE1_N / 8; i++) {
-        for (j = 0; j < 8; j++) {
-            b->coeffs[8 * i + j] = 0;
-            DKE1_cmov_int16(b->coeffs + 8 * i + j,  -1, (coins[i] >> j) & 1);
-        }
-    }
+    rand_to_poly_asm(b->coeffs, coins);
 }
+
 // TODO: TEST. THIS UTILITY IS PROVISIONAL
 void DKE1_signal(uint8_t sig[DKE1_SIGNALBYTES],
                  const poly *k,
@@ -54,16 +38,7 @@ static void DKE1_apply_signal(poly *k, const uint8_t sig[DKE1_SIGNALBYTES]) {
 
 // TODO: TEST. THIS UTILITY IS PROVISIONAL
 static void DKE1_mod2(uint8_t ss[DKE1_SSBYTES],  poly *k) {
-    unsigned int i, j;
-    uint16_t t;
-    for (i = 0; i < DKE1_SSBYTES; i++) {
-        ss[i] = 0;
-        for (j = 0; j < 8; j++) {
-            t  = k->coeffs[8 * i + j];
-            t &= 1;
-            ss[i] |= t << j;
-        }
-    }
+    mod2_asm(ss, k->coeffs);
 }
 
 // TODO: TEST. THIS UTILITY IS PROVISIONAL

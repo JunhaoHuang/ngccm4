@@ -9,6 +9,9 @@
 #include <string.h>
 #include "packing.h"
 #include <stdio.h>
+#ifdef USE_KECCAK
+#include "fips202.h"
+#endif
 
 
 void DKE1CPA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
@@ -29,7 +32,11 @@ void DKE1CPA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
     // expand coins -> buffer = (seed | rand) ---------------------------------------------
     memcpy(buffer, coins, DKE1_SEEDBYTES);
     // One approach (using pseudo XOF):
+#ifdef USE_KECCAK
+    shake256(buffer, 2 * DKE1_SEEDBYTES, buffer, DKE1_SEEDBYTES);
+#else
     pseudoXOF(2 * DKE1_SEEDBYTES*8, buffer, DKE1_SEEDBYTES*8, buffer); //bytes*8 = bits
+#endif
 
       // MLKEM PQClean approach (using hash and binding to parameter k):
      /*
@@ -178,4 +185,3 @@ void DKE1CPA_dec(uint8_t ss[DKE1_SSBYTES],
     DKE1_derive_ss(ss, &kA, sig);
 
 }
-

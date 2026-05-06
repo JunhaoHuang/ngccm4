@@ -59,7 +59,6 @@ void DKE1_polyvec_invntt(polyvec *v) {
 void DKE1_polyvec_basemul_acc(poly *res, const polyvec *a, const polyvec *b) {
     unsigned int i;
     // the sums are accumulated in res
-    poly temp;           // auxiliary poly to contain the successive products
     DKE1_poly_basemul(res, &a->vec[0], &b->vec[0]);
     for (i = 1; i < DKE1_K; i++) {
         DKE1_poly_basemul_acc(res, &a->vec[i], &b->vec[i]);
@@ -84,7 +83,7 @@ void DKE1_polyvec_compress10(uint8_t bytes[DKE1_PBCOMPRESSEDBYTES], const polyve
         for (j = 0; j < DKE1_N/4; j++) {    // we process 4 coefficients each time
             for (k = 0; k < 4; k++) {           // for each coefficient...
                 t[k] = v->vec[i].coeffs[4*j+k];
-                t[k] += ((int16_t)t[k] >> 15) & DKE1_Q; // branch-free map to {0,...,q-1}
+                //t[k] += ((int16_t)t[k] >> 15) & DKE1_Q; // branch-free map to {0,...,q-1}
                 // Compress from Zq --> Z2^d definition: round(x · 2^d / q) = floor(x · 2^d / q + 0.5)
                 d0 = t[k];      // x
                 d0 <<= 10;      // x · 2^d

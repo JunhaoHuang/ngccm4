@@ -21,9 +21,10 @@ APP ?=
 
 Q ?=
 OPT ?= speed
-LTO ?= 0
+LTO ?= 1
 NGCC_ITERATIONS ?= 30
 USE_SM3_ASM ?= 0
+USE_KECCAK ?= 0
 
 CROSS_PREFIX ?= arm-none-eabi
 CC := $(CROSS_PREFIX)-gcc
@@ -36,12 +37,20 @@ SIZE := $(CROSS_PREFIX)-size
 CPPFLAGS += -I$(CURDIR)
 CPPFLAGS += -DNGCC_ITERATIONS=$(NGCC_ITERATIONS)
 CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -g3
-LDFLAGS += -Wl,--gc-sections
+LDFLAGS += -Wl,--gc-sections -u,__wrap__sbrk
 
 ifeq ($(USE_SM3_ASM),1)
+CFLAGS += -DSM3_ASM
 CPPFLAGS += -DSM3_ASM
 else ifneq ($(USE_SM3_ASM),0)
 $(error Unsupported USE_SM3_ASM '$(USE_SM3_ASM)'; use 0 or 1)
+endif
+
+ifeq ($(USE_KECCAK),1)
+CFLAGS += -DUSE_KECCAK
+CPPFLAGS += -DUSE_KECCAK
+else ifneq ($(USE_KECCAK),0)
+$(error Unsupported USE_KECCAK '$(USE_KECCAK)'; use 0 or 1)
 endif
 
 ifeq ($(OPT),size)
@@ -60,13 +69,23 @@ LDFLAGS += -flto
 endif
 
 COMMON_LIB_SRCS := \
-	common/auxfunc.c \
-	common/auxfunc.h \
 	common/drng.c \
 	common/drng.h \
 	common/sm3_bit_compress_asm.S \
 	common/hal.h \
 	common/sendfn.h
+
+ifeq ($(USE_KECCAK),1)
+COMMON_LIB_SRCS += \
+	common/fips202.c \
+	common/fips202.h \
+	common/keccakf1600.S \
+	common/keccakf1600.h
+else
+COMMON_LIB_SRCS += \
+	common/auxfunc.c \
+	common/auxfunc.h 
+endif
 
 ENTRY_kem := KEM_AlgorithmInstance.c
 ENTRY_kex := KEX_AlgorithmInstance.c

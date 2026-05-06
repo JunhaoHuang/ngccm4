@@ -43,6 +43,15 @@ extern "C"
     /// @return 0 for success, others for error
     int pseudoXOF(unsigned long long output_len_bits, const unsigned char *msg, unsigned long long msg_len_bits, unsigned char *output);
 
+    /// @brief Squeeze function for the pseudoXOF
+    /// @param[in] output_len_bits Total bits (less than (2^40-2^8)) of output
+    /// @param[in] msg Base address of input message byte array
+    /// @param[in] msg_len_bits Total bits of input message
+    /// @param[in,out] ct Counter for the XOF, which should be set by users before the first call and will be updated after each call
+    /// @param[out] output Base address of output byte array
+    /// @return 0 for success, others for error
+    int pseudoXOF_squeeze(unsigned long long output_len_bits, unsigned char *msg, unsigned long long msg_len_bits, unsigned int *ct, unsigned char *output);
+
 #ifdef __cplusplus
 }
 #endif
