@@ -2,12 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "drng.h"
 #include "hal.h"
 #include "sendfn.h"
 #include "KEM_AlgorithmInstance.h"
-
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
+#include "drng.h"
 DRNG_ctx drng_algorithm;
+#endif
+
 
 static const unsigned char speed_seed[] = {
     0x6e, 0x67, 0x63, 0x63, 0x6d, 0x34, 0x2d, 0x73,
@@ -43,10 +47,13 @@ int main(void) {
 
     hal_setup(CLOCK_BENCHMARK);
     hal_send_str("==========================");
-
-    if (init_random_number(&drng_algorithm, speed_seed, sizeof(speed_seed)) != 0) {
+#ifndef USE_KECCAK
+    if (init_random_number(&drng_algorithm, speed_seed, sizeof(speed_seed)) != 0)
+    {
         fail_and_halt("drng_init_failed");
     }
+#endif
+   
 
     pk = malloc(pk_len);
     sk = malloc(sk_len);

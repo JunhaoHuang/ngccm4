@@ -1,5 +1,5 @@
-#include "../parameters.h"
-#include "../arithmetic/poly.h"
+#include "parameters.h"
+#include "poly.h"
 #include "dke_utils.h"
 #include <stdint.h>
 #include <stdio.h>

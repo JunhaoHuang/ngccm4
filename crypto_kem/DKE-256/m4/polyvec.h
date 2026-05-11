@@ -1,8 +1,6 @@
 #ifndef POLYVEC_H
 #define POLYVEC_H
-// Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/polyvec.h
-
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
 #include <stdint.h>
 
@@ -17,12 +15,14 @@ typedef struct {
 /// @brief reduces a vector polynomial mod q in {-(q-1)/2,...,(q-1)/2}
 /// @param[in/out] v  pointer to vector polynomial v
 void DKE2_polyvec_reduce(polyvec *v);
+void DKE2_polyvec_reduce_mq(polyvec *v);
 
 /// @brief Adds two vectors in Rq^k
 /// @param[in] a        pointer to vector a
 /// @param[in] b        pointer to vector b
 /// @param[out] res     pointer to output vector res = a + b
 void DKE2_polyvec_add(polyvec *res, const polyvec *a, const polyvec *b);
+void DKE2_polyvec_sub(polyvec *res, const polyvec *a, const polyvec *b);
 
 /// @brief Scales a vector by a factor of 2
 /// @param[in, out]     v  pointer to a vector in Rq^k
@@ -36,16 +36,16 @@ void DKE2_polyvec_scale2(polyvec *v);
 void DKE2_polyvec_ntt(polyvec *v);
 
 /// @brief Computes the inverse Number-Theoretic Transform (INTT) and
-///        converts coefficients to Montgomery representation in Rq^k
+///        converts coefficients to Normal domain in Rq^k
 /// @param[in,out]      v Pointer to the vector to be transformed
-void DKE2_polyvec_invntt_tomont(polyvec *v);
+void DKE2_polyvec_invntt(polyvec *v);
 
-/// @brief Computes accumulate multiplication in Montgomery Domain, and returns
+/// @brief Computes accumulate multiplication in Plantard Domain, and returns
 ///         into the common domain (mod q).
 /// @param[out]     res  Pointer to output vector in NTT representation
 /// @param[in]      a  Pointer to input vector a in NTT representation
 /// @param[in]      b  Pointer to input vector b in NTT representation
-void DKE2_polyvec_basemul_acc_montgomery(poly *res, const polyvec *a, const polyvec *b);
+void DKE2_polyvec_basemul_acc(poly *res, const polyvec *a, const polyvec *b);
 
 // For managing conversion polyvec < --- > bytes ----------------------------
 

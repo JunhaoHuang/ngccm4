@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "drng.h"
 #include "hal.h"
 #include "sendfn.h"
 #include "KEM_AlgorithmInstance.h"
@@ -15,7 +14,12 @@
 #define STACK_SIZE_INCR 0x1000
 #endif
 
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
+#include "drng.h"
 DRNG_ctx drng_algorithm;
+#endif
 
 static const unsigned char stack_seed[] = {
     0x6e, 0x67, 0x63, 0x63, 0x6d, 0x34, 0x2d, 0x73,
@@ -93,10 +97,12 @@ int main(void) {
     hal_setup(CLOCK_FAST);
     hal_send_str("==========================");
 
+#ifndef USE_KECCAK
     if (init_random_number(&drng_algorithm, stack_seed, sizeof(stack_seed)) != 0) {
         hal_send_str("drng_init_failed");
         return -1;
     }
+#endif
 
     canary_size = STACK_SIZE_INCR;
     while (test_keys() != 0) {

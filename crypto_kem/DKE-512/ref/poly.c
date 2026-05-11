@@ -1,4 +1,4 @@
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
 #include "reduce.h"
 #include "ntt.h"

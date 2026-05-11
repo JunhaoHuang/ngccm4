@@ -1,6 +1,6 @@
 #include "packing.h"
-#include "../parameters.h"
-#include "../arithmetic/polyvec.h"
+#include "parameters.h"
+#include "polyvec.h"
 #include <stdint.h>
 #include <string.h>
 
@@ -44,5 +44,4 @@ void DKE2_CPA_unpackciphertext(polyvec *pb,
     DKE2_polyvec_decompress11(pb, bytes);
     memcpy(sig, bytes + DKE2_PBCOMPRESSEDBYTES, DKE2_SIGNALBYTES);
 }
-
 

@@ -1,84 +1,82 @@
-// Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-768/clean/poly.c
-
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
-#include "reduce.h"
 #include "ntt.h"
 #include <stdint.h>
+#include <stddef.h>
 
-
-// Basic arithmetic ----------------------------------------------
+extern void poly_reduce_asm(int16_t *r);
+extern void poly_reduce_mq_asm(int16_t *r);
+extern void asm_fromplant(int16_t *r);
+extern void pointwise_add(int16_t *, const int16_t *, const int16_t *);
+extern void pointwise_sub(int16_t *, const int16_t *, const int16_t *);
+extern void frombytes_mul_asm_acc(int16_t *r, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void frombytes_mul_asm(int16_t *r, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void poly_tobytes_asm(uint8_t *bytes, const int16_t *coeffs);
+extern void basemul_asm_opt_16_32(int32_t *, const int16_t *, const int16_t *, const int16_t *);
+extern void basemul_asm_acc_opt_32_32(int32_t *, const int16_t *, const int16_t *, const int16_t *);
+extern void basemul_asm_acc_opt_32_16(int16_t *, const int16_t *, const int16_t *, const int16_t *, const int32_t *);
+extern void frombytes_mul_asm_16_32(int32_t *r_tmp, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void frombytes_mul_asm_acc_32_32(int32_t *r_tmp, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void frombytes_mul_asm_acc_32_16(int16_t *r, const int16_t *b, const unsigned char *c, const int32_t zetas[64], const int32_t *r_tmp);
 
 void DKE2_poly_reduce(poly *pol) {
-    unsigned int i;
-    for (i = 0; i < DKE2_N; i++) {
-        pol->coeffs[i] = DKE2_barrett_reduce(pol->coeffs[i]);
-    }
+    poly_reduce_asm(pol->coeffs);
+}
+
+void DKE2_poly_reduce_mq(poly *pol) {
+    poly_reduce_mq_asm(pol->coeffs);
 }
 
 void DKE2_poly_add(poly *r, const poly *a, const poly *b) {
-    unsigned int i;
-    for (i = 0; i < DKE2_N; i++) {
-        r->coeffs[i] = a->coeffs[i] + b->coeffs[i];
-    }
+    pointwise_add(r->coeffs, a->coeffs, b->coeffs);
 }
 
 void DKE2_poly_sub(poly *r, const poly *a, const poly *b) {
-    unsigned int i;
-    for (i = 0; i < DKE2_N; i++) {
-        r->coeffs[i] = a->coeffs[i] - b->coeffs[i];
-    }
+    pointwise_sub(r->coeffs, a->coeffs, b->coeffs);
 }
 
 void DKE2_poly_scale2(poly *pol) {
-    DKE2_poly_add(pol, pol, pol);
+    pointwise_add(pol->coeffs, pol->coeffs, pol->coeffs);
 }
-
-// Advanced arithmetic -----------------------------------
-
 
 void DKE2_poly_ntt(poly *pol) {
-    DKE2_ntt(pol->coeffs);  // Apply NTT.
-    DKE2_poly_reduce(pol);  // Barret reduction
+    DKE2_ntt(pol->coeffs);
 }
 
-void DKE2_poly_invntt_tomont(poly *pol) {
-    DKE2_invntt(pol->coeffs);   // NTT & Montgomery Domain -> Montgomery Domain
+void DKE2_poly_invntt(poly *pol) {
+    DKE2_invntt(pol->coeffs);
 }
 
-void DKE2_poly_basemul_montgomery(poly *res, const poly *a, const poly *b) {
-    unsigned int i;
-    for (i = 0; i < DKE2_N / 4; i++) {
-        DKE2_basemul(&res->coeffs[4 * i], &a->coeffs[4 * i], &b->coeffs[4 * i], DKE2_zetas[64 + i]);
-        DKE2_basemul(&res->coeffs[4 * i + 2], &a->coeffs[4 * i + 2], &b->coeffs[4 * i + 2], -DKE2_zetas[64 + i]);
-    }
-} // NTT & Montgomery Domain -> NTT & Montgomery Domain
-
-void DKE2_poly_tomont(poly *pol){   // -> Montgomery Domain
-    unsigned int i;
-    const int16_t f = (1ULL << 32) % DKE2_Q;
-    for (i = 0; i < DKE2_N; i++) {
-        pol->coeffs[i] = DKE2_montgomery_reduce((int32_t)pol->coeffs[i] * f);
-    }
+void DKE2_poly_basemul(poly *res, const poly *a, const poly *b) {
+    DKE2_basemul(res->coeffs, a->coeffs, b->coeffs);
 }
 
-// For managing conversion poly <---> bytes ----------------------------
+void DKE2_poly_basemul_acc(poly *res, const poly *a, const poly *b) {
+    DKE2_basemul_acc(res->coeffs, a->coeffs, b->coeffs);
+}
 
-void DKE2_poly_tobytes(uint8_t bytes[DKE2_POLYBYTES], const poly *pol){
-    unsigned int i;
-    uint16_t t0, t1;
+void DKE2_poly_basemul_opt_16_32(int32_t *r_tmp, const poly *a, const poly *b, const poly *a_prime) {
+    basemul_asm_opt_16_32(r_tmp, a->coeffs, b->coeffs, a_prime->coeffs);
+}
 
-    for (i = 0; i < DKE2_N / 2; i++) {
-        // map to positive standard representatives
-        t0  = pol->coeffs[2 * i];
-        t0 += ((int16_t)t0 >> 15) & DKE2_Q;
-        t1 = pol->coeffs[2 * i + 1];
-        t1 += ((int16_t)t1 >> 15) & DKE2_Q;
-        // We use 3 bytes to store two coefficients
-        bytes[3 * i + 0] = (uint8_t)(t0 >> 0);
-        bytes[3 * i + 1] = (uint8_t)((t0 >> 8) | (t1 << 4));
-        bytes[3 * i + 2] = (uint8_t)(t1 >> 4);
-    }
+void DKE2_poly_basemul_acc_opt_32_32(int32_t *r, const poly *a, const poly *b, const poly *a_prime) {
+    basemul_asm_acc_opt_32_32(r, a->coeffs, b->coeffs, a_prime->coeffs);
+}
+
+void DKE2_poly_basemul_acc_opt_32_16(poly *r, const poly *a, const poly *b, const poly *a_prime, const int32_t *r_tmp) {
+    basemul_asm_acc_opt_32_16(r->coeffs, a->coeffs, b->coeffs, a_prime->coeffs, r_tmp);
+}
+
+void DKE2_poly_fromplant(poly *pol) {
+    asm_fromplant(pol->coeffs);
+}
+
+void DKE2_poly_tobytes(uint8_t bytes[DKE2_POLYBYTES], const poly *pol) {
+    poly_tobytes_asm(bytes, pol->coeffs);
+}
+
+void DKE2_poly_frombytes_mul(poly *r, const poly *b, const unsigned char *a) {
+    frombytes_mul_asm(r->coeffs, b->coeffs, a, zetas);
 }
 
 void DKE2_poly_frombytes(poly *pol, const uint8_t bytes[DKE2_POLYBYTES]) {
@@ -90,8 +88,22 @@ void DKE2_poly_frombytes(poly *pol, const uint8_t bytes[DKE2_POLYBYTES]) {
     }
 }
 
-// We use PQCLean MLKEM1024 compression for implementing DKE1_getsignal5 (l=5)
-// This is not valid for other choices of l.
+void DKE2_poly_frombytes_mul_acc(poly *r, const poly *b, const unsigned char *a) {
+    frombytes_mul_asm_acc(r->coeffs, b->coeffs, a, zetas);
+}
+
+void DKE2_poly_frombytes_mul_16_32(int32_t *r_tmp, const poly *b, const unsigned char *a) {
+    frombytes_mul_asm_16_32(r_tmp, b->coeffs, a, zetas);
+}
+
+void DKE2_poly_frombytes_mul_32_32(int32_t *r_tmp, const poly *b, const unsigned char *a) {
+    frombytes_mul_asm_acc_32_32(r_tmp, b->coeffs, a, zetas);
+}
+
+void DKE2_poly_frombytes_mul_32_16(poly *r, const poly *b, const unsigned char *a, const int32_t *r_tmp) {
+    frombytes_mul_asm_acc_32_16(r->coeffs, b->coeffs, a, zetas, r_tmp);
+}
+
 static void PQCLEAN_MLKEM1024_CLEAN_poly_compress(uint8_t r[DKE2_SIGNALBYTES], const poly *a) {
     unsigned int i, j;
     int16_t u;
@@ -125,12 +137,11 @@ void DKE2_getsignal5(uint8_t sig[DKE2_SIGNALBYTES], const poly *pol) {
     PQCLEAN_MLKEM1024_CLEAN_poly_compress(sig, pol);
 }
 
-
-static void DKE2_poly_decompressFloor(poly *r, const uint8_t a[DKE2_SIGNALBYTES]){
+static void DKE2_poly_decompressFloor(poly *r, const uint8_t a[DKE2_SIGNALBYTES]) {
     unsigned int i;
-
     unsigned int j;
     uint8_t t[8];
+
     for (i = 0; i < DKE2_N / 8; i++) {
         t[0] = (a[0] >> 0);
         t[1] = (a[0] >> 5) | (a[1] << 3);
@@ -148,7 +159,6 @@ static void DKE2_poly_decompressFloor(poly *r, const uint8_t a[DKE2_SIGNALBYTES]
     }
 }
 
-void DKE1_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]) {
-    // Other option PQCLEAN_MLKEM1024_CLEAN_poly_decompress(pol, sig);
+void DKE2_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]) {
     DKE2_poly_decompressFloor(pol, sig);
 }

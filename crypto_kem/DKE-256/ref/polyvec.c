@@ -1,6 +1,6 @@
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-768/clean/polyvec.c
 
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
 #include "polyvec.h"
 #include <stdint.h>

@@ -473,6 +473,112 @@ mod2_asm:
 
 
 
+.align 2
+.global DKE_verify_asm
+.type DKE_verify_asm, %function
+DKE_verify_asm:
+    push {r4-r8, lr}
+
+    aptr    .req r0
+    bptr    .req r1
+    len     .req r2
+    acc     .req r3
+    aword0  .req r4
+    aword1  .req r5
+    bword0  .req r6
+    bword1  .req r7
+    diff    .req r8
+
+    movs acc, #0
+
+    // Main loop: compare 8 bytes per iteration. Loads are grouped first so
+    // the arithmetic can run while the next memory accesses are issued.
+1:
+    ldm aptr!, {aword0, aword1}
+    ldm bptr!, {bword0, bword1}
+
+    eor diff, aword0, bword0
+    orr acc, acc, diff
+    eor diff, aword1, bword1
+    orr acc, acc, diff
+
+    subs len, len, #8
+    bne 1b
+
+    // Collapse any nonzero lane to bit 0, then return 1 on mismatch, 0 on
+    // equality. This matches the C contract exactly.
+
+    orr acc, acc, acc, lsr #16
+    orr acc, acc, acc, lsr #8
+    and acc, acc, #0xff
+    rsb r0, acc, #0
+    lsr r0, r0, #31
+
+    .unreq aptr
+    .unreq bptr
+    .unreq len
+    .unreq acc
+    .unreq aword0
+    .unreq aword1
+    .unreq bword0
+    .unreq bword1
+    .unreq diff
+
+    pop {r4-r8, pc}
+.size DKE_verify_asm, . - DKE_verify_asm
+
+.align 2
+.global DKE_cmov_asm
+.type DKE_cmov_asm, %function
+DKE_cmov_asm:
+    push {r4-r7, lr}
+
+    rptr    .req r0
+    xptr    .req r1
+    len     .req r2
+    cmask   .req r3
+    rword0  .req r4
+    xword0  .req r5
+    diff0   .req r6
+    rword1  .req r7
+    xword1  .req r12
+
+    // b is required to be in {0, 1}; convert it into a full-word mask.
+    rsb cmask, cmask, #0
+
+    // Main loop: process 8 bytes per iteration. Bitwise ops update four
+    // byte lanes in parallel, which is the SIMD-style fast path on M4 here.
+1:
+    ldr rword1, [rptr, #4]
+	ldr rword0, [rptr]
+    ldr xword1, [xptr, #4]
+    ldr xword0, [xptr], #8
+
+    eor diff0, rword0, xword0
+    and diff0, diff0, cmask
+    eor rword0, rword0, diff0
+
+    eor diff0, rword1, xword1
+    and diff0, diff0, cmask
+    eor rword1, rword1, diff0
+
+    str rword0, [rptr], #4
+    str rword1, [rptr], #4
+    subs len, len, #8
+    bne 1b
+    .unreq rptr
+    .unreq xptr
+    .unreq len
+    .unreq cmask
+    .unreq rword0
+    .unreq xword0
+    .unreq diff0
+    .unreq rword1
+    .unreq xword1
+
+    pop {r4-r7, pc}
+.size DKE_cmov_asm, . - DKE_cmov_asm
+
 .macro doublebasemul_frombytes_asm_16_32 rptr_tmp, bptr, zeta, poly0, poly2, poly1, poly3, tmp, q, qa, qinv
   ldr \poly0, [\bptr], #4
   ldr \poly2, [\bptr], #4

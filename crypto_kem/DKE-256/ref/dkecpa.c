@@ -1,14 +1,17 @@
-#include "../parameters.h"
+#include "parameters.h"
 #include "dkecpa.h"
-#include "../auxfunc.h"
-#include "../arithmetic/poly.h"
-#include "../arithmetic/polyvec.h"
-#include "../random_sampling/random_sampling.h"
+#include "auxfunc.h"
+#include "poly.h"
+#include "polyvec.h"
+#include "random_sampling.h"
 #include "dke_utils.h"
 #include <stdint.h>
 #include <string.h>
 #include "packing.h"
 #include <stdio.h>
+#ifdef USE_KECCAK
+#include "fips202.h"
+#endif
 
 
 void DKE2CPA_keygen_derand(uint8_t pk[DKE2_PKBYTES],
@@ -29,7 +32,11 @@ void DKE2CPA_keygen_derand(uint8_t pk[DKE2_PKBYTES],
     // expand coins -> buffer = (seed | rand) ---------------------------------------------
     memcpy(buffer, coins, DKE2_SEEDBYTES);
     // One approach (using pseudo XOF):
+#ifdef USE_KECCAK
+    shake256(buffer, 2 * DKE2_SEEDBYTES, buffer, DKE2_SEEDBYTES);
+#else
     pseudoXOF(2 * DKE2_SEEDBYTES*8, buffer, DKE2_SEEDBYTES*8, buffer); //bytes*8 = bits
+#endif
 
       // MLKEM PQClean approach (using hash and binding to parameter k):
      /*
@@ -177,4 +184,3 @@ void DKE2CPA_dec(uint8_t ss[DKE2_SSBYTES],
     DKE2_derive_ss(ss, &kA, sig);
 
 }
-

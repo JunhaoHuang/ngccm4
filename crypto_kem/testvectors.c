@@ -5,10 +5,13 @@
 #include "drng.h"
 #include "hal.h"
 #include "KEM_AlgorithmInstance.h"
-
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
+#include "drng.h"
 DRNG_ctx drng_algorithm;
-
-static const unsigned char tv_seed[] = {
+#endif
+unsigned char tv_seed[] = {
     3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3,
     2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5
 };
@@ -47,11 +50,12 @@ int main(void) {
 
     hal_setup(CLOCK_FAST);
     hal_send_str("==========================");
-
+#ifndef USE_KECCAK
     if (init_random_number(&drng_algorithm, tv_seed, sizeof(tv_seed)) != 0) {
         hal_send_str("drng_init_failed");
         return -1;
     }
+#endif
     if (pk == NULL || sk == NULL || ct == NULL || ss_a == NULL || ss_b == NULL) {
         hal_send_str("alloc_failed");
         return -1;

@@ -4,12 +4,15 @@ The software is provided by the Institute of Commercial Cryptography Standards
 Cryptographic Algorithms Program (NGCC).
 */
 #include "KEM_AlgorithmInstance.h"
-#include "drng.h"
 #include "parameters.h"
 #include "dkecpa.h"
 #include "dkecca.h"
-
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
+#include "drng.h"
 extern DRNG_ctx drng_algorithm;
+#endif
 
 unsigned long long kem_get_pk_len_bytes() { return DKE2_PKBYTES; }
 unsigned long long kem_get_sk_len_bytes() { return DKE2_SKBYTES; }
@@ -19,8 +22,12 @@ unsigned long long kem_get_ct_len_bytes() { return DKE2_CTBYTES; }
 int kem_keygen(unsigned char *pk, unsigned long long *pk_len_bytes,
                unsigned char *sk, unsigned long long *sk_len_bytes) {
     uint8_t coins[DKE2_SEEDBYTES + DKE2_SSBYTES];
+#ifdef USE_KECCAK
+    randombytes(coins, (DKE2_SEEDBYTES + DKE2_SSBYTES));
+#else
     get_random_number(&drng_algorithm, coins, (DKE2_SEEDBYTES + DKE2_SSBYTES) * 8);
-    DKE2CCA_keygen_derand(pk, sk, coins);
+#endif
+    DKEM256_keygen_derand(pk, sk, coins);
     return 0;
 }
 
@@ -28,14 +35,18 @@ int kem_enc(unsigned char *pk, unsigned long long pk_len_bytes,
             unsigned char *ss, unsigned long long *ss_len_bytes,
             unsigned char *ct, unsigned long long *ct_len_bytes) {
     uint8_t coins[DKE2_SEEDBYTES];
+#ifdef USE_KECCAK
+    randombytes(coins, DKE2_SEEDBYTES);
+#else
     get_random_number(&drng_algorithm, coins, DKE2_SEEDBYTES * 8);
-    DKE2CCA_enc_derand(ct, ss, pk, coins);
+#endif
+    DKEM256_enc_derand(ct, ss, pk, coins);
     return 0;
 }
 
 int kem_dec(unsigned char *sk, unsigned long long sk_len_bytes,
             unsigned char *ct, unsigned long long ct_len_bytes,
             unsigned char *ss, unsigned long long *ss_len_bytes) {
-    DKE2CCA_dec(ss, sk, ct);
+    DKEM256_dec(ss, sk, ct);
     return 0;
 }

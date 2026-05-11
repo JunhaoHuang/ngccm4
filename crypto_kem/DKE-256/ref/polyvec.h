@@ -2,7 +2,7 @@
 #define POLYVEC_H
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/polyvec.h
 
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
 #include <stdint.h>
 

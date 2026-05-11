@@ -1,144 +1,118 @@
 #include "parameters.h"
 #include "dkecpa.h"
-#include "auxfunc.h"
+
 #include "dkecca.h"
 #include <stdint.h>
 #include <string.h>
 #include "verify.h"
 #ifdef USE_KECCAK
 #include "fips202.h"
+#else
+#include "auxfunc.h"
 #endif
 
-void DKE1CCA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
-                          uint8_t sk[DKE1_SKBYTES],
-                          const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES]) {
+void DKEM128_keygen_derand(uint8_t pk[DKE1_PKBYTES],
+                           uint8_t sk[DKE1_SKBYTES],
+                           const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES])
+{
     DKE1CPA_keygen_derand(pk, sk, coins);
-    memcpy(sk + DKE1_CPA_SKBBYTES, pk, DKE1_PKBYTES); // sk = (skCPA | pk | ...)
-    // rejection value rej = coins + DKE1_SEEDBYTES
+    memcpy(sk + DKE1_CPA_SKBBYTES, pk, DKE1_PKBYTES); // sk = (skCPA | pk | rej)
     memcpy(sk + DKE1_CPA_SKBBYTES + DKE1_PKBYTES, coins + DKE1_SEEDBYTES, DKE1_SSBYTES);
     // sk = (skCPA | pk | rej)
-
 }
 
-void DKE1CCA_enc_derand(uint8_t ct[DKE1_CTBYTES],
-                        uint8_t ss[DKE1_SSBYTES],
+void DKEM128_enc_derand(uint8_t ct[DKE1_CTBYTES],
+                        uint8_t k[DKE1_SSBYTES],
                         const uint8_t pk[DKE1_PKBYTES],
-                        const uint8_t coins[DKE1_SEEDBYTES]) {
+                        const uint8_t coins[DKE1_SEEDBYTES])
+{
 
-
-    // inits
-    uint8_t kr[DKE1_SSBYTES + DKE1_SEEDBYTES + DKE1_N/8];      // will contain (K, r)
-    uint8_t buffer[DKE1_SEEDBYTES + DKE1_PKBYTES];             // (coins | pk)
-    uint8_t skB[DKE1_SSBYTES];                                 // will contain provisional shared secret
-
-
+    uint8_t r[2 * DKE1_SSBYTES];        // will contain r
+    uint8_t ss[DKE1_SSBYTES];           // will contain provisional shared secret
+    uint8_t buffer[2 * DKE1_SEEDBYTES]; // will contain (coins|seed)
 
     memcpy(buffer, coins, DKE1_SEEDBYTES);
-    memcpy(buffer + DKE1_SEEDBYTES, pk, DKE1_PKBYTES);
-
-    // TODO: I used this auxiliary hash as KDF (provisional).
+    memcpy(buffer + DKE1_SEEDBYTES, pk + DKE1_PKBYTES - DKE1_SEEDBYTES, DKE1_SEEDBYTES);
 #ifdef USE_KECCAK
-    shake256(kr, DKE1_SSBYTES + DKE1_SEEDBYTES + DKE1_N/8, buffer, DKE1_SEEDBYTES + DKE1_PKBYTES);
+    shake256(r, 2 * DKE1_SSBYTES, buffer, 2 * DKE1_SEEDBYTES);
 #else   
-    pseudoXOF((DKE1_SSBYTES + DKE1_SEEDBYTES)*8 + DKE1_N, buffer, (DKE1_SEEDBYTES + DKE1_PKBYTES)*8 , kr);
+    pseudoXOF(16 * DKE1_SSBYTES, buffer, DKE1_SEEDBYTES * 16, r);
 #endif
-    // kr <- (K | r) = HASH(buffer) = HASH(coins | pk)
-
     // CPA protocol
     DKE1CPA_enc_derand(ct,
-                    skB,
+                       ss,
                        pk,
-                       kr + DKE1_SSBYTES);
-
-
-
-    // Compute tag
-    /* @WARNING: The previous way of computing the tag comes with a great cost: hasing buffer2 = (ct | skB),
-     * where ct consists on relatively many bytes. One possible change is to skip this part
-     * and just use skB as mask
-     */
-
-    // uint8_t buffer2[DKE1_CPA_CTBYTES + DKE1_SSBYTES]; // will contain (ct | skB)
-    // uint8_t tag[DKE1_SSBYTES];                                 // will contain the DKE tag
-    // memcpy(buffer2, ct, DKE1_CPA_CTBYTES);
-    // memcpy( buffer2 + DKE1_CPA_CTBYTES, skB, DKE1_SSBYTES);
-    // pseudoXOF(DKE1_SSBYTES*8, buffer2, (DKE1_CPA_CTBYTES + DKE1_SSBYTES )*8, tag);
-    // unsigned int i = 0;
-    // for (i  = 0; i < DKE1_SSBYTES; i++) {
-    //     tag[i] ^= coins[i];
-    // }
-
-
-    // In this new approach, the tag is saved directly in skB
+                       r);
 
     // In place one time pad
     unsigned int i = 0;
-    for (i  = 0; i < DKE1_SSBYTES; i++) {
-        skB[i] ^= coins[i];
+    for (i = 0; i < DKE1_SSBYTES; i++)
+    {
+        ss[i] ^= coins[i];
     }
 
     // Emplace the tag
-    memcpy(ct + DKE1_CPA_CTBYTES, skB, DKE1_SSBYTES);
+    memcpy(ct + DKE1_CPA_CTBYTES, ss, DKE1_SSBYTES);
 
-    // Extract ss
-    memcpy(ss, kr, DKE1_SSBYTES);
+    // K <- H(ss|ct)
+    uint8_t ssct[DKE1_SSBYTES + DKE1_CTBYTES];
+    memcpy(ssct, ss, DKE1_SSBYTES);
+    memcpy(ssct + DKE1_SSBYTES, ct, DKE1_CTBYTES);
 
+#ifdef USE_KECCAK
+    sha3_256(k, ssct, DKE1_SSBYTES + DKE1_CTBYTES);
+#else   
+    sm3hash(256, ssct, (DKE1_SSBYTES + DKE1_CTBYTES)*8, k);
+#endif
 }
 
-void DKE1CCA_dec(uint8_t ss[DKE1_SSBYTES],
+void DKEM128_dec(uint8_t ss[DKE1_SSBYTES],
                  const uint8_t sk[DKE1_SKBYTES],
-                 const uint8_t ct[DKE1_CTBYTES]) {
+                 const uint8_t ct[DKE1_CTBYTES])
+{
 
-    int fail;                   // 1 if ctA != ctB
-    uint8_t r[DKE1_SSBYTES];    // will contain the tag and, after undoing the OTP, the randomness r
-    uint8_t skA[DKE1_SSBYTES];
-    memcpy(r, ct + DKE1_CPA_CTBYTES, DKE1_SSBYTES); // at this stage, r = tag = ENC coins + mask
+    int fail;                    // will be 1 if ctA != ctB
+    uint8_t coins[DKE1_SSBYTES]; // will contain the tag and,
+                                 // after undoing the OTP, the randomness coins
+    uint8_t ssA[DKE1_SSBYTES];
+    memcpy(coins, ct + DKE1_CPA_CTBYTES, DKE1_SSBYTES);
+    // At this stage, coins is yet the tag
 
     // CPA decryption
-    DKE1CPA_dec(skA, sk, ct);
-
-    /*
-     * Previous approach:
-     */
-    // uint8_t buffer2[DKE1_CPA_CTBYTES + DKE1_SSBYTES]; // will contain (ct | skB)
-    // uint8_t mask[DKE1_SSBYTES];
-
-    // memcpy(buffer2, ct, DKE1_CPA_CTBYTES);
-    // memcpy(buffer2 + DKE1_CPA_CTBYTES , skA, DKE1_SSBYTES);
-    // buffer2 = (ctCPA | skA)
-    // pseudoXOF(DKE1_SSBYTES*8, buffer2, (DKE1_CPA_CTBYTES + DKE1_SSBYTES)*8, mask);
-    // Undo one time pad
-    // unsigned int i = 0;
-    // for (i  = 0; i < DKE1_SSBYTES; i++) {
-    //    r[i] ^= mask[i];
-    // }
+    DKE1CPA_dec(ssA, sk, ct);
 
     // Undo in place one time pad
-
     unsigned int i = 0;
-    for (i  = 0; i < DKE1_SSBYTES; i++) {
-        r[i] ^= skA[i];
+    for (i = 0; i < DKE1_SSBYTES; i++)
+    {
+        coins[i] ^= ssA[i];
     }
 
     // Re-encript
     uint8_t ctA[DKE1_CTBYTES];
-    uint8_t ss0[DKE1_SSBYTES];
+    uint8_t k[DKE1_SSBYTES]; // will contain true key
 
     // CPA FO encryption
-    DKE1CCA_enc_derand(ctA,
-                        ss0,
-                        sk + DKE1_CPA_SKABYTES,
-                        r);
+    DKEM128_enc_derand(ctA,
+                       k,
+                       sk + DKE1_CPA_SKABYTES,
+                       coins);
 
     // ct == ctA?
-    fail = DKE1_verify(ct, ctA, DKE1_CPA_CTBYTES);
+    fail = DKE1_verify(ct, ctA, DKE1_CTBYTES);
 
-    // Emplace rejection key in ss
-    memcpy(ss, sk + DKE1_SKBYTES - DKE1_SSBYTES, DKE1_SSBYTES);
+    // rejection key
 
+    uint8_t rejct[DKE1_SSBYTES + DKE1_CTBYTES];
+    memcpy(rejct, sk + DKE1_SKBYTES - DKE1_SSBYTES, DKE1_SSBYTES);
+    memcpy(rejct + DKE1_SSBYTES, ct, DKE1_CTBYTES);
+
+    // rej_key -> ss
+#ifdef USE_KECCAK
+    sha3_256(ss, rejct, DKE1_SSBYTES + DKE1_CTBYTES);
+#else
+    sm3hash(256, rejct, (DKE1_SSBYTES + DKE1_CTBYTES)*8, ss);
+#endif
     // Implicit rejection
-    DKE1_cmov(ss, ss0, DKE1_SSBYTES, (uint8_t) (1 - fail));
-
+    DKE1_cmov(ss, k, DKE1_SSBYTES, (uint8_t)(1 - fail));
 }
-
-

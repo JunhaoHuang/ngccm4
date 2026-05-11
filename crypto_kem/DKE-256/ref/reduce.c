@@ -1,6 +1,6 @@
 // Comes from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-768/clean/reduce.c
 
-#include "../parameters.h"
+#include "parameters.h"
 #include "reduce.h"
 #include <stdint.h>
 

@@ -1,6 +1,6 @@
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-768/clean/poly.c
 
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
 #include "reduce.h"
 #include "ntt.h"

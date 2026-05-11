@@ -10,7 +10,7 @@
 /// @param[in]  coins random coins
 /// @param[out] pk    public key
 /// @param[out] sk    secret key
-void DKE1CCA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
+void DKEM128_keygen_derand(uint8_t pk[DKE1_PKBYTES],
                           uint8_t sk[DKE1_SKBYTES],
                           const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES]);
 
@@ -20,7 +20,7 @@ void DKE1CCA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
 /// @param[out] ss      pointer to output shared key
 /// @param[in]  pk      pointer to input public key
 /// @param[in]  coins   pointer to input random coins
-void DKE1CCA_enc_derand(uint8_t ct[DKE1_CTBYTES],
+void DKEM128_enc_derand(uint8_t ct[DKE1_CTBYTES],
                         uint8_t ss[DKE1_SSBYTES],
                         const uint8_t pk[DKE1_PKBYTES],
                         const uint8_t coins[DKE1_SEEDBYTES]);
@@ -30,7 +30,7 @@ void DKE1CCA_enc_derand(uint8_t ct[DKE1_CTBYTES],
 /// @param[out] ss      pointer to output shared key
 /// @param[in]  sk      pointer to input secret key
 /// @param[in]  ct      pointer to input ciphertext
-void DKE1CCA_dec(uint8_t ss[DKE1_SSBYTES],
+void DKEM128_dec(uint8_t ss[DKE1_SSBYTES],
                  const uint8_t sk[DKE1_SKBYTES],
                  const uint8_t ct[DKE1_CTBYTES]);
 

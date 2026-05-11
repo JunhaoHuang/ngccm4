@@ -1,8 +1,11 @@
 #include "random_sampling.h"
-#include "auxfunc.h"
 #include <stdint.h>
 #include <string.h> // for mempcy
-
+#ifdef USE_KECCAK
+#include "fips202.h"
+#else
+#include "auxfunc.h"
+#endif
 #include <limits.h>
 #include <stdlib.h>
 

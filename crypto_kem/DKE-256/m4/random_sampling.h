@@ -2,17 +2,38 @@
 #define RANDOM_SAMPLING_H
 
 #include "parameters.h"
-#include "../arithmetic/polyvec.h"
-#include "../arithmetic/poly.h"
-#include "../auxfunc.h"
+#include "polyvec.h"
+#include "poly.h"
+#include <stdlib.h>
 
-// Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-1024/clean
+// Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean
 
-# define CBD2_BYTES (2*DKE2_N/4)
+#define CBD2_BYTES (2*DKE2_N/4)
+
+#ifdef USE_KECCAK
+    #include "fips202.h"
+    #define DKE2_XOF_BLOCKBYTES SHAKE128_RATE
+#else
+  #define DKE2_XOF_BLOCKBYTES 96 
+#endif
+// DKE2_XOF_BLOCKBYTES need to be the multiple of 3. Otherwise, some tails are not considered in matacc assembly implementation.
+
+#define DKE2_GEN_MATRIX_NBLOCKS ((12 * DKE2_N / 8 * (1 << 12) / DKE2_Q + DKE2_XOF_BLOCKBYTES) / DKE2_XOF_BLOCKBYTES)
+
+typedef struct
+{
+#ifdef USE_KECCAK
+  uint8_t extseed[DKE2_SEEDBYTES + 2];
+  shake128ctx state;
+#else 
+  uint8_t extseed[DKE2_SEEDBYTES + 2 + 4]; // seed + x + y + counter (4 bytes)
+  unsigned int counter;
+#endif
+} dke2_xof_state;
 
 /// @brief generates a polynomial in Rq according to the centered binomial distribution
-/// with parameter eta = 2.
-/// @param[in]  coins   random coins array (we need eta * DKE1_N / 4 bytes
+/// with parameter eta = 3.
+/// @param[in]  coins   random coins array (we need 3 * DKE2_N / 4 bytes
 /// since eta random bytes ----> 4 random coeffs in {-eta, ..., eta}):
 /// @param[out] pol     pointer to output polynomial
 void centered_binomial2(poly* pol, const unsigned char coins[CBD2_BYTES]);
@@ -85,6 +106,12 @@ void DKE2_gen_matrix(polyvec *res,
                      const uint8_t seed[DKE2_SEEDBYTES],
                      const int transposed);
 
-
-
+void dke2_xof_squeezeblocks(uint8_t *out,
+                            size_t outblocks,
+                            dke2_xof_state *state);
+void dke2_xof_absorb(dke2_xof_state *state,
+                     const uint8_t seed[DKE2_SEEDBYTES],
+                     uint8_t x,
+                     uint8_t y);
+void dke2_xof_release(dke2_xof_state *state);
 #endif //RANDOM_SAMPLING_H

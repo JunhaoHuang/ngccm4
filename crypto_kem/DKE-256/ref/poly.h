@@ -2,7 +2,7 @@
 #define POLY_H
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/poly.h
 
-#include "../parameters.h"
+#include "parameters.h"
 #include <stdint.h>
 
 // This file defines the representation of elements in Rq and its arithmetic

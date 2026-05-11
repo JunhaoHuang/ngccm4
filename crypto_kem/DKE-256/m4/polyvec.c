@@ -1,6 +1,6 @@
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-768/clean/polyvec.c
 
-#include "../parameters.h"
+#include "parameters.h"
 #include "poly.h"
 #include "polyvec.h"
 #include <stdint.h>
@@ -14,6 +14,13 @@ void DKE2_polyvec_reduce(polyvec *v) {
     }
 }
 
+void DKE2_polyvec_reduce_mq(polyvec *v) {
+    unsigned int i;
+    for (i = 0; i < DKE2_K; i++) {
+        DKE2_poly_reduce_mq(&v->vec[i]);
+    }
+}
+
 void DKE2_polyvec_add(polyvec *res, const polyvec *a, const polyvec *b) {
     unsigned int i;
     for (i = 0; i < DKE2_K; i++) {
@@ -21,7 +28,7 @@ void DKE2_polyvec_add(polyvec *res, const polyvec *a, const polyvec *b) {
     }
 }
 
-void DKE1_polyvec_sub(polyvec *res, const polyvec *a, const polyvec *b) {
+void DKE2_polyvec_sub(polyvec *res, const polyvec *a, const polyvec *b) {
     unsigned int i;
     for (i = 0; i < DKE2_K; i++) {
         DKE2_poly_sub(&res->vec[i], &a->vec[i], &b->vec[i]);
@@ -29,7 +36,11 @@ void DKE1_polyvec_sub(polyvec *res, const polyvec *a, const polyvec *b) {
 }
 
 void DKE2_polyvec_scale2(polyvec *v) {
-    DKE2_polyvec_add(v, v, v);
+    unsigned int i;
+    for (i = 0; i < DKE2_K; i++)
+    {
+        DKE2_poly_scale2(&v->vec[i]);
+    }
 }
 
 // Advanced arithmetic ---------------------------------------------
@@ -41,23 +52,19 @@ void DKE2_polyvec_ntt(polyvec *v) {
     }
 }
 
-void DKE2_polyvec_invntt_tomont(polyvec *v) {
+void DKE2_polyvec_invntt(polyvec *v) {
     unsigned int i;
     for (i = 0; i < DKE2_K; i++) {
-        DKE2_poly_invntt_tomont(&v->vec[i]);
+        DKE2_poly_invntt(&v->vec[i]);
     }
 }
 
-void DKE2_polyvec_basemul_acc_montgomery(poly *res, const polyvec *a, const polyvec *b) {
+void DKE2_polyvec_basemul_acc(poly *res, const polyvec *a, const polyvec *b) {
     unsigned int i;
-    // the sums are accumulated in res
-    poly temp;           // auxiliary poly to contain the successive products
-    DKE2_poly_basemul_montgomery(res, &a->vec[0], &b->vec[0]);
+    DKE2_poly_basemul(res, &a->vec[0], &b->vec[0]);
     for (i = 1; i < DKE2_K; i++) {
-        DKE2_poly_basemul_montgomery(&temp, &a->vec[i], &b->vec[i]);
-        DKE2_poly_add(res, res, &temp);
+        DKE2_poly_basemul_acc(res, &a->vec[i], &b->vec[i]);
     }
-    DKE2_poly_reduce(res);  // We return to normal domain from montgomery domain.
 }
 
 // For managing conversion polyvec < --- > bytes ----------------------------

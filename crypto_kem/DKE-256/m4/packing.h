@@ -1,5 +1,5 @@
 #include "parameters.h"
-#include "arithmetic/polyvec.h"
+#include "polyvec.h"
 #include <stdint.h>
 
 

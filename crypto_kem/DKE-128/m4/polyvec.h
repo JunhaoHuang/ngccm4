@@ -12,10 +12,6 @@ typedef struct {
     poly vec[DKE1_K];
 } polyvec; // Represents vectors in Rq^k
 
-typedef struct
-{
-    poly_half vec[DKE1_K];
-} polyvec_half;
 // Basic arithmetic -------------------------------------------------------
 
 /// @brief reduces a vector polynomial mod q in {-(q-1)/2,...,(q-1)/2}

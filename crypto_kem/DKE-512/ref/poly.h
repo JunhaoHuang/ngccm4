@@ -1,7 +1,7 @@
 #ifndef POLY_H
 #define POLY_H
 
-#include "../parameters.h"
+#include "parameters.h"
 #include <stdint.h>
 
 typedef struct {

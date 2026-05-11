@@ -1,8 +1,8 @@
 #ifndef DKE_UTILS_H
 #define DKE_UTILS_H
 
-#include "../parameters.h"
-#include "../arithmetic/poly.h"
+#include "parameters.h"
+#include "poly.h"
 #include <stdint.h>
 
 

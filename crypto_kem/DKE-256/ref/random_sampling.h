@@ -2,9 +2,9 @@
 #define RANDOM_SAMPLING_H
 
 #include "parameters.h"
-#include "../arithmetic/polyvec.h"
-#include "../arithmetic/poly.h"
-#include "../auxfunc.h"
+#include "polyvec.h"
+#include "poly.h"
+#include "auxfunc.h"
 
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-1024/clean
 

@@ -37,7 +37,11 @@ void DKE1_polyvec_sub(polyvec *res, const polyvec *a, const polyvec *b) {
 }
 
 void DKE1_polyvec_scale2(polyvec *v) {
-    DKE1_polyvec_add(v, v, v);
+    unsigned int i;
+    for (i = 0; i < DKE1_K; i++)
+    {
+        DKE1_poly_scale2(&v->vec[i]);
+    }
 }
 
 // Advanced arithmetic ---------------------------------------------

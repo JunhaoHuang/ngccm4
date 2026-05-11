@@ -122,7 +122,7 @@ void ntt(int16_t r[512]) {
 void invntt(int16_t r[512]) {
     unsigned int start, len, j, k;
     int16_t t, zeta;
-   const int16_t f = 1912; // mont^2/128
+   const int16_t f = 1912; // mont^2/256 mod q
 
     k = 255;
     for (len = 2; len <= 256; len <<= 1) {

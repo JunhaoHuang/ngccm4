@@ -1,4 +1,4 @@
-#include "../parameters.h"
+#include "parameters.h"
 #include <stdint.h>
 #include "reduce.h"
 

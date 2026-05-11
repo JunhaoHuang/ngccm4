@@ -11,11 +11,6 @@ typedef struct {
     int16_t coeffs[DKE1_N];
 } poly;             // Represents polynomials
 
-typedef struct
-{
-    int16_t coeffs[DKE1_N / 2];
-} poly_half;
-
 // Basic arithmetic -------------------------------------------------------
 
 /// @brief reduces a polynomial mod q in {-(q-1)/2,...,(q-1)/2}

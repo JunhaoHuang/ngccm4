@@ -2,12 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "drng.h"
 #include "hal.h"
 #include "sendfn.h"
 #include "KEM_AlgorithmInstance.h"
 
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
+#include "drng.h"
 DRNG_ctx drng_algorithm;
+#endif
 unsigned long long hash_cycles;
 
 static const unsigned char hashing_seed[] = {
@@ -41,9 +45,11 @@ int main(void) {
     hal_setup(CLOCK_BENCHMARK);
     hal_send_str("==========================");
 
+#ifndef USE_KECCAK
     if (init_random_number(&drng_algorithm, hashing_seed, sizeof(hashing_seed)) != 0) {
         fail_and_halt("drng_init_failed");
     }
+#endif
 
     pk = malloc(pk_len);
     sk = malloc(sk_len);
