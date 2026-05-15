@@ -52,6 +52,12 @@ void DKE3_poly_basemul(poly *res, const poly *a, const poly *b);
 
 void DKE3_poly_basemul_acc(poly *res, const poly *a, const poly *b);
 
+void DKE3_poly_basemul_opt_16_32(int32_t *r_tmp, const poly *a, const poly *b, const poly *a_prime);
+
+void DKE3_poly_basemul_acc_opt_32_32(int32_t *r, const poly *a, const poly *b, const poly *a_prime);
+
+void DKE3_poly_basemul_acc_opt_32_16(poly *r, const poly *a, const poly *b, const poly *a_prime, const int32_t *r_tmp);
+
 void DKE3_poly_fromplant(poly *pol);
 // For managing conversion poly < --- > bytes ----------------------------
 

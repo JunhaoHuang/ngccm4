@@ -1,3 +1,12 @@
+/******************************************************************************
+* Optimized SM3 bit compress function for ARM Cortex-M4. Utilize floating-point
+* registers. Do not use it on architectures without FP registers.
+*
+* @author   Junhao Huang, Singapore Management University, Singapre.
+*           jhhuang_nuaa@126.com
+*
+* @date     May 2026
+******************************************************************************/
 .syntax unified
 .cpu cortex-m4
 .thumb

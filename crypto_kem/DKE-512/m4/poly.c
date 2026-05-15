@@ -9,6 +9,9 @@ extern void poly_reduce_mq_asm(int16_t *r);
 extern void asm_fromplant(int16_t *r);
 extern void pointwise_add(int16_t *c, const int16_t *a, const int16_t *b);
 extern void pointwise_sub(int16_t *c, const int16_t *a, const int16_t *b);
+extern void basemul_asm_opt_16_32(int32_t *, const int16_t *, const int16_t *, const int16_t *);
+extern void basemul_asm_acc_opt_32_32(int32_t *, const int16_t *, const int16_t *, const int16_t *);
+extern void basemul_asm_acc_opt_32_16(int16_t *, const int16_t *, const int16_t *, const int16_t *, const int32_t *);
 // Basic arithmetic ----------------------------------------------
 
 void DKE3_poly_reduce(poly *pol)
@@ -53,6 +56,22 @@ void DKE3_poly_basemul_acc(poly *res, const poly *a, const poly *b)
     DKE3_basemul_acc(res->coeffs, a->coeffs, b->coeffs);
 }
 
+void DKE3_poly_basemul_opt_16_32(int32_t *r_tmp, const poly *a, const poly *b, const poly *a_prime)
+{
+    basemul_asm_opt_16_32(r_tmp, a->coeffs, b->coeffs, a_prime->coeffs);
+}
+
+void DKE3_poly_basemul_acc_opt_32_32(int32_t *r, const poly *a, const poly *b, const poly *a_prime)
+{
+    basemul_asm_acc_opt_32_32(r, a->coeffs, b->coeffs, a_prime->coeffs);
+}
+
+void DKE3_poly_basemul_acc_opt_32_16(poly *r, const poly *a, const poly *b, const poly *a_prime, const int32_t *r_tmp)
+{
+    basemul_asm_acc_opt_32_16(r->coeffs, a->coeffs, b->coeffs, a_prime->coeffs, r_tmp);
+}
+
+
 void DKE3_poly_fromplant(poly *pol)
 {
     asm_fromplant(pol->coeffs);
@@ -68,21 +87,13 @@ void DKE3_poly_tobytes(uint8_t bytes[DKE3_POLYBYTES], const poly *pol){
 
         // map to positive standard representatives
         t0 = pol->coeffs[8 * i];
-        t0 += ((int16_t)t0 >> 15) & DKE3_Q;
         t1 = pol->coeffs[8 * i + 1];
-        t1 += ((int16_t)t1 >> 15) & DKE3_Q;
         t2 = pol->coeffs[8 * i + 2];
-        t2 += ((int16_t)t2 >> 15) & DKE3_Q;
         t3 = pol->coeffs[8 * i + 3];
-        t3 += ((int16_t)t3 >> 15) & DKE3_Q;
         t4 = pol->coeffs[8 * i + 4];
-        t4 += ((int16_t)t4 >> 15) & DKE3_Q;
         t5 = pol->coeffs[8 * i + 5];
-        t5 += ((int16_t)t5 >> 15) & DKE3_Q;
         t6 = pol->coeffs[8 * i + 6];
-        t6 += ((int16_t)t6 >> 15) & DKE3_Q;
         t7 = pol->coeffs[8 * i + 7];
-        t7 += ((int16_t)t7 >> 15) & DKE3_Q;
 
         // We use 13 bytes to store eight coefficients
         bytes[13 * i + 0] = (uint8_t)(t0 >> 0);
@@ -146,12 +157,8 @@ void DKE3_getsignal4(uint8_t bytes[DKE3_SIGNALBYTES], const poly *pol) {
         bytes += 4;
     }
 }
+extern void poly_decompress_floor_asm(int16_t *coeffs, const uint8_t *bytes);
 
 void DKE3_poly_fromsignal4(poly *pol, const uint8_t sig[DKE3_SIGNALBYTES]) {
-    unsigned int i;
-    for (i = 0; i < DKE3_N / 2; i++) {
-        pol->coeffs[2 * i + 0] = ((uint16_t)(sig[0] & 15) * DKE3_Q) >> 4; // 15 = 0b00001111
-        pol->coeffs[2 * i + 1] = ((uint16_t)(sig[0] >> 4) * DKE3_Q) >> 4;
-        sig += 1;
-    }
+   poly_decompress_floor_asm(pol->coeffs, sig);
 }

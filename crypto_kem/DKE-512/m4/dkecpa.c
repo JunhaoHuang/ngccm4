@@ -96,11 +96,13 @@ void DKE3CPA_enc_derand(uint8_t ct[DKE3_CPA_CTBYTES],
     uint8_t seed[DKE3_SEEDBYTES];
     uint8_t sig[DKE3_SIGNALBYTES];
     polyvec matt[DKE3_K]; // (1/2)A^t in NTT(Mont) domain
-    polyvec pA, pB, sB, eB;
+    polyvec pA, pB, sB, eB, sB_prime;
     poly kB, e;
 
     // unpackaging
-    DKE3_unpackpk(&pA, seed, pk);   // pA is already in NTT domain
+    DKE3_unpackpk(&pA, seed, pk); // pA is already in NTT domain
+    // unpackaging
+    // memcpy(seed, pk + DKE3_PACOMPRESSEDBYTES, DKE3_SEEDBYTES);
 
     // generate matrix (1/2)A^t in NTT domain
     gen_at(matt, seed);
@@ -128,12 +130,24 @@ void DKE3CPA_enc_derand(uint8_t ct[DKE3_CPA_CTBYTES],
     DKE3_polyvec_reduce_mq(&pB);
 
     // Arithmetic (computing kB) -------------------------------------------------------------------
+
+    // int32_t v_tmp[DKE3_N];
+    // DKE3_poly_frombytes(&kB, pk);
+    // DKE3_poly_basemul_opt_16_32(v_tmp, &sB.vec[0], &kB, &sB_prime.vec[0]);
+    // for (i = 1; i < DKE3_K - 1; i++)
+    // {
+    //     DKE3_poly_frombytes(&pkp, pk + i * DKE3_POLYBYTES);
+    //     DKE3_poly_basemul_acc_opt_32_32(v_tmp, &sB.vec[i], &pkp, &sB_prime.vec[i]);
+    // }
+    // DKE3_poly_frombytes(&pkp, pk + i * DKE3_POLYBYTES);
+    // DKE3_poly_basemul_acc_opt_32_16(&kB, &sB.vec[i], &pkp, &sB_prime.vec[i], v_tmp);
     DKE3_polyvec_basemul_acc(&kB, &pA, &sB);
+
     DKE3_poly_invntt(&kB);      // Exit NTT domain
     DKE3_geterrorA(&e, coins, nonce++);  // Sampling extra error term
     DKE3_poly_add(&kB, &kB, &e);   // kB = (1/2) sA A sB  + noise
     DKE3_poly_scale2(&kB);             // kB =  sA A sB  + 2 noise
-    DKE3_poly_reduce(&kB);
+    // DKE3_poly_reduce(&kB);
 
     // get signal
     DKE3_signal(sig, &kB, coins + DKE3_SEEDBYTES);

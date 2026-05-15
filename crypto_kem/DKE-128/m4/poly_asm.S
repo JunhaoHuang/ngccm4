@@ -280,17 +280,15 @@ poly_tobytes_asm:
 .unreq tmp
 .unreq loop
 
-// 4-bit *3329/16=4-bit *208=4-bit*(1+4+8)<<4
-.macro expand_signal_byte out, byte, lo, hi, tmp
+
+// 4-bit *3329/16=4-bit *280=4-bit
+.macro expand_signal_byte out, byte, lo, hi, q
 	and.w \lo, \byte, #0x0f
 	lsr.w \hi, \byte, #4
-	add.w \tmp, \lo, \lo, lsl #2
-	add.w \lo, \tmp, \lo, lsl #3
-	add.w \tmp, \hi, \hi, lsl #2
-	add.w \hi, \tmp, \hi, lsl #3
-	lsl.w \lo, \lo, #4
-	lsl.w \hi, \hi, #4
-	orr.w \out, \lo, \hi, lsl #16
+	smulbt \lo, \lo, \q
+	smulbt \hi, \hi, \q
+	lsr \lo, #4
+	pkhbt \out, \lo, \hi, lsl #12
 .endm
 
 .align 2
@@ -309,24 +307,25 @@ poly_decompress_floor_asm:
 	out3 .req r7
 	lo   .req r8
 	hi   .req r9
-	tmp  .req r10
+	q    .req r10
 	loop .req r12
 
 	movw loop, #32
+	movt q, #3329
 1:
 	ldr.w in0, [aptr], #4
 
 	uxtb.w in1, in0
-	expand_signal_byte out0, in1, lo, hi, tmp
+	expand_signal_byte out0, in1, lo, hi, q
 
 	ubfx.w in1, in0, #8, #8
-	expand_signal_byte out1, in1, lo, hi, tmp
+	expand_signal_byte out1, in1, lo, hi, q
 
 	ubfx.w in1, in0, #16, #8
-	expand_signal_byte out2, in1, lo, hi, tmp
+	expand_signal_byte out2, in1, lo, hi, q
 
 	ubfx.w in1, in0, #24, #8
-	expand_signal_byte out3, in1, lo, hi, tmp
+	expand_signal_byte out3, in1, lo, hi, q
 
 	stm rptr!, {out0-out3}
 	subs.w loop, loop, #1
@@ -346,7 +345,7 @@ poly_decompress_floor_asm:
 .unreq lo
 .unreq hi
 .unreq loop
-.unreq tmp
+.unreq q
 
 .macro expand_rand_pair out, byte, bit0, bit1, tmp
 	ubfx.w \out, \byte, #\bit0, #1

@@ -52,6 +52,7 @@ extern "C"
     /// @return 0 for success, others for error
     int pseudoXOF_squeeze(unsigned long long output_len_bits, unsigned char *msg, unsigned long long msg_len_bits, unsigned int *ct, unsigned char *output);
 
+    void sm3_bit_compress(unsigned int dgst[8], const unsigned char *msg, unsigned long long blocks);
 #ifdef __cplusplus
 }
 #endif

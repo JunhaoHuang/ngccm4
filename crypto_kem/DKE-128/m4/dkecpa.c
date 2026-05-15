@@ -207,15 +207,12 @@ void DKE1CPA_dec(uint8_t ss[DKE1_SSBYTES],
     DKE1_polyvec_ntt(&pB);
 
     DKE1_poly_frombytes_mul_16_32(r_tmp, &pB.vec[0], sk);
-    // DKE1_poly_frombytes_mul(&kA, &pB.vec[0], sk);
     for (i = 1; i < DKE1_K-1; i++)
     {
         DKE1_poly_frombytes_mul_32_32(r_tmp, &pB.vec[i], sk + i * DKE1_POLYBYTES);
-        // DKE1_poly_frombytes_mul_acc(&kA, &pB.vec[i], sk + i * DKE1_POLYBYTES);
     }
     DKE1_poly_frombytes_mul_32_16(&kA, &pB.vec[i], sk + i * DKE1_POLYBYTES, r_tmp);
 
-    // DKE1_polyvec_basemul_acc(&kA, &sA, &pB);
     DKE1_poly_invntt(&kA);      // Exit NTT domain. At this stage: kA = (1/2) sA A sB  + noise
     DKE1_poly_scale2(&kA);             // kB =  sA A sB  + 2 noise
 

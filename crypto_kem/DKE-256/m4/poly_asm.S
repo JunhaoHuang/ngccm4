@@ -18,101 +18,101 @@
 .thumb
 
 .macro doublebasemul_frombytes_asm rptr, bptr, zeta, poly0, poly1, poly3, tmp, tmp2, q, qa, qinv
-	ldr.w \poly0, [\bptr], #4
+    ldr.w \poly0, [\bptr], #4
 
-	smulwt \tmp, \zeta, \poly1 
-	smlabt \tmp, \tmp, \q, \qa  
-	smultt \tmp, \poly0, \tmp  
-	smlabb \tmp, \poly0, \poly1, \tmp 
-	// a1*b1*zeta+a0*b0
-	plant_red \q, \qa, \qinv, \tmp
-	// r[0] in upper half of tmp
-	
-	smuadx \tmp2, \poly0, \poly1 
-	plant_red \q, \qa, \qinv, \tmp2
+    smulwt \tmp, \zeta, \poly1 
+    smlabt \tmp, \tmp, \q, \qa  
+    smultt \tmp, \poly0, \tmp  
+    smlabb \tmp, \poly0, \poly1, \tmp 
+    // a1*b1*zeta+a0*b0
+    plant_red \q, \qa, \qinv, \tmp
+    // r[0] in upper half of tmp
+    
+    smuadx \tmp2, \poly0, \poly1 
+    plant_red \q, \qa, \qinv, \tmp2
 
-	// r[1] in upper half of tmp2
-	pkhtb \tmp, \tmp2, \tmp, asr#16
-	str \tmp, [rptr], #4
+    // r[1] in upper half of tmp2
+    pkhtb \tmp, \tmp2, \tmp, asr#16
+    str \tmp, [rptr], #4
 
-	neg \zeta, \zeta
+    neg \zeta, \zeta
 
-	ldr.w \poly0, [\bptr], #4
-	//basemul(r->coeffs + 4 * i + 2, a->coeffs + 4 * i + 2, b->coeffs + 4 * i + 2, - zetas[64 + i]);
-	smulwt \tmp, \zeta, \poly3 
-	smlabt \tmp, \tmp, \q, \qa  
-	smultt \tmp, \poly0, \tmp  
-	smlabb \tmp, \poly0, \poly3, \tmp 
-	plant_red \q, \qa, \qinv, \tmp
-	// r[0] in upper half of tmp
-	
-	smuadx \tmp2, \poly0, \poly3 
-	plant_red \q, \qa, \qinv, \tmp2
-	// r[1] in upper half of tmp2
-	pkhtb \tmp, \tmp2, \tmp, asr#16
-	str \tmp, [rptr], #4
+    ldr.w \poly0, [\bptr], #4
+    //basemul(r->coeffs + 4 * i + 2, a->coeffs + 4 * i + 2, b->coeffs + 4 * i + 2, - zetas[64 + i]);
+    smulwt \tmp, \zeta, \poly3 
+    smlabt \tmp, \tmp, \q, \qa  
+    smultt \tmp, \poly0, \tmp  
+    smlabb \tmp, \poly0, \poly3, \tmp 
+    plant_red \q, \qa, \qinv, \tmp
+    // r[0] in upper half of tmp
+    
+    smuadx \tmp2, \poly0, \poly3 
+    plant_red \q, \qa, \qinv, \tmp2
+    // r[1] in upper half of tmp2
+    pkhtb \tmp, \tmp2, \tmp, asr#16
+    str \tmp, [rptr], #4
 .endm
 
 .macro doublebasemul_frombytes_asm_acc rptr, bptr, zeta, poly0, poly1, poly3, res0, tmp, tmp2, q, qa, qinv
 
-	ldr \poly0, [\bptr], #4
-	
-	ldr \res0, [\rptr]
-	smulwt \tmp, \zeta, \poly1 
-	// b_1*zeta*qinv*plant_const; in low half
-	smlabt \tmp, \tmp, \q, \qa  
-	// b_1*zeta
-	smultt \tmp, \poly0, \tmp  
-	//a_1*b_1*zeta <2^32
-	smlabb \tmp, \poly0, \poly1, \tmp 
-	// a1*b1*zeta+a0*b0
-	plant_red \q, \qa, \qinv, \tmp
-	// r[0] in upper half of tmp
-	
-	smuadx \tmp2, \poly0, \poly1 
-	plant_red \q, \qa, \qinv, \tmp2
+    ldr \poly0, [\bptr], #4
+    
+    ldr \res0, [\rptr]
+    smulwt \tmp, \zeta, \poly1 
+    // b_1*zeta*qinv*plant_const; in low half
+    smlabt \tmp, \tmp, \q, \qa  
+    // b_1*zeta
+    smultt \tmp, \poly0, \tmp  
+    //a_1*b_1*zeta <2^32
+    smlabb \tmp, \poly0, \poly1, \tmp 
+    // a1*b1*zeta+a0*b0
+    plant_red \q, \qa, \qinv, \tmp
+    // r[0] in upper half of tmp
+    
+    smuadx \tmp2, \poly0, \poly1 
+    plant_red \q, \qa, \qinv, \tmp2
 
-	// r[1] in upper half of tmp2
-	pkhtb \tmp, \tmp2, \tmp, asr#16
-	uadd16 \res0, \res0, \tmp
-	str \res0, [\rptr], #4
+    // r[1] in upper half of tmp2
+    pkhtb \tmp, \tmp2, \tmp, asr#16
+    uadd16 \res0, \res0, \tmp
+    str \res0, [\rptr], #4
 
-	neg \zeta, \zeta
-	
-	ldr \poly0, [\bptr], #4
-	ldr \res0, [\rptr]
+    neg \zeta, \zeta
+    
+    ldr \poly0, [\bptr], #4
+    ldr \res0, [\rptr]
 
-	smulwt \tmp, \zeta, \poly3 
-	smlabt \tmp, \tmp, \q, \qa  
-	smultt \tmp, \poly0, \tmp  
-	smlabb \tmp, \poly0, \poly3, \tmp 
-	plant_red \q, \qa, \qinv, \tmp
-	// r[0] in upper half of tmp
-	
-	smuadx \tmp2, \poly0, \poly3 
-	plant_red \q, \qa, \qinv, \tmp2
-	// r[1] in upper half of tmp2
-	pkhtb \tmp, \tmp2, \tmp, asr#16
-	uadd16 \res0, \res0, \tmp
-	str \res0, [\rptr], #4
+    smulwt \tmp, \zeta, \poly3 
+    smlabt \tmp, \tmp, \q, \qa  
+    smultt \tmp, \poly0, \tmp  
+    smlabb \tmp, \poly0, \poly3, \tmp 
+    plant_red \q, \qa, \qinv, \tmp
+    // r[0] in upper half of tmp
+    
+    smuadx \tmp2, \poly0, \poly3 
+    plant_red \q, \qa, \qinv, \tmp2
+    // r[1] in upper half of tmp2
+    pkhtb \tmp, \tmp2, \tmp, asr#16
+    uadd16 \res0, \res0, \tmp
+    str \res0, [\rptr], #4
 .endm
 
 // reduce 2 registers
 .macro deserialize aptr, tmp, tmp2, tmp3, t0, t1
-	ldrb.w \tmp, [\aptr, #2]
-	ldrh.w \tmp2, [\aptr, #3]
-	ldrb.w \tmp3, [\aptr, #5]
-	ldrh.w \t0, [\aptr], #6
+    ldrb.w \tmp, [\aptr, #2]
+    ldrh.w \tmp2, [\aptr, #3]
+    ldrb.w \tmp3, [\aptr, #5]
+    ldrh.w \t0, [\aptr], #6
 
-	ubfx.w \t1, \t0, #12, #4
-	ubfx.w \t0, \t0, #0, #12
-	orr \t1, \t1, \tmp, lsl #4
-	orr \t0, \t0, \t1, lsl #16
-	//tmp is free now
-	ubfx.w \t1, \tmp2, #12, #4
-	ubfx.w \tmp, \tmp2, #0, #12
-	orr \t1, \t1, \tmp3, lsl #4
-	orr \t1, \tmp, \t1, lsl #16
+    ubfx.w \t1, \t0, #12, #4
+    ubfx.w \t0, \t0, #0, #12
+    orr \t1, \t1, \tmp, lsl #4
+    orr \t0, \t0, \t1, lsl #16
+    //tmp is free now
+    ubfx.w \t1, \tmp2, #12, #4
+    ubfx.w \tmp, \tmp2, #0, #12
+    orr \t1, \t1, \tmp3, lsl #4
+    orr \t1, \tmp, \t1, lsl #16
 .endm
 
 // void frombytes_mul_asm(int16_t *r, const int16_t *b, const unsigned char *a, const int32_t zetas[64])
@@ -120,40 +120,40 @@
 .type frombytes_mul_asm, %function
 .align 2
 frombytes_mul_asm:
-	push {r4-r11, r14}
+    push {r4-r11, r14}
 
-	rptr    .req r0
-	bptr    .req r1
-	aptr    .req r2
-	zetaptr .req r3
-	t0      .req r4
-	t1      .req r5
-	tmp     .req r6
-	tmp2    .req r7
-	tmp3    .req r8
-	q       .req r9
-	qa      .req r10
-	qinv    .req r11
-	zeta    .req r12
-	ctr     .req r14
+    rptr    .req r0
+    bptr    .req r1
+    aptr    .req r2
+    zetaptr .req r3
+    t0      .req r4
+    t1      .req r5
+    tmp     .req r6
+    tmp2    .req r7
+    tmp3    .req r8
+    q       .req r9
+    qa      .req r10
+    qinv    .req r11
+    zeta    .req r12
+    ctr     .req r14
 
-	movw qa, #26632
-	movt  q, #3329  
-	### qinv=0x6ba8f301
-	movw qinv, #62209
-	movt qinv, #27560
+    movw qa, #26632
+    movt  q, #3329  
+    ### qinv=0x6ba8f301
+    movw qinv, #62209
+    movt qinv, #27560
 
-	add ctr, rptr, #64*4*2
-	1:
-		ldr.w zeta, [zetaptr], #4
-		deserialize aptr, tmp, tmp2, tmp3, t0, t1
+    add ctr, rptr, #64*4*2
+    1:
+        ldr.w zeta, [zetaptr], #4
+        deserialize aptr, tmp, tmp2, tmp3, t0, t1
 
-		doublebasemul_frombytes_asm rptr, bptr, zeta, tmp3, t0, t1, tmp, tmp2, q, qa, qinv
+        doublebasemul_frombytes_asm rptr, bptr, zeta, tmp3, t0, t1, tmp, tmp2, q, qa, qinv
 
-	cmp.w rptr, ctr
-	bne.w 1b
+    cmp.w rptr, ctr
+    bne.w 1b
 
-	pop {r4-r11, pc}
+    pop {r4-r11, pc}
 .size frombytes_mul_asm, . -frombytes_mul_asm
 
 // void frombytes_mul_asm_acc(int16_t *r, const int16_t *b, const unsigned char *a, const int32_t zetas[64])
@@ -161,40 +161,40 @@ frombytes_mul_asm:
 .type frombytes_mul_asm_acc, %function
 .align 2
 frombytes_mul_asm_acc:
-	push {r4-r11, r14}
+    push {r4-r11, r14}
 
-	rptr    .req r0
-	bptr    .req r1
-	aptr    .req r2
-	zetaptr .req r3
-	t0      .req r4
-	t1      .req r5
-	tmp     .req r6
-	tmp2    .req r7
-	tmp3    .req r8
-	q       .req r9
-	qa      .req r10
-	qinv    .req r11
-	zeta    .req r12
-	ctr     .req r14
+    rptr    .req r0
+    bptr    .req r1
+    aptr    .req r2
+    zetaptr .req r3
+    t0      .req r4
+    t1      .req r5
+    tmp     .req r6
+    tmp2    .req r7
+    tmp3    .req r8
+    q       .req r9
+    qa      .req r10
+    qinv    .req r11
+    zeta    .req r12
+    ctr     .req r14
 
-	movw qa, #26632
-	movt  q, #3329  
-	### qinv=0x6ba8f301
-	movw qinv, #62209
-	movt qinv, #27560
+    movw qa, #26632
+    movt  q, #3329  
+    ### qinv=0x6ba8f301
+    movw qinv, #62209
+    movt qinv, #27560
 
-	add ctr, rptr, #64*4*2
-	1:
-		ldr.w zeta, [zetaptr], #4
-		deserialize aptr, tmp, tmp2, tmp3, t0, t1
-		vmov s0, ctr
-		doublebasemul_frombytes_asm_acc rptr, bptr, zeta, tmp3, t0, t1, ctr, tmp, tmp2, q, qa, qinv
-		vmov ctr, s0
-	cmp.w rptr, ctr
-	bne.w 1b
+    add ctr, rptr, #64*4*2
+    1:
+        ldr.w zeta, [zetaptr], #4
+        deserialize aptr, tmp, tmp2, tmp3, t0, t1
+        vmov s0, ctr
+        doublebasemul_frombytes_asm_acc rptr, bptr, zeta, tmp3, t0, t1, ctr, tmp, tmp2, q, qa, qinv
+        vmov ctr, s0
+    cmp.w rptr, ctr
+    bne.w 1b
 
-	pop {r4-r11, pc}
+    pop {r4-r11, pc}
 .size frombytes_mul_asm_acc, . - frombytes_mul_asm_acc 
 
 .unreq rptr   
@@ -217,53 +217,53 @@ frombytes_mul_asm_acc:
 .type poly_tobytes_asm, %function
 poly_tobytes_asm:
     push {r4-r9, lr}
-	rptr    .req r0
-	aptr    .req r1
-	pol0    .req r2
-	pol1    .req r3
-	pol2    .req r4
-	pol3    .req r5
-	pol4    .req r6
-	pol5    .req r7
-	pol6    .req r8
-	tmp     .req r9
-	loop    .req r12
+    rptr    .req r0
+    aptr    .req r1
+    pol0    .req r2
+    pol1    .req r3
+    pol2    .req r4
+    pol3    .req r5
+    pol4    .req r6
+    pol5    .req r7
+    pol6    .req r8
+    tmp     .req r9
+    loop    .req r12
 
     movw loop, #32
 1:
-	ldr.w pol0, [aptr], 4
-	ldr.w pol1, [aptr], 4
-	ldr.w pol2, [aptr], 4
-	ldr.w pol3, [aptr], 4
+    ldr.w pol0, [aptr], 4
+    ldr.w pol1, [aptr], 4
+    ldr.w pol2, [aptr], 4
+    ldr.w pol3, [aptr], 4
 
-	// Match bytes: c0, (c0 >> 8) | (c1 << 4), c1 >> 4.
-	ubfx.w tmp, pol0, #0, #12
+    // Match bytes: c0, (c0 >> 8) | (c1 << 4), c1 >> 4.
+    ubfx.w tmp, pol0, #0, #12
     ubfx.w pol4, pol0, #16, #12
-	orr.w pol4, tmp, pol4, lsl #12
-	
-	//pol1: 32+4+12=48; pol5: 16
-	orr.w pol4, pol4, pol1, lsl #24
-	ubfx.w tmp, pol1, #8, #4
-	ubfx.w pol5, pol1, #16, #12
-	orr.w pol5, tmp, pol5, lsl #4
+    orr.w pol4, tmp, pol4, lsl #12
+    
+    //pol1: 32+4+12=48; pol5: 16
+    orr.w pol4, pol4, pol1, lsl #24
+    ubfx.w tmp, pol1, #8, #4
+    ubfx.w pol5, pol1, #16, #12
+    orr.w pol5, tmp, pol5, lsl #4
 
-	//pol2: 16+12+4
-	orr.w pol5, pol5, pol2, lsl #16
-	ubfx.w tmp, pol2, #16, #12
-	orr.w pol5, pol5, tmp, lsl #28
+    //pol2: 16+12+4
+    orr.w pol5, pol5, pol2, lsl #16
+    ubfx.w tmp, pol2, #16, #12
+    orr.w pol5, pol5, tmp, lsl #28
 
-	//pol3: 8+12+12=32
-	lsr pol6, tmp, #4
-	ubfx.w tmp, pol3, #0, #12
-	orr.w pol6, pol6, tmp, lsl #8
-	ubfx.w tmp, pol3, #16, #12
-	orr.w pol6, pol6, tmp, lsl #20
+    //pol3: 8+12+12=32
+    lsr pol6, tmp, #4
+    ubfx.w tmp, pol3, #0, #12
+    orr.w pol6, pol6, tmp, lsl #8
+    ubfx.w tmp, pol3, #16, #12
+    orr.w pol6, pol6, tmp, lsl #20
 
-	str.w pol4, [rptr], #4
-	str.w pol5, [rptr], #4
-	str.w pol6, [rptr], #4
-	subs loop, #1
-	bne.w 1b
+    str.w pol4, [rptr], #4
+    str.w pol5, [rptr], #4
+    str.w pol6, [rptr], #4
+    subs loop, #1
+    bne.w 1b
 
     pop {r4-r9, pc}
 .size poly_tobytes_asm, . - poly_tobytes_asm
@@ -280,24 +280,22 @@ poly_tobytes_asm:
 .unreq tmp
 .unreq loop
 
-// 4-bit *3329/16=4-bit *208=4-bit*(1+4+8)<<4
-.macro expand_signal_byte out, byte, lo, hi, tmp
-	and.w \lo, \byte, #0x0f
-	lsr.w \hi, \byte, #4
-	add.w \tmp, \lo, \lo, lsl #2
-	add.w \lo, \tmp, \lo, lsl #3
-	add.w \tmp, \hi, \hi, lsl #2
-	add.w \hi, \tmp, \hi, lsl #3
-	lsl.w \lo, \lo, #4
-	lsl.w \hi, \hi, #4
-	orr.w \out, \lo, \hi, lsl #16
+
+// 5-bit *3329/16=4-bit *280=4-bit
+.macro expand_signal_byte out, byte, lo, hi, q
+	and.w \lo, \byte, #0x1f
+	lsr.w \hi, \byte, #5
+	smulbt \lo, \lo, \q
+	smulbt \hi, \hi, \q
+	lsr \lo, #5
+	pkhbt \out, \lo, \hi, lsl #11
 .endm
 
 .align 2
 .global poly_decompress_floor_asm
 .type poly_decompress_floor_asm, %function
 poly_decompress_floor_asm:
-	push {r4-r10, lr}
+	push {r4-r11, lr}
 
 	rptr .req r0
 	aptr .req r1
@@ -309,30 +307,35 @@ poly_decompress_floor_asm:
 	out3 .req r7
 	lo   .req r8
 	hi   .req r9
-	tmp  .req r10
+	q    .req r10
+  tmp  .req r11
 	loop .req r12
 
 	movw loop, #32
+	movt q, #3329
 1:
 	ldr.w in0, [aptr], #4
+  ldrb.w tmp, [aptr], #1
 
-	uxtb.w in1, in0
-	expand_signal_byte out0, in1, lo, hi, tmp
+	ubfx.w in1, in0, #0, #10
+	expand_signal_byte out0, in1, lo, hi, q
 
-	ubfx.w in1, in0, #8, #8
-	expand_signal_byte out1, in1, lo, hi, tmp
+	ubfx.w in1, in0, #10, #10
+	expand_signal_byte out1, in1, lo, hi, q
 
-	ubfx.w in1, in0, #16, #8
-	expand_signal_byte out2, in1, lo, hi, tmp
+	ubfx.w in1, in0, #20, #10
+	expand_signal_byte out2, in1, lo, hi, q
 
-	ubfx.w in1, in0, #24, #8
-	expand_signal_byte out3, in1, lo, hi, tmp
+  lsr in0, #30
+  orr in0, in0, tmp, lsl #2
+	ubfx.w in1, in0, #0, #10
+	expand_signal_byte out3, in1, lo, hi, q
 
 	stm rptr!, {out0-out3}
 	subs.w loop, loop, #1
 	bne.w 1b
 
-	pop {r4-r10, pc}
+	pop {r4-r11, pc}
 .size poly_decompress_floor_asm, . - poly_decompress_floor_asm
 
 .unreq rptr
@@ -346,64 +349,65 @@ poly_decompress_floor_asm:
 .unreq lo
 .unreq hi
 .unreq loop
+.unreq q
 .unreq tmp
 
 .macro expand_rand_pair out, byte, bit0, bit1, tmp
-	ubfx.w \out, \byte, #\bit0, #1
-	ubfx.w \tmp, \byte, #\bit1, #1
-	rsb.w \out, \out, #0
-	rsb.w \tmp, \tmp, #0
-	pkhbt \out, \out, \tmp, lsl #16
+    ubfx.w \out, \byte, #\bit0, #1
+    ubfx.w \tmp, \byte, #\bit1, #1
+    rsb.w \out, \out, #0
+    rsb.w \tmp, \tmp, #0
+    pkhbt \out, \out, \tmp, lsl #16
 .endm
 
 .align 2
 .global rand_to_poly_asm
 .type rand_to_poly_asm, %function
 rand_to_poly_asm:
-	push {r4-r8, lr}
+    push {r4-r8, lr}
 
-	rptr .req r0
-	aptr .req r1
-	byte .req r2
-	tmp  .req r3
-	out0 .req r4
-	out1 .req r5
-	out2 .req r6
-	out3 .req r7
-	loop .req r8
+    rptr .req r0
+    aptr .req r1
+    byte .req r2
+    tmp  .req r3
+    out0 .req r4
+    out1 .req r5
+    out2 .req r6
+    out3 .req r7
+    loop .req r8
 
-	movw loop, #8
+    movw loop, #8
 1:
-	ldr.w byte, [aptr], #4
+    ldr.w byte, [aptr], #4
 
-	expand_rand_pair out0, byte, 0, 1, tmp
-	expand_rand_pair out1, byte, 2, 3, tmp
-	expand_rand_pair out2, byte, 4, 5, tmp
-	expand_rand_pair out3, byte, 6, 7, tmp
+    expand_rand_pair out0, byte, 0, 1, tmp
+    expand_rand_pair out1, byte, 2, 3, tmp
+    expand_rand_pair out2, byte, 4, 5, tmp
+    expand_rand_pair out3, byte, 6, 7, tmp
 
-	stm rptr!, {out0-out3}
-	expand_rand_pair out0, byte, 8+0, 8+1, tmp
-	expand_rand_pair out1, byte, 8+2, 8+3, tmp
-	expand_rand_pair out2, byte, 8+4, 8+5, tmp
-	expand_rand_pair out3, byte, 8+6, 8+7, tmp
+    stm rptr!, {out0-out3}
+    expand_rand_pair out0, byte, 8+0, 8+1, tmp
+    expand_rand_pair out1, byte, 8+2, 8+3, tmp
+    expand_rand_pair out2, byte, 8+4, 8+5, tmp
+    expand_rand_pair out3, byte, 8+6, 8+7, tmp
 
-	stm rptr!, {out0-out3}
-	expand_rand_pair out0, byte, 16+0, 16+1, tmp
-	expand_rand_pair out1, byte, 16+2, 16+3, tmp
-	expand_rand_pair out2, byte, 16+4, 16+5, tmp
-	expand_rand_pair out3, byte, 16+6, 16+7, tmp
+    stm rptr!, {out0-out3}
+    expand_rand_pair out0, byte, 16+0, 16+1, tmp
+    expand_rand_pair out1, byte, 16+2, 16+3, tmp
+    expand_rand_pair out2, byte, 16+4, 16+5, tmp
+    expand_rand_pair out3, byte, 16+6, 16+7, tmp
 
-	stm rptr!, {out0-out3}
-	expand_rand_pair out0, byte, 24+0, 24+1, tmp
-	expand_rand_pair out1, byte, 24+2, 24+3, tmp
-	expand_rand_pair out2, byte, 24+4, 24+5, tmp
-	expand_rand_pair out3, byte, 24+6, 24+7, tmp
+    stm rptr!, {out0-out3}
+    expand_rand_pair out0, byte, 24+0, 24+1, tmp
+    expand_rand_pair out1, byte, 24+2, 24+3, tmp
+    expand_rand_pair out2, byte, 24+4, 24+5, tmp
+    expand_rand_pair out3, byte, 24+6, 24+7, tmp
 
-	stm rptr!, {out0-out3}
-	subs.w loop, loop, #1
-	bne.w 1b
+    stm rptr!, {out0-out3}
+    subs.w loop, loop, #1
+    bne.w 1b
 
-	pop {r4-r8, pc}
+    pop {r4-r8, pc}
 .size rand_to_poly_asm, . - rand_to_poly_asm
 
 .unreq rptr
@@ -417,47 +421,47 @@ rand_to_poly_asm:
 .unreq loop
 
 .macro collect_parity_pair out, word, bitpos, mask, tmp
-	and.w \tmp, \word, \mask
-	ubfx.w \word, \tmp, #16, #1
-	orr.w \out, \out, \tmp, lsl #\bitpos
-	orr.w \out, \out, \word, lsl #(\bitpos + 1)
+    and.w \tmp, \word, \mask
+    ubfx.w \word, \tmp, #16, #1
+    orr.w \out, \out, \tmp, lsl #\bitpos
+    orr.w \out, \out, \word, lsl #(\bitpos + 1)
 .endm
 
 .align 2
 .global mod2_asm
 .type mod2_asm, %function
 mod2_asm:
-	push {r4-r8, lr}
+    push {r4-r8, lr}
 
-	ssptr .req r0
-	kptr  .req r1
-	w0    .req r2
-	w1    .req r3
-	w2    .req r4
-	w3    .req r5
-	out   .req r6
-	mask  .req r7
-	tmp   .req r8
-	loop  .req r12
+    ssptr .req r0
+    kptr  .req r1
+    w0    .req r2
+    w1    .req r3
+    w2    .req r4
+    w3    .req r5
+    out   .req r6
+    mask  .req r7
+    tmp   .req r8
+    loop  .req r12
 
-	movw mask, #1
-	movt mask, #1
-	movw loop, #32
+    movw mask, #1
+    movt mask, #1
+    movw loop, #32
 
 1:
-	ldm kptr!, {w0-w3}
-	movs out, #0
+    ldm kptr!, {w0-w3}
+    movs out, #0
 
-	collect_parity_pair out, w0, 0, mask, tmp
-	collect_parity_pair out, w1, 2, mask, tmp
-	collect_parity_pair out, w2, 4, mask, tmp
-	collect_parity_pair out, w3, 6, mask, tmp
+    collect_parity_pair out, w0, 0, mask, tmp
+    collect_parity_pair out, w1, 2, mask, tmp
+    collect_parity_pair out, w2, 4, mask, tmp
+    collect_parity_pair out, w3, 6, mask, tmp
 
-	strb out, [ssptr], #1
-	subs.w loop, loop, #1
-	bne.w 1b
+    strb out, [ssptr], #1
+    subs.w loop, loop, #1
+    bne.w 1b
 
-	pop {r4-r8, pc}
+    pop {r4-r8, pc}
 .size mod2_asm, . - mod2_asm
 
 .align 2
@@ -537,7 +541,7 @@ DKE_cmov_asm:
     // byte lanes in parallel, which is the SIMD-style fast path on M4 here.
 1:
     ldr rword1, [rptr, #4]
-	ldr rword0, [rptr]
+    ldr rword0, [rptr]
     ldr xword1, [xptr, #4]
     ldr xword0, [xptr], #8
 
@@ -584,9 +588,9 @@ DKE_cmov_asm:
   ldr \poly2, [\bptr], #4
 
   smulwt \tmp, \zeta, \poly1 
-	smlabt \tmp, \tmp, \q, \qa  
-	smultt \tmp, \poly0, \tmp  
-	smlabb \tmp, \poly0, \poly1, \tmp 
+    smlabt \tmp, \tmp, \q, \qa  
+    smultt \tmp, \poly0, \tmp  
+    smlabb \tmp, \poly0, \poly1, \tmp 
   str \tmp, [\rptr_tmp], #4
 
   smuadx \tmp, \poly0, \poly1
@@ -595,9 +599,9 @@ DKE_cmov_asm:
   neg \zeta, \zeta
 
   smulwt \tmp, \zeta, \poly3 
-	smlabt \tmp, \tmp, \q, \qa  
-	smultt \tmp, \poly2, \tmp  
-	smlabb \tmp, \poly2, \poly3, \tmp 
+    smlabt \tmp, \tmp, \q, \qa  
+    smultt \tmp, \poly2, \tmp  
+    smlabb \tmp, \poly2, \poly3, \tmp 
   str \tmp, [\rptr_tmp], #4
 
   smuadx \tmp, \poly2, \poly3
@@ -609,9 +613,9 @@ DKE_cmov_asm:
   ldr \res0, [\rptr_tmp]
   
   smulwt \tmp, \zeta, \poly1 
-	smlabt \tmp, \tmp, \q, \qa  
-	smlatt \tmp, \poly0, \tmp, \res0
-	smlabb \tmp, \poly0, \poly1, \tmp 
+    smlabt \tmp, \tmp, \q, \qa  
+    smlatt \tmp, \poly0, \tmp, \res0
+    smlabb \tmp, \poly0, \poly1, \tmp 
 
   str \tmp, [\rptr_tmp], #4
 
@@ -625,9 +629,9 @@ DKE_cmov_asm:
   ldr \res0, [\rptr_tmp]
   
   smulwt \tmp, \zeta, \poly3 
-	smlabt \tmp, \tmp, \q, \qa  
-	smlatt \tmp, \poly0, \tmp, \res0
-	smlabb \tmp, \poly0, \poly3, \tmp 
+    smlabt \tmp, \tmp, \q, \qa  
+    smlatt \tmp, \poly0, \tmp, \res0
+    smlabb \tmp, \poly0, \poly3, \tmp 
 
   str \tmp, [\rptr_tmp], #4
 
@@ -641,9 +645,9 @@ DKE_cmov_asm:
   ldr \res0, [\rptr_tmp], #4
   
   smulwt \tmp, \zeta, \poly1 
-	smlabt \tmp, \tmp, \q, \qa  
-	smlatt \tmp, \poly0, \tmp, \res0
-	smlabb \tmp, \poly0, \poly1, \tmp 
+    smlabt \tmp, \tmp, \q, \qa  
+    smlatt \tmp, \poly0, \tmp, \res0
+    smlabb \tmp, \poly0, \poly1, \tmp 
   plant_red \q, \qa, \qinv, \tmp
 
   ldr \res0, [\rptr_tmp], #4
@@ -659,9 +663,9 @@ DKE_cmov_asm:
   ldr \res0, [\rptr_tmp], #4
   
   smulwt \tmp, \zeta, \poly3 
-	smlabt \tmp, \tmp, \q, \qa  
-	smlatt \tmp, \poly0, \tmp, \res0
-	smlabb \tmp, \poly0, \poly3, \tmp 
+    smlabt \tmp, \tmp, \q, \qa  
+    smlatt \tmp, \poly0, \tmp, \res0
+    smlabb \tmp, \poly0, \poly3, \tmp 
   plant_red \q, \qa, \qinv, \tmp
 
   ldr \res0, [\rptr_tmp], #4
@@ -685,21 +689,21 @@ frombytes_mul_asm_16_32:
   aptr     .req r2
   zetaptr  .req r3
   t0       .req r4
-	t1       .req r5
-	tmp      .req r6
-	tmp2     .req r7
-	tmp3     .req r8
-	q        .req r9
-	qa       .req r10
-	qinv     .req r11
-	zeta     .req r12
-	ctr      .req r14
+    t1       .req r5
+    tmp      .req r6
+    tmp2     .req r7
+    tmp3     .req r8
+    q        .req r9
+    qa       .req r10
+    qinv     .req r11
+    zeta     .req r12
+    ctr      .req r14
 
   movw qa, #26632
-	movt  q, #3329  
-	### qinv=0x6ba8f301
-	movw qinv, #62209
-	movt qinv, #27560
+    movt  q, #3329  
+    ### qinv=0x6ba8f301
+    movw qinv, #62209
+    movt qinv, #27560
 
   add ctr, rptr_tmp, #64*4*4
   1:
@@ -726,21 +730,21 @@ frombytes_mul_asm_acc_32_32:
   aptr     .req r2
   zetaptr  .req r3
   t0       .req r4
-	t1       .req r5
-	tmp      .req r6
-	tmp2     .req r7
-	tmp3     .req r8
-	q        .req r9
-	qa       .req r10
-	qinv     .req r11
-	zeta     .req r12
-	ctr      .req r14
+    t1       .req r5
+    tmp      .req r6
+    tmp2     .req r7
+    tmp3     .req r8
+    q        .req r9
+    qa       .req r10
+    qinv     .req r11
+    zeta     .req r12
+    ctr      .req r14
 
   movw qa, #26632
-	movt  q, #3329  
-	### qinv=0x6ba8f301
-	movw qinv, #62209
-	movt qinv, #27560
+    movt  q, #3329  
+    ### qinv=0x6ba8f301
+    movw qinv, #62209
+    movt qinv, #27560
 
   add ctr, rptr_tmp, #64*4*4
   1:
@@ -768,22 +772,22 @@ frombytes_mul_asm_acc_32_16:
   aptr     .req r2
   zetaptr  .req r3
   t0       .req r4
-	t1       .req r5
-	tmp      .req r6
-	tmp2     .req r7
-	tmp3     .req r8
-	q        .req r9
-	qa       .req r10
-	qinv     .req r11
-	zeta     .req r12
-	ctr      .req r14
+    t1       .req r5
+    tmp      .req r6
+    tmp2     .req r7
+    tmp3     .req r8
+    q        .req r9
+    qa       .req r10
+    qinv     .req r11
+    zeta     .req r12
+    ctr      .req r14
   rptr_tmp .req r3
 
   movw qa, #26632
-	movt  q, #3329  
-	### qinv=0x6ba8f301
-	movw qinv, #62209
-	movt qinv, #27560
+    movt  q, #3329  
+    ### qinv=0x6ba8f301
+    movw qinv, #62209
+    movt qinv, #27560
 
   ldr.w tmp, [sp, #9*4] // load rptr_tmp from stack
   vmov s1, tmp

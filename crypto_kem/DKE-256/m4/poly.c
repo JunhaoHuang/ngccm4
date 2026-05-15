@@ -137,28 +137,7 @@ void DKE2_getsignal5(uint8_t sig[DKE2_SIGNALBYTES], const poly *pol) {
     PQCLEAN_MLKEM1024_CLEAN_poly_compress(sig, pol);
 }
 
-static void DKE2_poly_decompressFloor(poly *r, const uint8_t a[DKE2_SIGNALBYTES]) {
-    unsigned int i;
-    unsigned int j;
-    uint8_t t[8];
-
-    for (i = 0; i < DKE2_N / 8; i++) {
-        t[0] = (a[0] >> 0);
-        t[1] = (a[0] >> 5) | (a[1] << 3);
-        t[2] = (a[1] >> 2);
-        t[3] = (a[1] >> 7) | (a[2] << 1);
-        t[4] = (a[2] >> 4) | (a[3] << 4);
-        t[5] = (a[3] >> 1);
-        t[6] = (a[3] >> 6) | (a[4] << 2);
-        t[7] = (a[4] >> 3);
-        a += 5;
-
-        for (j = 0; j < 8; j++) {
-            r->coeffs[8 * i + j] = ((uint32_t)(t[j] & 31) * DKE2_Q) >> 5;
-        }
-    }
-}
-
+extern void poly_decompress_floor_asm(int16_t *coeffs, const uint8_t *bytes);
 void DKE2_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]) {
-    DKE2_poly_decompressFloor(pol, sig);
+    poly_decompress_floor_asm(pol->coeffs, sig);
 }

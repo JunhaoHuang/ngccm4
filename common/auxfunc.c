@@ -56,13 +56,13 @@ static void sm3_bit_init(unsigned int *init_digest)
 #ifdef SM3_ASM
 extern void sm3_bit_compress_asm(unsigned int dgst[8], const unsigned char *msg, unsigned long long blocks);
 #endif
-static void sm3_bit_compress(unsigned int dgst[8], const unsigned char *msg, unsigned long long blocks)
+void sm3_bit_compress(unsigned int dgst[8], const unsigned char *msg, unsigned long long blocks)
 {
 #ifdef SM3_ASM
-	unsigned int W[76];
-	memcpy(W, dgst, 8 * sizeof(unsigned int)); // init memory for bit compress.
-	sm3_bit_compress_asm(W, msg, blocks);
-	memcpy(dgst, W, 8 * sizeof(unsigned int));
+	// unsigned int W[76];
+	// memcpy(W, dgst, 8 * sizeof(unsigned int)); // init memory for bit compress.
+	sm3_bit_compress_asm(dgst, msg, blocks);
+	// memcpy(dgst, W, 8 * sizeof(unsigned int));
 #else
 	
 	unsigned int A, B, C, D, E, F, G, H;

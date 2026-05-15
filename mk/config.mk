@@ -69,22 +69,24 @@ LDFLAGS += -flto
 endif
 
 COMMON_LIB_SRCS := \
+	common/sm3_bit_compress_asm_fp.S \
+	common/auxfunc.c \
+	common/auxfunc.h \
 	common/drng.c \
 	common/drng.h \
-	common/sm3_bit_compress_asm.S \
 	common/hal.h \
-	common/sendfn.h
+	common/sendfn.h \
+	common/internal-sha256.h \
+	common/sha256_armv7m.S \
 
 ifeq ($(USE_KECCAK),1)
 COMMON_LIB_SRCS += \
 	common/fips202.c \
 	common/fips202.h \
 	common/keccakf1600.S \
-	common/keccakf1600.h
-else
-COMMON_LIB_SRCS += \
-	common/auxfunc.c \
-	common/auxfunc.h 
+	common/keccakf1600.h \
+	common/randombytes.c \
+	common/randombytes.h
 endif
 
 ENTRY_kem := KEM_AlgorithmInstance.c

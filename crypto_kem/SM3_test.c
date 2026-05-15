@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <string.h>
-
+#include "auxfunc.h"
 #include "hal.h"
 #include "sendfn.h"
 #define print_u32(S, U) send_unsigned((S), (U))
@@ -137,6 +137,13 @@ static int run_compress_case(const char *name, const uint32_t init[8],
     memcpy(asm_state, init, 8 * sizeof(uint32_t));
 
     t0 = hal_get_time();
+    sm3_bit_compress(asm_state, msg, blocks);
+    t1 = hal_get_time();
+    printcycles("sm3_bit_compress", t1 - t0);
+
+    memset(asm_state, 0, sizeof(asm_state));
+    memcpy(asm_state, init, 8 * sizeof(uint32_t));
+    t0 = hal_get_time();
     sm3_bit_compress_c(c_state, msg, blocks);
     t1 = hal_get_time();
     printcycles("sm3_bit_compress_c", t1-t0);
@@ -156,12 +163,6 @@ static int run_compress_case(const char *name, const uint32_t init[8],
             return -1;
         }
     }
-
-    unsigned int ct=1;
-
-    
-    // print_poly_u32(c_state, 8);
-    // print_poly_u32(asm_state, 8);
 
     hal_send_str("SM3 case ok:");
     hal_send_str(name);
@@ -186,32 +187,48 @@ static int pseudoXOF_test()
     pseudoXOF(512 * 8, state1.extseed, (unsigned long long)(DKE1_SEEDBYTES + 2) * 8ULL, digest);
     t1 = hal_get_time();
     printcycles("pseudoXOF", t1 - t0);
-    print_poly_u32(digest, 512 / 4);
+    // print_poly_u32(digest, 512 / 4);
 
     t0 = hal_get_time();
     dke1_xof_squeezeblocks(digest, 2, &state1);
-    print_u32("counter after squeezing 1 block: ", state1.counter);
     t1 = hal_get_time();
     printcycles("dke1_xof_squeezeblocks", t1 - t0);
-    print_poly_u32(digest, 512/4);
+    // print_poly_u32(digest, 512/4);
 
     t0 = hal_get_time();
     dke1_xof_squeezeblocks(digest, 1, &state2);
-    print_u32("counter after squeezing 1 block: ", state2.counter);
     dke1_xof_squeezeblocks(digest+256, 1, &state2);
-    print_u32("counter after squeezing 2 blocks: ", state2.counter);
     t1 = hal_get_time();
     printcycles("dke1_xof_squeezeblocks separate", t1 - t0);
-    print_poly_u32(digest, 512/4);
+    // print_poly_u32(digest, 512/4);
 
     return 0;
 }
 #include "auxfunc.h"
+#include "internal-sha256.h"
+extern void sha256_transform(sha256_state_t *state);
 int SM3_test(const char *name, uint32_t digest[16],
               unsigned char *msg,
               unsigned long long blocks)
 {
     unsigned long long t0, t1;
+    sha256_state_t state;
+    // internal_sha256_hash_init(&state);
+    state.h[0] = 0x6a09e667U;
+    state.h[1] = 0xbb67ae85U;
+    state.h[2] = 0x3c6ef372U;
+    state.h[3] = 0xa54ff53aU,
+    state.h[4] = 0x510e527fU;
+    state.h[5] = 0x9b05688cU;
+    state.h[6] = 0x1f83d9abU;
+    state.h[7] = 0x5be0cd19U;
+    state.length = 0;
+    state.posn = 0;
+    t0=hal_get_time();
+    sha256_transform(&state);
+    t1=hal_get_time();
+    printcycles("sha256_transform", t1 - t0);
+
     unsigned int ct = 1;
     t0 = hal_get_time();
     sm3hash(256, msg, sizeof(msg), (unsigned char *)digest);
@@ -232,9 +249,10 @@ int SM3_test(const char *name, uint32_t digest[16],
     pseudoXOF(500, msg, sizeof(msg)-4, (unsigned char *)digest);
     t1=hal_get_time();
     printcycles("pseudoXOF", t1 - t0);
-    print_poly_u32(digest, 16);
+
     return 0;
 }
+
 
 #include "fips202.h"
 void speedSM3_Keccak()
@@ -249,15 +267,19 @@ void speedSM3_Keccak()
     {
         input[i] = (unsigned char)i;
     }
+#ifdef USE_KECCAK
     shake128ctx ctx;
     shake256ctx ctx256;
-    dke1_xof_state xof_ctx;
     shake128_absorb(&ctx, input, 32);
     shake256_absorb(&ctx256, input, 32);
+#else
+    dke1_xof_state xof_ctx;
     dke1_xof_absorb(&xof_ctx, input, 0, 0);
-
+#endif
+    
     for (i = 0; i < NGCC_ITERATIONS; i++)
     {
+#ifdef USE_KECCAK
         t0 = hal_get_time();
         shake128_squeezeblocks(output, 1, &ctx);
         t1 = hal_get_time();
@@ -277,7 +299,7 @@ void speedSM3_Keccak()
         shake256_squeezeblocks(output, 1024 / SHAKE256_RATE, &ctx256);
         t1 = hal_get_time();
         printcycles("shake256 1024 bytes cycles:", t1 - t0);
-
+#else
         t0 = hal_get_time();
         dke1_xof_squeezeblocks(output, 1, &xof_ctx);
         t1 = hal_get_time();
@@ -287,11 +309,12 @@ void speedSM3_Keccak()
         dke1_xof_squeezeblocks(output, 1024 / DKE1_XOF_BLOCKBYTES, &xof_ctx);
         t1 = hal_get_time();
         printcycles("dke1_xof 1024 bytes cycles:", t1 - t0);
+#endif    
         hal_send_str("+");
+    
     }
     return;
 }
-
 int main(void)
 {
     unsigned char msg[3 * 64];
@@ -329,7 +352,9 @@ int main(void)
         fail_and_halt("SM3 hash failed");
     }
     pseudoXOF_test();
+
     speedSM3_Keccak();
+
     hal_send_str("SM3 asm/c tests OK");
     hal_send_str("+");
     hal_send_str("#");
