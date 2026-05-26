@@ -1,21 +1,10 @@
 #include "parameters.h"
 #include "poly.h"
 #include "dke_utils.h"
+#include "verify.h"
 #include <stdint.h>
-#include <stdio.h>
 
 // TODO: TEST AND VERIFY CONSTANT TIME
-
-//Derived from PQCLEAN_MLKEM512_CLEAN_cmov_int16 in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/verify.c
-
-static void DKE2_cmov_int16(int16_t *r, int16_t v, uint16_t b) {
-    /* Copy input v to *r if b is 1, don't modify *r if b is 0.
-*              Requires b to be in {0,1};
-*              Runs in constant time.
-*/
-    b = -b;
-    *r ^= b & ((*r) ^ v);
-}
 
 // Derived from poly_frommsg in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/poly.c
 // TODO: TEST. THIS UTILITY IS PROVISIONAL
@@ -42,7 +31,7 @@ void DKE2_signal(uint8_t sig[DKE2_SIGNALBYTES],
 // TODO: TEST. THIS UTILITY IS PROVISIONAL
 static void DKE2_apply_signal(poly *k, const uint8_t sig[DKE2_SIGNALBYTES]) {
     poly wL;
-    DKE1_poly_fromsignal5(&wL, sig);
+    DKE2_poly_fromsignal5(&wL, sig);
     DKE2_poly_sub(k, k, &wL);     // k - wL
     DKE2_poly_reduce(k);              // maps to {-(q-1)/2,...,(q-1)/2}
 }

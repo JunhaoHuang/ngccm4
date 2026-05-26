@@ -28,7 +28,9 @@ int kem_keygen(unsigned char *pk, unsigned long long *pk_len_bytes,
 #else   
     get_random_number(&drng_algorithm, coins, (DKE1_SEEDBYTES + DKE1_SSBYTES) * 8);
 #endif
-    DKEM128_keygen_derand(pk, sk, coins);
+    DKEM128_KeyGen(pk, sk, coins);
+    *pk_len_bytes = DKE1_PKBYTES;
+    *sk_len_bytes = DKE1_SKBYTES;
     return 0;
 }
 
@@ -41,13 +43,16 @@ int kem_enc(unsigned char *pk, unsigned long long pk_len_bytes,
 #else
     get_random_number(&drng_algorithm, coins, DKE1_SEEDBYTES * 8);
 #endif
-    DKEM128_enc_derand(ct, ss, pk, coins);
+    DKEM128_Internal(ct, ss, pk, coins);
+    *ss_len_bytes = DKE1_SSBYTES;
+    *ct_len_bytes = DKE1_CTBYTES;
     return 0;
 }
 
 int kem_dec(unsigned char *sk, unsigned long long sk_len_bytes,
             unsigned char *ct, unsigned long long ct_len_bytes,
             unsigned char *ss, unsigned long long *ss_len_bytes) {
-    DKEM128_dec(ss, sk, ct);
+    DKEM128_Decaps(ss, sk, ct);
+    *ss_len_bytes = DKE1_SSBYTES;
     return 0;
 }

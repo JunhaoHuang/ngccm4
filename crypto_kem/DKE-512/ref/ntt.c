@@ -11,7 +11,7 @@
 
 // * Description: Multiplication followed by Montgomery reduction
 static int32_t fqmul(int16_t a, int16_t b) {
-    return montgomery_reduce((int32_t)a * b);
+    return DKE3_montgomery_reduce((int32_t)a * b);
 }
 
 /*
@@ -115,6 +115,11 @@ void ntt(int16_t r[512]) {
                 r[j] = r[j] + t;
             }
         }
+        if (len == 64 || len == 8)
+        {
+            for (j = 0; j < 512; j++)
+                r[j] = DKE3_barrett_reduce(r[j]);
+        }
     }
 }
 
@@ -130,7 +135,7 @@ void invntt(int16_t r[512]) {
             zeta = zetas[k--];
             for (j = start; j < start + len; j++) {
                 t = r[j];
-                r[j] = barrett_reduce(t + r[j + len]);
+                r[j] = DKE3_barrett_reduce(t + r[j + len]);
                 r[j + len] = r[j + len] - t;
                 r[j + len] = fqmul(zeta, r[j + len]);
             }

@@ -10,7 +10,7 @@
 void DKE3_poly_reduce(poly *pol) {
     unsigned int i;
     for (i = 0; i < DKE3_N; i++) {
-        pol->coeffs[i] = barrett_reduce(pol->coeffs[i]);
+        pol->coeffs[i] = DKE3_barrett_reduce(pol->coeffs[i]);
     }
 }
 
@@ -56,7 +56,7 @@ void DKE3_poly_tomont(poly *pol){   // -> Montgomery Domain
     unsigned int i;
     const int16_t f = (1ULL << 32) % DKE3_Q;
     for (i = 0; i < DKE3_N; i++) {
-        pol->coeffs[i] = montgomery_reduce((int32_t)pol->coeffs[i] * f);
+        pol->coeffs[i] = DKE3_montgomery_reduce((int32_t)pol->coeffs[i] * f);
     }
 }
 

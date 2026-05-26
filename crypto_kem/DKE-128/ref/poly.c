@@ -121,22 +121,11 @@ void DKE1_getsignal4(uint8_t sig[DKE1_SIGNALBYTES], const poly *pol) {
     PQCLEAN_MLKEM512_CLEAN_poly_compress(sig, pol);
 }
 
-// -------------------------------------------------------------------------------
-// One option for implementing DKE1_poly_fromsignal4: to use PQCLean MLKEM512 decompression
-// This is not valid for other choices of l.
-/// @WARNING This does not exactly implement DKE's mapping w -> wL. For w = 7,...,15, decompress(w) = wL +1
-static void PQCLEAN_MLKEM512_CLEAN_poly_decompress(poly *r, const uint8_t a[DKE1_SIGNALBYTES]) {
-    unsigned int i;
-
-    for (i = 0; i < DKE1_N / 2; i++) {
-        r->coeffs[2 * i + 0] = (((uint16_t)(a[0] & 15) * DKE1_Q) + 8) >> 4; // 15 = 0b00001111
-        r->coeffs[2 * i + 1] = (((uint16_t)(a[0] >> 4) * DKE1_Q) + 8) >> 4;
-        a += 1;
-    }
-}
-
-// Another option: slightly modify the previous function. (Substitute round(x q /2^4) for floor(x q /2^4))
-// TODO: test. Specially for constant time behaviour
+// Reconstructs w_i * L from a 4-bit signal w_i, where L = (q-1)/2^l.
+// Identity: since q = 3329 ≡ 1 (mod 2^4 = 16), floor(w * q / 16) == w * (q-1)/16 == w * L
+// for every w in {0,...,15}. So integer-shifted multiplication matches the paper's
+// w -> w * L mapping exactly; no rounding constant required. Constant-time:
+// only multiplication and shift on the (public) signal byte, no data-dependent branches.
 static void DKE1_poly_decompressFloor(poly *r, const uint8_t a[DKE1_SIGNALBYTES]){
     unsigned int i;
     for (i = 0; i < DKE1_N / 2; i++) {
@@ -147,6 +136,5 @@ static void DKE1_poly_decompressFloor(poly *r, const uint8_t a[DKE1_SIGNALBYTES]
 }
 
 void DKE1_poly_fromsignal4(poly *pol, const uint8_t sig[DKE1_SIGNALBYTES]) {
-    // PQCLEAN_MLKEM512_CLEAN_poly_decompress(pol, sig);
     DKE1_poly_decompressFloor(pol, sig);
 }

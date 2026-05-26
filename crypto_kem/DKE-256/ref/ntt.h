@@ -7,7 +7,7 @@
 
 extern const int16_t DKE2_zetas[128];
 
-/// @brief Inplace number-theoretic transform (NTT) in Rq = Zq[X]/(x^n+1) where q = 7681 and n = 512,
+/// @brief Inplace number-theoretic transform (NTT) in Rq = Zq[X]/(x^n+1) where q = 3329 and n = 256,
 ///         multiplied by Montgomery factor R^-1. i.e. ntt(r) = NTT(r)R^-1 mod q
 ///        input is in standard order, output is in bitreversed order
 /// @param[in,out]  r  pointer to input/output vector of elements of Zq

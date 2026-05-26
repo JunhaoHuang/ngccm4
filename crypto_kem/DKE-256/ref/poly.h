@@ -71,7 +71,7 @@ void DKE2_poly_frombytes(poly *pol, const uint8_t bytes[DKE2_POLYBYTES]);
 /// @brief Evaluates the (derandomized) signal function (with parameter DKE_L=5)  from poly.
 /// @param[out] sig     array of signal bytes
 /// @param[in]  pol     pointer to input polynomial
-/// @WARNING    This implementation is **fixed for DKE_L = 4** (matching MLKEM parameters) and optimized accordingly.
+/// @WARNING    This implementation is **fixed for DKE_L = 5** (matching MLKEM-1024 parameters) and optimized accordingly.
 ///             Changing DKE_L would require rewriting this function, as the current
 ///             code assumes this specific value for efficiency.
 void DKE2_getsignal5(uint8_t sig[DKE2_SIGNALBYTES], const poly *pol);
@@ -81,6 +81,6 @@ void DKE2_getsignal5(uint8_t sig[DKE2_SIGNALBYTES], const poly *pol);
 /// where L = (q-1)/2^l. (l = 5)
 /// @param[out] pol     pointer to output polynomial
 /// @param[in]  sig     input signal array
-void DKE1_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]);
+void DKE2_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]);
 
 #endif //POLY_H

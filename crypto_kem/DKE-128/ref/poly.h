@@ -34,13 +34,12 @@ void DKE1_poly_scale2(poly *pol);
 
 /// @brief Computes the Number-Theoretic Transform (NTT) of a polynomial
 /// Transforms the polynomial from coefficient representation to NTT
-/// representation. poly_ntt(f) = NTT(f) R^1 mod q
+/// representation.
 /// @param[in,out]      pol Pointer to the polynomial to be transformed
 void DKE1_poly_ntt(poly *pol);
 
 /// @brief Computes the inverse Number-Theoretic Transform (INTT) and
 /// converts coefficients to Montgomery representation
-/// poly_invntt_tomont(f) = NTT^-1(f) R mod q
 /// @param[in,out]      pol Pointer to the polynomial to be transformed
 void DKE1_poly_invntt_tomont(poly *pol);
 
@@ -52,7 +51,6 @@ void DKE1_poly_invntt_tomont(poly *pol);
 void DKE1_poly_basemul_montgomery(poly *res, const poly *a, const poly *b);
 
 /// @brief Converts a polynomial to Montgomery representation
-/// poly_tomont(f) = f R^-1 mod q
 /// @param[in,out]      pol Pointer to polynomial to be converted
 void DKE1_poly_tomont(poly *pol);
 

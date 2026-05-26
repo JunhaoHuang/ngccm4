@@ -11,20 +11,19 @@
 #include "auxfunc.h"
 #endif
 
-void DKEM128_keygen_derand(uint8_t pk[DKE1_PKBYTES],
-                           uint8_t sk[DKE1_SKBYTES],
-                           const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES])
+void DKEM128_KeyGen(uint8_t pk[DKE1_PKBYTES],
+                    uint8_t sk[DKE1_SKBYTES],
+                    const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES])
 {
-    DKE1CPA_keygen_derand(pk, sk, coins);
-    memcpy(sk + DKE1_CPA_SKBBYTES, pk, DKE1_PKBYTES); // sk = (skCPA | pk | rej)
-    memcpy(sk + DKE1_CPA_SKBBYTES + DKE1_PKBYTES, coins + DKE1_SEEDBYTES, DKE1_SSBYTES);
-    // sk = (skCPA | pk | rej)
+    DKEX128_Initiate(pk, sk, coins);
+    memcpy(sk + DKE1_CPA_SKABYTES, pk, DKE1_PKBYTES); // sk = (skCPA | pk | rej)
+    memcpy(sk + DKE1_CPA_SKABYTES + DKE1_PKBYTES, coins + DKE1_SEEDBYTES, DKE1_SSBYTES);
 }
 
-void DKEM128_enc_derand(uint8_t ct[DKE1_CTBYTES],
-                        uint8_t k[DKE1_SSBYTES],
-                        const uint8_t pk[DKE1_PKBYTES],
-                        const uint8_t coins[DKE1_SEEDBYTES])
+void DKEM128_Internal(uint8_t ct[DKE1_CTBYTES],
+                      uint8_t k[DKE1_SSBYTES],
+                      const uint8_t pk[DKE1_PKBYTES],
+                      const uint8_t coins[DKE1_SEEDBYTES])
 {
 
     uint8_t r[2 * DKE1_SSBYTES];        // will contain r
@@ -33,16 +32,17 @@ void DKEM128_enc_derand(uint8_t ct[DKE1_CTBYTES],
 
     memcpy(buffer, coins, DKE1_SEEDBYTES);
     memcpy(buffer + DKE1_SEEDBYTES, pk + DKE1_PKBYTES - DKE1_SEEDBYTES, DKE1_SEEDBYTES);
+
 #ifdef USE_KECCAK
     shake256(r, 2 * DKE1_SSBYTES, buffer, 2 * DKE1_SEEDBYTES);
-#else   
+#else
     pseudoXOF(16 * DKE1_SSBYTES, buffer, DKE1_SEEDBYTES * 16, r);
 #endif
     // CPA protocol
-    DKE1CPA_enc_derand(ct,
-                       ss,
-                       pk,
-                       r);
+    DKEX128_Response(ct,
+                     ss,
+                     pk,
+                     r);
 
     // In place one time pad
     unsigned int i = 0;
@@ -54,21 +54,16 @@ void DKEM128_enc_derand(uint8_t ct[DKE1_CTBYTES],
     // Emplace the tag
     memcpy(ct + DKE1_CPA_CTBYTES, ss, DKE1_SSBYTES);
 
-    // K <- H(ss|ct)
-    uint8_t ssct[DKE1_SSBYTES + DKE1_CTBYTES];
-    memcpy(ssct, ss, DKE1_SSBYTES);
-    memcpy(ssct + DKE1_SSBYTES, ct, DKE1_CTBYTES);
-
 #ifdef USE_KECCAK
-    sha3_256(k, ssct, DKE1_SSBYTES + DKE1_CTBYTES);
-#else   
-    sm3hash(256, ssct, (DKE1_SSBYTES + DKE1_CTBYTES)*8, k);
+    sha3_256(k, ss, DKE1_SSBYTES);
+#else
+    sm3hash(256, ss, (DKE1_SSBYTES) * 8, k);
 #endif
 }
 
-void DKEM128_dec(uint8_t ss[DKE1_SSBYTES],
-                 const uint8_t sk[DKE1_SKBYTES],
-                 const uint8_t ct[DKE1_CTBYTES])
+void DKEM128_Decaps(uint8_t ss[DKE1_SSBYTES],
+                    const uint8_t sk[DKE1_SKBYTES],
+                    const uint8_t ct[DKE1_CTBYTES])
 {
 
     int fail;                    // will be 1 if ctA != ctB
@@ -79,7 +74,7 @@ void DKEM128_dec(uint8_t ss[DKE1_SSBYTES],
     // At this stage, coins is yet the tag
 
     // CPA decryption
-    DKE1CPA_dec(ssA, sk, ct);
+    DKEX128_DeriveSecret(ssA, sk, ct);
 
     // Undo in place one time pad
     unsigned int i = 0;
@@ -93,26 +88,27 @@ void DKEM128_dec(uint8_t ss[DKE1_SSBYTES],
     uint8_t k[DKE1_SSBYTES]; // will contain true key
 
     // CPA FO encryption
-    DKEM128_enc_derand(ctA,
-                       k,
-                       sk + DKE1_CPA_SKABYTES,
-                       coins);
+    DKEM128_Internal(ctA,
+                     k,
+                     sk + DKE1_CPA_SKABYTES,
+                     coins);
 
     // ct == ctA?
     fail = DKE1_verify(ct, ctA, DKE1_CTBYTES);
 
-    // rejection key
+    // rejection key: H(rej || tag), where tag = last SSBYTES of ct holds all ct-entropy
 
-    uint8_t rejct[DKE1_SSBYTES + DKE1_CTBYTES];
-    memcpy(rejct, sk + DKE1_SKBYTES - DKE1_SSBYTES, DKE1_SSBYTES);
-    memcpy(rejct + DKE1_SSBYTES, ct, DKE1_CTBYTES);
+    uint8_t rej_buf[2 * DKE1_SSBYTES];
+    memcpy(rej_buf, sk + DKE1_SKBYTES - DKE1_SSBYTES, DKE1_SSBYTES);
+    memcpy(rej_buf + DKE1_SSBYTES, ct + DKE1_CPA_CTBYTES, DKE1_SSBYTES);
 
     // rej_key -> ss
 #ifdef USE_KECCAK
-    sha3_256(ss, rejct, DKE1_SSBYTES + DKE1_CTBYTES);
+    sha3_256(ss, rej_buf, 2 * DKE1_SSBYTES);
 #else
-    sm3hash(256, rejct, (DKE1_SSBYTES + DKE1_CTBYTES)*8, ss);
+    sm3hash(256, rej_buf, 2 * (DKE1_SSBYTES) * 8, ss);
 #endif
+
     // Implicit rejection
     DKE1_cmov(ss, k, DKE1_SSBYTES, (uint8_t)(1 - fail));
 }

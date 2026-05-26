@@ -1,5 +1,3 @@
-// SJG
-
 #ifndef PARAMETERS_H
 #define PARAMETERS_H
 
@@ -11,9 +9,7 @@
 #define DKE1_DA     12      // pk rounding parameter
 #define DKE1_DB     10      // ct rounding parameter
 #define DKE1_L      4       // number of bits for each hint
-#define DKE1_NOISE_A      3     // centered binomial parameter for pk
-#define DKE1_NOISE_B      3     // centered binomial parameter for ct
-
+#define DKE1_ETA    3          // unified centered binomial parameter
 
 // Sizes (bytes)-------------------------------------------------------------
 #define DKE1_SEEDBYTES       32

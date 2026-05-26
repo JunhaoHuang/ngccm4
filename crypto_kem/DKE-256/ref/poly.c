@@ -126,10 +126,13 @@ void DKE2_getsignal5(uint8_t sig[DKE2_SIGNALBYTES], const poly *pol) {
 }
 
 
+// Reconstructs w_i * L from a 5-bit signal w_i, where L = (q-1)/2^l.
+// Identity: since q = 3329 ≡ 1 (mod 2^5 = 32), floor(w * q / 32) == w * (q-1)/32 == w * L
+// for every w in {0,...,31}. So integer-shifted multiplication matches the paper's
+// w -> w * L mapping exactly; no rounding constant required. Constant-time:
+// only multiplication and shift on the (public) signal byte, no data-dependent branches.
 static void DKE2_poly_decompressFloor(poly *r, const uint8_t a[DKE2_SIGNALBYTES]){
-    unsigned int i;
-
-    unsigned int j;
+    unsigned int i, j;
     uint8_t t[8];
     for (i = 0; i < DKE2_N / 8; i++) {
         t[0] = (a[0] >> 0);
@@ -148,7 +151,6 @@ static void DKE2_poly_decompressFloor(poly *r, const uint8_t a[DKE2_SIGNALBYTES]
     }
 }
 
-void DKE1_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]) {
-    // Other option PQCLEAN_MLKEM1024_CLEAN_poly_decompress(pol, sig);
+void DKE2_poly_fromsignal5(poly *pol, const uint8_t sig[DKE2_SIGNALBYTES]) {
     DKE2_poly_decompressFloor(pol, sig);
 }

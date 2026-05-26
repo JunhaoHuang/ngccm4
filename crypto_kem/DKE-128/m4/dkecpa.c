@@ -1,6 +1,6 @@
 #include "parameters.h"
 #include "dkecpa.h"
-#include "auxfunc.h"
+
 #include "poly.h"
 #include "polyvec.h"
 #include "random_sampling.h"
@@ -13,11 +13,14 @@
 #include "packing.h"
 #ifdef USE_KECCAK
 #include "fips202.h"
+#else
+#include "auxfunc.h"
 #endif
 
-void DKE1CPA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
-                          uint8_t sk[DKE1_CPA_SKABYTES],
-                          const uint8_t coins[DKE1_SEEDBYTES]) {
+void DKEX128_Initiate(uint8_t pk[DKE1_PKBYTES],
+                      uint8_t sk[DKE1_CPA_SKABYTES],
+                      const uint8_t coins[DKE1_SEEDBYTES])
+{
 
     // buffer will contain (seed | rand)  (seed for matrix / rand for secret and noise polyvec)
     uint8_t buffer[2 * DKE1_SEEDBYTES];
@@ -39,15 +42,6 @@ void DKE1CPA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
 #else  
     pseudoXOF(2 * DKE1_SEEDBYTES*8, buffer, DKE1_SEEDBYTES*8, buffer); //bytes*8 = bits
 #endif
-      // MLKEM PQClean approach (using hash and binding to parameter k):
-     /*
-    * memcpy(buffer, coins, DKE1_SEEDBYTES);
-    * buf[DKE1_SEEDBYTES] = DKE1_K;
-    * hash_g(buffer, buffer, DKE1_SEEDBYTES + 1);
-     */
-
-    // generate matrix (1/2)A in NTT domain
-
     // generate secret and error vector ----------------------------------------------------
 
     // One approach using a nonce (PQClean)
@@ -60,19 +54,6 @@ void DKE1CPA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
         DKE1_geterrorA(&eA.vec[i], rand, nonce++);
     }
 
-    // Another approach (directly from XOF) NOT TESTED. Maybe this is less efficient.
-    /* uint8_t total_rand[2*DKE1_K*CBD3_BYTES];
-    pseudoXOF(8*2*DKE1_K*CBD3_BYTES, rand,DKE1_SEEDBYTES*8 , total_rand);
-    unsigned int pos = 0;
-    for (i = 0; i < DKE1_K; i++) {
-        DKE1_cbdA(&sA.vec[i], rand + pos*CBD3_BYTES);
-        pos++;
-    }
-    for (i = 0; i < DKE1_K; i++) {
-        DKE1_cbdA(&eA.vec[i], rand + pos*CBD3_BYTES);
-        pos++;
-    }
-    */
 
     // Protocol arithmetic (pA construction) ----------------
 
@@ -102,35 +83,29 @@ void DKE1CPA_keygen_derand(uint8_t pk[DKE1_PKBYTES],
 
     // WARNING: WE CAN COMMUNICATE pA DIRECTLY ON NTT DOMAIN BECAUSE WE ARE NOT ROUNDING HERE!
 
-    // DKE1_packpk(pk, &pA, seed);     // pk = (pA || seed) where pA = (1/2)A sA + eA (in Plantard-backed NTT domain)
+    // DKE1_packpk(pk, &pA, seed);     // pk = (pA || seed) where pA = A sA + eA (in Plantard-backed NTT domain)
     DKE1_polyvec_reduce_mq(&sA);
     DKE1_CPA_packsk(sk, &sA);       // sk = sA (in Plantard-backed NTT domain)
-
-
 }
 
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-
-void DKE1CPA_enc_derand(uint8_t ct[DKE1_CPA_CTBYTES],
-                        uint8_t ss[DKE1_SSBYTES],
-                        const uint8_t pk[DKE1_PKBYTES],
-                        const uint8_t coins[DKE1_SEEDBYTES + DKE1_N/8]) {
+void DKEX128_Response(uint8_t ct[DKE1_CPA_CTBYTES],
+                      uint8_t ss[DKE1_SSBYTES],
+                      const uint8_t pk[DKE1_PKBYTES],
+                      const uint8_t coins[DKE1_SEEDBYTES + DKE1_N / 8])
+{
     // init
     uint8_t seed[DKE1_SEEDBYTES];
     uint8_t sig[DKE1_SIGNALBYTES];
-    // polyvec matt[DKE1_K]; // (1/2)A^t in NTT domain
     poly pkp;
     polyvec pB, sB, eB, sB_prime;
     poly kB, e;
 
     // unpackaging
     memcpy(seed, pk + DKE1_PACOMPRESSEDBYTES, DKE1_SEEDBYTES);
-
-    // generate matrix (1/2)A^t in NTT domain
-    // gen_at(matt, seed);
 
     // generate secret and error
     unsigned int i = 0;
@@ -148,11 +123,11 @@ void DKE1CPA_enc_derand(uint8_t ct[DKE1_CPA_CTBYTES],
     DKE1_polyvec_ntt(&sB);
     matacc_cache32(&pB.vec[0], &sB, &sB_prime, 0, seed, 1);
     DKE1_poly_invntt(&pB.vec[0]); // exits from NTT
-    DKE1_poly_add(&pB.vec[0], &pB.vec[0], &eB.vec[0]);   // pB[0] = (1/2)A^tsB + eB[0]
+    DKE1_poly_add(&pB.vec[0], &pB.vec[0], &eB.vec[0]);   // pB[0] = A^tsB + eB[0]
     for (i = 1; i < DKE1_K; i++) {
         matacc_opt32(&pB.vec[i], &sB, &sB_prime, i, seed, 1);
         DKE1_poly_invntt(&pB.vec[i]); // exits from NTT
-        DKE1_poly_add(&pB.vec[i], &pB.vec[i], &eB.vec[i]);   // pB[i] = (1/2)A^tsB + eB[i]
+        DKE1_poly_add(&pB.vec[i], &pB.vec[i], &eB.vec[i]);   // pB[i] = A^tsB + eB[i]
     }
     // WE ARE NOT DOING DKE1_polyvec_ntt(&eB) SINCE WE OUPUT pB in NORMAL DOMAIN
     
@@ -174,8 +149,8 @@ void DKE1CPA_enc_derand(uint8_t ct[DKE1_CPA_CTBYTES],
 
     DKE1_poly_invntt(&kB);      // Exit NTT domain
     DKE1_geterrorA(&e, coins, nonce++);  // Sampling extra error term
-    DKE1_poly_add(&kB, &kB, &e);   // kB = (1/2) sA A sB  + noise
-    DKE1_poly_scale2(&kB);             // kB =  sA A sB  + 2 noise
+    DKE1_poly_add(&kB, &kB, &e);   // kB = sA A sB  + noise
+    DKE1_poly_scale2(&kB);             // kB =  2 sA A sB  + 2 noise
 
     // get signal
     DKE1_signal(sig, &kB, coins + DKE1_SEEDBYTES);
@@ -183,16 +158,15 @@ void DKE1CPA_enc_derand(uint8_t ct[DKE1_CPA_CTBYTES],
     DKE1_CPA_packciphertext(ct, &pB, sig);
     // derive ss
     DKE1_derive_ss(ss, &kB, sig);
-
 }
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-
-void DKE1CPA_dec(uint8_t ss[DKE1_SSBYTES],
-                 const uint8_t sk[DKE1_CPA_SKABYTES],
-                 const uint8_t ct[DKE1_CPA_CTBYTES]) {
+void DKEX128_DeriveSecret(uint8_t ss[DKE1_SSBYTES],
+                          const uint8_t sk[DKE1_CPA_SKABYTES],
+                          const uint8_t ct[DKE1_CPA_CTBYTES])
+{
     // init
     polyvec pB; // sA is in NTT domain. pB is in normal domain
     uint8_t sig[DKE1_SIGNALBYTES];
@@ -213,10 +187,9 @@ void DKE1CPA_dec(uint8_t ss[DKE1_SSBYTES],
     }
     DKE1_poly_frombytes_mul_32_16(&kA, &pB.vec[i], sk + i * DKE1_POLYBYTES, r_tmp);
 
-    DKE1_poly_invntt(&kA);      // Exit NTT domain. At this stage: kA = (1/2) sA A sB  + noise
-    DKE1_poly_scale2(&kA);             // kB =  sA A sB  + 2 noise
+    DKE1_poly_invntt(&kA);      // Exit NTT domain. At this stage: kA = sA A sB  + noise
+    DKE1_poly_scale2(&kA);             // kB =  2 sA A sB  + 2 noise
 
     // derive ss
     DKE1_derive_ss(ss, &kA, sig);
-
 }

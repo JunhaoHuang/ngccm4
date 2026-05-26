@@ -245,5 +245,4 @@ void DKE1_getsignal4(uint8_t sig[DKE1_SIGNALBYTES], const poly *pol) {
 
 void DKE1_poly_fromsignal4(poly *pol, const uint8_t sig[DKE1_SIGNALBYTES]) {
     poly_decompress_floor_asm(pol->coeffs, sig);
-    // DKE1_poly_decompressFloor(pol, sig);
 }

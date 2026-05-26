@@ -1,13 +1,18 @@
 #include "random_sampling.h"
-#include "auxfunc.h"
 #ifdef USE_KECCAK
 #include "fips202.h"
+#else
+#include "auxfunc.h"
 #endif
 #include <stdint.h>
 #include <string.h> // for mempcy
 
 #include <limits.h>
 #include <stdlib.h>
+
+#if DKE1_ETA != 3
+#error "centered_binomial3 is specialized for DKE1_ETA = 3"
+#endif
 
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/cbd.c
 
@@ -27,14 +32,14 @@ static uint32_t load24_littleendian(const uint8_t x[3]) {
 }
 
 
-void centered_binomial3(poly* pol, const unsigned char coins[3 * DKE1_N / 4]) {
+void centered_binomial3(poly* pol, const unsigned char coins[DKE1_CBD_BYTES]) {
     // Preliminar implmentation (PQClean: https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/cbd.c)
     unsigned int i, j;
     uint32_t t, d;
     int16_t a, b;
 
     for (i = 0; i < DKE1_N / 4; i++) {
-        t  = load24_littleendian(coins + 3 * i);
+        t  = load24_littleendian(coins + DKE1_ETA * i);
         d  = t & 0x00249249;
         d += (t >> 1) & 0x00249249;
         d += (t >> 2) & 0x00249249;
@@ -47,10 +52,10 @@ void centered_binomial3(poly* pol, const unsigned char coins[3 * DKE1_N / 4]) {
     }
 }
 
-void DKE1_cbdA(poly* pol, const unsigned char coins[CBD3_BYTES]) {
+void DKE1_cbdA(poly* pol, const unsigned char coins[DKE1_CBD_BYTES]) {
     centered_binomial3(pol, coins);
 }
-void DKE1_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]) {
+void DKE1_cbdB(poly* pol, const unsigned char coins[DKE1_CBD_BYTES]) {
     centered_binomial3(pol, coins);
 }
 
@@ -58,13 +63,13 @@ void DKE1_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]) {
 void DKE1_getsecretA(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce) {
     // msg will be (rand | nonce)
     uint8_t msg[DKE1_SEEDBYTES + 1];
-    uint8_t coins[CBD3_BYTES];
+    uint8_t coins[DKE1_CBD_BYTES];
     memcpy(msg, rand, DKE1_SEEDBYTES);
     msg[DKE1_SEEDBYTES] = nonce;
 #ifdef USE_KECCAK
-    shake256(coins, CBD3_BYTES, msg, DKE1_SEEDBYTES + 1);
+    shake256(coins, DKE1_CBD_BYTES, msg, DKE1_SEEDBYTES + 1);
 #else
-    pseudoXOF(CBD3_BYTES*8, msg,(DKE1_SEEDBYTES + 1)*8, coins); // bytes*8 = bits
+    pseudoXOF(DKE1_CBD_BYTES * 8, msg, (DKE1_SEEDBYTES + 1) * 8, coins); // bytes*8 = bits
 #endif
     centered_binomial3(pol, coins);
 }
@@ -102,77 +107,16 @@ unsigned int rej_uniform(int16_t *res,
     }
     return ctr;
 }
-#define POLY_UNIFORM_BUF_BYTES      1024 //TODO: optimize (or optimize DKE1_gen_matrix directly).
-// bigger POLY_UNIFORM_BUF_BYTES ----> smaller number of rounds
 
-void poly_uniform(poly* pol,
-                  const uint8_t seed[DKE1_SEEDBYTES],
-                  const uint8_t i,
-                  const uint8_t j){
-    uint32_t round = 0;
-    unsigned int ctr = 0;
-    uint8_t input[DKE1_SEEDBYTES + 2 + 4]; // will be input = seed || i(1 byte) || j(1 byte) || round(4 bytes)
-    uint8_t buf[POLY_UNIFORM_BUF_BYTES];
-    while (ctr < DKE1_N) {
-        memcpy(input, seed, DKE1_SEEDBYTES);
-        input[DKE1_SEEDBYTES] = i;
-        input[DKE1_SEEDBYTES + 1] = j;
-        memcpy(input + DKE1_SEEDBYTES + 2, &round, 4);
 
-#ifdef USE_KECCAK
-        shake128(buf, sizeof(buf), input, sizeof(input));
-#else
-        pseudoXOF(sizeof(buf)*8,
-                  input,
-                  sizeof(input)*8,
-                  buf);
-#endif
-        ctr += rej_uniform(
-            pol -> coeffs + ctr,
-            DKE1_N - ctr,
-            buf,
-            sizeof(buf)
-        );
-        round++;
-    }
-}
-
-//
-/* This was a preliminar implementation, using XOF directly. Highly inefficient.
-void DKE1_gen_matrix(polyvec *res,
-                     const uint8_t seed[DKE1_SEEDBYTES],
-                     const int transposed) {
-    // for (unsigned int i = 0; i < DKE1_K; i++) {
-    //     for (unsigned int j = 0; j < DKE1_K; j++) {
-    //         if (transposed) {
-    //             poly_uniform(&res[i].vec[j], seed, i, j);
-    //         } else {
-    //             poly_uniform(&res[i].vec[j], seed, j, i);
-    //         }
-    //     }
-    // }
-
-    // note (Sergio): optimized removing conditional from inner loop and splitting into two cases
-    if (transposed) {
-        for (unsigned int i = 0; i < DKE1_K; ++i) {
-            for (unsigned int j = 0; j < DKE1_K; ++j) {
-                poly_uniform(&res[i].vec[j], seed, i, j);
-            }
-        }
-    }
-    else {
-        for (unsigned int i = 0; i < DKE1_K; ++i) {
-            for (unsigned int j = 0; j < DKE1_K; ++j) {
-                poly_uniform(&res[i].vec[j], seed, j, i);
-            }
-        }
-    }
-}
-*/
 
 // Improving XOF utilities: --------------------------------------------------------------------------------------
 
-#define DKE1_XOF_BLOCKBYTES 168
+#ifdef USE_KECCAK
+#define DKE1_XOF_BLOCKBYTES SHAKE128_RATE
+#else
+#define DKE1_XOF_BLOCKBYTES 192
+#endif
 #define DKE1_GEN_MATRIX_NBLOCKS ((12 * DKE1_N / 8 * (1 << 12) / DKE1_Q + DKE1_XOF_BLOCKBYTES) / DKE1_XOF_BLOCKBYTES)
 
 typedef struct {
@@ -182,7 +126,7 @@ typedef struct {
 #else
     size_t generated_bytes;
 #endif
-} dke1_xof_state;
+} dke1_xof_state;       // (seed | x | y)
 
 #ifndef USE_KECCAK
 // copying just the newly requested slice
@@ -265,39 +209,35 @@ static void dke1_xof_release(dke1_xof_state *state) {
 
 // -----------------------------------------------------------------------------------------
 
-// rebuilding matrix bytes with a local squeeze flow over pseudoXOF
-void DKE1_gen_matrix(polyvec *res,
-                     const uint8_t seed[DKE1_SEEDBYTES],
-                     const int transposed) {
-
-    unsigned int ctr;
-    unsigned int buflen;
+static void dke1_sample_poly(poly *pol, const uint8_t seed[DKE1_SEEDBYTES], uint8_t x, uint8_t y) {
+    unsigned int ctr, buflen;
     dke1_xof_state state;
     uint8_t buf[DKE1_GEN_MATRIX_NBLOCKS * DKE1_XOF_BLOCKBYTES];
 
+    dke1_xof_absorb(&state, seed, x, y);
+    dke1_xof_squeezeblocks(buf, DKE1_GEN_MATRIX_NBLOCKS, &state);
+    buflen = DKE1_GEN_MATRIX_NBLOCKS * DKE1_XOF_BLOCKBYTES;
+    ctr = rej_uniform(pol->coeffs, DKE1_N, buf, buflen);
+
+    while (ctr < DKE1_N) {
+        dke1_xof_squeezeblocks(buf, 1, &state);
+        buflen = DKE1_XOF_BLOCKBYTES;
+        ctr += rej_uniform(pol->coeffs + ctr, DKE1_N - ctr, buf, buflen);
+    }
+    dke1_xof_release(&state);
+}
+
+void DKE1_gen_matrix(polyvec *res,
+                     const uint8_t seed[DKE1_SEEDBYTES],
+                     const int transposed) {
     for (unsigned int i = 0; i < DKE1_K; ++i) {
         for (unsigned int j = 0; j < DKE1_K; ++j) {
             if (transposed) {
-                dke1_xof_absorb(&state, seed, (uint8_t)i, (uint8_t)j);
+                dke1_sample_poly(&res[i].vec[j], seed, (uint8_t)i, (uint8_t)j);
             }
             else {
-                dke1_xof_absorb(&state, seed, (uint8_t)j, (uint8_t)i);
+                dke1_sample_poly(&res[i].vec[j], seed, (uint8_t)j, (uint8_t)i);
             }
-
-            dke1_xof_squeezeblocks(buf, DKE1_GEN_MATRIX_NBLOCKS, &state);
-            buflen = DKE1_GEN_MATRIX_NBLOCKS * DKE1_XOF_BLOCKBYTES;
-            ctr = rej_uniform(res[i].vec[j].coeffs, DKE1_N, buf, buflen);
-
-            while (ctr < DKE1_N) {
-                dke1_xof_squeezeblocks(buf, 1, &state);
-                buflen = DKE1_XOF_BLOCKBYTES;
-                ctr += rej_uniform(res[i].vec[j].coeffs + ctr,
-                                   DKE1_N - ctr,
-                                   buf,
-                                   buflen);
-            }
-
-            dke1_xof_release(&state);
         }
     }
 }

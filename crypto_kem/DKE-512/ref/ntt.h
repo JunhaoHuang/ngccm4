@@ -19,7 +19,7 @@ void ntt(int16_t r[512]);
 void invntt(int16_t r[512]);
 
 
-/// consequently: montgomery_reduce(invntt(ntt(f))) = f mod q
+/// consequently: DKE3_montgomery_reduce(invntt(ntt(f))) = f mod q
 
 /// @brief  Multiplication of polynomials in Zq[X]/(X^2-zeta)
 ///         used for multiplication of elements in Rq in NTT domain

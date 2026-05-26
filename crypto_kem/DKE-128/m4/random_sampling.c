@@ -9,6 +9,9 @@
 #include <limits.h>
 #include <stdlib.h>
 
+#if DKE1_ETA != 3
+#error "centered_binomial3 is specialized for DKE1_ETA = 3"
+#endif
 // Derived from https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/cbd.c
 
 
@@ -26,15 +29,15 @@ static uint32_t load24_littleendian(const uint8_t x[3]) {
     return r;
 }
 
-
-void centered_binomial3(poly* pol, const unsigned char coins[3 * DKE1_N / 4]) {
+void centered_binomial3(poly *pol, const unsigned char coins[DKE1_CBD_BYTES])
+{
     // Preliminar implmentation (PQClean: https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/cbd.c)
     unsigned int i, j;
     uint32_t t, d;
     int16_t a, b;
 
     for (i = 0; i < DKE1_N / 4; i++) {
-        t  = load24_littleendian(coins + 3 * i);
+        t = load24_littleendian(coins + DKE1_ETA * i);
         d  = t & 0x00249249;
         d += (t >> 1) & 0x00249249;
         d += (t >> 2) & 0x00249249;
@@ -47,10 +50,10 @@ void centered_binomial3(poly* pol, const unsigned char coins[3 * DKE1_N / 4]) {
     }
 }
 
-void DKE1_cbdA(poly* pol, const unsigned char coins[CBD3_BYTES]) {
+void DKE1_cbdA(poly* pol, const unsigned char coins[DKE1_CBD_BYTES]) {
     centered_binomial3(pol, coins);
 }
-void DKE1_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]) {
+void DKE1_cbdB(poly* pol, const unsigned char coins[DKE1_CBD_BYTES]) {
     centered_binomial3(pol, coins);
 }
 
@@ -58,13 +61,13 @@ void DKE1_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]) {
 void DKE1_getsecretA(poly* pol, const unsigned char rand[DKE1_SEEDBYTES], const uint8_t nonce) {
     // msg will be (rand | nonce)
     uint8_t msg[DKE1_SEEDBYTES + 1];
-    uint8_t coins[CBD3_BYTES];
+    uint8_t coins[DKE1_CBD_BYTES];
     memcpy(msg, rand, DKE1_SEEDBYTES);
     msg[DKE1_SEEDBYTES] = nonce;
 #ifdef USE_KECCAK
-    shake256(coins, CBD3_BYTES, msg, DKE1_SEEDBYTES + 1);
+    shake256(coins, DKE1_CBD_BYTES, msg, DKE1_SEEDBYTES + 1);
 #else
-    pseudoXOF(CBD3_BYTES*8, msg,(DKE1_SEEDBYTES + 1)*8, coins); // bytes*8 = bits
+    pseudoXOF(DKE1_CBD_BYTES*8, msg,(DKE1_SEEDBYTES + 1)*8, coins); // bytes*8 = bits
 #endif
     centered_binomial3(pol, coins);
 }

@@ -10,9 +10,9 @@
 // if (pos + 3 > buflen && ctr < KYBER_N/4)
   vmov \tmp, s17
 #ifdef USE_KECCAK
-  add \tmp, #168 // DKE1_XOF_BLOCKBYTES need to be the multiple of 3 and 256. Otherwise, some tails are not considered.
+  add \tmp, #168 
 #else
-  add \tmp, #96
+  add \tmp, #192 // DKE1_XOF_BLOCKBYTES need to be the multiple of 3 and 256. Otherwise, some tails are not considered.
 #endif
   add \tmp2, \bufptr, #3
   cmp.w \tmp2, \tmp  // pos + 3 > buflen

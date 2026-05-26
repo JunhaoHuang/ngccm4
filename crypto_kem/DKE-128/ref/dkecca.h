@@ -6,31 +6,29 @@
 
 
 
-/// @brief Deterministically derives from coins a public and secret key for DKE(CCA)1
+/// @brief Implements DKEM.KeyGen for DKEM-128 with explicit randomness
 /// @param[in]  coins random coins
 /// @param[out] pk    public key
 /// @param[out] sk    secret key
-void DKEM128_keygen_derand(uint8_t pk[DKE1_PKBYTES],
+void DKEM128_KeyGen(uint8_t pk[DKE1_PKBYTES],
                           uint8_t sk[DKE1_SKBYTES],
                           const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES]);
 
-/// @brief Deterministically derives a ciphertext and shared secret from the public
-///        key and random coins for DKE(CCA)1 (CPA ct | tag)
+/// @brief Implements DKEM.Internal for DKEM-128
 /// @param[out] ct      pointer to output ciphertext
-/// @param[out] ss      pointer to output shared key
+/// @param[out] k      pointer to output shared key
 /// @param[in]  pk      pointer to input public key
 /// @param[in]  coins   pointer to input random coins
-void DKEM128_enc_derand(uint8_t ct[DKE1_CTBYTES],
-                        uint8_t ss[DKE1_SSBYTES],
+void DKEM128_Internal(uint8_t ct[DKE1_CTBYTES],
+                        uint8_t k[DKE1_SSBYTES],
                         const uint8_t pk[DKE1_PKBYTES],
                         const uint8_t coins[DKE1_SEEDBYTES]);
 
-/// @brief Deterministically derives a shared secret from the ciphertext
-///        and own private key. Performs implicit rejection
+/// @brief Implements DKEM.Decaps for DKEM-128
 /// @param[out] ss      pointer to output shared key
 /// @param[in]  sk      pointer to input secret key
 /// @param[in]  ct      pointer to input ciphertext
-void DKEM128_dec(uint8_t ss[DKE1_SSBYTES],
+void DKEM128_Decaps(uint8_t ss[DKE1_SSBYTES],
                  const uint8_t sk[DKE1_SKBYTES],
                  const uint8_t ct[DKE1_CTBYTES]);
 

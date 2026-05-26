@@ -21,13 +21,6 @@ void DKE1_polyvec_add(polyvec *res, const polyvec *a, const polyvec *b) {
     }
 }
 
-void DKE1_polyvec_sub(polyvec *res, const polyvec *a, const polyvec *b) {
-    unsigned int i;
-    for (i = 0; i < DKE1_K; i++) {
-        DKE1_poly_sub(&res->vec[i], &a->vec[i], &b->vec[i]);
-    }
-}
-
 void DKE1_polyvec_scale2(polyvec *v) {
     DKE1_polyvec_add(v, v, v);
 }

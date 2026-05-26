@@ -575,9 +575,12 @@ int pseudoXOF_squeeze(unsigned long long output_len_bits, unsigned char *cascade
 #ifdef HASHING_PROFILE
 	uint64_t t0 = hal_get_time();
 #endif
-	// unsigned int ct = 1;
-	
-	for (unsigned int i = 0; i < (output_len_bits + 255) / 256; i++)
+	unsigned long long output_len_bytes = (output_len_bits + 7) / 8;
+	unsigned long long full_blocks = output_len_bytes / 32;
+	unsigned long long remaining_bytes = output_len_bytes % 32;
+	unsigned long long blocks = full_blocks + (remaining_bytes != 0);
+
+	for (unsigned long long i = 0; i < blocks; i++)
 	{
 		if (msg_len_bits % 8 == 0)
 		{
@@ -595,10 +598,19 @@ int pseudoXOF_squeeze(unsigned long long output_len_bits, unsigned char *cascade
 			cascade_msg_ct[(msg_len_bits + 7) / 8 + 2] = ((*ct << (24 - (msg_len_bits % 8))) & 0xffffffff) >> 24;
 			cascade_msg_ct[(msg_len_bits + 7) / 8 + 3] = ((*ct << (32 - (msg_len_bits % 8))) & 0xffffffff) >> 24;
 		}
-		sm3_bit(cascade_msg_ct, msg_len_bits + 32, output + i * 32);
+		if (i < full_blocks)
+		{
+			sm3_bit(cascade_msg_ct, msg_len_bits + 32, output + i * 32);
+		}
+		else
+		{
+			unsigned char block[32];
+			sm3_bit(cascade_msg_ct, msg_len_bits + 32, block);
+			memcpy(output + i * 32, block, remaining_bytes);
+		}
 		(*ct)++;
 	}
-	if (output_len_bits % 256 != 0)
+	if (output_len_bits % 8 != 0)
 	{
 		normalize(output, output_len_bits);
 	}
