@@ -8,7 +8,7 @@ echo ${path}
 # make clean
 rm -rf bin/
 rm -rf elf/
-make ${path}_${3} PLATFORM=nucleo-l4r5zi USE_SM3_ASM=1 USE_KECCAK=0 LTO=1 -j 8
+make ${path}_${3} PLATFORM=nucleo-l4r5zi USE_SM3_ASM=1 USE_KECCAK=1 LTO=1 -j 8
 echo === $logf ===
 openocd -f st_nucleo_l4r5.cfg -c "program elf/${path}_${3}.elf verify reset exit"
 python3 hostside/host_unidirectional.py > $logf & py_pid=$!
