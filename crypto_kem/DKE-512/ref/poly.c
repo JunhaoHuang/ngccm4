@@ -36,19 +36,19 @@ void DKE3_poly_scale2(poly *pol) {
 
 
 void DKE3_poly_ntt(poly *pol) {
-    ntt(pol->coeffs);  // Apply NTT.
+    DKE3_ntt(pol->coeffs);  // Apply NTT.
     DKE3_poly_reduce(pol);  // Barret reduction
 }
 
 void DKE3_poly_invntt_tomont(poly *pol) {
-    invntt(pol->coeffs);   // NTT & Montgomery Domain -> Montgomery Domain
+    DKE3_invntt(pol->coeffs);   // NTT & Montgomery Domain -> Montgomery Domain
 }
 
 void DKE3_poly_basemul_montgomery(poly *res, const poly *a, const poly *b) {
     unsigned int i;
     for (i = 0; i < DKE3_N / 4; i++) {
-        basemul(&res->coeffs[4 * i], &a->coeffs[4 * i], &b->coeffs[4 * i], zetas[128 + i]);
-        basemul(&res->coeffs[4 * i + 2], &a->coeffs[4 * i + 2], &b->coeffs[4 * i + 2], -zetas[128 + i]);
+        DKE3_basemul(&res->coeffs[4 * i], &a->coeffs[4 * i], &b->coeffs[4 * i], DKE3_zetas[128 + i]);
+        DKE3_basemul(&res->coeffs[4 * i + 2], &a->coeffs[4 * i + 2], &b->coeffs[4 * i + 2], -DKE3_zetas[128 + i]);
     }
 } // NTT & Montgomery Domain -> NTT & Montgomery Domain
 
@@ -133,7 +133,6 @@ void DKE3_getsignal4(uint8_t bytes[DKE3_SIGNALBYTES], const poly *pol) {
             // map to positive standard representatives
             u  = pol->coeffs[8 * i + j];
             u += (u >> 15) & DKE3_Q;
-            /*    t[j] = ((((uint16_t)u << 4) + Q/2)/Q) & 0xf */
             d0 = u << 4;
             d0 += 3840; // (q-1)/2
             d0 *= 34948; // round(2^(32 - l) / q) TODO: TEST: or 34947?

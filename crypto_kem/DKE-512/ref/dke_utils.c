@@ -1,18 +1,8 @@
 #include "parameters.h"
 #include "poly.h"
 #include "dke_utils.h"
+#include "verify.h"
 #include <stdint.h>
-#include <stdio.h>
-
-static void DKE3_cmov_int16(int16_t *r, int16_t v, uint16_t b) {
-    //Derived from PQCLEAN_MLKEM512_CLEAN_cmov_int16 in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/verify.c
-    /* Copy input v to *r if b is 1, don't modify *r if b is 0.
-*              Requires b to be in {0,1};
-*              Runs in constant time.
-*/
-    b = -b;
-    *r ^= b & ((*r) ^ v);
-}
 
 // Derived from poly_frommsg in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/poly.c
 // TODO: TEST. THIS UTILITY IS PROVISIONAL

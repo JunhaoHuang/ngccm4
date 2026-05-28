@@ -10,7 +10,7 @@
 // GENERATE ZETAS
 
 // * Description: Multiplication followed by Montgomery reduction
-static int32_t fqmul(int16_t a, int16_t b) {
+static int32_t DKE3_fqmul(int16_t a, int16_t b) {
     return DKE3_montgomery_reduce((int32_t)a * b);
 }
 
@@ -64,7 +64,7 @@ void init_ntt() {
 
 // RESULT:
 
-const int16_t zetas[256] = {
+const int16_t DKE3_zetas[256] = {
     -3593, 3777, -3182, 3625, -3696, -1100, 2456, 2194,
     121, -2250, 834, -2495, -2319, 2876, -1701, 1414,
     2816, -2088, -2237, 1986, -1599, 1993, 3706, -2006,
@@ -101,56 +101,55 @@ const int16_t zetas[256] = {
 
 
 
-void ntt(int16_t r[512]) {
+void DKE3_ntt(int16_t r[512]) {
     unsigned int len, start, j, k;
     int16_t t, zeta;
 
     k = 1;
     for (len = 256; len >= 2; len >>= 1) {
         for (start = 0; start < 512; start = j + len) {
-            zeta = zetas[k++];
+            zeta = DKE3_zetas[k++];
             for (j = start; j < start + len; j++) {
-                t = fqmul(zeta, r[j + len]);
+                t = DKE3_fqmul(zeta, r[j + len]);
                 r[j + len] = r[j] - t;
                 r[j] = r[j] + t;
             }
         }
-        if (len == 64 || len == 8)
-        {
-            for (j = 0; j < 512; j++)
-                r[j] = DKE3_barrett_reduce(r[j]);
+        /* Safety reduction */
+        if (len == 64 || len == 8) {
+            for (j = 0; j < 512; j++) r[j] = DKE3_barrett_reduce(r[j]);
         }
     }
 }
 
 
-void invntt(int16_t r[512]) {
+void DKE3_invntt(int16_t r[512]) {
     unsigned int start, len, j, k;
     int16_t t, zeta;
-   const int16_t f = 1912; // mont^2/256 mod q
+   const int16_t f = 1912; // mont^2/256
 
     k = 255;
     for (len = 2; len <= 256; len <<= 1) {
         for (start = 0; start < 512; start = j + len) {
-            zeta = zetas[k--];
+            zeta = DKE3_zetas[k--];
             for (j = start; j < start + len; j++) {
                 t = r[j];
                 r[j] = DKE3_barrett_reduce(t + r[j + len]);
                 r[j + len] = r[j + len] - t;
-                r[j + len] = fqmul(zeta, r[j + len]);
+                r[j + len] = DKE3_fqmul(zeta, r[j + len]);
             }
         }
     }
 
     for (j = 0; j < 512; j++) {
-        r[j] = fqmul(r[j], f);
+        r[j] = DKE3_fqmul(r[j], f);
     }
 }
 
-void basemul(int16_t r[2], const int16_t a[2], const int16_t b[2], int16_t zeta) {
-    r[0]  = fqmul(a[1], b[1]);
-    r[0]  = fqmul(r[0], zeta);
-    r[0] += fqmul(a[0], b[0]);
-    r[1]  = fqmul(a[0], b[1]);
-    r[1] += fqmul(a[1], b[0]);
+void DKE3_basemul(int16_t r[2], const int16_t a[2], const int16_t b[2], int16_t zeta) {
+    r[0]  = DKE3_fqmul(a[1], b[1]);
+    r[0]  = DKE3_fqmul(r[0], zeta);
+    r[0] += DKE3_fqmul(a[0], b[0]);
+    r[1]  = DKE3_fqmul(a[0], b[1]);
+    r[1] += DKE3_fqmul(a[1], b[0]);
 }

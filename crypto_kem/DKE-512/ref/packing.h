@@ -1,3 +1,6 @@
+#ifndef PACKING_H
+#define PACKING_H
+
 #include "parameters.h"
 #include "polyvec.h"
 #include <stdint.h>
@@ -37,3 +40,5 @@ void DKE3_CPA_unpacksk(polyvec *sk,
 void DKE3_CPA_unpackciphertext(polyvec *pb,
                            uint8_t sig[DKE3_SIGNALBYTES],
                            const uint8_t bytes[DKE3_CPA_CTBYTES]);
+
+#endif //PACKING_H

@@ -26,15 +26,15 @@ static uint32_t load24_littleendian(const uint8_t x[3]) {
     return r;
 }
 
-
-void centered_binomial3(poly* pol, const unsigned char coins[3 * DKE3_N / 4]) {
+void centered_binomial3(poly *pol, const unsigned char coins[DKE3_CBD_BYTES])
+{
     // Preliminar implmentation (PQClean: https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/cbd.c)
     unsigned int i, j;
     uint32_t t, d;
     int16_t a, b;
 
     for (i = 0; i < DKE3_N / 4; i++) {
-        t  = load24_littleendian(coins + 3 * i);
+        t = load24_littleendian(coins + DKE3_ETA * i);
         d  = t & 0x00249249;
         d += (t >> 1) & 0x00249249;
         d += (t >> 2) & 0x00249249;
@@ -47,10 +47,10 @@ void centered_binomial3(poly* pol, const unsigned char coins[3 * DKE3_N / 4]) {
     }
 }
 
-void DKE3_cbdA(poly* pol, const unsigned char coins[CBD3_BYTES]) {
+void DKE3_cbdA(poly* pol, const unsigned char coins[DKE3_CBD_BYTES]) {
     centered_binomial3(pol, coins);
 }
-void DKE3_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]) {
+void DKE3_cbdB(poly* pol, const unsigned char coins[DKE3_CBD_BYTES]) {
     centered_binomial3(pol, coins);
 }
 
@@ -58,13 +58,13 @@ void DKE3_cbdB(poly* pol, const unsigned char coins[CBD3_BYTES]) {
 void DKE3_getsecretA(poly* pol, const unsigned char rand[DKE3_SEEDBYTES], const uint8_t nonce) {
     // msg will be (rand | nonce)
     uint8_t msg[DKE3_SEEDBYTES + 1];
-    uint8_t coins[CBD3_BYTES];
+    uint8_t coins[DKE3_CBD_BYTES];
     memcpy(msg, rand, DKE3_SEEDBYTES);
     msg[DKE3_SEEDBYTES] = nonce;
 #ifdef USE_KECCAK
-    shake256(coins, CBD3_BYTES, msg, DKE3_SEEDBYTES + 1);
+    shake256(coins, DKE3_CBD_BYTES, msg, DKE3_SEEDBYTES + 1);
 #else
-    pseudoXOF(CBD3_BYTES*8, msg,(DKE3_SEEDBYTES + 1)*8, coins); // bytes*8 = bits
+    pseudoXOF(DKE3_CBD_BYTES*8, msg,(DKE3_SEEDBYTES + 1)*8, coins); // bytes*8 = bits
 #endif
     centered_binomial3(pol, coins);
 }
@@ -139,39 +139,7 @@ unsigned int rej_uniform(int16_t *res,
     }
     return ctr;
 }
-#define POLY_UNIFORM_BUF_BYTES 1024 // TODO: optimize (or optimize DKE1_gen_matrix directly).
-void poly_uniform(poly *pol,
-                  const uint8_t seed[DKE3_SEEDBYTES],
-                  const uint8_t i,
-                  const uint8_t j)
-{
-    uint32_t round = 0;
-    unsigned int ctr = 0;
-    uint8_t input[DKE3_SEEDBYTES + 2 + 4]; // will be input = seed || i(1 byte) || j(1 byte) || round(4 bytes)
-    uint8_t buf[POLY_UNIFORM_BUF_BYTES];
-    while (ctr < DKE3_N)
-    {
-        memcpy(input, seed, DKE3_SEEDBYTES);
-        input[DKE3_SEEDBYTES] = i;
-        input[DKE3_SEEDBYTES + 1] = j;
-        memcpy(input + DKE3_SEEDBYTES + 2, &round, 4);
 
-#ifdef USE_KECCAK
-        shake128(buf, sizeof(buf), input, sizeof(input));
-#else
-        pseudoXOF(sizeof(buf) * 8,
-                  input,
-                  sizeof(input) * 8,
-                  buf);
-#endif
-        ctr += rej_uniform(
-            pol->coeffs + ctr,
-            DKE3_N - ctr,
-            buf,
-            sizeof(buf));
-        round++;
-    }
-}
 // Improving XOF utilities: -----------------------------------------------------------------------------------
 
 

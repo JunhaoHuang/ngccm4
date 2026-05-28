@@ -1,6 +1,6 @@
 #include "parameters.h"
 #include "dkecpa.h"
-#include "auxfunc.h"
+
 #include "poly.h"
 #include "polyvec.h"
 #include "random_sampling.h"
@@ -10,11 +10,11 @@
 #include "packing.h"
 #ifdef USE_KECCAK
 #include "fips202.h"
+#else
+#include "auxfunc.h"
 #endif
 
-
-
-void DKE3CPA_keygen_derand(uint8_t pk[DKE3_PKBYTES],
+void DKEX512_Initiate(uint8_t pk[DKE3_PKBYTES],
                           uint8_t sk[DKE3_CPA_SKABYTES],
                           const uint8_t coins[DKE3_SEEDBYTES]) {
 
@@ -29,22 +29,13 @@ void DKE3CPA_keygen_derand(uint8_t pk[DKE3_PKBYTES],
     // init vectors
     polyvec pA, eA, sA;
 
-    // expand coins -> buffer = (seed | rand) ---------------------------------------------
+    // expand coins -> buffer = (seed | rand)
     memcpy(buffer, coins, DKE3_SEEDBYTES);
-
-    // Another approach (using pseudo XOF):
 #ifdef USE_KECCAK
     shake256(buffer, 2 * DKE3_SEEDBYTES, buffer, DKE3_SEEDBYTES);
 #else
-    pseudoXOF(2 * DKE3_SEEDBYTES*8, buffer, DKE3_SEEDBYTES*8, buffer); //bytes*8 = bits
+    pseudoXOF(2 * DKE3_SEEDBYTES * 8, buffer, DKE3_SEEDBYTES * 8, buffer); // bytes*8 = bits
 #endif
-
-      // MLKEM PQClean approach (using hash and binding to parameter k):
-     /*
-    * memcpy(buffer, coins, DKE3_SEEDBYTES);
-    * buf[DKE3_SEEDBYTES] = DKE3_K;
-    * hash_g(buffer, buffer, DKE3_SEEDBYTES + 1);
-     */
 
     // generate matrix (1/2)A in NTT domain
     gen_a(mat, seed);
@@ -53,7 +44,7 @@ void DKE3CPA_keygen_derand(uint8_t pk[DKE3_PKBYTES],
 
     // One approach using a nonce (PQClean)
     unsigned int i = 0;
-    unsigned int nonce = 0;
+    uint8_t nonce = 0;
     for (i = 0; i < DKE3_K; i++) {
         DKE3_getsecretA(&sA.vec[i], rand, nonce++);
     }
@@ -87,7 +78,7 @@ void DKE3CPA_keygen_derand(uint8_t pk[DKE3_PKBYTES],
 // --------------------------------------------------------------------------------------------------------------
 
 
-void DKE3CPA_enc_derand(uint8_t ct[DKE3_CPA_CTBYTES],
+void DKEX512_Response(uint8_t ct[DKE3_CPA_CTBYTES],
                         uint8_t ss[DKE3_SSBYTES],
                         const uint8_t pk[DKE3_PKBYTES],
                         const uint8_t coins[DKE3_SEEDBYTES + DKE3_N/8]) {
@@ -106,7 +97,7 @@ void DKE3CPA_enc_derand(uint8_t ct[DKE3_CPA_CTBYTES],
 
     // generate secret and error
     unsigned int i = 0;
-    unsigned int nonce = 0;
+    uint8_t nonce = 0;
     for (i = 0; i < DKE3_K; i++) {
         DKE3_getsecretB(sB.vec + i, coins, nonce++); // we use the first DKE3_SEEDBYTES from coins
     }
@@ -147,7 +138,7 @@ void DKE3CPA_enc_derand(uint8_t ct[DKE3_CPA_CTBYTES],
 // --------------------------------------------------------------------------------------------------------------
 
 
-void DKE3CPA_dec(uint8_t ss[DKE3_SSBYTES],
+void DKEX512_DeriveSecret(uint8_t ss[DKE3_SSBYTES],
                  const uint8_t sk[DKE3_CPA_SKABYTES],
                  const uint8_t ct[DKE3_CPA_CTBYTES]) {
     // init
@@ -169,3 +160,5 @@ void DKE3CPA_dec(uint8_t ss[DKE3_SSBYTES],
     // derive ss
     DKE3_derive_ss(ss, &kA, sig);
 }
+
+

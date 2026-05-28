@@ -21,9 +21,9 @@ APP ?=
 
 Q ?=
 OPT ?= speed
-LTO ?= 1
+LTO ?= 0
 NGCC_ITERATIONS ?= 30
-USE_SM3_ASM ?= 0
+USE_SM3_ASM ?= 1
 USE_KECCAK ?= 0
 
 CROSS_PREFIX ?= arm-none-eabi

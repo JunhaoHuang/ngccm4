@@ -8,8 +8,7 @@
 #define DKE3_DA     13      // pk rounding parameter
 #define DKE3_DB     11      // ct rounding parameter
 #define DKE3_L      4       // number of bits for each hint
-#define DKE3_NOISE_A      3     // centered binomial parameter for pk
-#define DKE3_NOISE_B      3     // centered binomial parameter for ct
+#define DKE3_ETA          3       // unified centered binomial parameter
 
 // Sizes (bytes)-------------------------------------------------------------
 #define DKE3_SEEDBYTES       64

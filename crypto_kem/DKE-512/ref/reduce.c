@@ -5,7 +5,7 @@
 // TODO: TEST
 int16_t DKE3_montgomery_reduce(int32_t a) {
     int16_t t;
-    t = (int16_t)a * QINV;
+    t = (int16_t)a * DKE3_QINV;
     t = (a - (int32_t)t * DKE3_Q) >> 16;
     return (int16_t)t;
 }

@@ -1,6 +1,9 @@
 #include "hal.h"
 #include <sys/cdefs.h>
 
+void _init(void) {}
+void _fini(void) {}
+
 #define SERIAL_BAUD 38400
 
 #include <libopencm3/cm3/dwt.h>

@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#define MONT (-3593)  // auxiliary modulus R = (2^16 mod q)
-#define QINV (-7679) // q^-1 mod 2^16
+#define DKE3_MONT (-3593)  // auxiliary modulus R = (2^16 mod q)
+#define DKE3_QINV (-7679) // q^-1 mod 2^16
 
 /// @brief Performs montgomery reduction mod q
 /// @param[in] a an integer in {-q2^15,...,q2^15-1}

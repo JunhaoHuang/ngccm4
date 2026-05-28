@@ -14,7 +14,7 @@ void DKE3_signal(uint8_t sig[DKE3_SIGNALBYTES],
                  const poly *k,
                  const uint8_t coins[DKE3_N/8]);
 
-/// @brief Reconciliation function of DKE-512. Derives ss from poly k and signal sig.
+/// @brief Reconciliation function of DKEM-512. Derives ss from poly k and signal sig.
 /// @param[out] ss      pointer to output shared secret byte array
 /// @param[in]  k       pointer to input polynomial
 /// @param[in]  sig     pointer to input signal byte array
