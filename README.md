@@ -99,7 +99,8 @@ Notes:
 - The QEMU build and run should be only used for correctness verification, e.g., test, testvectors. 
 - Supported families in the makefile system are `crypto_kem`, `crypto_kex`, and `crypto_sign`.
 - The current repository contains KEM implementations. `crypto_kex` and `crypto_sign` are already wired into the discovery/build system, but they do not yet contain implementations in this tree.
-- `PLATFORM=nucleo-l4r5zi` is the default hardware build target.
+- Supported hardware platforms are `nucleo-l4r5zi` (STM32L4R5ZI) and `stm32f4discovery` (STM32F407VG); `mps2-an386` is the QEMU emulation target.
+- `PLATFORM=nucleo-l4r5zi` is the default hardware build target. Pass `PLATFORM=stm32f4discovery` to build for the STM32F4DISCOVERY board.
 - `-j1` means serial build mode. You can increase it, for example `-j4`, once the environment is working.
 
 ## Flashing on Real Hardware
@@ -136,6 +137,53 @@ Notes:
 - `nucleo-l4r5zi` is the default `PLATFORM`, so you do not need to pass `PLATFORM=nucleo-l4r5zi`.
 - This expects the board to be connected through the on-board ST-Link debugger.
 
+### Platform: `stm32f4discovery`
+
+Build an application for the STM32F4DISCOVERY (STM32F407VG) board:
+
+```bash
+make PLATFORM=stm32f4discovery crypto_kem_DKE-128_ref_test
+```
+
+This generates:
+
+```bash
+elf/crypto_kem_DKE-128_ref_test.elf
+bin/crypto_kem_DKE-128_ref_test.bin
+```
+
+Flash it with OpenOCD using the ST-Link interface and the STM32F4 target config:
+
+```bash
+openocd \
+	-f interface/stlink.cfg \
+	-f target/stm32f4x.cfg \
+	-c "program elf/crypto_kem_DKE-128_ref_test.elf verify reset exit"
+```
+
+These two config files ship with OpenOCD itself (no project-local `.cfg` is
+needed for this board). To flash the raw `.bin` instead, give the flash base
+address:
+
+```bash
+openocd \
+	-f interface/stlink.cfg \
+	-f target/stm32f4x.cfg \
+	-c "program bin/crypto_kem_DKE-128_ref_test.bin 0x08000000 verify reset exit"
+```
+
+Notes:
+
+- This expects the board to be connected through the on-board ST-Link debugger
+  (the mini-USB / ST-Link port).
+- If OpenOCD reports a USB permission error, install the ST-Link udev rules
+  (`contrib/60-openocd.rules` from the OpenOCD distribution) or run the command
+  with `sudo`.
+- The STM32F4DISCOVERY's on-board ST-Link has no virtual COM port, so serial
+  output (used by `host_unidirectional.py` and `benchmark_schemes.py`) requires
+  an external USB-to-UART adapter wired to `USART2` on `PA2` (TX) / `PA3` (RX)
+  at 38400 baud.
+
 ### Building and Benchmarking Scripts
 
 The repository also provides two Python helper scripts for batch builds and benchmark collection:
@@ -154,6 +202,7 @@ Supported platforms are:
 ```text
 mps2-an386
 nucleo-l4r5zi
+stm32f4discovery
 ```
 
 Other `PLATFORM` values are rejected by the scripts.
@@ -166,6 +215,7 @@ Build every implementation and every family app for one or more schemes. Omit sc
 python3 build_schemes.py
 python3 build_schemes.py all
 python3 build_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256
+python3 build_schemes.py PLATFORM=stm32f4discovery DKE-128 DKE-256
 python3 build_schemes.py PLATFORM=mps2-an386 DKE-128
 ```
 
@@ -185,6 +235,7 @@ Run the default benchmark apps, `speed`, `stack`, and `hashing`, for all impleme
 python3 benchmark_schemes.py
 python3 benchmark_schemes.py all
 python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256 --apps speed hashing
+python3 benchmark_schemes.py PLATFORM=stm32f4discovery DKE-128 --apps speed hashing
 python3 benchmark_schemes.py PLATFORM=mps2-an386 DKE-128 --apps speed hashing
 ```
 
@@ -211,6 +262,13 @@ For `nucleo-l4r5zi`, the script builds each target, flashes it with:
 
 ```bash
 openocd -f st_nucleo_l4r5.cfg -c "program <elf> verify reset exit"
+```
+
+For `stm32f4discovery`, the script builds each target and flashes it with the
+OpenOCD-provided ST-Link and STM32F4 target configs:
+
+```bash
+openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program <elf> verify reset exit"
 ```
 
 Hardware benchmark output is captured from the serial port until the `#` completion marker is received. By default the script uses `/dev/ttyACM0` on Linux and `/dev/tty.usbserial-0001` on macOS, at 38400 baud. Override these when needed:
