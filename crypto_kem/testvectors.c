@@ -11,10 +11,8 @@
 #include "drng.h"
 DRNG_ctx drng_algorithm;
 #endif
-unsigned char tv_seed[] = {
-    3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3,
-    2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5
-};
+#define SEED_LEN_BYTES 64
+unsigned char tv_seed[SEED_LEN_BYTES];
 
 static void printbytes(const unsigned char *x, unsigned long long xlen) {
     static const char hex[] = "0123456789abcdef";
@@ -46,12 +44,20 @@ int main(void) {
     unsigned char *ct = malloc(ct_len);
     unsigned char *ss_a = malloc(ss_len);
     unsigned char *ss_b = malloc(ss_len);
+    unsigned char seed[SEED_LEN_BYTES];
     int i;
+    // DRNG_ctx for generating seed
+    DRNG_ctx drng_seed;
 
     hal_setup(CLOCK_FAST);
     hal_send_str("==========================");
 #ifndef USE_KECCAK
-    if (init_random_number(&drng_algorithm, tv_seed, sizeof(tv_seed)) != 0) {
+    for (int i = 0; i < SEED_LEN_BYTES / 4; i++)
+    {
+        memcpy(tv_seed + 4 * i, "seed", 4);
+    }
+    if (init_random_number(&drng_seed, tv_seed, sizeof(tv_seed)) != 0)
+    {
         hal_send_str("drng_init_failed");
         return -1;
     }
@@ -62,6 +68,10 @@ int main(void) {
     }
 
     for (i = 0; i < NGCC_ITERATIONS; i++) {
+        get_random_number(&drng_seed, seed, SEED_LEN_BYTES*8);
+        printbytes(seed, SEED_LEN_BYTES);
+        init_random_number(&drng_algorithm, seed, SEED_LEN_BYTES);
+
         kem_keygen(pk, &ignored_len, sk, &ignored_len);
         kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len);
         kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len);
