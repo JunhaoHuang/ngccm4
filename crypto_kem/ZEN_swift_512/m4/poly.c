@@ -16,9 +16,12 @@ int check_poly_inv_Zq(int16_t *a)
 	unsigned int i;
     int32_t flag;
     uint32_t acc = 0;
-    for(i = 0; i < ZEN_SWIFT_N; i += 4)
+    for(i = 0; i < ZEN_SWIFT_N; i += 16)
 	{
-		flag = a[i] + a[i + 1] + a[i + 2] + a[i + 3];
+		flag = a[i]      + a[i + 1]  + a[i + 2]  + a[i + 3] 
+             + a[i + 4]  + a[i + 5]  + a[i + 6]  + a[i + 7]
+             + a[i + 8]  + a[i + 9]  + a[i + 10] + a[i + 11]
+             + a[i + 12] + a[i + 13] + a[i + 14] + a[i + 15];
 		acc |= (((flag | (0u - flag)) >> 31) ^ 1u);
 	}
 	return (int)(acc & 1u);
@@ -102,12 +105,12 @@ void FastInversion(int16_t *f_inv, int16_t *f)
     f_inv[0] = 1;
     for(i = 0; i < ZEN_SWIFT_N4; i++)
     {
-        b[0] ^= k[i];//finv=1;b=k mod <x+1,2>;
+        b[0] ^= k[i];
     }
 
     for(i = 0; i < ZEN_SWIFT_N4; i++)
     {
-        k[i] ^= (b[0] * f[i]);//k=k+f*k*finv mod <x^n4+1,2>;
+        k[i] ^= (b[0] * f[i]);
     }
     
     for(i = 1; i < ZEN_SWIFT_N4; i++)
@@ -127,23 +130,23 @@ void FastInversion(int16_t *f_inv, int16_t *f)
         {
             for(j = i; j < ZEN_SWIFT_N4; j += n)
             {
-                tmp[i] ^= k[j];//tmp[0-n+1]=k mod <x^n+1,2>;
+                tmp[i] ^= k[j];
             }
         }
-        mul_in_R2_n(f_inv, tmp, n, b);//b=k*finv mod <x^n+1,2>;
+        mul_in_R2_n(f_inv, tmp, n, b);
 
-        mulf_in_R2_N4(b, tmp_f, tmp);//tmp=b*finv mod <x^n4+1,2>;
+        mulf_in_R2_N4(b, tmp_f, tmp);
 
         for(j = 0; j < ZEN_SWIFT_N4; j++)
         {
-            k[j] = k[j] ^ tmp[j];//k=k+f*k*finv mod <x^n4+1,2>;
+            k[j] = k[j] ^ tmp[j];
         }
 
         for(i = n; i < ZEN_SWIFT_N4; i += n)
         {
             for(j = i; j < i + n; j++)
             {
-                k[j] = k[j] ^ k[j - n];//k/x^n+1
+                k[j] = k[j] ^ k[j - n];
             }
         }
 
@@ -158,53 +161,23 @@ void FastInversion(int16_t *f_inv, int16_t *f)
     }    
 }
 
-void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
+void poly_generate_gf(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {
     unsigned int i;
     uint8_t buf[ZEN_SWIFT_N_LEN_BYTES*5];
-    int16_t t[ZEN_SWIFT_N*2];
+
     zen_swift_pseudoXOF(ZEN_SWIFT_N*5, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd1(t, buf);
-    tenary1_8(t+ZEN_SWIFT_N, buf+ZEN_SWIFT_N_LEN_BYTES*2);
-    for(i = 0; i < ZEN_SWIFT_N; i++)
-    {
-        a[i] = t[i] + t[i+ZEN_SWIFT_N];
-    }
+    tenary3_32(a, buf);
 }
 
-void poly_generate_f(int16_t *a, const uint8_t *seed, uint8_t nonce)
+void poly_generate_se(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {
     unsigned int i;
-    uint8_t buf[ZEN_SWIFT_N_LEN_BYTES*2];
+    uint8_t buf[ZEN_SWIFT_N_LEN_BYTES*3];
 
-    zen_swift_pseudoXOF(ZEN_SWIFT_N*2, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd1(a, buf);
+    zen_swift_pseudoXOF(ZEN_SWIFT_N*3, seed, SEED_LEN_BYTES*8, buf, nonce);
+    tenary1_8(a, buf);
 }
-
-void poly_generate_s(int16_t *a, const uint8_t *seed, uint8_t nonce)
-{
-    unsigned int i;
-    uint8_t buf[ZEN_SWIFT_N_LEN_BYTES*7];
-    int16_t t[ZEN_SWIFT_N*2];
-    zen_swift_pseudoXOF(ZEN_SWIFT_N*7, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd1(t, buf);
-    tenary3_32(t+ZEN_SWIFT_N, buf+ZEN_SWIFT_N_LEN_BYTES*2);
-    for(i = 0; i < ZEN_SWIFT_N; i++)
-    {
-        a[i] = t[i] + t[i+ZEN_SWIFT_N];
-    }
-}
-
-void poly_generate_e(int16_t *a, const uint8_t *seed, uint8_t nonce)
-{
-    unsigned int i;
-    uint8_t buf[ZEN_SWIFT_N_LEN_BYTES*4];
-
-    zen_swift_pseudoXOF(ZEN_SWIFT_N*4, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd2(a, buf);
-}
-
-
 
 void poly_bit2byte_pack(uint8_t *pa, const int16_t *a, const unsigned int n)
 {
@@ -296,11 +269,11 @@ void poly_secretkey_unpack(int16_t *a, const uint8_t *ss)
 void poly_publickey_pack(uint8_t *pa, const int16_t *a)
 {
     int i, idx;
-    uint64_t tmp[103] = {0};
-    uint64_t res[77]  = {0};
+    uint64_t tmp[410] = {0};   /* 409 packed 48-bit blocks + 1 packed 29-bit block */
+    uint64_t res[308] = {0};   /* ceil((409*48 + 29)/64) = 308 */
 
     idx = 0;
-    for(i = 0; i < ZEN_SWIFT_N - 2; i += 5)
+    for(i = 0; i < ZEN_SWIFT_N - 3; i += 5)
     {
         tmp[idx] =
               (uint64_t)(uint16_t)a[i]
@@ -311,12 +284,16 @@ void poly_publickey_pack(uint8_t *pa, const int16_t *a)
         idx++;
     }
 
-    tmp[102] =
-          (uint64_t)(uint16_t)a[ZEN_SWIFT_N - 2]
-        + (uint64_t)(uint16_t)a[ZEN_SWIFT_N - 1] * pack_table[1];
+    /* last 3 coefficients -> 29 bits */
+    tmp[409] =
+          (uint64_t)(uint16_t)a[ZEN_SWIFT_N - 3]
+        + (uint64_t)(uint16_t)a[ZEN_SWIFT_N - 2] * pack_table[1]
+        + (uint64_t)(uint16_t)a[ZEN_SWIFT_N - 1] * pack_table[2];
 
     idx = 0;
-    for(i = 0; i < 100; i += 4)
+
+    /* first 408 blocks = 102 groups of 4 blocks -> 306 uint64 words */
+    for(i = 0; i < 408; i += 4)
     {
         uint64_t x0 = tmp[i];
         uint64_t x1 = tmp[i + 1];
@@ -328,12 +305,12 @@ void poly_publickey_pack(uint8_t *pa, const int16_t *a)
         res[idx++] = x2 | (((x3 >> 32) & 0xFFFFULL) << 48);
     }
 
-    res[idx++] = tmp[100] | ((tmp[102] & 0xFFFFULL) << 48);
-    res[idx++] = tmp[101] | (((tmp[102] >> 16) & 0xFULL) << 48);
+    /* remaining one 48-bit block tmp[408] + one 29-bit block tmp[409] */
+    res[idx++] = tmp[408] | ((tmp[409] & 0xFFFFULL) << 48);
+    res[idx++] = (tmp[409] >> 16) & 0x1FFFULL;
 
     memcpy(pa, (const uint8_t *)res, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
 }
-
 static inline uint16_t divmod769_tail(uint64_t *x)
 {
     uint32_t v = (uint32_t)*x;
@@ -369,22 +346,24 @@ static inline uint16_t divmod769_u48(uint64_t *x)
 void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
 {
     int i, idx;
-    uint64_t res[77]  = {0};
-    uint64_t tmp[103] = {0};
+    uint64_t res[308] = {0};
+    uint64_t tmp[410] = {0};
     const uint64_t MASK48   = 0x0000FFFFFFFFFFFFULL;
-    const uint64_t MASK16   = 0xFFFFULL;
+    const uint64_t MASK13   = 0x1FFFULL;
 
-    memcpy((uint8_t *)res, pa, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
+    memcpy((uint8_t *)res, pa, 2458);
 
-    idx = 76;
+    idx = 307;
 
-    tmp[101] = res[idx] & MASK48;
-    tmp[102] = ((res[idx--] >> 48) & 0xFULL) << 16;
+    /* last packed 29-bit block */
+    tmp[409] = (res[idx--] & MASK13) << 16;
 
-    tmp[100] = res[idx] & MASK48;
-    tmp[102] |= ((res[idx--] >> 48) & 0xFFFFULL);
+    /* remaining one 48-bit block + low 16 bits of tmp[409] */
+    tmp[408] = res[idx] & MASK48;
+    tmp[409] |= ((res[idx--] >> 48) & 0xFFFFULL);
 
-    for(i = 99; i > 0; i -= 4)
+    /* recover first 408 packed 48-bit blocks */
+    for(i = 407; i > 0; i -= 4)
     {
         tmp[i - 1] = res[idx] & MASK48;
         tmp[i]     = ((res[idx--] >> 48) & 0xFFFFULL) << 32;
@@ -396,13 +375,14 @@ void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
         tmp[i]    |= ((res[idx--] >> 48) & 0xFFFFULL);
     }
 
-    for(i = 0; i < 2; i++)
+    /* decode last 3 coefficients from 29-bit block */
+    for(i = 0; i < 3; i++)
     {
-        a[ZEN_SWIFT_N - 2 + i] = divmod769_tail(&tmp[102]);
+        a[ZEN_SWIFT_N - 3 + i] = divmod769_tail(&tmp[409]);
     }
 
     idx = 0;
-    for(i = 0; i < ZEN_SWIFT_N - 2; i += 5)
+    for(i = 0; i < ZEN_SWIFT_N - 3; i += 5)
     {
         for (int j = 0; j < 5; j++)
         {

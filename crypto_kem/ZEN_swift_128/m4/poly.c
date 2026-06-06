@@ -5,157 +5,84 @@
 #include "auxfunc.h"
 #include "sample.h"
 #include "symmetric.h"
-
+#include "radix16_r2.h"
+#ifdef HASHING_PROFILE
+#include "hal.h"
+extern unsigned long long func_cycles;
+#endif
 static const uint64_t pack_table[] = 
 {
     1, 769, 591361, 454756609, 349707832321
 };
 
-int check_poly_inv_Zq(int16_t *a)
-{
-	unsigned int i;
-    int32_t flag;
-    uint32_t acc = 0;
-    for(i = 0; i < ZEN_SWIFT_N; i += 4)
-	{
-		flag = a[i] + a[i + 1] + a[i + 2] + a[i + 3];
-		acc |= (((flag | (0u - flag)) >> 31) ^ 1u);
-	}
-	return (int)(acc & 1u);
+extern void mul_in_R2_n_asm(int16_t *a, int16_t *b, int16_t n, int16_t *res);
+extern void mulf_in_R2_N4_asm(int16_t *a, int16_t *b, int16_t *res);
+void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res){
+#ifdef HASHING_PROFILE
+    uint64_t t0 = hal_get_time();
+#endif
+    mul_in_R2_n_asm(a, b, n, res);
+#ifdef HASHING_PROFILE
+    uint64_t t1 = hal_get_time();
+    func_cycles += (t1 - t0);
+#endif
+}
+void mulf_in_R2_N4(int16_t *a, int16_t *b, int16_t *res){
+#ifdef HASHING_PROFILE
+    uint64_t t0 = hal_get_time();
+#endif
+    mulf_in_R2_N4_asm(a, b, res);
+#ifdef HASHING_PROFILE
+    uint64_t t1 = hal_get_time();
+    func_cycles += (t1 - t0);
+#endif
 }
 
-int check_poly_inv_Z2(int16_t *a)
+void FastInversion_Radix16(uint32_t *f_inv, const int16_t *f)
 {
-	unsigned int i;
-    uint32_t acc = 0;
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+    unsigned int l, n;
+    uint32_t f_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t k[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t b[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t b_full[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t tmp[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t tmp_full[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t b0;
+
+    r2_radix16_pack(f_rad, f, ZEN_SWIFT_N4);
+    r2_radix16_prefix_xor(k, f_rad, ZEN_SWIFT_N4);
+
+    b0 = r2_radix16_parity(k, ZEN_SWIFT_N4);
+    r2_radix16_xor_mask(k, f_rad, ZEN_SWIFT_N4, b0);
+    r2_radix16_prefix_xor(k, k, ZEN_SWIFT_N4);
+
+    memset(f_inv, 0, R2_RADIX16_WORDS(ZEN_SWIFT_N4) * sizeof(uint32_t));
+    f_inv[0] = (!b0) | (b0 << 4);
+
+    n = 1;
+    for(l = 1; l < ZEN_SWIFT_N4_LOG2; l++)
     {
-        acc ^= a[i];
-    }
-	return (int)((((acc | (0u - acc)) >> 31) ^ 1u) & 1u);
-}
+        n = 2 * n;
+        r2_radix16_fold(tmp, k, ZEN_SWIFT_N4, n);
+        r2_radix16_mul(b, f_inv, tmp, n);
 
-void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res)
-{
-    int16_t i, j;
-    int16_t tmp_b[2 * n];
-    int16_t *v;
-    uint16_t mask;
-    const size_t coeff_bytes = (size_t)n * sizeof(int16_t);
+        memset(b_full, 0, sizeof(b_full));
+        memcpy(b_full, b, R2_RADIX16_WORDS(n) * sizeof(uint32_t));
+        r2_radix16_mul(tmp_full, b_full, f_rad, ZEN_SWIFT_N4);
+        r2_radix16_xor(k, tmp_full, ZEN_SWIFT_N4);
 
-    memset(res, 0, n * sizeof(int16_t));
-    memcpy(tmp_b, b, coeff_bytes);
-    memcpy(tmp_b + n, b, coeff_bytes);
-    
-    for(i = 0; i < n; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = tmp_b + n - i;
-        for(j = 0; j < n; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
-    }
-}
-
-/// @brief Multiply two binary polynomials in R2 of degree less than ZEN_SWIFT_N4 using a constant-time cyclic shift-and-XOR method
-/// @param[in] a Base address of first input polynomial coefficient array of length ZEN_SWIFT_N4
-/// @param[in] b Base address of second input polynomial coefficient array of length 2*ZEN_SWIFT_N4, arranged as a duplicated array for cyclic access
-/// @param[out] res Base address of output polynomial coefficient array of length ZEN_SWIFT_N4
-/// @return None
-static void mulf_in_R2_N4(int16_t *a, int16_t *b, int16_t *res)
-{
-    unsigned int i, j;
-    int16_t *v;
-    uint16_t mask;
-
-    memset(res, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-    
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = b + ZEN_SWIFT_N4 - i;
-        for(j = 0; j < ZEN_SWIFT_N4; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
+        r2_radix16_div_xn_plus1(k, ZEN_SWIFT_N4, n);
+        r2_radix16_xor_shifted(f_inv, b, n, 0);
+        r2_radix16_xor_shifted(f_inv, b, n, n);
     }
 }
 
 void FastInversion(int16_t *f_inv, int16_t *f)
 {
-    unsigned int l, i, j, n;
-    int16_t k[ZEN_SWIFT_N4], b[ZEN_SWIFT_N4] = {0}, tmp_f[2 * ZEN_SWIFT_N4], tmp[ZEN_SWIFT_N4];
-    const size_t coeff_bytes = ZEN_SWIFT_N4 * sizeof(int16_t);
+    uint32_t f_inv_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
 
-    memcpy(tmp_f, f, coeff_bytes);
-    memcpy(tmp_f + ZEN_SWIFT_N4, f, coeff_bytes);
-
-    k[0] = f[0];
-    for(i = 1; i < ZEN_SWIFT_N4; i++)
-    {
-        k[i] = f[i] ^ k[i - 1];
-    }
-
-    //level 0
-    memset(f_inv, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-    f_inv[0] = 1;
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        b[0] ^= k[i];//finv=1;b=k mod <x+1,2>;
-    }
-
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        k[i] ^= (b[0] * f[i]);//k=k+f*k*finv mod <x^n4+1,2>;
-    }
-    
-    for(i = 1; i < ZEN_SWIFT_N4; i++)
-    {
-        k[i] = k[i] ^ k[i-1];
-    }
-    f_inv[0] = !b[0];
-    f_inv[1] = b[0];
-
-    //level 1 - l-1
-    n = 1;
-    for(l = 1; l < ZEN_SWIFT_N4_LOG2; l++)
-    {
-        n = 2 * n;
-        memset(tmp, 0, n * sizeof(int16_t));
-        for(i = 0; i < n; i++)
-        {
-            for(j = i; j < ZEN_SWIFT_N4; j += n)
-            {
-                tmp[i] ^= k[j];//tmp[0-n+1]=k mod <x^n+1,2>;
-            }
-        }
-        mul_in_R2_n(f_inv, tmp, n, b);//b=k*finv mod <x^n+1,2>;
-
-        mulf_in_R2_N4(b, tmp_f, tmp);//tmp=b*finv mod <x^n4+1,2>;
-
-        for(j = 0; j < ZEN_SWIFT_N4; j++)
-        {
-            k[j] = k[j] ^ tmp[j];//k=k+f*k*finv mod <x^n4+1,2>;
-        }
-
-        for(i = n; i < ZEN_SWIFT_N4; i += n)
-        {
-            for(j = i; j < i + n; j++)
-            {
-                k[j] = k[j] ^ k[j - n];//k/x^n+1
-            }
-        }
-
-        for(i = 0; i < n; i++)
-        {
-            tmp[i] = tmp[i + n] = b[i];
-        }
-        for(i = 0; i < 2 * n; i++)
-        {
-            f_inv[i] ^= tmp[i];
-        }
-    }    
+    FastInversion_Radix16(f_inv_rad, f);
+    r2_radix16_unpack(f_inv, f_inv_rad, ZEN_SWIFT_N4);
 }
 
 void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
