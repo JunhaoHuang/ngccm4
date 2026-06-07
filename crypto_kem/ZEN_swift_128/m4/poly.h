@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "ntt.h"
+#include "radix16_r2.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -19,32 +20,17 @@ extern "C"
     /// @return 1 if the polynomial is not invertible in Z2, otherwise 0
     int check_poly_inv_Z2(int16_t *a);
 
-    /// @brief Multiply two binary polynomials in R2 of degree less than n using a constant-time cyclic shift-and-XOR method
-    /// @param[in] a Base address of first input polynomial coefficient array of length n
-    /// @param[in] b Base address of second input polynomial coefficient array of length n
-    /// @param[in] n Number of coefficients of the input polynomials
-    /// @param[out] res Base address of output polynomial coefficient array of length n
-    /// @return None
-    void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res);
+    /// @brief Assembly fused fold/check: emit radix16 x^(N/4)+1 fold and return Z2 non-invertibility
+    /// @param[out] r_rad Base address of output radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
+    /// @param[in] a Base address of input polynomial coefficient array of length ZEN_SWIFT_N
+    /// @return 1 if the folded polynomial is not invertible in Z2, otherwise 0
+    int poly_xor4_radix16(uint32_t *r_rad, const int16_t *a);
 
-    /// @brief Multiply two binary polynomials in R2 of degree less than ZEN_SWIFT_N4 using a duplicated cyclic input
-    /// @param[in] a Base address of first input polynomial coefficient array of length ZEN_SWIFT_N4
-    /// @param[in] b Base address of second input polynomial coefficient array of length 2*ZEN_SWIFT_N4
-    /// @param[out] res Base address of output polynomial coefficient array of length ZEN_SWIFT_N4
-    /// @return None
-    void mulf_in_R2_N4(int16_t *a, int16_t *b, int16_t *res);
-
-    /// @brief Compute the inverse of a polynomial in R2 using a fast iterative inversion algorithm
-    /// @param[in] f Base address of input polynomial coefficient array of length ZEN_SWIFT_N2
-    /// @param[out] f_inv Base address of output polynomial inverse coefficient array of length ZEN_SWIFT_N2
-    /// @return None
-    void FastInversion(int16_t *f_inv, int16_t *f);
-
-    /// @brief Compute the inverse of a binary polynomial directly in radix16 R2 representation
+    /// @brief Compute the inverse of a binary polynomial already packed in radix16 R2 representation
     /// @param[out] f_inv Base address of output radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
-    /// @param[in] f Base address of input binary polynomial coefficient array of length ZEN_SWIFT_N4
+    /// @param[in] f_rad Base address of input radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
     /// @return None
-    void FastInversion_Radix16(uint32_t *f_inv, const int16_t *f);
+    void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad);
 
     /// @brief Generate a polynomial by summing a CBD-1 polynomial and a ternary polynomial from an input seed and nonce
     /// @param[out] a Base address of output polynomial coefficient array

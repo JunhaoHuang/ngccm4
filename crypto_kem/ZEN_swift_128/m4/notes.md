@@ -1,4 +1,4 @@
-## FastInversion
+## 1. FastInversion
 This algorithm computes the inverse of a binary polynomial `f` modulo
 
 ```text
@@ -176,7 +176,7 @@ So `f_inv` is the inverse of `f` in the binary quotient ring.
 
 In short: this is a fast Hensel/Newton-style inversion algorithm. It starts with the trivial inverse modulo `x + 1`, then repeatedly doubles the precision until it has an inverse modulo `x^n + 1`.
 
-## Optimizing FastInversion with different bit representation
+## 2. Optimizing FastInversion with different bit representation
 结论：`FastInversion` 的输入 `f` 在调用点确实是 `0/1` 二进制多项式；把 128 个系数压成 `uint32_t f[4]` 是合理的，并且很可能能明显加速 `FastInversion`，尤其是当前最重的二进制多项式乘法部分。
 
 **1. f 的范围**
@@ -394,7 +394,7 @@ res[w] ^= rotated_f[w] & mask;
 
 总体建议：先实现 `FastInversion_pack()` + `poly_xor4_pack()` + `check_poly_inv_Z2_pack()` + `poly_store_f2_pack()`，只改 keygen 路径。这个改动范围小，正确性容易和当前 ref 对拍，性能收益也最集中。
 
-### Radix-16 representation
+### 2.1 Radix-16 representation
 可以用，但要注意：**radix-16 适合做 8x8 bit polynomial 的 base multiplication；不能直接把很多 8x8 乘积用整数加法累加**。在 `F2` 里必须 XOR 累加，而且每个 8x8 乘积后只取每个 nibble 的最低 bit。
 
 我做了一个随机对拍验证：radix-16 cyclic multiplication 对 `n = 8,16,32,64,128` 的结果和当前 `mul_in_R2_n` 的环乘法一致。`n=2,4` 不能直接按 8-bit block ring 处理，建议保留特殊 bit 逻辑。
@@ -538,3 +538,93 @@ full 128:    radix-16 + Karatsuba 最值得
 如果目标是进一步优化 `mul_in_R2_n` 和 `mulf_in_R2_N4` 的大乘法，建议做 **radix-16 + Karatsuba**，但要让 `f/k/b/tmp/f_inv` 全程保持 radix-16，避免每次 pack/unpack 吃掉收益。
 
 常数时间上，两种方法都可以安全实现：循环次数只依赖公开的 `n`，选择 bit 时用 mask，不用 secret-dependent branch。
+
+
+## 3. SimpleDecoding的优化思路
+可以加速，重点就在 [pke.c 的 SimpleDecoding](/home/hjh/Documents/project/ngccm4/crypto_kem/ZEN_swift_128/m4/pke.c:134) 这段，尤其是 [164-167 行](/home/hjh/Documents/project/ngccm4/crypto_kem/ZEN_swift_128/m4/pke.c:164) 的 `128 * 256` 半字循环。
+
+**算法到 C 的对应**
+`a` 在实现里是 `poly_cp(t0, t1)` 后的 `t0`。  
+`δ <- a mod <2, x^(n/4)+1>` 对应：
+
+```c
+poly_xor4(t1, t0);
+```
+
+`m' = a f_inv mod <2, x^(n/2)+1>` 已经被优化为 radix16/汇编：
+
+```c
+r2_radix16_pack(t1_rad, t1, ZEN_SWIFT_N2);
+r2_radix16_mul_256_asm(mp0_rad, t1_rad, f2_rad);
+```
+
+真正还没优化干净的是 Step 3-5：根据 `δ` 找单项式位置、比较四个 `v_j = q/2 - |a*|`，然后把 `f_inv` 循环移位后异或进消息。
+
+**最主要的加速点**
+当前 C 没有先找出 `δ` 的单项式位置，而是对 `i = 0..127` 全部扫一遍，并且每个 `i` 都做 256 次：
+
+```c
+t2[j] ^= selected_shifted_f2[j];
+```
+
+也就是约 `32768` 次 halfword 级 load/xor/store。这个可以降很多。
+
+如果严格按 Algorithm 3 实现，应该先常数时间扫描 `δ`：
+
+```c
+idx = index of the unique 1 in δ
+valid = (weight(δ) == 1)
+```
+
+然后只对这个 `idx` 计算四个候选：
+
+```c
+v0 = q/2 - abs(t0[idx])
+v1 = q/2 - abs(t0[idx + N/4])
+v2 = q/2 - abs(t0[idx + N/2])
+v3 = q/2 - abs(t0[idx + 3N/4])
+```
+
+再选 `j*`，最后只做一次：
+
+```c
+t2 = x^(idx + jbit*N/4) * f2
+```
+
+这会把核心复杂度从 `128 * 256` 降到一次扫描 `128` 加一次长度 `256` 的循环移位。
+
+**更适合当前代码的 packed 加速**
+现在已经有 `f2_rad` 和 `mp0_rad`，但 SimpleDecoding 又在 [135 行](/home/hjh/Documents/project/ngccm4/crypto_kem/ZEN_swift_128/m4/pke.c:135) 把 `f2_rad` 解包成 `int16_t f2`，后面又用 `t2/mp0/mp1` 做 16-bit 操作。这是明显可省的。
+
+建议新增一个内核，例如：
+
+```c
+simple_decode_radix16(t2_rad, t0, f2_rad);
+```
+
+直接在 radix16 格式中生成 `t2_rad`，然后：
+
+```c
+msg_rad[w] = mp0_rad[w] ^ t2_rad[w];  // 只需要前 16 words
+r2_radix16_tobytes(m, msg_rad, ZEN_SWIFT_N4);
+```
+
+这样可以去掉：
+
+- `r2_radix16_unpack(f2, ...)`
+- `r2_radix16_unpack(mp0, ...)`
+- `int16_t t2[512]`
+- `int16_t mp1[256]`
+- `poly_pack_f2(m, mp1)`
+
+同时把内层从 256 个 `int16_t` 操作改成 32 个 `uint32_t` word 操作，甚至按 Algorithm 3 只做一次 packed rotate。
+
+**次级加速点**
+`poly_xor4(t1, t0)` 已经是 asm，但可以和 SimpleDecoding 的四系数读取融合，避免单独扫一遍 `t0` 并写 `t1`。
+
+`r2_radix16_pack(t1_rad, t1, 256)` 也可进一步和 `poly_cp/update_cp_asm` 融合：`update_cp_asm` 已经在算 parity，可以直接输出 packed `t1_rad`，省一次 pack。
+
+**安全注意**
+不要直接照 DAWN 原始 C 的 `FindOneIdx`/`if` 写法，那是数据相关分支。优化版本应继续用 mask 做 `idx`、`valid`、`j*` 选择。若做 packed rotate，也要注意 `shift` 相关的内存访问模式；在 Cortex-M4 上通常没有数据 cache，但常数时间审计时仍应说明假设。
+
+结论：优先优化 SimpleDecoding 的 [135-175 行](/home/hjh/Documents/project/ngccm4/crypto_kem/ZEN_swift_128/m4/pke.c:135)。最大收益路径是“先常数时间找 δ 单项式，再做一次 radix16 循环移位修正”；保守路径是保持当前语义，把内层 `128*256` 的 halfword XOR 改成 packed word XOR。

@@ -22,20 +22,24 @@
 
 #### check poly inverse in Zq #############################################
 #### r0: a                                                               ##
-#### return: 1 if any 4-coefficient NTT block sums to zero, otherwise 0  ##
+#### return: 1 if any 8-coefficient NTT block sums to zero, otherwise 0  ##
 ##########################################################################
 .align 2
 .global check_poly_inv_Zq_asm
 .type check_poly_inv_Zq_asm, %function
 check_poly_inv_Zq_asm:
-    push {r4, lr}
+    push {r4-r9, lr}
 
     aptr    .req r0
     acc     .req r1
     ones    .req r2
     loop    .req r3
     sum     .req r4
-    tmp     .req r12
+    word0   .req r5
+    word1   .req r6
+    word2   .req r7
+    tmp     .req r8
+    word3   .req r9
 
     movs acc, #0
     movw ones, #1
@@ -43,10 +47,15 @@ check_poly_inv_Zq_asm:
     movw loop, #128
 
 1:
-    ldr.w sum, [aptr], #4
-    ldr.w tmp, [aptr], #4
-    smuad sum, sum, ones
-    smlad sum, tmp, ones, sum
+    ldr.w word0, [aptr], #4
+    ldr.w word1, [aptr], #4
+    ldr.w word2, [aptr], #4
+    ldr.w word3, [aptr], #4
+
+    smuad sum, word0, ones
+    smlad sum, word1, ones, sum
+    smlad sum, word2, ones, sum
+    smlad sum, word3, ones, sum
 
     rsb tmp, sum, #0
     orr tmp, tmp, sum
@@ -57,16 +66,20 @@ check_poly_inv_Zq_asm:
     bne 1b
 
     and r0, acc, #1
-    pop {r4, pc}
+    pop {r4-r9, pc}
 
 .unreq aptr
 .unreq acc
 .unreq ones
 .unreq loop
 .unreq sum
+.unreq word0
+.unreq word1
+.unreq word2
 .unreq tmp
+.unreq word3
 
-
+###################################
 #### check poly inverse in Z2 #####
 #### r0: a ########################
 ###################################
@@ -86,7 +99,7 @@ check_poly_inv_Z2_asm:
 
     movs xacc0, #0
     movs xacc1, #0
-    movw tmp3, #16
+    movw tmp3, #16*2
 
 1:
     ldr.w tmp0, [aptr], #4
@@ -104,11 +117,10 @@ check_poly_inv_Z2_asm:
     eor xacc0, xacc0, xacc1
     eor xacc0, xacc0, xacc0, ror #16
     uxth xacc0, xacc0
-    rsb r0, xacc0, #0
-    orr  r0, r0, xacc0
-    lsrs r0, r0, #31
-    eor  r0, r0, #1
-    
+    cmp xacc0, #0
+    ite eq
+    moveq r0, #1
+    movne r0, #0
     pop {r4-r6, pc}
 
 .unreq aptr
@@ -121,6 +133,142 @@ check_poly_inv_Z2_asm:
 
 
 ###################################
+#### polynomial rounding ##########
+#### r0: a ########################
+###################################
+.align 2
+.global poly_round_asm
+.type poly_round_asm, %function
+poly_round_asm:
+    push {r4-r11, lr}
+
+    aptr    .req r0
+    poly0   .req r1
+    poly1   .req r2
+    poly2   .req r3
+    poly3   .req r4
+    poly4   .req r5
+    poly5   .req r6
+    poly6   .req r7
+    loop    .req r8
+    poly7   .req r12
+    scale   .req r9
+
+    movw scale, #0x3fff // mask the low 14-bit; eliminate the 2-bit from top-half
+    movt scale, #0x3fff
+    movw loop, #64
+1:
+    ldr.w poly0, [aptr, #0]
+    ldr.w poly1, [aptr, #4]
+    ldr.w poly2, [aptr, #8]
+    ldr.w poly3, [aptr, #12]
+    ldr.w poly4, [aptr, #4*4]
+    ldr.w poly5, [aptr, #4*5]
+    ldr.w poly6, [aptr, #4*6]
+    ldr.w poly7, [aptr, #4*7]
+
+    and poly0, scale, poly0, lsr #2
+    and poly1, scale, poly1, lsr #2
+    and poly2, scale, poly2, lsr #2
+    and poly3, scale, poly3, lsr #2
+    and poly4, scale, poly4, lsr #2
+    and poly5, scale, poly5, lsr #2
+    and poly6, scale, poly6, lsr #2
+    and poly7, scale, poly7, lsr #2
+
+    str.w poly0, [aptr], #4
+    str.w poly1, [aptr], #4
+    str.w poly2, [aptr], #4
+    str.w poly3, [aptr], #4
+    str.w poly4, [aptr], #4
+    str.w poly5, [aptr], #4
+    str.w poly6, [aptr], #4
+    str.w poly7, [aptr], #4
+    subs loop, #1
+    bne 1b
+
+    pop {r4-r11, pc}
+
+.unreq aptr  
+.unreq poly0 
+.unreq poly1 
+.unreq poly2 
+.unreq poly3 
+.unreq poly4 
+.unreq poly5 
+.unreq poly6 
+.unreq loop  
+.unreq poly7 
+.unreq scale 
+
+// r=r+r<<1+r<<2+1
+.align 2
+.global poly_unround_asm
+.type poly_unround_asm, %function
+poly_unround_asm:
+    push {r4-r10, lr}
+
+    aptr    .req r0
+    poly0   .req r1
+    poly1   .req r2
+    poly2   .req r3
+    poly3   .req r4
+    poly4   .req r5
+    poly5   .req r6
+    poly6   .req r7
+    poly7   .req r8
+    tmp     .req r9
+    scale   .req r10
+    loop    .req r12
+
+    movw scale, #1
+    movt scale, #1
+    movw loop, #32*2
+1:
+    ldr.w poly0, [aptr, #4*0]
+    ldr.w poly1, [aptr, #4*1]
+    ldr.w poly2, [aptr, #4*2]
+    ldr.w poly3, [aptr, #4*3]
+    ldr.w poly4, [aptr, #4*4]
+    ldr.w poly5, [aptr, #4*5]
+    ldr.w poly6, [aptr, #4*6]
+    ldr.w poly7, [aptr, #4*7]
+
+    lsl poly0, poly0, #2
+    lsl poly1, poly1, #2
+    lsl poly2, poly2, #2
+    lsl poly3, poly3, #2
+    lsl poly4, poly4, #2
+    lsl poly5, poly5, #2
+    lsl poly6, poly6, #2
+    lsl poly7, poly7, #2
+
+    str.w poly0, [aptr], #4
+    str.w poly1, [aptr], #4
+    str.w poly2, [aptr], #4
+    str.w poly3, [aptr], #4
+    str.w poly4, [aptr], #4
+    str.w poly5, [aptr], #4
+    str.w poly6, [aptr], #4
+    str.w poly7, [aptr], #4
+    subs loop, #1
+    bne 1b
+
+    pop {r4-r10, pc}
+
+.unreq aptr 
+.unreq poly0
+.unreq poly1
+.unreq poly2
+.unreq poly3
+.unreq poly4
+.unreq poly5
+.unreq poly6
+.unreq poly7
+.unreq tmp  
+.unreq scale
+.unreq loop
+
 
 // r=r+r<<7+r<<8+1
 // void poly_mul385(int16_t r[DIM_N]);
@@ -145,8 +293,8 @@ poly_mul385_asm:
 
     movw scale, #1
     movt scale, #1
-    movw loop, #8
-    .equ stride, 128*2
+    movw loop, #8*2
+    .equ stride, 128*2*2
 1:
     ldr.w poly0, [aptr, #4*0]
     ldr.w poly1, [aptr, #4*1]
@@ -232,7 +380,7 @@ poly_mul385_asm:
 .unreq scale
 .unreq loop
 
-//poly_xor4(int16_t r[128],int16_t a[512])
+//poly_xor4(int16_t r[256],int16_t a[1024])
 .align 2
 .global poly_xor4_asm
 .type poly_xor4_asm, %function
@@ -256,8 +404,8 @@ poly_xor4_asm:
 
     movw scale, #1
     movt scale, #1
-    movw loop, #32
-    .equ stride, 128*2
+    movw loop, #32*2
+    .equ stride, 128*2*2
 1:
     ldr.w poly1, [aptr, #4+stride*0]
     ldr.w poly2, [aptr, #0+stride*1]
@@ -300,8 +448,7 @@ poly_xor4_asm:
 .unreq loop 
 
 
-
-// int poly_xor4_radix16_asm(uint32_t r[16], const int16_t a[512])
+// int poly_xor4_radix16_asm(uint32_t r[32], const int16_t a[1024])
 // Folds modulo x^(N/4)+1, packs 8 binary coefficients per word into
 // nibble lanes 0,4,...,28, and returns the Z2 non-invertibility flag.
 .align 2
@@ -327,14 +474,14 @@ poly_xor4_radix16_asm:
     movw scale, #1
     movt scale, #1
     movs acc, #0
-    movw loop, #16
-    .equ xor4_radix16_stride_128, 128*2
+    movw loop, #32
+    .equ xor4_radix16_stride_256, 128*2*2
 
 1:
-    ldr.w poly0, [aptr, #0+xor4_radix16_stride_128*0]
-    ldr.w poly1, [aptr, #0+xor4_radix16_stride_128*1]
-    ldr.w poly2, [aptr, #0+xor4_radix16_stride_128*2]
-    ldr.w poly3, [aptr, #0+xor4_radix16_stride_128*3]
+    ldr.w poly0, [aptr, #0+xor4_radix16_stride_256*0]
+    ldr.w poly1, [aptr, #0+xor4_radix16_stride_256*1]
+    ldr.w poly2, [aptr, #0+xor4_radix16_stride_256*2]
+    ldr.w poly3, [aptr, #0+xor4_radix16_stride_256*3]
     eor fold, poly0, poly1
     eor tmp, poly2, poly3
     eor fold, fold, tmp
@@ -343,10 +490,10 @@ poly_xor4_radix16_asm:
     orr out, out, fold, lsr #12
     and out, out, #0x11
 
-    ldr.w poly0, [aptr, #4+xor4_radix16_stride_128*0]
-    ldr.w poly1, [aptr, #4+xor4_radix16_stride_128*1]
-    ldr.w poly2, [aptr, #4+xor4_radix16_stride_128*2]
-    ldr.w poly3, [aptr, #4+xor4_radix16_stride_128*3]
+    ldr.w poly0, [aptr, #4+xor4_radix16_stride_256*0]
+    ldr.w poly1, [aptr, #4+xor4_radix16_stride_256*1]
+    ldr.w poly2, [aptr, #4+xor4_radix16_stride_256*2]
+    ldr.w poly3, [aptr, #4+xor4_radix16_stride_256*3]
     eor fold, poly0, poly1
     eor tmp, poly2, poly3
     eor fold, fold, tmp
@@ -356,10 +503,10 @@ poly_xor4_radix16_asm:
     and tmp2, tmp2, #0x11
     orr out, out, tmp2, lsl #8
 
-    ldr.w poly0, [aptr, #8+xor4_radix16_stride_128*0]
-    ldr.w poly1, [aptr, #8+xor4_radix16_stride_128*1]
-    ldr.w poly2, [aptr, #8+xor4_radix16_stride_128*2]
-    ldr.w poly3, [aptr, #8+xor4_radix16_stride_128*3]
+    ldr.w poly0, [aptr, #8+xor4_radix16_stride_256*0]
+    ldr.w poly1, [aptr, #8+xor4_radix16_stride_256*1]
+    ldr.w poly2, [aptr, #8+xor4_radix16_stride_256*2]
+    ldr.w poly3, [aptr, #8+xor4_radix16_stride_256*3]
     eor fold, poly0, poly1
     eor tmp, poly2, poly3
     eor fold, fold, tmp
@@ -369,10 +516,10 @@ poly_xor4_radix16_asm:
     and tmp2, tmp2, #0x11
     orr out, out, tmp2, lsl #16
 
-    ldr.w poly0, [aptr, #12+xor4_radix16_stride_128*0]
-    ldr.w poly1, [aptr, #12+xor4_radix16_stride_128*1]
-    ldr.w poly2, [aptr, #12+xor4_radix16_stride_128*2]
-    ldr.w poly3, [aptr, #12+xor4_radix16_stride_128*3]
+    ldr.w poly0, [aptr, #12+xor4_radix16_stride_256*0]
+    ldr.w poly1, [aptr, #12+xor4_radix16_stride_256*1]
+    ldr.w poly2, [aptr, #12+xor4_radix16_stride_256*2]
+    ldr.w poly3, [aptr, #12+xor4_radix16_stride_256*3]
     eor fold, poly0, poly1
     eor tmp, poly2, poly3
     eor fold, fold, tmp
@@ -409,7 +556,7 @@ poly_xor4_radix16_asm:
 .unreq loop
 .unreq tmp2
 
-//poly_unpack_f2(int16_t r[128],uint8_t a[16])
+//poly_unpack_f2(int16_t r[256],uint8_t a[32])
 .align 2
 .global poly_unpack_f2_asm
 .type poly_unpack_f2_asm, %function
@@ -426,7 +573,7 @@ poly_unpack_f2_asm:
     tmp     .req r7
     loop    .req r12
 
-    movw loop, #16
+    movw loop, #32
 
 1:
     ldrb byte, [aptr], #1
@@ -467,7 +614,7 @@ poly_unpack_f2_asm:
 .unreq loop
 
 
-//poly_pack_f2(uint8_t a[16],int16_t r[128])
+//poly_pack_f2(uint8_t a[32],int16_t r[256])
 .align 2
 .global poly_pack_f2_asm
 .type poly_pack_f2_asm, %function
@@ -484,7 +631,7 @@ poly_pack_f2_asm:
     tmp     .req r7
     loop    .req r12
 
-    movw loop, #16
+    movw loop, #32
 
 1:
     ldr.w word0, [aptr], #4
@@ -533,7 +680,7 @@ poly_pack_f2_asm:
 pointwise_add:
   push {r4-r11, lr}
 
-  movw r14, #51
+  movw r14, #51*2
   1:
     ldm r1!, {r3-r7}
     ldm r2!, {r8-r12}
@@ -548,9 +695,13 @@ pointwise_add:
   bne.w 1b
 
   ldr.w r3, [r1], #4
+  ldr.w r4, [r1], #4
   ldr.w r8, [r2], #4
+  ldr.w r9, [r2], #4
   uadd16 r3, r3, r8
+  uadd16 r4, r4, r9
   str.w r3, [r0], #4
+  str.w r4, [r0], #4
   pop {r4-r11, pc}
 
 
@@ -580,15 +731,15 @@ update_cp_asm:
     parity     .req lr
 
     mov outptr, lowptr
-    add.w hiptr, lowptr, #512
-    add.w cphigh, cplow, #512
+    add.w hiptr, lowptr, #512*2
+    add.w cphigh, cplow, #512*2
     movt q, #769
     movw qa, #24608
     movw plantconst, #14574
     movt plantconst, #85
     movw ones, #1
     movt ones, #1
-    movw loop, #128
+    movw loop, #128*2
 
 1:
     ldr.w low, [lowptr], #4

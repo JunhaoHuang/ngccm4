@@ -17,6 +17,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
     uint8_t nonce;
     int16_t f[ZEN_SWIFT_N], g[ZEN_SWIFT_N];
     int16_t t0[ZEN_SWIFT_N], t1[ZEN_SWIFT_N];
+    uint32_t t0_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
     uint32_t f2_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
 
     nonce = 0;
@@ -25,8 +26,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
     //chechk f
     for(;;)
     {
-        poly_xor4(t0, f); //t0 = f mod (x^(n/4)+1)
-        if(check_poly_inv_Z2(t0))
+        if (poly_xor4_radix16(t0_rad, f)) // t0_rad = f mod (x^(n/4)+1)
         {
             poly_generate_f(f, seed, nonce++);
             continue;
@@ -39,8 +39,8 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
         }
 
         poly_baseinv_ntt(t1, f); //t1 = f^(-1) mod (x^n+1, q)
-        FastInversion_Radix16(f2_rad, t0); //f2_rad = t0^(-1) in R2
-        
+        FastInversion_Radix16Packed(f2_rad, t0_rad); //f2_rad = t0_rad^(-1) in R2
+
         break;
     }
 
@@ -104,7 +104,7 @@ void pke_enc(unsigned char *pk, unsigned char *m, unsigned char *seed, unsigned 
 
 void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
 {
-    unsigned int i, j, idx, mask0, mask1;
+    unsigned int i, j, mask1;
     unsigned int idx0, idx1;
     int16_t c0, c1, c2, c3;
     int16_t f[ZEN_SWIFT_N], f2[ZEN_SWIFT_N2] = {0}, mp0[ZEN_SWIFT_N2], mp1[ZEN_SWIFT_N2];
@@ -115,7 +115,6 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
 
     poly_secretkey_unpack(f, sk);
     r2_radix16_frombytes(f2_rad, sk + ZEN_SWIFT_F_NTT_PACK, ZEN_SWIFT_N4);
-    r2_radix16_unpack(f2, f2_rad, ZEN_SWIFT_N4);
     poly_ciphertext_unpack(t0, ct);
     poly_decompress(t0);
 
@@ -133,8 +132,9 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
     r2_radix16_unpack(mp0, mp0_rad, ZEN_SWIFT_N2);
 
     //SimpleDecoding
+    r2_radix16_unpack(f2, f2_rad, ZEN_SWIFT_N4);
     poly_xor4(t1, t0);
-    
+
     memset(t2, 0, ZEN_SWIFT_N2 * sizeof(int16_t));
     for(i = 0; i < ZEN_SWIFT_N4; i++)
     {
@@ -173,5 +173,4 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
     }
 
     poly_pack_f2(m, mp1);
-    
 }

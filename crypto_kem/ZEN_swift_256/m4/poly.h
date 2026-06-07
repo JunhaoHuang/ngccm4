@@ -2,6 +2,8 @@
 #define POLY_H
 
 #include <stdint.h>
+#include "ntt.h"
+#include "radix16_r2.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -13,10 +15,12 @@ extern "C"
     /// @return 1 if the polynomial is not invertible in Zq, otherwise 0
     int check_poly_inv_Zq(int16_t *a);
 
-    /// @brief Check whether a polynomial is invertible in Z2
-    /// @param[in] a Base address of input polynomial coefficient array
-    /// @return 1 if the polynomial is not invertible in Z2, otherwise 0
-    int check_poly_inv_Z2(int16_t *a);
+
+    /// @brief Assembly fused fold/check: emit radix16 x^(N/4)+1 fold and return Z2 non-invertibility
+    /// @param[out] r_rad Base address of output radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
+    /// @param[in] a Base address of input polynomial coefficient array of length ZEN_SWIFT_N
+    /// @return 1 if the folded polynomial is not invertible in Z2, otherwise 0
+    int poly_xor4_radix16(uint32_t *r_rad, const int16_t *a);
 
     /// @brief Multiply two binary polynomials in R2 of degree less than n using a constant-time cyclic shift-and-XOR method
     /// @param[in] a Base address of first input polynomial coefficient array of length n
@@ -26,11 +30,11 @@ extern "C"
     /// @return None
     void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res);
 
-    /// @brief Compute the inverse of a polynomial in R2 using a fast iterative inversion algorithm
-    /// @param[in] f Base address of input polynomial coefficient array of length ZEN_SWIFT_N2
-    /// @param[out] f_inv Base address of output polynomial inverse coefficient array of length ZEN_SWIFT_N2
+    /// @brief Compute the inverse of a binary polynomial already packed in radix16 R2 representation
+    /// @param[out] f_inv Base address of output radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
+    /// @param[in] f_rad Base address of input radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
     /// @return None
-    void FastInversion(int16_t *f_inv, int16_t *f);
+    void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad);
 
     /// @brief Generate a ternary polynomial from an input seed and nonce
     /// @param[out] a Base address of output polynomial coefficient array
@@ -114,6 +118,13 @@ extern "C"
     void poly_decompress(int16_t *a);
 
 
+#define poly_ntt(a) mq_poly_ntt(a)
+#define poly_ntt_mq(a) mq_poly_ntt_mq(a)
+#define poly_intt(a) mq_poly_intt(a)
+#define poly_basemul_ntt(r, a, b) mq_poly_pointwise_mul(r, a, b)
+#define poly_basemul_ntt_mq(r, a, b) mq_poly_pointwise_mul_mq(r, a, b)
+#define poly_baseinv_ntt(r, a) mq_poly_inv_ntt(r, a)
+#define check_poly_inv_Zq(a) check_poly_inv_Zq_asm(a)
 
 #ifdef __cplusplus
 }

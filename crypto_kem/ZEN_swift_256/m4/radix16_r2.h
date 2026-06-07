@@ -16,11 +16,11 @@ void r2_radix16_pack(uint32_t *out, const int16_t *in, size_t n);
 void r2_radix16_unpack(int16_t *out, const uint32_t *in, size_t n);
 void r2_radix16_frombytes(uint32_t *out, const uint8_t *in, size_t n);
 void r2_radix16_tobytes(uint8_t *out, const uint32_t *in, size_t n);
-
 void r2_radix16_mul(uint32_t *res,
                     const uint32_t *a,
                     const uint32_t *b,
                     size_t n);
+
 
 #ifdef __cplusplus
 }
