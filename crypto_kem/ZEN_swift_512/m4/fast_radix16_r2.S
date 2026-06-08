@@ -322,6 +322,194 @@ r2_radix16_mul_256_asm:
     add.w sp, sp, #256
     pop.w {r3-r11, pc}
 
+.align 2
+.thumb_func
+.global r2_radix16_mul_512_asm
+.type r2_radix16_mul_512_asm, %function
+r2_radix16_mul_512_asm:
+    push.w {r3-r11, lr}
+    sub.w sp, sp, #512
+
+    mov r4, r0                  @ res/base, 64 words
+    mov r5, r1                  @ a, 64 words
+    mov r6, r2                  @ b, 64 words
+    mov r7, sp                  @ tmp: z2, then p1, 64 words
+    add.w r8, sp, #256          @ sum a0+a1, 32 words
+    add.w r9, sp, #384          @ sum b0+b1, 32 words
+
+    bl r2_radix16_linear_mul32_asm
+
+    mov r0, r7
+    add.w r1, r5, #128
+    add.w r2, r6, #128
+    bl r2_radix16_linear_mul32_asm
+
+    movs r10, #0
+.Lmul512_wrap_z2:
+    ldr.w r0, [r4, r10, lsl #2]
+    ldr.w r1, [r7, r10, lsl #2]
+    eor.w r0, r0, r1
+    str.w r0, [r4, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Lmul512_wrap_z2
+
+    movw r11, #0x1111
+    movt r11, #0x1111
+    movs r10, #0
+.Lmul512_sum:
+    ldr.w r0, [r5, r10, lsl #2]
+    add.w r12, r5, #128
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r8, r10, lsl #2]
+
+    ldr.w r0, [r6, r10, lsl #2]
+    add.w r12, r6, #128
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r9, r10, lsl #2]
+
+    adds r10, r10, #1
+    cmp r10, #32
+    bne .Lmul512_sum
+
+    mov r0, r7
+    mov r1, r8
+    mov r2, r9
+    bl r2_radix16_linear_mul32_asm
+
+    movs r10, #0
+.Lmul512_cross:
+    ldr.w r0, [r7, r10, lsl #2]
+    ldr.w r1, [r4, r10, lsl #2]
+    eor.w r0, r0, r1
+    str.w r0, [r7, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Lmul512_cross
+
+    movs r10, #0
+.Lmul512_fold_low:
+    ldr.w r0, [r7, r10, lsl #2]
+    add.w r12, r4, #128
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r1, r1, r0
+    str.w r1, [r12, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #32
+    bne .Lmul512_fold_low
+
+    movs r10, #0
+    add.w r12, r7, #128
+.Lmul512_fold_high:
+    ldr.w r0, [r12, r10, lsl #2]
+    ldr.w r1, [r4, r10, lsl #2]
+    eor.w r1, r1, r0
+    str.w r1, [r4, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #32
+    bne .Lmul512_fold_high
+
+    add.w sp, sp, #512
+    pop.w {r3-r11, pc}
+
+.align 2
+.thumb_func
+.global r2_radix16_mul_1024_asm
+.type r2_radix16_mul_1024_asm, %function
+r2_radix16_mul_1024_asm:
+    push.w {r3-r11, lr}
+    sub.w sp, sp, #1024
+
+    mov r4, r0                  @ res/base, 128 words
+    mov r5, r1                  @ a, 128 words
+    mov r6, r2                  @ b, 128 words
+    mov r7, sp                  @ tmp: z2, then p1, 128 words
+    add.w r8, sp, #512          @ sum a0+a1, 64 words
+    add.w r9, sp, #768          @ sum b0+b1, 64 words
+
+    bl r2_radix16_linear_mul64_asm
+
+    mov r0, r7
+    add.w r1, r5, #256
+    add.w r2, r6, #256
+    bl r2_radix16_linear_mul64_asm
+
+    movs r10, #0
+.Lmul1024_wrap_z2:
+    ldr.w r0, [r4, r10, lsl #2]
+    ldr.w r1, [r7, r10, lsl #2]
+    eor.w r0, r0, r1
+    str.w r0, [r4, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #128
+    bne .Lmul1024_wrap_z2
+
+    movw r11, #0x1111
+    movt r11, #0x1111
+    movs r10, #0
+.Lmul1024_sum:
+    ldr.w r0, [r5, r10, lsl #2]
+    add.w r12, r5, #256
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r8, r10, lsl #2]
+
+    ldr.w r0, [r6, r10, lsl #2]
+    add.w r12, r6, #256
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r9, r10, lsl #2]
+
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Lmul1024_sum
+
+    mov r0, r7
+    mov r1, r8
+    mov r2, r9
+    bl r2_radix16_linear_mul64_asm
+
+    movs r10, #0
+.Lmul1024_cross:
+    ldr.w r0, [r7, r10, lsl #2]
+    ldr.w r1, [r4, r10, lsl #2]
+    eor.w r0, r0, r1
+    str.w r0, [r7, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #128
+    bne .Lmul1024_cross
+
+    movs r10, #0
+.Lmul1024_fold_low:
+    ldr.w r0, [r7, r10, lsl #2]
+    add.w r12, r4, #256
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r1, r1, r0
+    str.w r1, [r12, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Lmul1024_fold_low
+
+    movs r10, #0
+    add.w r12, r7, #256
+.Lmul1024_fold_high:
+    ldr.w r0, [r12, r10, lsl #2]
+    ldr.w r1, [r4, r10, lsl #2]
+    eor.w r1, r1, r0
+    str.w r1, [r4, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Lmul1024_fold_high
+
+    add.w sp, sp, #1024
+    pop.w {r3-r11, pc}
+
 ###########################################################################
 #### linear full-product helpers                                         ####
 #### r0: out, r1: a, r2: b                                               ####
@@ -529,6 +717,156 @@ r2_radix16_linear_mul16_asm:
     add.w sp, sp, #128
     pop.w {r3-r11, pc}
 
+.align 2
+.thumb_func
+.type r2_radix16_linear_mul32_asm, %function
+r2_radix16_linear_mul32_asm:
+    push.w {r3-r11, lr}
+    sub.w sp, sp, #256
+
+    mov r4, r0                  @ out, 64 words
+    mov r5, r1                  @ a, 32 words
+    mov r6, r2                  @ b, 32 words
+    mov r7, sp                  @ p1, 32 words
+    add.w r8, sp, #128          @ sum a0+a1, 16 words
+    add.w r9, sp, #192          @ sum b0+b1, 16 words
+
+    bl r2_radix16_linear_mul16_asm
+
+    add.w r0, r4, #128
+    add.w r1, r5, #64
+    add.w r2, r6, #64
+    bl r2_radix16_linear_mul16_asm
+
+    movw r11, #0x1111
+    movt r11, #0x1111
+    movs r10, #0
+.Llin32_sum:
+    ldr.w r0, [r5, r10, lsl #2]
+    add.w r12, r5, #64
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r8, r10, lsl #2]
+
+    ldr.w r0, [r6, r10, lsl #2]
+    add.w r12, r6, #64
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r9, r10, lsl #2]
+
+    adds r10, r10, #1
+    cmp r10, #16
+    bne .Llin32_sum
+
+    mov r0, r7
+    mov r1, r8
+    mov r2, r9
+    bl r2_radix16_linear_mul16_asm
+
+    movs r10, #0
+.Llin32_cross:
+    ldr.w r0, [r7, r10, lsl #2]
+    ldr.w r1, [r4, r10, lsl #2]
+    add.w r12, r4, #128
+    ldr.w r2, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    eor.w r0, r0, r2
+    str.w r0, [r7, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #32
+    bne .Llin32_cross
+
+    movs r10, #0
+.Llin32_fold:
+    ldr.w r0, [r7, r10, lsl #2]
+    add.w r12, r4, #64
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r1, r1, r0
+    str.w r1, [r12, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #32
+    bne .Llin32_fold
+
+    add.w sp, sp, #256
+    pop.w {r3-r11, pc}
+
+.align 2
+.thumb_func
+.type r2_radix16_linear_mul64_asm, %function
+r2_radix16_linear_mul64_asm:
+    push.w {r3-r11, lr}
+    sub.w sp, sp, #512
+
+    mov r4, r0                  @ out, 128 words
+    mov r5, r1                  @ a, 64 words
+    mov r6, r2                  @ b, 64 words
+    mov r7, sp                  @ p1, 64 words
+    add.w r8, sp, #256          @ sum a0+a1, 32 words
+    add.w r9, sp, #384          @ sum b0+b1, 32 words
+
+    bl r2_radix16_linear_mul32_asm
+
+    add.w r0, r4, #256
+    add.w r1, r5, #128
+    add.w r2, r6, #128
+    bl r2_radix16_linear_mul32_asm
+
+    movw r11, #0x1111
+    movt r11, #0x1111
+    movs r10, #0
+.Llin64_sum:
+    ldr.w r0, [r5, r10, lsl #2]
+    add.w r12, r5, #128
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r8, r10, lsl #2]
+
+    ldr.w r0, [r6, r10, lsl #2]
+    add.w r12, r6, #128
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    and.w r0, r0, r11
+    str.w r0, [r9, r10, lsl #2]
+
+    adds r10, r10, #1
+    cmp r10, #32
+    bne .Llin64_sum
+
+    mov r0, r7
+    mov r1, r8
+    mov r2, r9
+    bl r2_radix16_linear_mul32_asm
+
+    movs r10, #0
+.Llin64_cross:
+    ldr.w r0, [r7, r10, lsl #2]
+    ldr.w r1, [r4, r10, lsl #2]
+    add.w r12, r4, #256
+    ldr.w r2, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    eor.w r0, r0, r2
+    str.w r0, [r7, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Llin64_cross
+
+    movs r10, #0
+.Llin64_fold:
+    ldr.w r0, [r7, r10, lsl #2]
+    add.w r12, r4, #128
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r1, r1, r0
+    str.w r1, [r12, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #64
+    bne .Llin64_fold
+
+    add.w sp, sp, #512
+    pop.w {r3-r11, pc}
+
 ###########################################################################
 #### shared word-ring multiply                                           ####
 #### r0: res, r1: a, r2: b, r3: word count                              ####
@@ -625,8 +963,7 @@ r2_radix16_mul_words_asm:
 
 
 
-
-// int poly_xor4_radix16_asm(uint32_t r[16], const int16_t a[512])
+// int poly_xor4_radix16_asm(uint32_t r[64], const int16_t a[2048])
 // Folds modulo x^(N/4)+1, packs 8 binary coefficients per word into
 // nibble lanes 0,4,...,28, and returns the Z2 non-invertibility flag.
 .align 2
@@ -652,8 +989,8 @@ poly_xor4_radix16_asm:
     movw scale, #1
     movt scale, #1
     movs acc, #0
-    movw loop, #16
-    .equ xor4_radix16_stride_128, 128*2
+    movw loop, #64
+    .equ xor4_radix16_stride_128, 128*4*2
 
 1:
     ldr.w poly0, [aptr, #0+xor4_radix16_stride_128*0]

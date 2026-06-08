@@ -438,16 +438,6 @@ void poly_publickey_pack(uint8_t *pa, const int16_t *a)
     memcpy(pa, (const uint8_t *)res, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
 }
 
-static inline uint16_t divmod769_tail(uint64_t *x)
-{
-    uint32_t v = (uint32_t)*x;
-    uint32_t q = ((uint64_t)v * 349071u) >> 28;
-    uint32_t r = v - q * 769u;
-
-    *x = q;
-    return (uint16_t)r;
-}
-
 static inline uint32_t div769_u26(uint32_t x, uint32_t *r)
 {
     uint32_t q = ((uint64_t)x * 44681065u) >> 35;

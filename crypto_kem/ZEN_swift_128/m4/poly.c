@@ -419,6 +419,10 @@ static inline uint16_t divmod769_tail(uint64_t *x)
     uint32_t v = (uint32_t)*x;
     uint32_t q = ((uint64_t)v * 349071u) >> 28;
     uint32_t r = v - q * 769u;
+    uint32_t underflow = r >> 31;
+
+    q -= underflow;
+    r += underflow * 769u;
 
     *x = q;
     return (uint16_t)r;

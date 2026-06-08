@@ -7,15 +7,17 @@
 #include "ntt.h"
 #include "poly.h"
 #include "drng.h"
+#include "radix16_r2.h"
 
 extern DRNG_ctx drng_algorithm;
 
 void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char *seed)
 {
-    unsigned i, j;
     uint8_t nonce;
-    int16_t f[ZEN_SWIFT_N], g[ZEN_SWIFT_N], f2[ZEN_SWIFT_N4];
+    int16_t f[ZEN_SWIFT_N], g[ZEN_SWIFT_N];
     int16_t t0[ZEN_SWIFT_N], t1[ZEN_SWIFT_N];
+    uint32_t t0_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
+    uint32_t f2_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
 
     nonce = 0;
     //generate f
@@ -23,11 +25,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
     //chechk f
     for(;;)
     {
-        for(i = 0; i < ZEN_SWIFT_N4; i++)
-        {
-            t0[i] = (f[i] & 1) ^ (f[i + ZEN_SWIFT_N4] & 1) ^ (f[i + 2*ZEN_SWIFT_N4] & 1) ^ (f[i + 3*ZEN_SWIFT_N4] & 1); //t0 = f mod (x^(n/4)+1)
-        }
-        if(check_poly_inv_Z2(t0))
+        if(poly_xor4_radix16(t0_rad, f)) // t0_rad = f mod (x^(n/4)+1)
         {
             poly_generate_gf(f, seed, nonce++);
             continue;
@@ -40,7 +38,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
         }
 
         poly_baseinv_ntt(t1, f); //t1 = f^(-1) mod (x^n+1, q)
-        FastInversion(f2, t0); //t0 = f2
+        FastInversion_Radix16Packed(f2_rad, t0_rad); //f2_rad = t0_rad^(-1) in R2
 
         break;
     }
@@ -62,7 +60,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
     poly_basemul_ntt_mq(t0, g, t1);
     poly_publickey_pack(pk, t0);
     poly_secretkey_pack(sk, f);
-    poly_bit2byte_pack(sk+ZEN_SWIFT_F_NTT_PACK, f2, ZEN_SWIFT_N4);
+    r2_radix16_tobytes(sk+ZEN_SWIFT_F_NTT_PACK, f2_rad, ZEN_SWIFT_N4);
 
 }
 
@@ -116,9 +114,12 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
     int16_t c0, c1, c2, c3;
     int16_t f[ZEN_SWIFT_N], f2[ZEN_SWIFT_N2] = {0}, mp0[ZEN_SWIFT_N2], mp1[ZEN_SWIFT_N2];
     int16_t t0[ZEN_SWIFT_N], t1[ZEN_SWIFT_N], t2[ZEN_SWIFT_N];
+    uint32_t f2_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)] = {0};
+    uint32_t t1_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
+    uint32_t mp0_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
 
     poly_secretkey_unpack(f, sk); 
-    poly_byte2bit_unpack(f2, sk+ZEN_SWIFT_F_NTT_PACK, ZEN_SWIFT_N4);
+    r2_radix16_frombytes(f2_rad, sk+ZEN_SWIFT_F_NTT_PACK, ZEN_SWIFT_N4);
     poly_ciphertext_unpack(t0, ct);
     poly_decompress(t0);
 
@@ -145,14 +146,14 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
     }
 
     // m_prim = af2 mod <2, x^(n/2)+1>
-    memset(f2 + ZEN_SWIFT_N4, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-    mul_in_R2_n(t1, f2, ZEN_SWIFT_N2, mp0);
+    r2_radix16_pack(t1_rad, t1, ZEN_SWIFT_N2);
+    r2_radix16_mul(mp0_rad, t1_rad, f2_rad, ZEN_SWIFT_N2);
+    r2_radix16_unpack(mp0, mp0_rad, ZEN_SWIFT_N2);
 
     //SimpleDecoding
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        t1[i] = (t0[i] & 1) ^ (t0[i + ZEN_SWIFT_N4] & 1) ^ (t0[i + 2*ZEN_SWIFT_N4] & 1) ^ (t0[i + 3*ZEN_SWIFT_N4] & 1);
-    }
+    r2_radix16_unpack(f2, f2_rad, ZEN_SWIFT_N4);
+    poly_xor4_radix16(t1_rad, t0);
+    r2_radix16_unpack(t1, t1_rad, ZEN_SWIFT_N4);
     
     memset(t2, 0, ZEN_SWIFT_N2 * sizeof(int16_t));
     for(i = 0; i < ZEN_SWIFT_N4; i++)

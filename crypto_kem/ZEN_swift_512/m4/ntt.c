@@ -104,77 +104,17 @@ static inline void karatsuba_mul8(int16_t *r, const int16_t *a, const int16_t *b
 
 void poly_ntt(int16_t *a) 
 {
-    unsigned int len, start, j, k;
-    int16_t t, zeta;
-
-    k = 1;
-    for(len = ZEN_SWIFT_N >> 1; len >= 16; len >>= 1) 
-    {
-        for(start = 0; start < ZEN_SWIFT_N; start = j + len) 
-        {
-            zeta = f[k++];
-            for(j = start; j < start + len; j++) 
-            {
-                t = fqmul(zeta, a[j + len]);
-                a[j + len] = a[j] - t;
-                a[j] = a[j] + t;
-            }
-        }
-    }
+    small_ntt_asm_769(a, zetas_asm_769);
 }
 
 void poly_ntt_mq(int16_t *a) 
 {
-    unsigned int len, start, j, k;
-    int16_t t, zeta;
-
-    k = 1;
-    for(len = ZEN_SWIFT_N >> 1; len >= 16; len >>= 1) 
-    {
-        for(start = 0; start < ZEN_SWIFT_N; start = j + len) 
-        {
-            zeta = f[k++];
-            for(j = start; j < start + len; j++) 
-            {
-                t = fqmul(zeta, a[j + len]);
-                a[j + len] = a[j] - t;
-                a[j] = a[j] + t;
-            }
-        }
-    }
-
-    for(j = 0; j < ZEN_SWIFT_N; j++)
-    {
-        a[j] = fqmul(a[j], 171);
-        a[j] += (a[j] >> 15) & ZEN_SWIFT_Q;
-    }
+    small_ntt_mq_asm_769(a, zetas_asm_769);
 }
 
 void poly_intt(int16_t *a) 
 {
-    unsigned int start, len, j, k;
-    int16_t t, zeta;
-
-    k = 0;
-    for(len = 16; len <= ZEN_SWIFT_N >> 1; len <<= 1)
-    {
-        for(start = 0; start < ZEN_SWIFT_N; start =j + len)
-        {
-            zeta = fn[k++];
-            for(j = start; j < start + len; j++) 
-            {
-                t = a[j];
-                a[j] = (t + a[j + len]);
-                a[j + len] = t - a[j + len];
-                a[j + len] = fqmul(zeta, a[j + len]);
-            }
-        }
-    }
-
-    for(j = 0; j < ZEN_SWIFT_N; j++)
-    {
-        a[j] = fqmul(a[j], fn[127]);
-    }
+    small_invntt_asm_769(a, zetas_inv_asm_769);
 }
 
 /// @brief Multiply two degree-15 polynomial blocks in the NTT domain with a given twiddle factor
@@ -183,7 +123,7 @@ void poly_intt(int16_t *a)
 /// @param[in] b Base address of second input coefficient array of length 16
 /// @param[in] zeta Twiddle factor used in the block multiplication
 /// @return None
-static void base_mul(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
+static inline void basemul16_karatsuba_block_impl(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
 {
     unsigned int i;
     int16_t as[8], bs[8];
@@ -248,14 +188,14 @@ static void base_mul(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
     r[15] = fqmul(r[15], MONT);
 }
 
-void poly_basemul_ntt(int16_t *r,  int16_t *a,  int16_t *b)
+void basemul16_karatsuba_block_c(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
 {
-    unsigned int i;
-    for(i = 0; i < ZEN_SWIFT_N / 32; i++) 
-    {
-        base_mul(r + 32 * i, a + 32 * i, b + 32 * i, f[64 + i]);
-        base_mul(r + 32 * i + 16, a + 32 * i + 16, b + 32 * i + 16, -f[64 + i]);
-    }
+    basemul16_karatsuba_block_impl(r, a, b, zeta);
+}
+
+void poly_basemul_ntt(int16_t *r, int16_t *a, int16_t *b)
+{
+    basemul16_karatsuba_asm(r, a, b, zetas_769);
 }
 
 /// @brief Multiply two degree-15 polynomial blocks in the NTT domain with a given twiddle factor and reduce coefficients modulo ZEN_SWIFT_Q
@@ -264,7 +204,7 @@ void poly_basemul_ntt(int16_t *r,  int16_t *a,  int16_t *b)
 /// @param[in] b Base address of second input coefficient array of length 16
 /// @param[in] zeta Twiddle factor used in the block multiplication
 /// @return None
-static void base_mul_mq(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
+static inline void basemul16_karatsuba_block_mq_impl(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
 {
 
     unsigned int i;
@@ -334,14 +274,14 @@ static void base_mul_mq(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
     r[15] += (r[15] >> 15) & ZEN_SWIFT_Q;
 }
 
-void poly_basemul_ntt_mq(int16_t *r,  int16_t *a,  int16_t *b)
+void basemul16_karatsuba_block_mq_c(int16_t *r, int16_t *a, int16_t *b, int16_t zeta)
 {
-    unsigned int i;
-    for(i = 0; i < ZEN_SWIFT_N / 32; i++) 
-    {
-        base_mul_mq(r + 32 * i, a + 32 * i, b + 32 * i, f[64 + i]);
-        base_mul_mq(r + 32 * i + 16, a + 32 * i + 16, b + 32 * i + 16, -f[64 + i]);
-    }
+    basemul16_karatsuba_block_mq_impl(r, a, b, zeta);
+}
+
+void poly_basemul_ntt_mq(int16_t *r, int16_t *a, int16_t *b)
+{
+    basemul16_karatsuba_mq_asm(r, a, b, zetas_769);
 }
 
 /// @brief Compute the inverse of a degree-3 polynomial block in the NTT domain with a given twiddle factor

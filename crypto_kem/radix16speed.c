@@ -14,6 +14,14 @@
 #define HAVE_RADIX16_R2 1
 #endif
 
+#ifndef R2_RADIX16_WORDS
+#define R2_RADIX16_WORDS(n) (((n) + 7u) >> 3)
+#endif
+
+#ifndef R2_RADIX16_MAX_N
+#define R2_RADIX16_MAX_N 256u
+#endif
+
 #ifndef RADIX16SPEED_ITERS
 #define RADIX16SPEED_ITERS 1000u
 #endif
@@ -26,11 +34,24 @@
 #define R2_RADIX16_LANE_MASK 0x11111111u
 #endif
 
-static uint32_t a256[32];
-static uint32_t b256[32];
-static uint32_t r256[32];
-static uint32_t ref256[32];
+#define RADIX16SPEED_MAX_WORDS R2_RADIX16_WORDS(R2_RADIX16_MAX_N)
+
+static uint32_t a_rad[RADIX16SPEED_MAX_WORDS];
+static uint32_t b_rad[RADIX16SPEED_MAX_WORDS];
+static uint32_t r_rad[RADIX16SPEED_MAX_WORDS];
+static uint32_t ref_rad[RADIX16SPEED_MAX_WORDS];
 static volatile uint32_t checksum_sink;
+
+#if defined(HAVE_RADIX16_R2)
+extern void r2_radix16_mul_128_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_256_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+#if R2_RADIX16_MAX_N >= 512u
+extern void r2_radix16_mul_512_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+#endif
+#if R2_RADIX16_MAX_N >= 1024u
+extern void r2_radix16_mul_1024_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+#endif
+#endif
 
 static uint32_t next_word(uint32_t *state)
 {
@@ -46,16 +67,16 @@ static void fill_inputs(uint32_t *state, size_t words)
     size_t i;
 
     for (i = 0; i < words; i++) {
-        a256[i] = next_word(state);
-        b256[i] = next_word(state);
-        r256[i] = 0;
-        ref256[i] = 0;
+        a_rad[i] = next_word(state);
+        b_rad[i] = next_word(state);
+        r_rad[i] = 0;
+        ref_rad[i] = 0;
     }
-    for (; i < 32u; i++) {
-        a256[i] = 0;
-        b256[i] = 0;
-        r256[i] = 0;
-        ref256[i] = 0;
+    for (; i < RADIX16SPEED_MAX_WORDS; i++) {
+        a_rad[i] = 0;
+        b_rad[i] = 0;
+        r_rad[i] = 0;
+        ref_rad[i] = 0;
     }
 }
 
@@ -63,7 +84,7 @@ static void init_inputs(void)
 {
     uint32_t state = 0x72616431u;
 
-    fill_inputs(&state, 32u);
+    fill_inputs(&state, RADIX16SPEED_MAX_WORDS);
 }
 
 static uint32_t checksum_words(const uint32_t *x, size_t words)
@@ -124,12 +145,12 @@ static int check_mul(const char *label,
 
     for (t = 0; t < RADIX16SPEED_CHECKS; t++) {
         fill_inputs(&state, words);
-        ref_mul_packed(ref256, a256, b256, n);
-        fn(r256, a256, b256);
+        ref_mul_packed(ref_rad, a_rad, b_rad, n);
+        fn(r_rad, a_rad, b_rad);
 
         for (i = 0; i < words; i++) {
-            uint32_t ref = ref256[i] & R2_RADIX16_LANE_MASK;
-            uint32_t got = r256[i] & R2_RADIX16_LANE_MASK;
+            uint32_t ref = ref_rad[i] & R2_RADIX16_LANE_MASK;
+            uint32_t got = r_rad[i] & R2_RADIX16_LANE_MASK;
 
             if (ref != got) {
                 hal_send_str(label);
@@ -152,11 +173,11 @@ time_mul(void (*fn)(uint32_t *, const uint32_t *, const uint32_t *), size_t word
 
     t0 = hal_get_time();
     for (i = 0; i < RADIX16SPEED_ITERS; i++) {
-        fn(r256, a256, b256);
+        fn(r_rad, a_rad, b_rad);
     }
     t1 = hal_get_time();
 
-    checksum_sink ^= checksum_words(r256, words);
+    checksum_sink ^= checksum_words(r_rad, words);
     return (unsigned long long)((t1 - t0) / RADIX16SPEED_ITERS);
 }
 
@@ -178,10 +199,28 @@ int main(void)
         hal_send_str("#");
         return -1;
     }
+#if R2_RADIX16_MAX_N >= 512u
+    if (!check_mul("mul512 mismatch", r2_radix16_mul_512_asm, 512u, 64u)) {
+        hal_send_str("#");
+        return -1;
+    }
+#endif
+#if R2_RADIX16_MAX_N >= 1024u
+    if (!check_mul("mul1024 mismatch", r2_radix16_mul_1024_asm, 1024u, 128u)) {
+        hal_send_str("#");
+        return -1;
+    }
+#endif
 
     init_inputs();
     send_unsignedll("mul128 cycles:", time_mul(r2_radix16_mul_128_asm, 16u));
     send_unsignedll("mul256 cycles:", time_mul(r2_radix16_mul_256_asm, 32u));
+#if R2_RADIX16_MAX_N >= 512u
+    send_unsignedll("mul512 cycles:", time_mul(r2_radix16_mul_512_asm, 64u));
+#endif
+#if R2_RADIX16_MAX_N >= 1024u
+    send_unsignedll("mul1024 cycles:", time_mul(r2_radix16_mul_1024_asm, 128u));
+#endif
     send_unsigned("checksum:", checksum_sink);
     hal_send_str("#");
     return 0;

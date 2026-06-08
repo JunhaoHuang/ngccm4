@@ -26,7 +26,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
     //chechk f
     for(;;)
     {
-        if (poly_xor4_radix16_asm(t0_rad, f)) // t0_rad = f mod (x^(n/4)+1)
+        if (poly_xor4_radix16(t0_rad, f)) // t0_rad = f mod (x^(n/4)+1)
         {
             poly_generate_f(f, seed, nonce++);
             continue;

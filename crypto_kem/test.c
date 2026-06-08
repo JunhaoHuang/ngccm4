@@ -57,12 +57,14 @@ static int test_roundtrip(void) {
     if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) {
         return -1;
     }
+    int ret = memcmp(ss_a, ss_b, ss_len);
+
     free(pk);
     free(sk);
     free(ct);
     free(ss_a);
     free(ss_b);
-    return memcmp(ss_a, ss_b, ss_len);
+    return ret;
 }
 
 int main(void) {
