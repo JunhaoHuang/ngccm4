@@ -7,6 +7,7 @@
 
 extern void basemul16_karatsuba_block_c(int16_t *r, int16_t *a, int16_t *b, int16_t zeta);
 extern void basemul16_karatsuba_block_mq_c(int16_t *r, int16_t *a, int16_t *b, int16_t zeta);
+extern void poly_baseinv_ntt_c(int16_t *r, int16_t *a);
 
 static int16_t a[ZEN_SWIFT_N];
 static int16_t b[ZEN_SWIFT_N];
@@ -187,6 +188,51 @@ static int compare_mixed_inputs(unsigned int seed, int mq)
     return 0;
 }
 
+static int compare_baseinv_ntt(unsigned int seed)
+{
+    unsigned int i;
+
+    fill_inputs(seed, 0);
+    poly_ntt_mq(a);
+    if (check_poly_inv_Zq(a)) {
+        return 0;
+    }
+
+    poly_baseinv_ntt_c(ref, a);
+    poly_baseinv_ntt(got, a);
+
+    for (i = 0; i < ZEN_SWIFT_N; i++) {
+        if (freeze_q(ref[i]) != freeze_q(got[i])) {
+            send_unsigned("baseinv seed:", seed);
+            send_unsigned(" idx:", i);
+            send_signed(" ref:", ref[i]);
+            send_signed(" got:", got[i]);
+            hal_send_str("\n");
+            return -1;
+        }
+    }
+
+    basemul16_karatsuba_mq_asm(invbuf, a, got, zetas_769);
+    for (i = 0; i < ZEN_SWIFT_N; i++) {
+        b[i] = 0;
+    }
+    b[0] = 1;
+    poly_ntt_mq(b);
+
+    for (i = 0; i < ZEN_SWIFT_N; i++) {
+        if (freeze_q(invbuf[i]) != freeze_q(b[i])) {
+            send_unsigned("baseprod seed:", seed);
+            send_unsigned(" idx:", i);
+            send_signed(" ref:", b[i]);
+            send_signed(" got:", invbuf[i]);
+            hal_send_str("\n");
+            return -1;
+        }
+    }
+    return 0;
+}
+
+
 static int compare_keygen_shape(unsigned int seed_id)
 {
     unsigned int i;
@@ -281,6 +327,7 @@ int main(void)
         if (compare_mixed_inputs(seed, 0) != 0) return -1;
         if (compare_mixed_inputs(seed, 1) != 0) return -1;
         if (compare_keygen_shape(seed) != 0) return -1;
+        if (compare_baseinv_ntt(seed) != 0) return -1;
         if (test_ntt_identity(seed) != 0) return -1;
         hal_send_str("OK+");
     }

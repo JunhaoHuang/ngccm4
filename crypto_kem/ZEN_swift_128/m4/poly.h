@@ -30,7 +30,7 @@ extern "C"
     /// @param[out] f_inv Base address of output radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
     /// @param[in] f_rad Base address of input radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
     /// @return None
-    void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad);
+    void FastInversion(uint32_t *f_inv, const uint32_t *f_rad);
 
     /// @brief Generate a polynomial by summing a CBD-1 polynomial and a ternary polynomial from an input seed and nonce
     /// @param[out] a Base address of output polynomial coefficient array

@@ -58,6 +58,7 @@ void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res)
     }
 }
 
+
 /// @brief Multiply two binary polynomials in R2 of degree less than ZEN_SWIFT_N4 using a constant-time cyclic shift-and-XOR method
 /// @param[in] a Base address of first input polynomial coefficient array of length ZEN_SWIFT_N4
 /// @param[in] b Base address of second input polynomial coefficient array of length 2*ZEN_SWIFT_N4, arranged as a duplicated array for cyclic access

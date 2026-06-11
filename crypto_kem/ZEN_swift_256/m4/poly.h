@@ -22,19 +22,11 @@ extern "C"
     /// @return 1 if the folded polynomial is not invertible in Z2, otherwise 0
     int poly_xor4_radix16(uint32_t *r_rad, const int16_t *a);
 
-    /// @brief Multiply two binary polynomials in R2 of degree less than n using a constant-time cyclic shift-and-XOR method
-    /// @param[in] a Base address of first input polynomial coefficient array of length n
-    /// @param[in] b Base address of second input polynomial coefficient array of length n
-    /// @param[in] n Number of coefficients of the input polynomials
-    /// @param[out] res Base address of output polynomial coefficient array of length n
-    /// @return None
-    void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res);
-
     /// @brief Compute the inverse of a binary polynomial already packed in radix16 R2 representation
     /// @param[out] f_inv Base address of output radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
     /// @param[in] f_rad Base address of input radix16 word array of length R2_RADIX16_WORDS(ZEN_SWIFT_N4)
     /// @return None
-    void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad);
+    void FastInversion(uint32_t *f_inv, const uint32_t *f_rad);
 
     /// @brief Generate a ternary polynomial from an input seed and nonce
     /// @param[out] a Base address of output polynomial coefficient array

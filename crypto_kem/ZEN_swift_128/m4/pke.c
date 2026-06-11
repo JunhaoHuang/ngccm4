@@ -39,7 +39,7 @@ void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char
         }
 
         poly_baseinv_ntt(t1, f); //t1 = f^(-1) mod (x^n+1, q)
-        FastInversion_Radix16Packed(f2_rad, t0_rad); //f2_rad = t0_rad^(-1) in R2
+        FastInversion(f2_rad, t0_rad); //f2_rad = t0_rad^(-1) in R2
 
         break;
     }
@@ -104,14 +104,14 @@ void pke_enc(unsigned char *pk, unsigned char *m, unsigned char *seed, unsigned 
 
 void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
 {
-    unsigned int i, j, mask1;
-    unsigned int idx0, idx1;
+    unsigned int i, mask1;
+    uint16_t delta, even_wins;
     int16_t c0, c1, c2, c3;
-    int16_t f[ZEN_SWIFT_N], f2[ZEN_SWIFT_N2] = {0}, mp0[ZEN_SWIFT_N2], mp1[ZEN_SWIFT_N2];
-    int16_t t0[ZEN_SWIFT_N], t1[ZEN_SWIFT_N], t2[ZEN_SWIFT_N];
-    uint32_t f2_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)] = {0};
+    int16_t f[ZEN_SWIFT_N];
+    int16_t t0[ZEN_SWIFT_N], t1[ZEN_SWIFT_N];
+    uint32_t f2_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
     uint32_t t1_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
-    uint32_t mp0_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
+    uint32_t mp0_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)], mp1_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
 
     poly_secretkey_unpack(f, sk);
     r2_radix16_frombytes(f2_rad, sk + ZEN_SWIFT_F_NTT_PACK, ZEN_SWIFT_N4);
@@ -128,20 +128,18 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
 
     // m_prim = af2 mod <2, x^(n/2)+1>
     r2_radix16_pack(t1_rad, t1, ZEN_SWIFT_N2);
-    r2_radix16_mul(mp0_rad, t1_rad, f2_rad, ZEN_SWIFT_N2);
-    r2_radix16_unpack(mp0, mp0_rad, ZEN_SWIFT_N2);
+    r2_radix16_mul_256x128(mp0_rad, t1_rad, f2_rad);
 
     //SimpleDecoding
-    r2_radix16_unpack(f2, f2_rad, ZEN_SWIFT_N4);
-    poly_xor4(t1, t0);
-
-    memset(t2, 0, ZEN_SWIFT_N2 * sizeof(int16_t));
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+    // SimpleDecoding: build S=\delta*x^{j*\times n/4}, then materialize the low half of S*f_inv in R_{2L,2}.
+    memset(t1, 0, ZEN_SWIFT_N2 * sizeof(int16_t));
+    for (i = 0; i < ZEN_SWIFT_N4; i++)
     {
         c0 = t0[i];
         c1 = t0[i + ZEN_SWIFT_N4];
-        c2 = t0[i + 2*ZEN_SWIFT_N4];
-        c3 = t0[i + 3*ZEN_SWIFT_N4];
+        c2 = t0[i + 2 * ZEN_SWIFT_N4];
+        c3 = t0[i + 3 * ZEN_SWIFT_N4];
+        delta = (uint16_t)((c0 & 1) ^ (c1 & 1) ^ (c2 & 1) ^ (c3 & 1));
 
         mask1 = (c0 >= 0);
         c0 = ((ZEN_SWIFT_Q2 - c0) & (-mask1)) | ((ZEN_SWIFT_Q2 + c0) & (~(-mask1)));
@@ -157,20 +155,18 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
         mask1 = (c1 <= c3);
         c1 = (c1 & (-mask1)) | (c3 & (~(-mask1)));
 
-        mask1 = 0u - (unsigned int)(uint16_t)t1[i];
-        idx0 = i & mask1;
-        idx1 = (i + ZEN_SWIFT_N4) & mask1;
-        mask1 = (c0 <= c1);
-        for(j = 0; j < ZEN_SWIFT_N2; j++)
-        {
-            t2[j] ^= (f2[(j + ZEN_SWIFT_N2 - idx0) & (ZEN_SWIFT_N2 - 1)] & (-mask1)) | (f2[(j + ZEN_SWIFT_N2 - idx1) & (ZEN_SWIFT_N2 - 1)] & (~(-mask1)));
-        }
+        even_wins = (uint16_t)(c0 <= c1);
+        t1[0] ^= (int16_t)(delta ^ 1u);
+        t1[i] ^= (int16_t)(delta & even_wins);
+        t1[i + ZEN_SWIFT_N4] ^= (int16_t)(delta & (even_wins ^ 1u));
     }
 
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+    r2_radix16_pack(t1_rad, t1, ZEN_SWIFT_N2);
+    r2_radix16_mul_256x128(mp1_rad, t1_rad, f2_rad);
+    
+    for (i = 0; i < R2_RADIX16_WORDS(ZEN_SWIFT_N4); i++)
     {
-        mp1[i] = mp0[i] ^ t2[i];
+        mp1_rad[i] = mp0_rad[i] ^ mp1_rad[i];
     }
-
-    poly_pack_f2(m, mp1);
+    r2_radix16_tobytes(m, mp1_rad, ZEN_SWIFT_N4);
 }

@@ -323,6 +323,58 @@ r2_radix16_mul_256_asm:
     pop.w {r3-r11, pc}
 
 ###########################################################################
+#### asymmetric 256x128 word-ring multiply                               ####
+#### r0: res, 32 words                                                   ####
+#### r1: a,   32 words                                                   ####
+#### r2: b,   16 words; high 128 coefficients are implicit zeros         ####
+###########################################################################
+.align 2
+.thumb_func
+.global r2_radix16_mul_256x128_asm
+.type r2_radix16_mul_256x128_asm, %function
+r2_radix16_mul_256x128_asm:
+    push.w {r3-r11, lr}
+    sub.w sp, sp, #256
+
+    mov r4, r0                  @ res, 32 words
+    mov r5, r1                  @ a = a0 + x^128 a1, 32 words
+    mov r6, r2                  @ b, 16 words
+    mov r7, sp                  @ z0 = a0*b, 32 words
+    add.w r8, sp, #128          @ z1 = a1*b, 32 words
+
+    mov r0, r7
+    mov r1, r5
+    mov r2, r6
+    bl r2_radix16_linear_mul16_asm
+
+    mov r0, r8
+    add.w r1, r5, #64
+    mov r2, r6
+    bl r2_radix16_linear_mul16_asm
+
+    movs r10, #0
+23:
+    ldr.w r0, [r7, r10, lsl #2]
+    add.w r12, r8, #64
+    ldr.w r1, [r12, r10, lsl #2]
+    eor.w r0, r0, r1
+    str.w r0, [r4, r10, lsl #2]
+
+    add.w r12, r7, #64
+    ldr.w r0, [r12, r10, lsl #2]
+    ldr.w r1, [r8, r10, lsl #2]
+    eor.w r0, r0, r1
+    add.w r12, r4, #64
+    str.w r0, [r12, r10, lsl #2]
+
+    adds r10, r10, #1
+    cmp r10, #16
+    bne 23b
+
+    add.w sp, sp, #256
+    pop.w {r3-r11, pc}
+
+###########################################################################
 #### linear full-product helpers                                         ####
 #### r0: out, r1: a, r2: b                                               ####
 ###########################################################################

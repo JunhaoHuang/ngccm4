@@ -19,53 +19,6 @@ int poly_xor4_radix16(uint32_t *out, const int16_t *in)
     return poly_xor4_radix16_asm(out, in);
 }
 
-void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res)
-{
-    int16_t i, j;
-    int16_t tmp_b[2 * n];
-    int16_t *v;
-    uint16_t mask;
-    const size_t coeff_bytes = (size_t)n * sizeof(int16_t);
-
-    memset(res, 0, n * sizeof(int16_t));
-    memcpy(tmp_b, b, coeff_bytes);
-    memcpy(tmp_b + n, b, coeff_bytes);
-    
-    for(i = 0; i < n; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = tmp_b + n - i;
-        for(j = 0; j < n; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
-    }
-}
-
-/// @brief Multiply two binary polynomials in R2 of degree less than ZEN_SWIFT_N4 using a constant-time cyclic shift-and-XOR method
-/// @param[in] a Base address of first input polynomial coefficient array of length ZEN_SWIFT_N4
-/// @param[in] b Base address of second input polynomial coefficient array of length 2*ZEN_SWIFT_N4, arranged as a duplicated array for cyclic access
-/// @param[out] res Base address of output polynomial coefficient array of length ZEN_SWIFT_N4
-/// @return None
-static void mulf_in_R2_N4(int16_t *a, int16_t *b, int16_t *res)
-{
-    unsigned int i, j;
-    int16_t *v;
-    uint16_t mask;
-
-    memset(res, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-    
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = b + ZEN_SWIFT_N4 - i;
-        for(j = 0; j < ZEN_SWIFT_N4; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
-    }
-}
-
 static uint32_t r2_radix16_word_parity(uint32_t x)
 {
     x &= R2_RADIX16_LANE_MASK;
@@ -232,7 +185,7 @@ static void r2_radix16_xor_shifted_fixed(uint32_t *dst,
     }
 }
 
-void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad)
+void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
 {
     unsigned int l, n;
     uint32_t k[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
@@ -272,15 +225,6 @@ void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad)
     }
 }
 
-void FastInversion(int16_t *f_inv, int16_t *f)
-{
-    uint32_t f_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
-    uint32_t f_inv_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
-
-    r2_radix16_pack(f_rad, f, ZEN_SWIFT_N4);
-    FastInversion_Radix16Packed(f_inv_rad, f_rad);
-    r2_radix16_unpack(f_inv, f_inv_rad, ZEN_SWIFT_N4);
-}
 
 void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {

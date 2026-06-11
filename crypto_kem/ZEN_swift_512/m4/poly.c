@@ -45,28 +45,6 @@ int check_poly_inv_Z2(int16_t *a)
 	return (int)((((acc | (0u - acc)) >> 31) ^ 1u) & 1u);
 }
 
-void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res)
-{
-    int16_t i, j;
-    int16_t tmp_b[2 * n];
-    int16_t *v;
-    uint16_t mask;
-    const size_t coeff_bytes = (size_t)n * sizeof(int16_t);
-
-    memset(res, 0, n * sizeof(int16_t));
-    memcpy(tmp_b, b, coeff_bytes);
-    memcpy(tmp_b + n, b, coeff_bytes);
-    
-    for(i = 0; i < n; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = tmp_b + n - i;
-        for(j = 0; j < n; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
-    }
-}
 
 static uint32_t r2_radix16_word_parity(uint32_t x)
 {
@@ -234,7 +212,7 @@ static void r2_radix16_xor_shifted_fixed(uint32_t *dst,
     }
 }
 
-void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad)
+void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
 {
     unsigned int l, n;
     uint32_t k[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
@@ -272,16 +250,6 @@ void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad)
         r2_radix16_xor_shifted_fixed(f_inv, b, n, 0);
         r2_radix16_xor_shifted_fixed(f_inv, b, n, n);
     }
-}
-
-void FastInversion(int16_t *f_inv, int16_t *f)
-{
-    uint32_t f_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
-    uint32_t f_inv_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
-
-    r2_radix16_pack(f_rad, f, ZEN_SWIFT_N4);
-    FastInversion_Radix16Packed(f_inv_rad, f_rad);
-    r2_radix16_unpack(f_inv, f_inv_rad, ZEN_SWIFT_N4);
 }
 
 void poly_generate_gf(int16_t *a, const uint8_t *seed, uint8_t nonce)

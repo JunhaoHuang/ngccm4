@@ -11,6 +11,7 @@ extern void r2_radix16_mul_64_asm(uint32_t *res, const uint32_t *a, const uint32
 extern void r2_radix16_mul_128_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_256_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_512_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_512x256_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 
 static uint32_t r2_radix16_get_coeff(const uint32_t *a, size_t idx)
 {
@@ -75,6 +76,13 @@ static void r2_radix16_unsupported_length(void)
     for (;;) {
     }
 #endif
+}
+
+void r2_radix16_mul_512x256(uint32_t *res,
+                            const uint32_t *a,
+                            const uint32_t *b)
+{
+    r2_radix16_mul_512x256_asm(res, a, b);
 }
 
 void r2_radix16_mul(uint32_t *res,

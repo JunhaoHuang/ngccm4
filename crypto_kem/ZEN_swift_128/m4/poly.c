@@ -188,7 +188,7 @@ int poly_xor4_radix16(uint32_t *out, const int16_t *in)
     return poly_xor4_radix16_asm(out, in);
 }
 
-void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad)
+void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
 {
     unsigned int l, n;
     uint32_t k[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
@@ -228,15 +228,6 @@ void FastInversion_Radix16Packed(uint32_t *f_inv, const uint32_t *f_rad)
     }
 }
 
-void FastInversion(int16_t *f_inv, int16_t *f)
-{
-    uint32_t f_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
-    uint32_t f_inv_rad[R2_RADIX16_WORDS(ZEN_SWIFT_N4)];
-
-    r2_radix16_pack(f_rad, f, ZEN_SWIFT_N4);
-    FastInversion_Radix16Packed(f_inv_rad, f_rad);
-    r2_radix16_unpack(f_inv, f_inv_rad, ZEN_SWIFT_N4);
-}
 
 void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {
