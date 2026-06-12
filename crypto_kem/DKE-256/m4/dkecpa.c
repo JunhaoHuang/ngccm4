@@ -16,7 +16,7 @@
 #include "auxfunc.h"
 #endif
 
-void DKEX256_Initiate(uint8_t pk[DKE2_PKBYTES],
+void DKE256_Initiate(uint8_t pk[DKE2_PKBYTES],
                       uint8_t sk[DKE2_CPA_SKABYTES],
                       const uint8_t coins[DKE2_SEEDBYTES])
 {
@@ -92,7 +92,7 @@ void DKEX256_Initiate(uint8_t pk[DKE2_PKBYTES],
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-void DKEX256_Response(uint8_t ct[DKE2_CPA_CTBYTES],
+void DKE256_Response(uint8_t ct[DKE2_CPA_CTBYTES],
                       uint8_t ss[DKE2_SSBYTES],
                       const uint8_t pk[DKE2_PKBYTES],
                       const uint8_t coins[DKE2_SEEDBYTES + DKE2_N / 8])
@@ -167,7 +167,7 @@ void DKEX256_Response(uint8_t ct[DKE2_CPA_CTBYTES],
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-void DKEX256_DeriveSecret(uint8_t ss[DKE2_SSBYTES],
+void DKE256_DeriveSecret(uint8_t ss[DKE2_SSBYTES],
                           const uint8_t sk[DKE2_CPA_SKABYTES],
                           const uint8_t ct[DKE2_CPA_CTBYTES])
 {

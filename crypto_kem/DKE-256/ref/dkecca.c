@@ -13,7 +13,7 @@
 void DKEM256_KeyGen(uint8_t pk[DKE2_PKBYTES],
                           uint8_t sk[DKE2_SKBYTES],
                           const uint8_t coins[DKE2_SEEDBYTES + DKE2_SSBYTES]) {
-    DKEX256_Initiate(pk, sk, coins);
+    DKE256_Initiate(pk, sk, coins);
     memcpy(sk + DKE2_CPA_SKABYTES, pk, DKE2_PKBYTES); // sk = (skCPA | pk | rej)
     memcpy(sk + DKE2_CPA_SKABYTES + DKE2_PKBYTES, coins + DKE2_SEEDBYTES, DKE2_SSBYTES);
 }
@@ -38,10 +38,16 @@ void DKEM256_Internal(uint8_t ct[DKE2_CTBYTES],
 #endif
 
     // CPA protocol
-    DKEX256_Response(ct,
+    DKE256_Response(ct,
                        ss,
                        pk,
                        r);
+
+#ifdef USE_KECCAK
+    sha3_256(k, ss, DKE2_SSBYTES);
+#else
+    sm3hash(256, ss, (DKE2_SSBYTES) * 8, k);
+#endif
 
     // In place one time pad
     unsigned int i = 0;
@@ -51,12 +57,6 @@ void DKEM256_Internal(uint8_t ct[DKE2_CTBYTES],
 
     // Emplace the tag
     memcpy(ct + DKE2_CPA_CTBYTES, ss, DKE2_SSBYTES);
-
-#ifdef USE_KECCAK
-    sha3_256(k, ss, DKE2_SSBYTES);
-#else
-    sm3hash(256, ss, (DKE2_SSBYTES) * 8, k);
-#endif
 }
 
 void DKEM256_Decaps(uint8_t ss[DKE2_SSBYTES],
@@ -71,7 +71,7 @@ void DKEM256_Decaps(uint8_t ss[DKE2_SSBYTES],
     // At this stage, coins is yet the tag
 
     // CPA decryption
-    DKEX256_DeriveSecret(ssA, sk, ct);
+    DKE256_DeriveSecret(ssA, sk, ct);
 
     // Undo in place one time pad
     unsigned int i = 0;

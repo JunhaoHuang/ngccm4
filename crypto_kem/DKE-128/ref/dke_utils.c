@@ -6,10 +6,7 @@
 #include "verify.h"
 #include <stdint.h>
 
-// TODO: TEST AND VERIFY CONSTANT TIME
-
 // Derived from poly_frommsg in https://github.com/PQClean/PQClean/blob/master/crypto_kem/ml-kem-512/clean/poly.c
-// TODO: TEST. THIS UTILITY IS PROVISIONAL
 static void DKE1_rand_to_poly(poly *b, const uint8_t coins[DKE1_N/8]) {
     size_t i, j;
     for (i = 0; i < DKE1_N / 8; i++) {
@@ -19,18 +16,17 @@ static void DKE1_rand_to_poly(poly *b, const uint8_t coins[DKE1_N/8]) {
         }
     }
 }
-// TODO: TEST. THIS UTILITY IS PROVISIONAL
+
 void DKE1_signal(uint8_t sig[DKE1_SIGNALBYTES],
                  const poly *k,
                  const uint8_t coins[DKE1_N/8]) {
     poly b;
     DKE1_rand_to_poly(&b, coins);
     DKE1_poly_add(&b, &b, k); // k + b
-    DKE1_poly_reduce(&b);         // TODO: can this step be removed and/or improved?
+    DKE1_poly_reduce(&b);
     DKE1_getsignal4(sig, &b);
 }
 
-// TODO: TEST. THIS UTILITY IS PROVISIONAL
 static void DKE1_apply_signal(poly *k, const uint8_t sig[DKE1_SIGNALBYTES]) {
     poly wL;
     DKE1_poly_fromsignal4(&wL, sig);
@@ -38,9 +34,6 @@ static void DKE1_apply_signal(poly *k, const uint8_t sig[DKE1_SIGNALBYTES]) {
     DKE1_poly_reduce(k);              // maps to {-(q-1)/2,...,(q-1)/2}
 }
 
-
-
-// TODO: TEST. THIS UTILITY IS PROVISIONAL
 static void DKE1_mod2(uint8_t ss[DKE1_SSBYTES],  poly *k) {
     unsigned int i, j;
     uint16_t t;
@@ -54,7 +47,6 @@ static void DKE1_mod2(uint8_t ss[DKE1_SSBYTES],  poly *k) {
     }
 }
 
-// TODO: TEST. THIS UTILITY IS PROVISIONAL
 void DKE1_derive_ss(uint8_t ss[DKE1_SSBYTES],
                     poly *k,
                     const uint8_t sig[DKE1_SIGNALBYTES]) {

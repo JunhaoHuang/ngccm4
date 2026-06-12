@@ -13,7 +13,7 @@
 #include <string.h>
 #include "packing.h"
 
-void DKEX128_Initiate(uint8_t pk[DKE1_PKBYTES],
+void DKE128_Initiate(uint8_t pk[DKE1_PKBYTES],
                           uint8_t sk[DKE1_CPA_SKABYTES],
                           const uint8_t coins[DKE1_SEEDBYTES]) {
 
@@ -79,7 +79,7 @@ void DKEX128_Initiate(uint8_t pk[DKE1_PKBYTES],
 // --------------------------------------------------------------------------------------------------------------
 
 
-void DKEX128_Response(uint8_t ct[DKE1_CPA_CTBYTES],
+void DKE128_Response(uint8_t ct[DKE1_CPA_CTBYTES],
                         uint8_t ss[DKE1_SSBYTES],
                         const uint8_t pk[DKE1_PKBYTES],
                         const uint8_t coins[DKE1_SEEDBYTES + DKE1_N/8]) {
@@ -138,7 +138,7 @@ void DKEX128_Response(uint8_t ct[DKE1_CPA_CTBYTES],
 // --------------------------------------------------------------------------------------------------------------
 
 
-void DKEX128_DeriveSecret(uint8_t ss[DKE1_SSBYTES],
+void DKE128_DeriveSecret(uint8_t ss[DKE1_SSBYTES],
                  const uint8_t sk[DKE1_CPA_SKABYTES],
                  const uint8_t ct[DKE1_CPA_CTBYTES]) {
     // init
@@ -155,7 +155,7 @@ void DKEX128_DeriveSecret(uint8_t ss[DKE1_SSBYTES],
     DKE1_polyvec_basemul_acc_montgomery(&kA, &sA, &pB);
     DKE1_poly_invntt_tomont(&kA);      // Exit NTT domain. At this stage: kA = sA A sB  + noise
     DKE1_poly_scale2(&kA);             // kB =  2 sA A sB  + 2 noise
-    DKE1_poly_reduce(&kA);             // TODO: are we using poly_reduce too many times?
+    DKE1_poly_reduce(&kA);
 
     // derive ss
     DKE1_derive_ss(ss, &kA, sig);

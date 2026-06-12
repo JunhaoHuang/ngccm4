@@ -88,7 +88,6 @@ void DKE3_polyvec_frombytes(polyvec *v, const uint8_t bytes[DKE3_POLYVECBYTES]) 
 }
 
 void DKE3_polyvec_compress11(uint8_t bytes[DKE3_PBCOMPRESSEDBYTES], const polyvec *v) {
-    // TODO: TEST.
     unsigned int i, j, k;
     uint64_t d0;
 
@@ -127,7 +126,6 @@ void DKE3_polyvec_compress11(uint8_t bytes[DKE3_PBCOMPRESSEDBYTES], const polyve
 }
 
 void DKE3_polyvec_decompress11(polyvec *v, const uint8_t bytes[DKE3_PBCOMPRESSEDBYTES]) {
-    // TODO: TEST
     unsigned int i, j, k;
 
     uint16_t t[8];

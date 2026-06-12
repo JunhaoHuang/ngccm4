@@ -14,7 +14,7 @@ void DKEM512_KeyGen(uint8_t pk[DKE3_PKBYTES],
                     uint8_t sk[DKE3_SKBYTES],
                     const uint8_t coins[DKE3_SEEDBYTES + DKE3_SSBYTES])
 {
-    DKEX512_Initiate(pk, sk, coins);
+    DKE512_Initiate(pk, sk, coins);
     memcpy(sk + DKE3_CPA_SKABYTES, pk, DKE3_PKBYTES); // sk = (skCPA | pk | rej)
     memcpy(sk + DKE3_CPA_SKABYTES + DKE3_PKBYTES, coins + DKE3_SEEDBYTES, DKE3_SSBYTES);
 }
@@ -40,10 +40,17 @@ void DKEM512_Internal(uint8_t ct[DKE3_CTBYTES],
 #endif
 
     // CPA protocol
-    DKEX512_Response(ct,
+    DKE512_Response(ct,
                      ss,
                      pk,
                      r);
+
+    // pseudohash only for this parameter set
+#ifdef USE_KECCAK
+    sha3_512(k, ss, DKE3_SSBYTES);
+#else
+    pseudohash(512, ss, (DKE3_SSBYTES) * 8, k);
+#endif
 
     // In place one time pad
     unsigned int i = 0;
@@ -54,13 +61,6 @@ void DKEM512_Internal(uint8_t ct[DKE3_CTBYTES],
 
     // Emplace the tag
     memcpy(ct + DKE3_CPA_CTBYTES, ss, DKE3_SSBYTES);
-
-    // pseudohash only for this parameter set
-#ifdef USE_KECCAK
-    sha3_512(k, ss, DKE3_SSBYTES);
-#else
-    pseudohash(512, ss, (DKE3_SSBYTES) * 8, k);
-#endif
 }
 
 void DKEM512_Decaps(uint8_t ss[DKE3_SSBYTES],
@@ -76,7 +76,7 @@ void DKEM512_Decaps(uint8_t ss[DKE3_SSBYTES],
     // At this stage, coins is yet the tag
 
     // CPA decryption
-    DKEX512_DeriveSecret(ssA, sk, ct);
+    DKE512_DeriveSecret(ssA, sk, ct);
 
     // Undo in place one time pad
     unsigned int i = 0;

@@ -14,7 +14,7 @@
 #include "auxfunc.h"
 #endif
 
-void DKEX256_Initiate(uint8_t pk[DKE2_PKBYTES],
+void DKE256_Initiate(uint8_t pk[DKE2_PKBYTES],
                           uint8_t sk[DKE2_CPA_SKABYTES],
                           const uint8_t coins[DKE2_SEEDBYTES]) {
 
@@ -77,7 +77,7 @@ void DKEX256_Initiate(uint8_t pk[DKE2_PKBYTES],
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-void DKEX256_Response(uint8_t ct[DKE2_CPA_CTBYTES],
+void DKE256_Response(uint8_t ct[DKE2_CPA_CTBYTES],
                         uint8_t ss[DKE2_SSBYTES],
                         const uint8_t pk[DKE2_PKBYTES],
                         const uint8_t coins[DKE2_SEEDBYTES + DKE2_N/8]) {
@@ -137,7 +137,7 @@ void DKEX256_Response(uint8_t ct[DKE2_CPA_CTBYTES],
 // --------------------------------------------------------------------------------------------------------------
 
 
-void DKEX256_DeriveSecret(uint8_t ss[DKE2_SSBYTES],
+void DKE256_DeriveSecret(uint8_t ss[DKE2_SSBYTES],
                  const uint8_t sk[DKE2_CPA_SKABYTES],
                  const uint8_t ct[DKE2_CPA_CTBYTES]) {
     // init
@@ -154,7 +154,7 @@ void DKEX256_DeriveSecret(uint8_t ss[DKE2_SSBYTES],
     DKE2_polyvec_basemul_acc_montgomery(&kA, &sA, &pB);
     DKE2_poly_invntt_tomont(&kA);      // Exit NTT domain. At this stage: kA = (1/2) sA A sB  + noise
     DKE2_poly_scale2(&kA);             // kB =  sA A sB  + 2 noise
-    DKE2_poly_reduce(&kA);             // TODO: are we using poly_reduce too many times?
+    DKE2_poly_reduce(&kA);
 
     // derive ss
     DKE2_derive_ss(ss, &kA, sig);

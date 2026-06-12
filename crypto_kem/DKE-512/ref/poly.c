@@ -63,7 +63,6 @@ void DKE3_poly_tomont(poly *pol){   // -> Montgomery Domain
 // For managing conversion poly <---> bytes ----------------------------
 
 void DKE3_poly_tobytes(uint8_t bytes[DKE3_POLYBYTES], const poly *pol){
-    // TODO: TEST.
     unsigned int i;
     uint16_t t0, t1, t2, t3, t4, t5, t6, t7;
 
@@ -135,7 +134,7 @@ void DKE3_getsignal4(uint8_t bytes[DKE3_SIGNALBYTES], const poly *pol) {
             u += (u >> 15) & DKE3_Q;
             d0 = u << 4;
             d0 += 3840; // (q-1)/2
-            d0 *= 34948; // round(2^(32 - l) / q) TODO: TEST: or 34947?
+            d0 *= 34948; // round(2^(32 - l) / q)
             d0 >>= 28;  // the 4 most significant bits survive
             t[j] = d0 & 0xf; // mask 0...01111
         }

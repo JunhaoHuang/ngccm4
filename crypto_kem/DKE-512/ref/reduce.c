@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include "reduce.h"
 
-// TODO: TEST
 int16_t DKE3_montgomery_reduce(int32_t a) {
     int16_t t;
     t = (int16_t)a * DKE3_QINV;
@@ -10,8 +9,6 @@ int16_t DKE3_montgomery_reduce(int32_t a) {
     return (int16_t)t;
 }
 
-// TODO: TEST
-/// TODO: TEST: overflow?
 int16_t DKE3_barrett_reduce(int16_t a) {
     int16_t t;
     const int16_t v = ((1 << 26) + DKE3_Q / 2) / DKE3_Q;

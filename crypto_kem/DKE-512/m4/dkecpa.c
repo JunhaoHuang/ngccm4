@@ -13,7 +13,7 @@
 #include "auxfunc.h"
 #endif
 
-void DKEX512_Initiate(uint8_t pk[DKE3_PKBYTES],
+void DKE512_Initiate(uint8_t pk[DKE3_PKBYTES],
                       uint8_t sk[DKE3_CPA_SKABYTES],
                       const uint8_t coins[DKE3_SEEDBYTES])
 {
@@ -80,7 +80,7 @@ void DKEX512_Initiate(uint8_t pk[DKE3_PKBYTES],
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-void DKEX512_Response(uint8_t ct[DKE3_CPA_CTBYTES],
+void DKE512_Response(uint8_t ct[DKE3_CPA_CTBYTES],
                       uint8_t ss[DKE3_SSBYTES],
                       const uint8_t pk[DKE3_PKBYTES],
                       const uint8_t coins[DKE3_SEEDBYTES + DKE3_N / 8])
@@ -140,7 +140,7 @@ void DKEX512_Response(uint8_t ct[DKE3_CPA_CTBYTES],
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 
-void DKEX512_DeriveSecret(uint8_t ss[DKE3_SSBYTES],
+void DKE512_DeriveSecret(uint8_t ss[DKE3_SSBYTES],
                           const uint8_t sk[DKE3_CPA_SKABYTES],
                           const uint8_t ct[DKE3_CPA_CTBYTES])
 {
@@ -158,7 +158,7 @@ void DKEX512_DeriveSecret(uint8_t ss[DKE3_SSBYTES],
     DKE3_polyvec_basemul_acc(&kA, &sA, &pB);
     DKE3_poly_invntt(&kA);      // Exit NTT domain. At this stage: kA =  sA A sB  + noise
     DKE3_poly_scale2(&kA);             // kB =  sA A sB  + 2 noise
-    DKE3_poly_reduce(&kA);             // TODO: are we using poly_reduce too many times?
+    DKE3_poly_reduce(&kA);
 
     // derive ss
     DKE3_derive_ss(ss, &kA, sig);

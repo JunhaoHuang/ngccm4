@@ -19,7 +19,7 @@ other purposes.
 // Set "ALGORITHM_INSTANCE" as your algorithm instance name (no more than 64 bytes)
 // Only letters, numbers, '-' or '_' are permitted
 #define ALGORITHM_INSTANCE "DKEM-256"
-
+#define M4
 #ifdef __cplusplus
 extern "C"
 {

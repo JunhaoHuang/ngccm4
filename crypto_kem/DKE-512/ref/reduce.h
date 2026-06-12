@@ -15,7 +15,6 @@ int16_t DKE3_montgomery_reduce(int32_t a);
 /// @brief Performs barret reduction mod q
 /// @param[in] a an integer
 /// @return    a mod q in {-(q-1)/2,...,(q-1)/2}
-/// TODO: TEST: overflow?
 int16_t DKE3_barrett_reduce(int16_t a);
 
 #endif //REDUCE_H

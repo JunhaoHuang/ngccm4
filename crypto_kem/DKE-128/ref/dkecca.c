@@ -14,7 +14,7 @@
 void DKEM128_KeyGen(uint8_t pk[DKE1_PKBYTES],
                           uint8_t sk[DKE1_SKBYTES],
                           const uint8_t coins[DKE1_SEEDBYTES + DKE1_SSBYTES]) {
-    DKEX128_Initiate(pk, sk, coins);
+    DKE128_Initiate(pk, sk, coins);
     memcpy(sk + DKE1_CPA_SKABYTES, pk, DKE1_PKBYTES); // sk = (skCPA | pk | rej)
     memcpy(sk + DKE1_CPA_SKABYTES + DKE1_PKBYTES, coins + DKE1_SEEDBYTES, DKE1_SSBYTES);
 }
@@ -37,10 +37,16 @@ void DKEM128_Internal(uint8_t ct[DKE1_CTBYTES],
     pseudoXOF(16*DKE1_SSBYTES, buffer, DKE1_SEEDBYTES*16 , r);
 #endif
     // CPA protocol
-    DKEX128_Response(ct,
+    DKE128_Response(ct,
                        ss,
                        pk,
                        r);
+
+#ifdef USE_KECCAK
+    sha3_256(k, ss, DKE1_SSBYTES);
+#else
+    sm3hash(256, ss, (DKE1_SSBYTES) * 8, k);
+#endif
 
     // In place one time pad
     unsigned int i = 0;
@@ -50,12 +56,6 @@ void DKEM128_Internal(uint8_t ct[DKE1_CTBYTES],
 
     // Emplace the tag
     memcpy(ct + DKE1_CPA_CTBYTES, ss, DKE1_SSBYTES);
-
-#ifdef USE_KECCAK
-    sha3_256(k, ss, DKE1_SSBYTES);
-#else
-    sm3hash(256, ss, (DKE1_SSBYTES) * 8, k);
-#endif
 }
 
 void DKEM128_Decaps(uint8_t ss[DKE1_SSBYTES],
@@ -70,7 +70,7 @@ void DKEM128_Decaps(uint8_t ss[DKE1_SSBYTES],
     // At this stage, coins is yet the tag
 
     // CPA decryption
-    DKEX128_DeriveSecret(ssA, sk, ct);
+    DKE128_DeriveSecret(ssA, sk, ct);
 
     // Undo in place one time pad
     unsigned int i = 0;

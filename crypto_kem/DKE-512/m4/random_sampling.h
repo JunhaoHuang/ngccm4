@@ -40,11 +40,9 @@ void centered_binomial3(poly *pol, const unsigned char coins[DKE3_CBD_BYTES]);
 
 // As used in the protocol:
 
-// TODO: comment
 void DKE3_cbdA(poly* pol, const unsigned char coins[DKE3_CBD_BYTES]);
 void DKE3_cbdB(poly* pol, const unsigned char coins[DKE3_CBD_BYTES]);
 
-// TODO: comment
 void DKE3_getsecretA(poly* pol, const unsigned char rand[DKE3_SEEDBYTES], const uint8_t nonce);
 void DKE3_geterrorA(poly* pol, const unsigned char rand[DKE3_SEEDBYTES], const uint8_t nonce);
 void DKE3_getsecretB(poly* pol, const unsigned char rand[DKE3_SEEDBYTES], const uint8_t nonce);
