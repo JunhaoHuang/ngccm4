@@ -6,9 +6,15 @@
 #include "sample.h"
 #include "ntt.h"
 #include "poly.h"
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
 #include "drng.h"
+#endif
 
+#ifndef USE_KECCAK
 extern DRNG_ctx drng_algorithm;
+#endif
 
 void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char *seed)
 {
@@ -70,7 +76,11 @@ void pke_keygen(unsigned char *pk, unsigned char *sk)
 {
     uint8_t seed[SEED_LEN_BYTES], nonce;
 
+#ifdef USE_KECCAK
+    randombytes(seed, SEED_LEN_BYTES);
+#else
     get_random_number(&drng_algorithm, seed, SEED_LEN_BYTES*8);
+#endif
     pke_keygen_derand(pk, sk, seed);
 }
 

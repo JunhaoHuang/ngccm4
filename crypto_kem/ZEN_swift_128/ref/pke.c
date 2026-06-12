@@ -6,9 +6,15 @@
 #include "sample.h"
 #include "ntt.h"
 #include "poly.h"
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#else
 #include "drng.h"
+#endif
 
+#ifndef USE_KECCAK
 extern DRNG_ctx drng_algorithm;
+#endif
 
 void pke_keygen_derand(unsigned char *pk, unsigned char *sk, const unsigned char *seed)
 {
@@ -70,7 +76,11 @@ void pke_keygen(unsigned char *pk, unsigned char *sk)
 {
     uint8_t seed[SEED_LEN_BYTES], nonce;
 
+#ifdef USE_KECCAK
+    randombytes(seed, SEED_LEN_BYTES);
+#else
     get_random_number(&drng_algorithm, seed, SEED_LEN_BYTES*8);
+#endif
     pke_keygen_derand(pk, sk, seed);
 }
 
@@ -112,7 +122,7 @@ void pke_enc(unsigned char *pk, unsigned char *m, unsigned char *seed, unsigned 
 void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
 {
     unsigned int i, j, mask1;
-    uint16_t delta, even_wins, smask;
+    unsigned int idx0, idx1;
     int16_t c0, c1, c2, c3;
     int16_t f[ZEN_SWIFT_N], f2[ZEN_SWIFT_N2] = {0}, mp0[ZEN_SWIFT_N2], mp1[ZEN_SWIFT_N2];
     int16_t t0[ZEN_SWIFT_N], t1[ZEN_SWIFT_N], t2[ZEN_SWIFT_N];
@@ -148,15 +158,19 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
     memset(f2 + ZEN_SWIFT_N4, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
     mul_in_R2_n(t1, f2, ZEN_SWIFT_N2, mp0);
 
-    //SimpleDecoding: build S=\delta*x^{j*\times n/4}, then materialize the low half of S*f_inv in R_{2L,2}.
-    memset(t1, 0, ZEN_SWIFT_N2 * sizeof(int16_t));
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+    // SimpleDecoding
+    for (i = 0; i < ZEN_SWIFT_N4; i++)
+    {
+        t1[i] = (t0[i] & 1) ^ (t0[i + ZEN_SWIFT_N4] & 1) ^ (t0[i + 2 * ZEN_SWIFT_N4] & 1) ^ (t0[i + 3 * ZEN_SWIFT_N4] & 1);
+    }
+
+    memset(t2, 0, ZEN_SWIFT_N2 * sizeof(int16_t));
+    for (i = 0; i < ZEN_SWIFT_N4; i++)
     {
         c0 = t0[i];
         c1 = t0[i + ZEN_SWIFT_N4];
-        c2 = t0[i + 2*ZEN_SWIFT_N4];
-        c3 = t0[i + 3*ZEN_SWIFT_N4];
-        delta = (uint16_t)((c0 & 1) ^ (c1 & 1) ^ (c2 & 1) ^ (c3 & 1));
+        c2 = t0[i + 2 * ZEN_SWIFT_N4];
+        c3 = t0[i + 3 * ZEN_SWIFT_N4];
 
         mask1 = (c0 >= 0);
         c0 = ((ZEN_SWIFT_Q2 - c0) & (-mask1)) | ((ZEN_SWIFT_Q2 + c0) & (~(-mask1)));
@@ -172,37 +186,20 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
         mask1 = (c1 <= c3);
         c1 = (c1 & (-mask1)) | (c3 & (~(-mask1)));
 
-        even_wins = (uint16_t)(c0 <= c1);
-        t1[0] ^= (int16_t)(delta ^ 1u);
-        t1[i] ^= (int16_t)(delta & even_wins);
-        t1[i + ZEN_SWIFT_N4] ^= (int16_t)(delta & (even_wins ^ 1u));
-    }
-
-    memset(t2, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        smask = (uint16_t)(0u - (uint16_t)(t1[i] & 1));
-        for(j = 0; j < ZEN_SWIFT_N4 - i; j++)
+        mask1 = 0u - (unsigned int)(uint16_t)t1[i];
+        idx0 = i & mask1;
+        idx1 = (i + ZEN_SWIFT_N4) & mask1;
+        mask1 = (c0 <= c1);
+        for (j = 0; j < ZEN_SWIFT_N2; j++)
         {
-            t2[i + j] ^= f2[j] & smask;
+            t2[j] ^= (f2[(j + ZEN_SWIFT_N2 - idx0) & (ZEN_SWIFT_N2 - 1)] & (-mask1)) | (f2[(j + ZEN_SWIFT_N2 - idx1) & (ZEN_SWIFT_N2 - 1)] & (~(-mask1)));
         }
     }
 
-    for(i = ZEN_SWIFT_N4 + 1; i < ZEN_SWIFT_N2; i++)
-    {
-        smask = (uint16_t)(0u - (uint16_t)(t1[i] & 1));
-        for(j = ZEN_SWIFT_N2 - i; j < ZEN_SWIFT_N4; j++)
-        {
-            t2[i + j - ZEN_SWIFT_N2] ^= f2[j] & smask;
-        }
-    }
-
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+    for (i = 0; i < ZEN_SWIFT_N4; i++)
     {
         mp1[i] = mp0[i] ^ t2[i];
     }
 
     poly_bit2byte_pack(m, mp1, ZEN_SWIFT_N4);
-    
 }

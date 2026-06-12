@@ -10,7 +10,14 @@ other purposes.
 */
 
 #include "KEM_AlgorithmInstance.h"
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#include "fips202.h"
+#else
 #include "drng.h"
+// DRNG_ctx for generating pseudorandom numbers within the KEM scheme
+extern DRNG_ctx drng_algorithm;
+#endif
 #include "params.h"
 
 #include <string.h>
@@ -19,8 +26,6 @@ other purposes.
 
 #include <stdio.h>
 
-// DRNG_ctx for generating pseudorandom numbers within the KEM scheme
-extern DRNG_ctx drng_algorithm;
 
 // The following should be used to get pseudorandom numbers
 // get_random_number(&drng_algorithm, random_number, random_number_len_bits);
@@ -57,9 +62,13 @@ int kem_keygen_derand(
 	{
 		sk[i+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES] = pk[i];
 	}
+#ifdef USE_KECCAK
+	sha3_512(sk + ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES + ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES, pk, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
+	randombytes(sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES, ZEN_SWIFT_SHAREDKEY_LEN_BYTES);
+#else
 	pseudohash(ZEN_SWIFT_SYM_LEN_BYTES*8, pk, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES*8, sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
 	get_random_number(&drng_algorithm, sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES, ZEN_SWIFT_SHAREDKEY_LEN_BYTES*8);
-	
+#endif
 	return 0;
 }
 
@@ -74,9 +83,13 @@ int kem_keygen(
 	{
 		sk[i+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES] = pk[i];
 	}
+#ifdef USE_KECCAK
+	sha3_512(sk + ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES + ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES, pk, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
+	randombytes(sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES, ZEN_SWIFT_SHAREDKEY_LEN_BYTES);
+#else
 	pseudohash(ZEN_SWIFT_SYM_LEN_BYTES*8, pk, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES*8, sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
 	get_random_number(&drng_algorithm, sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES, ZEN_SWIFT_SHAREDKEY_LEN_BYTES*8);
-	
+#endif
 	return 0;
 }
 
@@ -87,13 +100,18 @@ int kem_enc(
 {
 	uint8_t buf[ZEN_SWIFT_INDCPA_MSG_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES];
 	uint8_t kr[2*ZEN_SWIFT_SYM_LEN_BYTES];
-
+#ifdef USE_KECCAK
+	randombytes(buf, ZEN_SWIFT_INDCPA_MSG_LEN_BYTES);
+	sha3_512(buf + ZEN_SWIFT_INDCPA_MSG_LEN_BYTES, pk, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
+	shake256(kr, 2 * ZEN_SWIFT_SYM_LEN_BYTES, buf, (ZEN_SWIFT_INDCPA_MSG_LEN_BYTES + ZEN_SWIFT_SYM_LEN_BYTES));
+#else
 	//m
 	get_random_number(&drng_algorithm, buf, ZEN_SWIFT_INDCPA_MSG_LEN_BYTES*8);
 	//hash(pk)
 	pseudohash(ZEN_SWIFT_SYM_LEN_BYTES*8, pk, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES*8, buf+ZEN_SWIFT_INDCPA_MSG_LEN_BYTES);
 	//hash(m||hash(pk))
 	pseudohash(2*ZEN_SWIFT_SYM_LEN_BYTES*8, buf, (ZEN_SWIFT_INDCPA_MSG_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES)*8, kr);
+#endif
 	pke_enc(pk, buf, kr+ZEN_SWIFT_SYM_LEN_BYTES, ct);
 	memcpy(ss, kr, ZEN_SWIFT_SYM_LEN_BYTES);
 
@@ -115,12 +133,18 @@ int kem_dec(
 
 	pke_dec(sk, ct, buf);
 	memcpy(buf+ZEN_SWIFT_INDCPA_MSG_LEN_BYTES, sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES, ZEN_SWIFT_SYM_LEN_BYTES);
+#ifdef USE_KECCAK
+	shake256(kr, 2 * ZEN_SWIFT_SYM_LEN_BYTES, buf, (ZEN_SWIFT_INDCPA_MSG_LEN_BYTES + ZEN_SWIFT_SYM_LEN_BYTES));
+#else
 	pseudohash(2*ZEN_SWIFT_SYM_LEN_BYTES*8, buf, (ZEN_SWIFT_INDCPA_MSG_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES)*8, kr);
-
+#endif
 	memcpy(zc, sk+ZEN_SWIFT_INDCPA_SECREKEY_LEN_BYTES+ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SWIFT_SYM_LEN_BYTES, ZEN_SWIFT_SHAREDKEY_LEN_BYTES);
 	memcpy(zc+ZEN_SWIFT_SHAREDKEY_LEN_BYTES, ct, ZEN_SWIFT_CIPHERTEXT_LEN_BYTES);
-
+#ifdef USE_KECCAK
+	shake256(ssp, ZEN_SWIFT_SHAREDKEY_LEN_BYTES, zc, (ZEN_SWIFT_SHAREDKEY_LEN_BYTES+ZEN_SWIFT_CIPHERTEXT_LEN_BYTES));
+#else
 	pseudoXOF(ZEN_SWIFT_SYM_LEN_BYTES*8, zc, (ZEN_SWIFT_SHAREDKEY_LEN_BYTES+ZEN_SWIFT_CIPHERTEXT_LEN_BYTES)*8, ssp);
+#endif
 
 	pke_enc(pk, buf, kr+ZEN_SWIFT_SYM_LEN_BYTES, ctp);
 

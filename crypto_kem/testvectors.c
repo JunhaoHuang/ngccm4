@@ -8,7 +8,6 @@
 #ifdef USE_KECCAK
 #include "randombytes.h"
 #else
-#include "drng.h"
 DRNG_ctx drng_algorithm;
 #endif
 #define SEED_LEN_BYTES 64
@@ -46,8 +45,10 @@ int main(void) {
     unsigned char *ss_b = malloc(ss_len);
     unsigned char seed[SEED_LEN_BYTES];
     int i;
+#ifndef USE_KECCAK
     // DRNG_ctx for generating seed
     DRNG_ctx drng_seed;
+#endif
 
     hal_setup(CLOCK_FAST);
     hal_send_str("==========================");
@@ -68,9 +69,13 @@ int main(void) {
     }
 
     for (i = 0; i < NGCC_ITERATIONS; i++) {
+#ifdef USE_KECCAK
+        randombytes(seed, SEED_LEN_BYTES);
+#else
         get_random_number(&drng_seed, seed, SEED_LEN_BYTES*8);
-        printbytes(seed, SEED_LEN_BYTES);
         init_random_number(&drng_algorithm, seed, SEED_LEN_BYTES);
+#endif
+        printbytes(seed, SEED_LEN_BYTES);
 
         kem_keygen(pk, &ignored_len, sk, &ignored_len);
         kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len);
