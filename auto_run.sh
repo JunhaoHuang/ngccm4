@@ -2,13 +2,14 @@
 # usage: auto_run.sh {family} {scheme} speed/test/testvectors/stack {impl}
 
 path=${1}_${2}_${4}
+iterations=${NGCC_ITERATIONS:-100}
 
 logf=Out/${3}_${path}.txt
 echo ${path}
 # make clean
 rm -rf bin/
 rm -rf elf/
-make ${path}_${3} PLATFORM=nucleo-l4r5zi USE_SM3_ASM=1 USE_KECCAK=1 NGCC_ITERATIONS=100 -j1 
+make ${path}_${3} PLATFORM=nucleo-l4r5zi USE_SM3_ASM=1 USE_KECCAK=0 NGCC_ITERATIONS=${iterations} -j1 
 echo === $logf ===
 openocd -f st_nucleo_l4r5.cfg -c "program elf/${path}_${3}.elf verify reset exit"
 python3 hostside/host_unidirectional.py > $logf & py_pid=$!

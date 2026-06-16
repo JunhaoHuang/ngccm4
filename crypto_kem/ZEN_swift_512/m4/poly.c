@@ -311,49 +311,58 @@ void poly_byte2bit_unpack(int16_t *a, const uint8_t *pa, const unsigned int n)
 
 void poly_secretkey_pack(uint8_t *ss, const int16_t *a)
 {
-    unsigned int i;
-    uint16_t t0, t1, t2, t3;
+    unsigned int i, j, k;
 
-    for(i = 0; i < ZEN_SWIFT_N / 4; i++)
+    for (i = 0; i < ZEN_SWIFT_N; i += 32)
     {
-        t0 = ((uint16_t)a[4*i + 0]) & 0x03FF;
-        t1 = ((uint16_t)a[4*i + 1]) & 0x03FF;
-        t2 = ((uint16_t)a[4*i + 2]) & 0x03FF;
-        t3 = ((uint16_t)a[4*i + 3]) & 0x03FF;
+        const int16_t *src = a + i;
+        uint8_t *dst = ss + (i / 32) * 40;
 
-        ss[5*i + 0] = (uint8_t)( t0        & 0xFF);
-        ss[5*i + 1] = (uint8_t)((t0 >> 8)  | (t1 << 2));
-        ss[5*i + 2] = (uint8_t)((t1 >> 6)  | (t2 << 4));
-        ss[5*i + 3] = (uint8_t)((t2 >> 4)  | (t3 << 6));
-        ss[5*i + 4] = (uint8_t)( t3 >> 2);
+        for (k = 0; k < 10; k++)
+        {
+            uint32_t w = 0;
+
+            for (j = 0; j < 32; j++)
+            {
+                w |= (uint32_t)((((uint16_t)src[j] >> k) & 1u) << j);
+            }
+
+            dst[4 * k + 0] = (uint8_t)(w);
+            dst[4 * k + 1] = (uint8_t)(w >> 8);
+            dst[4 * k + 2] = (uint8_t)(w >> 16);
+            dst[4 * k + 3] = (uint8_t)(w >> 24);
+        }
     }
 }
 
 void poly_secretkey_unpack(int16_t *a, const uint8_t *ss)
 {
-    unsigned int i;
+    unsigned int i, j, k;
 
-    for(i = 0; i < ZEN_SWIFT_N / 4; i++)
+    for (i = 0; i < ZEN_SWIFT_N; i += 32)
     {
-        a[4*i + 0] = (int16_t)(
-              ((uint16_t)ss[5*i + 0] >> 0)
-            | ((uint16_t)ss[5*i + 1] << 8)
-        ) & 0x03FF;
+        int16_t *dst = a + i;
+        const uint8_t *src = ss + (i / 32) * 40;
 
-        a[4*i + 1] = (int16_t)(
-              ((uint16_t)ss[5*i + 1] >> 2)
-            | ((uint16_t)ss[5*i + 2] << 6)
-        ) & 0x03FF;
+        for (j = 0; j < 32; j++)
+        {
+            dst[j] = 0;
+        }
 
-        a[4*i + 2] = (int16_t)(
-              ((uint16_t)ss[5*i + 2] >> 4)
-            | ((uint16_t)ss[5*i + 3] << 4)
-        ) & 0x03FF;
+        for (k = 0; k < 10; k++)
+        {
+            uint32_t w;
 
-        a[4*i + 3] = (int16_t)(
-              ((uint16_t)ss[5*i + 3] >> 6)
-            | ((uint16_t)ss[5*i + 4] << 2)
-        ) & 0x03FF;
+            w = (uint32_t)src[4 * k + 0];
+            w |= (uint32_t)src[4 * k + 1] << 8;
+            w |= (uint32_t)src[4 * k + 2] << 16;
+            w |= (uint32_t)src[4 * k + 3] << 24;
+
+            for (j = 0; j < 32; j++)
+            {
+                dst[j] |= (int16_t)(((w >> j) & 1u) << k);
+            }
+        }
     }
 }
 

@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences  
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-256 instance.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -79,7 +85,7 @@ void pke_keygen(unsigned char *pk, unsigned char *sk)
 #ifdef USE_KECCAK
     randombytes(seed, SEED_LEN_BYTES);
 #else
-    get_random_number(&drng_algorithm, seed, SEED_LEN_BYTES*8);
+    get_random_number(&drng_algorithm, seed, SEED_LEN_BYTES * 8);
 #endif
     pke_keygen_derand(pk, sk, seed);
 
@@ -157,7 +163,7 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
 
     // m_prim = af2 mod <2, x^(n/2)+1>
     memset(f2 + ZEN_SWIFT_N4, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-    mul_in_R2_n(t1, f2, ZEN_SWIFT_N2, mp0);
+    mul_in_R2_512(t1, f2, mp0);
 
     //SimpleDecoding
     for(i = 0; i < ZEN_SWIFT_N4; i++)

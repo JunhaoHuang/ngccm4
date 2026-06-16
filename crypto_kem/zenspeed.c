@@ -163,12 +163,14 @@ static __attribute__((noinline)) unsigned int call_check_poly_inv_Z2(int16_t *a)
 #if ZENSPEED_HAVE_MUL_IN_R2_N
 static __attribute__((noinline)) void call_mul_in_R2_n_N4(void)
 {
-    mul_in_R2_n(r2_a, r2_b, ZEN_SWIFT_N4, r2_out);
+    // mul_in_R2_n(r2_a, r2_b, ZEN_SWIFT_N4, r2_out);
+    mul_in_R2_512(r2_a, r2_b, r2_out);
 }
 
 static __attribute__((noinline)) void call_mul_in_R2_n_N2(void)
 {
-    mul_in_R2_n(r2_a, r2_b, ZEN_SWIFT_N2, r2_out);
+    // mul_in_R2_n(r2_a, r2_b, ZEN_SWIFT_N2, r2_out);
+    mul_in_R2_1024(r2_a, r2_b, r2_out);
 }
 #endif
 
@@ -185,6 +187,11 @@ static __attribute__((noinline)) void call_fastinversion(void)
 static __attribute__((noinline)) void call_poly_xor4_radix16(void)
 {
     checksum_sink ^= (uint32_t)poly_xor4_radix16(rad_out, in_a);
+}
+
+static __attribute__((noinline)) void call_r2_radix16_mul_n(void)
+{
+    r2_radix16_mul(rad_out, rad_a, rad_b, R2_RADIX16_WORDS(64));
 }
 
 static __attribute__((noinline)) void call_r2_radix16_mul_N4(void)
@@ -417,6 +424,8 @@ int main(void)
 #else
     send_cycles("poly_xor4_radix16 cycles:",
                 time_void_radix(call_poly_xor4_radix16, rad_out, R2_RADIX16_WORDS(ZEN_SWIFT_N4)));
+    send_cycles("mul_in_R2_n 64 cycles:",
+                time_void_radix(call_r2_radix16_mul_n, rad_out, R2_RADIX16_WORDS(64)));
     send_cycles("mul_in_R2_n_N4 cycles:",
                 time_void_radix(call_r2_radix16_mul_N4, rad_out, R2_RADIX16_WORDS(ZEN_SWIFT_N4)));
     send_cycles("mul_in_R2_n_N2 cycles:",

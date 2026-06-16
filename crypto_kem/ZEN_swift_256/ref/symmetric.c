@@ -18,6 +18,6 @@ void zen_swift_pseudoXOF(unsigned long long output_len_bits, const unsigned char
 #ifdef USE_KECCAK
     shake256(output, (size_t)((output_len_bits + 7) / 8), extseed, msg_len_bytes + 1);
 #else
-    pseudoXOF(output_len_bits, extseed, (msg_len_bits/8+1)*8, output);
+    pseudoXOF(output_len_bits, extseed, (msg_len_bits / 8 + 1) * 8, output);
 #endif
 }

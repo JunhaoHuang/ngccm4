@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences  
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-128 instance.
+*/
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -35,128 +41,468 @@ int check_poly_inv_Z2(int16_t *a)
 	return (int)((((acc | (0u - acc)) >> 31) ^ 1u) & 1u);
 }
 
-void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res)
-{
-    int16_t i, j;
-    int16_t tmp_b[2 * n];
-    int16_t *v;
-    uint16_t mask;
-    const size_t coeff_bytes = (size_t)n * sizeof(int16_t);
+#define DEFINE_MUL_IN_R2_SMALL(N, MASKN)                              \
+void mul_in_R2_##N(int16_t *a, int16_t *b, int16_t *res)               \
+{                                                                      \
+    unsigned int i;                                                    \
+    uint64_t B;                                                        \
+    uint64_t R;                                                        \
+    uint64_t mask;                                                     \
+    uint64_t wrap;                                                     \
+                                                                       \
+    B = 0;                                                             \
+    R = 0;                                                             \
+                                                                       \
+    for (i = 0; i < (N); i++) {                                        \
+        B |= ((uint64_t)((uint16_t)b[i] & 1u)) << i;                   \
+    }                                                                  \
+                                                                       \
+    B &= (MASKN);                                                      \
+                                                                       \
+    for (i = 0; i < (N); i++) {                                        \
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i] & 1u));               \
+        R ^= B & mask;                                                 \
+                                                                       \
+        wrap = (B >> ((N) - 1)) & 1ULL;                                \
+        B = ((B << 1) | wrap) & (MASKN);                               \
+    }                                                                  \
+                                                                       \
+    for (i = 0; i < (N); i++) {                                        \
+        res[i] = (int16_t)((R >> i) & 1ULL);                           \
+    }                                                                  \
+}
+DEFINE_MUL_IN_R2_SMALL(2,  0x0000000000000003ULL)
+DEFINE_MUL_IN_R2_SMALL(4,  0x000000000000000FULL)
+DEFINE_MUL_IN_R2_SMALL(8,  0x00000000000000FFULL)
+DEFINE_MUL_IN_R2_SMALL(16, 0x000000000000FFFFULL)
+DEFINE_MUL_IN_R2_SMALL(32, 0x00000000FFFFFFFFULL)
+DEFINE_MUL_IN_R2_SMALL(64, UINT64_MAX)
 
-    memset(res, 0, n * sizeof(int16_t));
-    memcpy(tmp_b, b, coeff_bytes);
-    memcpy(tmp_b + n, b, coeff_bytes);
-    
-    for(i = 0; i < n; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = tmp_b + n - i;
-        for(j = 0; j < n; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
+void mul_in_R2_128(int16_t *a, int16_t *b, int16_t *res)
+{
+    unsigned int i;
+    uint64_t b0, b1;
+    uint64_t r0, r1;
+    uint64_t u0, u1;
+    uint64_t mask;
+    uint64_t wrap;
+
+    b0 = b1 = 0;
+    r0 = r1 = 0;
+
+    for (i = 0; i < 64; i++) {
+        b0 |= ((uint64_t)((uint16_t)b[i] & 1u)) << i;
+        b1 |= ((uint64_t)((uint16_t)b[i + 64] & 1u)) << i;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+
+        wrap = b1 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i + 64] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+
+        wrap = b1 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+    }
+
+    for (i = 0; i < 64; i++) {
+        res[i] = (int16_t)((r0 >> i) & 1ULL);
+        res[i + 64] = (int16_t)((r1 >> i) & 1ULL);
     }
 }
 
-
-/// @brief Multiply two binary polynomials in R2 of degree less than ZEN_SWIFT_N4 using a constant-time cyclic shift-and-XOR method
-/// @param[in] a Base address of first input polynomial coefficient array of length ZEN_SWIFT_N4
-/// @param[in] b Base address of second input polynomial coefficient array of length 2*ZEN_SWIFT_N4, arranged as a duplicated array for cyclic access
-/// @param[out] res Base address of output polynomial coefficient array of length ZEN_SWIFT_N4
-/// @return None
-static void mulf_in_R2_N4(int16_t *a, int16_t *b, int16_t *res)
+void mul_in_R2_256(int16_t *a, int16_t *b, int16_t *res)
 {
-    unsigned int i, j;
-    int16_t *v;
-    uint16_t mask;
+    unsigned int i;
+    uint64_t b0, b1, b2, b3;
+    uint64_t r0, r1, r2, r3;
+    uint64_t u0, u1, u2, u3;
+    uint64_t mask;
+    uint64_t wrap;
 
-    memset(res, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
-    
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
-    {
-        mask = (uint16_t)(0u - (uint16_t)(a[i] & 1));
-        v = b + ZEN_SWIFT_N4 - i;
-        for(j = 0; j < ZEN_SWIFT_N4; j++)
-        {
-            res[j] ^= (v[j] & mask);
-        }
+    b0 = b1 = b2 = b3 = 0;
+    r0 = r1 = r2 = r3 = 0;
+
+    for (i = 0; i < 64; i++) {
+        b0 |= ((uint64_t)((uint16_t)b[i] & 1u)) << i;
+        b1 |= ((uint64_t)((uint16_t)b[i + 64] & 1u)) << i;
+        b2 |= ((uint64_t)((uint16_t)b[i + 128] & 1u)) << i;
+        b3 |= ((uint64_t)((uint16_t)b[i + 192] & 1u)) << i;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+        r2 ^= b2 & mask;
+        r3 ^= b3 & mask;
+
+        wrap = b3 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+        u2 = (b2 << 1) | (b1 >> 63);
+        u3 = (b3 << 1) | (b2 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+        b2 = u2;
+        b3 = u3;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i + 64] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+        r2 ^= b2 & mask;
+        r3 ^= b3 & mask;
+
+        wrap = b3 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+        u2 = (b2 << 1) | (b1 >> 63);
+        u3 = (b3 << 1) | (b2 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+        b2 = u2;
+        b3 = u3;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i + 128] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+        r2 ^= b2 & mask;
+        r3 ^= b3 & mask;
+
+        wrap = b3 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+        u2 = (b2 << 1) | (b1 >> 63);
+        u3 = (b3 << 1) | (b2 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+        b2 = u2;
+        b3 = u3;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i + 192] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+        r2 ^= b2 & mask;
+        r3 ^= b3 & mask;
+
+        wrap = b3 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+        u2 = (b2 << 1) | (b1 >> 63);
+        u3 = (b3 << 1) | (b2 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+        b2 = u2;
+        b3 = u3;
+    }
+
+    for (i = 0; i < 64; i++) {
+        res[i] = (int16_t)((r0 >> i) & 1ULL);
+        res[i + 64] = (int16_t)((r1 >> i) & 1ULL);
+        res[i + 128] = (int16_t)((r2 >> i) & 1ULL);
+        res[i + 192] = (int16_t)((r3 >> i) & 1ULL);
     }
 }
 
 void FastInversion(int16_t *f_inv, int16_t *f)
 {
-    unsigned int l, i, j, n;
-    int16_t k[ZEN_SWIFT_N4], b[ZEN_SWIFT_N4] = {0}, tmp_f[2 * ZEN_SWIFT_N4], tmp[ZEN_SWIFT_N4];
+    unsigned int i, j;
+    int16_t k[ZEN_SWIFT_N4];
+    int16_t b[ZEN_SWIFT_N4] = {0};
+    int16_t tmp_f[2 * ZEN_SWIFT_N4];
+    int16_t tmp[ZEN_SWIFT_N4];
     const size_t coeff_bytes = ZEN_SWIFT_N4 * sizeof(int16_t);
 
     memcpy(tmp_f, f, coeff_bytes);
     memcpy(tmp_f + ZEN_SWIFT_N4, f, coeff_bytes);
 
     k[0] = f[0];
-    for(i = 1; i < ZEN_SWIFT_N4; i++)
+    for (i = 1; i < ZEN_SWIFT_N4; i++) 
     {
         k[i] = f[i] ^ k[i - 1];
     }
 
-    //level 0
     memset(f_inv, 0, ZEN_SWIFT_N4 * sizeof(int16_t));
     f_inv[0] = 1;
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+
+    b[0] = 0;
+    for (i = 0; i < ZEN_SWIFT_N4; i++) 
     {
-        b[0] ^= k[i];//finv=1;b=k mod <x+1,2>;
+        b[0] ^= k[i];
     }
 
-    for(i = 0; i < ZEN_SWIFT_N4; i++)
+    for (i = 0; i < ZEN_SWIFT_N4; i++) 
     {
-        k[i] ^= (b[0] * f[i]);//k=k+f*k*finv mod <x^n4+1,2>;
+        k[i] ^= (b[0] * f[i]);
     }
-    
-    for(i = 1; i < ZEN_SWIFT_N4; i++)
+
+    for (i = 1; i < ZEN_SWIFT_N4; i++) 
     {
-        k[i] = k[i] ^ k[i-1];
+        k[i] = k[i] ^ k[i - 1];
     }
+
     f_inv[0] = !b[0];
     f_inv[1] = b[0];
 
-    //level 1 - l-1
-    n = 1;
-    for(l = 1; l < ZEN_SWIFT_N4_LOG2; l++)
+    /*
+     * Level n = 2
+     */
+    memset(tmp, 0, 2 * sizeof(int16_t));
+    for (i = 0; i < 2; i++) 
     {
-        n = 2 * n;
-        memset(tmp, 0, n * sizeof(int16_t));
-        for(i = 0; i < n; i++)
+        for (j = i; j < ZEN_SWIFT_N4; j += 2) 
         {
-            for(j = i; j < ZEN_SWIFT_N4; j += n)
-            {
-                tmp[i] ^= k[j];//tmp[0-n+1]=k mod <x^n+1,2>;
-            }
+            tmp[i] ^= k[j];
         }
-        mul_in_R2_n(f_inv, tmp, n, b);//b=k*finv mod <x^n+1,2>;
+    }
 
-        mulf_in_R2_N4(b, tmp_f, tmp);//tmp=b*finv mod <x^n4+1,2>;
+    mul_in_R2_2(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
 
-        for(j = 0; j < ZEN_SWIFT_N4; j++)
-        {
-            k[j] = k[j] ^ tmp[j];//k=k+f*k*finv mod <x^n4+1,2>;
-        }
+    for (j = 0; j < ZEN_SWIFT_N4; j++) 
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
 
-        for(i = n; i < ZEN_SWIFT_N4; i += n)
+    for (i = 2; i < ZEN_SWIFT_N4; i += 2) 
+    {
+        for (j = i; j < i + 2; j++) 
         {
-            for(j = i; j < i + n; j++)
-            {
-                k[j] = k[j] ^ k[j - n];//k/x^n+1
-            }
+            k[j] = k[j] ^ k[j - 2];
         }
+    }
 
-        for(i = 0; i < n; i++)
+    for (i = 0; i < 2; i++) 
+    {
+        tmp[i] = tmp[i + 2] = b[i];
+    }
+
+    for (i = 0; i < 4; i++) 
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 4
+     */
+    memset(tmp, 0, 4 * sizeof(int16_t));
+    for (i = 0; i < 4; i++) 
+    {
+        for (j = i; j < ZEN_SWIFT_N4; j += 4) 
         {
-            tmp[i] = tmp[i + n] = b[i];
+            tmp[i] ^= k[j];
         }
-        for(i = 0; i < 2 * n; i++)
+    }
+
+    mul_in_R2_4(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_SWIFT_N4; j++) 
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 4; i < ZEN_SWIFT_N4; i += 4) 
+    {
+        for (j = i; j < i + 4; j++) 
         {
-            f_inv[i] ^= tmp[i];
+            k[j] = k[j] ^ k[j - 4];
         }
-    }    
+    }
+
+    for (i = 0; i < 4; i++) 
+    {
+        tmp[i] = tmp[i + 4] = b[i];
+    }
+
+    for (i = 0; i < 8; i++) 
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 8
+     */
+    memset(tmp, 0, 8 * sizeof(int16_t));
+    for (i = 0; i < 8; i++) 
+    {
+        for (j = i; j < ZEN_SWIFT_N4; j += 8) 
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_8(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_SWIFT_N4; j++) 
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 8; i < ZEN_SWIFT_N4; i += 8) 
+    {
+        for (j = i; j < i + 8; j++) 
+        {
+            k[j] = k[j] ^ k[j - 8];
+        }
+    }
+
+    for (i = 0; i < 8; i++) 
+    {
+        tmp[i] = tmp[i + 8] = b[i];
+    }
+
+    for (i = 0; i < 16; i++) 
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 16
+     */
+    memset(tmp, 0, 16 * sizeof(int16_t));
+    for (i = 0; i < 16; i++) 
+    {
+        for (j = i; j < ZEN_SWIFT_N4; j += 16) 
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_16(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_SWIFT_N4; j++) 
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 16; i < ZEN_SWIFT_N4; i += 16) 
+    {
+        for (j = i; j < i + 16; j++) 
+        {
+            k[j] = k[j] ^ k[j - 16];
+        }
+    }
+
+    for (i = 0; i < 16; i++) 
+    {
+        tmp[i] = tmp[i + 16] = b[i];
+    }
+
+    for (i = 0; i < 32; i++) 
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 32
+     */
+    memset(tmp, 0, 32 * sizeof(int16_t));
+    for (i = 0; i < 32; i++) 
+    {
+        for (j = i; j < ZEN_SWIFT_N4; j += 32) 
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_32(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_SWIFT_N4; j++) 
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 32; i < ZEN_SWIFT_N4; i += 32) 
+    {
+        for (j = i; j < i + 32; j++) 
+        {
+            k[j] = k[j] ^ k[j - 32];
+        }
+    }
+
+    for (i = 0; i < 32; i++) 
+    {
+        tmp[i] = tmp[i + 32] = b[i];
+    }
+
+    for (i = 0; i < 64; i++) 
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 64
+     */
+    memset(tmp, 0, 64 * sizeof(int16_t));
+    for (i = 0; i < 64; i++) 
+    {
+        for (j = i; j < ZEN_SWIFT_N4; j += 64) 
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_64(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_SWIFT_N4; j++) 
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 64; i < ZEN_SWIFT_N4; i += 64) 
+    {
+        for (j = i; j < i + 64; j++) 
+        {
+            k[j] = k[j] ^ k[j - 64];
+        }
+    }
+
+    for (i = 0; i < 64; i++) 
+    {
+        tmp[i] = tmp[i + 64] = b[i];
+    }
+
+    for (i = 0; i < 128; i++) 
+    {
+        f_inv[i] ^= tmp[i];
+    }
 }
 
 void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
@@ -205,23 +551,23 @@ void poly_generate_e(int16_t *a, const uint8_t *seed, uint8_t nonce)
     cbd2(a, buf);
 }
 
-
-
 void poly_bit2byte_pack(uint8_t *pa, const int16_t *a, const unsigned int n)
 {
     unsigned int i;
     const int16_t *src = a;
-    for(i = 0; i < n/8; i++)
+
+    for(i = 0; i < n / 8; i++)
     {
         pa[i] = (uint8_t)(
-              (src[0] & 1)
-            | ((src[1] & 1) << 1)
-            | ((src[2] & 1) << 2)
-            | ((src[3] & 1) << 3)
-            | ((src[4] & 1) << 4)
-            | ((src[5] & 1) << 5)
-            | ((src[6] & 1) << 6)
-            | ((src[7] & 1) << 7));
+              ((uint16_t)src[0] & 1u)
+            | (((uint16_t)src[1] & 1u) << 1)
+            | (((uint16_t)src[2] & 1u) << 2)
+            | (((uint16_t)src[3] & 1u) << 3)
+            | (((uint16_t)src[4] & 1u) << 4)
+            | (((uint16_t)src[5] & 1u) << 5)
+            | (((uint16_t)src[6] & 1u) << 6)
+            | (((uint16_t)src[7] & 1u) << 7));
+
         src += 8;
     }
 }
@@ -234,7 +580,8 @@ void poly_byte2bit_unpack(int16_t *a, const uint8_t *pa, const unsigned int n)
     for(i = 0; i < n / 8; i++)
     {
         uint8_t byte = pa[i];
-        dst[0] = (int16_t)(byte & 1u);
+
+        dst[0] = (int16_t)((byte >> 0) & 1u);
         dst[1] = (int16_t)((byte >> 1) & 1u);
         dst[2] = (int16_t)((byte >> 2) & 1u);
         dst[3] = (int16_t)((byte >> 3) & 1u);
@@ -242,55 +589,65 @@ void poly_byte2bit_unpack(int16_t *a, const uint8_t *pa, const unsigned int n)
         dst[5] = (int16_t)((byte >> 5) & 1u);
         dst[6] = (int16_t)((byte >> 6) & 1u);
         dst[7] = (int16_t)((byte >> 7) & 1u);
+
         dst += 8;
     }
 }
 
 void poly_secretkey_pack(uint8_t *ss, const int16_t *a)
 {
-    unsigned int i;
-    uint16_t t0, t1, t2, t3;
+    unsigned int i, j, k;
 
-    for(i = 0; i < ZEN_SWIFT_N / 4; i++)
+    for(i = 0; i < ZEN_SWIFT_N; i += 32)
     {
-        t0 = ((uint16_t)a[4*i + 0]) & 0x03FF;
-        t1 = ((uint16_t)a[4*i + 1]) & 0x03FF;
-        t2 = ((uint16_t)a[4*i + 2]) & 0x03FF;
-        t3 = ((uint16_t)a[4*i + 3]) & 0x03FF;
+        const int16_t *src = a + i;
+        uint8_t *dst = ss + (i / 32) * 40;
 
-        ss[5*i + 0] = (uint8_t)( t0        & 0xFF);
-        ss[5*i + 1] = (uint8_t)((t0 >> 8)  | (t1 << 2));
-        ss[5*i + 2] = (uint8_t)((t1 >> 6)  | (t2 << 4));
-        ss[5*i + 3] = (uint8_t)((t2 >> 4)  | (t3 << 6));
-        ss[5*i + 4] = (uint8_t)( t3 >> 2);
+        for(k = 0; k < 10; k++)
+        {
+            uint32_t w = 0;
+
+            for(j = 0; j < 32; j++)
+            {
+                w |= (uint32_t)((((uint16_t)src[j] >> k) & 1u) << j);
+            }
+
+            dst[4 * k + 0] = (uint8_t)(w);
+            dst[4 * k + 1] = (uint8_t)(w >> 8);
+            dst[4 * k + 2] = (uint8_t)(w >> 16);
+            dst[4 * k + 3] = (uint8_t)(w >> 24);
+        }
     }
 }
 
 void poly_secretkey_unpack(int16_t *a, const uint8_t *ss)
 {
-    unsigned int i;
+    unsigned int i, j, k;
 
-    for(i = 0; i < ZEN_SWIFT_N / 4; i++)
+    for(i = 0; i < ZEN_SWIFT_N; i += 32)
     {
-        a[4*i + 0] = (int16_t)(
-              ((uint16_t)ss[5*i + 0] >> 0)
-            | ((uint16_t)ss[5*i + 1] << 8)
-        ) & 0x03FF;
+        int16_t *dst = a + i;
+        const uint8_t *src = ss + (i / 32) * 40;
 
-        a[4*i + 1] = (int16_t)(
-              ((uint16_t)ss[5*i + 1] >> 2)
-            | ((uint16_t)ss[5*i + 2] << 6)
-        ) & 0x03FF;
+        for(j = 0; j < 32; j++)
+        {
+            dst[j] = 0;
+        }
 
-        a[4*i + 2] = (int16_t)(
-              ((uint16_t)ss[5*i + 2] >> 4)
-            | ((uint16_t)ss[5*i + 3] << 4)
-        ) & 0x03FF;
+        for(k = 0; k < 10; k++)
+        {
+            uint32_t w;
 
-        a[4*i + 3] = (int16_t)(
-              ((uint16_t)ss[5*i + 3] >> 6)
-            | ((uint16_t)ss[5*i + 4] << 2)
-        ) & 0x03FF;
+            w  = (uint32_t)src[4 * k + 0];
+            w |= (uint32_t)src[4 * k + 1] << 8;
+            w |= (uint32_t)src[4 * k + 2] << 16;
+            w |= (uint32_t)src[4 * k + 3] << 24;
+
+            for(j = 0; j < 32; j++)
+            {
+                dst[j] |= (int16_t)(((w >> j) & 1u) << k);
+            }
+        }
     }
 }
 
@@ -374,10 +731,10 @@ static inline uint16_t divmod769_u48(uint64_t *x)
 void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
 {
     int i, idx;
-    uint64_t res[77]  = {0};
+    uint64_t res[77] = {0};
     uint64_t tmp[103] = {0};
-    const uint64_t MASK48   = 0x0000FFFFFFFFFFFFULL;
-    const uint64_t MASK16   = 0xFFFFULL;
+    const uint64_t MASK48 = 0x0000FFFFFFFFFFFFULL;
+    const uint64_t MASK16 = 0xFFFFULL;
 
     memcpy((uint8_t *)res, pa, ZEN_SWIFT_INDCPA_PUBLICKEY_LEN_BYTES);
 
@@ -389,25 +746,25 @@ void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
     tmp[100] = res[idx] & MASK48;
     tmp[102] |= ((res[idx--] >> 48) & 0xFFFFULL);
 
-    for(i = 99; i > 0; i -= 4)
+    for (i = 99; i > 0; i -= 4)
     {
         tmp[i - 1] = res[idx] & MASK48;
-        tmp[i]     = ((res[idx--] >> 48) & 0xFFFFULL) << 32;
+        tmp[i] = ((res[idx--] >> 48) & 0xFFFFULL) << 32;
 
         tmp[i - 2] = res[idx] & MASK48;
-        tmp[i]    |= ((res[idx--] >> 48) & 0xFFFFULL) << 16;
+        tmp[i] |= ((res[idx--] >> 48) & 0xFFFFULL) << 16;
 
         tmp[i - 3] = res[idx] & MASK48;
-        tmp[i]    |= ((res[idx--] >> 48) & 0xFFFFULL);
+        tmp[i] |= ((res[idx--] >> 48) & 0xFFFFULL);
     }
 
-    for(i = 0; i < 2; i++)
+    for (i = 0; i < 2; i++)
     {
         a[ZEN_SWIFT_N - 2 + i] = divmod769_tail(&tmp[102]);
     }
 
     idx = 0;
-    for(i = 0; i < ZEN_SWIFT_N - 2; i += 5)
+    for (i = 0; i < ZEN_SWIFT_N - 2; i += 5)
     {
         for (int j = 0; j < 5; j++)
         {

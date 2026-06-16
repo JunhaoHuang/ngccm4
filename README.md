@@ -56,7 +56,8 @@ If you do not need hardware flashing, `openocd` can be omitted.
 		- SM3 for xof and drng, required by ICCS
 		- SHA3 for better comparison with NIST's variants of PQC schemes.
 	- crypto_kem: Key Encapsulation Mechanism schemes
-		- DKE: currently supported KEM scheme
+		- DKE
+		- ZEN_swift: NTRU-based KEM
 	- crypto_sign: Digital Signature schemes
 	- crypto_kex: Key Exchange schemes
 	- libopencm3: third-party library for ARM Cortex-M4
@@ -68,22 +69,22 @@ If you do not need hardware flashing, `openocd` can be omitted.
 The preferred interface is the pqm4-style output-stem target. You can build a binary directly by naming the expected output stem:
 
 ```bash
-make crypto_kem_DKE-128_ref_test
-make crypto_kem_DKE-128_ref_speed
-make crypto_kem_DKE-128_ref_hashing
+make crypto_kem_{SCHEME_NAME}_ref_test
+make crypto_kem_{SCHEME_NAME}_ref_speed
+make crypto_kem_{SCHEME_NAME}_ref_hashing
 ```
 
 The generated files are:
 
 ```bash
-elf/crypto_kem_DKE-128_ref_test.elf
-bin/crypto_kem_DKE-128_ref_test.bin
+elf/crypto_kem_{SCHEME_NAME}_ref_test.elf
+bin/crypto_kem_{SCHEME_NAME}_ref_test.bin
 ```
 
 The explicit selector form is still supported when needed:
 
 ```bash
-make FAMILY=crypto_kem SCHEME=DKE-128 IMPLEMENTATION=ref APP=test -j1
+make FAMILY=crypto_kem SCHEME={SCHEME_NAME} IMPLEMENTATION=ref APP=test -j1
 ```
 
 ## Usage for QEMU Emulation
@@ -91,7 +92,7 @@ make FAMILY=crypto_kem SCHEME=DKE-128 IMPLEMENTATION=ref APP=test -j1
 Typical build/run examples:
 
 ```bash
-make PLATFORM=mps2-an386 crypto_kem_DKE-128_ref_test qemu-run -j1
+make PLATFORM=mps2-an386 crypto_kem_{SCHEME_NAME}_ref_test qemu-run -j1
 ```
 
 
@@ -112,14 +113,14 @@ The makefile system currently builds `.elf` and `.bin` files but does not provid
 Build an application first:
 
 ```bash
-make crypto_kem_DKE-128_ref_test
+make crypto_kem_{SCHEME_NAME}_ref_test
 ```
 
 This generates:
 
 ```bash
-elf/crypto_kem_DKE-128_ref_test.elf
-bin/crypto_kem_DKE-128_ref_test.bin
+elf/crypto_kem_{SCHEME_NAME}_ref_test.elf
+bin/crypto_kem_{SCHEME_NAME}_ref_test.bin
 ```
 
 Flash it with the project-local OpenOCD config:
@@ -127,7 +128,7 @@ Flash it with the project-local OpenOCD config:
 ```bash
 openocd \
 	-f st_nucleo_l4r5.cfg \
-	-c "program elf/crypto_kem_DKE-128_ref_test.elf verify reset exit"
+	-c "program elf/crypto_kem_{SCHEME_NAME}_ref_test.elf verify reset exit"
 ```
 
 To receive the output, run `python3 hostside/host_unidirectional.py`.
@@ -142,14 +143,14 @@ Notes:
 Build an application for the STM32F4DISCOVERY (STM32F407VG) board:
 
 ```bash
-make PLATFORM=stm32f4discovery crypto_kem_DKE-128_ref_test
+make PLATFORM=stm32f4discovery crypto_kem_{SCHEME_NAME}_ref_test
 ```
 
 This generates:
 
 ```bash
-elf/crypto_kem_DKE-128_ref_test.elf
-bin/crypto_kem_DKE-128_ref_test.bin
+elf/crypto_kem_{SCHEME_NAME}_ref_test.elf
+bin/crypto_kem_{SCHEME_NAME}_ref_test.bin
 ```
 
 Flash it with OpenOCD using the ST-Link interface and the STM32F4 target config:
@@ -158,7 +159,7 @@ Flash it with OpenOCD using the ST-Link interface and the STM32F4 target config:
 openocd \
 	-f interface/stlink.cfg \
 	-f target/stm32f4x.cfg \
-	-c "program elf/crypto_kem_DKE-128_ref_test.elf verify reset exit"
+	-c "program elf/crypto_kem_{SCHEME_NAME}_ref_test.elf verify reset exit"
 ```
 
 These two config files ship with OpenOCD itself (no project-local `.cfg` is
@@ -169,7 +170,7 @@ address:
 openocd \
 	-f interface/stlink.cfg \
 	-f target/stm32f4x.cfg \
-	-c "program bin/crypto_kem_DKE-128_ref_test.bin 0x08000000 verify reset exit"
+	-c "program bin/crypto_kem_{SCHEME_NAME}_ref_test.bin 0x08000000 verify reset exit"
 ```
 
 Notes:
@@ -214,15 +215,15 @@ Build every implementation and every family app for one or more schemes. Omit sc
 ```bash
 python3 build_schemes.py
 python3 build_schemes.py all
-python3 build_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256
-python3 build_schemes.py PLATFORM=stm32f4discovery DKE-128 DKE-256
-python3 build_schemes.py PLATFORM=mps2-an386 DKE-128
+python3 build_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...}
+python3 build_schemes.py PLATFORM=stm32f4discovery {SCHEME_NAME...}
+python3 build_schemes.py PLATFORM=mps2-an386 {SCHEME_NAME...}
 ```
 
 Useful build options:
 
 ```bash
-python3 build_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 USE_SM3_ASM=1 USE_KECCAK=0 LTO=1 NGCC_ITERATIONS=100 -j8
+python3 build_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME} USE_SM3_ASM=1 USE_KECCAK=0 LTO=1 NGCC_ITERATIONS=100 -j8
 ```
 
 The script searches `crypto_kem`, `crypto_kex`, and `crypto_sign`. An implementation is detected when the implementation directory contains the family entry file, for example `KEM_AlgorithmInstance.c` for KEM schemes.
@@ -234,22 +235,22 @@ Run the default benchmark apps, `speed`, `stack`, and `hashing`, for all impleme
 ```bash
 python3 benchmark_schemes.py
 python3 benchmark_schemes.py all
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256 --apps speed hashing
-python3 benchmark_schemes.py PLATFORM=stm32f4discovery DKE-128 --apps speed hashing
-python3 benchmark_schemes.py PLATFORM=mps2-an386 DKE-128 --apps speed hashing
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} --apps speed hashing
+python3 benchmark_schemes.py PLATFORM=stm32f4discovery {SCHEME_NAME...} --apps speed hashing
+python3 benchmark_schemes.py PLATFORM=mps2-an386 {SCHEME_NAME...} --apps speed hashing
 ```
 
 Select a subset of apps with `--apps`:
 
 ```bash
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 --apps speed
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 --apps speed stack hashing
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} --apps speed
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} --apps speed stack hashing
 ```
 
 Forward make variables after `PLATFORM=...` as usual:
 
 ```bash
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 USE_SM3_ASM=1 USE_KECCAK=0 LTO=1 NGCC_ITERATIONS=100 -j8
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} USE_SM3_ASM=1 USE_KECCAK=0 LTO=1 NGCC_ITERATIONS=100 -j8
 ```
 
 For `mps2-an386`, the benchmark script runs each target through QEMU:
@@ -274,7 +275,7 @@ openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program <elf> verify 
 Hardware benchmark output is captured from the serial port until the `#` completion marker is received. By default the script uses `/dev/ttyACM0` on Linux and `/dev/tty.usbserial-0001` on macOS, at 38400 baud. Override these when needed:
 
 ```bash
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 --serial-port /dev/ttyACM1 --baud 38400
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} --serial-port /dev/ttyACM1 --baud 38400
 ```
 
 Benchmark outputs are written to:
@@ -319,16 +320,16 @@ This switches the guarded scheme code to the Keccak/SHA3/SHAKE implementation, i
 Examples:
 
 ```bash
-make PLATFORM=nucleo-l4r5zi USE_KECCAK=1 crypto_kem_DKE-128_ref_test
-make PLATFORM=mps2-an386 USE_KECCAK=1 crypto_kem_DKE-128_ref_test qemu-run -j1
-python3 build_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 USE_KECCAK=1
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 --apps speed hashing USE_KECCAK=1
+make PLATFORM=nucleo-l4r5zi USE_KECCAK=1 crypto_kem_{SCHEME_NAME}_ref_test
+make PLATFORM=mps2-an386 USE_KECCAK=1 crypto_kem_{SCHEME_NAME}_ref_test qemu-run -j1
+python3 build_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} USE_KECCAK=1
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME...} --apps speed hashing USE_KECCAK=1
 ```
 
 To use the default SM3 path explicitly, pass `USE_KECCAK=0`:
 
 ```bash
-python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 --apps speed hashing USE_KECCAK=0
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi {SCHEME_NAME} --apps speed hashing USE_KECCAK=0
 ```
 
 Notes:

@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences  
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-256 instance.
+*/
 #include <stdint.h>
 #include <stdio.h>
 #include "params.h"

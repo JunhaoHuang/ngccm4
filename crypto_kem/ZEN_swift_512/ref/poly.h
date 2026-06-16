@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences  
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-512 instance.
+*/
 #ifndef POLY_H
 #define POLY_H
 
@@ -18,20 +24,19 @@ extern "C"
     /// @return 1 if the polynomial is not invertible in Z2, otherwise 0
     int check_poly_inv_Z2(int16_t *a);
 
-    /// @brief Multiply two binary polynomials in R2 of degree less than n using a constant-time cyclic shift-and-XOR method
-    /// @param[in] a Base address of first input polynomial coefficient array of length n
-    /// @param[in] b Base address of second input polynomial coefficient array of length n
-    /// @param[in] n Number of coefficients of the input polynomials
-    /// @param[out] res Base address of output polynomial coefficient array of length n
+    /// @brief Multiply two binary polynomials in R2 of degree less than 1024 using a constant-time cyclic shift-and-XOR method
+    /// @param[in] a Base address of first input polynomial coefficient array of length 256
+    /// @param[in] b Base address of second input polynomial coefficient array of length 256
+    /// @param[out] res Base address of output polynomial coefficient array of length 256
     /// @return None
-    void mul_in_R2_n(int16_t *a, int16_t *b, int16_t n, int16_t *res);
+    void mul_in_R2_1024(int16_t *a, int16_t *b, int16_t *res);
+    void mul_in_R2_512(int16_t *a, int16_t* b, int16_t* res);
+        /// @brief Compute the inverse of a polynomial in R2 using a fast iterative inversion algorithm
+        /// @param[in] f Base address of input polynomial coefficient array of length ZEN_SWIFT_N2
+        /// @param[out] f_inv Base address of output polynomial inverse coefficient array of length ZEN_SWIFT_N2
+        /// @return None
+        void FastInversion(int16_t *f_inv, int16_t *f);
 
-    /// @brief Compute the inverse of a polynomial in R2 using a fast iterative inversion algorithm
-    /// @param[in] f Base address of input polynomial coefficient array of length ZEN_SWIFT_N2
-    /// @param[out] f_inv Base address of output polynomial inverse coefficient array of length ZEN_SWIFT_N2
-    /// @return None
-    void FastInversion(int16_t *f_inv, int16_t *f);
-    
     /// @brief Generate a ternary polynomial from an input seed and nonce
     /// @param[out] a Base address of output polynomial coefficient array
     /// @param[in] seed Base address of input seed byte array

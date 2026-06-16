@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences  
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-512 instance.
+*/
 #include <stdint.h>
 #include <stdio.h>
 #include "params.h"
@@ -344,11 +350,6 @@ void poly_basemul_ntt_mq(int16_t *r,  int16_t *a,  int16_t *b)
     }
 }
 
-/// @brief Compute the inverse of a degree-3 polynomial block in the NTT domain with a given twiddle factor
-/// @param[out] r Base address of output coefficient array of length 4
-/// @param[in] a Base address of input coefficient array of length 4
-/// @param[in] zeta Twiddle factor associated with the block
-/// @return None
 static void base_inv(int16_t *r, int16_t *a, int16_t zeta)
 {
     unsigned int i;

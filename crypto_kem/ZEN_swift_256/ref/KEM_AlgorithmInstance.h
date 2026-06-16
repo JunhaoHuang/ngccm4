@@ -9,6 +9,13 @@ the use of the software or the results thereof, if the software is used for any
 other purposes.
 */
 
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences  
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-256 instance.
+*/
+
 #ifndef KEM_ALGORITHM_INSTANCE_H
 #define KEM_ALGORITHM_INSTANCE_H
 

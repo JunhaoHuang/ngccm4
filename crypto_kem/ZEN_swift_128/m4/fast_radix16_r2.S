@@ -30,12 +30,10 @@
     movs r10, #0
 .Lr2_lm4_outer\@:
     ldr.w r0, [\ap, r10, lsl #2]
-    and.w r0, r0, r11
     movs r12, #0
     mov r1, r10
 .Lr2_lm4_inner\@:
     ldr.w r2, [\bp, r12, lsl #2]
-    and.w r2, r2, r11
     umull r2, r3, r0, r2
     and.w r2, r2, r11
     and.w r3, r3, r11
@@ -72,11 +70,8 @@ r2_radix16_mul_2_asm:
     ldr.w r3, [r1]
     ldr.w r12, [r2]
     movs r1, #0x11
-    and.w r3, r3, r1
-    and.w r12, r12, r1
-    umull r1, r2, r3, r12
-    eor.w r1, r1, r1, lsr #8
-    movs r3, #0x11
+    smulbb r3, r3, r12
+    eor.w r3, r3, r3, lsr #8
     and.w r1, r1, r3
     str.w r1, [r0]
     bx lr
@@ -89,11 +84,8 @@ r2_radix16_mul_4_asm:
     ldr.w r3, [r1]
     ldr.w r12, [r2]
     movw r1, #0x1111
-    and.w r3, r3, r1
-    and.w r12, r12, r1
-    umull r1, r2, r3, r12
-    eor.w r1, r1, r1, lsr #16
-    movw r3, #0x1111
+    smulbb r3, r3, r12
+    eor.w r3, r3, r3, lsr #16
     and.w r1, r1, r3
     str.w r1, [r0]
     bx lr
@@ -401,12 +393,10 @@ r2_radix16_linear_mul4_asm:
     movs r8, #0
 12:
     ldr.w r0, [r5, r8, lsl #2]
-    and.w r0, r0, r7
     movs r9, #0
     mov r10, r8
 13:
     ldr.w r1, [r6, r9, lsl #2]
-    and.w r1, r1, r7
     umull r2, r3, r0, r1
     and.w r2, r2, r7
     and.w r3, r3, r7
@@ -624,17 +614,15 @@ r2_radix16_mul_words_asm:
     movs iword, #0
 21:
     ldr.w ai, [abase, iword, lsl #2]
-    and.w ai, ai, lanemask
     movs jword, #0
     mov ridx, iword
 22:
     ldr.w bj, [bbase, jword, lsl #2]
-    and.w bj, bj, lanemask
+    ldr.w tmp, [resbase, ridx, lsl #2]
     umull prodlo, prodhi, ai, bj
     and.w prodlo, prodlo, lanemask
     and.w prodhi, prodhi, lanemask
 
-    ldr.w tmp, [resbase, ridx, lsl #2]
     eor.w tmp, tmp, prodlo
     str.w tmp, [resbase, ridx, lsl #2]
 
@@ -674,6 +662,7 @@ r2_radix16_mul_words_asm:
     .unreq prodlo
     .unreq prodhi
     .unreq tmp
+
 
 
 

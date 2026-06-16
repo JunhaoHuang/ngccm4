@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2026 Yu Zhang.
+Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
+              School of Cyber Security, University of Chinese Academy of Sciences
+File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-128 instance.
+*/
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
@@ -18,6 +24,6 @@ void zen_swift_pseudoXOF(unsigned long long output_len_bits, const unsigned char
 #ifdef USE_KECCAK
     shake256(output, (size_t)((output_len_bits + 7) / 8), extseed, msg_len_bytes + 1);
 #else
-    pseudoXOF(output_len_bits, extseed, (msg_len_bits/8+1)*8, output);
+    pseudoXOF(output_len_bits, extseed, (msg_len_bits / 8 + 1) * 8, output);
 #endif
 }

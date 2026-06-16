@@ -43,6 +43,10 @@ static uint32_t ref_rad[RADIX16SPEED_MAX_WORDS];
 static volatile uint32_t checksum_sink;
 
 #if defined(HAVE_RADIX16_R2)
+extern void r2_radix16_mul_8_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_16_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_32_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_64_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_128_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_256_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 #if R2_RADIX16_MAX_N >= 512u
@@ -134,10 +138,7 @@ static void ref_mul_packed(uint32_t *res,
 }
 
 #if defined(HAVE_RADIX16_R2)
-static int check_mul(const char *label,
-                     void (*fn)(uint32_t *, const uint32_t *, const uint32_t *),
-                     size_t n,
-                     size_t words)
+static int check_mul(const char *label, size_t n, size_t words)
 {
     uint32_t state = 0x63686b31u ^ (uint32_t)n;
     unsigned int t;
@@ -146,7 +147,7 @@ static int check_mul(const char *label,
     for (t = 0; t < RADIX16SPEED_CHECKS; t++) {
         fill_inputs(&state, words);
         ref_mul_packed(ref_rad, a_rad, b_rad, n);
-        fn(r_rad, a_rad, b_rad);
+        r2_radix16_mul(r_rad, a_rad, b_rad, n);
 
         for (i = 0; i < words; i++) {
             uint32_t ref = ref_rad[i] & R2_RADIX16_LANE_MASK;
@@ -191,28 +192,48 @@ int main(void)
     hal_send_str("#");
     return 0;
 #else
-    if (!check_mul("mul128 mismatch", r2_radix16_mul_128_asm, 128u, 16u)) {
+    if (!check_mul("mul8 mismatch", 8u, 1u)) {
         hal_send_str("#");
         return -1;
     }
-    if (!check_mul("mul256 mismatch", r2_radix16_mul_256_asm, 256u, 32u)) {
+    if (!check_mul("mul16 mismatch", 16u, 2u)) {
+        hal_send_str("#");
+        return -1;
+    }
+    if (!check_mul("mul32 mismatch", 32u, 4u)) {
+        hal_send_str("#");
+        return -1;
+    }
+    if (!check_mul("mul64 mismatch", 64u, 8u)) {
+        hal_send_str("#");
+        return -1;
+    }
+    if (!check_mul("mul128 mismatch", 128u, 16u)) {
+        hal_send_str("#");
+        return -1;
+    }
+    if (!check_mul("mul256 mismatch", 256u, 32u)) {
         hal_send_str("#");
         return -1;
     }
 #if R2_RADIX16_MAX_N >= 512u
-    if (!check_mul("mul512 mismatch", r2_radix16_mul_512_asm, 512u, 64u)) {
+    if (!check_mul("mul512 mismatch", 512u, 64u)) {
         hal_send_str("#");
         return -1;
     }
 #endif
 #if R2_RADIX16_MAX_N >= 1024u
-    if (!check_mul("mul1024 mismatch", r2_radix16_mul_1024_asm, 1024u, 128u)) {
+    if (!check_mul("mul1024 mismatch", 1024u, 128u)) {
         hal_send_str("#");
         return -1;
     }
 #endif
 
     init_inputs();
+    send_unsignedll("mul8 cycles:", time_mul(r2_radix16_mul_8_asm, 1u));
+    send_unsignedll("mul16 cycles:", time_mul(r2_radix16_mul_16_asm, 2u));
+    send_unsignedll("mul32 cycles:", time_mul(r2_radix16_mul_32_asm, 4u));
+    send_unsignedll("mul64 cycles:", time_mul(r2_radix16_mul_64_asm, 8u));
     send_unsignedll("mul128 cycles:", time_mul(r2_radix16_mul_128_asm, 16u));
     send_unsignedll("mul256 cycles:", time_mul(r2_radix16_mul_256_asm, 32u));
 #if R2_RADIX16_MAX_N >= 512u
