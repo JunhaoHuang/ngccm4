@@ -59,40 +59,44 @@ int main(void) {
     if (pk == NULL || sk == NULL || ct == NULL || ss_a == NULL || ss_b == NULL) {
         fail_and_halt("alloc_failed");
     }
+    for(int i=0;i<NGCC_ITERATIONS;i++){
+        hash_cycles = 0;
+        func_cycles = 0;
+        t0 = hal_get_time();
+        if (kem_keygen(pk, &ignored_len, sk, &ignored_len) != 0) fail_and_halt("kem_keygen_failed");
+        t1 = hal_get_time();
+        send_unsignedll("keypair cycles:", (unsigned long long)(t1 - t0));
+        send_unsignedll("keypair hash cycles:", hash_cycles);
+        send_unsignedll("keypair func cycles:", func_cycles);
 
-    hash_cycles = 0;
-    func_cycles = 0;
-    t0 = hal_get_time();
-    if (kem_keygen(pk, &ignored_len, sk, &ignored_len) != 0) fail_and_halt("kem_keygen_failed");
-    t1 = hal_get_time();
-    send_unsignedll("keypair cycles:", (unsigned long long)(t1 - t0));
-    send_unsignedll("keypair hash cycles:", hash_cycles);
-    send_unsignedll("keypair func cycles:", func_cycles);
+        hash_cycles = 0;
+        func_cycles = 0;
+        t0 = hal_get_time();
+        if (kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len) != 0) fail_and_halt("kem_enc_failed");
+        t1 = hal_get_time();
+        send_unsignedll("encaps cycles:", (unsigned long long)(t1 - t0));
+        send_unsignedll("encaps hash cycles:", hash_cycles);
+        send_unsignedll("encaps func cycles:", func_cycles);
 
-    hash_cycles = 0;
-    func_cycles = 0;
-    t0 = hal_get_time();
-    if (kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len) != 0) fail_and_halt("kem_enc_failed");
-    t1 = hal_get_time();
-    send_unsignedll("encaps cycles:", (unsigned long long)(t1 - t0));
-    send_unsignedll("encaps hash cycles:", hash_cycles);
-    send_unsignedll("encaps func cycles:", func_cycles);
+        hash_cycles = 0;
+        func_cycles = 0;
+        t0 = hal_get_time();
+        if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) fail_and_halt("kem_dec_failed");
+        t1 = hal_get_time();
+        send_unsignedll("decaps cycles:", (unsigned long long)(t1 - t0));
+        send_unsignedll("decaps hash cycles:", hash_cycles);
+        send_unsignedll("decaps func cycles:", func_cycles);
+        
+        if (memcmp(ss_a, ss_b, ss_len) != 0) {
+            fail_and_halt("ERROR KEYS");
+        }
 
-    hash_cycles = 0;
-    func_cycles = 0;
-    t0 = hal_get_time();
-    if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) fail_and_halt("kem_dec_failed");
-    t1 = hal_get_time();
-    send_unsignedll("decaps cycles:", (unsigned long long)(t1 - t0));
-    send_unsignedll("decaps hash cycles:", hash_cycles);
-    send_unsignedll("decaps func cycles:", func_cycles);
-    
-    if (memcmp(ss_a, ss_b, ss_len) != 0) {
-        fail_and_halt("ERROR KEYS");
+        hal_send_str("OK KEYS");
+        hal_send_str("+");
     }
+    
 
-    hal_send_str("OK KEYS");
-    hal_send_str("+");
+    
     hal_send_str("#");
     free(pk);
     free(sk);
