@@ -5,6 +5,7 @@ Examples:
     python3 benchmark_schemes.py
     python3 benchmark_schemes.py all
     python3 benchmark_schemes.py PLATFORM=mps2-an386 DKE-128 DKE-256
+    python3 benchmark_schemes.py PLATFORM=mps2-an386 ADKEX-128 --apps speed
     python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256
     python3 benchmark_schemes.py PLATFORM=stm32f4discovery DKE-128 --runs 3
     python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-512 USE_SM3_ASM=1 -j8
@@ -53,13 +54,47 @@ METRIC_PATTERNS = (
     ("keypair_cycles", re.compile(r"^keypair cycles:\s*$")),
     ("encaps_cycles", re.compile(r"^encaps cycles:\s*$")),
     ("decaps_cycles", re.compile(r"^decaps cycles:\s*$")),
+    ("init_a_cycles", re.compile(r"^init_a cycles:\s*$")),
+    ("init_b_cycles", re.compile(r"^init_b cycles:\s*$")),
+    ("pass1_cycles", re.compile(r"^pass1 cycles:\s*$")),
+    ("pass2_cycles", re.compile(r"^pass2 cycles:\s*$")),
+    ("pass3_cycles", re.compile(r"^pass3 cycles:\s*$")),
+    ("derive_a_cycles", re.compile(r"^derive_a cycles:\s*$")),
+    ("derive_b_cycles", re.compile(r"^derive_b cycles:\s*$")),
     ("keypair_stack_bytes", re.compile(r"^keypair stack usage:\s*$")),
     ("encaps_stack_bytes", re.compile(r"^encaps stack usage:\s*$")),
     ("decaps_stack_bytes", re.compile(r"^decaps stack usage:\s*$")),
+    ("init_a_stack_bytes", re.compile(r"^init_a stack usage:\s*$")),
+    ("init_b_stack_bytes", re.compile(r"^init_b stack usage:\s*$")),
+    ("pass1_stack_bytes", re.compile(r"^pass1 stack usage:\s*$")),
+    ("pass2_stack_bytes", re.compile(r"^pass2 stack usage:\s*$")),
+    ("pass3_stack_bytes", re.compile(r"^pass3 stack usage:\s*$")),
+    ("derive_a_stack_bytes", re.compile(r"^derive_a stack usage:\s*$")),
+    ("derive_b_stack_bytes", re.compile(r"^derive_b stack usage:\s*$")),
     ("keypair_hash_cycles", re.compile(r"^keypair hash cycles:\s*$")),
     ("encaps_hash_cycles", re.compile(r"^encaps hash cycles:\s*$")),
     ("decaps_hash_cycles", re.compile(r"^decaps hash cycles:\s*$")),
+    ("init_a_hash_cycles", re.compile(r"^init_a hash cycles:\s*$")),
+    ("init_b_hash_cycles", re.compile(r"^init_b hash cycles:\s*$")),
+    ("pass1_hash_cycles", re.compile(r"^pass1 hash cycles:\s*$")),
+    ("pass2_hash_cycles", re.compile(r"^pass2 hash cycles:\s*$")),
+    ("pass3_hash_cycles", re.compile(r"^pass3 hash cycles:\s*$")),
+    ("derive_a_hash_cycles", re.compile(r"^derive_a hash cycles:\s*$")),
+    ("derive_b_hash_cycles", re.compile(r"^derive_b hash cycles:\s*$")),
 )
+
+METRIC_OPERATION_ORDER = {
+    "keypair": 0,
+    "encaps": 1,
+    "decaps": 2,
+    "init_a": 0,
+    "init_b": 1,
+    "pass1": 2,
+    "pass2": 3,
+    "pass3": 4,
+    "derive_a": 5,
+    "derive_b": 6,
+}
 
 
 @dataclass(frozen=True)
@@ -354,19 +389,28 @@ def write_csv(path: Path, measurements: list[Measurement]) -> None:
             )
 
 
+def metric_operation(metric: str) -> str:
+    for suffix in ("_hash_cycles", "_stack_bytes", "_cycles"):
+        if metric.endswith(suffix):
+            return metric[: -len(suffix)]
+    return metric
+
+
 def metric_display_name(metric: str) -> str:
-    if metric.startswith("keypair"):
-        return "keypair"
-    if metric.startswith("encaps"):
-        return "encaps"
-    if metric.startswith("decaps"):
-        return "decaps"
-    return metric.removesuffix("_cycles")
+    return metric_operation(metric)
 
 
 def metric_order(metric: str) -> int:
-    order = {"keypair": 0, "encaps": 1, "decaps": 2}
-    return order.get(metric_display_name(metric), len(order))
+    operation = metric_operation(metric)
+    return METRIC_OPERATION_ORDER.get(operation, len(METRIC_OPERATION_ORDER))
+
+
+def ordered_apps(measurements: list[Measurement]) -> list[str]:
+    app_index = {app: index for index, app in enumerate(DEFAULT_APPS)}
+    return sorted(
+        {measurement.app for measurement in measurements},
+        key=lambda app: (app_index.get(app, len(app_index)), app),
+    )
 
 
 def measurement_belongs_in_app_table(measurement: Measurement) -> bool:
@@ -414,7 +458,7 @@ def write_markdown(path: Path, measurements: list[Measurement]) -> None:
         lines.append(f"## {family}")
         lines.append("")
 
-        for app in DEFAULT_APPS:
+        for app in ordered_apps(family_measurements):
             if app == "hashing":
                 hash_rows = hashing_percentage_rows(family_measurements)
                 if not hash_rows:
@@ -634,7 +678,18 @@ def main(argv: list[str]) -> int:
             metric=key[5],
             samples=tuple(values),
         )
-        for key, values in sorted(measurements_by_key.items())
+        for key, values in sorted(
+            measurements_by_key.items(),
+            key=lambda item: (
+                item[0][0],
+                item[0][1],
+                item[0][2],
+                item[0][3],
+                item[0][4],
+                metric_order(item[0][5]),
+                item[0][5],
+            ),
+        )
         if values
     ]
 

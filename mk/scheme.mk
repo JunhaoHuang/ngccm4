@@ -43,6 +43,21 @@ endif
 SCHEMES := $(patsubst %/,%,$(IMPLS))
 SUPPORTED_APPS := $(sort $(foreach family,$(SUPPORTED_FAMILIES),$(call family_available_apps,$(family))))
 
+define dkex_sig_mldsa_impl
+$(wildcard $(1)/dkex_sig_mldsa.c)
+endef
+
+DKEX_SIG_MLDSA_IMPLS := $(foreach impl,$(IMPLS),$(if $(call dkex_sig_mldsa_impl,$(impl)),$(impl)))
+DKEX_SIG_MLDSA_SRCS := $(sort $(wildcard crypto_sign/dilithium/ref/*.c))
+
+ifneq ($(strip $(DKEX_SIG_MLDSA_IMPLS)),)
+ifeq ($(filter $(DKEX_SIG_MLDSA_LEVEL),2 3 5),)
+$(error Unsupported DKEX_SIG_MLDSA_LEVEL '$(DKEX_SIG_MLDSA_LEVEL)'; use 2, 3, or 5)
+endif
+endif
+
+DKEX_SIG_MLDSA_BUILD_CONFIG := $(if $(strip $(DKEX_SIG_MLDSA_IMPLS)),DKEX_SIG_MLDSA_LEVEL=$(DKEX_SIG_MLDSA_LEVEL))
+
 ifneq ($(strip $(APP)),)
 ifneq ($(strip $(FAMILY)),)
 ifeq ($(filter $(APP),$(call family_available_apps,$(FAMILY))),)
@@ -73,10 +88,22 @@ $(filter %.c %.s %.S,$(PLATFORM_LIB_SRCS)) \
 $(call impl_sources,$(1))
 endef
 
+define impl_cppflags
+$(if $(call dkex_sig_mldsa_impl,$(1)),-DDKEX_SIG_BACKEND_MLDSA -DDKEX_SIG_MLDSA_LEVEL=$(DKEX_SIG_MLDSA_LEVEL) -DDILITHIUM_MODE=$(DKEX_SIG_MLDSA_LEVEL))
+endef
+
 define include_flags_for_impl
 -I$(CURDIR)/common \
 -I$(CURDIR)/$(1) \
 $(foreach dir,$(PLATFORM_INCLUDE_DIRS),-I$(CURDIR)/$(dir))
+endef
+
+define dkex_sig_mldsa_source
+$(if $(call dkex_sig_mldsa_impl,$(1)),$(filter $(1)/dkex_sig_mldsa.c $(1)/randombytes.c,$(2)))
+endef
+
+define source_include_flags_for_impl
+$(if $(call dkex_sig_mldsa_source,$(1),$(2)),-I$(CURDIR)/crypto_sign/dilithium/ref) $(call include_flags_for_impl,$(1))
 endef
 
 define profile_dir
@@ -103,6 +130,18 @@ define lib_target
 obj/$(call profile_dir,$(2))lib$(call impl_name,$(1)).a
 endef
 
+define mldsa_obj_from_src
+obj/$(call impl_name,$(1))_mldsa/$(patsubst %.c,%.o,$(2))
+endef
+
+define mldsa_lib_objects
+$(foreach src,$(DKEX_SIG_MLDSA_SRCS),$(call mldsa_obj_from_src,$(1),$(src)))
+endef
+
+define mldsa_lib_target
+$(if $(call dkex_sig_mldsa_impl,$(1)),obj/lib$(call impl_name,$(1))_mldsa.a)
+endef
+
 define elf_target
 elf/$(call impl_name,$(1))_$(2).elf
 endef
@@ -113,6 +152,10 @@ endef
 
 define elf_library
 $(call lib_target,$(1),$(if $(filter hashing,$(2)),hashprof,normal))
+endef
+
+define elf_libraries
+$(call elf_library,$(1),$(2)) $(call mldsa_lib_target,$(1))
 endef
 
 define lib_cppflags
@@ -133,16 +176,20 @@ $(call lib_target,$(1),hashprof): $(call lib_objects,$(1),hashprof)
 	$(Q)mkdir -p $$(@D)
 	$(Q)$(AR) rcs $$@ $$^
 
-$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),normal,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src)\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(CFLAGS) $(call include_flags_for_impl,$(1)) -c $(src) -o $$@))
-$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),hashprof,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src) [hashprof]\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call lib_cppflags,$(1),hashprof) $(CFLAGS) $(call include_flags_for_impl,$(1)) -c $(src) -o $$@))
+$(if $(call dkex_sig_mldsa_impl,$(1)),$(eval $(call mldsa_lib_target,$(1)): $(call mldsa_lib_objects,$(1)) ; @printf '  AR      $$@\n'; $(Q)mkdir -p $$(@D); $(Q)$(AR) rcs $$@ $$^))
 
-$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call app_object,$(1),$(app)): $(call app_source,$(1),$(app)) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(call app_source,$(1),$(app))\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(CFLAGS) $(call include_flags_for_impl,$(1)) -c $(call app_source,$(1),$(app)) -o $$@))
+$(foreach src,$(DKEX_SIG_MLDSA_SRCS),$(if $(call dkex_sig_mldsa_impl,$(1)),$(eval $(call mldsa_obj_from_src,$(1),$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(src) [mldsa]\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) -I$(CURDIR)/crypto_sign/dilithium/ref -c $(src) -o $$@)))
 
-$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)): $(call app_object,$(1),$(app)) $(call elf_library,$(1),$(app)) $(LIBDEPS) $(LDSCRIPT) | platform-sync))
+$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),normal,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src)\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call source_include_flags_for_impl,$(1),$(src)) -c $(src) -o $$@))
+$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),hashprof,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src) [hashprof]\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call lib_cppflags,$(1),hashprof) $(call impl_cppflags,$(1)) $(CFLAGS) $(call source_include_flags_for_impl,$(1),$(src)) -c $(src) -o $$@))
+
+$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call app_object,$(1),$(app)): $(call app_source,$(1),$(app)) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(call app_source,$(1),$(app))\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call include_flags_for_impl,$(1)) -c $(call app_source,$(1),$(app)) -o $$@))
+
+$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)): $(call app_object,$(1),$(app)) $(call elf_libraries,$(1),$(app)) $(LIBDEPS) $(LDSCRIPT) | platform-sync))
 $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)):
 	@printf '  LD      $$@\n'
 	$(Q)mkdir -p $$(@D)
-	$(Q)$(LD) $(CFLAGS) $(call app_object,$(1),$(app)) $(call elf_library,$(1),$(app)) $(LDFLAGS) -Wl,--start-group $(LDLIBS) -Wl,--end-group -o $$@
+	$(Q)$(LD) $(CFLAGS) $(call app_object,$(1),$(app)) $(LDFLAGS) -Wl,--start-group $(call elf_libraries,$(1),$(app)) $(LDLIBS) -Wl,--end-group -o $$@
 	@printf '  SIZE    $$@\n'
 	$(Q)$(SIZE) $$@))
 
