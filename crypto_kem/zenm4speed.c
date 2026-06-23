@@ -11,7 +11,7 @@
 #define poly_basemul_ntt ref_poly_basemul_ntt
 #define poly_basemul_ntt_mq ref_poly_basemul_ntt_mq
 #define poly_baseinv_ntt ref_poly_baseinv_ntt
-#include "ZEN_swift_512/ref/ntt.c"
+#include "ZEN_512/ref/ntt.c"
 #undef montgomery_reduce
 #undef poly_ntt
 #undef poly_ntt_mq
@@ -31,19 +31,19 @@ extern void poly_baseinv_ntt(int16_t *r, int16_t *a);
 #define ZENM4SPEED_ITERS 32u
 #endif
 
-static int16_t in_a[ZEN_SWIFT_N];
-static int16_t in_b[ZEN_SWIFT_N];
-static int16_t work[ZEN_SWIFT_N];
-static int16_t got[ZEN_SWIFT_N];
-static int16_t ref[ZEN_SWIFT_N];
+static int16_t in_a[ZEN_N];
+static int16_t in_b[ZEN_N];
+static int16_t work[ZEN_N];
+static int16_t got[ZEN_N];
+static int16_t ref[ZEN_N];
 static volatile uint32_t checksum_sink;
 
 static int16_t freeze_q32(int32_t x)
 {
-    int32_t r = x % ZEN_SWIFT_Q;
+    int32_t r = x % ZEN_Q;
 
     if (r < 0) {
-        r += ZEN_SWIFT_Q;
+        r += ZEN_Q;
     }
     return (int16_t)r;
 }
@@ -68,8 +68,8 @@ static void fill_poly(int16_t *a, unsigned int seed)
 {
     unsigned int i;
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
-        a[i] = (int16_t)((seed * 113u + i * 37u + (i >> 4) * 19u) % ZEN_SWIFT_Q);
+    for (i = 0; i < ZEN_N; i++) {
+        a[i] = (int16_t)((seed * 113u + i * 37u + (i >> 4) * 19u) % ZEN_Q);
     }
 }
 
@@ -78,7 +78,7 @@ static uint32_t checksum_poly(const int16_t *a)
     uint32_t acc = 0x9e3779b9u;
     unsigned int i;
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         acc ^= (uint16_t)a[i];
         acc = (acc << 5) | (acc >> 27);
     }
@@ -89,7 +89,7 @@ static int equal_modq(const int16_t *a, const int16_t *b)
 {
     unsigned int i;
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         if (freeze_q(a[i]) != freeze_q(b[i])) {
             send_unsigned("idx:", i);
             send_unsigned("ref:", (unsigned int)freeze_q(a[i]));
@@ -104,7 +104,7 @@ static int equal_raw_basemul_scaled(const int16_t *c_ref, const int16_t *c_opt)
 {
     unsigned int i;
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         if (freeze_q32(-9 * (int32_t)c_ref[i]) != freeze_q(c_opt[i])) {
             send_unsigned("idx:", i);
             send_unsigned("ref_scaled:", (unsigned int)freeze_q32(-9 * (int32_t)c_ref[i]));
@@ -119,7 +119,7 @@ static int is_invertible_ntt_input(const int16_t *a)
 {
     unsigned int i;
 
-    for (i = 0; i < ZEN_SWIFT_N; i += 16) {
+    for (i = 0; i < ZEN_N; i += 16) {
         int32_t sum = a[i]      + a[i + 1]  + a[i + 2]  + a[i + 3]
                     + a[i + 4]  + a[i + 5]  + a[i + 6]  + a[i + 7]
                     + a[i + 8]  + a[i + 9]  + a[i + 10] + a[i + 11]

@@ -7,6 +7,14 @@ This repository aims to provide an automated tools, similar to [pqm4](https://gi
 Authors: [Junhao Huang](https://github.com/JunhaoHuang), junhaohuang@smu.edu.sg, Singapore Management University.
 
 --------------------
+## Clone and Dependencies
+
+Clone the repository through:
+```bash
+git clone --recursive-submodules https://github.com/JunhaoHuang/ngccm4.git
+```
+This repository relies on [libopencm3(@87a080c)](https://github.com/libopencm3/libopencm3/tree/87a080c94ce67643216464821c752c1c406c6414) to provide M4-related supports.
+
 ## Set-up/Installation
 
 The makefile system requires a few host tools to be installed:
@@ -17,18 +25,16 @@ The makefile system requires a few host tools to be installed:
 - `qemu-system-arm` for `PLATFORM=mps2-an386` and `qemu-run`
 - `openocd` only if you want to flash and debug on real hardware
 
-On Ubuntu/Debian, install them with:
+On Ubuntu/Debian, install them with the executable helper:
 
 ```bash
-sudo apt update
-sudo apt install -y \
-	build-essential \
-	gcc-arm-none-eabi \
-	binutils-arm-none-eabi \
-	libnewlib-arm-none-eabi \
-	python3 \
-	qemu-system-arm \
-	openocd
+./install-deps-ubuntu.sh
+```
+
+If you do not need hardware flashing, omit `openocd`:
+
+```bash
+./install-deps-ubuntu.sh --no-openocd
 ```
 
 Tool purpose:
@@ -57,7 +63,7 @@ If you do not need hardware flashing, `openocd` can be omitted.
 		- SHA3 for better comparison with NIST's variants of PQC schemes.
 	- crypto_kem: Key Encapsulation Mechanism schemes
 		- DKE
-		- ZEN_swift: NTRU-based KEM
+		- ZEN: NTRU-based KEM
 	- crypto_sign: Digital Signature schemes
 	- crypto_kex: Key Exchange schemes
 	- libopencm3: third-party library for ARM Cortex-M4
@@ -99,7 +105,7 @@ make PLATFORM=mps2-an386 crypto_kem_{SCHEME_NAME}_ref_test qemu-run -j1
 Notes:
 - The QEMU build and run should be only used for correctness verification, e.g., test, testvectors. 
 - Supported families in the makefile system are `crypto_kem`, `crypto_kex`, and `crypto_sign`.
-- The current repository contains KEM implementations. `crypto_kex` and `crypto_sign` are already wired into the discovery/build system, but they do not yet contain implementations in this tree.
+- The current repository contains KEM implementations. `crypto_kex` and `crypto_sign` are already wired into the discovery/build system
 - Supported hardware platforms are `nucleo-l4r5zi` (STM32L4R5ZI) and `stm32f4discovery` (STM32F407VG); `mps2-an386` is the QEMU emulation target.
 - `PLATFORM=nucleo-l4r5zi` is the default hardware build target. Pass `PLATFORM=stm32f4discovery` to build for the STM32F4DISCOVERY board.
 - `-j1` means serial build mode. You can increase it, for example `-j4`, once the environment is working.

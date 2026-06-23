@@ -13,7 +13,8 @@ Examples:
 Supported platforms are mps2-an386, nucleo-l4r5zi, and stm32f4discovery.
 The mps2-an386 runner uses make qemu-run. Hardware runners build each target,
 open the serial port, flash the ELF with OpenOCD, capture output until '#', and
-summarize the speed, stack, and hashing app metrics.
+summarize the speed, stack, and hashing app metrics. The summary also includes
+code size from the speed app ELF, measured with arm-none-eabi-size.
 """
 
 from __future__ import annotations
@@ -128,6 +129,22 @@ class Measurement:
         return max(self.samples)
 
 
+@dataclass(frozen=True)
+class CodeSize:
+    platform: str
+    family: str
+    scheme: str
+    implementation: str
+    app: str
+    text: int
+    data: int
+    bss: int
+
+    @property
+    def total(self) -> int:
+        return self.text + self.data + self.bss
+
+
 def default_serial_port() -> str:
     if host_platform.system() == "Darwin":
         return "/dev/tty.usbserial-0001"
@@ -233,6 +250,26 @@ def openocd_command(platform: str, elf: str) -> list[str]:
     return [*OPENOCD_COMMANDS[platform], f"program {elf} verify reset exit"]
 
 
+def make_var_value(make_vars: list[str], key: str) -> str:
+    for var in reversed(make_vars):
+        var_key, _, value = var.partition("=")
+        if var_key == key:
+            return value
+    return os.environ.get(key, "")
+
+
+def size_tool(make_vars: list[str]) -> str:
+    explicit_size = make_var_value(make_vars, "SIZE")
+    if explicit_size:
+        return explicit_size
+    cross_prefix = make_var_value(make_vars, "CROSS_PREFIX") or "arm-none-eabi"
+    return f"{cross_prefix}-size"
+
+
+def size_command(make_vars: list[str], elf: str) -> list[str]:
+    return [size_tool(make_vars), "-A", elf]
+
+
 def format_run_command(template: str, platform: str, impl: build_schemes.Implementation, app: str) -> list[str]:
     target = target_name(impl, app)
     values = {
@@ -262,6 +299,23 @@ def parse_metrics(output: str) -> dict[str, list[int]]:
             break
 
     return {name: values for name, values in metrics.items() if values}
+
+
+def parse_code_size(output: str) -> dict[str, int]:
+    sections: dict[str, int] = {}
+    for line in output.splitlines():
+        match = re.match(r"^(\.\S+)\s+([0-9]+)\s+", line.strip())
+        if not match:
+            continue
+        section, size = match.groups()
+        if section in {".text", ".data", ".bss"}:
+            sections[section] = int(size)
+
+    missing = [section for section in (".text", ".data", ".bss") if section not in sections]
+    if missing:
+        raise ValueError("missing section(s): " + ", ".join(missing))
+
+    return sections
 
 
 def write_raw_log(raw_dir: Path, target: str, run_index: int, output: str) -> None:
@@ -448,15 +502,42 @@ def hashing_percentage_rows(measurements: list[Measurement]) -> list[tuple[str, 
     return rows
 
 
-def write_markdown(path: Path, measurements: list[Measurement]) -> None:
+def write_code_size_table(lines: list[str], code_sizes: list[CodeSize]) -> None:
+    if not code_sizes:
+        return
+
+    code_sizes.sort(key=lambda size: (size.scheme, size.implementation))
+    lines.append("**code size (speed)**")
+    lines.append("")
+    lines.append("| scheme | implementation | .text | .data | .bss | total |")
+    lines.append("| --- | --- | ---: | ---: | ---: | ---: |")
+    for size in code_sizes:
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    size.scheme,
+                    size.implementation,
+                    format_integer(size.text),
+                    format_integer(size.data),
+                    format_integer(size.bss),
+                    format_integer(size.total),
+                ]
+            )
+            + " |"
+        )
+    lines.append("")
+
+
+def write_markdown(path: Path, measurements: list[Measurement], code_sizes: list[CodeSize]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     lines: list[str] = []
-    families = sorted({measurement.family for measurement in measurements})
+    families = sorted({measurement.family for measurement in measurements} | {size.family for size in code_sizes})
 
     for family in families:
         family_measurements = [measurement for measurement in measurements if measurement.family == family]
+        family_code_sizes = [size for size in code_sizes if size.family == family]
         lines.append(f"## {family}")
-        lines.append("")
 
         for app in ordered_apps(family_measurements):
             if app == "hashing":
@@ -530,11 +611,90 @@ def write_markdown(path: Path, measurements: list[Measurement]) -> None:
                 lines.append("| " + " | ".join(row) + " |")
             lines.append("")
 
+        write_code_size_table(lines, family_code_sizes)
+        lines.append("")
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
 def validate_platform(platform: str) -> bool:
     return platform in build_schemes.SUPPORTED_TARGET_PLATFORMS
+
+
+def collect_code_size(
+    root: Path,
+    platform: str,
+    impl: build_schemes.Implementation,
+    make_vars: list[str],
+    jobs: str | None,
+    timeout: float,
+    no_build: bool,
+    dry_run: bool,
+    built_targets: set[str],
+) -> tuple[CodeSize | None, bool]:
+    target = target_name(impl, "speed")
+    elf = f"elf/{target}.elf"
+
+    print(f"\n==> {target} code size")
+
+    if not no_build and target not in built_targets:
+        build_command = build_target_command(platform, target, make_vars, jobs)
+        print("+ " + " ".join(build_command))
+        if not dry_run:
+            try:
+                code, output = run_command(build_command, root, timeout)
+            except FileNotFoundError as exc:
+                print(f"build command failed: {exc}", file=sys.stderr)
+                return None, True
+            except subprocess.TimeoutExpired as exc:
+                output = exc.stdout or ""
+                print(output, file=sys.stderr)
+                print(f"build timeout after {timeout:.1f}s: {target}", file=sys.stderr)
+                return None, True
+            if code != 0:
+                print(output, file=sys.stderr)
+                return None, True
+            built_targets.add(target)
+
+    command = size_command(make_vars, elf)
+    print("+ " + " ".join(command))
+    if dry_run:
+        return None, False
+
+    try:
+        code, output = run_command(command, root, timeout)
+    except FileNotFoundError as exc:
+        print(f"size command failed: {exc}", file=sys.stderr)
+        return None, True
+    except subprocess.TimeoutExpired as exc:
+        output = exc.stdout or ""
+        print(output, file=sys.stderr)
+        print(f"size timeout after {timeout:.1f}s: {target}", file=sys.stderr)
+        return None, True
+
+    if code != 0:
+        print(output, file=sys.stderr)
+        return None, True
+
+    try:
+        sections = parse_code_size(output)
+    except ValueError as exc:
+        print(f"could not parse code size for {target}: {exc}", file=sys.stderr)
+        print(output, file=sys.stderr)
+        return None, True
+
+    return (
+        CodeSize(
+            platform=platform,
+            family=impl.family,
+            scheme=impl.scheme,
+            implementation=impl.name,
+            app="speed",
+            text=sections[".text"],
+            data=sections[".data"],
+            bss=sections[".bss"],
+        ),
+        False,
+    )
 
 
 def main(argv: list[str]) -> int:
@@ -556,7 +716,9 @@ def main(argv: list[str]) -> int:
         return 1
 
     measurements_by_key: dict[tuple[str, str, str, str, str, str], list[int]] = {}
+    code_sizes: list[CodeSize] = []
     raw_dir = root / args.raw_dir
+    built_targets: set[str] = set()
     failures = 0
 
     for impl in implementations:
@@ -593,6 +755,7 @@ def main(argv: list[str]) -> int:
                                 if args.fail_fast:
                                     return 1
                                 continue
+                            built_targets.add(target)
                     command = format_run_command(args.run_command, platform, impl, app)
                     print("+ " + " ".join(command))
                 elif platform == "mps2-an386":
@@ -619,6 +782,7 @@ def main(argv: list[str]) -> int:
                                 if args.fail_fast:
                                     return 1
                                 continue
+                            built_targets.add(target)
                     command = openocd_command(platform, elf)
                     print("+ " + " ".join(command))
                     print(f"+ capture serial {args.serial_port} @ {args.baud} until {DONE_MARKER!r}")
@@ -656,6 +820,8 @@ def main(argv: list[str]) -> int:
                     if args.fail_fast:
                         return 1
                     continue
+                if platform == "mps2-an386":
+                    built_targets.add(target)
 
                 if DONE_MARKER not in output:
                     print(f"warning: done marker '#' not seen in {target}", file=sys.stderr)
@@ -667,6 +833,29 @@ def main(argv: list[str]) -> int:
                 for metric, values in parsed.items():
                     key = (platform, impl.family, impl.scheme, impl.name, app, metric)
                     measurements_by_key.setdefault(key, []).extend(values)
+
+    for impl in implementations:
+        family_apps = set(build_schemes.family_apps(root, impl.family))
+        if "speed" not in family_apps:
+            continue
+
+        size, failed = collect_code_size(
+            root=root,
+            platform=platform,
+            impl=impl,
+            make_vars=make_vars,
+            jobs=args.jobs,
+            timeout=args.timeout,
+            no_build=args.no_build,
+            dry_run=args.dry_run,
+            built_targets=built_targets,
+        )
+        if failed:
+            failures += 1
+            if args.fail_fast:
+                return 1
+        if size is not None:
+            code_sizes.append(size)
 
     measurements = [
         Measurement(
@@ -696,14 +885,14 @@ def main(argv: list[str]) -> int:
     if args.dry_run:
         return 0
 
-    if not measurements:
-        print("error: no measurements collected", file=sys.stderr)
+    if not measurements and not code_sizes:
+        print("error: no measurements or code sizes collected", file=sys.stderr)
         return 1
 
     csv_path = root / args.csv
     md_path = root / args.md
     write_csv(csv_path, measurements)
-    write_markdown(md_path, measurements)
+    write_markdown(md_path, measurements, code_sizes)
 
     print(f"\nWrote CSV summary: {csv_path}")
     print(f"Wrote Markdown summary: {md_path}")

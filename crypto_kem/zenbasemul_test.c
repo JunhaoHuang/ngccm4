@@ -9,19 +9,19 @@ extern void basemul16_karatsuba_block_c(int16_t *r, int16_t *a, int16_t *b, int1
 extern void basemul16_karatsuba_block_mq_c(int16_t *r, int16_t *a, int16_t *b, int16_t zeta);
 extern void poly_baseinv_ntt_c(int16_t *r, int16_t *a);
 
-static int16_t a[ZEN_SWIFT_N];
-static int16_t b[ZEN_SWIFT_N];
-static int16_t ref[ZEN_SWIFT_N];
-static int16_t got[ZEN_SWIFT_N];
-static int16_t invbuf[ZEN_SWIFT_N];
+static int16_t a[ZEN_N];
+static int16_t b[ZEN_N];
+static int16_t ref[ZEN_N];
+static int16_t got[ZEN_N];
+static int16_t invbuf[ZEN_N];
 
 static int16_t freeze_q32(int32_t x)
 {
     int32_t r = x;
 
-    r %= ZEN_SWIFT_Q;
+    r %= ZEN_Q;
     if (r < 0) {
-        r += ZEN_SWIFT_Q;
+        r += ZEN_Q;
     }
     return (int16_t)r;
 }
@@ -45,12 +45,12 @@ static void send_signed(const char *s, int v)
 static void fill_inputs(unsigned int seed, int lazy)
 {
     unsigned int i;
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
-        int x = (int)((seed * 113u + i * 37u + (i >> 4) * 19u) % ZEN_SWIFT_Q);
-        int y = (int)((seed * 251u + i * 91u + (i >> 3) * 7u) % ZEN_SWIFT_Q);
+    for (i = 0; i < ZEN_N; i++) {
+        int x = (int)((seed * 113u + i * 37u + (i >> 4) * 19u) % ZEN_Q);
+        int y = (int)((seed * 251u + i * 91u + (i >> 3) * 7u) % ZEN_Q);
         if (lazy) {
-            x -= (int)(ZEN_SWIFT_Q / 2);
-            y -= (int)(ZEN_SWIFT_Q / 2);
+            x -= (int)(ZEN_Q / 2);
+            y -= (int)(ZEN_Q / 2);
             if ((i & 3u) == 0u) x *= 3;
             if ((i & 5u) == 0u) y *= -2;
         }
@@ -70,7 +70,7 @@ static int compare_all(unsigned int seed, int lazy, int mq)
         basemul16_karatsuba_asm(got, a, b, zetas_769);
     }
 
-    for (i = 0; i < ZEN_SWIFT_N / 32; i++) {
+    for (i = 0; i < ZEN_N / 32; i++) {
         if (mq) {
             basemul16_karatsuba_block_mq_c(ref + 32 * i, a + 32 * i, b + 32 * i, f[64 + i]);
             basemul16_karatsuba_block_mq_c(ref + 32 * i + 16, a + 32 * i + 16, b + 32 * i + 16, -f[64 + i]);
@@ -80,7 +80,7 @@ static int compare_all(unsigned int seed, int lazy, int mq)
         }
     }
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         /* Raw m4 basemul preserves the high-half Plantard scale consumed by
          * poly_intt: -9 times the C Montgomery-domain block result modulo q.
          */
@@ -115,7 +115,7 @@ static int compare_ntt_inputs(unsigned int seed, int mq)
         basemul16_karatsuba_asm(got, a, b, zetas_769);
     }
 
-    for (i = 0; i < ZEN_SWIFT_N / 32; i++) {
+    for (i = 0; i < ZEN_N / 32; i++) {
         if (mq) {
             basemul16_karatsuba_block_mq_c(ref + 32 * i, a + 32 * i, b + 32 * i, f[64 + i]);
             basemul16_karatsuba_block_mq_c(ref + 32 * i + 16, a + 32 * i + 16, b + 32 * i + 16, -f[64 + i]);
@@ -125,7 +125,7 @@ static int compare_ntt_inputs(unsigned int seed, int mq)
         }
     }
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         /* Raw m4 basemul preserves the high-half Plantard scale consumed by
          * poly_intt: -9 times the C Montgomery-domain block result modulo q.
          */
@@ -159,7 +159,7 @@ static int compare_mixed_inputs(unsigned int seed, int mq)
         basemul16_karatsuba_asm(got, a, b, zetas_769);
     }
 
-    for (i = 0; i < ZEN_SWIFT_N / 32; i++) {
+    for (i = 0; i < ZEN_N / 32; i++) {
         if (mq) {
             basemul16_karatsuba_block_mq_c(ref + 32 * i, a + 32 * i, b + 32 * i, f[64 + i]);
             basemul16_karatsuba_block_mq_c(ref + 32 * i + 16, a + 32 * i + 16, b + 32 * i + 16, -f[64 + i]);
@@ -169,7 +169,7 @@ static int compare_mixed_inputs(unsigned int seed, int mq)
         }
     }
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         /* Raw m4 basemul preserves the high-half Plantard scale consumed by
          * poly_intt: -9 times the C Montgomery-domain block result modulo q.
          */
@@ -201,7 +201,7 @@ static int compare_baseinv_ntt(unsigned int seed)
     poly_baseinv_ntt_c(ref, a);
     poly_baseinv_ntt(got, a);
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         if (freeze_q(ref[i]) != freeze_q(got[i])) {
             send_unsigned("baseinv seed:", seed);
             send_unsigned(" idx:", i);
@@ -213,13 +213,13 @@ static int compare_baseinv_ntt(unsigned int seed)
     }
 
     basemul16_karatsuba_mq_asm(invbuf, a, got, zetas_769);
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         b[i] = 0;
     }
     b[0] = 1;
     poly_ntt_mq(b);
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         if (freeze_q(invbuf[i]) != freeze_q(b[i])) {
             send_unsigned("baseprod seed:", seed);
             send_unsigned(" idx:", i);
@@ -264,12 +264,12 @@ static int compare_keygen_shape(unsigned int seed_id)
 
     basemul16_karatsuba_mq_asm(got, b, invbuf, zetas_769);
 
-    for (i = 0; i < ZEN_SWIFT_N / 32; i++) {
+    for (i = 0; i < ZEN_N / 32; i++) {
         basemul16_karatsuba_block_mq_c(ref + 32 * i, b + 32 * i, invbuf + 32 * i, f[64 + i]);
         basemul16_karatsuba_block_mq_c(ref + 32 * i + 16, b + 32 * i + 16, invbuf + 32 * i + 16, -f[64 + i]);
     }
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         if (ref[i] != got[i]) {
             send_unsigned("keycmp seed:", seed_id);
             send_unsigned(" idx:", i);
@@ -287,7 +287,7 @@ static int test_ntt_identity(unsigned int seed)
     unsigned int i;
 
     fill_inputs(seed, 0);
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         ref[i] = a[i];
         b[i] = 0;
     }
@@ -298,7 +298,7 @@ static int test_ntt_identity(unsigned int seed)
     poly_basemul_ntt(got, a, b);
     poly_intt(got);
 
-    for (i = 0; i < ZEN_SWIFT_N; i++) {
+    for (i = 0; i < ZEN_N; i++) {
         if (freeze_q(ref[i]) != freeze_q(got[i])) {
             send_unsigned("ntt seed:", seed);
             send_unsigned(" idx:", i);

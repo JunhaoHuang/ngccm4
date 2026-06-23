@@ -31,19 +31,19 @@
 #define ZENSPEED_HAVE_MUL_IN_R2_N 1
 #endif
 
-static int16_t in_a[ZEN_SWIFT_N];
-static int16_t in_b[ZEN_SWIFT_N];
-static int16_t work[ZEN_SWIFT_N];
-static int16_t out[ZEN_SWIFT_N];
-static int16_t r2_a[ZEN_SWIFT_N2];
-static int16_t r2_b[ZEN_SWIFT_N2];
-static int16_t r2_out[ZEN_SWIFT_N2];
+static int16_t in_a[ZEN_N];
+static int16_t in_b[ZEN_N];
+static int16_t work[ZEN_N];
+static int16_t out[ZEN_N];
+static int16_t r2_a[ZEN_N2];
+static int16_t r2_b[ZEN_N2];
+static int16_t r2_out[ZEN_N2];
 static volatile uint32_t checksum_sink;
 
 #if ZENSPEED_HAVE_RADIX16
-static uint32_t rad_a[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
-static uint32_t rad_b[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
-static uint32_t rad_out[R2_RADIX16_WORDS(ZEN_SWIFT_N2)];
+static uint32_t rad_a[R2_RADIX16_WORDS(ZEN_N2)];
+static uint32_t rad_b[R2_RADIX16_WORDS(ZEN_N2)];
+static uint32_t rad_out[R2_RADIX16_WORDS(ZEN_N2)];
 #endif
 
 typedef void (*poly_unary_fn)(int16_t *);
@@ -67,7 +67,7 @@ static void fill_q_poly(int16_t *a, size_t n, uint32_t seed)
     for (i = 0; i < n; i++) {
         uint32_t x = seed + (uint32_t)i * 37u + ((uint32_t)i >> 4) * 19u;
 
-        a[i] = (int16_t)(x % ZEN_SWIFT_Q);
+        a[i] = (int16_t)(x % ZEN_Q);
     }
 }
 
@@ -153,7 +153,7 @@ static __attribute__((noinline)) unsigned int call_check_poly_inv_Zq(int16_t *a)
 
 static __attribute__((noinline)) unsigned int call_check_poly_inv_Z2(int16_t *a)
 {
-#if ZENSPEED_HAVE_RADIX16 && ZEN_SWIFT_N == 1024
+#if ZENSPEED_HAVE_RADIX16 && ZEN_N == 1024
     return (unsigned int)check_poly_inv_Z2_asm(a);
 #else
     return (unsigned int)check_poly_inv_Z2(a);
@@ -163,13 +163,13 @@ static __attribute__((noinline)) unsigned int call_check_poly_inv_Z2(int16_t *a)
 #if ZENSPEED_HAVE_MUL_IN_R2_N
 static __attribute__((noinline)) void call_mul_in_R2_n_N4(void)
 {
-    // mul_in_R2_n(r2_a, r2_b, ZEN_SWIFT_N4, r2_out);
+    // mul_in_R2_n(r2_a, r2_b, ZEN_N4, r2_out);
     mul_in_R2_512(r2_a, r2_b, r2_out);
 }
 
 static __attribute__((noinline)) void call_mul_in_R2_n_N2(void)
 {
-    // mul_in_R2_n(r2_a, r2_b, ZEN_SWIFT_N2, r2_out);
+    // mul_in_R2_n(r2_a, r2_b, ZEN_N2, r2_out);
     mul_in_R2_1024(r2_a, r2_b, r2_out);
 }
 #endif
@@ -196,12 +196,12 @@ static __attribute__((noinline)) void call_r2_radix16_mul_n(void)
 
 static __attribute__((noinline)) void call_r2_radix16_mul_N4(void)
 {
-    r2_radix16_mul(rad_out, rad_a, rad_b, ZEN_SWIFT_N4);
+    r2_radix16_mul(rad_out, rad_a, rad_b, ZEN_N4);
 }
 
 static __attribute__((noinline)) void call_r2_radix16_mul_N2(void)
 {
-    r2_radix16_mul(rad_out, rad_a, rad_b, ZEN_SWIFT_N2);
+    r2_radix16_mul(rad_out, rad_a, rad_b, ZEN_N2);
 }
 #endif
 
@@ -339,8 +339,8 @@ time_void_radix(void (*fn)(void), const uint32_t *check_src, size_t words)
 
 static void prepare_ntt_domain_inputs(void)
 {
-    fill_q_poly(in_a, ZEN_SWIFT_N, 19u);
-    fill_q_poly(in_b, ZEN_SWIFT_N, 41u);
+    fill_q_poly(in_a, ZEN_N, 19u);
+    fill_q_poly(in_b, ZEN_N, 41u);
     call_poly_ntt_mq(in_a);
     call_poly_ntt_mq(in_b);
 }
@@ -350,7 +350,7 @@ static void prepare_baseinv_input(void)
     uint32_t seed;
 
     for (seed = 101u; seed < 1000u; seed++) {
-        fill_q_poly(in_a, ZEN_SWIFT_N, seed);
+        fill_q_poly(in_a, ZEN_N, seed);
         call_poly_ntt_mq(in_a);
         if (call_check_poly_inv_Zq(in_a) == 0u) {
             return;
@@ -362,13 +362,13 @@ static void prepare_baseinv_input(void)
 
 static void prepare_binary_inputs(void)
 {
-    fill_binary_poly(r2_a, ZEN_SWIFT_N2, 0x13579bdfu);
-    fill_binary_poly(r2_b, ZEN_SWIFT_N2, 0x2468ace0u);
+    fill_binary_poly(r2_a, ZEN_N2, 0x13579bdfu);
+    fill_binary_poly(r2_b, ZEN_N2, 0x2468ace0u);
     memset(r2_out, 0, sizeof(r2_out));
 
 #if ZENSPEED_HAVE_RADIX16
-    r2_radix16_pack(rad_a, r2_a, ZEN_SWIFT_N2);
-    r2_radix16_pack(rad_b, r2_b, ZEN_SWIFT_N2);
+    r2_radix16_pack(rad_a, r2_a, ZEN_N2);
+    r2_radix16_pack(rad_b, r2_b, ZEN_N2);
     memset(rad_out, 0, sizeof(rad_out));
 #endif
 }
@@ -385,58 +385,58 @@ int main(void)
 
     hal_setup(CLOCK_BENCHMARK);
     hal_send_str("==========================");
-    send_unsigned("ZEN_SWIFT_N:", ZEN_SWIFT_N);
+    send_unsigned("ZEN_N:", ZEN_N);
     send_unsigned("iters:", ZENSPEED_ITERS);
     send_unsigned("radix16:", ZENSPEED_HAVE_RADIX16);
 
-    fill_q_poly(in_a, ZEN_SWIFT_N, 7u);
-    call_overhead = time_poly_unary_copy(call_empty_i16, in_a, ZEN_SWIFT_N);
+    fill_q_poly(in_a, ZEN_N, 7u);
+    call_overhead = time_poly_unary_copy(call_empty_i16, in_a, ZEN_N);
     send_cycles("timer_call_overhead cycles:", call_overhead);
 
-    raw_cycles = time_poly_unary_copy(call_poly_ntt, in_a, ZEN_SWIFT_N);
+    raw_cycles = time_poly_unary_copy(call_poly_ntt, in_a, ZEN_N);
     send_cycles("poly_ntt cycles:", raw_cycles);
 
-    raw_cycles = time_poly_unary_copy(call_poly_ntt_mq, in_a, ZEN_SWIFT_N);
+    raw_cycles = time_poly_unary_copy(call_poly_ntt_mq, in_a, ZEN_N);
     send_cycles("poly_ntt_mq cycles:", raw_cycles);
 
     memcpy(work, in_a, sizeof(in_a));
     call_poly_ntt_mq(work);
-    raw_cycles = time_poly_unary_copy(call_poly_intt, work, ZEN_SWIFT_N);
+    raw_cycles = time_poly_unary_copy(call_poly_intt, work, ZEN_N);
     send_cycles("poly_intt cycles:", raw_cycles);
 
     prepare_ntt_domain_inputs();
     send_cycles("poly_basemul_ntt cycles:",
-                time_poly_binary(call_poly_basemul_ntt, out, in_a, in_b, ZEN_SWIFT_N));
+                time_poly_binary(call_poly_basemul_ntt, out, in_a, in_b, ZEN_N));
     send_cycles("poly_basemul_ntt_mq cycles:",
-                time_poly_binary(call_poly_basemul_ntt_mq, out, in_a, in_b, ZEN_SWIFT_N));
+                time_poly_binary(call_poly_basemul_ntt_mq, out, in_a, in_b, ZEN_N));
 
     prepare_baseinv_input();
     send_cycles("poly_baseinv_ntt cycles:",
-                time_poly_unary_out(call_poly_baseinv_ntt, out, in_a, ZEN_SWIFT_N));
+                time_poly_unary_out(call_poly_baseinv_ntt, out, in_a, ZEN_N));
     send_cycles("check_poly_inv_Zq cycles:", time_check(call_check_poly_inv_Zq, in_a));
 
     prepare_binary_inputs();
     send_cycles("check_poly_inv_Z2 cycles:", time_check(call_check_poly_inv_Z2, r2_a));
 
 #if ZENSPEED_HAVE_MUL_IN_R2_N
-    send_cycles("mul_in_R2_n_N4 cycles:", time_void_call(call_mul_in_R2_n_N4, r2_out, ZEN_SWIFT_N4));
-    send_cycles("mul_in_R2_n_N2 cycles:", time_void_call(call_mul_in_R2_n_N2, r2_out, ZEN_SWIFT_N2));
+    send_cycles("mul_in_R2_n_N4 cycles:", time_void_call(call_mul_in_R2_n_N4, r2_out, ZEN_N4));
+    send_cycles("mul_in_R2_n_N2 cycles:", time_void_call(call_mul_in_R2_n_N2, r2_out, ZEN_N2));
 #else
     send_cycles("poly_xor4_radix16 cycles:",
-                time_void_radix(call_poly_xor4_radix16, rad_out, R2_RADIX16_WORDS(ZEN_SWIFT_N4)));
+                time_void_radix(call_poly_xor4_radix16, rad_out, R2_RADIX16_WORDS(ZEN_N4)));
     send_cycles("mul_in_R2_n 64 cycles:",
                 time_void_radix(call_r2_radix16_mul_n, rad_out, R2_RADIX16_WORDS(64)));
     send_cycles("mul_in_R2_n_N4 cycles:",
-                time_void_radix(call_r2_radix16_mul_N4, rad_out, R2_RADIX16_WORDS(ZEN_SWIFT_N4)));
+                time_void_radix(call_r2_radix16_mul_N4, rad_out, R2_RADIX16_WORDS(ZEN_N4)));
     send_cycles("mul_in_R2_n_N2 cycles:",
-                time_void_radix(call_r2_radix16_mul_N2, rad_out, R2_RADIX16_WORDS(ZEN_SWIFT_N2)));
+                time_void_radix(call_r2_radix16_mul_N2, rad_out, R2_RADIX16_WORDS(ZEN_N2)));
 #endif
 
 #if ZENSPEED_HAVE_RADIX16
     send_cycles("FastInversion cycles:",
-                time_void_radix(call_fastinversion, rad_out, R2_RADIX16_WORDS(ZEN_SWIFT_N4)));
+                time_void_radix(call_fastinversion, rad_out, R2_RADIX16_WORDS(ZEN_N4)));
 #else
-    send_cycles("FastInversion cycles:", time_void_call(call_fastinversion, r2_out, ZEN_SWIFT_N4));
+    send_cycles("FastInversion cycles:", time_void_call(call_fastinversion, r2_out, ZEN_N4));
 #endif
 
     send_unsigned("checksum:", checksum_sink);

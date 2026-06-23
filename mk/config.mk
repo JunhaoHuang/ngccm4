@@ -22,7 +22,7 @@ APP ?=
 Q ?=
 OPT ?= speed
 LTO ?= 0
-NGCC_ITERATIONS ?= 30
+NGCC_ITERATIONS ?= 100
 USE_SM3_ASM ?= 1
 USE_KECCAK ?= 0
 DKEX_SIG_MLDSA_LEVEL ?= 2
@@ -37,7 +37,7 @@ SIZE := $(CROSS_PREFIX)-size
 
 CPPFLAGS += -I$(CURDIR)
 CPPFLAGS += -DNGCC_ITERATIONS=$(NGCC_ITERATIONS)
-CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -g3
+CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -Wpedantic -Wall -Wextra -std=c99
 LDFLAGS += -Wl,--gc-sections -u,__wrap__sbrk
 
 ifeq ($(USE_SM3_ASM),1)
