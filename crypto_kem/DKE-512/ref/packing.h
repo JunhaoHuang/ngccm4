@@ -33,8 +33,7 @@ void DKE3_CPA_packciphertext(uint8_t bytes[DKE3_CPA_CTBYTES],
 
 // CPA
 void DKE3_CPA_unpacksk(polyvec *sk,
-               const uint8_t bytes[DKE3_SKBYTES]);
-
+                       const uint8_t bytes[DKE3_CPA_SKABYTES]);
 
 // CPA
 void DKE3_CPA_unpackciphertext(polyvec *pb,

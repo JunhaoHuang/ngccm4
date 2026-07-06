@@ -1,10 +1,10 @@
 /**
  * ZEN_512 16-coefficient NTT base multiplication.
  *
- * Each block is multiplied modulo x^16 = zeta.  The block products are
- * computed with macro-expanded Karatsuba kernels.  Product coefficients stay
- * in high-half Plantard form until the final store, matching the existing
- * public ABI:
+ * Each block is multiplied modulo x^16 = zeta.  The top-level block product
+ * uses one Karatsuba split into three direct 8x8 schoolbook products.  Product
+ * coefficients stay in high-half Plantard form until the final store, matching
+ * the existing public ABI:
  *   basemul16_karatsuba_asm(r, a, b, zetas_769)
  *   basemul16_karatsuba_mq_asm(r, a, b, zetas_769)
  */
@@ -87,6 +87,115 @@
     str.w \t0, [\bs, #0+4*3]
 .endm
 
+
+// Compute the full 8x8 convolution into fifteen signed 16-bit high-half
+// Plantard coefficients. Inputs are four packed 16-bit words for each operand.
+.macro mul8_schoolbook_plant_hh out, a, b, q, qa, qinv, a01, a23, a45, a67, b01, b23, b45, b67, even, odd
+    ldr.w \a01, [\a, #0]
+    ldr.w \a23, [\a, #4]
+    ldr.w \a45, [\a, #8]
+    ldr.w \a67, [\a, #12]
+    ldr.w \b01, [\b, #0]
+    ldr.w \b23, [\b, #4]
+    ldr.w \b45, [\b, #8]
+    ldr.w \b67, [\b, #12]
+
+    // c0, c1
+    smulbb \even, \a01, \b01
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \b01
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(0 * 2)]
+
+    // c2, c3
+    smulbb \even, \a01, \b23
+    smlatt \even, \a01, \b01, \even
+    smlabb \even, \a23, \b01, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \b23
+    smladx \odd, \a23, \b01, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(2 * 2)]
+
+    // c4, c5
+    smulbb \even, \a01, \b45
+    smlatt \even, \a01, \b23, \even
+    smlabb \even, \a23, \b23, \even
+    smlatt \even, \a23, \b01, \even
+    smlabb \even, \a45, \b01, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \b45
+    smladx \odd, \a23, \b23, \odd
+    smladx \odd, \a45, \b01, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(4 * 2)]
+
+    // c6, c7
+    smulbb \even, \a01, \b67
+    smlatt \even, \a01, \b45, \even
+    smlabb \even, \a23, \b45, \even
+    smlatt \even, \a23, \b23, \even
+    smlabb \even, \a45, \b23, \even
+    smlatt \even, \a45, \b01, \even
+    smlabb \even, \a67, \b01, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \b67
+    smladx \odd, \a23, \b45, \odd
+    smladx \odd, \a45, \b23, \odd
+    smladx \odd, \a67, \b01, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(6 * 2)]
+
+    // c8, c9
+    smultt \even, \a01, \b67
+    smlabb \even, \a23, \b67, \even
+    smlatt \even, \a23, \b45, \even
+    smlabb \even, \a45, \b45, \even
+    smlatt \even, \a45, \b23, \even
+    smlabb \even, \a67, \b23, \even
+    smlatt \even, \a67, \b01, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a23, \b67
+    smladx \odd, \a45, \b45, \odd
+    smladx \odd, \a67, \b23, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(8 * 2)]
+
+    // c10, c11
+    smultt \even, \a23, \b67
+    smlabb \even, \a45, \b67, \even
+    smlatt \even, \a45, \b45, \even
+    smlabb \even, \a67, \b45, \even
+    smlatt \even, \a67, \b23, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a45, \b67
+    smladx \odd, \a67, \b45, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(10 * 2)]
+
+    // c12, c13
+    smultt \even, \a45, \b67
+    smlabb \even, \a67, \b67, \even
+    smlatt \even, \a67, \b45, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a67, \b67
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(12 * 2)]
+
+    // c14
+    smultt \even, \a67, \b67
+    plant_red \q, \qa, \qinv, \even
+    asr.w \even, \even, #16
+    strh.w \even, [\out, #(14 * 2)]
+.endm
+
 .macro compute_block_products
     str.w r0, [sp, #BM_SAVE_R]
     str.w r1, [sp, #BM_SAVE_A]
@@ -102,20 +211,14 @@
     add.w r0, sp, #BM_P0
     ldr.w r1, [sp, #BM_SAVE_A]
     ldr.w r2, [sp, #BM_SAVE_B]
-    add.w r3, sp, #BM_TMP
-    add.w r11, sp, #BM_AS
-    add.w r12, sp, #BM_BS
-    mul8_plant_hh r0, r1, r2, r3, r11, r12, r8, r10, r9, r4, r5, r6, r7, lr
+    mul8_schoolbook_plant_hh r0, r1, r2, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12, lr, r1, r2
 
     add.w r0, sp, #BM_P1
     ldr.w r1, [sp, #BM_SAVE_A]
     add.w r1, r1, #16
     ldr.w r2, [sp, #BM_SAVE_B]
     add.w r2, r2, #16
-    add.w r3, sp, #BM_TMP
-    add.w r11, sp, #BM_AS
-    add.w r12, sp, #BM_BS
-    mul8_plant_hh r0, r1, r2, r3, r11, r12, r8, r10, r9, r4, r5, r6, r7, lr
+    mul8_schoolbook_plant_hh r0, r1, r2, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12, lr, r1, r2
 
     add.w r11, sp, #BM_AS
     add.w r12, sp, #BM_BS
@@ -126,8 +229,7 @@
     add.w r0, sp, #BM_PM
     mov r1, r11
     mov r2, r12
-    add.w r3, sp, #BM_TMP
-    mul8_plant_hh r0, r1, r2, r3, r1, r2, r8, r10, r9, r4, r5, r6, r7, lr
+    mul8_schoolbook_plant_hh r0, r1, r2, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12, lr, r1, r2
 .endm
 
 .macro setup_combine_ptrs

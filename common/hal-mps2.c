@@ -173,7 +173,7 @@ void hal_spraystack(void)
 {
   
   char* _heap_end = heap_end;
-  asm volatile ("mov %0, sp\n"
+  __asm__ volatile ("mov %0, sp\n"
                 ".L%=:\n\t"
                 "str %2, [%1], #4\n\t"
                 "cmp %1, %0\n\t"
@@ -184,7 +184,7 @@ void hal_spraystack(void)
 size_t hal_checkstack(void)
 {
   size_t result = 0;
-  asm volatile("sub %0, %1, %2\n"
+  __asm__ volatile("sub %0, %1, %2\n"
                ".L%=:\n\t"
                "ldr ip, [%2], #4\n\t"
                "cmp ip, %3\n\t"

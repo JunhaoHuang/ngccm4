@@ -89,7 +89,7 @@ void DKE512_Response(uint8_t ct[DKE3_CPA_CTBYTES],
     uint8_t seed[DKE3_SEEDBYTES];
     uint8_t sig[DKE3_SIGNALBYTES];
     polyvec matt[DKE3_K]; // A^t in NTT(Mont) domain
-    polyvec pA, pB, sB, eB, sB_prime;
+    polyvec pA, pB, sB, eB;
     poly kB, e;
 
     // unpackaging

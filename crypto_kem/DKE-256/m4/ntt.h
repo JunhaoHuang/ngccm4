@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-extern const int32_t zetas[64];
+extern const uint32_t zetas[64];
 
 void DKE2_ntt(int16_t r[256]);
 void DKE2_invntt(int16_t r[256]);

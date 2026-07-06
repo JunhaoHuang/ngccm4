@@ -18,7 +18,8 @@
 .syntax unified
 .cpu cortex-m4
 .thumb
-
+#include "params.h"
+#define NTT_SCALE (ZEN_N / 256)
 // #######
 // #######
 // # NTT #
@@ -48,7 +49,7 @@
 	two_doublebutterfly_plant \c4, \c5, \c6, \c7, \twiddle1, \twiddle2, \tmp, \q, \qa
 .endm
 
-// for DIM_N=2048
+
 .global small_ntt_asm_769
 .type small_ntt_asm_769, %function
 .align 2
@@ -78,15 +79,15 @@ small_ntt_asm_769:
 	// Why movt? Because we initially placed qa at the bottom of the same register as q;
 	movt q, #769
 
-	### LAYER 8+7+6+5
-	.equ distance, 256*8 // 256->2048: *8
-	.equ offset, 32*8 // 256->2048: *8
+	### LAYER 7+6+5+4
+	.equ distance, 256*NTT_SCALE 
+	.equ offset, 32*NTT_SCALE 
 	.equ strincr, 4
 	// pre-load 15 twiddle factors to 15 FPU registers
 	// s0-s7 used to temporary store 16 16-bit polys.
 	vldm twiddle_ptr!, {s8-s22}
  
-	add tmp, poly, #strincr*8*8 // 256->2048: *8
+	add tmp, poly, #strincr*8*NTT_SCALE 
 	// s23: poly addr
 	// s24: tmp  
 	vmov s24, tmp  
@@ -200,27 +201,24 @@ small_ntt_asm_769:
 	cmp.w poly, tmp
 	bne.w 1b
 
-	sub.w poly, #strincr*8*8 // 256->2048: *8
+	sub.w poly, #strincr*8*NTT_SCALE 
 
-	### LAYER 4+3+2+1
+	### LAYER 3+2+1
 
 	.equ distance, distance/16
-	.equ strincr, 32*8 // 256->2048: *8
+	.equ strincr, 32*NTT_SCALE 
 
-	movw tmp, #(strincr*16)
-	add tmp, poly
+	add.w tmp, poly, #strincr*16
 	vmov s15, tmp
 	2:
 		vldm twiddle_ptr!, {s8-s14}
-		.rept 8 // 256->2048: *8
+		.rept NTT_SCALE 
 			vmov s23, poly
 			load poly, poly0, poly1, poly2, poly3, #0, #distance/4, #2*distance/4, #3*distance/4
 			load poly, poly4, poly5, poly6, poly7, #distance, #5*distance/4, #6*distance/4, #7*distance/4
 			
 			movw qa, #24608
 			_3_layer_double_CT_16_plant_fp poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, s8, s9, s10, s11, s12, s13, s14, twiddle1, twiddle2, q, qa, tmp
-
-			//fullplant poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, twiddle1, q, qa, tmp
 
 			vmov poly, s23
 			store poly, poly4, poly5, poly6, poly7, #distance, #5*distance/4, #6*distance/4, #7*distance/4
@@ -229,7 +227,7 @@ small_ntt_asm_769:
 			str.w poly3, [poly, #3*distance/4]
 			str.w poly0, [poly], #4
 		.endr
-		add poly, #strincr-4*8 // 256->2048: *8 
+		add poly, #strincr-4*NTT_SCALE 
 	vmov tmp, s15
 	cmp.w poly, tmp
 	bne.w 2b
@@ -237,7 +235,6 @@ small_ntt_asm_769:
 	pop {r4-r11, pc}
 
 
-// for DIM_N=2048
 .global small_ntt_mq_asm_769
 .type small_ntt_mq_asm_769, %function
 .align 2
@@ -266,16 +263,17 @@ small_ntt_mq_asm_769:
 	// movw qa, #24608
 	// Why movt? Because we initially placed qa at the bottom of the same register as q;
 	movt q, #769
+	//movw q, #769
 
-	### LAYER 8+7+6+5
-	.equ distance, 256*8 // 256->2048: *8
-	.equ offset, 32*8 // 256->2048: *8
+	### LAYER 7+6+5+4
+	.equ distance, 256*NTT_SCALE 
+	.equ offset, 32*NTT_SCALE 
 	.equ strincr, 4
 	// pre-load 15 twiddle factors to 15 FPU registers
 	// s0-s7 used to temporary store 16 16-bit polys.
 	vldm twiddle_ptr!, {s8-s22}
  
-	add tmp, poly, #strincr*8*8 // 256->2048: *8
+	add tmp, poly, #strincr*8*NTT_SCALE 
 	// s23: poly addr
 	// s24: tmp  
 	vmov s24, tmp  
@@ -389,19 +387,18 @@ small_ntt_mq_asm_769:
 	cmp.w poly, tmp
 	bne.w 1b
 
-	sub.w poly, #strincr*8*8 // 256->2048: *8
+	sub.w poly, #strincr*8*NTT_SCALE 
 
-	### LAYER 4+3+2+1
+	### LAYER 3+2+1
 
 	.equ distance, distance/16
-	.equ strincr, 32*8 // 256->2048: *8
+	.equ strincr, 32*NTT_SCALE 
 
-	movw tmp, #(strincr*16)
-	add tmp, poly
+	add.w tmp, poly, #strincr*16
 	vmov s15, tmp
 	2:
 		vldm twiddle_ptr!, {s8-s14}
-		.rept 8 // 256->2048: *8
+		.rept NTT_SCALE // 256->512: 1*2
 			vmov s23, poly
 			load poly, poly0, poly1, poly2, poly3, #0, #distance/4, #2*distance/4, #3*distance/4
 			load poly, poly4, poly5, poly6, poly7, #distance, #5*distance/4, #6*distance/4, #7*distance/4
@@ -418,7 +415,7 @@ small_ntt_mq_asm_769:
 			str.w poly3, [poly, #3*distance/4]
 			str.w poly0, [poly], #4
 		.endr
-		add poly, #strincr-4*8 // 256->2048: *8 
+		add poly, #strincr-4*NTT_SCALE  
 	vmov tmp, s15
 	cmp.w poly, tmp
 	bne.w 2b
@@ -542,7 +539,8 @@ small_ntt_mq_asm_769:
 	mul_twiddle_plant \c6, \twiddle1, \tmp, \q, \qa
 	mul_twiddle_plant \c7, \twiddle2, \tmp, \q, \qa
 .endm
-# input coefficients < 0.5q
+
+# input coefficients < q?
 .global small_invntt_asm_769
 .type small_invntt_asm_769, %function
 .align 2
@@ -569,19 +567,18 @@ small_invntt_asm_769:
 
 	movt q, #769
 
-	### LAYER 8+7+6+5
-	.equ distance, 16*8 // 256->2048: *8
-	.equ offset, 32*8 // 256->2048: *8
-	.equ strincr, 64*8 // 256->2048: *8
+	### LAYER 7+6+5+4
+	.equ distance, 16*NTT_SCALE 
+	.equ offset, 32*NTT_SCALE 
+	.equ strincr, 64*NTT_SCALE 
 
 	// pre-load twiddle factors to FPU registers
 	vldm twiddle_ptr!, {s8-s22}
 
-	movw tmp, #(8*strincr)
-	add tmp, poly
+	add.w tmp, poly, #8*strincr
 	vmov s8, tmp
 	1:
-	.rept 8 // 256->2048: *8
+	.rept NTT_SCALE 
 		vmov s23, poly
 		// load a1, a3, ..., a15
 		load poly, poly0, poly1, poly2, poly3, #offset, #distance/4+offset, #2*distance/4+offset, #3*distance/4+offset
@@ -691,30 +688,30 @@ small_invntt_asm_769:
 		//0,2,4,6: < 1.5q
 	.endr 
 
-	add poly, #strincr-4*8 // 256->2048: *8
+	add poly, #strincr-4*NTT_SCALE 
 	
 	vmov tmp, s8
 	cmp.w poly, tmp
 	bne.w 1b
 
-	movw tmp, #(8*strincr)
-	sub.w poly, poly, tmp
+	sub.w poly, #8*strincr  
 
-	### LAYER 4+3+2+1
+	### LAYER 3+2+1
 
 	.equ distance, distance*16
-	.equ strincr, 4*8 // 256->2048: *8
+	.equ strincr, 4*NTT_SCALE 
 
-	// ITER 0:0,1
+	// ITER 0 groups
 	vldm twiddle_ptr!, {s0-s13}
 
-	.rept 8
+	.rept NTT_SCALE
 	vmov s14, poly
 	load poly, poly0, poly1, poly2, poly3, #0, #distance/4, #2*distance/4, #3*distance/4
 	load poly, poly4, poly5, poly6, poly7, #distance, #5*distance/4, #6*distance/4, #7*distance/4
 
 	movw qa, #24608
 	// twiddle2 is used as tmp2
+	fullplant poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, tmp, q, qa, twiddle1
 	_3_layer_double_inv_CT_16_plant_light poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, s1, s3, s4, s5, twiddle1, twiddle2, q, qa, tmp
 
 	// twisting
@@ -733,8 +730,7 @@ small_invntt_asm_769:
 	vmov s16, tmp
 	2:
 		vldm twiddle_ptr!, {s0-s14} //15 twiddle factors
-		
-		.rept 8
+		.rept NTT_SCALE
 		vmov s15, poly
 		// polys upto 5.5q
 		load poly, poly0, poly1, poly2, poly3, #0, #distance/4, #2*distance/4, #3*distance/4
@@ -753,6 +749,7 @@ small_invntt_asm_769:
 		str.w poly3, [poly, #3*distance/4]
 		str.w poly0, [poly], #4
 		.endr
+
 	vmov tmp, s16
 	cmp.w poly, tmp
 	bne.w 2b

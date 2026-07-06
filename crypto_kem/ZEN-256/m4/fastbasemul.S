@@ -88,7 +88,7 @@ basemul_asm:
     plant_red q, qa, qinv, tmp // res in high-half
     smuadx tmp2, poly1, poly7 //a2b7+a3b6
     smladx tmp2, poly2, poly6, tmp2 //a4b5+a5b4
-    smladx tmp2, poly3, poly5, tmp2 //a6b3+a7b2 // TODO: overflow check
+    smladx tmp2, poly3, poly5, tmp2 //a6b3+a7b2 
     plant_red q, qa, qinv, tmp2 //high-half of tmp2 
     smulwt tmp2, zeta, tmp2 
     smlabt tmp2, tmp2, q, qa // (a2b3+a3b2)*zeta mod q; in high-half

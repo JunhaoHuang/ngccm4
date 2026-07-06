@@ -61,7 +61,7 @@
     eor \res, \res, \xi0, ror #(32-23) 
 .endm
 
-// load msg w0-w15; compute w16-w19, and store thme to s5-s24
+// load msg w0-w15; compute w16-w19, and store them to s3-s22
 .macro load_msg_expand_r1 msg_ptr, wi, w1, w2, w3, w4, w5
     .set idx, 3
     .rept 3

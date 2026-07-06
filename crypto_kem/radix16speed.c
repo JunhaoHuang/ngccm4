@@ -43,6 +43,8 @@ static uint32_t ref_rad[RADIX16SPEED_MAX_WORDS];
 static volatile uint32_t checksum_sink;
 
 #if defined(HAVE_RADIX16_R2)
+extern void r2_radix16_mul_2_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_4_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_8_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_16_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_32_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
@@ -230,6 +232,8 @@ int main(void)
 #endif
 
     init_inputs();
+    send_unsignedll("mul2 cycles:", time_mul(r2_radix16_mul_2_asm, 1u));
+    send_unsignedll("mul4 cycles:", time_mul(r2_radix16_mul_4_asm, 1u));
     send_unsignedll("mul8 cycles:", time_mul(r2_radix16_mul_8_asm, 1u));
     send_unsignedll("mul16 cycles:", time_mul(r2_radix16_mul_16_asm, 2u));
     send_unsignedll("mul32 cycles:", time_mul(r2_radix16_mul_32_asm, 4u));

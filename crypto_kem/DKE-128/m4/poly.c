@@ -13,8 +13,8 @@ extern void poly_reduce_mq_asm(int16_t *r);
 extern void asm_fromplant(int16_t *r);
 extern void pointwise_add(int16_t *, const int16_t *, const int16_t *);
 extern void pointwise_sub(int16_t *, const int16_t *, const int16_t *);
-extern void frombytes_mul_asm_acc(int16_t *r, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
-extern void frombytes_mul_asm(int16_t *r, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void frombytes_mul_asm_acc(int16_t *r, const int16_t *b, const unsigned char *c, const uint32_t zetas[64]);
+extern void frombytes_mul_asm(int16_t *r, const int16_t *b, const unsigned char *c, const uint32_t zetas[64]);
 extern void poly_tobytes_asm(uint8_t *bytes, const int16_t *coeffs);
 extern void poly_decompress_floor_asm(int16_t *coeffs, const uint8_t *bytes);
 
@@ -176,7 +176,7 @@ void DKE1_poly_frombytes_mul_acc(poly *r, const poly *b, const unsigned char *a)
  *              - int32_t *r_tmp:         array for accumulating unreduced results
  *              - const unsigned char *a: pointer to input byte array (of KYBER_POLYBYTES bytes)
  **************************************************/
-extern void frombytes_mul_asm_16_32(int32_t *r_tmp, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void frombytes_mul_asm_16_32(int32_t *r_tmp, const int16_t *b, const unsigned char *c, const uint32_t zetas[64]);
 void DKE1_poly_frombytes_mul_16_32(int32_t *r_tmp, const poly *b, const unsigned char *a)
 {
     frombytes_mul_asm_16_32(r_tmp, b->coeffs, a, zetas);
@@ -191,7 +191,7 @@ void DKE1_poly_frombytes_mul_16_32(int32_t *r_tmp, const poly *b, const unsigned
  *              - int32_t *r_tmp:         array for accumulating unreduced results
  *              - const unsigned char *a: pointer to input byte array (of KYBER_POLYBYTES bytes)
  **************************************************/
-extern void frombytes_mul_asm_acc_32_32(int32_t *r_tmp, const int16_t *b, const unsigned char *c, const int32_t zetas[64]);
+extern void frombytes_mul_asm_acc_32_32(int32_t *r_tmp, const int16_t *b, const unsigned char *c, const uint32_t zetas[64]);
 void DKE1_poly_frombytes_mul_32_32(int32_t *r_tmp, const poly *b, const unsigned char *a)
 {
     frombytes_mul_asm_acc_32_32(r_tmp, b->coeffs, a, zetas);
@@ -207,7 +207,7 @@ void DKE1_poly_frombytes_mul_32_32(int32_t *r_tmp, const poly *b, const unsigned
  *              - const int32_t *r_tmp:   array containing unreduced results
  *              - const unsigned char *a: pointer to input byte array (of KYBER_POLYBYTES bytes)
  **************************************************/
-extern void frombytes_mul_asm_acc_32_16(int16_t *r, const int16_t *b, const unsigned char *c, const int32_t zetas[64], const int32_t *r_tmp);
+extern void frombytes_mul_asm_acc_32_16(int16_t *r, const int16_t *b, const unsigned char *c, const uint32_t zetas[64], const int32_t *r_tmp);
 void DKE1_poly_frombytes_mul_32_16(poly *r, const poly *b, const unsigned char *a, const int32_t *r_tmp)
 {
     frombytes_mul_asm_acc_32_16(r->coeffs, b->coeffs, a, zetas, r_tmp);

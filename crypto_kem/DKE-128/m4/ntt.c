@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 // Plantard-domain constants used by the optimized assembly kernels.
-const int32_t zetas[64] = {
+const uint32_t zetas[64] = {
     21932846, 3562152210, 752167598, 3417653460, 2112004045, 932791035,
     2951903026, 1419184148, 1817845876, 3434425636, 4233039261, 300609006,
     975366560, 2781600929, 3889854731, 3935010590, 2197155094, 2130066389,
@@ -20,7 +20,7 @@ const int32_t zetas[64] = {
     2722253228, 3786641338, 1141798155, 2779020594
 };
 
-static const int32_t zetas_asm[128] = {
+static const uint32_t zetas_asm[128] = {
     2230699446, 3328631909, 4243360600, 3408622288, 812805467, 2447447570,
     1094061961, 1370157786, 2475831253, 249002310, 1028263423, 3594406395,
     4205945745, 734105255, 2252632292, 381889553, 372858381, 427045412,
@@ -45,7 +45,7 @@ static const int32_t zetas_asm[128] = {
     2779020594, 0
 };
 
-static const int32_t zetas_inv_CT_asm[256] = {
+static const uint32_t zetas_inv_CT_asm[256] = {
     1290168, 1290168, 2064267851, 1290168, 51606697, 2064267851, 966335388,
     1290168, 3200905336, 51606697, 3482161830, 2064267851, 1847519727,
     966335388, 886345009, 1290168, 2064267851, 1290168, 51606697,
@@ -91,10 +91,10 @@ static const int32_t zetas_inv_CT_asm[256] = {
     1540459884, 0
 };
 
-extern void ntt_fast(int16_t *poly, const int32_t *twiddles);
-extern void invntt_fast(int16_t *poly, const int32_t *twiddles);
-extern void basemul_asm(int16_t *r, const int16_t *a, const int16_t *b, const int32_t *zetas);
-extern void basemul_asm_acc(int16_t *r, const int16_t *a, const int16_t *b, const int32_t *zetas);
+extern void ntt_fast(int16_t *poly, const uint32_t *twiddles);
+extern void invntt_fast(int16_t *poly, const uint32_t *twiddles);
+extern void basemul_asm(int16_t *r, const int16_t *a, const int16_t *b, const uint32_t *zetas);
+extern void basemul_asm_acc(int16_t *r, const int16_t *a, const int16_t *b, const uint32_t *zetas);
 
 void DKE1_ntt(int16_t r[256]) {
     ntt_fast(r, zetas_asm);

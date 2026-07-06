@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 
-extern const int32_t zetas[64];
+extern const uint32_t zetas[64];
 
 /// @brief Inplace number-theoretic transform (NTT) in Rq = Zq[X]/(x^n+1) where q = 7681 and n = 512,
 ///        input is in standard order, output is in bitreversed order
