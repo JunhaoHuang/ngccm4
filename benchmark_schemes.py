@@ -169,7 +169,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, str, list[str], lis
     parser.add_argument(
         "--timeout",
         type=float,
-        default=120.0,
+        default=500.0,
         help="Seconds allowed for serial capture after flashing.",
     )
     parser.add_argument(

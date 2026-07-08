@@ -72,8 +72,6 @@ r2_radix16_mul_2_asm:
     ldr.w r3, [r1]
     ldr.w r12, [r2]
     movs r1, #0x11
-    and.w r3, r3, r1
-    and.w r12, r12, r1
     umull r1, r2, r3, r12
     eor.w r1, r1, r1, lsr #8
     movs r3, #0x11
@@ -89,8 +87,6 @@ r2_radix16_mul_4_asm:
     ldr.w r3, [r1]
     ldr.w r12, [r2]
     movw r1, #0x1111
-    and.w r3, r3, r1
-    and.w r12, r12, r1
     umull r1, r2, r3, r12
     eor.w r1, r1, r1, lsr #16
     movw r3, #0x1111
@@ -793,12 +789,10 @@ r2_radix16_mul_words_asm:
     movs iword, #0
 21:
     ldr.w ai, [abase, iword, lsl #2]
-    and.w ai, ai, lanemask
     movs jword, #0
     mov ridx, iword
 22:
     ldr.w bj, [bbase, jword, lsl #2]
-    and.w bj, bj, lanemask
     umull prodlo, prodhi, ai, bj
     and.w prodlo, prodlo, lanemask
     and.w prodhi, prodhi, lanemask

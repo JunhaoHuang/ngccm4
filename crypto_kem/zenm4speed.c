@@ -11,7 +11,7 @@
 #define poly_basemul_ntt ref_poly_basemul_ntt
 #define poly_basemul_ntt_mq ref_poly_basemul_ntt_mq
 #define poly_baseinv_ntt ref_poly_baseinv_ntt
-#include "ZEN_512/ref/ntt.c"
+#include "ZEN-512/ref/ntt.c"
 #undef montgomery_reduce
 #undef poly_ntt
 #undef poly_ntt_mq

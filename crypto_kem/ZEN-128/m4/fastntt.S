@@ -711,7 +711,7 @@ small_invntt_asm_769:
 
 	movw qa, #24608
 	// twiddle2 is used as tmp2
-	fullplant poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, tmp, q, qa, twiddle1
+	//fullplant poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, tmp, q, qa, twiddle1
 	_3_layer_double_inv_CT_16_plant_light poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, s1, s3, s4, s5, twiddle1, twiddle2, q, qa, tmp
 
 	// twisting

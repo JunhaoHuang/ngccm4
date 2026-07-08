@@ -196,6 +196,110 @@
     strh.w \even, [\out, #(14 * 2)]
 .endm
 
+.macro mul8_plant_hh_direct out, a, b, q, qa, qinv, a01, a23, a45, a67, b01, b23, b45, b67, even, odd
+    mul8_schoolbook_plant_hh \out, \a, \b, \q, \qa, \qinv, \a01, \a23, \a45, \a67, \b01, \b23, \b45, \b67, \even, \odd
+.endm
+
+// Square an 8-coefficient block into fifteen signed 16-bit high-half Plantard
+// coefficients.  This keeps pairs packed and uses symmetric cross terms
+// directly instead of routing through the recursive Karatsuba helper.
+.macro sqr8_plant_hh_direct out, a, q, qa, qinv, a01, a23, a45, a67, even, odd, tmp
+    ldr.w \a01, [\a, #0]
+    ldr.w \a23, [\a, #4]
+    ldr.w \a45, [\a, #8]
+    ldr.w \a67, [\a, #12]
+
+    // c0, c1
+    smulbb \even, \a01, \a01
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \a01
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(0 * 2)]
+
+    // c2, c3
+    smulbb \even, \a01, \a23
+    add.w \even, \even, \even
+    smlatt \even, \a01, \a01, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \a23
+    add.w \odd, \odd, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(2 * 2)]
+
+    // c4, c5
+    smulbb \even, \a01, \a45
+    smlatt \even, \a01, \a23, \even
+    add.w \even, \even, \even
+    smlabb \even, \a23, \a23, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \a45
+    add.w \odd, \odd, \odd
+    smuadx \tmp, \a23, \a23
+    add.w \odd, \odd, \tmp
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(4 * 2)]
+
+    // c6, c7
+    smulbb \even, \a01, \a67
+    smlatt \even, \a01, \a45, \even
+    smlabb \even, \a23, \a45, \even
+    add.w \even, \even, \even
+    smlatt \even, \a23, \a23, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a01, \a67
+    smladx \odd, \a23, \a45, \odd
+    add.w \odd, \odd, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(6 * 2)]
+
+    // c8, c9
+    smultt \even, \a01, \a67
+    smlabb \even, \a23, \a67, \even
+    smlatt \even, \a23, \a45, \even
+    add.w \even, \even, \even
+    smlabb \even, \a45, \a45, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a23, \a67
+    add.w \odd, \odd, \odd
+    smuadx \tmp, \a45, \a45
+    add.w \odd, \odd, \tmp
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(8 * 2)]
+
+    // c10, c11
+    smultt \even, \a23, \a67
+    smlabb \even, \a45, \a67, \even
+    add.w \even, \even, \even
+    smlatt \even, \a45, \a45, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a45, \a67
+    add.w \odd, \odd, \odd
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(10 * 2)]
+
+    // c12, c13
+    smultt \even, \a45, \a67
+    add.w \even, \even, \even
+    smlabb \even, \a67, \a67, \even
+    plant_red \q, \qa, \qinv, \even
+    smuadx \odd, \a67, \a67
+    plant_red \q, \qa, \qinv, \odd
+    pkhtb \even, \odd, \even, asr #16
+    str.w \even, [\out, #(12 * 2)]
+
+    // c14
+    smultt \even, \a67, \a67
+    plant_red \q, \qa, \qinv, \even
+    asr.w \even, \even, #16
+    strh.w \even, [\out, #(14 * 2)]
+.endm
+
 .macro compute_block_products
     str.w r0, [sp, #BM_SAVE_R]
     str.w r1, [sp, #BM_SAVE_A]
@@ -522,6 +626,308 @@
     strh.w r4, [\out, #(\ridx * 2)]
 .endm
 
+// Direct inverse of one degree-7 block modulo x^8 + zeta.  The input and
+// output coefficients are signed 16-bit high-half Plantard values.  This is
+// the ZEN-256 base inversion dataflow specialized as an internal helper for
+// ZEN-512's top-level degree-16 split.
+.macro baseinv8_plant_direct out, in, zeta, qtab, q, qa, qinv, poly0, poly1, poly2, poly3, tmp, tmp2
+    vmov s13, \qtab
+
+    ldr.w \poly0, [\in, #0]   // a0||a1
+    ldr.w \poly1, [\in, #4]   // a2||a3
+    ldr.w \poly2, [\in, #8]   // a4||a5
+    ldr.w \poly3, [\in, #12]  // a6||a7
+
+    // b0 = ((a1a7 + a3a5 - a2a6)*2 - a4^2) * zeta + a0^2
+    smultt \tmp, \poly0, \poly3
+    smlatt \tmp, \poly1, \poly2, \tmp
+    smulbb \tmp2, \poly1, \poly3
+    sub.w \tmp, \tmp, \tmp2
+    lsl.w \tmp, \tmp, #1
+    smulbb \tmp2, \poly2, \poly2
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbb \tmp2, \poly0, \poly0
+    plant_red \q, \qa, \qinv, \tmp2
+    sadd16 \tmp, \tmp, \tmp2
+    vmov s4, \tmp
+
+    // b1 = ((a3a7 - a4a6)*2 + a5^2) * zeta + 2a0a2 - a1^2
+    smultt \tmp, \poly1, \poly3
+    smulbb \tmp2, \poly2, \poly3
+    sub.w \tmp, \tmp, \tmp2
+    lsl.w \tmp, \tmp, #1
+    smlatt \tmp, \poly2, \poly2, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbb \tmp2, \poly0, \poly1
+    lsl.w \tmp2, \tmp2, #1
+    smultt \qtab, \poly0, \poly0
+    sub.w \tmp2, \tmp2, \qtab
+    plant_red \q, \qa, \qinv, \tmp2
+    sadd16 \tmp, \tmp, \tmp2
+    vmov s5, \tmp
+
+    // b2 = (2a5a7 - a6^2) * zeta + 2(a0a4 - a1a3) + a2^2
+    smultt \tmp, \poly2, \poly3
+    lsl.w \tmp, \tmp, #1
+    smulbb \tmp2, \poly3, \poly3
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbb \tmp2, \poly0, \poly2
+    smultt \qtab, \poly0, \poly1
+    sub.w \tmp2, \tmp2, \qtab
+    lsl.w \tmp2, \tmp2, #1
+    smlabb \tmp2, \poly1, \poly1, \tmp2
+    plant_red \q, \qa, \qinv, \tmp2
+    sadd16 \tmp, \tmp, \tmp2
+    vmov s6, \tmp
+
+    // b3 = a7^2 * zeta + 2(a0a6 + a2a4 - a1a5) - a3^2
+    smulwt \tmp, \zeta, \poly3
+    smlabt \tmp, \tmp, \q, \qa
+    smultt \tmp, \tmp, \poly3
+    smulbb \tmp2, \poly0, \poly3
+    smlabb \tmp2, \poly1, \poly2, \tmp2
+    smultt \qtab, \poly0, \poly2
+    sub.w \tmp2, \tmp2, \qtab
+    lsl.w \tmp2, \tmp2, #1
+    smultt \qtab, \poly1, \poly1
+    sub.w \tmp2, \tmp2, \qtab
+    add.w \tmp2, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp2
+
+    vmov \tmp, s6
+    pkhtb \tmp, \tmp2, \tmp, asr #16
+    vmov s9, \tmp              // b2||b3
+    vmov \tmp, s4
+    vmov \tmp2, s5
+    pkhtb \tmp, \tmp2, \tmp, asr #16
+    vmov s8, \tmp              // b0||b1
+
+    // c0 = (2b1b3 - b2^2) * zeta + b0^2
+    vmov \poly2, s8
+    vmov \poly3, s9
+    smultt \tmp, \poly2, \poly3
+    lsl.w \tmp, \tmp, #1
+    smulbb \tmp2, \poly3, \poly3
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbb \tmp2, \poly2, \poly2
+    plant_red \q, \qa, \qinv, \tmp2
+    sadd16 \tmp, \tmp, \tmp2
+    vmov s10, \tmp
+
+    // c1 = b3^2 * zeta + 2b0b2 - b1^2
+    smulwt \tmp, \zeta, \poly3
+    smlabt \tmp, \tmp, \q, \qa
+    smultt \tmp, \tmp, \poly3
+    smulbb \tmp2, \poly2, \poly3
+    add.w \tmp, \tmp, \tmp2, lsl #1
+    smultt \tmp2, \poly2, \poly2
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s11, \tmp
+
+    // det = c1^2 * zeta + c0^2
+    smulwt \tmp2, \zeta, \tmp
+    smlabt \tmp2, \tmp2, \q, \qa
+    smultt \tmp, \tmp2, \tmp
+    vmov \tmp2, s10
+    smlatt \tmp, \tmp2, \tmp2, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+
+    sxth \tmp, \tmp, ror #16
+    movw \qtab, #769
+    and.w \tmp2, \qtab, \tmp, asr #31
+    add.w \tmp, \tmp, \tmp2
+    vmov \qtab, s13
+    add.w \qtab, \qtab, \tmp, lsl #2
+    ldr.w \qtab, [\qtab]
+
+    // c0 <- det^-1*c0, c1 <- -171*det^-1*c1
+    vmov \tmp, s10
+    smulwt \tmp, \qtab, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    vmov \tmp2, s11
+    neg.w \qtab, \qtab
+    smulwt \tmp2, \qtab, \tmp2
+    smlabt \tmp2, \tmp2, \q, \qa
+    pkhtb \tmp, \tmp2, \tmp, asr #16
+    vmov s12, \tmp             // c0||c1
+
+    // f = (c0 - x*c1) * (b0 - x*b1 + x^2*b2 - x^3*b3)
+    vmov \poly2, s12
+    vmov \poly3, s9
+    smulwb \tmp, \zeta, \poly3
+    smlabt \tmp, \tmp, \q, \qa
+    smultt \tmp, \poly2, \tmp
+    vmov \poly3, s8
+    smulbb \tmp2, \poly2, \poly3
+    sub.w \tmp, \tmp2, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s4, \tmp
+
+    vmov \poly3, s9
+    smulwt \tmp, \zeta, \poly3
+    smlabt \tmp, \tmp, \q, \qa
+    smultt \tmp, \poly2, \tmp
+    vmov \poly3, s8
+    smulbt \tmp2, \poly2, \poly3
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s5, \tmp
+
+    vmov \poly3, s9
+    smulbb \tmp, \poly2, \poly3
+    vmov \poly3, s8
+    smlatb \tmp, \poly2, \poly3, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s6, \tmp
+
+    vmov \poly3, s9
+    smulbt \tmp, \poly2, \poly3
+    vmov \poly3, s8
+    smlatt \tmp, \poly2, \poly3, \tmp
+    neg.w \tmp2, \tmp
+    plant_red \q, \qa, \qinv, \tmp2
+    vmov s7, \tmp2
+
+    vmov \tmp, s6
+    pkhtb \tmp, \tmp2, \tmp, asr #16
+    vmov s11, \tmp             // f2||f3
+    vmov \tmp, s4
+    vmov \tmp2, s5
+    pkhtb \tmp, \tmp2, \tmp, asr #16
+    vmov s10, \tmp             // f0||f1
+
+    ldr.w \qtab, [\in, #8]     // a4||a5
+    ldr.w \tmp2, [\in, #12]    // a6||a7
+    vmov s12, \tmp2
+    vmov \poly2, s10
+    vmov \poly3, s11
+
+    // r0 = f0*a0 - zeta*(f1*a6 + f2*a4 + f3*a2)
+    vmov \tmp2, s12
+    smultb \tmp, \poly2, \tmp2
+    smlabb \tmp, \poly3, \qtab, \tmp
+    smlatb \tmp, \poly3, \poly1, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbb \tmp2, \poly2, \poly0
+    plant_red \q, \qa, \qinv, \tmp2
+    ssub16 \tmp2, \tmp2, \tmp
+    vmov s4, \tmp2
+
+    // r1 = zeta*(f1*a7 + f2*a5 + f3*a3) - f0*a1
+    vmov \tmp2, s12
+    smultt \tmp, \poly2, \tmp2
+    smlabt \tmp, \poly3, \qtab, \tmp
+    smlatt \tmp, \poly3, \poly1, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbt \tmp2, \poly2, \poly0
+    plant_red \q, \qa, \qinv, \tmp2
+    ssub16 \tmp, \tmp, \tmp2
+    vmov s5, \tmp
+
+    // r2 = f0*a2 + f1*a0 - zeta*(f2*a6 + f3*a4)
+    smulbb \tmp, \poly2, \poly1
+    smlatb \tmp, \poly2, \poly0, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    vmov \tmp2, s12
+    smulbb \tmp2, \poly3, \tmp2
+    smlatb \tmp2, \poly3, \qtab, \tmp2
+    plant_red \q, \qa, \qinv, \tmp2
+    smulwt \tmp2, \zeta, \tmp2
+    smlabt \tmp2, \tmp2, \q, \qa
+    ssub16 \tmp, \tmp, \tmp2
+    vmov s6, \tmp
+
+    // r3 = zeta*(f2*a7 + f3*a5) - (f0*a3 + f1*a1)
+    vmov \tmp2, s12
+    smulbt \tmp, \poly3, \tmp2
+    smlatt \tmp, \poly3, \qtab, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    smulwt \tmp, \zeta, \tmp
+    smlabt \tmp, \tmp, \q, \qa
+    smulbt \tmp2, \poly2, \poly1
+    smlatt \tmp2, \poly2, \poly0, \tmp2
+    plant_red \q, \qa, \qinv, \tmp2
+    ssub16 \tmp, \tmp, \tmp2
+    vmov s7, \tmp
+
+    // r4 = f0*a4 + f1*a2 + f2*a0 - zeta*(f3*a6)
+    smulbb \tmp, \poly2, \qtab
+    smlatb \tmp, \poly2, \poly1, \tmp
+    smlabb \tmp, \poly3, \poly0, \tmp
+    vmov \tmp2, s12
+    smulwb \tmp2, \zeta, \tmp2
+    smlabt \tmp2, \tmp2, \q, \qa
+    smultt \tmp2, \poly3, \tmp2
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s0, \tmp
+
+    // r5 = zeta*(f3*a7) - (f0*a5 + f1*a3 + f2*a1)
+    vmov \tmp2, s12
+    smulwt \tmp, \zeta, \tmp2
+    smlabt \tmp, \tmp, \q, \qa
+    smultt \tmp, \poly3, \tmp
+    smulbt \tmp2, \poly2, \qtab
+    smlatt \tmp2, \poly2, \poly1, \tmp2
+    smlabt \tmp2, \poly3, \poly0, \tmp2
+    sub.w \tmp, \tmp, \tmp2
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s1, \tmp
+
+    // r6 = f0*a6 + f1*a4 + f2*a2 + f3*a0
+    vmov \tmp2, s12
+    smultb \tmp, \poly2, \qtab
+    smlabb \tmp, \poly3, \poly1, \tmp
+    smlatb \tmp, \poly3, \poly0, \tmp
+    smlabb \tmp, \poly2, \tmp2, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s2, \tmp
+
+    // r7 = -(f0*a7 + f1*a5 + f2*a3 + f3*a1)
+    vmov \tmp2, s12
+    smulbt \tmp, \poly2, \tmp2
+    smlatt \tmp, \poly2, \qtab, \tmp
+    smlabt \tmp, \poly3, \poly1, \tmp
+    smlatt \tmp, \poly3, \poly0, \tmp
+    neg.w \tmp, \tmp
+    plant_red \q, \qa, \qinv, \tmp
+    vmov s3, \tmp
+
+    vmov \tmp, s4
+    vmov \tmp2, s5
+    pkhtb \tmp, \tmp2, \tmp, asr #16
+    vmov \poly0, s6
+    vmov \poly1, s7
+    pkhtb \poly0, \poly1, \poly0, asr #16
+    vmov \poly2, s0
+    vmov \poly3, s1
+    pkhtb \poly2, \poly3, \poly2, asr #16
+    vmov \poly3, s2
+    vmov \tmp2, s3
+    pkhtb \poly3, \tmp2, \poly3, asr #16
+
+    str.w \tmp, [\out, #0]
+    str.w \poly0, [\out, #4]
+    str.w \poly2, [\out, #8]
+    str.w \poly3, [\out, #12]
+.endm
+
 .align 2
 .thumb_func
 .type basemul16_block_raw, %function
@@ -597,19 +1003,11 @@ baseinv16_block_plant:
 
     add.w r0, sp, #BI_PE15
     add.w r1, sp, #BI_AE
-    mov r2, r1
-    add.w r3, sp, #BI_TMP
-    add.w r11, sp, #BI_AS
-    add.w r12, sp, #BI_BS
-    mul8_plant_hh r0, r1, r2, r3, r11, r12, r8, r10, r9, r4, r5, r6, r7, lr
+    sqr8_plant_hh_direct r0, r1, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12
 
     add.w r0, sp, #BI_PO15
     add.w r1, sp, #BI_AO
-    mov r2, r1
-    add.w r3, sp, #BI_TMP
-    add.w r11, sp, #BI_AS
-    add.w r12, sp, #BI_BS
-    mul8_plant_hh r0, r1, r2, r3, r11, r12, r8, r10, r9, r4, r5, r6, r7, lr
+    sqr8_plant_hh_direct r0, r1, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12
 
     add.w r0, sp, #BI_PE15
     add.w r1, sp, #BI_PO15
@@ -624,207 +1022,21 @@ baseinv16_block_plant:
     h_recompose_mid r0, r1, r2, 6
     h_recompose_7 r0, r1, r2
 
-    add.w r11, sp, #BI_HE
-    add.w r12, sp, #BI_HO
-    add.w r0, sp, #BI_H
-    split_evenodd8 r11, r12, r0, r4, r5, r6, r7
-
-    add.w r0, sp, #BI_PE7
-    add.w r1, sp, #BI_HE
-    mov r2, r1
-    add.w r3, sp, #BI_TMP
-    karatsuba_mul4_plant_hh r0, 0, r1, 0, r2, 0, r8, r10, r9, r4, r5, r6, r7, lr
-
-    add.w r0, sp, #BI_PO7
-    add.w r1, sp, #BI_HO
-    mov r2, r1
-    add.w r3, sp, #BI_TMP
-    karatsuba_mul4_plant_hh r0, 0, r1, 0, r2, 0, r8, r10, r9, r4, r5, r6, r7, lr
-
-    add.w r0, sp, #BI_PE7
-    add.w r1, sp, #BI_PO7
-    add.w r2, sp, #BI_B
+    add.w r0, sp, #BI_G
+    add.w r1, sp, #BI_H
     ldr.w r7, [sp, #BI_SAVE_Z]
-    b_recompose_0 r0, r1, r2
-    b_recompose_mid r0, r1, r2, 1
-    b_recompose_mid r0, r1, r2, 2
-    b_recompose_3 r0, r1, r2
-
-    add.w r0, sp, #BI_B
-
-    ldrh.w r11, [r0, #(0 * 2)]
-    smulbb r4, r11, r11
-    plant_red r8, r10, r9, r4
-
-    ldrh.w r11, [r0, #(2 * 2)]
-    smulbb r5, r11, r11
-    plant_red r8, r10, r9, r5
-
-    ldrh.w r11, [r0, #(0 * 2)]
-    ldrh.w r12, [r0, #(2 * 2)]
-    smulbb r6, r11, r12
-    plant_red r8, r10, r9, r6
-    sadd16 r6, r6, r6
-
-    ldrh.w r11, [r0, #(1 * 2)]
-    smulbb r11, r11, r11
-    plant_red r8, r10, r9, r11
-
-    ldrh.w r12, [r0, #(3 * 2)]
-    smulbb r12, r12, r12
-    plant_red r8, r10, r9, r12
-
-    ldrh.w r2, [r0, #(1 * 2)]
-    ldrh.w r3, [r0, #(3 * 2)]
-    smulbb lr, r2, r3
-    plant_red r8, r10, r9, lr
-    sadd16 lr, lr, lr
-
-    ssub16 r5, r5, lr
-    ldr.w r7, [sp, #BI_SAVE_Z]
-    mul_zeta_hh r5, r7, r8, r10
-    ssub16 r4, r4, r5
-
-    ssub16 r6, r6, r11
-    mul_zeta_hh r12, r7, r8, r10
-    sadd16 r6, r6, r12
-
-    add.w r0, sp, #BI_C
-    asr.w r2, r4, #16
-    strh.w r2, [r0, #(0 * 2)]
-    asr.w r2, r6, #16
-    strh.w r2, [r0, #(1 * 2)]
-
-    ldrh.w r2, [r0, #(1 * 2)]
-    smulbb r5, r2, r2
-    plant_red r8, r10, r9, r5
-    mul_zeta_hh r5, r7, r8, r10
-
-    ldrh.w r2, [r0, #(0 * 2)]
-    smulbb r4, r2, r2
-    plant_red r8, r10, r9, r4
-    sadd16 r5, r5, r4
-
-    sxth.w r5, r5, ror #16
-    movw r6, #769
-    and.w r4, r6, r5, asr #31
-    add.w r5, r5, r4
-    ldr.w r11, [sp, #BI_SAVE_QTAB]
-    add.w r11, r11, r5, lsl #2
-    ldr.w r11, [r11]
-
-    ldrh.w r4, [r0, #(0 * 2)]
-    smulwb r4, r11, r4
-    smlabt r4, r4, r8, r10
-
-    ldrh.w r6, [r0, #(1 * 2)]
-    neg.w r11, r11
-    smulwb r6, r11, r6
-    smlabt r6, r6, r8, r10
-
-    asr.w r4, r4, #16
-    strh.w r4, [r0, #(0 * 2)]
-    asr.w r6, r6, #16
-    strh.w r6, [r0, #(1 * 2)]
-
-    add.w r0, sp, #BI_C
-    add.w r1, sp, #BI_B
-    add.w r2, sp, #BI_F
-    ldr.w r7, [sp, #BI_SAVE_Z]
-
-    ldrh.w r4, [r0, #(1 * 2)]
-    ldrh.w r5, [r1, #(2 * 2)]
-    smulbb r6, r4, r5
-    plant_red r8, r10, r9, r6
-    mul_zeta_hh r6, r7, r8, r10
-    ldrh.w r4, [r0, #(0 * 2)]
-    ldrh.w r5, [r1, #(0 * 2)]
-    smulbb r4, r4, r5
-    plant_red r8, r10, r9, r4
-    ssub16 r4, r4, r6
-    asr.w r4, r4, #16
-    strh.w r4, [r2, #(0 * 2)]
-
-    ldrh.w r4, [r0, #(1 * 2)]
-    ldrh.w r5, [r1, #(3 * 2)]
-    smulbb r6, r4, r5
-    plant_red r8, r10, r9, r6
-    mul_zeta_hh r6, r7, r8, r10
-    ldrh.w r4, [r0, #(0 * 2)]
-    ldrh.w r5, [r1, #(1 * 2)]
-    smulbb r4, r4, r5
-    plant_red r8, r10, r9, r4
-    ssub16 r6, r6, r4
-    asr.w r6, r6, #16
-    strh.w r6, [r2, #(1 * 2)]
-
-    ldrh.w r4, [r0, #(0 * 2)]
-    ldrh.w r5, [r1, #(2 * 2)]
-    smulbb r6, r4, r5
-    plant_red r8, r10, r9, r6
-    ldrh.w r4, [r0, #(1 * 2)]
-    ldrh.w r5, [r1, #(0 * 2)]
-    smulbb r4, r4, r5
-    plant_red r8, r10, r9, r4
-    sadd16 r6, r6, r4
-    asr.w r6, r6, #16
-    strh.w r6, [r2, #(2 * 2)]
-
-    ldrh.w r4, [r0, #(0 * 2)]
-    ldrh.w r5, [r1, #(3 * 2)]
-    smulbb r6, r4, r5
-    ldrh.w r4, [r0, #(1 * 2)]
-    ldrh.w r5, [r1, #(1 * 2)]
-    smlabb r6, r4, r5, r6
-    neg.w r6, r6
-    plant_red r8, r10, r9, r6
-    asr.w r6, r6, #16
-    strh.w r6, [r2, #(3 * 2)]
-
-    add.w r0, sp, #BI_PE7
-    add.w r1, sp, #BI_F
-    add.w r2, sp, #BI_HE
-    add.w r3, sp, #BI_TMP
-    karatsuba_mul4_plant_hh r0, 0, r1, 0, r2, 0, r8, r10, r9, r4, r5, r6, r7, lr
-
-    add.w r0, sp, #BI_PO7
-    add.w r1, sp, #BI_F
-    add.w r2, sp, #BI_HO
-    add.w r3, sp, #BI_TMP
-    karatsuba_mul4_plant_hh r0, 0, r1, 0, r2, 0, r8, r10, r9, r4, r5, r6, r7, lr
-
-    add.w r0, sp, #BI_PE7
-    add.w r1, sp, #BI_PO7
-    add.w r2, sp, #BI_G
-    ldr.w r7, [sp, #BI_SAVE_Z]
-    g_even r0, r2, 0, 0, 4
-    g_odd r1, r2, 1, 0, 4
-    g_even r0, r2, 2, 1, 5
-    g_odd r1, r2, 3, 1, 5
-    g_even r0, r2, 4, 2, 6
-    g_odd r1, r2, 5, 2, 6
-    ldrh.w r4, [r0, #(3 * 2)]
-    strh.w r4, [r2, #(6 * 2)]
-    ldrh.w r4, [r1, #(3 * 2)]
-    sxth r4, r4
-    neg.w r4, r4
-    strh.w r4, [r2, #(7 * 2)]
+    ldr.w lr, [sp, #BI_SAVE_QTAB]
+    baseinv8_plant_direct r0, r1, r7, lr, r8, r10, r9, r4, r5, r6, r3, r11, r12
 
     add.w r0, sp, #BI_PE15
     add.w r1, sp, #BI_G
     add.w r2, sp, #BI_AE
-    add.w r3, sp, #BI_TMP
-    add.w r11, sp, #BI_AS
-    add.w r12, sp, #BI_BS
-    mul8_plant_hh r0, r1, r2, r3, r11, r12, r8, r10, r9, r4, r5, r6, r7, lr
+    mul8_plant_hh_direct r0, r1, r2, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12, lr, r1, r2
 
     add.w r0, sp, #BI_PO15
     add.w r1, sp, #BI_G
     add.w r2, sp, #BI_AO
-    add.w r3, sp, #BI_TMP
-    add.w r11, sp, #BI_AS
-    add.w r12, sp, #BI_BS
-    mul8_plant_hh r0, r1, r2, r3, r11, r12, r8, r10, r9, r4, r5, r6, r7, lr
+    mul8_plant_hh_direct r0, r1, r2, r8, r10, r9, r3, r4, r5, r6, r7, r11, r12, lr, r1, r2
 
     add.w r0, sp, #BI_PE15
     add.w r1, sp, #BI_PO15
