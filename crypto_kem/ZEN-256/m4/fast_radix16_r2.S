@@ -19,43 +19,52 @@
 .thumb
 
 .macro R2_LINEAR_MUL4_BODY out, ap, bp
-    mov lr, \out
-    movs r10, #8
-    movs r2, #0
-.Lr2_lm4_zero\@:
-    str.w r2, [lr], #4
-    subs r10, r10, #1
-    bne .Lr2_lm4_zero\@
-
     movs r10, #0
+    mov.w lr, #0
 .Lr2_lm4_outer\@:
-    ldr.w r0, [\ap, r10, lsl #2]
-    and.w r0, r0, r11
-    movs r12, #0
-    mov r1, r10
-.Lr2_lm4_inner\@:
-    ldr.w r2, [\bp, r12, lsl #2]
-    and.w r2, r2, r11
-    umull r2, r3, r0, r2
-    and.w r2, r2, r11
-    and.w r3, r3, r11
+    mov.w r12, lr
+    mov.w lr, #0
 
-    ldr.w lr, [\out, r1, lsl #2]
-    eor.w lr, lr, r2
-    str.w lr, [\out, r1, lsl #2]
-
-    adds r2, r1, #1
-    ldr.w lr, [\out, r2, lsl #2]
-    eor.w lr, lr, r3
-    str.w lr, [\out, r2, lsl #2]
-
-    adds r1, r1, #1
-    adds r12, r12, #1
-    cmp r12, #4
-    bne .Lr2_lm4_inner\@
-
-    adds r10, r10, #1
     cmp r10, #4
+    bhs .Lr2_lm4_high\@
+
+    movs r2, #0
+    mov r3, r10
+.Lr2_lm4_low_loop\@:
+    ldr.w r0, [\ap, r2, lsl #2]
+    ldr.w r1, [\bp, r3, lsl #2]
+    umlal r12, lr, r0, r1
+    and.w r12, r12, r11
+    and.w lr, lr, r11
+    adds r2, r2, #1
+    subs r3, r3, #1
+    cmn.w r3, #1
+    bne .Lr2_lm4_low_loop\@
+
+    b .Lr2_lm4_store\@
+
+.Lr2_lm4_high\@:
+    adds r2, r10, #1
+    subs r2, r2, #4
+    cmp r2, #4
+    beq .Lr2_lm4_store\@
+
+    movs r3, #3
+.Lr2_lm4_high_loop\@:
+    ldr.w r0, [\ap, r2, lsl #2]
+    ldr.w r1, [\bp, r3, lsl #2]
+    umlal r12, lr, r0, r1
+    and.w r12, r12, r11
+    and.w lr, lr, r11
+    adds r2, r2, #1
+    subs r3, r3, #1
+    cmp r2, #4
+    bne .Lr2_lm4_high_loop\@
+
+.Lr2_lm4_store\@:
+    str.w r12, [\out, r10, lsl #2]
+    adds r10, r10, #1
+    cmp r10, #8
     bne .Lr2_lm4_outer\@
 .endm
 
@@ -477,47 +486,10 @@ r2_radix16_linear_mul4_asm:
     mov r4, r0                  @ out, 8 words
     mov r5, r1                  @ a, 4 words
     mov r6, r2                  @ b, 4 words
-    movw r7, #0x1111
-    movt r7, #0x1111
+    movw r11, #0x1111
+    movt r11, #0x1111
 
-    mov r12, r4
-    movs r11, #8
-    movs r2, #0
-11:
-    str.w r2, [r12], #4
-    subs r11, r11, #1
-    bne 11b
-
-    movs r8, #0
-12:
-    ldr.w r0, [r5, r8, lsl #2]
-    and.w r0, r0, r7
-    movs r9, #0
-    mov r10, r8
-13:
-    ldr.w r1, [r6, r9, lsl #2]
-    and.w r1, r1, r7
-    umull r2, r3, r0, r1
-    and.w r2, r2, r7
-    and.w r3, r3, r7
-
-    ldr.w r12, [r4, r10, lsl #2]
-    eor.w r12, r12, r2
-    str.w r12, [r4, r10, lsl #2]
-
-    adds r1, r10, #1
-    ldr.w r12, [r4, r1, lsl #2]
-    eor.w r12, r12, r3
-    str.w r12, [r4, r1, lsl #2]
-
-    adds r10, r10, #1
-    adds r9, r9, #1
-    cmp r9, #4
-    bne 13b
-
-    adds r8, r8, #1
-    cmp r8, #4
-    bne 12b
+    R2_LINEAR_MUL4_BODY r4, r5, r6
 
     pop.w {r4-r11, pc}
 
@@ -760,15 +732,16 @@ r2_radix16_mul_words_asm:
     abase       .req r5
     bbase       .req r6
     words       .req r7
-    iword       .req r8
-    jword       .req r9
-    ridx        .req r10
+    kword       .req r8
+    iword       .req r9
+    jword       .req r10
     lanemask    .req r11
     ai          .req r0
     bj          .req r1
     prodlo      .req r2
     prodhi      .req r3
-    tmp         .req r12
+    acc         .req r12
+    nextacc     .req lr
 
     mov resbase, r0
     mov abase, r1
@@ -778,65 +751,95 @@ r2_radix16_mul_words_asm:
     movw lanemask, #0x1111
     movt lanemask, #0x1111
 
-    mov tmp, resbase
-    movs prodlo, #0
-    mov prodhi, words
-20:
-    str.w prodlo, [tmp], #4
-    subs prodhi, prodhi, #1
-    bne 20b
+    cmp words, #1
+    beq .Lr2_mul_words_one
+
+    @ Roll high halves into the following product word. UMLAL adds into
+    @ nextacc:acc, then both halves are masked so each lane remains parity.
+    movs kword, #0
+    mov.w nextacc, #0
+.Lr2_mul_words_outer:
+    mov.w acc, nextacc
+    mov.w nextacc, #0
+
+    cmp kword, words
+    bhs .Lr2_mul_words_high
 
     movs iword, #0
-21:
+    mov jword, kword
+.Lr2_mul_words_low_loop:
     ldr.w ai, [abase, iword, lsl #2]
-    movs jword, #0
-    mov ridx, iword
-22:
     ldr.w bj, [bbase, jword, lsl #2]
+    umlal acc, nextacc, ai, bj
+    and.w acc, acc, lanemask
+    and.w nextacc, nextacc, lanemask
+    adds iword, iword, #1
+    subs jword, jword, #1
+    cmn.w jword, #1
+    bne .Lr2_mul_words_low_loop
+
+    b .Lr2_mul_words_store
+
+.Lr2_mul_words_high:
+    add.w iword, kword, #1
+    sub.w iword, iword, words
+    cmp iword, words
+    beq .Lr2_mul_words_fold
+
+    sub.w jword, words, #1
+.Lr2_mul_words_high_loop:
+    ldr.w ai, [abase, iword, lsl #2]
+    ldr.w bj, [bbase, jword, lsl #2]
+    umlal acc, nextacc, ai, bj
+    and.w acc, acc, lanemask
+    and.w nextacc, nextacc, lanemask
+    adds iword, iword, #1
+    subs jword, jword, #1
+    cmp iword, words
+    bne .Lr2_mul_words_high_loop
+
+.Lr2_mul_words_fold:
+    sub.w ai, kword, words
+    ldr.w bj, [resbase, ai, lsl #2]
+    eor.w acc, acc, bj
+    str.w acc, [resbase, ai, lsl #2]
+    b .Lr2_mul_words_next
+
+.Lr2_mul_words_store:
+    str.w acc, [resbase, kword, lsl #2]
+
+.Lr2_mul_words_next:
+    adds kword, kword, #1
+    add.w prodlo, words, words
+    cmp kword, prodlo
+    bne .Lr2_mul_words_outer
+
+    pop {r4-r11, pc}
+
+.Lr2_mul_words_one:
+    ldr.w ai, [abase]
+    ldr.w bj, [bbase]
     umull prodlo, prodhi, ai, bj
     and.w prodlo, prodlo, lanemask
     and.w prodhi, prodhi, lanemask
-
-    ldr.w tmp, [resbase, ridx, lsl #2]
-    eor.w tmp, tmp, prodlo
-    str.w tmp, [resbase, ridx, lsl #2]
-
-    adds tmp, ridx, #1
-    subs prodlo, tmp, words
-    sbc.w prodlo, prodlo, prodlo
-    and.w tmp, tmp, prodlo
-    ldr.w prodlo, [resbase, tmp, lsl #2]
     eor.w prodlo, prodlo, prodhi
-    str.w prodlo, [resbase, tmp, lsl #2]
-
-    adds ridx, ridx, #1
-    subs prodlo, ridx, words
-    sbc.w prodlo, prodlo, prodlo
-    and.w ridx, ridx, prodlo
-
-    adds jword, jword, #1
-    cmp jword, words
-    bne 22b
-
-    adds iword, iword, #1
-    cmp iword, words
-    bne 21b
-
+    str.w prodlo, [resbase]
     pop {r4-r11, pc}
 
     .unreq resbase
     .unreq abase
     .unreq bbase
     .unreq words
+    .unreq kword
     .unreq iword
     .unreq jword
-    .unreq ridx
     .unreq lanemask
     .unreq ai
     .unreq bj
     .unreq prodlo
     .unreq prodhi
-    .unreq tmp
+    .unreq acc
+    .unreq nextacc
 
 
 // int poly_xor4_radix16_asm(uint32_t r[32], const int16_t a[1024])

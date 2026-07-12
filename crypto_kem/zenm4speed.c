@@ -3,6 +3,32 @@
 
 #include "hal.h"
 #include "sendfn.h"
+#include "params.h"
+#include "ntt.h"
+#include "poly.h"
+
+static void opt_poly_ntt(int16_t *a) { poly_ntt(a); }
+static void opt_poly_ntt_mq(int16_t *a) { poly_ntt_mq(a); }
+static void opt_poly_intt(int16_t *a) { poly_intt(a); }
+static void opt_poly_basemul_ntt(int16_t *r, int16_t *a, int16_t *b)
+{
+    poly_basemul_ntt(r, a, b);
+}
+static void opt_poly_basemul_ntt_mq(int16_t *r, int16_t *a, int16_t *b)
+{
+    poly_basemul_ntt_mq(r, a, b);
+}
+static void opt_poly_baseinv_ntt(int16_t *r, int16_t *a)
+{
+    poly_baseinv_ntt(r, a);
+}
+
+#undef poly_ntt
+#undef poly_ntt_mq
+#undef poly_intt
+#undef poly_basemul_ntt
+#undef poly_basemul_ntt_mq
+#undef poly_baseinv_ntt
 
 #define montgomery_reduce ref_montgomery_reduce
 #define poly_ntt ref_poly_ntt
@@ -11,7 +37,14 @@
 #define poly_basemul_ntt ref_poly_basemul_ntt
 #define poly_basemul_ntt_mq ref_poly_basemul_ntt_mq
 #define poly_baseinv_ntt ref_poly_baseinv_ntt
-#include "ZEN-512/ref/ntt.c"
+#undef NTT_H
+#if ZEN_N == 512
+#include "DAWN_Prime_128/ref/ntt.c"
+#elif ZEN_N == 1024
+#include "DAWN_Prime_256/ref/ntt.c"
+#else
+#error "zenm4speed supports the 512- and 1024-coefficient ZEN/DAWN backends"
+#endif
 #undef montgomery_reduce
 #undef poly_ntt
 #undef poly_ntt_mq
@@ -20,12 +53,12 @@
 #undef poly_basemul_ntt_mq
 #undef poly_baseinv_ntt
 
-extern void poly_ntt(int16_t *a);
-extern void poly_ntt_mq(int16_t *a);
-extern void poly_intt(int16_t *a);
-extern void poly_basemul_ntt(int16_t *r, int16_t *a, int16_t *b);
-extern void poly_basemul_ntt_mq(int16_t *r, int16_t *a, int16_t *b);
-extern void poly_baseinv_ntt(int16_t *r, int16_t *a);
+#define poly_ntt opt_poly_ntt
+#define poly_ntt_mq opt_poly_ntt_mq
+#define poly_intt opt_poly_intt
+#define poly_basemul_ntt opt_poly_basemul_ntt
+#define poly_basemul_ntt_mq opt_poly_basemul_ntt_mq
+#define poly_baseinv_ntt opt_poly_baseinv_ntt
 
 #ifndef ZENM4SPEED_ITERS
 #define ZENM4SPEED_ITERS 32u

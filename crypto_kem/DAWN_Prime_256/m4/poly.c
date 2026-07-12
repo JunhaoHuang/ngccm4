@@ -6,14 +6,18 @@
 #include "sample.h"
 #include "symmetric.h"
 #include "radix16_r2.h"
-#ifdef HASHING_PROFILE
-#include "hal.h"
-extern unsigned long long func_cycles;
-#endif
+
 static const uint64_t pack_table[] = 
 {
     1, 769, 591361, 454756609, 349707832321
 };
+
+extern int poly_xor4_radix16_asm(uint32_t *out, const int16_t *in);
+
+int poly_xor4_radix16(uint32_t *out, const int16_t *in)
+{
+    return poly_xor4_radix16_asm(out, in);
+}
 
 static uint32_t r2_radix16_word_parity(uint32_t x)
 {
@@ -34,7 +38,7 @@ static uint32_t r2_radix16_prefix_word(uint32_t x, uint32_t carry)
     return x ^ (R2_RADIX16_LANE_MASK & (0u - (carry & 1u)));
 }
 
-static void r2_radix16_prefix_xor_128_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4)],
+static void r2_radix16_prefix_xor_n4_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4)],
                                             const uint32_t in[R2_RADIX16_WORDS(ZEN_N4)])
 {
     uint32_t carry = 0;
@@ -48,7 +52,7 @@ static void r2_radix16_prefix_xor_128_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4
     }
 }
 
-static uint32_t r2_radix16_parity_128_fixed(const uint32_t a[R2_RADIX16_WORDS(ZEN_N4)])
+static uint32_t r2_radix16_parity_n4_fixed(const uint32_t a[R2_RADIX16_WORDS(ZEN_N4)])
 {
     uint32_t acc = 0;
     unsigned int i;
@@ -59,7 +63,7 @@ static uint32_t r2_radix16_parity_128_fixed(const uint32_t a[R2_RADIX16_WORDS(ZE
     return r2_radix16_word_parity(acc);
 }
 
-static void r2_radix16_xor_mask_128_fixed(uint32_t dst[R2_RADIX16_WORDS(ZEN_N4)],
+static void r2_radix16_xor_mask_n4_fixed(uint32_t dst[R2_RADIX16_WORDS(ZEN_N4)],
                                           const uint32_t src[R2_RADIX16_WORDS(ZEN_N4)],
                                           uint32_t bit)
 {
@@ -71,7 +75,7 @@ static void r2_radix16_xor_mask_128_fixed(uint32_t dst[R2_RADIX16_WORDS(ZEN_N4)]
     }
 }
 
-static void r2_radix16_zero_tail_128(uint32_t a[R2_RADIX16_WORDS(ZEN_N4)],
+static void r2_radix16_zero_tail_n4(uint32_t a[R2_RADIX16_WORDS(ZEN_N4)],
                                      unsigned int words)
 {
     unsigned int i;
@@ -81,7 +85,7 @@ static void r2_radix16_zero_tail_128(uint32_t a[R2_RADIX16_WORDS(ZEN_N4)],
     }
 }
 
-static void r2_radix16_fold_128_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4)],
+static void r2_radix16_fold_n4_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4)],
                                       const uint32_t in[R2_RADIX16_WORDS(ZEN_N4)],
                                       unsigned int out_n)
 {
@@ -128,10 +132,10 @@ static void r2_radix16_fold_128_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4)],
         }
     }
 
-    r2_radix16_zero_tail_128(out, out_words);
+    r2_radix16_zero_tail_n4(out, out_words);
 }
 
-static void r2_radix16_div_xn_plus1_128_fixed(uint32_t a[R2_RADIX16_WORDS(ZEN_N4)],
+static void r2_radix16_div_xn_plus1_n4_fixed(uint32_t a[R2_RADIX16_WORDS(ZEN_N4)],
                                               unsigned int step)
 {
     unsigned int i;
@@ -188,13 +192,6 @@ static void r2_radix16_xor_shifted_fixed(uint32_t *dst,
     }
 }
 
-extern int poly_xor4_radix16_asm(uint32_t *out, const int16_t *in);
-
-int poly_xor4_radix16(uint32_t *out, const int16_t *in)
-{
-    return poly_xor4_radix16_asm(out, in);
-}
-
 void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
 {
     unsigned int l, n;
@@ -203,11 +200,11 @@ void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
     uint32_t tmp[R2_RADIX16_WORDS(ZEN_N4)];
     uint32_t b0;
 
-    r2_radix16_prefix_xor_128_fixed(k, f_rad);
+    r2_radix16_prefix_xor_n4_fixed(k, f_rad);
 
-    b0 = r2_radix16_parity_128_fixed(k);
-    r2_radix16_xor_mask_128_fixed(k, f_rad, b0);
-    r2_radix16_prefix_xor_128_fixed(k, k);
+    b0 = r2_radix16_parity_n4_fixed(k);
+    r2_radix16_xor_mask_n4_fixed(k, f_rad, b0);
+    r2_radix16_prefix_xor_n4_fixed(k, k);
 
     memset(f_inv, 0, R2_RADIX16_WORDS(ZEN_N4) * sizeof(uint32_t));
     f_inv[0] = (b0 ^ 1u) | (b0 << 4);
@@ -220,16 +217,16 @@ void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
         n = 2 * n;
         words = R2_RADIX16_WORDS(n);
 
-        r2_radix16_fold_128_fixed(tmp, k, n);
+        r2_radix16_fold_n4_fixed(tmp, k, n);
         r2_radix16_mul(b, f_inv, tmp, n);
-        r2_radix16_zero_tail_128(b, words);
+        r2_radix16_zero_tail_n4(b, words);
 
         r2_radix16_mul(tmp, b, f_rad, ZEN_N4);
         for (words = 0; words < R2_RADIX16_WORDS(ZEN_N4); words++) {
             k[words] ^= tmp[words] & R2_RADIX16_LANE_MASK;
         }
 
-        r2_radix16_div_xn_plus1_128_fixed(k, n);
+        r2_radix16_div_xn_plus1_n4_fixed(k, n);
         r2_radix16_xor_shifted_fixed(f_inv, b, n, 0);
         r2_radix16_xor_shifted_fixed(f_inv, b, n, n);
     }
@@ -238,67 +235,45 @@ void FastInversion(uint32_t *f_inv, const uint32_t *f_rad)
 
 void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {
-    unsigned int i;
-    uint8_t buf[ZEN_N_LEN_BYTES*5];
-    int16_t t[ZEN_N*2];
-    ZEN_pseudoXOF(ZEN_N*5, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd1(t, buf);
-    tenary1_8(t+ZEN_N, buf+ZEN_N_LEN_BYTES*2);
-    for(i = 0; i < ZEN_N; i++)
-    {
-        a[i] = t[i] + t[i+ZEN_N];
-    }
+    uint8_t buf[ZEN_N_LEN_BYTES*4];
+
+    zen_pseudoXOF(ZEN_N*4, seed, SEED_LEN_BYTES*8, buf, nonce);
+    tenary3_16(a, buf);
 }
 
 void poly_generate_f(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {
-    unsigned int i;
+    uint8_t buf[ZEN_N_LEN_BYTES*3];
+
+    zen_pseudoXOF(ZEN_N*3, seed, SEED_LEN_BYTES*8, buf, nonce);
+    tenary1_8(a, buf);
+}
+
+void poly_generate_se(int16_t *a, const uint8_t *seed, uint8_t nonce)
+{
     uint8_t buf[ZEN_N_LEN_BYTES*2];
 
-    ZEN_pseudoXOF(ZEN_N*2, seed, SEED_LEN_BYTES*8, buf, nonce);
+    zen_pseudoXOF(ZEN_N*2, seed, SEED_LEN_BYTES*8, buf, nonce);
     cbd1(a, buf);
 }
-
-void poly_generate_s(int16_t *a, const uint8_t *seed, uint8_t nonce)
-{
-    unsigned int i;
-    uint8_t buf[ZEN_N_LEN_BYTES*7];
-    int16_t t[ZEN_N*2];
-    ZEN_pseudoXOF(ZEN_N*7, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd1(t, buf);
-    tenary3_32(t+ZEN_N, buf+ZEN_N_LEN_BYTES*2);
-    for(i = 0; i < ZEN_N; i++)
-    {
-        a[i] = t[i] + t[i+ZEN_N];
-    }
-}
-
-void poly_generate_e(int16_t *a, const uint8_t *seed, uint8_t nonce)
-{
-    unsigned int i;
-    uint8_t buf[ZEN_N_LEN_BYTES*4];
-
-    ZEN_pseudoXOF(ZEN_N*4, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd2(a, buf);
-}
-
-
 
 void poly_bit2byte_pack(uint8_t *pa, const int16_t *a, const unsigned int n)
 {
     unsigned int i;
     const int16_t *src = a;
-    for(i = 0; i < n/8; i++)
+
+    for(i = 0; i < n / 8; i++)
     {
         pa[i] = (uint8_t)(
-              (src[0] & 1)
-            | ((src[1] & 1) << 1)
-            | ((src[2] & 1) << 2)
-            | ((src[3] & 1) << 3)
-            | ((src[4] & 1) << 4)
-            | ((src[5] & 1) << 5)
-            | ((src[6] & 1) << 6)
-            | ((src[7] & 1) << 7));
+              ((uint16_t)src[0] & 1u)
+            | (((uint16_t)src[1] & 1u) << 1)
+            | (((uint16_t)src[2] & 1u) << 2)
+            | (((uint16_t)src[3] & 1u) << 3)
+            | (((uint16_t)src[4] & 1u) << 4)
+            | (((uint16_t)src[5] & 1u) << 5)
+            | (((uint16_t)src[6] & 1u) << 6)
+            | (((uint16_t)src[7] & 1u) << 7));
+
         src += 8;
     }
 }
@@ -311,7 +286,8 @@ void poly_byte2bit_unpack(int16_t *a, const uint8_t *pa, const unsigned int n)
     for(i = 0; i < n / 8; i++)
     {
         uint8_t byte = pa[i];
-        dst[0] = (int16_t)(byte & 1u);
+
+        dst[0] = (int16_t)((byte >> 0) & 1u);
         dst[1] = (int16_t)((byte >> 1) & 1u);
         dst[2] = (int16_t)((byte >> 2) & 1u);
         dst[3] = (int16_t)((byte >> 3) & 1u);
@@ -319,6 +295,7 @@ void poly_byte2bit_unpack(int16_t *a, const uint8_t *pa, const unsigned int n)
         dst[5] = (int16_t)((byte >> 5) & 1u);
         dst[6] = (int16_t)((byte >> 6) & 1u);
         dst[7] = (int16_t)((byte >> 7) & 1u);
+
         dst += 8;
     }
 }
@@ -327,16 +304,16 @@ void poly_secretkey_pack(uint8_t *ss, const int16_t *a)
 {
     unsigned int i, j, k;
 
-    for (i = 0; i < ZEN_N; i += 32)
+    for(i = 0; i < ZEN_N; i += 32)
     {
         const int16_t *src = a + i;
         uint8_t *dst = ss + (i / 32) * 40;
 
-        for (k = 0; k < 10; k++)
+        for(k = 0; k < 10; k++)
         {
             uint32_t w = 0;
 
-            for (j = 0; j < 32; j++)
+            for(j = 0; j < 32; j++)
             {
                 w |= (uint32_t)((((uint16_t)src[j] >> k) & 1u) << j);
             }
@@ -353,40 +330,41 @@ void poly_secretkey_unpack(int16_t *a, const uint8_t *ss)
 {
     unsigned int i, j, k;
 
-    for (i = 0; i < ZEN_N; i += 32)
+    for(i = 0; i < ZEN_N; i += 32)
     {
         int16_t *dst = a + i;
         const uint8_t *src = ss + (i / 32) * 40;
 
-        for (j = 0; j < 32; j++)
+        for(j = 0; j < 32; j++)
         {
             dst[j] = 0;
         }
 
-        for (k = 0; k < 10; k++)
+        for(k = 0; k < 10; k++)
         {
             uint32_t w;
 
-            w = (uint32_t)src[4 * k + 0];
+            w  = (uint32_t)src[4 * k + 0];
             w |= (uint32_t)src[4 * k + 1] << 8;
             w |= (uint32_t)src[4 * k + 2] << 16;
             w |= (uint32_t)src[4 * k + 3] << 24;
 
-            for (j = 0; j < 32; j++)
+            for(j = 0; j < 32; j++)
             {
                 dst[j] |= (int16_t)(((w >> j) & 1u) << k);
             }
         }
     }
 }
+
 void poly_publickey_pack(uint8_t *pa, const int16_t *a)
 {
     int i, idx;
-    uint64_t tmp[103] = {0};
-    uint64_t res[77]  = {0};
+    uint64_t tmp[205] = {0};
+    uint64_t res[154] = {0};
 
     idx = 0;
-    for(i = 0; i < ZEN_N - 2; i += 5)
+    for(i = 0; i < ZEN_N - 4; i += 5)
     {
         tmp[idx] =
               (uint64_t)(uint16_t)a[i]
@@ -397,12 +375,14 @@ void poly_publickey_pack(uint8_t *pa, const int16_t *a)
         idx++;
     }
 
-    tmp[102] =
-          (uint64_t)(uint16_t)a[ZEN_N - 2]
-        + (uint64_t)(uint16_t)a[ZEN_N - 1] * pack_table[1];
+    tmp[204] =
+          (uint64_t)(uint16_t)a[ZEN_N - 4]
+        + (uint64_t)(uint16_t)a[ZEN_N - 3] * pack_table[1]
+        + (uint64_t)(uint16_t)a[ZEN_N - 2] * pack_table[2]
+        + (uint64_t)(uint16_t)a[ZEN_N - 1] * pack_table[3];
 
     idx = 0;
-    for(i = 0; i < 100; i += 4)
+    for(i = 0; i < 204; i += 4)
     {
         uint64_t x0 = tmp[i];
         uint64_t x1 = tmp[i + 1];
@@ -414,24 +394,9 @@ void poly_publickey_pack(uint8_t *pa, const int16_t *a)
         res[idx++] = x2 | (((x3 >> 32) & 0xFFFFULL) << 48);
     }
 
-    res[idx++] = tmp[100] | ((tmp[102] & 0xFFFFULL) << 48);
-    res[idx++] = tmp[101] | (((tmp[102] >> 16) & 0xFULL) << 48);
+    res[idx++] = tmp[204];
 
     memcpy(pa, (const uint8_t *)res, ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
-}
-
-static inline uint16_t divmod769_tail(uint64_t *x)
-{
-    uint32_t v = (uint32_t)*x;
-    uint32_t q = ((uint64_t)v * 349071u) >> 28;
-    uint32_t r = v - q * 769u;
-    uint32_t underflow = r >> 31;
-
-    q -= underflow;
-    r += underflow * 769u;
-
-    *x = q;
-    return (uint16_t)r;
 }
 
 static inline uint32_t div769_u26(uint32_t x, uint32_t *r)
@@ -459,22 +424,19 @@ static inline uint16_t divmod769_u48(uint64_t *x)
 void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
 {
     int i, idx;
-    uint64_t res[77]  = {0};
-    uint64_t tmp[103] = {0};
-    const uint64_t MASK48   = 0x0000FFFFFFFFFFFFULL;
-    const uint64_t MASK16   = 0xFFFFULL;
+    uint64_t res[154] = {0};
+    uint64_t tmp[205] = {0};
+    const uint64_t MASK48    = 0x0000FFFFFFFFFFFFULL;
+    const uint64_t MASK39    = 0x0000007FFFFFFFFFULL;
 
     memcpy((uint8_t *)res, pa, ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
 
-    idx = 76;
+    idx = 153;
 
-    tmp[101] = res[idx] & MASK48;
-    tmp[102] = ((res[idx--] >> 48) & 0xFULL) << 16;
+    /* last packed block: 4 coefficients packed into 39 bits */
+    tmp[204] = res[idx--] & MASK39;
 
-    tmp[100] = res[idx] & MASK48;
-    tmp[102] |= ((res[idx--] >> 48) & 0xFFFFULL);
-
-    for(i = 99; i > 0; i -= 4)
+    for(i = 203; i > 0; i -= 4)
     {
         tmp[i - 1] = res[idx] & MASK48;
         tmp[i]     = ((res[idx--] >> 48) & 0xFFFFULL) << 32;
@@ -486,15 +448,17 @@ void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
         tmp[i]    |= ((res[idx--] >> 48) & 0xFFFFULL);
     }
 
-    for(i = 0; i < 2; i++)
+    for(i = 0; i < 4; i++)
     {
-        a[ZEN_N - 2 + i] = divmod769_tail(&tmp[102]);
+        a[ZEN_N - 4 + i] = divmod769_u48(&tmp[204]);
     }
 
     idx = 0;
-    for(i = 0; i < ZEN_N - 2; i += 5)
+    for(i = 0; i < ZEN_N - 4; i += 5)
     {
-        for (int j = 0; j < 5; j++)
+        int j;
+
+        for(j = 0; j < 5; j++)
         {
             a[i + j] = divmod769_u48(&tmp[idx]);
         }
@@ -529,20 +493,20 @@ void poly_compress(int16_t *a)
     uint32_t d;
     for(i = 0; i < ZEN_N; i++)
     {
-        // a[i] = ((((uint32_t)a[i] << 8) + ZEN_Q/2) / ZEN_Q) & 255;
-        d = a[i] << 8;
-        d += 384;
-        d *= 10908;
-        d >>= 23;
-        a[i] = d & 255;
+        d = a[i] * 21817;
+        d >>= 16;
+        a[i] = (int16_t)d;
     }
 }
 
 void poly_decompress(int16_t *a)
 {
     unsigned int i;
+    uint32_t d;
     for(i = 0; i < ZEN_N; i++)
     {
-        a[i] = ((((uint32_t)a[i] * ZEN_Q) + 128) >> 8);
+        d = a[i] * 196864;
+        d >>= 16;
+        a[i] = (int16_t)d;
     }
 }

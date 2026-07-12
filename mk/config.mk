@@ -37,7 +37,7 @@ SIZE := $(CROSS_PREFIX)-size
 
 CPPFLAGS += -I$(CURDIR)
 CPPFLAGS += -DNGCC_ITERATIONS=$(NGCC_ITERATIONS)
-CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -Wpedantic -Wall -Wextra -std=c99
+CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -Wpedantic -Wall -Wextra -std=c99 
 LDFLAGS += -Wl,--gc-sections -u,__wrap__sbrk
 
 ifeq ($(USE_SM3_ASM),1)

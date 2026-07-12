@@ -38,16 +38,6 @@ static uint32_t r2_radix16_prefix_word(uint32_t x, uint32_t carry)
     return x ^ (R2_RADIX16_LANE_MASK & (0u - (carry & 1u)));
 }
 
-static uint32_t r2_radix16_coeff(const uint32_t *a, unsigned int idx)
-{
-    return (a[idx >> 3] >> (4u * (idx & 7u))) & 1u;
-}
-
-static void r2_radix16_xor_coeff_local(uint32_t *a, unsigned int idx, uint32_t bit)
-{
-    a[idx >> 3] ^= (bit & 1u) << (4u * (idx & 7u));
-}
-
 static void r2_radix16_prefix_xor_n4_fixed(uint32_t out[R2_RADIX16_WORDS(ZEN_N4)],
                                             const uint32_t in[R2_RADIX16_WORDS(ZEN_N4)])
 {
@@ -158,8 +148,20 @@ static void r2_radix16_div_xn_plus1_n4_fixed(uint32_t a[R2_RADIX16_WORDS(ZEN_N4)
             a[i] &= R2_RADIX16_LANE_MASK;
         }
     } else {
-        for (i = step; i < ZEN_N4; i++) {
-            r2_radix16_xor_coeff_local(a, i, r2_radix16_coeff(a, i - step));
+        uint32_t prev = 0;
+        unsigned int shift = 4u * step;
+
+        for (i = 0; i < R2_RADIX16_WORDS(ZEN_N4); i++) {
+            uint32_t word = (a[i] & R2_RADIX16_LANE_MASK)
+                          ^ (prev >> (32u - shift));
+            unsigned int distance;
+
+            for (distance = shift; distance < 32u; distance <<= 1) {
+                word ^= word << distance;
+            }
+            word &= R2_RADIX16_LANE_MASK;
+            a[i] = word;
+            prev = word;
         }
     }
 }
@@ -169,18 +171,23 @@ static void r2_radix16_xor_shifted_fixed(uint32_t *dst,
                                          unsigned int src_n,
                                          unsigned int shift)
 {
+    unsigned int words = R2_RADIX16_WORDS(src_n);
+    unsigned int word_shift = shift >> 3;
+    unsigned int lane_shift = shift & 7u;
+    unsigned int bit_shift = 4u * lane_shift;
+    unsigned int tail = src_n & 7u;
     unsigned int i;
 
-    if (((src_n | shift) & 7u) == 0u) {
-        unsigned int words = src_n >> 3;
-        unsigned int word_shift = shift >> 3;
+    for (i = 0; i < words; i++) {
+        uint32_t word = src[i] & R2_RADIX16_LANE_MASK;
 
-        for (i = 0; i < words; i++) {
-            dst[word_shift + i] ^= src[i] & R2_RADIX16_LANE_MASK;
+        if ((i + 1u == words) && tail) {
+            word &= (1u << (4u * tail)) - 1u;
         }
-    } else {
-        for (i = 0; i < src_n; i++) {
-            r2_radix16_xor_coeff_local(dst, shift + i, r2_radix16_coeff(src, i));
+        dst[word_shift + i] ^= word << bit_shift;
+        if (lane_shift
+                && (8u * i + (8u - lane_shift) < src_n)) {
+            dst[word_shift + i + 1u] ^= word >> (32u - bit_shift);
         }
     }
 }
