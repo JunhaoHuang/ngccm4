@@ -630,27 +630,3 @@ void poly_ciphertext_unpack(int16_t *a, const uint8_t *pa)
     q = div147_u64(q, &r);
     a[ZEN_N - 1] = (int16_t)r;
 }
-
-void poly_compress(int16_t *a)
-{
-    unsigned int i;
-    uint32_t d;
-    for(i = 0; i < ZEN_N; i++)
-    {
-        d = a[i] * 12528;
-        d >>= 16;
-        a[i] = (int16_t)d;
-    }
-}
-
-void poly_decompress(int16_t *a)
-{
-    unsigned int i;
-    uint32_t d;
-    for(i = 0; i < ZEN_N; i++)
-    {
-        d = a[i] * 342838;
-        d >>= 16;
-        a[i] = (int16_t)d;
-    }
-}

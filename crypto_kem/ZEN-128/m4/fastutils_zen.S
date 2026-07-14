@@ -518,3 +518,92 @@ update_cp_asm:
  .unreq ones
  .unreq loop
  .unreq parity
+
+
+###########################################################################
+#### decapsulation update cp with direct radix-16 parity output          ####
+#### r0: cp, r1: tmp2, r2: packed parity                                 ####
+###########################################################################
+.align 2
+.global update_cp_radix16_asm
+.type update_cp_radix16_asm, %function
+update_cp_radix16_asm:
+    push.w {r3-r11, lr}
+    add.w r3, r1, #512
+    add.w r4, r0, #512
+    add.w lr, r2, #128
+    movt r7, #769
+    movw r8, #24608
+    movw r10, #14574
+    movt r10, #85
+    movw r11, #1
+    movt r11, #1
+
+1:
+    movs r12, #0
+    ldr.w r5, [r1], #4
+    ldr.w r6, [r3], #4
+    usub16 r9, r6, r5
+    uadd16 r6, r6, r5
+    doubleplant r9, r5, r7, r8, r10
+    doubleplant r6, r5, r7, r8, r10
+    str.w r9, [r0], #4
+    str.w r6, [r4], #4
+    and.w r5, r9, r11
+    and.w r9, r6, r11
+    eor.w r5, r5, r9
+    and.w r9, r5, #1
+    orr.w r9, r9, r5, lsr #12
+    and.w r9, r9, #0x11
+    mov r12, r9
+    ldr.w r5, [r1], #4
+    ldr.w r6, [r3], #4
+    usub16 r9, r6, r5
+    uadd16 r6, r6, r5
+    doubleplant r9, r5, r7, r8, r10
+    doubleplant r6, r5, r7, r8, r10
+    str.w r9, [r0], #4
+    str.w r6, [r4], #4
+    and.w r5, r9, r11
+    and.w r9, r6, r11
+    eor.w r5, r5, r9
+    and.w r9, r5, #1
+    orr.w r9, r9, r5, lsr #12
+    and.w r9, r9, #0x11
+    orr.w r12, r12, r9, lsl #8
+    ldr.w r5, [r1], #4
+    ldr.w r6, [r3], #4
+    usub16 r9, r6, r5
+    uadd16 r6, r6, r5
+    doubleplant r9, r5, r7, r8, r10
+    doubleplant r6, r5, r7, r8, r10
+    str.w r9, [r0], #4
+    str.w r6, [r4], #4
+    and.w r5, r9, r11
+    and.w r9, r6, r11
+    eor.w r5, r5, r9
+    and.w r9, r5, #1
+    orr.w r9, r9, r5, lsr #12
+    and.w r9, r9, #0x11
+    orr.w r12, r12, r9, lsl #16
+    ldr.w r5, [r1], #4
+    ldr.w r6, [r3], #4
+    usub16 r9, r6, r5
+    uadd16 r6, r6, r5
+    doubleplant r9, r5, r7, r8, r10
+    doubleplant r6, r5, r7, r8, r10
+    str.w r9, [r0], #4
+    str.w r6, [r4], #4
+    and.w r5, r9, r11
+    and.w r9, r6, r11
+    eor.w r5, r5, r9
+    and.w r9, r5, #1
+    orr.w r9, r9, r5, lsr #12
+    and.w r9, r9, #0x11
+    orr.w r12, r12, r9, lsl #24
+
+    str.w r12, [r2], #4
+    cmp r2, lr
+    bne.w 1b
+    pop.w {r3-r11, pc}
+.size update_cp_radix16_asm, .-update_cp_radix16_asm

@@ -1,7 +1,7 @@
 /*
 Copyright (c) 2026 Yu Zhang.
 Organization: State Key Laboratory of Cyberspace Security Defense,Institute of Information Engineering, CAS
-              School of Cyber Security, University of Chinese Academy of Sciences  
+              School of Cyber Security, University of Chinese Academy of Sciences
 File Description: Declares the ZEN key-encapsulation mechanism layer for the optimized ZEN-128 instance.
 */
 #include <stdint.h>
@@ -143,155 +143,360 @@ void mul_in_R2_256(int16_t *a, int16_t *b, int16_t *res)
     }
 }
 
-#define DO_FASTINV_LEVEL(N, MASKN)                                      \
-    do {                                                                \
-        /*                                                            */ \
-        /* tmp[i] = k[i] ^ k[i+N] ^ k[i+2N] ^ ...                    */ \
-        /*                                                            */ \
-        for (i = 0; i < (N); i++) {                                     \
-            acc = 0;                                                    \
-            for (j = i; j < ZEN_N4; j += (N)) {                   \
-                acc ^= k[j];                                            \
-            }                                                           \
-            tmp[i] = acc;                                               \
-        }                                                               \
-                                                                        \
-        /*                                                            */ \
-        /* Compute bp = f_inv[0..N-1] * tmp[0..N-1] in R2_N.          */ \
-        /* Keep the product packed instead of unpacking into b[].      */ \
-        /*                                                            */ \
-        ap = 0;                                                         \
-        tp = 0;                                                         \
-        for (i = 0; i < (N); i++) {                                     \
-            ap |= ((uint64_t)((uint16_t)f_inv[i] & 1u)) << i;           \
-            tp |= ((uint64_t)((uint16_t)tmp[i] & 1u)) << i;             \
-        }                                                               \
-                                                                        \
-        B = tp & (MASKN);                                               \
-        bp = 0;                                                         \
-        for (i = 0; i < (N); i++) {                                     \
-            mask = 0ULL - ((ap >> i) & 1ULL);                           \
-            bp ^= B & mask;                                             \
-                                                                        \
-            wrap = (B >> ((N) - 1)) & 1ULL;                             \
-            B = ((B << 1) | wrap) & (MASKN);                            \
-        }                                                               \
-        bp &= (MASKN);                                                  \
-                                                                        \
-        /*                                                            */ \
-        /* Compute tmp = bp * f in R2_128.                            */ \
-        /* Since bp has only N valid bits, only N rotations are needed.*/ \
-        /* The old mul_in_R2_128 scanned all 128 coefficients.         */ \
-        /*                                                            */ \
-        g0 = f0;                                                        \
-        g1 = f1;                                                        \
-        r0 = 0;                                                         \
-        r1 = 0;                                                         \
-                                                                        \
-        for (i = 0; i < (N); i++) {                                     \
-            mask = 0ULL - ((bp >> i) & 1ULL);                           \
-            r0 ^= g0 & mask;                                            \
-            r1 ^= g1 & mask;                                            \
-                                                                        \
-            wrap = g1 >> 63;                                            \
-            u0 = (g0 << 1) | wrap;                                      \
-            u1 = (g1 << 1) | (g0 >> 63);                                \
-            g0 = u0;                                                    \
-            g1 = u1;                                                    \
-        }                                                               \
-                                                                        \
-        /*                                                            */ \
-        /* k ^= tmp, but tmp is still packed as r0,r1.                 */ \
-        /* Avoid unpacking tmp[0..127] first.                          */ \
-        /*                                                            */ \
-        for (i = 0; i < 64; i++) {                                      \
-            k[i]      ^= (int16_t)((r0 >> i) & 1ULL);                   \
-            k[i + 64] ^= (int16_t)((r1 >> i) & 1ULL);                   \
-        }                                                               \
-                                                                        \
-        /*                                                            */ \
-        /* Original prefix update over blocks of size N.               */ \
-        /*                                                            */ \
-        for (i = (N); i < ZEN_N4; i += (N)) {                     \
-            for (j = i; j < i + (N); j++) {                             \
-                k[j] ^= k[j - (N)];                                     \
-            }                                                           \
-        }                                                               \
-                                                                        \
-        /*                                                            */ \
-        /* Original: tmp[i] = tmp[i+N] = b[i]; f_inv ^= tmp.           */ \
-        /* Here b is packed in bp, so update f_inv directly.           */ \
-        /*                                                            */ \
-        for (i = 0; i < (N); i++) {                                     \
-            bit = (int16_t)((bp >> i) & 1ULL);                          \
-            f_inv[i]       ^= bit;                                      \
-            f_inv[i + (N)] ^= bit;                                      \
-        }                                                               \
-    } while (0)
+#define DEFINE_MUL_IN_R2_SMALL(N, MASKN)                              \
+static void mul_in_R2_##N(int16_t *a, int16_t *b, int16_t *res)               \
+{                                                                      \
+    unsigned int i;                                                    \
+    uint64_t B;                                                        \
+    uint64_t R;                                                        \
+    uint64_t mask;                                                     \
+    uint64_t wrap;                                                     \
+                                                                       \
+    B = 0;                                                             \
+    R = 0;                                                             \
+                                                                       \
+    for (i = 0; i < (N); i++) {                                        \
+        B |= ((uint64_t)((uint16_t)b[i] & 1u)) << i;                   \
+    }                                                                  \
+                                                                       \
+    B &= (MASKN);                                                      \
+                                                                       \
+    for (i = 0; i < (N); i++) {                                        \
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i] & 1u));               \
+        R ^= B & mask;                                                 \
+                                                                       \
+        wrap = (B >> ((N) - 1)) & 1ULL;                                \
+        B = ((B << 1) | wrap) & (MASKN);                               \
+    }                                                                  \
+                                                                       \
+    for (i = 0; i < (N); i++) {                                        \
+        res[i] = (int16_t)((R >> i) & 1ULL);                           \
+    }                                                                  \
+}
+DEFINE_MUL_IN_R2_SMALL(2,  0x0000000000000003ULL)
+DEFINE_MUL_IN_R2_SMALL(4,  0x000000000000000FULL)
+DEFINE_MUL_IN_R2_SMALL(8,  0x00000000000000FFULL)
+DEFINE_MUL_IN_R2_SMALL(16, 0x000000000000FFFFULL)
+DEFINE_MUL_IN_R2_SMALL(32, 0x00000000FFFFFFFFULL)
+DEFINE_MUL_IN_R2_SMALL(64, UINT64_MAX)
 
+static void mul_in_R2_128(int16_t *a, int16_t *b, int16_t *res)
+{
+    unsigned int i;
+    uint64_t b0, b1;
+    uint64_t r0, r1;
+    uint64_t u0, u1;
+    uint64_t mask;
+    uint64_t wrap;
+
+    b0 = b1 = 0;
+    r0 = r1 = 0;
+
+    for (i = 0; i < 64; i++) {
+        b0 |= ((uint64_t)((uint16_t)b[i] & 1u)) << i;
+        b1 |= ((uint64_t)((uint16_t)b[i + 64] & 1u)) << i;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+
+        wrap = b1 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+    }
+
+    for (i = 0; i < 64; i++) {
+        mask = 0ULL - ((uint64_t)((uint16_t)a[i + 64] & 1u));
+
+        r0 ^= b0 & mask;
+        r1 ^= b1 & mask;
+
+        wrap = b1 >> 63;
+        u0 = (b0 << 1) | wrap;
+        u1 = (b1 << 1) | (b0 >> 63);
+
+        b0 = u0;
+        b1 = u1;
+    }
+
+    for (i = 0; i < 64; i++) {
+        res[i] = (int16_t)((r0 >> i) & 1ULL);
+        res[i + 64] = (int16_t)((r1 >> i) & 1ULL);
+    }
+}
 void FastInversion(int16_t *f_inv, int16_t *f)
 {
     unsigned int i, j;
     int16_t k[ZEN_N4];
+    int16_t b[ZEN_N4] = {0};
+    int16_t tmp_f[2 * ZEN_N4];
     int16_t tmp[ZEN_N4];
+    const size_t coeff_bytes = ZEN_N4 * sizeof(int16_t);
 
-    int16_t acc;
-    int16_t bit;
+    memcpy(tmp_f, f, coeff_bytes);
+    memcpy(tmp_f + ZEN_N4, f, coeff_bytes);
 
-    uint64_t f0, f1;
-    uint64_t ap, tp, bp;
-    uint64_t B;
-    uint64_t mask;
-    uint64_t wrap;
-    uint64_t g0, g1;
-    uint64_t r0, r1;
-    uint64_t u0, u1;
-
-    /*
-     * Pre-pack f once.
-     * Original code re-packed tmp_f inside mul_in_R2_128 at every level.
-     */
-    f0 = 0;
-    f1 = 0;
-    for (i = 0; i < 64; i++) {
-        f0 |= ((uint64_t)((uint16_t)f[i] & 1u)) << i;
-        f1 |= ((uint64_t)((uint16_t)f[i + 64] & 1u)) << i;
-    }
-
-    /*
-     * Original prefix computation.
-     */
     k[0] = f[0];
-    for (i = 1; i < ZEN_N4; i++) {
+    for (i = 1; i < ZEN_N4; i++)
+    {
         k[i] = f[i] ^ k[i - 1];
     }
 
     memset(f_inv, 0, ZEN_N4 * sizeof(int16_t));
     f_inv[0] = 1;
 
-    acc = 0;
-    for (i = 0; i < ZEN_N4; i++) {
-        acc ^= k[i];
+    b[0] = 0;
+    for (i = 0; i < ZEN_N4; i++)
+    {
+        b[0] ^= k[i];
     }
 
-    for (i = 0; i < ZEN_N4; i++) {
-        k[i] ^= (acc * f[i]);
+    for (i = 0; i < ZEN_N4; i++)
+    {
+        k[i] ^= (b[0] * f[i]);
     }
 
-    for (i = 1; i < ZEN_N4; i++) {
-        k[i] ^= k[i - 1];
+    for (i = 1; i < ZEN_N4; i++)
+    {
+        k[i] = k[i] ^ k[i - 1];
     }
 
-    f_inv[0] = !acc;
-    f_inv[1] = acc;
+    f_inv[0] = !b[0];
+    f_inv[1] = b[0];
 
-    DO_FASTINV_LEVEL(2,  0x0000000000000003ULL);
-    DO_FASTINV_LEVEL(4,  0x000000000000000FULL);
-    DO_FASTINV_LEVEL(8,  0x00000000000000FFULL);
-    DO_FASTINV_LEVEL(16, 0x000000000000FFFFULL);
-    DO_FASTINV_LEVEL(32, 0x00000000FFFFFFFFULL);
-    DO_FASTINV_LEVEL(64, UINT64_MAX);
+    /*
+     * Level n = 2
+     */
+    memset(tmp, 0, 2 * sizeof(int16_t));
+    for (i = 0; i < 2; i++)
+    {
+        for (j = i; j < ZEN_N4; j += 2)
+        {
+            tmp[i] ^= k[j];
+        }
+    }
 
+    mul_in_R2_2(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_N4; j++)
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 2; i < ZEN_N4; i += 2)
+    {
+        for (j = i; j < i + 2; j++)
+        {
+            k[j] = k[j] ^ k[j - 2];
+        }
+    }
+
+    for (i = 0; i < 2; i++)
+    {
+        tmp[i] = tmp[i + 2] = b[i];
+    }
+
+    for (i = 0; i < 4; i++)
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 4
+     */
+    memset(tmp, 0, 4 * sizeof(int16_t));
+    for (i = 0; i < 4; i++)
+    {
+        for (j = i; j < ZEN_N4; j += 4)
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_4(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_N4; j++)
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 4; i < ZEN_N4; i += 4)
+    {
+        for (j = i; j < i + 4; j++)
+        {
+            k[j] = k[j] ^ k[j - 4];
+        }
+    }
+
+    for (i = 0; i < 4; i++)
+    {
+        tmp[i] = tmp[i + 4] = b[i];
+    }
+
+    for (i = 0; i < 8; i++)
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 8
+     */
+    memset(tmp, 0, 8 * sizeof(int16_t));
+    for (i = 0; i < 8; i++)
+    {
+        for (j = i; j < ZEN_N4; j += 8)
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_8(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_N4; j++)
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 8; i < ZEN_N4; i += 8)
+    {
+        for (j = i; j < i + 8; j++)
+        {
+            k[j] = k[j] ^ k[j - 8];
+        }
+    }
+
+    for (i = 0; i < 8; i++)
+    {
+        tmp[i] = tmp[i + 8] = b[i];
+    }
+
+    for (i = 0; i < 16; i++)
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 16
+     */
+    memset(tmp, 0, 16 * sizeof(int16_t));
+    for (i = 0; i < 16; i++)
+    {
+        for (j = i; j < ZEN_N4; j += 16)
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_16(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_N4; j++)
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 16; i < ZEN_N4; i += 16)
+    {
+        for (j = i; j < i + 16; j++)
+        {
+            k[j] = k[j] ^ k[j - 16];
+        }
+    }
+
+    for (i = 0; i < 16; i++)
+    {
+        tmp[i] = tmp[i + 16] = b[i];
+    }
+
+    for (i = 0; i < 32; i++)
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 32
+     */
+    memset(tmp, 0, 32 * sizeof(int16_t));
+    for (i = 0; i < 32; i++)
+    {
+        for (j = i; j < ZEN_N4; j += 32)
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_32(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_N4; j++)
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 32; i < ZEN_N4; i += 32)
+    {
+        for (j = i; j < i + 32; j++)
+        {
+            k[j] = k[j] ^ k[j - 32];
+        }
+    }
+
+    for (i = 0; i < 32; i++)
+    {
+        tmp[i] = tmp[i + 32] = b[i];
+    }
+
+    for (i = 0; i < 64; i++)
+    {
+        f_inv[i] ^= tmp[i];
+    }
+
+    /*
+     * Level n = 64
+     */
+    memset(tmp, 0, 64 * sizeof(int16_t));
+    for (i = 0; i < 64; i++)
+    {
+        for (j = i; j < ZEN_N4; j += 64)
+        {
+            tmp[i] ^= k[j];
+        }
+    }
+
+    mul_in_R2_64(f_inv, tmp, b);
+    mul_in_R2_128(b, tmp_f, tmp);
+
+    for (j = 0; j < ZEN_N4; j++)
+    {
+        k[j] = k[j] ^ tmp[j];
+    }
+
+    for (i = 64; i < ZEN_N4; i += 64)
+    {
+        for (j = i; j < i + 64; j++)
+        {
+            k[j] = k[j] ^ k[j - 64];
+        }
+    }
+
+    for (i = 0; i < 64; i++)
+    {
+        tmp[i] = tmp[i + 64] = b[i];
+    }
+
+    for (i = 0; i < 128; i++)
+    {
+        f_inv[i] ^= tmp[i];
+    }
 }
 
 void poly_generate_g(int16_t *a, const uint8_t *seed, uint8_t nonce)
@@ -426,7 +631,7 @@ void poly_secretkey_unpack(int16_t *a, const uint8_t *ss)
     }
 }
 
-static const uint64_t pack_publickey_table[] = 
+static const uint64_t pack_publickey_table[] =
 {
     1, 769, 591361, 454756609, 349707832321
 };
@@ -559,7 +764,7 @@ void poly_publickey_unpack(int16_t *a, const uint8_t *pa)
 #define PACK147_GROUPS 102
 #define PACK147_WORDS 58
 
-static const uint64_t pack_ciphertext_table[] = 
+static const uint64_t pack_ciphertext_table[] =
 {
     1, 147, 21609, 3176523, 466948881
 };

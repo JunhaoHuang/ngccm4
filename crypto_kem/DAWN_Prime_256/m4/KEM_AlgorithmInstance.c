@@ -17,7 +17,12 @@ File Description: Declares the ZEN key-encapsulation mechanism layer for the opt
 */
 
 #include "KEM_AlgorithmInstance.h"
+#ifdef USE_KECCAK
+#include "randombytes.h"
+#include "fips202.h"
+#else
 #include "drng.h"
+#endif
 #include "params.h"
 
 #include <string.h>
@@ -27,7 +32,9 @@ File Description: Declares the ZEN key-encapsulation mechanism layer for the opt
 #include <stdio.h>
 
 // DRNG_ctx for generating pseudorandom numbers within the KEM scheme
+#ifndef USE_KECCAK
 extern DRNG_ctx drng_algorithm;
+#endif
 
 // The following should be used to get pseudorandom numbers
 // get_random_number(&drng_algorithm, random_number, random_number_len_bits);
@@ -70,8 +77,13 @@ int kem_keygen_derand(
 	{
 		sk[i+ZEN_INDCPA_SECREKEY_LEN_BYTES] = pk[i];
 	}
+#ifdef USE_KECCAK
+	sha3_256(sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
+	randombytes(sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SYM_LEN_BYTES, ZEN_SHAREDKEY_LEN_BYTES);
+#else
 	sm3hash(ZEN_SYM_LEN_BYTES*8, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES*8, sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
 	get_random_number(&drng_algorithm, sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SYM_LEN_BYTES, ZEN_SHAREDKEY_LEN_BYTES*8);
+#endif
 	
 	return 0;
 }
@@ -93,8 +105,13 @@ int kem_keygen(
 	{
 		sk[i+ZEN_INDCPA_SECREKEY_LEN_BYTES] = pk[i];
 	}
+#ifdef USE_KECCAK
+	sha3_256(sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
+	randombytes(sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SYM_LEN_BYTES, ZEN_SHAREDKEY_LEN_BYTES);
+#else
 	sm3hash(ZEN_SYM_LEN_BYTES*8, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES*8, sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
 	get_random_number(&drng_algorithm, sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SYM_LEN_BYTES, ZEN_SHAREDKEY_LEN_BYTES*8);
+#endif
 	
 	return 0;
 }
@@ -105,7 +122,7 @@ int kem_enc(
 	unsigned char *ct, unsigned long long *ct_len_bytes)
 {
 	uint8_t buf[ZEN_INDCPA_MSG_LEN_BYTES+2*ZEN_SYM_LEN_BYTES];
-	uint8_t kr[ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES];
+	uint8_t kr[2*ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES];
 
 	if (pk == NULL || ss == NULL || ss_len_bytes == NULL || ct == NULL || ct_len_bytes == NULL) {
         return -1;
@@ -117,12 +134,18 @@ int kem_enc(
     *ss_len_bytes = kem_get_ss_len_bytes();
     *ct_len_bytes = kem_get_ct_len_bytes();
 
+#ifdef USE_KECCAK
+	randombytes(buf, ZEN_INDCPA_MSG_LEN_BYTES);
+	sha3_256(buf+ZEN_INDCPA_MSG_LEN_BYTES, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
+	shake256(kr, 2*ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES, buf, ZEN_INDCPA_MSG_LEN_BYTES+ZEN_SYM_LEN_BYTES);
+#else
 	//m
 	get_random_number(&drng_algorithm, buf, ZEN_INDCPA_MSG_LEN_BYTES*8);
 	//hash(pk)
 	sm3hash(ZEN_SYM_LEN_BYTES*8, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES*8, buf+ZEN_INDCPA_MSG_LEN_BYTES);
 	//hash(m||hash(pk))
 	pseudohash((ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES)*8, buf, (ZEN_INDCPA_MSG_LEN_BYTES+ZEN_SYM_LEN_BYTES)*8, kr);
+#endif
 	pke_enc(pk, buf, kr+ZEN_SYM_LEN_BYTES, ct);
 	memcpy(ss, kr, ZEN_SYM_LEN_BYTES);
 
@@ -136,7 +159,7 @@ int kem_dec(
 {
 	unsigned int i, mask;
 	uint8_t buf[ZEN_INDCPA_MSG_LEN_BYTES+ZEN_SYM_LEN_BYTES];
-	uint8_t kr[ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES];
+	uint8_t kr[2*ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES];
 	uint8_t zc[ZEN_SHAREDKEY_LEN_BYTES+ZEN_CIPHERTEXT_LEN_BYTES];
 	uint8_t ctp[ZEN_CIPHERTEXT_LEN_BYTES];
 	uint8_t ssp[2*ZEN_SHAREDKEY_LEN_BYTES];
@@ -152,12 +175,20 @@ int kem_dec(
 
 	pke_dec(sk, ct, buf);
 	memcpy(buf+ZEN_INDCPA_MSG_LEN_BYTES, sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES, ZEN_SYM_LEN_BYTES);
+#ifdef USE_KECCAK
+	shake256(kr, 2*ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES, buf, ZEN_INDCPA_MSG_LEN_BYTES+ZEN_SYM_LEN_BYTES);
+#else
 	pseudohash((ZEN_SYM_LEN_BYTES+SEED_LEN_BYTES)*8, buf, (ZEN_INDCPA_MSG_LEN_BYTES+ZEN_SYM_LEN_BYTES)*8, kr);
+#endif
 
 	memcpy(zc, sk+ZEN_INDCPA_SECREKEY_LEN_BYTES+ZEN_INDCPA_PUBLICKEY_LEN_BYTES+ZEN_SYM_LEN_BYTES, ZEN_SHAREDKEY_LEN_BYTES);
 	memcpy(zc+ZEN_SHAREDKEY_LEN_BYTES, ct, ZEN_CIPHERTEXT_LEN_BYTES);
 
+#ifdef USE_KECCAK
+	sha3_256(ssp, zc, ZEN_SHAREDKEY_LEN_BYTES+ZEN_CIPHERTEXT_LEN_BYTES);
+#else
 	sm3hash(ZEN_SYM_LEN_BYTES*8, zc, (ZEN_SHAREDKEY_LEN_BYTES+ZEN_CIPHERTEXT_LEN_BYTES)*8, ssp);
+#endif
 
 	pke_enc(pk, buf, kr+ZEN_SYM_LEN_BYTES, ctp);	
 

@@ -10,6 +10,7 @@ extern void r2_radix16_mul_32_asm(uint32_t *res, const uint32_t *a, const uint32
 extern void r2_radix16_mul_64_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_128_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_256_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
+extern void r2_radix16_mul_512_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 extern void r2_radix16_mul_256x128_asm(uint32_t *res, const uint32_t *a, const uint32_t *b);
 
 
@@ -116,6 +117,9 @@ void r2_radix16_mul(uint32_t *res,
         return;
     case 256u:
         r2_radix16_mul_256_asm(res, a, b);
+        return;
+    case 512u:
+        r2_radix16_mul_512_asm(res, a, b);
         return;
     default:
         r2_radix16_unsupported_length();

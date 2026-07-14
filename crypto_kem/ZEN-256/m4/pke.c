@@ -134,14 +134,13 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
     poly_intt(t1);
 
     // (x^(n/2)+1)cf mod <q, x^n+1>, with parity for mod <2, x^(n/2)+1>
-    poly_cp(t0, t1);
+    update_cp_radix16_asm(t0, t1, t1_rad);
 
     // m_prim = af2 mod <2, x^(n/2)+1>
-    r2_radix16_pack(t1_rad, t1, ZEN_N2);
     r2_radix16_mul_512x256(mp0_rad, t1_rad, f2_rad);
 
     // SimpleDecoding: build S=\delta*x^{j*\times n/4}, then materialize S*f_inv in R_{2L,2}.
-    memset(t1, 0, ZEN_N2 * sizeof(int16_t));
+    memset(t1_rad, 0, sizeof(t1_rad));
     for (i = 0; i < ZEN_N4; i++)
     {
         c0 = t0[i];
@@ -165,12 +164,14 @@ void pke_dec(unsigned char *sk, unsigned char *ct, unsigned char *m)
         c1 = (c1 & (-mask1)) | (c3 & (~(-mask1)));
 
         even_wins = (uint16_t)(c0 <= c1);
-        t1[0] ^= (int16_t)(delta ^ 1u);
-        t1[i] ^= (int16_t)(delta & even_wins);
-        t1[i + ZEN_N4] ^= (int16_t)(delta & (even_wins ^ 1u));
+        t1_rad[0] ^= (uint32_t)(delta ^ 1u);
+        t1_rad[i >> 3] ^= (uint32_t)(delta & even_wins)
+                            << (4u * (i & 7u));
+        t1_rad[(i + ZEN_N4) >> 3] ^=
+            (uint32_t)(delta & (even_wins ^ 1u))
+            << (4u * ((i + ZEN_N4) & 7u));
     }
 
-    r2_radix16_pack(t1_rad, t1, ZEN_N2);
     r2_radix16_mul_512x256(mp1_rad, t1_rad, f2_rad);
 
     for (i = 0; i < R2_RADIX16_WORDS(ZEN_N4); i++)

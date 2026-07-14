@@ -32,6 +32,8 @@ extern "C"
     void poly_reduce_asm(int16_t *a, size_t len);
     void poly_reduce_mq_asm(int16_t *a, size_t len);
     void update_cp_asm(int16_t cp[ZEN_N], int16_t tmp2[ZEN_N]);
+    void update_cp_radix16_asm(int16_t cp[ZEN_N], int16_t tmp2[ZEN_N],
+                                 uint32_t packed[ZEN_N2 / 8]);
 
     int16_t check_poly_inv_Z2_asm(int16_t a[ZEN_N4]);
     int16_t check_poly_inv_Zq_asm(int16_t a[ZEN_N]);

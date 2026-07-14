@@ -11,6 +11,7 @@ extern "C" {
 #define R2_RADIX16_COEFFS_PER_WORD 8u
 #define R2_RADIX16_WORDS(n) (((n) + R2_RADIX16_COEFFS_PER_WORD - 1u) / R2_RADIX16_COEFFS_PER_WORD)
 #define R2_RADIX16_LANE_MASK 0x11111111u
+#define R2_RADIX16_MAX_N 512u
 
 void r2_radix16_pack(uint32_t *out, const int16_t *in, size_t n);
 void r2_radix16_unpack(int16_t *out, const uint32_t *in, size_t n);

@@ -1,6 +1,8 @@
 .DEFAULT_GOAL := all
 
-.PHONY: all clean help libclean list schemes qemu-run platform-sync
+COMPILEDEPS += crypto_kem/common/r2_radix16_mul_generated.inc
+
+.PHONY: all clean help libclean list schemes qemu-run platform-sync r2-generated-check
 
 include mk/config.mk
 include mk/$(PLATFORM).mk
@@ -31,6 +33,9 @@ platform-sync:
 
 list schemes:
 	@printf '%s\n' $(SCHEMES)
+
+r2-generated-check:
+	python3 crypto_kem/common/verify_r2_radix16.py
 
 help:
 	@printf 'Usage: make [all|<output-stem>] [PLATFORM=<platform>] [FAMILY=<family>] [SCHEME=<scheme>] [IMPLEMENTATION=<impl>] [APP=<name>]\n'
