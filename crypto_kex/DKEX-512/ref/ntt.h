@@ -1,1 +1,0 @@
-../../../crypto_kem/DKE-512/ref/ntt.h

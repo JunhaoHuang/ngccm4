@@ -1,2 +1,0 @@
-# Note to use dilithium
-In order to enable DKEX with signature, we only put Dilithium here as a library. Do not test it directly using crypto_sign apps because the api of Dilithium is not the same as NGCC. If there exists a signature scheme submitted to API, the DKEX should be change to use the NGCC-based signature scheme instead of using Dilithium.

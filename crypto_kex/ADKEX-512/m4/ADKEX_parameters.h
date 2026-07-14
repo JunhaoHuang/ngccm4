@@ -1,1 +1,0 @@
-../ref/ADKEX_parameters.h
