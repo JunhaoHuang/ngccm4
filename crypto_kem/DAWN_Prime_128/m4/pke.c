@@ -91,8 +91,8 @@ void pke_enc(unsigned char *pk, unsigned char *m, unsigned char *seed, unsigned 
     poly_publickey_unpack(h, pk);
 
     nonce = 0;
-    poly_generate_s(s, seed, nonce++);
-    poly_generate_e(e, seed, nonce++);
+    poly_generate_se(s, seed, nonce++);
+    poly_generate_se(e, seed, nonce++);
 
     poly_unpack_f2(t1, m);
     poly_mul385(t1);

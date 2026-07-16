@@ -56,14 +56,7 @@ extern "C"
     /// @param[in] seed Base address of input seed byte array
     /// @param[in] nonce Domain-separation nonce used for pseudorandom generation
     /// @return None
-    void poly_generate_s(int16_t *a, const uint8_t *seed, uint8_t nonce);
-
-    /// @brief Generate an error polynomial e from a seed and nonce
-    /// @param[out] a Base address of output polynomial coefficient array
-    /// @param[in] seed Base address of input seed byte array
-    /// @param[in] nonce Domain-separation nonce used for pseudorandom generation
-    /// @return None
-    void poly_generate_e(int16_t *a, const uint8_t *seed, uint8_t nonce);
+    void poly_generate_se(int16_t *a, const uint8_t *seed, uint8_t nonce);
 
     /// @brief Pack a binary polynomial coefficient array into a byte array
     /// @param[out] pa Base address of output packed byte array

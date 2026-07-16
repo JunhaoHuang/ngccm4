@@ -32,12 +32,7 @@ int main(void) {
         send_unsignedll("poly_generate_f cycles:", (unsigned long long)(t1 - t0));
 
         t0 = hal_get_time();
-#if ZEN_N==512
-        poly_generate_s(b, speed_seed, nonce++);
-        poly_generate_e(b, speed_seed, nonce++);
-#else
         poly_generate_se(b, speed_seed, nonce++);
-#endif
         t1 = hal_get_time();
         send_unsignedll("poly_generate_se cycles:", (unsigned long long)(t1 - t0));
 

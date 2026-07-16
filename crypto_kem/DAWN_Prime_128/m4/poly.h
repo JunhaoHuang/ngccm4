@@ -51,14 +51,7 @@ extern "C"
     /// @param[in] seed Base address of input seed byte array
     /// @param[in] nonce Single-byte nonce used to diversify the pseudoXOF input
     /// @return None
-    void poly_generate_s(int16_t *a, const uint8_t *seed, uint8_t nonce);
-    
-    /// @brief Generate a CBD-1 polynomial from an input seed and nonce
-    /// @param[out] a Base address of output polynomial coefficient array
-    /// @param[in] seed Base address of input seed byte array
-    /// @param[in] nonce Single-byte nonce used to diversify the pseudoXOF input
-    /// @return None
-    void poly_generate_e(int16_t *a, const uint8_t *seed, uint8_t nonce);
+    void poly_generate_se(int16_t *a, const uint8_t *seed, uint8_t nonce);
 
     /// @brief Pack a binary polynomial coefficient array into a byte array
     /// @param[out] pa Base address of output packed byte array

@@ -247,15 +247,7 @@ void poly_generate_f(int16_t *a, const uint8_t *seed, uint8_t nonce)
     tenary3_16(a, buf);
 }
 
-void poly_generate_s(int16_t *a, const uint8_t *seed, uint8_t nonce)
-{
-    uint8_t buf[ZEN_N_LEN_BYTES*2];
-
-    zen_pseudoXOF(ZEN_N*2, seed, SEED_LEN_BYTES*8, buf, nonce);
-    cbd1(a, buf);
-}
-
-void poly_generate_e(int16_t *a, const uint8_t *seed, uint8_t nonce)
+void poly_generate_se(int16_t *a, const uint8_t *seed, uint8_t nonce)
 {
     uint8_t buf[ZEN_N_LEN_BYTES*2];
 
