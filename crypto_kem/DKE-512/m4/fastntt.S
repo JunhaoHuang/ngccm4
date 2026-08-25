@@ -280,9 +280,9 @@ ntt_fast:
 		movw qa, #30724 
 		// 8-NTT on a0, a2, ..., a14
 		_3_layer_double_CT_16_plant_fp poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, s8, s9, s10, s11, s12, s13, s14, twiddle1, twiddle2, q, qa, tmp
-		// movw twiddle1, #34880
-		// movt twiddle1, #8 // (-2^32 mod q) * (q^-1 mod 2^32) mod 2^32
-		// fullplant poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, tmp, q, qa, twiddle1
+		movw twiddle1, #34880
+		movt twiddle1, #8 // (-2^32 mod q) * (q^-1 mod 2^32) mod 2^32
+		fullplant poly0, poly1, poly2, poly3, poly4, poly5, poly6, poly7, tmp, q, qa, twiddle1
 		
 		vmov poly, s23
 		// layer 4 - 1
