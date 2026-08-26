@@ -412,7 +412,7 @@ class ProjectionTailEngine:
     def tail_gt_group(self, lam, r, threshold):
         """P[<lam,Z_[r]> > threshold]."""
         P, off = self.projection_poly_for_group(lam, r)
-        deg0 = int(threshold) + 1 + int(off)
+        deg0 = int(threshold) + int(off)
         if deg0 <= 0:
             return self.RF(1)
         if deg0 > P.degree():
