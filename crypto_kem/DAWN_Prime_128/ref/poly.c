@@ -913,6 +913,6 @@ void poly_decompress(int16_t *a)
     {
         d = a[i] * 342838;
         d >>= 16;
-        a[i] = (int16_t)d;
+        a[i] = (int16_t)(d + 3);
     }
 }

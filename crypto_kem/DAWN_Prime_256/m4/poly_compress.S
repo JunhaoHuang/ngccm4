@@ -1,10 +1,12 @@
 /*
  * Cortex-M4 packed compression/decompression for DAWN-Prime-256.
  *
- * Each input word holds two non-negative int16_t coefficients.  SMULWB and
- * SMULWT compute the signed 32x16 products and return product[47:16], which
- * is exactly floor(a[i] * scale / 2^16) for the documented input ranges.
- * PKHBT then packs the two 16-bit results back into one word.
+ * Each input word holds two non-negative int16_t coefficients.  SMLAWB and
+ * SMLAWT compute the signed 32x16 products, return product[47:16] and add
+ * the accumulator, i.e. floor(a[i] * scale / 2^16) + offset for the
+ * documented input ranges.  This matches the reference "(d >> 16) + offset"
+ * exactly; poly_compress uses offset 0.  PKHBT then packs the two 16-bit
+ * results back into one word.
  *
  * Contract used by the M4 backend:
  *   - a is 32-bit aligned and contains ZEN_N == 1024 coefficients;
@@ -16,7 +18,7 @@
 .cpu cortex-m4
 .thumb
 
-.macro scale_q16_function name, scale_lo, scale_hi
+.macro scale_q16_function name, scale_lo, scale_hi, offset
 .align 2
 .global \name
 .type \name, %function
@@ -29,21 +31,22 @@
 .if \scale_hi
     movt r2, #\scale_hi
 .endif
+    movs r12, #\offset
 
 1:
     ldm r0, {r3-r6}
 
-    /* Four independent low-lane products. */
-    smulwb r7,  r2, r3
-    smulwb r8,  r2, r4
-    smulwb r9,  r2, r5
-    smulwb r10, r2, r6
+    /* Four independent low-lane products + offset. */
+    smlawb r7,  r2, r3, r12
+    smlawb r8,  r2, r4, r12
+    smlawb r9,  r2, r5, r12
+    smlawb r10, r2, r6, r12
 
-    /* Four independent high-lane products. */
-    smulwt r3, r2, r3
-    smulwt r4, r2, r4
-    smulwt r5, r2, r5
-    smulwt r6, r2, r6
+    /* Four independent high-lane products + offset. */
+    smlawt r3, r2, r3, r12
+    smlawt r4, r2, r4, r12
+    smlawt r5, r2, r5, r12
+    smlawt r6, r2, r6, r12
 
     /* low_result[15:0] | high_result[15:0] << 16 */
     pkhbt r3, r7,  r3, lsl #16
@@ -59,5 +62,6 @@
 .size \name, . - \name
 .endm
 
-scale_q16_function poly_compress,   21817, 0
-scale_q16_function poly_decompress, 0x0100, 3
+scale_q16_function poly_compress,   21817, 0, 0
+/* 0x00030100 == 196864; result = floor(a * 196864 / 2^16) + 2 */
+scale_q16_function poly_decompress, 0x0100, 3, 2
