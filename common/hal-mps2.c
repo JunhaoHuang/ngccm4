@@ -60,14 +60,28 @@ static inline void uart_putc(int c)
   CMSDK_UART0->DATA = c & 0xFFu;
 }
 
+static uint32_t semihosting_syscall(uint32_t nr, const uint32_t arg);
+
+/*
+ * Output goes through semihosting SYS_WRITE0 by default: the emulated UART
+ * drops characters when the host cannot drain long lines fast enough, which
+ * corrupted multi-kilobyte test-vector lines. Build with -DMPS2_UART_OUTPUT
+ * to use the UART model instead.
+ */
 void hal_send_str(const char* in)
 {
+#ifdef MPS2_UART_OUTPUT
   const char* cur = in;
   while (*cur) {
     uart_putc(*cur);
     cur += 1;
   }
   uart_putc('\n');
+#else
+  static const char newline[] = "\n";
+  semihosting_syscall(0x04 /* SYS_WRITE0 */, (uint32_t)(uintptr_t)in);
+  semihosting_syscall(0x04 /* SYS_WRITE0 */, (uint32_t)(uintptr_t)newline);
+#endif
 }
 
 #if !defined(NO_SEMIHOSTING_EXIT)
@@ -83,13 +97,11 @@ static const uint32_t ApplicationExit = 0x20026;
 
 // Do a system call towards QEMU or the debugger.
 static uint32_t semihosting_syscall(uint32_t nr, const uint32_t arg) {
-	__asm__ volatile (
-		"mov r0, %[nr]\n"
-		"mov r1, %[arg]\n"
-		"bkpt 0xAB\n"
-		"mov %[nr], r0\n"
-	: [nr] "+r" (nr) : [arg] "r" (arg) : "0", "1");
-	return nr;
+	/* r0 = operation number, r1 = parameter; the result comes back in r0. */
+	register uint32_t r0 __asm__("r0") = nr;
+	register uint32_t r1 __asm__("r1") = arg;
+	__asm__ volatile ("bkpt 0xAB" : "+r" (r0) : "r" (r1) : "memory");
+	return r0;
 }
 
 // Register a destructor that will call qemu telling them that the program
@@ -103,9 +115,55 @@ void NMI_Handler(void) {
   semihosting_syscall(REPORT_EXCEPTION, ApplicationExit);
 }
 
-void HardFault_Handler(void) {
+static void send_hex32(const char *label, uint32_t value)
+{
+  static const char hex[] = "0123456789abcdef";
+  char buf[11];
+  int i;
+  buf[0] = '0';
+  buf[1] = 'x';
+  for (i = 0; i < 8; i++) {
+    buf[2 + i] = hex[(value >> (28 - 4 * i)) & 0xF];
+  }
+  buf[10] = 0;
+  hal_send_str(label);
+  hal_send_str(buf);
+}
+
+/* Called from the naked HardFault entry with the exception stack frame. */
+void __attribute__((used)) HardFault_Report(uint32_t *frame)
+{
   hal_send_str("HardFault_Handler");
+  send_hex32("  pc:", frame[6]);
+  send_hex32("  lr:", frame[5]);
+  send_hex32("  sp:", (uint32_t)(uintptr_t)frame);
+  send_hex32("  cfsr:", SCB->CFSR);   /* bit 24: UNALIGNED, 25: DIVBYZERO, 8..15: BFSR, 0..7: MMFSR */
+  send_hex32("  hfsr:", SCB->HFSR);
+  send_hex32("  bfar:", SCB->BFAR);
+  send_hex32("  mmfar:", SCB->MMFAR);
+  /* Raw stack words above the exception frame: code addresses among them
+   * (odd values below the flash size) are return addresses of the callers. */
+  hal_send_str("  stack:");
+  {
+    int i;
+    for (i = 8; i < 72; i++) {
+      send_hex32("", frame[i]);
+    }
+  }
   semihosting_syscall(REPORT_EXCEPTION, ApplicationExit);
+  while (1) {
+  }
+}
+
+void __attribute__((naked)) HardFault_Handler(void)
+{
+  __asm__ volatile (
+    "tst lr, #4\n"
+    "ite eq\n"
+    "mrseq r0, msp\n"
+    "mrsne r0, psp\n"
+    "b HardFault_Report\n"
+  );
 }
 
 void MemManage_Handler(void) {

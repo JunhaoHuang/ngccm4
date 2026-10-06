@@ -33,7 +33,7 @@ int main(void) {
     unsigned long long sk_len = kem_get_sk_len_bytes();
     unsigned long long ss_len = kem_get_ss_len_bytes();
     unsigned long long ct_len = kem_get_ct_len_bytes();
-    unsigned long long ignored_len = 0;
+    unsigned long long ss_len_dec = ss_len;
     uint64_t t0;
     uint64_t t1;
     unsigned char *pk;
@@ -62,8 +62,13 @@ int main(void) {
     for(int i=0;i<NGCC_ITERATIONS;i++){
         hash_cycles = 0;
         func_cycles = 0;
+        pk_len = kem_get_pk_len_bytes();
+        sk_len = kem_get_sk_len_bytes();
+        ss_len = kem_get_ss_len_bytes();
+        ct_len = kem_get_ct_len_bytes();
+        ss_len_dec = ss_len;
         t0 = hal_get_time();
-        if (kem_keygen(pk, &ignored_len, sk, &ignored_len) != 0) fail_and_halt("kem_keygen_failed");
+        if (kem_keygen(pk, &pk_len, sk, &sk_len) != 0) fail_and_halt("kem_keygen_failed");
         t1 = hal_get_time();
         send_unsignedll("keypair cycles:", (unsigned long long)(t1 - t0));
         send_unsignedll("keypair hash cycles:", hash_cycles);
@@ -72,7 +77,7 @@ int main(void) {
         hash_cycles = 0;
         func_cycles = 0;
         t0 = hal_get_time();
-        if (kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len) != 0) fail_and_halt("kem_enc_failed");
+        if (kem_enc(pk, pk_len, ss_a, &ss_len, ct, &ct_len) != 0) fail_and_halt("kem_enc_failed");
         t1 = hal_get_time();
         send_unsignedll("encaps cycles:", (unsigned long long)(t1 - t0));
         send_unsignedll("encaps hash cycles:", hash_cycles);
@@ -81,7 +86,7 @@ int main(void) {
         hash_cycles = 0;
         func_cycles = 0;
         t0 = hal_get_time();
-        if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) fail_and_halt("kem_dec_failed");
+        if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ss_len_dec) != 0) fail_and_halt("kem_dec_failed");
         t1 = hal_get_time();
         send_unsignedll("decaps cycles:", (unsigned long long)(t1 - t0));
         send_unsignedll("decaps hash cycles:", hash_cycles);
@@ -103,5 +108,5 @@ int main(void) {
     free(ct);
     free(ss_a);
     free(ss_b);
-    return 0;
+    return hal_main_done();
 }

@@ -53,14 +53,15 @@ static inline uintptr_t current_stack_pointer(void)
 
 static __attribute__((noinline)) int test_keys(unsigned char* pk, unsigned char* sk, unsigned char* ct, unsigned char* ss_a, unsigned char* ss_b) {
     int rc;
-    unsigned long long ignored_len = 0;
     unsigned long long pk_len = kem_get_pk_len_bytes();
     unsigned long long sk_len = kem_get_sk_len_bytes();
     unsigned long long ss_len = kem_get_ss_len_bytes();
     unsigned long long ct_len = kem_get_ct_len_bytes();
+    unsigned long long ss_len_dec = ss_len;
 
     FILL_STACK()
-    rc = kem_keygen(pk, &ignored_len, sk, &ignored_len);
+    ss_len_dec = ss_len;
+    rc = kem_keygen(pk, &pk_len, sk, &sk_len);
     if (rc != 0) {
         hal_send_str("keypair failed");
         return -1;
@@ -73,7 +74,7 @@ static __attribute__((noinline)) int test_keys(unsigned char* pk, unsigned char*
     stack_key_gen = c;
 
     FILL_STACK()
-    rc = kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len);
+    rc = kem_enc(pk, pk_len, ss_a, &ss_len, ct, &ct_len);
     if (rc != 0) {
         hal_send_str("encaps failed");
         return -1;
@@ -86,7 +87,7 @@ static __attribute__((noinline)) int test_keys(unsigned char* pk, unsigned char*
     stack_encaps = c;
 
     FILL_STACK()
-    rc = kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len);
+    rc = kem_dec(sk, sk_len, ct, ct_len, ss_b, &ss_len_dec);
     if (rc != 0) {
         hal_send_str("decaps failed");
         return -1;
@@ -162,5 +163,5 @@ int main(void) {
     free(ss_a);
     free(ss_b);
     hal_send_str("#");
-    return 0;
+    return hal_main_done();
 }

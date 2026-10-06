@@ -38,7 +38,7 @@
 MEMORY
 {
   FLASH (rx)            : ORIGIN = ZBT_SRAM1_START, LENGTH = ZBT_SRAM1_SIZE
-  RAM (rwx)             : ORIGIN = ZBT_SRAM2_START, LENGTH = ZBT_SRAM2_SIZE
+  RAM (rwx)             : ORIGIN = PSRAM_START, LENGTH = PSRAM_SIZE /* 16 MiB PSRAM, see memory_zones.h */
 }
 
 /* Linker script to place sections and symbol values. Should be used together

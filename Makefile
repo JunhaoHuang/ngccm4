@@ -13,13 +13,18 @@ QEMU_ELFS := $(if $(REQUESTED_ELFS),$(REQUESTED_ELFS),$(ELFS))
 
 .PHONY: $(SHORT_TARGETS)
 
-all: platform-sync $(BINS)
+# platform-sync may wipe bin/ elf/ obj/ when the build configuration changed,
+# so the real targets are built by a recursive make that runs after the sync
+# (otherwise make would consider a stale, already-existing ELF up to date).
+all: platform-sync
+	$(Q)$(MAKE) --no-print-directory $(BINS)
 
-$(SHORT_TARGETS): %: platform-sync bin/%.bin
+$(SHORT_TARGETS): %: platform-sync
+	$(Q)$(MAKE) --no-print-directory bin/$*.bin
 
 platform-sync:
 	@prev=''; \
-	current='PLATFORM=$(PLATFORM) OPT=$(OPT) LTO=$(LTO) NGCC_ITERATIONS=$(NGCC_ITERATIONS) USE_SM3_ASM=$(USE_SM3_ASM) USE_KECCAK=$(USE_KECCAK)$(if $(strip $(DKEX_SIG_MLDSA_BUILD_CONFIG)), $(DKEX_SIG_MLDSA_BUILD_CONFIG))'; \
+	current='PLATFORM=$(PLATFORM) OPT=$(OPT) LTO=$(LTO) NGCC_ITERATIONS=$(NGCC_ITERATIONS) USE_SM3_ASM=$(USE_SM3_ASM) USE_KECCAK=$(USE_KECCAK) DKEX_SIG_MLDSA_LEVEL=$(DKEX_SIG_MLDSA_LEVEL)'; \
 	if [ -f $(PLATFORM_STATE) ]; then \
 		prev=$$(cat $(PLATFORM_STATE)); \
 	fi; \
@@ -41,7 +46,9 @@ help:
 	@printf '  %s\n' $(SCHEMES)
 	@printf 'Available apps: %s\n' "$(SUPPORTED_APPS)"
 
-qemu-run: platform-sync $(QEMU_ELFS)
+# When shorthand targets are given on the same command line, qemu-run waits
+# for them (they run their own recursive make) instead of building concurrently.
+qemu-run: platform-sync $(REQUESTED_SHORT_TARGETS)
 	@if [ "$(PLATFORM)" != "mps2-an386" ]; then \
 		printf 'qemu-run is only supported for PLATFORM=mps2-an386\n' >&2; \
 		exit 1; \
@@ -50,6 +57,7 @@ qemu-run: platform-sync $(QEMU_ELFS)
 		printf 'qemu-run requires exactly one target; use a shorthand target or FAMILY=..., SCHEME=..., IMPLEMENTATION=..., and APP=...\n' >&2; \
 		exit 1; \
 	fi
+	$(Q)$(if $(REQUESTED_SHORT_TARGETS),:,$(MAKE) --no-print-directory $(QEMU_ELFS))
 	$(Q)$(QEMU) $(QEMUFLAGS) -kernel $(firstword $(QEMU_ELFS))
 
 clean: libclean

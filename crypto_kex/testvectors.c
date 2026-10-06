@@ -1,24 +1,23 @@
+/*
+ * Reproduces the ICCS KAT_KEX.c sequence so the output can be compared with
+ * Test_Vectors/KAT_KEX_<instance>.txt: drng_seed is seeded with "seed" x 16,
+ * each count draws a 64-byte seed and re-seeds drng_algorithm. Output per
+ * count (one hex line each): seed, pka, ska, init sta, pkb, skb, init stb,
+ * then for every pass the updated state and the message, then ssa, ssb.
+ */
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "drng.h"
 #include "hal.h"
-#include "KEX_AlgorithmInstance.h"
-#ifdef USE_KECCAK
-#include "randombytes.h"
-#endif
+#include "sendfn.h"
+#include "kex_common.h"
 
 #define SEED_LEN_BYTES 64
 
 DRNG_ctx drng_algorithm;
 unsigned char tv_seed[SEED_LEN_BYTES];
-
-static unsigned char *alloc_buffer(unsigned long long len)
-{
-    size_t alloc_len = (len == 0) ? 1u : (size_t)len;
-    return malloc(alloc_len);
-}
 
 static void printbytes(const unsigned char *x, unsigned long long xlen)
 {
@@ -39,154 +38,69 @@ static void printbytes(const unsigned char *x, unsigned long long xlen)
     free(outs);
 }
 
-static int run_vector(const unsigned char seed[SEED_LEN_BYTES])
+static int run_vector(kex_session *s, const unsigned char seed[SEED_LEN_BYTES])
 {
-    unsigned long long pass = kex_get_passes_num();
-    unsigned long long pka_len = kex_get_pk_len_bytes();
-    unsigned long long ska_len = kex_get_sk_len_bytes();
-    unsigned long long pkb_len = kex_get_pk_len_bytes();
-    unsigned long long skb_len = kex_get_sk_len_bytes();
-    unsigned long long sta_len = kex_get_sta_len_bytes();
-    unsigned long long stb_len = kex_get_stb_len_bytes();
-    unsigned long long ssa_len = kex_get_ss_len_bytes();
-    unsigned long long ssb_len = kex_get_ss_len_bytes();
-    unsigned long long total_len = kex_get_total_msg_len_bytes();
-    unsigned long long m1_len = 0;
-    unsigned long long m2_len = 0;
-    unsigned long long m3_len = 0;
-    unsigned char *pka = alloc_buffer(pka_len);
-    unsigned char *ska = alloc_buffer(ska_len);
-    unsigned char *pkb = alloc_buffer(pkb_len);
-    unsigned char *skb = alloc_buffer(skb_len);
-    unsigned char *sta = alloc_buffer(sta_len);
-    unsigned char *stb = alloc_buffer(stb_len);
-    unsigned char *ssa = alloc_buffer(ssa_len);
-    unsigned char *ssb = alloc_buffer(ssb_len);
-    unsigned char *m1 = alloc_buffer(total_len);
-    unsigned char *m2 = alloc_buffer(total_len);
-    unsigned char *m3 = alloc_buffer(total_len);
-    unsigned char *ma;
-    unsigned long long ma_len;
-    int ret = -1;
-    int rtn;
+    char label[32];
+    int step;
 
-    if (pka == NULL || ska == NULL || pkb == NULL || skb == NULL ||
-        sta == NULL || stb == NULL || ssa == NULL || ssb == NULL ||
-        m1 == NULL || m2 == NULL || m3 == NULL) {
-        hal_send_str("alloc_failed");
-        goto cleanup;
-    }
-    if (pass != 2 && pass != 3) {
-        hal_send_str("unsupported_pass_count");
-        goto cleanup;
-    }
     if (init_random_number(&drng_algorithm, seed, SEED_LEN_BYTES) != 0) {
         hal_send_str("drng_init_failed");
-        goto cleanup;
+        return -1;
     }
-
     printbytes(seed, SEED_LEN_BYTES);
+    send_unsignedll("Pass_Num = ", s->passes);
 
-    rtn = kex_init_a(pka, &pka_len, ska, &ska_len, sta, &sta_len);
-    if (rtn < 0) {
-        hal_send_str("kex_init_a_failed");
-        goto cleanup;
-    }
-    printbytes(pka, pka_len);
-    printbytes(ska, ska_len);
-    printbytes(sta, sta_len);
+    kex_session_reset(s);
+    for (step = 0; step < KEX_STEP_COUNT; step++) {
+        const unsigned char *buf;
+        unsigned long long len;
 
-    rtn = kex_init_b(pkb, &pkb_len, skb, &skb_len, stb, &stb_len);
-    if (rtn < 0) {
-        hal_send_str("kex_init_b_failed");
-        goto cleanup;
-    }
-    printbytes(pkb, pkb_len);
-    printbytes(skb, skb_len);
-    printbytes(stb, stb_len);
-
-    rtn = kex_generate_pass1_msg_a(
-        ska, ska_len, pkb, pkb_len, sta, &sta_len, m1, &m1_len);
-    if (rtn != 0) {
-        hal_send_str("kex_pass1_failed");
-        goto cleanup;
-    }
-    printbytes(sta, sta_len);
-    printbytes(m1, m1_len);
-
-    rtn = kex_generate_pass2_msg_b(
-        skb, skb_len, pka, pka_len, m1, m1_len, stb, &stb_len, m2, &m2_len);
-    if (rtn != (pass == 2 ? 1 : 0)) {
-        hal_send_str("kex_pass2_failed");
-        goto cleanup;
-    }
-    printbytes(stb, stb_len);
-    printbytes(m2, m2_len);
-    ma = m1;
-    ma_len = m1_len;
-    if (pass == 3) {
-        rtn = kex_generate_pass3_msg_a(
-            ska, ska_len, pkb, pkb_len, m2, m2_len, sta, &sta_len,
-            m3, &m3_len);
-        if (rtn != 1) {
-            hal_send_str("kex_pass3_failed");
-            goto cleanup;
+        if (!kex_step_active(s, step)) {
+            continue;
         }
-        printbytes(sta, sta_len);
-        printbytes(m3, m3_len);
-        ma = m3;
-        ma_len = m3_len;
+        if (kex_step(s, step) != 0) {
+            hal_send_str(kex_label(label, sizeof(label), step, " failed"));
+            return -1;
+        }
+        switch (step) {
+        case KEX_STEP_INIT_A:
+            printbytes(s->pka, s->pka_len);
+            printbytes(s->ska, s->ska_len);
+            break;
+        case KEX_STEP_INIT_B:
+            printbytes(s->pkb, s->pkb_len);
+            printbytes(s->skb, s->skb_len);
+            break;
+        default:
+            break;
+        }
+        buf = kex_step_state(s, step, &len);
+        if (buf != NULL) {
+            printbytes(buf, len);
+        }
+        buf = kex_step_message(s, step, &len);
+        if (buf != NULL) {
+            printbytes(buf, len);
+        }
     }
-
-    rtn = kex_derive_ss_a(
-        ska, ska_len, pkb, pkb_len, m2, m2_len, sta, sta_len,
-        ssa, &ssa_len);
-    if (rtn < 0) {
-        hal_send_str("kex_derive_a_failed");
-        goto cleanup;
-    }
-    rtn = kex_derive_ss_b(
-        skb, skb_len, pka, pka_len, ma, ma_len, stb, stb_len,
-        ssb, &ssb_len);
-    if (rtn < 0) {
-        hal_send_str("kex_derive_b_failed");
-        goto cleanup;
-    }
-    if (ssa_len != ssb_len || memcmp(ssa, ssb, (size_t)ssa_len) != 0) {
+    if (!kex_shared_secrets_match(s)) {
         hal_send_str("ERROR");
-        goto cleanup;
     }
-    printbytes(ssa, ssa_len);
-    printbytes(ssb, ssb_len);
-    ret = 0;
-
-cleanup:
-    free(pka);
-    free(ska);
-    free(pkb);
-    free(skb);
-    free(sta);
-    free(stb);
-    free(ssa);
-    free(ssb);
-    free(m1);
-    free(m2);
-    free(m3);
-    return ret;
+    printbytes(s->ssa, s->ssa_len);
+    printbytes(s->ssb, s->ssb_len);
+    return 0;
 }
 
 int main(void)
 {
+    kex_session session;
     unsigned char seed[SEED_LEN_BYTES];
-    int i;
-#ifndef USE_KECCAK
     DRNG_ctx drng_seed;
-#endif
+    int i;
 
     hal_setup(CLOCK_FAST);
     hal_send_str("==========================");
 
-#ifndef USE_KECCAK
     for (i = 0; i < SEED_LEN_BYTES / 4; i++) {
         memcpy(tv_seed + 4 * i, "seed", 4);
     }
@@ -194,20 +108,21 @@ int main(void)
         hal_send_str("drng_init_failed");
         return -1;
     }
-#endif
+    if (kex_session_alloc(&session) != 0) {
+        hal_send_str("alloc_failed");
+        return -1;
+    }
 
     for (i = 0; i < NGCC_ITERATIONS; i++) {
-#ifdef USE_KECCAK
-        randombytes(seed, SEED_LEN_BYTES);
-#else
         get_random_number(&drng_seed, seed, SEED_LEN_BYTES * 8);
-#endif
-        if (run_vector(seed) != 0) {
+        if (run_vector(&session, seed) != 0) {
+            hal_send_str("#");
             return -1;
         }
         hal_send_str("+");
     }
 
+    kex_session_free(&session);
     hal_send_str("#");
     return 0;
 }

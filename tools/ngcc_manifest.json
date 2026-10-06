@@ -1,0 +1,1586 @@
+{
+ "_comment": "Curated import manifest for tools/import_ngcc.py, keyed by the NGCC scheme folder. status: supported (default) | unsupported | skip. tier: board (fits nucleo-l4r5zi) | qemu (mps2-an386 only). copy_dirs are relative to the instance dir ('@path' = relative to schemes/<folder>/). defines -> ngcc_config.h; cflags -> IMPL_CFLAGS_<impl>; exclude_common -> IMPL_EXCLUDE_COMMON_<impl>; sed = [glob, regex, replacement]; patches = repo-relative unified diffs applied with patch -p1 in the impl dir.",
+ "ZEN": {
+  "status": "skip",
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+ },
+ "DKEM": {
+  "status": "skip",
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+ },
+ "DKEX": {
+  "status": "skip",
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+ },
+ "ADKEX": {
+  "status": "skip",
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+ },
+ "CTL": {
+  "status": "unsupported",
+  "reason": "needs GMP, __int128 and libquadmath"
+ },
+ "QIMEN-PIKE": {
+  "status": "unsupported",
+  "reason": "isogeny scheme needing GMP; 2.6 MB stack frame"
+ },
+ "SQIsign2D2": {
+  "status": "unsupported",
+  "reason": "needs GMP (ships only a Windows import library)"
+ },
+ "SQIsign2D-push12": {
+  "status": "unsupported",
+  "reason": "needs GMP; aborts on internal assertion in the x86 build"
+ },
+ "SQIsignTriangle": {
+  "status": "unsupported",
+  "reason": "needs GMP or mini-gmp; __int128"
+ },
+ "HEP-QC": {
+  "status": "unsupported",
+  "reason": "public keys 286 KB-12.6 MB, 12 MB bss"
+ },
+ "QCTM": {
+  "status": "unsupported",
+  "reason": "public keys 168 KB-2.4 MB; OpenSSL EVP in rng.c"
+ },
+ "UVW-KEM": {
+  "status": "unsupported",
+  "reason": "public keys 208 KB-4 MB, 2.9 MB constant tables"
+ },
+ "DOVE": {
+  "status": "unsupported",
+  "reason": "public keys 5-22 MB; nested RAR package"
+ },
+ "UVW_signature": {
+  "status": "unsupported",
+  "reason": "public keys 5.9-95 MB"
+ },
+ "VDOO": {
+  "status": "unsupported",
+  "reason": "public keys 331 KB-20 MB, bss up to 121 MB"
+ },
+ "Flextree": {
+  "status": "unsupported",
+  "reason": "1.8-14.7 MB precomputed tables; #error without __int128"
+ },
+ "PolarLAC": {
+  "status": "unsupported",
+  "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)"
+ },
+ "shuttle": {
+  "status": "unsupported",
+  "reason": "unguarded __int128 in approx_*.h"
+ },
+ "Rhyme": {
+  "status": "unsupported",
+  "reason": "unguarded __int128 in kg_zint.h/kg_solver.c/sampler.c"
+ },
+ "Loom": {
+  "status": "unsupported",
+  "reason": "kem/ and sig/ trees collide on poly.c/polyvec.c/reduce.c symbols; __int128"
+ },
+ "BRA": {
+  "status": "unsupported",
+  "reason": "rbc_*.h hard-includes <x86intrin.h>"
+ },
+ "BRQC": {
+  "status": "unsupported",
+  "reason": "rbc_*.h hard-includes <x86intrin.h>"
+ },
+ "C-Multi-UR-AG": {
+  "status": "unsupported",
+  "reason": "rbc_*.h hard-includes <x86intrin.h>; 210 KB stack frame"
+ },
+ "Origami": {
+  "status": "unsupported",
+  "reason": "aes.c uses AES-NI intrinsics"
+ },
+ "YuanYang.DSA": {
+  "status": "unsupported",
+  "reason": "bigint.c includes <immintrin.h>; double FFT keygen; 709 KB stack frame"
+ },
+ "CS": {
+  "status": "unsupported",
+  "reason": "does not compile as shipped (missing NTT.h, conflicting static declaration)"
+ },
+ "NIIKE": {
+  "status": "unsupported",
+  "reason": "isogeny NIKE: 12 MB working set, minutes per run"
+ },
+ "Tins": {
+  "status": "unsupported",
+  "reason": "6.5 MB stack frame"
+ },
+ "MAMBA-Frost": {
+  "status": "unsupported",
+  "reason": "Frodo-like matrices: 7.4 MB stack frame (x86 -O3 build)"
+ },
+ "CreTAKE": {
+  "status": "unsupported",
+  "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)"
+ },
+ "Aigis-Encplus": {
+  "tier": "board",
+  "exclude_dirs": [
+   "speed_test"
+  ],
+  "exclude_files": [
+   "randombytes.c",
+   "fips202x4.c",
+   "fips202x4.h",
+   "sm3kdf.c"
+  ],
+  "defines": {
+   "USE_NICCS_API": ""
+  },
+  "instances": {
+   "Aigis-Enc+-I": {
+    "name": "Aigis-Enc-I",
+    "defines": {
+     "PARAMS": "1"
+    },
+    "kat": "KAT_KEM_Aigis-enc1.txt"
+   },
+   "Aigis-Enc+-II": {
+    "name": "Aigis-Enc-II",
+    "defines": {
+     "PARAMS": "2"
+    },
+    "kat": "KAT_KEM_Aigis-enc2.txt"
+   },
+   "Aigis-Enc+-III": {
+    "name": "Aigis-Enc-III",
+    "defines": {
+     "PARAMS": "3"
+    },
+    "kat": "KAT_KEM_Aigis-enc3.txt"
+   }
+  },
+  "keep_as": {
+   "rng.c": "rng_iccs.c"
+  }
+ },
+ "Amoeba": {
+  "tier": "board",
+  "copy_dirs": [
+   "src/api",
+   "src/backend",
+   "src/symmetric"
+  ],
+  "instances": {
+   "Amoeba-576": {
+    "defines": {
+     "SECURITY_LEVEL": "128"
+    },
+    "kat": "KAT_KEM_Amoeba128.txt"
+   },
+   "Amoeba-864": {
+    "defines": {
+     "SECURITY_LEVEL": "192"
+    },
+    "kat": "KAT_KEM_Amoeba192.txt"
+   },
+   "Amoeba-1152": {
+    "defines": {
+     "SECURITY_LEVEL": "256"
+    },
+    "kat": "KAT_KEM_Amoeba256.txt"
+   },
+   "Amoeba-1728": {
+    "defines": {
+     "SECURITY_LEVEL": "384"
+    },
+    "kat": "KAT_KEM_Amoeba384.txt"
+   },
+   "Amoeba-2304": {
+    "defines": {
+     "SECURITY_LEVEL": "512"
+    },
+    "kat": "KAT_KEM_Amoeba512.txt"
+   }
+  }
+ },
+ "BAG-Loong": {
+  "tier": "board"
+ },
+ "BAG-Piglet": {
+  "tier": "board",
+  "include_dirs": [
+   "src/kat",
+   "lib/randombytes"
+  ],
+  "defines": {
+   "BAG_PIGLET_KAT": ""
+  }
+ },
+ "BIKE_MLThre": {
+  "status": "unsupported",
+  "reason": "seeds the NIST AES256-CTR DRBG (FromNIST/rng.c, OpenSSL) from the ICCS DRNG; needs a portable CTR-DRBG port"
+ },
+ "BW-KEM": {
+  "tier": "board",
+  "instances": {
+   "BW_KEM_C128": {
+    "defines": {
+     "BWKEM128_INTERNAL_COMPAT": "",
+     "BWKEM128_USE_ICCS_AUXFUNC": ""
+    }
+   },
+   "BW_KEM_C256": {
+    "defines": {
+     "BWKEM_C256_USE_ICCS_AUXFUNC": ""
+    }
+   },
+   "BW_KEM_C512": {
+    "defines": {
+     "BWKEM_C512_USE_ICCS_AUXFUNC": ""
+    }
+   }
+  }
+ },
+ "CheetahKEM": {
+  "tier": "board"
+ },
+ "COMPASS-KEM": {
+  "tier": "board",
+  "instances": {
+   "COMPASS-KEM-128": {
+    "defines": {
+     "SECURITY_LEVEL": "128"
+    }
+   },
+   "COMPASS-KEM-256": {
+    "defines": {
+     "SECURITY_LEVEL": "256"
+    }
+   },
+   "COMPASS-KEM-384": {
+    "defines": {
+     "SECURITY_LEVEL": "384"
+    }
+   },
+   "COMPASS-KEM-512": {
+    "defines": {
+     "SECURITY_LEVEL": "512"
+    }
+   }
+  }
+ },
+ "DTRU": {
+  "tier": "board",
+  "_note": "official KATs are generated without PK_PACK_OPT (the Makefile's KAT_KEM target)"
+ },
+ "FLIT": {
+  "tier": "board",
+  "cflags": "-std=gnu11"
+ },
+ "HARE": {
+  "tier": "qemu",
+  "copy_dirs": [
+   "kr",
+   "@Reference_Implementation/_shared/hare_core/common",
+   "@Reference_Implementation/_shared/hare_core/ref"
+  ],
+  "defines": {
+   "HARE_BACKEND_KR": "",
+   "HARE_SYMMETRIC_MODE_B": ""
+  }
+ },
+ "LoongKEM": {
+  "tier": "qemu"
+ },
+ "Lore": {
+  "tier": "board",
+  "instances": {
+   "Lore-SHAKE__Lore-L1": {
+    "name": "Lore-SHAKE-L1",
+    "defines": {
+     "LORE_LEVEL": "1",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SHAKE/KAT_KEM_Lore-L1.txt"
+   },
+   "Lore-SHAKE__Lore-L2": {
+    "name": "Lore-SHAKE-L2",
+    "defines": {
+     "LORE_LEVEL": "2",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SHAKE/KAT_KEM_Lore-L2.txt"
+   },
+   "Lore-SHAKE__Lore-L3": {
+    "name": "Lore-SHAKE-L3",
+    "defines": {
+     "LORE_LEVEL": "3",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SHAKE/KAT_KEM_Lore-L3.txt"
+   },
+   "Lore-SHAKE__Lore-L4": {
+    "name": "Lore-SHAKE-L4",
+    "defines": {
+     "LORE_LEVEL": "4",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SHAKE/KAT_KEM_Lore-L4.txt"
+   },
+   "Lore-SM3__Lore-L1": {
+    "name": "Lore-SM3-L1",
+    "defines": {
+     "LORE_LEVEL": "1",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SM3/KAT_KEM_Lore-L1.txt"
+   },
+   "Lore-SM3__Lore-L2": {
+    "name": "Lore-SM3-L2",
+    "defines": {
+     "LORE_LEVEL": "2",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SM3/KAT_KEM_Lore-L2.txt"
+   },
+   "Lore-SM3__Lore-L3": {
+    "name": "Lore-SM3-L3",
+    "defines": {
+     "LORE_LEVEL": "3",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SM3/KAT_KEM_Lore-L3.txt"
+   },
+   "Lore-SM3__Lore-L4": {
+    "name": "Lore-SM3-L4",
+    "defines": {
+     "LORE_LEVEL": "4",
+     "LORE_USE_API_PKC_DRNG": ""
+    },
+    "kat": "Lore-SM3/KAT_KEM_Lore-L4.txt"
+   }
+  },
+  "sed": [
+   [
+    "randombytes.c",
+    "^[ \\t]*#include[ \\t]*<sys/syscall\\.h>[ \\t]*\\n",
+    ""
+   ]
+  ]
+ },
+ "MAMBA-Viper": {
+  "tier": "board",
+  "instances": {
+   "MAMBA-Viper-128": {
+    "defines": {
+     "VIPER_LEVEL": "128",
+     "VIPER_USE_E8_CODEC": "1"
+    }
+   },
+   "MAMBA-Viper-192": {
+    "defines": {
+     "VIPER_LEVEL": "192",
+     "VIPER_USE_E8_CODEC": "1"
+    }
+   },
+   "MAMBA-Viper-256": {
+    "defines": {
+     "VIPER_LEVEL": "256",
+     "VIPER_USE_E8_CODEC": "1"
+    }
+   },
+   "MAMBA-Viper-384": {
+    "defines": {
+     "VIPER_LEVEL": "384",
+     "VIPER_USE_E8_CODEC": "1"
+    }
+   },
+   "MAMBA-Viper-512": {
+    "defines": {
+     "VIPER_LEVEL": "512",
+     "VIPER_USE_E8_CODEC": "1"
+    }
+   }
+  },
+  "keep_as": {
+   "rng.h": "rng.h"
+  }
+ },
+ "Mithril": {
+  "tier": "board",
+  "instances": {
+   "Mithril-128": {
+    "defines": {
+     "RRLWR_SECURITY_LEVEL": "128",
+     "RRLWR_PACKING_16BIT_SCALAR": "1"
+    }
+   },
+   "Mithril-256": {
+    "defines": {
+     "RRLWR_SECURITY_LEVEL": "256",
+     "RRLWR_PACKING_16BIT_SCALAR": "1"
+    }
+   },
+   "Mithril-512": {
+    "defines": {
+     "RRLWR_SECURITY_LEVEL": "512",
+     "RRLWR_PACKING_16BIT_SCALAR": "1"
+    }
+   }
+  }
+ },
+ "Mito": {
+  "tier": "qemu"
+ },
+ "MORNING-Scabbard": {
+  "tier": "board",
+  "sed": [
+   [
+    "auxfunc_detail.c",
+    "^[ \\t]*#include[ \\t]*\"test/cpucycles\\.h\"[ \\t]*\\n",
+    "static inline uint64_t cpucycles(void) { return 0; }\n"
+   ]
+  ],
+  "instances": {
+   "scabbard512": {
+    "status": "unsupported",
+    "reason": "static data exceeds the 4 MB QEMU RAM"
+   }
+  }
+ },
+ "NEV": {
+  "tier": "board",
+  "exclude_dirs": [
+   "speed_test"
+  ],
+  "exclude_files": [
+   "randombytes.c"
+  ],
+  "defines": {
+   "USE_ICCS": ""
+  },
+  "instances": {
+   "NEV-C1": {
+    "defines": {
+     "PARAMS": "10"
+    },
+    "kat": "KAT_KEM_NEV_512_769_ICCS.txt"
+   },
+   "NEV-C1-c": {
+    "defines": {
+     "PARAMS": "1"
+    },
+    "kat": "KAT_KEM_NEV_512_769_C_ICCS.txt"
+   },
+   "NEV-C2": {
+    "defines": {
+     "PARAMS": "11"
+    },
+    "kat": "KAT_KEM_NEV_1024_769_ICCS.txt"
+   },
+   "NEV-C2-c": {
+    "defines": {
+     "PARAMS": "2"
+    },
+    "kat": "KAT_KEM_NEV_1024_769_C_ICCS.txt"
+   },
+   "NEV-C3": {
+    "defines": {
+     "PARAMS": "12"
+    },
+    "kat": "KAT_KEM_NEV_2048_769_ICCS.txt"
+   },
+   "NEV-C3-c": {
+    "defines": {
+     "PARAMS": "3"
+    },
+    "kat": "KAT_KEM_NEV_2048_769_C_ICCS.txt"
+   },
+   "NEV-D1": {
+    "defines": {
+     "PARAMS": "7"
+    },
+    "kat": "KAT_KEM_NEV_512_3329_ICCS.txt"
+   },
+   "NEV-D2": {
+    "defines": {
+     "PARAMS": "8"
+    },
+    "kat": "KAT_KEM_NEV_1024_3329_ICCS.txt"
+   },
+   "NEV-D3": {
+    "defines": {
+     "PARAMS": "9"
+    },
+    "kat": "KAT_KEM_NEV_2048_3329_ICCS.txt"
+   },
+   "NEV-R1": {
+    "defines": {
+     "PARAMS": "4"
+    },
+    "kat": "KAT_KEM_NEV_512_1409_ICCS.txt"
+   },
+   "NEV-R2": {
+    "defines": {
+     "PARAMS": "5"
+    },
+    "kat": "KAT_KEM_NEV_1024_1409_ICCS.txt"
+   },
+   "NEV-R3": {
+    "defines": {
+     "PARAMS": "6"
+    },
+    "kat": "KAT_KEM_NEV_2048_1409_ICCS.txt"
+   }
+  },
+  "keep_as": {
+   "rng.c": "rng_iccs.c"
+  }
+ },
+ "NSS-HQC": {
+  "tier": "board"
+ },
+ "NTRE": {
+  "tier": "board"
+ },
+ "OAEP-NTRU": {
+  "tier": "board"
+ },
+ "Polar-KEM": {
+  "tier": "board"
+ },
+ "QUBE": {
+  "tier": "qemu",
+  "instances": {
+   "qube-128": {
+    "kat": "KAT_KEM_qube_128.txt"
+   },
+   "qube-192": {
+    "kat": "KAT_KEM_qube_192.txt"
+   },
+   "qube-256": {
+    "kat": "KAT_KEM_qube_256.txt"
+   },
+   "qube-384": {
+    "kat": "KAT_KEM_qube_384.txt"
+   },
+   "qube-512": {
+    "kat": "KAT_KEM_qube_512.txt"
+   }
+  }
+ },
+ "Rudraksh2": {
+  "tier": "board",
+  "exclude_files": [
+   "api.c",
+   "kex.c",
+   "kex.h"
+  ]
+ },
+ "Scloudplus": {
+  "tier": "qemu",
+  "copy_dirs": [
+   "kem",
+   "@Reference_Implementation/Implementations/_shared/api_pkc",
+   "@Reference_Implementation/Implementations/_shared/scloudplus_core/common",
+   "@Reference_Implementation/Implementations/_shared/scloudplus_core/include",
+   "@Reference_Implementation/Implementations/_shared/scloudplus_core/ref"
+  ],
+  "exclude_files": [
+   "kem/KEM_AlgorithmInstance.c",
+   "kem/KEM_AlgorithmInstance.h"
+  ],
+  "defines": {
+   "SCLOUDPLUS_TIER_REFERENCE": ""
+  },
+  "instances": {
+   "Scloudplus-128": {
+    "variants": [
+     {
+      "suffix": "SM3",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SM3": "",
+       "SCLOUDPLUS_REF_FAMILY_SM3": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-128-SM3-packed10.txt",
+      "exclude_files": [
+       "hash_aes_shake.c"
+      ]
+     },
+     {
+      "suffix": "SHAKE",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SHAKE": "",
+       "SCLOUDPLUS_REF_FAMILY_SHAKE": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-128-SHAKE-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     },
+     {
+      "suffix": "AES",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_AES": "",
+       "SCLOUDPLUS_REF_FAMILY_AES": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-128-AES-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     }
+    ]
+   },
+   "Scloudplus-192": {
+    "variants": [
+     {
+      "suffix": "SM3",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SM3": "",
+       "SCLOUDPLUS_REF_FAMILY_SM3": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-192-SM3-packed10.txt",
+      "exclude_files": [
+       "hash_aes_shake.c"
+      ]
+     },
+     {
+      "suffix": "SHAKE",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SHAKE": "",
+       "SCLOUDPLUS_REF_FAMILY_SHAKE": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-192-SHAKE-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     },
+     {
+      "suffix": "AES",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_AES": "",
+       "SCLOUDPLUS_REF_FAMILY_AES": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-192-AES-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     }
+    ]
+   },
+   "Scloudplus-256": {
+    "variants": [
+     {
+      "suffix": "SM3",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SM3": "",
+       "SCLOUDPLUS_REF_FAMILY_SM3": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-256-SM3-packed10.txt",
+      "exclude_files": [
+       "hash_aes_shake.c"
+      ]
+     },
+     {
+      "suffix": "SHAKE",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SHAKE": "",
+       "SCLOUDPLUS_REF_FAMILY_SHAKE": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-256-SHAKE-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     },
+     {
+      "suffix": "AES",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_AES": "",
+       "SCLOUDPLUS_REF_FAMILY_AES": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-256-AES-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     }
+    ]
+   },
+   "Scloudplus-384": {
+    "variants": [
+     {
+      "suffix": "SM3",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SM3": "",
+       "SCLOUDPLUS_REF_FAMILY_SM3": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-384-SM3-packed10.txt",
+      "exclude_files": [
+       "hash_aes_shake.c"
+      ]
+     },
+     {
+      "suffix": "SHAKE",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SHAKE": "",
+       "SCLOUDPLUS_REF_FAMILY_SHAKE": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-384-SHAKE-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     },
+     {
+      "suffix": "AES",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_AES": "",
+       "SCLOUDPLUS_REF_FAMILY_AES": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-384-AES-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     }
+    ]
+   },
+   "Scloudplus-512": {
+    "variants": [
+     {
+      "suffix": "SM3",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SM3": "",
+       "SCLOUDPLUS_REF_FAMILY_SM3": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-512-SM3-packed10.txt",
+      "exclude_files": [
+       "hash_aes_shake.c"
+      ]
+     },
+     {
+      "suffix": "SHAKE",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_SHAKE": "",
+       "SCLOUDPLUS_REF_FAMILY_SHAKE": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-512-SHAKE-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     },
+     {
+      "suffix": "AES",
+      "defines": {
+       "SCLOUDPLUS_FAMILY_AES": "",
+       "SCLOUDPLUS_REF_FAMILY_AES": ""
+      },
+      "kat": "KAT_KEM_Scloudplus-512-AES-packed10.txt",
+      "exclude_files": [
+       "hash_sm3_portable.c"
+      ]
+     }
+    ]
+   }
+  },
+  "keep_files": [
+   "kat_random.c"
+  ]
+ },
+ "TRIKE": {
+  "tier": "board"
+ },
+ "TriQ-KEM": {
+  "tier": "qemu"
+ },
+ "Weaver": {
+  "tier": "board",
+  "extra_files": {
+   "randombytes.h": "/* stub generated by tools/import_ngcc.py: Weaver includes randombytes.h without shipping it */\n#ifndef RANDOMBYTES_H\n#define RANDOMBYTES_H\n#include <stddef.h>\nint randombytes(unsigned char *out, size_t outlen);\n#endif"
+  },
+  "instances": {
+   "WeaverKEM-128": {
+    "defines": {
+     "WEAVER_MODE": "1"
+    }
+   },
+   "WeaverKEM-256": {
+    "defines": {
+     "WEAVER_MODE": "3"
+    }
+   },
+   "WeaverKEM-512": {
+    "defines": {
+     "WEAVER_MODE": "5"
+    }
+   }
+  }
+ },
+ "YuanYang.KEM": {
+  "tier": "board",
+  "instances": {
+   "yuanyang-512": {
+    "name": "YuanYang-KEM-512",
+    "kat": "yuanyang-512.txt"
+   },
+   "yuanyang-1024": {
+    "name": "YuanYang-KEM-1024",
+    "kat": "yuanyang-1024.txt"
+   },
+   "yuanyang-2048": {
+    "name": "YuanYang-KEM-2048",
+    "kat": "yuanyang-2048.txt"
+   }
+  }
+ },
+ "AFS-KEX": {
+  "tier": "board",
+  "instances": {
+   "AFS_KEX_C128": {
+    "defines": {
+     "BWKEM128_INTERNAL_COMPAT": "",
+     "BWKEM_C128_USE_ICCS_AUXFUNC": ""
+    }
+   },
+   "AFS_KEX_C256": {
+    "defines": {
+     "BWKEM_C256_USE_ICCS_AUXFUNC": ""
+    }
+   },
+   "AFS_KEX_C512": {
+    "defines": {
+     "BWKEM_C512_USE_ICCS_AUXFUNC": ""
+    }
+   }
+  }
+ },
+ "MAMBA-NIKE": {
+  "tier": "board",
+  "defines": {
+   "KAT_BUILD": ""
+  }
+ },
+ "NEV-AKE": {
+  "tier": "board",
+  "exclude_dirs": [
+   "speed_test"
+  ],
+  "exclude_files": [
+   "randombytes.c"
+  ],
+  "defines": {
+   "USE_ICCS": ""
+  },
+  "instances": {
+   "NEV-AKE-C1": {
+    "defines": {
+     "PARAMS": "7"
+    },
+    "kat": "KAT_KEX_NEV_AKE_512_769_ICCS.txt"
+   },
+   "NEV-AKE-C1-c": {
+    "defines": {
+     "PARAMS": "1"
+    },
+    "kat": "KAT_KEX_NEV_AKE_512_769_C_ICCS.txt"
+   },
+   "NEV-AKE-C2": {
+    "defines": {
+     "PARAMS": "8"
+    },
+    "kat": "KAT_KEX_NEV_AKE_1024_769_ICCS.txt"
+   },
+   "NEV-AKE-C2-c": {
+    "defines": {
+     "PARAMS": "2"
+    },
+    "kat": "KAT_KEX_NEV_AKE_1024_769_C_ICCS.txt"
+   },
+   "NEV-AKE-C3": {
+    "defines": {
+     "PARAMS": "9"
+    },
+    "kat": "KAT_KEX_NEV_AKE_2048_769_ICCS.txt"
+   },
+   "NEV-AKE-C3-c": {
+    "defines": {
+     "PARAMS": "3"
+    },
+    "kat": "KAT_KEX_NEV_AKE_2048_769_C_ICCS.txt"
+   },
+   "NEV-AKE-R1": {
+    "defines": {
+     "PARAMS": "4"
+    },
+    "kat": "KAT_KEX_NEV_AKE_512_1409_ICCS.txt"
+   },
+   "NEV-AKE-R2": {
+    "defines": {
+     "PARAMS": "5"
+    },
+    "kat": "KAT_KEX_NEV_AKE_1024_1409_ICCS.txt"
+   },
+   "NEV-AKE-R3": {
+    "defines": {
+     "PARAMS": "6"
+    },
+    "kat": "KAT_KEX_NEV_AKE_2048_1409_ICCS.txt"
+   }
+  },
+  "keep_as": {
+   "rng.c": "rng_iccs.c"
+  }
+ },
+ "TriQ-KEX": {
+  "tier": "qemu"
+ },
+ "Aigis-Sigplus": {
+  "tier": "qemu",
+  "exclude_files": [
+   "randombytes.c",
+   "speed.c"
+  ],
+  "defines": {
+   "USE_ICCS": ""
+  },
+  "instances": {
+   "Aigis-Sig+-I": {
+    "name": "Aigis-Sig-I",
+    "defines": {
+     "PARAMS": "1"
+    },
+    "kat": "KAT_SIG_Aigis-sig1_iccs.txt"
+   },
+   "Aigis-Sig+-II": {
+    "name": "Aigis-Sig-II",
+    "defines": {
+     "PARAMS": "2"
+    },
+    "kat": "KAT_SIG_Aigis-sig2_iccs.txt"
+   },
+   "Aigis-Sig+-III": {
+    "name": "Aigis-Sig-III",
+    "defines": {
+     "PARAMS": "3"
+    },
+    "kat": "KAT_SIG_Aigis-sig3_iccs.txt"
+   }
+  },
+  "keep_as": {
+   "rng.c": "rng_iccs.c"
+  }
+ },
+ "BiT": {
+  "tier": "qemu"
+ },
+ "cedrusplusc": {
+  "tier": "board",
+  "instances": {
+   "CEDRUSC-160f": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-160f"
+    }
+   },
+   "CEDRUSC-160s": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-160s"
+    }
+   },
+   "CEDRUSC-256f": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-256f"
+    }
+   },
+   "CEDRUSC-256s": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-256s"
+    }
+   },
+   "CEDRUSC-384f": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-384f"
+    }
+   },
+   "CEDRUSC-384s": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-384s"
+    }
+   },
+   "CEDRUSC-512f": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-512f"
+    }
+   },
+   "CEDRUSC-512s": {
+    "defines": {
+     "PARAMS": "cedrusc-sm3-512s"
+    }
+   }
+  }
+ },
+ "cedrus-alpha": {
+  "tier": "qemu",
+  "instances": {
+   "CEDRUSALPHA-160f": {
+    "defines": {
+     "PARAMS": "cedrusa-sm3-160f"
+    }
+   },
+   "CEDRUSALPHA-160s": {
+    "defines": {
+     "PARAMS": "cedrusa-sm3-160s"
+    }
+   },
+   "CEDRUSALPHA-256f": {
+    "defines": {
+     "PARAMS": "cedrusa-sm3-256f"
+    }
+   },
+   "CEDRUSALPHA-256s": {
+    "defines": {
+     "PARAMS": "cedrusa-sm3-256s"
+    }
+   },
+   "CEDRUSALPHA-384f": {
+    "status": "unsupported",
+    "reason": "static tables exceed the 4 MB QEMU RAM"
+   },
+   "CEDRUSALPHA-384s": {
+    "defines": {
+     "PARAMS": "cedrusa-sm3-384s"
+    }
+   },
+   "CEDRUSALPHA-512f": {
+    "status": "unsupported",
+    "reason": "static tables exceed the 4 MB QEMU RAM"
+   },
+   "CEDRUSALPHA-512s": {
+    "status": "unsupported",
+    "reason": "static tables exceed the 4 MB QEMU RAM"
+   }
+  }
+ },
+ "Chinith": {
+  "tier": "qemu",
+  "cflags": "-std=gnu11 -include fallbacks.h",
+  "instances": {
+   "sm4th_d3_128f_loose": {
+    "defines": {
+     "SM4_SBOX_TABLE": ""
+    }
+   },
+   "sm4th_d3_128s_loose": {
+    "defines": {
+     "SM4_SBOX_TABLE": ""
+    }
+   },
+   "sm4th_em_d2_128f_loose": {
+    "defines": {
+     "SM4_SBOX_TABLE": ""
+    }
+   },
+   "sm4th_em_d2_128s_loose": {
+    "defines": {
+     "SM4_SBOX_TABLE": ""
+    }
+   },
+   "sm4th_d3_128f_tight": {
+    "defines": {
+     "SM4_SBOX_TABLE": "",
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "sm4th_d3_128s_tight": {
+    "defines": {
+     "SM4_SBOX_TABLE": "",
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "sm4th_em_d2_128f_tight": {
+    "defines": {
+     "SM4_SBOX_TABLE": "",
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "sm4th_em_d2_128s_tight": {
+    "defines": {
+     "SM4_SBOX_TABLE": "",
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "ublockith_d3_256f": {
+    "defines": {
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "ublockith_d3_256s": {
+    "defines": {
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "ublockith_em_d3_256f": {
+    "defines": {
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "ublockith_em_d3_256s": {
+    "defines": {
+     "USE_BALLET": "1",
+     "HAVE_BALLET_CORE": "1"
+    }
+   },
+   "vistrutith_d3_512f": {
+    "defines": {
+     "SBOX_TABLE": ""
+    }
+   },
+   "vistrutith_d3_512s": {
+    "defines": {
+     "SBOX_TABLE": ""
+    }
+   }
+  },
+  "sed": [
+   [
+    "fallbacks.h",
+    "static inline void explicit_bzero\\(void \\*ptr, size_t len\\) \\{\\n[^\\n]*\\n[^\\n]*\\n\\}\\n",
+    "/* explicit_bzero is provided by newlib */\n"
+   ]
+  ]
+ },
+ "COMPASS-SIG": {
+  "tier": "qemu",
+  "instances": {
+   "COMPASS-SIG-128": {
+    "defines": {
+     "COMPASS_SIG_MODE": "128"
+    }
+   },
+   "COMPASS-SIG-256": {
+    "defines": {
+     "COMPASS_SIG_MODE": "256"
+    }
+   },
+   "COMPASS-SIG-384": {
+    "defines": {
+     "COMPASS_SIG_MODE": "384"
+    }
+   },
+   "COMPASS-SIG-512": {
+    "defines": {
+     "COMPASS_SIG_MODE": "512"
+    }
+   }
+  }
+ },
+ "DARTS": {
+  "tier": "qemu",
+  "cflags": "-std=gnu99"
+ },
+ "Facto-DSA": {
+  "tier": "qemu",
+  "only_instances": [
+   "Facto-DSA-128"
+  ],
+  "instances": {
+   "Facto-DSA-256": {
+    "status": "unsupported",
+    "reason": "public key 1.1 MB"
+   },
+   "Facto-DSA-512": {
+    "status": "unsupported",
+    "reason": "public key 5.7 MB"
+   }
+  },
+  "sed": [
+   [
+    "SIG_AlgorithmInstance.c",
+    "^[ \\t]*#include[ \\t]*<sys/random\\.h>[ \\t]*\\n",
+    ""
+   ]
+  ]
+ },
+ "Galas_Signature": {
+  "tier": "qemu",
+  "defines": {
+   "_POSIX_C_SOURCE": "200809L"
+  },
+  "instances": {
+   "Galas-160F": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_160F",
+     "GALAS_INSTANCE_NAME": "\"Galas-160F\""
+    }
+   },
+   "Galas-160S": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_160S",
+     "GALAS_INSTANCE_NAME": "\"Galas-160S\""
+    }
+   },
+   "Galas-256F": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_256F",
+     "GALAS_INSTANCE_NAME": "\"Galas-256F\""
+    }
+   },
+   "Galas-256S": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_256S",
+     "GALAS_INSTANCE_NAME": "\"Galas-256S\""
+    }
+   },
+   "Galas-384F": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_384F",
+     "GALAS_INSTANCE_NAME": "\"Galas-384F\""
+    }
+   },
+   "Galas-384S": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_384S",
+     "GALAS_INSTANCE_NAME": "\"Galas-384S\""
+    }
+   },
+   "Galas-512F": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_512F",
+     "GALAS_INSTANCE_NAME": "\"Galas-512F\""
+    }
+   },
+   "Galas-512S": {
+    "defines": {
+     "GALAS_INSTANCE": "GALAS_512S",
+     "GALAS_INSTANCE_NAME": "\"Galas-512S\""
+    }
+   }
+  }
+ },
+ "GreatWall": {
+  "tier": "qemu",
+  "cflags": "-std=gnu11"
+ },
+ "Lynxer": {
+  "tier": "qemu",
+  "exclude_files": [
+   "KeccakP-1600-times4-SIMD256.c"
+  ],
+  "defines": {
+   "WITH_KECCAK_X4": "",
+   "XOF_PSEUDO": ""
+  },
+  "cflags": "-std=gnu11"
+ },
+ "ReSolveD-alpha": {
+  "tier": "qemu",
+  "exclude_files": [
+   "KeccakP-1600-times4-SIMD256.c"
+  ],
+  "defines": {
+   "WITH_KECCAK_X4": "",
+   "XOF_PSEUDO": ""
+  },
+  "cflags": "-std=gnu11"
+ },
+ "MORNING-ATLAS": {
+  "tier": "qemu",
+  "defines": {
+   "XOF_168": "168",
+   "XOF_136": "136"
+  }
+ },
+ "Octarine": {
+  "tier": "qemu",
+  "instances": {
+   "Octarine-128": {
+    "defines": {
+     "RRLWR_SECURITY_LEVEL": "128"
+    }
+   },
+   "Octarine-256": {
+    "defines": {
+     "RRLWR_SECURITY_LEVEL": "256"
+    }
+   },
+   "Octarine-512": {
+    "defines": {
+     "RRLWR_SECURITY_LEVEL": "512"
+    }
+   }
+  }
+ },
+ "OPS_Digital_Signature_Algorithm": {
+  "tier": "qemu",
+  "instances": {
+   "OPSsig-128": {
+    "kat": "reference/OPSsig-128/KAT_SIG_OPSsig-128-reference.txt"
+   },
+   "OPSsig-256": {
+    "kat": "reference/OPSsig-256/KAT_SIG_OPSsig-256-reference.txt"
+   },
+   "OPSsig-512": {
+    "kat": "reference/OPSsig-512/KAT_SIG_OPSsig-512-reference.txt"
+   }
+  }
+ },
+ "Phoenix": {
+  "tier": "qemu",
+  "instances": {
+   "Phoenix-SHAKE-128f": {
+    "defines": {
+     "PARAMS": "phoenix-shake-128f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-128f\""
+    }
+   },
+   "Phoenix-SHAKE-128s": {
+    "defines": {
+     "PARAMS": "phoenix-shake-128s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-128s\""
+    }
+   },
+   "Phoenix-SHAKE-192f": {
+    "defines": {
+     "PARAMS": "phoenix-shake-192f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-192f\""
+    }
+   },
+   "Phoenix-SHAKE-192s": {
+    "defines": {
+     "PARAMS": "phoenix-shake-192s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-192s\""
+    }
+   },
+   "Phoenix-SHAKE-256f": {
+    "defines": {
+     "PARAMS": "phoenix-shake-256f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-256f\""
+    }
+   },
+   "Phoenix-SHAKE-256s": {
+    "defines": {
+     "PARAMS": "phoenix-shake-256s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-256s\""
+    }
+   },
+   "Phoenix-SHAKE-384f": {
+    "defines": {
+     "PARAMS": "phoenix-shake-384f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-384f\""
+    }
+   },
+   "Phoenix-SHAKE-384s": {
+    "defines": {
+     "PARAMS": "phoenix-shake-384s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-384s\""
+    }
+   },
+   "Phoenix-SHAKE-512f": {
+    "defines": {
+     "PARAMS": "phoenix-shake-512f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-512f\""
+    }
+   },
+   "Phoenix-SHAKE-512s": {
+    "defines": {
+     "PARAMS": "phoenix-shake-512s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SHAKE-512s\""
+    }
+   },
+   "Phoenix-SM3-128f": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-128f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-128f\""
+    }
+   },
+   "Phoenix-SM3-128s": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-128s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-128s\""
+    }
+   },
+   "Phoenix-SM3-192f": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-192f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-192f\""
+    }
+   },
+   "Phoenix-SM3-192s": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-192s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-192s\""
+    }
+   },
+   "Phoenix-SM3-256f": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-256f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-256f\""
+    }
+   },
+   "Phoenix-SM3-256s": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-256s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-256s\""
+    }
+   },
+   "Phoenix-SM3-384f": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-384f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-384f\""
+    }
+   },
+   "Phoenix-SM3-384s": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-384s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-384s\""
+    }
+   },
+   "Phoenix-SM3-512f": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-512f",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-512f\""
+    }
+   },
+   "Phoenix-SM3-512s": {
+    "defines": {
+     "PARAMS": "phoenix-sm3-512s",
+     "ALLOW_DEEP_TREES": "",
+     "SUBMISSION_DRNG": "",
+     "PARAMNAME": "\"Phoenix-SM3-512s\""
+    }
+   }
+  }
+ },
+ "QingLuan": {
+  "tier": "qemu",
+  "cflags": "-std=gnu11",
+  "exclude_files": [
+   "src/hash.c",
+   "src/utils.c",
+   "src/selftest.c",
+   "include/hash.h"
+  ],
+  "instances": {
+   "QingLuan-128": {
+    "defines": {
+     "QINGLUAN_128": ""
+    }
+   },
+   "QingLuan-256": {
+    "defines": {
+     "QINGLUAN_256": ""
+    }
+   },
+   "QingLuan-384": {
+    "defines": {
+     "QINGLUAN_384": ""
+    }
+   },
+   "QingLuan-512": {
+    "defines": {
+     "QINGLUAN_512": ""
+    }
+   }
+  }
+ },
+ "Sigurd": {
+  "tier": "qemu"
+ },
+ "SYDO": {
+  "tier": "qemu",
+  "cflags": "-std=gnu11",
+  "keep_files": [
+   "blake2b-ref.c"
+  ],
+  "defines": {
+   "SYDO_REF_NGCC": ""
+  }
+ },
+ "TRINE": {
+  "tier": "qemu",
+  "only_instances": [
+   "TRINE-128-ShortSig",
+   "TRINE-128-balanced"
+  ],
+  "defines": {
+   "USE_ICCS": ""
+  },
+  "instances": {
+   "TRINE-128-ShortSig": {
+    "defines": {
+     "PARAMS": "4",
+     "TRINE_ALGORITHM_INSTANCE": "\"MEDS2endGen-ShortSig-I\""
+    }
+   },
+   "TRINE-128-balanced": {
+    "defines": {
+     "PARAMS": "1",
+     "TRINE_ALGORITHM_INSTANCE": "\"MEDS2endGen-Balanced-I\""
+    },
+    "kat": "KAT_SIG_TRINE-128-Balanced.txt"
+   }
+  },
+  "exclude_files": [
+   "randombytes.c"
+  ]
+ },
+ "TSUOV": {
+  "tier": "qemu",
+  "instances": {
+   "TSUOV_128": {
+    "defines": {
+     "TSUOV_VARIANT": "128"
+    }
+   },
+   "TSUOV_256": {
+    "defines": {
+     "TSUOV_VARIANT": "256"
+    }
+   },
+   "TSUOV_512": {
+    "defines": {
+     "TSUOV_VARIANT": "512"
+    }
+   }
+  }
+ }
+}

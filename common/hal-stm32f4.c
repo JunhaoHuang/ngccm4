@@ -319,6 +319,17 @@ void hal_setup(const enum clock_mode clock)
 {
   clock_setup(clock);
   usart_setup();
+  /*
+   * Give the host ~2 s to finish the OpenOCD "program ... reset exit" step
+   * before any output: fast apps otherwise finish (and print the '#' done
+   * marker) before the benchmark runner starts capturing the serial port, so
+   * their whole output is lost. Not part of any measured region.
+   */
+  {
+    volatile uint32_t spin;
+    for (spin = 0; spin < 10000000u; spin++) {
+    }
+  }
   systick_setup();
 
   // wait for the first systick overflow
@@ -367,6 +378,73 @@ void* __attribute__((used, externally_visible)) __wrap__sbrk (int incr)
 
   return (void *) prev_heap_end;
 }
+
+#include <libopencm3/cm3/scb.h>
+
+/*
+ * HardFault reporter (libopencm3's default is a silent blocking loop, which
+ * the benchmark runner can only detect as a timeout). Prints the exception
+ * frame and fault registers, then the '#' done marker so the host stops
+ * capturing immediately. Mirrors HardFault_Report in hal-mps2.c.
+ */
+static void send_hex32(const char *label, uint32_t value)
+{
+  static const char hex[] = "0123456789abcdef";
+  char buf[11];
+  int i;
+  buf[0] = '0';
+  buf[1] = 'x';
+  for (i = 0; i < 8; i++) {
+    buf[2 + i] = hex[(value >> (28 - 4 * i)) & 0xF];
+  }
+  buf[10] = 0;
+  hal_send_str(label);
+  hal_send_str(buf);
+}
+
+void __attribute__((used)) hard_fault_report(uint32_t *frame)
+{
+  hal_send_str("HardFault_Handler");
+  send_hex32("  pc:", frame[6]);
+  send_hex32("  lr:", frame[5]);
+  send_hex32("  sp:", (uint32_t)(uintptr_t)frame);
+  send_hex32("  cfsr:", SCB_CFSR);   /* bit 24: UNALIGNED, 25: DIVBYZERO, 8..15: BFSR, 0..7: MMFSR */
+  send_hex32("  hfsr:", SCB_HFSR);
+  send_hex32("  bfar:", SCB_BFAR);
+  send_hex32("  mmfar:", SCB_MMFAR);
+  hal_send_str("#");
+  while (1) {
+  }
+}
+
+void __attribute__((naked)) hard_fault_handler(void)
+{
+  __asm__ volatile (
+    "tst lr, #4\n"
+    "ite eq\n"
+    "mrseq r0, msp\n"
+    "mrsne r0, psp\n"
+    "b hard_fault_report\n"
+  );
+}
+
+/*
+ * newlib syscall stubs for the --wrap=_close/_isatty/_kill/_lseek/_read/_write/
+ * _fstat/_getpid flags in mk/opencm3.mk. Schemes that call abort()/raise()
+ * pull in _kill_r/_getpid_r from libc and failed to link without these
+ * (hal-mps2.c already provides the same set for QEMU).
+ */
+#include <errno.h>
+#include <sys/stat.h>
+
+int __wrap__close(int fd) { (void) fd; errno = ENOSYS; return -1; }
+int __wrap__fstat(int fd, struct stat* buf) { (void) fd; (void) buf; errno = ENOSYS; return -1; }
+int __wrap__getpid(void) { errno = ENOSYS; return -1; }
+int __wrap__isatty(int file) { (void) file; errno = ENOSYS; return 0; }
+int __wrap__kill(int pid, int sig) { (void) pid; (void) sig; errno = ENOSYS; return -1; }
+int __wrap__lseek(int fd, int ptr, int dir) { (void) fd; (void) ptr; (void) dir; errno = ENOSYS; return -1; }
+int __wrap__read(int fd, char* ptr, int len) { (void) fd; (void) ptr; (void) len; errno = ENOSYS; return -1; }
+int __wrap__write(int fd, const char* ptr, int len) { (void) fd; (void) ptr; (void) len; errno = ENOSYS; return -1; }
 
 size_t hal_get_stack_size(void)
 {

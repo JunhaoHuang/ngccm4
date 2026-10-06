@@ -70,26 +70,58 @@ endif
 endif
 endif
 
-define selected_apps_for_impl
-$(if $(strip $(APP)),$(filter $(APP),$(call family_available_apps,$(call family_of_impl,$(1)))),$(call family_available_apps,$(call family_of_impl,$(1))))
-endef
-
 define impl_name
 $(subst /,_,$(1))
 endef
 
+# Optional per-implementation configuration (crypto_<fam>/<scheme>/<impl>/config.mk
+# and mk/<family>_<scheme>_<impl>.mk). They may define:
+#   IMPL_CFLAGS_<impl_name>         extra compiler flags for the implementation sources
+#   IMPL_EXCLUDE_COMMON_<impl_name> common/ sources to leave out of the archive
+#   IMPL_EXCLUDE_SRC_<impl_name>    implementation sources (full relative paths) to leave out
+# They are included here, before any rule is generated, so that the variables
+# are visible when define_impl is expanded.
+-include $(foreach impl,$(IMPLS),$(impl)/config.mk) $(foreach impl,$(IMPLS),mk/$(call impl_name,$(impl)).mk)
+
+define available_apps_for_impl
+$(call family_available_apps,$(call family_of_impl,$(1)))
+endef
+
+define selected_apps_for_impl
+$(if $(strip $(APP)),$(filter $(APP),$(call available_apps_for_impl,$(1))),$(call available_apps_for_impl,$(1)))
+endef
+
 define impl_sources
-$(wildcard $(1)/*.c) $(wildcard $(1)/*.s) $(wildcard $(1)/*.S)
+$(filter-out $(IMPL_EXCLUDE_SRC_$(call impl_name,$(1))),$(wildcard $(1)/*.c) $(wildcard $(1)/*.s) $(wildcard $(1)/*.S))
 endef
 
 define impl_lib_sources
-$(filter %.c %.s %.S,$(COMMON_LIB_SRCS)) \
+$(filter-out $(IMPL_EXCLUDE_COMMON_$(call impl_name,$(1))),$(filter %.c %.s %.S,$(COMMON_LIB_SRCS))) \
 $(filter %.c %.s %.S,$(PLATFORM_LIB_SRCS)) \
 $(call impl_sources,$(1))
 endef
 
+# ML-DSA level of a DKEX implementation. The submission's build.sh compiles
+# DKEX-128 with level 2 (ML-DSA-44) and DKEX-256/DKEX-512 with level 5
+# (ML-DSA-87); the official KAT vectors depend on this. A DKEX_SIG_MLDSA_LEVEL
+# given on the make command line or in the environment overrides it for every
+# instance (the mk/config.mk default only documents the fallback).
+define dkex_mldsa_level
+$(if $(filter-out file default undefined,$(origin DKEX_SIG_MLDSA_LEVEL)),$(DKEX_SIG_MLDSA_LEVEL),$(if $(findstring -128/,$(1)/),2,5))
+endef
+
 define impl_cppflags
-$(if $(call dkex_sig_mldsa_impl,$(1)),-DDKEX_SIG_BACKEND_MLDSA -DDKEX_SIG_MLDSA_LEVEL=$(DKEX_SIG_MLDSA_LEVEL) -DDILITHIUM_MODE=$(DKEX_SIG_MLDSA_LEVEL))
+$(if $(call dkex_sig_mldsa_impl,$(1)),-DDKEX_SIG_BACKEND_MLDSA -DDKEX_SIG_MLDSA_LEVEL=$(call dkex_mldsa_level,$(1)) -DDILITHIUM_MODE=$(call dkex_mldsa_level,$(1)))
+endef
+
+# Flags that only apply to the implementation's own C sources and to the app
+# driver: the generated ngcc_config.h (force-included) and IMPL_CFLAGS_<impl>.
+define impl_c_cppflags
+$(if $(wildcard $(1)/ngcc_config.h),-include $(CURDIR)/$(1)/ngcc_config.h) $(IMPL_CFLAGS_$(call impl_name,$(1)))
+endef
+
+define src_cppflags
+$(if $(filter %.c,$(2)),$(if $(filter $(1)/%,$(2)),$(call impl_c_cppflags,$(1))))
 endef
 
 define include_flags_for_impl
@@ -169,21 +201,23 @@ define define_impl
 $(call lib_target,$(1),normal): $(call lib_objects,$(1),normal)
 	@printf '  AR      $$@\n'
 	$(Q)mkdir -p $$(@D)
+	$(Q)rm -f $$@
 	$(Q)$(AR) rcs $$@ $$^
 
 $(call lib_target,$(1),hashprof): $(call lib_objects,$(1),hashprof)
 	@printf '  AR      $$@\n'
 	$(Q)mkdir -p $$(@D)
+	$(Q)rm -f $$@
 	$(Q)$(AR) rcs $$@ $$^
 
 $(if $(call dkex_sig_mldsa_impl,$(1)),$(eval $(call mldsa_lib_target,$(1)): $(call mldsa_lib_objects,$(1)) ; @printf '  AR      $$@\n'; $(Q)mkdir -p $$(@D); $(Q)$(AR) rcs $$@ $$^))
 
 $(foreach src,$(DKEX_SIG_MLDSA_SRCS),$(if $(call dkex_sig_mldsa_impl,$(1)),$(eval $(call mldsa_obj_from_src,$(1),$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(src) [mldsa]\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) -I$(CURDIR)/crypto_sign/dilithium/ref -c $(src) -o $$@)))
 
-$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),normal,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src)\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call source_include_flags_for_impl,$(1),$(src)) -c $(src) -o $$@))
-$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),hashprof,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src) [hashprof]\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call lib_cppflags,$(1),hashprof) $(call impl_cppflags,$(1)) $(CFLAGS) $(call source_include_flags_for_impl,$(1),$(src)) -c $(src) -o $$@))
+$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),normal,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src)\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call src_cppflags,$(1),$(src)) $(call source_include_flags_for_impl,$(1),$(src)) -c $(src) -o $$@))
+$(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),hashprof,$(src)): $(src) $(COMPILEDEPS) | platform-sync ; @printf '  $(if $(filter %.c,$(src)),CC,AS)      $(src) [hashprof]\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call lib_cppflags,$(1),hashprof) $(call impl_cppflags,$(1)) $(CFLAGS) $(call src_cppflags,$(1),$(src)) $(call source_include_flags_for_impl,$(1),$(src)) -c $(src) -o $$@))
 
-$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call app_object,$(1),$(app)): $(call app_source,$(1),$(app)) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(call app_source,$(1),$(app))\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call include_flags_for_impl,$(1)) -c $(call app_source,$(1),$(app)) -o $$@))
+$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call app_object,$(1),$(app)): $(call app_source,$(1),$(app)) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(call app_source,$(1),$(app))\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call impl_c_cppflags,$(1)) $(call include_flags_for_impl,$(1)) -c $(call app_source,$(1),$(app)) -o $$@))
 
 $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)): $(call app_object,$(1),$(app)) $(call elf_libraries,$(1),$(app)) $(LIBDEPS) $(LDSCRIPT) | platform-sync))
 $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)):
@@ -198,8 +232,6 @@ $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call bin_target,$(1),
 	$(Q)mkdir -p $$(@D)
 	$(Q)$(OBJCOPY) -Obinary $$< $$@))
 
--include $(1)/config.mk
--include mk/$(call impl_name,$(1)).mk
 endef
 
 $(foreach impl,$(IMPLS),$(eval $(call define_impl,$(impl))))

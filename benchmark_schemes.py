@@ -9,6 +9,7 @@ Examples:
     python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256
     python3 benchmark_schemes.py PLATFORM=stm32f4discovery DKE-128 --runs 3
     python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-512 USE_SM3_ASM=1 -j8
+    python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --family kem,kex --apps speed
 
 Supported platforms are mps2-an386, nucleo-l4r5zi, and stm32f4discovery.
 The mps2-an386 runner uses make qemu-run. Hardware runners build each target,
@@ -51,51 +52,38 @@ OPENOCD_COMMANDS = {
     ],
 }
 
-METRIC_PATTERNS = (
-    ("keypair_cycles", re.compile(r"^keypair cycles:\s*$")),
-    ("encaps_cycles", re.compile(r"^encaps cycles:\s*$")),
-    ("decaps_cycles", re.compile(r"^decaps cycles:\s*$")),
-    ("init_a_cycles", re.compile(r"^init_a cycles:\s*$")),
-    ("init_b_cycles", re.compile(r"^init_b cycles:\s*$")),
-    ("pass1_cycles", re.compile(r"^pass1 cycles:\s*$")),
-    ("pass2_cycles", re.compile(r"^pass2 cycles:\s*$")),
-    ("pass3_cycles", re.compile(r"^pass3 cycles:\s*$")),
-    ("derive_a_cycles", re.compile(r"^derive_a cycles:\s*$")),
-    ("derive_b_cycles", re.compile(r"^derive_b cycles:\s*$")),
-    ("keypair_stack_bytes", re.compile(r"^keypair stack usage:\s*$")),
-    ("encaps_stack_bytes", re.compile(r"^encaps stack usage:\s*$")),
-    ("decaps_stack_bytes", re.compile(r"^decaps stack usage:\s*$")),
-    ("init_a_stack_bytes", re.compile(r"^init_a stack usage:\s*$")),
-    ("init_b_stack_bytes", re.compile(r"^init_b stack usage:\s*$")),
-    ("pass1_stack_bytes", re.compile(r"^pass1 stack usage:\s*$")),
-    ("pass2_stack_bytes", re.compile(r"^pass2 stack usage:\s*$")),
-    ("pass3_stack_bytes", re.compile(r"^pass3 stack usage:\s*$")),
-    ("derive_a_stack_bytes", re.compile(r"^derive_a stack usage:\s*$")),
-    ("derive_b_stack_bytes", re.compile(r"^derive_b stack usage:\s*$")),
-    ("keypair_hash_cycles", re.compile(r"^keypair hash cycles:\s*$")),
-    ("encaps_hash_cycles", re.compile(r"^encaps hash cycles:\s*$")),
-    ("decaps_hash_cycles", re.compile(r"^decaps hash cycles:\s*$")),
-    ("init_a_hash_cycles", re.compile(r"^init_a hash cycles:\s*$")),
-    ("init_b_hash_cycles", re.compile(r"^init_b hash cycles:\s*$")),
-    ("pass1_hash_cycles", re.compile(r"^pass1 hash cycles:\s*$")),
-    ("pass2_hash_cycles", re.compile(r"^pass2 hash cycles:\s*$")),
-    ("pass3_hash_cycles", re.compile(r"^pass3 hash cycles:\s*$")),
-    ("derive_a_hash_cycles", re.compile(r"^derive_a hash cycles:\s*$")),
-    ("derive_b_hash_cycles", re.compile(r"^derive_b hash cycles:\s*$")),
+# Operations reported by the family drivers, in display order.
+#   KEM: keypair/encaps/decaps   SIG: keypair/sign/verify
+#   KEX: init_a/init_b/pass1..pass5/derive_a/derive_b
+OPERATIONS = (
+    "keypair", "encaps", "decaps", "sign", "verify",
+    "init_a", "init_b", "pass1", "pass2", "pass3", "pass4", "pass5", "derive_a", "derive_b",
+)
+
+METRIC_PATTERNS = tuple(
+    [(f"{op}_cycles", re.compile(rf"^{op} cycles:\s*$")) for op in OPERATIONS]
+    + [(f"{op}_stack_bytes", re.compile(rf"^{op} stack usage:\s*$")) for op in OPERATIONS]
+    + [(f"{op}_hash_cycles", re.compile(rf"^{op} hash cycles:\s*$")) for op in OPERATIONS]
 )
 
 METRIC_OPERATION_ORDER = {
     "keypair": 0,
     "encaps": 1,
     "decaps": 2,
+    "sign": 1,
+    "verify": 2,
     "init_a": 0,
     "init_b": 1,
     "pass1": 2,
     "pass2": 3,
     "pass3": 4,
-    "derive_a": 5,
-    "derive_b": 6,
+    "pass4": 5,
+    "pass5": 6,
+    "derive_a": 7,
+    "derive_b": 8,
 }
+
+TIERS = ("board", "qemu", "all")
 
 
 @dataclass(frozen=True)
@@ -165,12 +153,33 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, str, list[str], lis
         help="Benchmark apps to run.",
     )
     parser.add_argument("--runs", type=int, default=1, help="Executions per target.")
+    parser.add_argument(
+        "--tier",
+        choices=TIERS,
+        default=None,
+        help=(
+            "Only run implementations whose ngcc_tier.txt matches (imported NGCC schemes; "
+            "hand-ported schemes count as 'board'). Default: 'board' on hardware platforms, 'all' on mps2-an386."
+        ),
+    )
+    parser.add_argument(
+        "--family",
+        "--category",
+        dest="families",
+        action="append",
+        metavar="FAMILY[,FAMILY...]",
+        default=None,
+        help=(
+            "Only benchmark these scheme categories, comma-separated or repeated: kem, kex, sign "
+            "(aliases: sig, crypto_kem, crypto_kex, crypto_sign, all). Default: all three."
+        ),
+    )
     parser.add_argument("-j", "--jobs", default="1", help="Forwarded make parallelism.")
     parser.add_argument(
         "--timeout",
         type=float,
-        default=500.0,
-        help="Seconds allowed for serial capture after flashing.",
+        default=1800.0,
+        help="Seconds allowed per build/run step (slow hash-based signatures need many minutes on QEMU).",
     )
     parser.add_argument(
         "--flash-timeout",
@@ -372,6 +381,28 @@ def run_board_capture(
             if flash.returncode != 0:
                 return flash.returncode, "".join(output_parts)
 
+            # The ST-LINK VCP buffers what the target printed while no host had
+            # the port open and delivers it right after the next open, racing
+            # with reset_input_buffer() above. With the pre-fix firmware that
+            # is the tail of the HardFault dump printed after main() returned,
+            # whose '#' would end this capture before any real output arrives.
+            # Drain until 0.5 s of silence (3 s cap): hal_setup() keeps the
+            # target silent for several seconds after reset, so nothing is lost.
+            drain_deadline = time.monotonic() + 3.0
+            quiet_since = time.monotonic()
+            stale = bytearray()
+            while time.monotonic() < drain_deadline:
+                data = device.read(4096)
+                if data:
+                    stale.extend(data)
+                    quiet_since = time.monotonic()
+                elif time.monotonic() - quiet_since >= 0.5:
+                    break
+            if stale:
+                output_parts.append(
+                    f"(discarded {len(stale)} stale bytes buffered by the ST-LINK before this run)\n"
+                )
+
             deadline = time.monotonic() + capture_timeout
             captured = bytearray()
             while time.monotonic() < deadline:
@@ -529,9 +560,38 @@ def write_code_size_table(lines: list[str], code_sizes: list[CodeSize]) -> None:
     lines.append("")
 
 
-def write_markdown(path: Path, measurements: list[Measurement], code_sizes: list[CodeSize]) -> None:
+def classify_failure(output: str, code: int) -> str:
+    text = output.lower()
+    if ("region" in text and "overflowed" in text) or "cannot move location counter" in text or "will not fit in region" in text:
+        return "link-overflow"
+    if "error:" in text and ("make:" in text or "collect2" in text):
+        return "build-failed"
+    if "alloc_failed" in text or "alloc failed" in text:
+        return "alloc-failed"
+    if "error keys" in text:
+        return "wrong-result"
+    if "failed" in text:
+        return "run-failed"
+    return f"exit-{code}"
+
+
+def write_status_table(lines: list[str], statuses: dict[str, str]) -> None:
+    if not statuses:
+        return
+    lines.append("## target status")
+    lines.append("")
+    lines.append("| target | status |")
+    lines.append("| --- | --- |")
+    for target in sorted(statuses):
+        lines.append(f"| {target} | {statuses[target]} |")
+    lines.append("")
+
+
+def write_markdown(path: Path, measurements: list[Measurement], code_sizes: list[CodeSize], statuses: dict[str, str] | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     lines: list[str] = []
+    failed = {target: status for target, status in (statuses or {}).items() if status != "ok"}
+    write_status_table(lines, failed)
     families = sorted({measurement.family for measurement in measurements} | {size.family for size in code_sizes})
 
     for family in families:
@@ -711,10 +771,16 @@ def main(argv: list[str]) -> int:
 
     requested_schemes = build_schemes.normalize_requested_schemes(schemes)
     implementations = build_schemes.discover_implementations(root, requested_schemes)
+    tier = args.tier or ("all" if platform == "mps2-an386" else "board")
+    implementations = build_schemes.filter_by_tier(implementations, tier)
+    families = build_schemes.normalize_families(args.families)
+    implementations = build_schemes.filter_by_family(implementations, families)
     if not implementations:
         print("error: no matching implementations found", file=sys.stderr)
         return 1
+    print(f"Selected {len(implementations)} implementation(s) from {', '.join(sorted(families))} (tier: {tier})")
 
+    statuses: dict[str, str] = {}
     measurements_by_key: dict[tuple[str, str, str, str, str, str], list[int]] = {}
     code_sizes: list[CodeSize] = []
     raw_dir = root / args.raw_dir
@@ -797,6 +863,7 @@ def main(argv: list[str]) -> int:
                         output = exc.stdout or ""
                         print(f"timeout after {args.timeout:.1f}s: {target}", file=sys.stderr)
                         write_raw_log(raw_dir, target, run_index, output)
+                        statuses[target] = "timeout"
                         failures += 1
                         if args.fail_fast:
                             return 1
@@ -816,10 +883,12 @@ def main(argv: list[str]) -> int:
 
                 if code != 0:
                     print(f"command failed with exit {code}: {target}", file=sys.stderr)
+                    statuses[target] = classify_failure(output, code)
                     failures += 1
                     if args.fail_fast:
                         return 1
                     continue
+                statuses[target] = "ok" if DONE_MARKER in output else "no-done-marker"
                 if platform == "mps2-an386":
                     built_targets.add(target)
 
@@ -892,7 +961,7 @@ def main(argv: list[str]) -> int:
     csv_path = root / args.csv
     md_path = root / args.md
     write_csv(csv_path, measurements)
-    write_markdown(md_path, measurements, code_sizes)
+    write_markdown(md_path, measurements, code_sizes, statuses)
 
     print(f"\nWrote CSV summary: {csv_path}")
     print(f"Wrote Markdown summary: {md_path}")

@@ -37,7 +37,7 @@ int main(void) {
     unsigned long long sk_len = kem_get_sk_len_bytes();
     unsigned long long ss_len = kem_get_ss_len_bytes();
     unsigned long long ct_len = kem_get_ct_len_bytes();
-    unsigned long long ignored_len = 0;
+    unsigned long long ss_len_dec = ss_len;
     unsigned char *pk = malloc(pk_len);
     unsigned char *sk = malloc(sk_len);
     unsigned char *ct = malloc(ct_len);
@@ -77,9 +77,14 @@ int main(void) {
 #endif
         printbytes(seed, SEED_LEN_BYTES);
 
-        kem_keygen(pk, &ignored_len, sk, &ignored_len);
-        kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len);
-        kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len);
+        pk_len = kem_get_pk_len_bytes();
+        sk_len = kem_get_sk_len_bytes();
+        ss_len = kem_get_ss_len_bytes();
+        ct_len = kem_get_ct_len_bytes();
+        ss_len_dec = ss_len;
+        kem_keygen(pk, &pk_len, sk, &sk_len);
+        kem_enc(pk, pk_len, ss_a, &ss_len, ct, &ct_len);
+        kem_dec(sk, sk_len, ct, ct_len, ss_b, &ss_len_dec);
         if (memcmp(ss_a, ss_b, ss_len) != 0) {
             hal_send_str("ERROR");
             // hal_send_str("#");

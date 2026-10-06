@@ -246,6 +246,20 @@ python3 benchmark_schemes.py PLATFORM=stm32f4discovery {SCHEME_NAME...} --apps s
 python3 benchmark_schemes.py PLATFORM=mps2-an386 {SCHEME_NAME...} --apps speed hashing
 ```
 
+Benchmark only selected scheme categories with `--family` (accepted names: `kem`,
+`kex`, `sign`; aliases `sig`, `crypto_kem`, `crypto_kex`, `crypto_sign`, `all`;
+comma-separated or repeated):
+
+```bash
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --family kem --apps speed
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --family kex,sign
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --family kex --family sign
+python3 build_schemes.py PLATFORM=nucleo-l4r5zi --family sign --list
+```
+
+Scheme names and `--family` combine: `python3 benchmark_schemes.py --family kem ZEN-128`
+benchmarks only the KEM implementations of ZEN-128.
+
 Select a subset of apps with `--apps`:
 
 ```bash
@@ -305,6 +319,111 @@ Notes:
 - Use `--dry-run` to inspect the generated build, flash, and run commands without executing them.
 - Use `--runs N` to repeat each target and aggregate samples in the summaries.
 
+
+## Importing NGCC Reference Implementations
+
+All NGCC Round-1 public-key candidates can be imported from a local mirror of
+the NGCC submissions (the `../NGCC` project next to this repository, which
+provides `schemes.json`, `schemes/<folder>/Reference_Implementation/...` and
+`schemes/<folder>/Test_Vectors/KAT_*.txt`):
+
+```bash
+python3 tools/import_ngcc.py --list                 # show what would be imported
+python3 tools/import_ngcc.py                        # import every supported instance
+python3 tools/import_ngcc.py --only CheetahKEM BiT  # selected scheme folders or instances
+python3 tools/import_ngcc.py --ngcc-root /path/to/NGCC
+```
+
+Every instance lands in `crypto_<family>/<instance>/ref/` as a flat directory
+that the Makefile discovers automatically. The importer
+
+- strips the ICCS template files (`drng.*`, `auxfunc.*`, `KAT_*.c`), host-only
+  harnesses and every file defining `main()`; the scheme then uses
+  `common/drng.c` and `common/auxfunc.c` like the hand-ported schemes;
+- normalises the entry file to `KEM_/KEX_/SIG_AlgorithmInstance.c` and writes a
+  shim header when the scheme names its API header differently;
+- rewrites `#include "../x.h"` style includes after flattening;
+- writes `ngcc_config.h` (instance-selecting defines such as `PARAMS=1`, plus
+  `common/ngcc_compat.h`, which turns host `printf` calls into no-ops). The build
+  force-includes it for the implementation's C files and the app driver;
+- writes `config.mk` with `IMPL_CFLAGS_<impl>` / `IMPL_EXCLUDE_COMMON_<impl>`
+  when a scheme needs, for example, `-std=gnu11` or its own DRNG;
+- records provenance in `NGCC_ORIGIN.txt` and the expected platform in
+  `ngcc_tier.txt` (`board` = fits the STM32L4R5, `qemu` = mps2-an386 only).
+
+Per-scheme rules live in `tools/ngcc_manifest.json` (copy dirs, excluded files,
+defines, sed rules, patches, tier, or `unsupported` with a reason). Schemes that
+need GMP, x86 intrinsics, `__int128`, or multi-megabyte keys are listed there as
+unsupported and are not copied. Re-running the importer replaces the generated
+directories; edit the manifest rather than the imported sources.
+
+Imported schemes are built with `USE_KECCAK=0` (the default): many ship their
+own `fips202.c`, which would clash with `common/fips202.c`.
+
+### Family drivers
+
+All three families share the same five apps, so every scheme is measured the
+same way:
+
+| family | apps | operations reported |
+| --- | --- | --- |
+| `crypto_kem` | test, speed, stack, hashing, testvectors | keypair, encaps, decaps |
+| `crypto_sign` | test, speed, stack, hashing, testvectors | keypair, sign, verify (59-byte messages, `-DNGCC_SIG_MLEN=` to change) |
+| `crypto_kex` | test, speed, stack, hashing, testvectors | init_a, init_b, pass1 ... pass5, derive_a, derive_b (any pass count) |
+
+### Known-answer tests
+
+`testvectors` reproduces the ICCS `KAT_*.c` sequence (seed DRNG from
+`"seed"x16`, ten counts). `kat_check.py` builds and runs it on QEMU and diffs
+the output against the official `Test_Vectors/KAT_<TYPE>_<instance>.txt`:
+
+```bash
+python3 kat_check.py                    # every implementation with a KAT file
+python3 kat_check.py Cheetah128 BiT-128 AFS_KEX_C128
+python3 kat_check.py --tier board -j8 --md Out/kat_summary.md
+```
+
+### Tiers in the batch scripts
+
+`build_schemes.py` and `benchmark_schemes.py` accept `--tier board|qemu|all`
+(hand-ported schemes count as `board`). `benchmark_schemes.py` defaults to
+`board` on hardware platforms and `all` on `mps2-an386`, and its Markdown
+summary starts with a status table for targets that failed to build or run.
+
+## Benchmark website
+
+The board results are published as a static site at
+<https://junhaohuang.github.io/ngccm4/> (GitHub Pages, served from `docs/`).
+It shows the three categories (KEM, key exchange, signatures) on separate tabs
+with every column sortable (cycles per operation, code size, stack usage, key
+sizes with proportional bars, KAT status, security level), a report of every
+scheme without a complete board benchmark and why, and the measurement
+conditions.
+
+`docs/data/benchmark.json` (and its `data.js` twin that the page loads) is
+generated from the gitignored `Out/` directory and the NGCC mirror:
+
+```bash
+python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed   # Out/benchmark_speed_nucleo-l4r5zi.{csv,md}
+python3 kat_check.py --md Out/kat_summary.md                        # Out/kat_summary.md, Out/kat_raw/
+python3 tools/make_site_data.py --ngcc-root ../NGCC                 # docs/data/benchmark.json, docs/data/data.js
+git add docs && git commit -m "site: regenerate benchmark data"
+```
+
+The generator reads the speed CSV and Markdown report (including the
+hand-written target status table and code-size tables), `Out/benchmark_sizes/`,
+the stack logs in `Out/benchmark_raw/`, `Out/kat_summary.md`, `Out/kat_raw/`,
+`tools/ngcc_manifest.json` and `../NGCC/{schemes.json,schemes/*/Test_Vectors,results}`.
+Key sizes are taken from the benchmarked binary's testvectors dump when one
+exists, then from the NGCC host results, then from the official KAT file. The
+generator exits non-zero when an implementation cannot be mapped to an NGCC
+instance or when the NGCC instance accounting does not close; `--strict` also
+fails when an implementation has no key sizes.
+
+Preview locally with `python3 -m http.server -d docs 8000` (the page also works
+when `docs/index.html` is opened directly). To publish, enable GitHub Pages once
+in the repository settings: Settings, Pages, "Deploy from a branch", branch
+`master`, folder `/docs`.
 
 ## Usage of SHA3
 

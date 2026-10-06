@@ -26,7 +26,7 @@ from pathlib import Path
 FAMILIES = {
     "crypto_kem": "KEM_AlgorithmInstance.c",
     "crypto_kex": "KEX_AlgorithmInstance.c",
-    "crypto_sign": "SIGN_AlgorithmInstance.c",
+    "crypto_sign": "SIG_AlgorithmInstance.c",
 }
 
 SUPPORTED_TARGET_PLATFORMS = ("mps2-an386", "nucleo-l4r5zi", "stm32f4discovery")
@@ -43,6 +43,53 @@ class Implementation:
     @property
     def stem(self) -> str:
         return f"{self.family}_{self.scheme}_{self.name}"
+
+    @property
+    def tier(self) -> str:
+        """Expected platform tier: 'board' or 'qemu' (from ngcc_tier.txt; hand-ported schemes are 'board')."""
+        tier_file = self.path / "ngcc_tier.txt"
+        if tier_file.is_file():
+            value = tier_file.read_text(encoding="utf-8").strip()
+            if value:
+                return value
+        return "board"
+
+
+FAMILY_ALIASES = {
+    "kem": "crypto_kem", "crypto_kem": "crypto_kem",
+    "kex": "crypto_kex", "crypto_kex": "crypto_kex",
+    "sign": "crypto_sign", "sig": "crypto_sign", "crypto_sign": "crypto_sign",
+}
+
+
+def normalize_families(names: list[str] | None) -> set[str]:
+    """Map user-given category names (kem, kex, sign, sig, crypto_*) to family directories.
+
+    Each entry may hold several comma-separated names; an empty or missing list, or 'all',
+    selects every family."""
+    parts = [part for name in (names or []) for part in name.split(",")]
+    if not parts or any(part.strip().lower() == "all" for part in parts):
+        return set(FAMILIES)
+    families: set[str] = set()
+    for name in parts:
+        key = name.strip().lower()
+        if key not in FAMILY_ALIASES:
+            raise SystemExit(
+                f"unknown scheme category {name!r}; choose from "
+                + ", ".join(sorted(set(FAMILY_ALIASES))) + ", all"
+            )
+        families.add(FAMILY_ALIASES[key])
+    return families
+
+
+def filter_by_family(implementations: list["Implementation"], families: set[str]) -> list["Implementation"]:
+    return [impl for impl in implementations if impl.family in families]
+
+
+def filter_by_tier(implementations: list["Implementation"], tier: str) -> list["Implementation"]:
+    if tier == "all":
+        return implementations
+    return [impl for impl in implementations if impl.tier == tier]
 
 
 def parse_supported_platforms(root: Path) -> set[str]:
@@ -128,6 +175,21 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, str, list[str], lis
         action="store_true",
         help="Stop after the first failed make command.",
     )
+    parser.add_argument(
+        "--tier",
+        choices=("board", "qemu", "all"),
+        default="all",
+        help="Only build implementations of this tier (ngcc_tier.txt; hand-ported schemes are 'board').",
+    )
+    parser.add_argument(
+        "--family",
+        "--category",
+        dest="families",
+        action="append",
+        metavar="FAMILY[,FAMILY...]",
+        default=None,
+        help="Only build these scheme categories, comma-separated or repeated: kem, kex, sign (aliases: sig, crypto_kem, crypto_kex, crypto_sign, all).",
+    )
 
     platform = ""
     make_vars: list[str] = []
@@ -189,7 +251,9 @@ def main(argv: list[str]) -> int:
         return 2
 
     requested_schemes = normalize_requested_schemes(schemes)
-    implementations = discover_implementations(root, requested_schemes)
+    families = normalize_families(args.families)
+    implementations = filter_by_tier(discover_implementations(root, requested_schemes), args.tier)
+    implementations = filter_by_family(implementations, families)
     discovered_schemes = {impl.scheme for impl in implementations}
     missing_schemes = sorted(requested_schemes - discovered_schemes)
 

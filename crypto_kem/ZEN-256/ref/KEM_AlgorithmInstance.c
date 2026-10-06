@@ -98,18 +98,18 @@ int kem_enc(
 	unsigned char *ct, unsigned long long *ct_len_bytes)
 {
 	uint8_t buf[ZEN_INDCPA_MSG_LEN_BYTES + 2 * ZEN_SYM_LEN_BYTES];
-	uint8_t kr[2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES];
+	uint8_t kr[ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES]; /* ss || coins, 96 bytes: the NGCC-submitted ZEN_256 derives kr with a 768-bit pseudohash, not 1024 */
 #ifdef USE_KECCAK
 	randombytes(buf, ZEN_INDCPA_MSG_LEN_BYTES);
 	sha3_256(buf + ZEN_INDCPA_MSG_LEN_BYTES, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES);
-	shake256(kr, 2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES));
+	shake256(kr, ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES));
 #else
 	// m
 	get_random_number(&drng_algorithm, buf, ZEN_INDCPA_MSG_LEN_BYTES * 8);
 	// hash(pk)
 	sm3hash(ZEN_SYM_LEN_BYTES * 8, pk, ZEN_INDCPA_PUBLICKEY_LEN_BYTES * 8, buf + ZEN_INDCPA_MSG_LEN_BYTES);
 	// hash(m||hash(pk))
-	pseudohash((2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES) * 8, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES) * 8, kr);
+	pseudohash((ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES) * 8, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES) * 8, kr);
 #endif
 	pke_enc(pk, buf, kr + ZEN_SYM_LEN_BYTES, ct);
 	memcpy(ss, kr, ZEN_SYM_LEN_BYTES);
@@ -124,7 +124,7 @@ int kem_dec(
 {
 	unsigned int i, mask;
 	uint8_t buf[ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES];
-	uint8_t kr[2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES];
+	uint8_t kr[ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES]; /* ss || coins, 96 bytes: the NGCC-submitted ZEN_256 derives kr with a 768-bit pseudohash, not 1024 */
 	uint8_t zc[ZEN_SHAREDKEY_LEN_BYTES + ZEN_CIPHERTEXT_LEN_BYTES];
 	uint8_t ctp[ZEN_CIPHERTEXT_LEN_BYTES];
 	uint8_t ssp[2 * ZEN_SHAREDKEY_LEN_BYTES];
@@ -133,9 +133,9 @@ int kem_dec(
 	pke_dec(sk, ct, buf);
 	memcpy(buf + ZEN_INDCPA_MSG_LEN_BYTES, sk + ZEN_INDCPA_SECREKEY_LEN_BYTES + ZEN_INDCPA_PUBLICKEY_LEN_BYTES, ZEN_SYM_LEN_BYTES);
 #ifdef USE_KECCAK
-	shake256(kr, 2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES));
+	shake256(kr, ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES));
 #else
-	pseudohash((2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES) * 8, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES) * 8, kr);
+	pseudohash((ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES) * 8, buf, (ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES) * 8, kr);
 #endif
 	memcpy(zc, sk + ZEN_INDCPA_SECREKEY_LEN_BYTES + ZEN_INDCPA_PUBLICKEY_LEN_BYTES + ZEN_SYM_LEN_BYTES, ZEN_SHAREDKEY_LEN_BYTES);
 	memcpy(zc + ZEN_SHAREDKEY_LEN_BYTES, ct, ZEN_CIPHERTEXT_LEN_BYTES);

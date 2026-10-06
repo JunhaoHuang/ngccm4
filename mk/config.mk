@@ -25,6 +25,9 @@ LTO ?= 0
 NGCC_ITERATIONS ?= 100
 USE_SM3_ASM ?= 1
 USE_KECCAK ?= 0
+# Only an explicit command-line/environment value applies to every DKEX
+# instance; otherwise DKEX-128 uses level 2 and DKEX-256/512 level 5 (see
+# dkex_mldsa_level in mk/scheme.mk).
 DKEX_SIG_MLDSA_LEVEL ?= 2
 
 CROSS_PREFIX ?= arm-none-eabi
@@ -38,7 +41,7 @@ SIZE := $(CROSS_PREFIX)-size
 CPPFLAGS += -I$(CURDIR)
 CPPFLAGS += -DNGCC_ITERATIONS=$(NGCC_ITERATIONS)
 CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer -Wpedantic -Wall -Wextra -std=c99 
-LDFLAGS += -Wl,--gc-sections -u,__wrap__sbrk
+LDFLAGS += -Wl,--gc-sections -u,__wrap__sbrk -Wl,--print-memory-usage
 
 ifeq ($(USE_SM3_ASM),1)
 CFLAGS += -DSM3_ASM
@@ -92,7 +95,7 @@ endif
 
 ENTRY_kem := KEM_AlgorithmInstance.c
 ENTRY_kex := KEX_AlgorithmInstance.c
-ENTRY_sign := SIGN_AlgorithmInstance.c
+ENTRY_sign := SIG_AlgorithmInstance.c
 
 APP_SRCS_kem := $(sort $(wildcard crypto_kem/*.c))
 APP_SRCS_kex := $(sort $(wildcard crypto_kex/*.c))
@@ -103,6 +106,10 @@ APPS_kex := $(basename $(notdir $(APP_SRCS_kex)))
 APPS_sign := $(basename $(notdir $(APP_SRCS_sign)))
 
 SUPPORTED_APPS := $(sort $(APPS_kem) $(APPS_kex) $(APPS_sign))
+
+# Headers shared by every build: a change rebuilds all objects (there is no
+# per-file dependency tracking).
+COMPILEDEPS += $(wildcard common/*.h) $(wildcard crypto_kem/*.h) $(wildcard crypto_kex/*.h) $(wildcard crypto_sign/*.h)
 
 PLATFORM_LIB_SRCS ?=
 PLATFORM_INCLUDE_DIRS ?=

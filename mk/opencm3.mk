@@ -41,7 +41,7 @@ LDFLAGS += \
 	-T$(LDSCRIPT)
 
 LIBNAME := opencm3_$(genlink_family)
-LDLIBS += -l$(LIBNAME) -lc -lgcc
+LDLIBS += -l$(LIBNAME) -lc -lm -lgcc
 LIBDEPS += $(OPENCM3_DIR)/lib/lib$(LIBNAME).a
 COMPILEDEPS += $(OPENCM3_DIR)/lib/lib$(LIBNAME).a
 
@@ -50,7 +50,7 @@ $(OPENCM3_DIR)/lib/lib$(LIBNAME).a:
 
 ifeq ($(wildcard ldscripts/$(PLATFORM).ld),)
 LDSCRIPT = obj/generated.$(DEVICE).ld
-$(LDSCRIPT): $(OPENCM3_DIR)/ld/linker.ld.S $(DEVICES_DATA)
+$(LDSCRIPT): $(OPENCM3_DIR)/ld/linker.ld.S $(DEVICES_DATA) | platform-sync
 	@printf '  GENLNK  $(DEVICE)\n'
 	$(Q)mkdir -p $(@D)
 	$(Q)$(CPP) $(ARCH_FLAGS) $(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) DEFS) -P -E $< -o $@

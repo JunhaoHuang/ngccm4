@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NGCCM4 Cortex-M4 Benchmarks</title>
+<meta name="description" content="Speed, code size, stack and key-size comparison of the NGCC Round-1 post-quantum KEM, key-exchange and signature candidates on an ARM Cortex-M4 (STM32L4R5ZI).">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='9' width='3' height='6' fill='%232a78d6'/%3E%3Crect x='6' y='4' width='3' height='11' fill='%232a78d6'/%3E%3Crect x='11' y='1' width='3' height='14' fill='%232a78d6'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="title-row">
+      <h1>NGCCM4 benchmarks on ARM Cortex-M4</h1>
+      <div class="header-actions">
+        <a class="btn" href="https://github.com/JunhaoHuang/ngccm4" rel="noopener">Repository</a>
+        <a class="btn" href="data/benchmark.json" download>benchmark.json</a>
+        <button class="btn" id="theme-toggle" type="button" title="Toggle colour theme">Theme: auto</button>
+      </div>
+    </div>
+    <p class="subtitle" id="subtitle"></p>
+    <div class="stat-row" id="stat-row"></div>
+  </div>
+</header>
+
+<nav class="tabs wrap" id="tabs" role="tablist">
+  <button role="tab" data-tab="kem">KEM</button>
+  <button role="tab" data-tab="kex">Key exchange</button>
+  <button role="tab" data-tab="sig">Signatures</button>
+  <button role="tab" data-tab="notrun">Not benchmarked</button>
+  <button role="tab" data-tab="method">Methodology</button>
+</nav>
+
+<main class="wrap">
+  <section id="panel-table" class="panel" hidden>
+    <div class="toolbar" id="toolbar">
+      <div class="toolbar-row">
+        <input type="search" id="search" placeholder="Filter by scheme or submission name" aria-label="Filter rows">
+        <div class="chipset" id="impl-chips" aria-label="Implementation"></div>
+        <div class="chipset" id="status-chips" aria-label="Run status"></div>
+        <label class="select">Cycles
+          <select id="stat-select" aria-label="Cycle statistic">
+            <option value="avg">average</option>
+            <option value="median">median</option>
+            <option value="min">minimum</option>
+            <option value="max">maximum</option>
+          </select>
+        </label>
+        <label class="select">Bars
+          <select id="bars-select" aria-label="Bar scale">
+            <option value="linear">linear</option>
+            <option value="log">log</option>
+            <option value="off">off</option>
+          </select>
+        </label>
+        <button class="btn" id="csv-btn" type="button">Download CSV</button>
+      </div>
+      <div class="toolbar-row">
+        <div class="chipset" id="level-chips" aria-label="Security level"></div>
+        <div class="chipset groups" id="group-chips" aria-label="Column groups"></div>
+        <span class="count" id="row-count"></span>
+      </div>
+    </div>
+    <p class="hint" id="table-hint"></p>
+    <div class="table-scroll">
+      <table id="table" class="data"></table>
+    </div>
+  </section>
+
+  <section id="panel-notrun" class="panel" hidden></section>
+  <section id="panel-method" class="panel" hidden></section>
+</main>
+
+<footer class="wrap site-footer" id="footer"></footer>
+
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

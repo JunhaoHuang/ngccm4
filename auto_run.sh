@@ -3,7 +3,7 @@
 
 path=${1}_${2}_${4}
 iterations=${NGCC_ITERATIONS:-100}
-
+mkdir -p Out
 logf=Out/${3}_${path}.txt
 echo ${path}
 # make clean

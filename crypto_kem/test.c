@@ -5,14 +5,6 @@
 #include "hal.h"
 #include "sendfn.h"
 #include "KEM_AlgorithmInstance.h"
-#if defined(__has_include)
-#if __has_include("parameters.h")
-#include "parameters.h"
-#endif
-#if __has_include("ntt.h")
-#include "ntt.h"
-#endif
-#endif
 #ifdef USE_KECCAK
 #include "randombytes.h"
 #else
@@ -38,7 +30,7 @@ static int test_roundtrip(void) {
     unsigned long long sk_len = kem_get_sk_len_bytes();
     unsigned long long ss_len = kem_get_ss_len_bytes();
     unsigned long long ct_len = kem_get_ct_len_bytes();
-    unsigned long long ignored_len = 0;
+    unsigned long long ss_len_dec = ss_len;
     unsigned char *pk = malloc(pk_len);
     unsigned char *sk = malloc(sk_len);
     unsigned char *ct = malloc(ct_len);
@@ -48,13 +40,18 @@ static int test_roundtrip(void) {
     if (pk == NULL || sk == NULL || ct == NULL || ss_a == NULL || ss_b == NULL) {
         return -1;
     }
-    if (kem_keygen(pk, &ignored_len, sk, &ignored_len) != 0) {
+    pk_len = kem_get_pk_len_bytes();
+    sk_len = kem_get_sk_len_bytes();
+    ss_len = kem_get_ss_len_bytes();
+    ct_len = kem_get_ct_len_bytes();
+    ss_len_dec = ss_len;
+    if (kem_keygen(pk, &pk_len, sk, &sk_len) != 0) {
         return -1;
     }
-    if (kem_enc(pk, pk_len, ss_a, &ignored_len, ct, &ignored_len) != 0) {
+    if (kem_enc(pk, pk_len, ss_a, &ss_len, ct, &ct_len) != 0) {
         return -1;
     }
-    if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ignored_len) != 0) {
+    if (kem_dec(sk, sk_len, ct, ct_len, ss_b, &ss_len_dec) != 0) {
         return -1;
     }
     int ret = memcmp(ss_a, ss_b, ss_len);
@@ -91,5 +88,5 @@ int main(void) {
     }
 
     hal_send_str("#");
-    return 0;
+    return hal_main_done();
 }

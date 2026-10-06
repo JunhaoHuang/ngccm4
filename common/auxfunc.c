@@ -28,7 +28,7 @@ other purposes.
 #define FF2(x, y, z) (((x) & (y)) | ((x) & (z)) | ((y) & (z)))
 #define GG1(x, y, z) ((x) ^ (y) ^ (z))
 #define GG2(x, y, z) ((((y) ^ (z)) & (x)) ^ (z))
-#define L_SHIFT(a, n) ((a) << (n) | ((a) & 0xFFFFFFFF) >> (32 - (n)))
+#define L_SHIFT(a, n) (((a) << (n)) | (((a) & 0xFFFFFFFF) >> ((32 - (n)) & 31)))
 #define P0(x) ((x) ^ L_SHIFT((x), 9) ^ L_SHIFT((x), 17))
 #define P1(x) ((x) ^ L_SHIFT((x), 15) ^ L_SHIFT((x), 23))
 #define PUT32(a, b) ((a)[0] = (unsigned char)((b) >> 24), \
@@ -526,7 +526,7 @@ int pseudoXOF(unsigned long long output_len_bits, const unsigned char *msg, unsi
 		return MEMORY_ALLOCATION_FAILED;
 	}
 	unsigned char *K;
-	K = (unsigned char *)malloc((output_len_bits + 255) / 8);
+	K = (unsigned char *)malloc(((output_len_bits + 255) / 256) * 32) /* whole SM3 blocks are written (ICCS template under-allocates) */;
 	if (K == NULL)
 	{
 		fprintf(stderr, "ERROR: Memory allocation failed at %s, line %d. \n", __FILE__, __LINE__);

@@ -45,5 +45,15 @@
 #define ZBT_SRAM2_START  0x20000000
 #define ZBT_SRAM2_SIZE   0x00400000 /* 4 MiB */
 
+/*
+ * 16 MiB PSRAM ("mps.ram" in QEMU's mps2-an386 model) at 0x21000000. The
+ * linker script places RAM there: several qemu-tier schemes need more than
+ * the 4 MiB ZBT SRAM2, and QEMU mirrors SRAM2 at 0x20400000, so a heap that
+ * grows past 4 MiB silently wraps onto .data/.bss and the stack (HardFaults
+ * with lr/pc in 0x204xxxxx-0x215xxxxx).
+ */
+#define PSRAM_START      0x21000000
+#define PSRAM_SIZE       0x01000000 /* 16 MiB */
+
 #endif /* MEMORY_ZONES_H */
 

@@ -18,7 +18,7 @@ LDFLAGS += \
 	-Wl,--wrap=_getpid \
 	-ffreestanding \
 	-T$(LDSCRIPT)
-LDLIBS += -lc -lgcc
+LDLIBS += -lc -lm -lgcc
 
 PLATFORM_LIB_SRCS := \
 	common/hal-mps2.c \
@@ -29,7 +29,7 @@ PLATFORM_INCLUDE_DIRS := \
 
 LDSCRIPT := obj/ldscript.ld
 
-$(LDSCRIPT): common/mps2/MPS2.ld
+$(LDSCRIPT): common/mps2/MPS2.ld | platform-sync
 	@printf '  GENLNK  $@\n'
 	$(Q)mkdir -p $(@D)
 	$(Q)$(CC) -x assembler-with-cpp -E -Wp,-P $(CPPFLAGS) -Icommon/mps2 $< -o $@
