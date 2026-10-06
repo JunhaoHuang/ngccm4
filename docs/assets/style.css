@@ -182,3 +182,11 @@ details.group > .table-scroll { border: 0; border-top: 1px solid var(--line); bo
   .toolbar, .tabs, .header-actions { display: none; }
   .table-scroll { max-height: none; overflow: visible; border: 0; }
 }
+
+/* external link to the NGCC submission page */
+a.ext { color: var(--text-3); text-decoration: none; font-size: 0.85em; margin-left: 2px; }
+a.ext:hover, a.ext:focus { color: var(--accent); }
+a.ext-text { text-decoration: none; }
+a.ext-text:hover { text-decoration: underline; }
+table.data td.scheme .scheme-name { white-space: nowrap; }
+details.group > summary a.ext { font-weight: 400; }

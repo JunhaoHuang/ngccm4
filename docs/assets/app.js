@@ -38,6 +38,7 @@
     other: "Other",
   };
   const GROUPS = ["cycles", "sizes", "code", "stack", "kat"];
+  const LEVELS = ["128", "192", "256", "384", "512"];
   const GROUP_LABEL = { cycles: "Cycles", sizes: "Sizes", code: "Code size", stack: "Stack", kat: "KAT" };
 
   const rowsById = {};
@@ -153,7 +154,7 @@
       if (ab !== null && bb !== null && ab !== bb) return ab - bb;
       if (ab === null && bb !== null) return 1;
       if (bb === null && ab !== null) return -1;
-      return a.label.localeCompare(b.label, undefined, { numeric: true });
+      return (a.param_set || a.label).localeCompare(b.param_set || b.label, undefined, { numeric: true });
     }
     if (type === "status") return STATUS_ORDER[a] - STATUS_ORDER[b];
     if (type === "kat") return KAT_ORDER[a] - KAT_ORDER[b];
@@ -182,9 +183,29 @@
 
   // ------------------------------------------------------------------ rendering: table
   function badge(cls, label, title) { return el("span", { class: "badge " + cls, title: title || null, text: label }); }
+  const LEVEL_SOURCE = {
+    name: "level taken from the instance name",
+    manifest: "level set in the import manifest",
+    spec: "level taken from the submission's specification",
+    none: "no security level stated by the submitter",
+  };
   function levelCell(lv) {
-    const t = `security level label: ${lv.label} (${lv.source === "name" ? "parsed from the instance name" : lv.source === "manifest" ? "from the import manifest" : lv.source === "override" ? "parameter-set name, not a bit level" : "unknown"})`;
-    return el("span", { title: t, text: lv.label });
+    const parts = [lv.bits !== null ? `claimed classical security: ${lv.bits} bits` : "security level unknown"];
+    if (lv.param_set && lv.param_set !== lv.label) parts.push(`parameter set: ${lv.param_set}`);
+    if (lv.variant) parts.push(lv.variant === "f" ? "fast variant" : "small variant");
+    if (lv.claim) parts.push(lv.claim);
+    parts.push(LEVEL_SOURCE[lv.source] || "source unknown");
+    return el("span", { title: parts.join("; "), text: lv.label });
+  }
+  // external link to the submission's page on the NGCC site (stops the row-toggle click)
+  function ngccLink(ngcc, text) {
+    if (!ngcc || !ngcc.url) return null;
+    return el("a", { class: "ext" + (text ? " ext-text" : ""), href: ngcc.url, target: "_blank", rel: "noopener",
+      title: `open ${ngcc.title} on the NGCC site`, text: text || "\u2197",
+      onclick: (e) => e.stopPropagation() });
+  }
+  function schemeCell(r) {
+    return el("span", { class: "scheme-name" }, [r.scheme, " ", ngccLink(r.ngcc)]);
   }
   function renderCell(col, row, max) {
     const v = col.get(row);
@@ -207,8 +228,11 @@
     const c = DATA.categories[row.category];
     const sections = [];
     const about = el("div", null, [el("h4", { text: "Submission" }), el("div", { html:
-      `<b>${esc(row.ngcc.title)}</b> &middot; instance <code>${esc(row.ngcc.instance)}</code>` +
+      (row.ngcc.url ? `<a class="ext-text" href="${esc(row.ngcc.url)}" target="_blank" rel="noopener" title="open on the NGCC site"><b>${esc(row.ngcc.title)}</b> \u2197</a>` : `<b>${esc(row.ngcc.title)}</b>`) +
+      ` &middot; instance <code>${esc(row.ngcc.instance)}</code>` +
       (row.ngcc.pub_date ? ` &middot; published ${esc(row.ngcc.pub_date)}` : "") +
+      (row.ngcc.zip_url ? ` &middot; <a href="${esc(row.ngcc.zip_url)}" rel="noopener">submission zip</a>` : "") +
+      (row.ngcc.comments_url ? ` &middot; <a href="${esc(row.ngcc.comments_url)}" target="_blank" rel="noopener">public comments</a>` : "") +
       `<br>Directory <code>${esc(row.family)}/${esc(row.scheme)}/${esc(row.impl)}</code> &middot; tier <b>${esc(row.tier)}</b>` +
       (row.hand_ported ? " &middot; hand-ported" : " &middot; imported reference code") })]);
     sections.push(about);
@@ -273,7 +297,7 @@
       const tr = el("tr", { class: (r.run_status === "measured" ? "" : "muted") + (state.open.has(r.id) ? " open" : ""), "data-id": r.id });
       for (const col of cols) {
         const td = renderCell(col, r, maxes[col.key]);
-        if (col.key === "scheme") { td.classList.add("scheme"); td.title = "show details"; td.addEventListener("click", () => { state.open.has(r.id) ? state.open.delete(r.id) : state.open.add(r.id); render(); }); }
+        if (col.key === "scheme") { td.classList.add("scheme"); td.title = "show details"; td.textContent = ""; td.append(schemeCell(r)); td.addEventListener("click", () => { state.open.has(r.id) ? state.open.delete(r.id) : state.open.add(r.id); render(); }); }
         tr.append(td);
       }
       tbody.append(tr);
@@ -308,10 +332,14 @@
       stBox.append(chip(`${STATUS_LABEL[s]} (${n})`, state.status.has(s), () => { toggle(state.status, s); render(); }));
     }
     const lvBox = $("#level-chips"); lvBox.innerHTML = "";
-    const levels = new Map();
-    for (const r of rows) if (!levels.has(levelKey(r))) levels.set(levelKey(r), r.level);
-    const sorted = [...levels.values()].sort((a, b) => compareValues("level", a, b));
-    for (const lv of sorted) lvBox.append(chip(lv.label, state.level.has(lv.label), () => { toggle(state.level, lv.label); render(); }));
+    const present = new Set(rows.map(levelKey));
+    const labels = [...LEVELS, ...[...present].filter((l) => !LEVELS.includes(l)).sort()];
+    for (const label of labels) {
+      const n = rows.filter((r) => levelKey(r) === label).length;
+      if (!n && !LEVELS.includes(label)) continue;
+      lvBox.append(chip(`${label} (${n})`, state.level.has(label), () => { toggle(state.level, label); render(); },
+        label === "-" ? "no security level stated by the submitter" : `claimed classical security of ${label} bits`));
+    }
     if (state.level.size) lvBox.append(chip("clear", false, () => { state.level.clear(); render(); }));
     const gBox = $("#group-chips"); gBox.innerHTML = "";
     for (const g of GROUPS) {
@@ -412,7 +440,7 @@
       const d = el("details", { class: "group", open: k === "hardfault" ? "" : null }, el("summary", null, [FAILURE_LABEL[k] || k, el("span", { class: "meta", text: `${rows.length} implementation${rows.length === 1 ? "" : "s"}` })]));
       d.append(miniTable([
         { key: "cat", label: "Category", type: "str", get: (r) => CATS[r.category] },
-        { key: "scheme", label: "Scheme", type: "str", get: (r) => r.scheme },
+        { key: "scheme", label: "Scheme", type: "str", get: (r) => r.scheme, render: (r) => schemeCell(r) },
         { key: "impl", label: "Impl", type: "str", get: (r) => r.impl },
         { key: "level", label: "Level", type: "level", get: (r) => r.level },
         { key: "tier", label: "Tier", type: "str", get: (r) => r.tier },
@@ -432,7 +460,7 @@
     const byScheme = new Map();
     for (const r of qemu) { const k = r.ngcc.title + " (" + CATS[r.category] + ")"; if (!byScheme.has(k)) byScheme.set(k, []); byScheme.get(k).push(r); }
     for (const [k, rows] of [...byScheme.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
-      const d = el("details", { class: "group" }, el("summary", null, [k, el("span", { class: "meta", text: `${rows.length} instance${rows.length === 1 ? "" : "s"}` })]));
+      const d = el("details", { class: "group" }, el("summary", null, [k, " ", ngccLink(rows[0].ngcc), el("span", { class: "meta", text: `${rows.length} instance${rows.length === 1 ? "" : "s"}` })]));
       d.append(miniTable([
         { key: "scheme", label: "Scheme", type: "str", get: (r) => r.scheme },
         { key: "level", label: "Level", type: "level", get: (r) => r.level },
@@ -448,7 +476,7 @@
     const byReason = new Map();
     for (const e of unsup) { const k = e.reason_scope === "scheme" ? `${e.title}: ${e.reason}` : `${e.title} (selected instances): ${e.reason}`; if (!byReason.has(k)) byReason.set(k, []); byReason.get(k).push(e); }
     for (const [k, rows] of [...byReason.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
-      const d = el("details", { class: "group" }, el("summary", null, [k, el("span", { class: "meta", text: `${CATS[rows[0].category]} · ${rows.length} instance${rows.length === 1 ? "" : "s"}` })]));
+      const d = el("details", { class: "group" }, el("summary", null, [k, " ", ngccLink(rows[0].ngcc), el("span", { class: "meta", text: `${CATS[rows[0].category]} · ${rows.length} instance${rows.length === 1 ? "" : "s"}` })]));
       d.append(miniTable([
         { key: "instance", label: "Instance", type: "str", get: (r) => r.instance },
         { key: "level", label: "Level", type: "level", get: (r) => r.level },
@@ -474,7 +502,8 @@
       <ul>
         <li><b>Cycles</b>: choose average, median, minimum or maximum in the toolbar. The row details list all four plus the iteration count. "total" is the sum of the averages and is only shown when every operation completed.</li>
         <li><b>Sizes</b>: bytes of public key, secret key and ciphertext (KEM), signature (SIG, the largest over the ten KAT counts) or per-pass messages (KEX). The preferred source is the benchmarked binary itself (its testvectors output on QEMU), then a host build of the same reference code, then the submission's official KAT file. Where sources disagree the row details say so.</li>
-        <li><b>Level</b>: a label parsed from the instance name or the import manifest. Numbers such as 128/192/256/384/512 are the submitter's claimed classical security in bits; labels such as <code>n=1024</code>, <code>L2</code>, <code>C1</code> or <code>I</code> are parameter-set names where the bit level is not part of the name. The <code>f</code>/<code>s</code> suffix marks fast/small variants.</li>
+        <li><b>Scheme</b>: click the name for details; the \u2197 next to it opens the submission's page on the NGCC site (tools/ngcc_links.json).</li>
+        <li><b>Level</b>: the submitter's claimed classical security, normalised to one of 128, 192, 256, 384 or 512 bits. Where the instance name carries the number it is taken from the name; otherwise (parameter-set names such as <code>n=1024</code>, <code>L2</code>, <code>C1</code>, <code>I</code>, or the <code>160</code> hash-based sets) it is taken from the submission's specification. Hover a level to see the original parameter-set name and the exact claim. A dash means the submission states no level.</li>
         <li><b>Status</b>: <i>measured</i> (every operation timed), <i>partial</i> (some operations timed before a timeout or fault), <i>failed</i> (attempted on the board, nothing timed), <i>not run</i> (QEMU-tier KEM/KEX, never flashed). By default the tables show measured and partial rows; enable the other chips to include the rest, which still carry sizes and code size.</li>
         <li><b>KAT</b>: result of <code>kat_check.py</code> on QEMU (mps2-an386) against the official test vectors.</li>
         <li><b>Bars</b> are scaled to the largest visible value of each column, so filtering rescales them. Use the log scale when a few huge values flatten the rest.</li>
@@ -487,7 +516,7 @@
       <pre>git clone --recursive https://github.com/JunhaoHuang/ngccm4.git
 python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed      # all board-tier schemes
 python3 kat_check.py --md Out/kat_summary.md                           # KAT check on QEMU
-python3 tools/make_site_data.py --ngcc-root ../NGCC                    # regenerate docs/data</pre>
+python3 tools/make_site_data.py --ngcc-root NGCC                    # regenerate docs/data</pre>
       <p>Data files: <a href="data/benchmark.json" download>benchmark.json</a> (generated ${esc(m.generated_on)}${m.git_rev ? ` from commit <code>${esc(m.git_rev)}</code>` : ""}); sources ${Object.values(m.sources).map((s) => `<code>${esc(s)}</code>`).join(", ")}.</p>`;
   }
 

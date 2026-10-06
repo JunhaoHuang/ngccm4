@@ -10,16 +10,18 @@ Inputs (all read-only):
   Out/kat_summary.md                    KAT check results (QEMU)
   Out/kat_raw/<target>_testvectors.txt  device hex dumps (key-size fallback)
   tools/ngcc_manifest.json              import rules, unsupported schemes + reasons
-  ../NGCC/schemes.json, schemes/*/Test_Vectors/KAT_*.txt, results/*/*.json
+  NGCC/schemes.json, schemes/*/Test_Vectors/KAT_*.txt, results/*/*.json
                                         NGCC candidate list, official KAT files
                                         (key sizes), host-side observed sizes
+  tools/ngcc_links.json                 official NGCC web page per submission
+                                        (written by tools/fetch_ngcc_links.py)
 
 Outputs:
   docs/data/benchmark.json
   docs/data/data.js        (window.NGCCM4_DATA = {...}; lets docs/index.html work from file://)
 
 Usage:
-  python3 tools/make_site_data.py [--ngcc-root ../NGCC] [--platform nucleo-l4r5zi] [--strict]
+  python3 tools/make_site_data.py [--ngcc-root NGCC] [--platform nucleo-l4r5zi] [--strict]
 """
 
 from __future__ import annotations
@@ -93,6 +95,32 @@ def warn(msg: str) -> None:
 
 # --------------------------------------------------------------------------- inputs
 
+LINKS_FILE = ROOT / "tools" / "ngcc_links.json"
+
+
+def load_ngcc_links() -> dict[str, dict]:
+    """Official NGCC page / zip / comment-thread URLs per submission title (tools/fetch_ngcc_links.py)."""
+    if not LINKS_FILE.exists():
+        print(f"warning: {LINKS_FILE} missing; run tools/fetch_ngcc_links.py (no NGCC links in the site)", file=sys.stderr)
+        return {}
+    return json.loads(LINKS_FILE.read_text(encoding="utf-8"))
+
+
+def ngcc_ref(scheme_json: dict, folder: str, instance: str, links: dict[str, dict]) -> dict:
+    """The per-row pointer to the NGCC submission, including its official web page."""
+    title = scheme_json.get("title", folder)
+    link = links.get(title, {})
+    return {
+        "folder": folder,
+        "instance": instance,
+        "title": title,
+        "pub_date": scheme_json.get("pub_date"),
+        "url": link.get("page"),
+        "zip_url": link.get("zip"),
+        "comments_url": link.get("comments"),
+    }
+
+
 def load_schemes_json(ngcc_root: Path) -> dict:
     data = json.loads((ngcc_root / "schemes.json").read_text(encoding="utf-8"))
     by_folder = {s["folder"]: s for s in data["schemes"]}
@@ -104,7 +132,7 @@ def load_manifest() -> dict:
     return {k: v for k, v in data.items() if k != "_comment"}
 
 
-def load_rows(schemes: dict) -> "OrderedDict[str, dict]":
+def load_rows(schemes: dict, links: dict[str, dict]) -> "OrderedDict[str, dict]":
     rows: OrderedDict[str, dict] = OrderedDict()
     for impl in build_schemes.discover_implementations(ROOT, set()):
         origin = kat_check.read_origin(impl)
@@ -130,12 +158,7 @@ def load_rows(schemes: dict) -> "OrderedDict[str, dict]":
             "impl": impl.name,
             "tier": impl.tier,
             "hand_ported": not bool(origin),
-            "ngcc": {
-                "folder": folder,
-                "instance": instance,
-                "title": scheme_json.get("title", folder),
-                "pub_date": scheme_json.get("pub_date"),
-            },
+            "ngcc": ngcc_ref(scheme_json, folder, instance, links),
             "_impl": impl,
             "_origin": origin,
             "cycles": {},
@@ -580,45 +603,135 @@ def resolve_sizes(ngcc_root: Path, kat_raw: Path, row: dict, manifest: dict) -> 
 
 
 # --------------------------------------------------------------------------- security level
+#
+# Every row carries exactly one normalised level from LEVELS (claimed classical security in
+# bits). The NGCC call defines three mandatory categories, I/II/III = 128/256/512-bit classical
+# (80/128/256-bit quantum), plus an optional 384-bit category; 192 only appears as a submitter
+# extra (DTRU-768, TRIKE-3, HEP-QC-3). Instances whose name does not carry the bit figure are
+# mapped from the submission's specification in SPEC_LEVELS (see tools/ngcc_manifest.json for
+# the source folders; evidence is quoted in the "claim" strings).
 
-BITS_RE = re.compile(r"(?<!\d)(128|160|192|256|384|512)(?!\d)")
+LEVELS = (128, 192, 256, 384, 512)
+BITS_RE = re.compile(r"(?<!\d)(128|192|256|384|512)(?!\d)")
+NOMINAL_160_RE = re.compile(r"(?<![\dA-Za-z])160(?!\d)")
 VARIANT_RE = re.compile(r"(?<!\d)(?:128|160|192|256|384|512)([fFsS])(?![A-Za-z])")
 
-LEVEL_OVERRIDES: list[tuple[str, str]] = [
-    (r"^(?:YuanYang-KEM|yuanyang)-(\d+)$", "n={1}"),
-    (r"^DTRU-(.+)$", "{1}"),
-    (r"^OAEP-NTRU-(\d+)$", "n={1}"),
-    (r"^TRIKE-(\d)$", "{1}"),
-    (r"^NEV(?:-AKE)?-([CDR]\d)(-c)?$", "{1}"),
-    (r"^Aigis-(?:Enc|Sig)\+?-(I+)$", "{1}"),
-    (r"^Lore-(?:SHAKE|SM3)(?:__Lore)?-L(\d)$", "L{1}"),
-    (r"^CTL-(\d+)-(\d+)$", "q={1} n={2}"),
-    (r"^POLARLAC-Light$", "Light"),
-    (r"^(?:sqisign2d|SQIsignTriangle)_lvl(\d)$", "lvl{1}"),
-    (r"^SQISign2Dsquare-Level(\d)-(eff|sec)$", "Level{1}-{2}"),
-    (r"^hep-qc-(\d)$", "{1}"),
-    (r"^HEP-QC$|^QIMEN-PIKE$|^NIIKE$|^BIKE_MLThre$", "-"),
+NGCC_I_160 = ("NGCC category I instance; the submitter's nominal figure is 160-bit classical / "
+              "80-bit quantum security, chosen so that the 80-bit quantum requirement holds")
+
+# (regex over the instance name, {key -> bits} or bits, parameter-set label, claim)
+# key = the first capture group that is present in the dict, when the mapping is a dict.
+SPEC_LEVELS: list[tuple[str, dict | int, str, str]] = [
+    (r"^Aigis-(?:Enc|Sig)\+?-(I+)$", {"I": 128, "II": 256, "III": 512}, "{1}",
+     "Aigis-Enc+/Aigis-Sig+ spec §4: parameter sets I/II/III target at least 128/256/512-bit classical "
+     "(80/128/256-bit quantum) security"),
+    (r"^DTRU-(.+)$", {"648": 128, "Light": 128, "768": 192, "1024": 256, "1536": 384, "2048": 512, "Prime": 256},
+     "DTRU-{1}",
+     "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, "
+     "DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation"),
+    (r"^Lore-(?:SHAKE|SM3)(?:__Lore)?-L(\d)$", {"1": 128, "2": 256, "3": 384, "4": 512}, "L{1}",
+     "Lore spec §5.1 Table 2: L1..L4 meet the 128/256/384/512-bit classical levels required by NICCS"),
+    (r"^NEV(?:-AKE)?-([CDR])(\d)(-c)?$", {"1": 128, "2": 256, "3": 512}, "{1}{2}{3}",
+     "NEV / NEV-AKE spec §4-5 Table 2: suffix 1/2/3 (n=512/1024/2048) targets at least 128/256/512-bit "
+     "classical (80/128/256-bit quantum) security; C=compact, R=recommended, D=low-DFR, -c=compressed"),
+    (r"^OAEP-NTRU-(\d+)$", {"648": 128, "1296": 256, "2592": 512}, "n={1}",
+     "OAEP-NTRU spec Table 1: n=648/1296/2592 target at least 128/256/512-bit classical "
+     "(80/128/256-bit quantum) security"),
+    (r"^(?:YuanYang-KEM|yuanyang)-(\d+)$", {"512": 128, "1024": 256, "2048": 512}, "n={1}",
+     "YuanYang.KEM / YuanYang.DSA spec Table 1: ring degree 512/1024/2048 targets 128/256/512-bit "
+     "classical security"),
+    (r"^TRIKE-(\d)$", {"2": 128, "5": 256, "7": 384, "9": 512}, "TRIKE-{1}",
+     "TRIKE spec Table 1: TRIKE-2/5/7/9 target 128/256/384/512-bit classical (80/128/192/256-bit quantum) security"),
+    (r"^CTL-(\d+-\d+)$", {"257-512": 128, "769-1024": 256, "3329-2048": 512}, "q,n={1}",
+     "CTL spec §6: CTL-128/256/512 are (n,q)=(512,257)/(1024,769)/(2048,3329); note the shipped readme.txt "
+     "labels the last two 192 and 256 bits (NIST-style)"),
+    (r"^POLARLAC-Light$", 128, "Light",
+     "PolarLAC spec Table 2-3: lightweight set recommended where refined-BKZ estimates suffice "
+     "(core-SVP 121.6 / refined BKZ 143.8 classical bits); no explicit bit claim"),
+    (r"^HEP-QC$", 128, "HEP-QC-1", "HEP-QC spec Table 4.1: HEP-QC-1 is the 128-bit set (PARAM_SECURITY 128)"),
+    (r"^hep-qc-(\d)$", {"1": 128, "3": 192, "5": 256, "7": 512}, "HEP-QC-{1}",
+     "HEP-QC spec Table 4.1: HEP-QC-1/3/5/7 = 128/192/256/512-bit security"),
+    (r"^QIMEN-PIKE$", 128, "NGCC-1",
+     "QIMEN-PIKE spec: parameter sets NGCC-1/2/3 target 128/256/512-bit classical security; the reference "
+     "build is NGCC-1"),
+    (r"^NIIKE$", 128, "NIIKE-lv128",
+     "NIIKE spec Table 9.1: NGCC-I/II/III sets with log2 p ≈ 256/512/1024; the reference build is lv128"),
+    (r"^BIKE_MLThre$", 128, "128",
+     "BIKE_MLThre spec Table 7: 128/256/512-bit categories; the reference build is BIKE_SECURITY_128"),
+    (r"^DOVE_(classic|pkc_skc)_ref$", 512, "DOVE_{1}_512",
+     "DOVE spec Table 2: the shipped prebuilt objects produce the DOVE_{1}_512 key and signature sizes "
+     "(the Makefile default DOVE128 is not what was linked)"),
+    (r"^(?:sqisign2d)_lvl(\d)$", {"1": 128, "2": 128, "3": 256, "4": 512}, "lvl{1}",
+     "SQIsign2D-push12 spec §5.2: Level-1 λ=128 (64-bit quantum, not an NGCC category), Level-2 λ=160 "
+     "(NGCC category I, 80-bit quantum), Level-3 256/128, Level-4 512/256"),
+    (r"^SQISign2Dsquare-Level(\d)-(eff|sec)$", {"1": 128, "2": 128, "3": 256, "5": 512}, "Level{1}-{2}",
+     "SQIsign2D² spec §4.2 / Table 9.1: Level1 128/64, Level2 160/80 (NGCC category I), Level3 256/128, "
+     "Level5 512/256 classical/quantum bits; eff and sec share a level"),
+    (r"^SQIsignTriangle_lvl(\d)$", {"1": 128, "2": 128, "5": 256, "6": 512}, "lvl{1}",
+     "SQIsignTriangle spec Table 6 and parameter-set note: lvl1 128/64 (evaluation set, not recommended), "
+     "lvl2 160/80 (NGCC category I), lvl5 256/128, lvl6 512/256"),
 ]
+_SPEC_LEVELS = [(re.compile(pattern), levels, fmt, claim) for pattern, levels, fmt, claim in SPEC_LEVELS]
+
+
+def _level(bits: int | None, *, variant: str | None, param_set: str, source: str, claim: str | None) -> dict:
+    return {
+        "label": str(bits) if bits is not None else "-",
+        "bits": bits,
+        "variant": variant,
+        "param_set": param_set,
+        "source": source,
+        "claim": claim,
+    }
 
 
 def security_level(name: str, defines: dict | None) -> dict:
+    """Normalised claimed security level: one of LEVELS, or bits=None when nothing is stated."""
     defines = defines or {}
+    variant_m = VARIANT_RE.search(name)
+    variant = variant_m.group(1).lower() if variant_m else None
     for key, value in defines.items():
-        if key.upper() == "SECURITY_LEVEL" and str(value).isdigit():
-            return {"label": str(value), "bits": int(value), "variant": None, "source": "manifest"}
-    for pattern, fmt in LEVEL_OVERRIDES:
-        m = re.match(pattern, name)
-        if m:
-            label = fmt
-            for i, g in enumerate(m.groups(), start=1):
-                label = label.replace("{%d}" % i, g or "")
-            return {"label": label, "bits": None, "variant": None, "source": "override"}
-    bits = BITS_RE.search(name)
-    variant = VARIANT_RE.search(name)
-    if bits:
-        v = variant.group(1).lower() if variant else None
-        return {"label": bits.group(1) + (v or ""), "bits": int(bits.group(1)), "variant": v, "source": "name"}
-    return {"label": "-", "bits": None, "variant": None, "source": "none"}
+        if key.upper() == "SECURITY_LEVEL" and str(value).isdigit() and int(value) in LEVELS:
+            return _level(int(value), variant=variant, param_set=str(value), source="manifest", claim=None)
+    for regex, levels, fmt, claim in _SPEC_LEVELS:
+        m = regex.match(name)
+        if not m:
+            continue
+        groups = [g or "" for g in m.groups()]
+        param_set = fmt
+        for i, g in enumerate(groups, start=1):
+            param_set = param_set.replace("{%d}" % i, g)
+            claim = claim.replace("{%d}" % i, g)
+        bits = levels if isinstance(levels, int) else next((levels[g] for g in groups if g in levels), None)
+        if bits is None:
+            raise SystemExit(f"security_level: {name!r} matches {regex.pattern!r} but has no level entry")
+        return _level(bits, variant=variant, param_set=param_set, source="spec", claim=claim)
+    bits_m = BITS_RE.search(name)
+    if bits_m:
+        bits = int(bits_m.group(1))
+        return _level(bits, variant=variant, param_set=bits_m.group(1) + (variant or ""), source="name", claim=None)
+    if NOMINAL_160_RE.search(name):
+        return _level(128, variant=variant, param_set="160" + (variant or ""), source="spec", claim=NGCC_I_160)
+    return _level(None, variant=variant, param_set="-", source="none", claim=None)
+
+
+def check_links(rows: list[dict], links: dict[str, dict], strict: bool) -> None:
+    missing = sorted({r["ngcc"]["title"] for r in rows if not r["ngcc"].get("url")})
+    if missing:
+        msg = (f"{len(missing)} submission(s) without an official NGCC page link "
+               f"(run tools/fetch_ngcc_links.py): {', '.join(missing)}")
+        if strict and links:
+            raise SystemExit("error: " + msg)
+        print("warning: " + msg, file=sys.stderr)
+
+
+def check_levels(rows: list[dict], strict: bool) -> None:
+    bad = sorted(r["scheme"] for r in rows if r["level"]["bits"] not in LEVELS)
+    if bad:
+        msg = f"{len(bad)} instance(s) without a normalised security level: {', '.join(bad)}"
+        if strict:
+            raise SystemExit("error: " + msg)
+        print("warning: " + msg, file=sys.stderr)
 
 
 # --------------------------------------------------------------------------- assembly
@@ -658,7 +771,7 @@ def finish_row(row: dict, status_text: str | None) -> None:
         row["notes"].append(status_text)
 
 
-def build_not_benchmarked(schemes: dict, manifest: dict, rows: dict, ngcc_root: Path, kat_raw: Path) -> tuple[dict, list[str]]:
+def build_not_benchmarked(schemes: dict, manifest: dict, rows: dict, ngcc_root: Path, kat_raw: Path, links: dict[str, dict]) -> tuple[dict, list[str]]:
     unsupported: list[dict] = []
     footnotes: list[str] = []
     imported = {(r["ngcc"]["folder"], r["ngcc"]["instance"]) for r in rows.values()}
@@ -698,7 +811,7 @@ def build_not_benchmarked(schemes: dict, manifest: dict, rows: dict, ngcc_root: 
                 "reason_scope": scope,
                 "pub_date": scheme.get("pub_date"),
                 "level": security_level(name, inst_rule.get("defines") if isinstance(inst_rule, dict) else None),
-                "ngcc": {"folder": folder, "instance": name, "title": scheme.get("title", folder)},
+                "ngcc": ngcc_ref(scheme, folder, name, links),
                 "category_name": category,
                 "scheme": name,
                 "notes": [],
@@ -724,11 +837,11 @@ def strip_private(row: dict) -> dict:
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--ngcc-root", type=Path, default=ROOT.parent / "NGCC")
+    ap.add_argument("--ngcc-root", type=Path, default=ROOT / "NGCC")
     ap.add_argument("--out", type=Path, default=ROOT / "Out")
     ap.add_argument("--docs", type=Path, default=ROOT / "docs")
     ap.add_argument("--platform", default="nucleo-l4r5zi")
-    ap.add_argument("--strict", action="store_true", help="fail if any implementation has no key sizes")
+    ap.add_argument("--strict", action="store_true", help="fail if any implementation has no key sizes or no normalised security level")
     args = ap.parse_args(argv)
 
     ngcc_root: Path = args.ngcc_root.resolve()
@@ -741,7 +854,8 @@ def main(argv: list[str]) -> int:
 
     schemes = load_schemes_json(ngcc_root)
     manifest = load_manifest()
-    rows = load_rows(schemes)
+    links = load_ngcc_links()
+    rows = load_rows(schemes, links)
     cycles = parse_speed_csv(csv_path, args.platform)
     conditions, status, code_md = parse_md(md_path)
     code_files = code_from_size_files(out_dir / "benchmark_sizes", rows)
@@ -772,7 +886,9 @@ def main(argv: list[str]) -> int:
             row["kat"] = {"status": kat["status"], "detail": kat["detail"], "caveat": caveat}
         finish_row(row, status.get(stem))
 
-    not_bench, footnotes = build_not_benchmarked(schemes, manifest, rows, ngcc_root, kat_raw)
+    not_bench, footnotes = build_not_benchmarked(schemes, manifest, rows, ngcc_root, kat_raw, links)
+    check_levels(list(rows.values()) + not_bench["unsupported"], args.strict)
+    check_links(list(rows.values()) + not_bench["unsupported"], links, args.strict)
 
     # ---- accounting / assertions
     by_status = Counter((r["category"], r["run_status"]) for r in rows.values())

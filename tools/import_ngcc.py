@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Import NGCC reference implementations into the ngccm4 layout.
 
-Reads ../NGCC/schemes.json (the NGCC mirror manifest) together with the curated
+Reads NGCC/schemes.json (the NGCC mirror manifest) together with the curated
 tools/ngcc_manifest.json and copies every supported instance into
 
     crypto_<family>/<instance>/ref/
@@ -21,7 +21,7 @@ as a flat directory that the mk/ build system can discover:
   * NGCC_ORIGIN.txt records provenance, ngcc_tier.txt the expected platform.
 
 Usage:
-    python3 tools/import_ngcc.py [--ngcc-root ../NGCC] [--only NAME ...]
+    python3 tools/import_ngcc.py [--ngcc-root NGCC] [--only NAME ...]
                                  [--family kem|kex|sign] [--list] [--dry-run]
                                  [--force]
 
@@ -476,7 +476,7 @@ def build_jobs(manifest: dict, schemes: list[dict], args) -> tuple[list[Job], li
 
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--ngcc-root", default=None, help="NGCC mirror root (default: ../NGCC next to this repo)")
+    parser.add_argument("--ngcc-root", default=None, help="NGCC mirror root (default: NGCC/ inside this repo)")
     parser.add_argument("--manifest", default=None, help="curated manifest (default: tools/ngcc_manifest.json)")
     parser.add_argument("--only", nargs="*", default=None, help="scheme folders or instance names to import")
     parser.add_argument("--family", choices=("kem", "kex", "sign"), default=None)
@@ -489,7 +489,7 @@ def main(argv: list[str]) -> int:
     args = parser.parse_args(argv)
 
     repo = Path(__file__).resolve().parent.parent
-    ngcc_root = Path(args.ngcc_root).resolve() if args.ngcc_root else (repo.parent / "NGCC")
+    ngcc_root = Path(args.ngcc_root).resolve() if args.ngcc_root else (repo / "NGCC")
     manifest_path = Path(args.manifest) if args.manifest else repo / "tools" / "ngcc_manifest.json"
 
     schemes = load_json(ngcc_root / "schemes.json")["schemes"]

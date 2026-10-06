@@ -323,7 +323,7 @@ Notes:
 ## Importing NGCC Reference Implementations
 
 All NGCC Round-1 public-key candidates can be imported from a local mirror of
-the NGCC submissions (the `../NGCC` project next to this repository, which
+the NGCC submissions (the `NGCC/` directory inside this repository, which
 provides `schemes.json`, `schemes/<folder>/Reference_Implementation/...` and
 `schemes/<folder>/Test_Vectors/KAT_*.txt`):
 
@@ -396,7 +396,8 @@ The board results are published as a static site at
 <https://junhaohuang.github.io/ngccm4/> (GitHub Pages, served from `docs/`).
 It shows the three categories (KEM, key exchange, signatures) on separate tabs
 with every column sortable (cycles per operation, code size, stack usage, key
-sizes with proportional bars, KAT status, security level), a report of every
+sizes with proportional bars, KAT status, security level normalised to
+128/192/256/384/512 bits, a link to the submission on the NGCC site), a report of every
 scheme without a complete board benchmark and why, and the measurement
 conditions.
 
@@ -406,14 +407,18 @@ generated from the gitignored `Out/` directory and the NGCC mirror:
 ```bash
 python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed   # Out/benchmark_speed_nucleo-l4r5zi.{csv,md}
 python3 kat_check.py --md Out/kat_summary.md                        # Out/kat_summary.md, Out/kat_raw/
-python3 tools/make_site_data.py --ngcc-root ../NGCC                 # docs/data/benchmark.json, docs/data/data.js
+python3 tools/fetch_ngcc_links.py                                  # tools/ngcc_links.json (only when the NGCC list changes)
+python3 tools/make_site_data.py --ngcc-root NGCC                 # docs/data/benchmark.json, docs/data/data.js
 git add docs && git commit -m "site: regenerate benchmark data"
 ```
 
 The generator reads the speed CSV and Markdown report (including the
 hand-written target status table and code-size tables), `Out/benchmark_sizes/`,
 the stack logs in `Out/benchmark_raw/`, `Out/kat_summary.md`, `Out/kat_raw/`,
-`tools/ngcc_manifest.json` and `../NGCC/{schemes.json,schemes/*/Test_Vectors,results}`.
+`tools/ngcc_manifest.json`, `tools/ngcc_links.json` (the official NGCC web
+page, zip and public-comment thread of every submission, scraped from the
+NGCC candidate list by `tools/fetch_ngcc_links.py` and linked from every row)
+and `NGCC/{schemes.json,schemes/*/Test_Vectors,results}`.
 Key sizes are taken from the benchmarked binary's testvectors dump when one
 exists, then from the NGCC host results, then from the official KAT file. The
 generator exits non-zero when an implementation cannot be mapped to an NGCC

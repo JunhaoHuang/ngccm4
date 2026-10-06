@@ -1,0 +1,506 @@
+{
+ "ADKEX (Authenticated Ding Key Exchange)": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/P4IG2W7BMLGEJGJGAYY73XAEE32GLCAJ/",
+  "pub_date": "2026-09-20 10:18"
+ },
+ "AFS-KEX": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625362194432.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/AFS-KEX.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/ASJ42PGKD4VB5HP3LPBE22CN2FKALES7/",
+  "pub_date": "2026-09-20 10:17"
+ },
+ "Aigis-Enc+": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560842975268864.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Enc%2B.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/HDMMQKVT6UFDKT56DVYCAUBTQ5GWSIFJ/",
+  "pub_date": "2026-09-20 11:42"
+ },
+ "Aigis-Sig+": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101567126852161536.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Sig%2B.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/HBX64SLYWTSSMTL3LYHBO3BD77ENY7VO/",
+  "pub_date": "2026-09-20 14:25"
+ },
+ "Amoeba": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843117875200.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Amoeba.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/OXTBKIPREWPX4YRV4BLRMLWND4R4DLTO/",
+  "pub_date": "2026-09-20 11:41"
+ },
+ "BAG-Loong": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843247898624.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Loong.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/RIQCA4YWQIPGGI2BOXRMFEYCCHTY3NQY/",
+  "pub_date": "2026-09-20 11:40"
+ },
+ "BAG-Piglet": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843373727744.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Piglet.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/QUDRCTIJQVCLQNOYCZKNQYUMZO7PPPF6/",
+  "pub_date": "2026-09-20 11:29"
+ },
+ "BIKE-MLThre": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843495362560.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BIKE_MLThre.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VMTRVK2D2DWBOKLWZHLFNQWRZB7USMUQ/",
+  "pub_date": "2026-09-20 11:28"
+ },
+ "BIT: Bimodal Triangular distribution based lattice signatures": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076358926336.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BiT.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/U7FSJZ6KONWY36MQDOVDDB7IHHORNAJY/",
+  "pub_date": "2026-09-20 14:24"
+ },
+ "BRA": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843625385984.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRA.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MDYQUVS5YFRUAGZJAZIJFIUTX7THNM6O/",
+  "pub_date": "2026-09-20 11:27"
+ },
+ "BRQC": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843751215104.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRQC.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/LA7GLQRH3VS64ISSPP6BPZ6QR75PAOVA/",
+  "pub_date": "2026-09-20 11:26"
+ },
+ "BW-KEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843877044224.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/WBK2RG2XR5VZVITNS53TVFJDBGER7T7P/",
+  "pub_date": "2026-09-20 11:25"
+ },
+ "C-Multi-UR-AG": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844149673984.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/C-Multi-UR-AG.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/CDFH64HLL4OC7ABIDEASAHDTDQI4O3RU/",
+  "pub_date": "2026-09-20 11:23"
+ },
+ "CEDRUS+C": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UFWXT6DHJ56SDI6DD3NJ6JK2PFIXCMXD/",
+  "pub_date": "2026-09-20 14:23"
+ },
+ "CEDRUSɑ": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/QTJJOIBU56LBGJ2JRXKKH5OX3ZIW3OQJ/",
+  "pub_date": "2026-09-20 14:22"
+ },
+ "COMPASS-KEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844283891712.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-KEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3ZXFAPIPIO3CVJHCQJ5AQ44UNTBIY4OP/",
+  "pub_date": "2026-09-20 11:22"
+ },
+ "COMPASS-SIG": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076912574464.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-SIG.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/FACKHS3U2WG66C763VRSC44CEH7NIYHY/",
+  "pub_date": "2026-09-20 14:20"
+ },
+ "CS": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077046792192.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CS.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/6Y7RS3WZHP5HOVGHOSW64T4DZNPSAXDS/",
+  "pub_date": "2026-09-20 14:19"
+ },
+ "CTL Algorithm": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844426498048.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CTL.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/XYXBZWLCJXTUZTNUFJCPYLEST5CC56AI/",
+  "pub_date": "2026-09-20 11:21"
+ },
+ "CheetahKEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844002873344.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CheetahKEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3OMMI24JGKESHSRUVA5NJANKRHTQY7RM/",
+  "pub_date": "2026-09-20 11:24"
+ },
+ "Chinith": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
+  "pub_date": "2026-09-20 14:21"
+ },
+ "CreTAKE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+  "pub_date": "2026-09-20 10:15"
+ },
+ "DARTS": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077176815616.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DARTS.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/ZTVJHAUOCD3ZU4J72AMG3EDEZUDRR52Q/",
+  "pub_date": "2026-09-20 14:18"
+ },
+ "DKEM (Ding Key Encapsulation)": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/RW5BIIFSPEM2HFHQ4N226TMBIRZ7TXF5/",
+  "pub_date": "2026-09-20 11:20"
+ },
+ "DKEX (Ding Key Exchange)": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/KC65HII7OYTVC6FOA5CNNGEQFDCLFZEW/",
+  "pub_date": "2026-09-20 09:43"
+ },
+ "DOVE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077311033344.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DOVE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/PK36WEI2O5J6TBSBL5MRRDYPATRYYPIT/",
+  "pub_date": "2026-09-20 14:17"
+ },
+ "DTRU": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+  "pub_date": "2026-09-20 11:19"
+ },
+ "FLIT": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844812374016.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/FLIT.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/H6SZDCUAWCTVQD7QOP7XDVHAHGWXHKHZ/",
+  "pub_date": "2026-09-20 11:18"
+ },
+ "Facto-DSA": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077457833984.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Facto-DSA.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/X63HQQDTUFPQQGA4DJAHSAISTNYZUVC6/",
+  "pub_date": "2026-09-20 14:16"
+ },
+ "FlexTree": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/5DSK4DF2SIKI6RNI6NC5RYXOJG73DMAJ/",
+  "pub_date": "2026-09-20 14:16"
+ },
+ "Galas Signature Scheme": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
+  "pub_date": "2026-09-20 14:14"
+ },
+ "GreatWall Signature Algorithm": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/5IGQ6ZDNGTS7TSTFXE3PFVHHJL7BM2LJ/",
+  "pub_date": "2026-09-20 14:14"
+ },
+ "HARE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844942397440.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HARE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/2Q2SLLCRMEJ2FOLOTDPGM7IUUZKUPUKF/",
+  "pub_date": "2026-09-20 11:17"
+ },
+ "Hybrid Equivalent Punctured and Quasi-Cyclic": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853532332032.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HEP-QC.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/2FLYI6DJUQ3YKJZXVGFFN4IQNPKXSHWU/",
+  "pub_date": "2026-09-20 11:16"
+ },
+ "Loom": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625773236224.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Loom.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/QD663UPHHV3JOP7IEQUTEESR4LCALIDJ/",
+  "pub_date": "2026-09-20 09:42"
+ },
+ "LoongKEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853666549760.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/LoongKEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/G7IDTLL5NJ46PSNDO6ZVKFN5L4LPRS7N/",
+  "pub_date": "2026-09-20 11:15"
+ },
+ "Lore": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/37LSSFEFLBIAAXOMJXYRFAAYG5DRNK4X/",
+  "pub_date": "2026-09-20 11:14"
+ },
+ "Lynxer": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A3VK2RZD6XCJB5YBKZN2OSDSYMSVFUL6/",
+  "pub_date": "2026-09-20 14:13"
+ },
+ "MAMBA-Frost": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/DZASROHH4W6G64UKMRCCQJGQEUHQO4TC/",
+  "pub_date": "2026-09-20 11:13"
+ },
+ "MAMBA-NIKE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625907453952.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/75NMUIOPYDJXY5WRYIBQ6FET6Z57UMPG/",
+  "pub_date": "2026-09-20 09:41"
+ },
+ "MAMBA-Viper": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560854052425728.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Viper.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/GVM4FAYEOQ7SAF5BDM6SKPLOTA547A5X/",
+  "pub_date": "2026-09-20 10:50"
+ },
+ "MORNING-ATLAS": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078120534016.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-ATLAS.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/WOOBB3WCRHGVXKSTYQBTVMTW6HKPMX2U/",
+  "pub_date": "2026-09-20 14:12"
+ },
+ "MORNING-Scabbard": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862906601472.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-Scabbard.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/4KFYAFY5ZWKVT2D47LSNZP2LKIHBGPV7/",
+  "pub_date": "2026-09-20 10:46"
+ },
+ "Mithril": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862650748928.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mithril.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/Z26K5NHQNMT4NHBNWZT7G6IZVVRCCZKO/",
+  "pub_date": "2026-09-20 10:48"
+ },
+ "Mito": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/NPRY7XDT2ABEJK5GBZS53L4FW7VDZYMZ/",
+  "pub_date": "2026-09-20 10:47"
+ },
+ "NEV": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7ZYN5QNIORSGBY3FNOE3DNCO43KZRVJA/",
+  "pub_date": "2026-09-20 10:45"
+ },
+ "NEV-AKE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VIYUCIMGK6I63JRWXBAM6FJ7U2XLGB5V/",
+  "pub_date": "2026-09-20 09:40"
+ },
+ "NIIKE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626184278016.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NIIKE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/6WRSHMUQOXTR62HBG3HEUHZEIYAIROLO/",
+  "pub_date": "2026-09-20 09:39"
+ },
+ "NSS-HQC": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863191814144.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NSS-HQC.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/P63ZUXHRI7QQZJ3YC6QXJYUXNGF5MMCO/",
+  "pub_date": "2026-09-20 10:43"
+ },
+ "NTRE Key Encapsulation Mechanism": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863326031872.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NTRE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/XPRXBWG46LFNJ4SUOZOGZM44VNIUPO34/",
+  "pub_date": "2026-09-20 10:42"
+ },
+ "OAEP-NTRU": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560871911772160.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OAEP-NTRU.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/LOTU4OB6M7NAVL5OSUGTQO3L35IVP4R2/",
+  "pub_date": "2026-09-20 10:41"
+ },
+ "OPS Digital Signature Algorithm": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086848880640.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OPS%20Digital%20Signature%20Algorithm.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/PPO3KFSJJPUVKQEVPCPOP3A3IL2DRHOQ/",
+  "pub_date": "2026-09-20 14:10"
+ },
+ "Octarine": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078258946048.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Octarine.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/J32MD6K6AUGKHVUOZX6M4OJHWNPNCLWQ/",
+  "pub_date": "2026-09-20 14:11"
+ },
+ "Origami": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086978904064.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Origami.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7Z47WGTALXYFJS5YRRGDL65NJUG3CU56/",
+  "pub_date": "2026-09-20 14:09"
+ },
+ "Phoenix": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/M3XAI6VRCGWEXYF5YOYXWH25JFDYAWVZ/",
+  "pub_date": "2026-09-20 14:08"
+ },
+ "Polar-KEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872041795584.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Polar-KEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/SUWKT64BKLBIPDQMHPOBL3FDM4MRPVBJ/",
+  "pub_date": "2026-09-20 10:38"
+ },
+ "PolarLAC": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872180207616.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
+  "pub_date": "2026-09-20 10:35"
+ },
+ "QIMEN-PIKE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872306036736.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QIMEN-PIKE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/IRFTQQNWEALFDR27ZBMONU4M2KTRWQRS/",
+  "pub_date": "2026-09-20 10:34"
+ },
+ "QUBE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881000828928.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QUBE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/LVEV7LW46WHONQL6REREK4ZA7TWZT3RK/",
+  "pub_date": "2026-09-20 10:33"
+ },
+ "Qing Luan": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087243145216.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QingLuan.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UAEOBUIJPNMH5ZQ4OCYNAGCGAOYZGEAP/",
+  "pub_date": "2026-09-20 14:08"
+ },
+ "Quasi-Cyclic Twisted McEliece Key Encapsulation Mechanism": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872431865856.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QCTM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/BKERBYXMUT27H3ZUTLBHCM7YJB5KVGZI/",
+  "pub_date": "2026-09-20 10:33"
+ },
+ "ReSolveD-ɑ": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/HRQJE3Z4ZZYQD6SSCLYV45QWSGLIX4YR/",
+  "pub_date": "2026-09-20 14:07"
+ },
+ "Rhyme": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/AJJF7BH7DV3KC4Q43KDVGU2XIPXRJ7KH/",
+  "pub_date": "2026-09-20 14:06"
+ },
+ "Rudraksh2": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881139240960.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A35C2JZDLERYJNKGAUECZ73T5Y64LCPT/",
+  "pub_date": "2026-09-20 10:32"
+ },
+ "SQIsign2D-push1/2": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096483196928.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D-push12.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/55H26TSNYGPQZRBE3NGNQVIDCPCUPI6Q/",
+  "pub_date": "2026-09-20 14:03"
+ },
+ "SQIsign2D2": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/PXELFI4WKOOCWZAZGVWEN4TJWJUTMRU4/",
+  "pub_date": "2026-09-20 14:04"
+ },
+ "SQIsignTriangle": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096613220352.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsignTriangle.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/463HDEM6EQ3FHMKNIT7LOT5T7CW7J7SJ/",
+  "pub_date": "2026-09-20 14:02"
+ },
+ "SYDO": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F43FXLI3CJE33FWEIS6NUFNDL4VVJUUL/",
+  "pub_date": "2026-09-20 14:01"
+ },
+ "Scloud+": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/KZFYINTQPUTXVATTIXUONZ63TGNGQQ55/",
+  "pub_date": "2026-09-20 10:31"
+ },
+ "Shuttle": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096101515264.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/shuttle.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/AOAU5JIQQTIQYH7LGFPMDI4EQAVDJM2C/",
+  "pub_date": "2026-09-20 14:05"
+ },
+ "Sigurd": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096235732992.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Sigurd.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A5LWDR4WYSLBQA55PEDVM5GTWL4SWJFH/",
+  "pub_date": "2026-09-20 14:05"
+ },
+ "TRIKE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881424453632.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRIKE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MFS7WQ3ZYDSMM4PIFN32QGZQ26BB4TGX/",
+  "pub_date": "2026-09-20 10:30"
+ },
+ "TRINE": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/PHFOUHYOCTA42ALMCBKHF5JLD2HQGVXV/",
+  "pub_date": "2026-09-20 14:00"
+ },
+ "TSUOV": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105597419520.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TSUOV.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/BP4QW5XTWWAJOCTHWK64Z6L3LTCXEWIA/",
+  "pub_date": "2026-09-20 13:59"
+ },
+ "Tins": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101868758013939712.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Tins.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3LQUXPLSYUUHSKU4QWDFI6C3O4H3GXKF/",
+  "pub_date": "2026-09-20 14:01"
+ },
+ "TriQ-KEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881558671360.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/BKY3EZYVJHKKT2RJKK2IRE2X5V4UN4HO/",
+  "pub_date": "2026-09-20 10:29"
+ },
+ "TriQ-KEX": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626335272960.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEX.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/Y7MZTLMKIGHUVZCNIUAJQA33K4KU427Q/",
+  "pub_date": "2026-09-20 09:39"
+ },
+ "UVW Key Encapsulation Mechanism": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881697083392.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW-KEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/2N7FVNDINZAC7ZES4OC5GGHIGPQVPCWL/",
+  "pub_date": "2026-09-20 10:28"
+ },
+ "UVW signature": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105735831552.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW%20signature.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/KYXKYDE5L3DXFKASFNILENQKW4V73JXN/",
+  "pub_date": "2026-09-20 13:58"
+ },
+ "VDOO: Vinegar-Diagonal-Oil-Oil": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114325766144.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/VDOO.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/X2VGTA5L2EJJASOPF5TYJI2GAXDIO677/",
+  "pub_date": "2026-09-20 13:54"
+ },
+ "Weaver": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890312183808.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Weaver.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/OMIKZ7ZL4FLNNUIVD7CK7D4CGYJ5L3AD/",
+  "pub_date": "2026-09-20 10:28"
+ },
+ "YuanYang.DSA": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114459983872.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.DSA.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F2PXVI3WBEN5VAK7XPPPHV6MXXALAKFG/",
+  "pub_date": "2026-09-20 13:43"
+ },
+ "YuanYang.KEM": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890442207232.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.KEM.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/JL5OIS2NICCPYKQGQWMHLTWTGEDK2OCW/",
+  "pub_date": "2026-09-20 10:27"
+ },
+ "ZEN": {
+  "page": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
+  "zip": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip",
+  "comments": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/36OAZIFVEG3DLVR3ZU3TWYDA6KXOKN3T/",
+  "pub_date": "2026-09-20 10:25"
+ }
+}

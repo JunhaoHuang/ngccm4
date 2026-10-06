@@ -6,3 +6,4 @@ Out/
 auto_run.sh
 __pycache__/
 *.pyc
+NGCC/
