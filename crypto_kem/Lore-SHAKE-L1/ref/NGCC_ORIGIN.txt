@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Lore
+ngcc_title=Lore
+ngcc_instance=Lore-SHAKE__Lore-L1
+ngcc_instance_dir=Reference_Implementation/Lore-SHAKE/Lore-L1
+ngcc_zip_sha256=e33130fb45a3b1e220f8043739d1396a884c0043cb4336104e67e5404c7cc725
+ngcc_category=KEM
+tier=board
+kat_file=
+copy_dirs=schemes/Lore/Reference_Implementation/Lore-SHAKE/Lore-L1
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

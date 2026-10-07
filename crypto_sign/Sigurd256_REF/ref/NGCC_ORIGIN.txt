@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Sigurd
+ngcc_title=Sigurd
+ngcc_instance=Sigurd256_REF
+ngcc_instance_dir=Reference_Implementation/Sigurd-256
+ngcc_zip_sha256=443ab14257658d89a60e14ad0d4b7f4df9fcdd06da4f42fcb29bbbfc75a97153
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_Sigurd256_REF.txt
+copy_dirs=schemes/Sigurd/Reference_Implementation/Sigurd-256
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

@@ -1,20 +1,24 @@
 {
- "_comment": "Curated import manifest for tools/import_ngcc.py, keyed by the NGCC scheme folder. status: supported (default) | unsupported | skip. tier: board (fits nucleo-l4r5zi) | qemu (mps2-an386 only). copy_dirs are relative to the instance dir ('@path' = relative to schemes/<folder>/). defines -> ngcc_config.h; cflags -> IMPL_CFLAGS_<impl>; exclude_common -> IMPL_EXCLUDE_COMMON_<impl>; sed = [glob, regex, replacement]; patches = repo-relative unified diffs applied with patch -p1 in the impl dir.",
+ "_comment": "Curated import manifest for tools/import_ngcc.py, keyed by the NGCC scheme folder. status: supported (default) | unsupported | skip. tier: board (fits nucleo-l4r5zi) | qemu (mps2-an386 only). copy_dirs are relative to the instance dir ('@path' = relative to schemes/<folder>/). defines -> ngcc_config.h; cflags -> IMPL_CFLAGS_<impl>; exclude_common -> IMPL_EXCLUDE_COMMON_<impl>; sed = [glob, regex, replacement]; patches = repo-relative unified diffs applied with patch -p1 in the impl dir. m4 = submitter-provided Cortex-M4 implementation: {zip_dir: sub-directory of the submission zip (unpacked by tools/extract_ngcc_m4.py into schemes/<folder>/M4_Implementation/), zip_exclude: dir names not to unpack, instances: {<instance>: {dir: path below zip_dir, ...any import rule}}, plus any import rule applying to every m4 instance}; the m4 job inherits the scheme-level rules (except copy_dirs/instances) and the reference instance's defines, and lands in crypto_<fam>/<instance>/m4/. An m4 block with status skip/unsupported documents a submission whose ARM tree is not imported.",
  "ZEN": {
   "status": "skip",
-  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKEM-*, crypto_kex/DKEX-*, ADKEX-*)",
+  "m4_note": "the official zip ships a Cortex-M4 port (Implementations/Additional_Implementation/Cortex-M4 or Optimized_Implementation/ARM CortexM-4); the repo's <scheme>/m4 directories derive from it and carry later local optimisations, so they are not overwritten by the importer"
  },
  "DKEM": {
   "status": "skip",
-  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKEM-*, crypto_kex/DKEX-*, ADKEX-*)",
+  "m4_note": "the official zip ships a Cortex-M4 port (Implementations/Additional_Implementation/Cortex-M4 or Optimized_Implementation/ARM CortexM-4); the repo's <scheme>/m4 directories derive from it and carry later local optimisations, so they are not overwritten by the importer"
  },
  "DKEX": {
   "status": "skip",
-  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKEM-*, crypto_kex/DKEX-*, ADKEX-*)",
+  "m4_note": "the official zip ships a Cortex-M4 port (Implementations/Additional_Implementation/Cortex-M4 or Optimized_Implementation/ARM CortexM-4); the repo's <scheme>/m4 directories derive from it and carry later local optimisations, so they are not overwritten by the importer"
  },
  "ADKEX": {
   "status": "skip",
-  "reason": "already ported by hand (crypto_kem/ZEN-*, DKE-*, crypto_kex/DKEX-*, ADKEX-*)"
+  "reason": "already ported by hand (crypto_kem/ZEN-*, DKEM-*, crypto_kex/DKEX-*, ADKEX-*)",
+  "m4_note": "the official zip ships a Cortex-M4 port (Implementations/Additional_Implementation/Cortex-M4 or Optimized_Implementation/ARM CortexM-4); the repo's <scheme>/m4 directories derive from it and carry later local optimisations, so they are not overwritten by the importer"
  },
  "CTL": {
   "status": "unsupported",
@@ -65,8 +69,29 @@
   "reason": "1.8-14.7 MB precomputed tables; #error without __int128"
  },
  "PolarLAC": {
-  "status": "unsupported",
-  "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)"
+  "tier": "board",
+  "_note": "Implementations/Reference_Implementation/x86 is portable C (SM3 route, BIT_USE_SHAKE=0); the mirror held the AVX2 Optimized_Implementation/x86 tree until 2026-10-06 (wrong fetch override), which is why this entry used to be 'unsupported'. Official KATs: Test_Vectors/Reference_Implementation/x86 (identical to Optimized/ARM; the Optimized/x86 KATs differ).",
+  "instances": {
+   "POLARLAC-Light": {
+    "kat": "Reference_Implementation/x86/KAT_KEM_POLARLAC-Light.txt"
+   },
+   "POLARLAC-128": {
+    "kat": "Reference_Implementation/x86/KAT_KEM_POLARLAC-128.txt"
+   },
+   "POLARLAC-256": {
+    "kat": "Reference_Implementation/x86/KAT_KEM_POLARLAC-256.txt"
+   },
+   "POLARLAC-512": {
+    "kat": "Reference_Implementation/x86/KAT_KEM_POLARLAC-512.txt"
+   },
+   "POLARLAC-512-Star": {
+    "kat": "Reference_Implementation/x86/KAT_KEM_POLARLAC-512-Star.txt"
+   }
+  },
+  "m4": {
+   "status": "skip",
+   "reason": "Implementations/Optimized_Implementation/ARM is an AArch64 NEON/SVE port (arm_neon.h, vld1q, SVE sampler/FFT helpers), not Cortex-M4 code"
+  }
  },
  "shuttle": {
   "status": "unsupported",
@@ -78,7 +103,12 @@
  },
  "Loom": {
   "status": "unsupported",
-  "reason": "kem/ and sig/ trees collide on poly.c/polyvec.c/reduce.c symbols; __int128"
+  "reason": "LOOM-AKE is a protocol over Weaver KEM and SHUTTLE signatures (same shape as CreTAKE: per instance kem/, sig/ and a loom/ protocol layer), but it cannot link the implementations in this tree: (1) SHUTTLE is not imported (its Gaussian sampler, irs.c/approx_*.h/sampler_u.c, uses GNU __int128 fixed-point kernels on ~70 lines, unavailable on 32-bit ARM), and Loom's long-term keys and all four passes use SHUTTLE (PKa/PKb are SHUTTLE public keys, 1264 B); (2) Loom's kem/ is a modified Weaver, not the submitted one: crypto_kem_dec is replaced by crypto_kem_dec_rigid with a ciphertext tag (kem_cpaf.c), and cbd.c/msgenc.c differ by hundreds of lines with extra invq tables, so crypto_kem/WeaverKEM-*/ref is not a drop-in dependency. Importable once SHUTTLE has a 32-bit port, with Loom's own kem/ copied as a private dependency.",
+  "_note": "KAT: Test_Vectors/KAT_KEX_LoomKEX-{128,256,512}.txt; 4 passes, M1 792 B, M2 776 B, M3/M4 1235 B, state 2657 B at level 128.",
+  "m4": {
+   "status": "skip",
+   "reason": "no Cortex-M4 code in the package"
+  }
  },
  "BRA": {
   "status": "unsupported",
@@ -117,8 +147,280 @@
   "reason": "Frodo-like matrices: 7.4 MB stack frame (x86 -O3 build)"
  },
  "CreTAKE": {
-  "status": "unsupported",
-  "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)"
+  "tier": "board",
+  "_note": "Protocol-only import: each instance directory holds the CreTAKE protocol layer (KEX_AlgorithmInstance.c, cretake_params.h, primitive_interfaces.h, secure_bzero.c). The KEM/signature backends under Common/primitives are copies of the PolarLAC, ZEN and BiT submissions (K2K first public keys equal the standalone KATs), so the instances link the implementations already in this tree through IMPL_DEPS (see mk/scheme.mk): primitive_interfaces.h's ../../Common/primitives/... includes are rewritten to ../../../crypto_{kem,sign}/<scheme>/ref/. Instances with BiT-256/512 backends are QEMU tier because those BiT sets fault on the board. The 10 component instances in schemes.json (BiT-*, POLARLAC-*, ZEN_*) are benchmarked under their own submissions.",
+  "sed": [
+   [
+    "primitive_interfaces.h",
+    "\\.\\./\\.\\./Common/primitives/kem/(POLARLAC-[A-Za-z0-9-]+)/",
+    "../../../crypto_kem/\\1/ref/"
+   ],
+   [
+    "primitive_interfaces.h",
+    "\\.\\./\\.\\./Common/primitives/kem/ZEN_([0-9]+)/",
+    "../../../crypto_kem/ZEN-\\1/ref/"
+   ],
+   [
+    "primitive_interfaces.h",
+    "\\.\\./\\.\\./Common/primitives/sig/(BiT-[0-9]+)/",
+    "../../../crypto_sign/\\1/ref/"
+   ]
+  ],
+  "instances": {
+   "CreTAKE-K2K-PLAC128": {
+    "deps": [
+     "crypto_kem/POLARLAC-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC128.txt",
+    "tier": "board",
+    "dep_keep": [
+     "kem_*",
+     "PKE_*",
+     "Encode_m",
+     "Decode_m",
+     "mq_poly_*",
+     "pack_c2_dbit",
+     "unpack_c2_dbit",
+     "poly_compress_c2",
+     "poly_decompress_c2",
+     "polyvec_decompress",
+     "polyvec_byte_decompress"
+    ],
+    "_note": "the K2K-PLAC twopke.c/twokem.c (two-ciphertext KEM) call PolarLAC internals, which must stay exported from the dependency object"
+   },
+   "CreTAKE-K2K-ZEN128": {
+    "deps": [
+     "crypto_kem/ZEN-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-K2S-PLAC128-BiT128": {
+    "deps": [
+     "crypto_kem/POLARLAC-128/ref",
+     "crypto_sign/BiT-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC128-BiT128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-K2S-ZEN128-BiT128": {
+    "deps": [
+     "crypto_kem/ZEN-128/ref",
+     "crypto_sign/BiT-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN128-BiT128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-S2K-BiT128-PLAC128": {
+    "deps": [
+     "crypto_kem/POLARLAC-128/ref",
+     "crypto_sign/BiT-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT128-PLAC128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-S2K-BiT128-ZEN128": {
+    "deps": [
+     "crypto_kem/ZEN-128/ref",
+     "crypto_sign/BiT-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT128-ZEN128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-S2S-BiT128-ePLAC128": {
+    "deps": [
+     "crypto_kem/POLARLAC-128/ref",
+     "crypto_sign/BiT-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT128-ePLAC128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-S2S-BiT128-eZEN128": {
+    "deps": [
+     "crypto_kem/ZEN-128/ref",
+     "crypto_sign/BiT-128/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT128-eZEN128.txt",
+    "tier": "board"
+   },
+   "CreTAKE-K2K-PLAC256": {
+    "deps": [
+     "crypto_kem/POLARLAC-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC256.txt",
+    "tier": "board",
+    "dep_keep": [
+     "kem_*",
+     "PKE_*",
+     "Encode_m",
+     "Decode_m",
+     "mq_poly_*",
+     "pack_c2_dbit",
+     "unpack_c2_dbit",
+     "poly_compress_c2",
+     "poly_decompress_c2",
+     "polyvec_decompress",
+     "polyvec_byte_decompress"
+    ],
+    "_note": "the K2K-PLAC twopke.c/twokem.c (two-ciphertext KEM) call PolarLAC internals, which must stay exported from the dependency object"
+   },
+   "CreTAKE-K2K-ZEN256": {
+    "deps": [
+     "crypto_kem/ZEN-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN256.txt",
+    "tier": "board"
+   },
+   "CreTAKE-K2S-PLAC256-BiT256": {
+    "deps": [
+     "crypto_kem/POLARLAC-256/ref",
+     "crypto_sign/BiT-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC256-BiT256.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-K2S-ZEN256-BiT256": {
+    "deps": [
+     "crypto_kem/ZEN-256/ref",
+     "crypto_sign/BiT-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN256-BiT256.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2K-BiT256-PLAC256": {
+    "deps": [
+     "crypto_kem/POLARLAC-256/ref",
+     "crypto_sign/BiT-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT256-PLAC256.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2K-BiT256-ZEN256": {
+    "deps": [
+     "crypto_kem/ZEN-256/ref",
+     "crypto_sign/BiT-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT256-ZEN256.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2S-BiT256-ePLAC256": {
+    "deps": [
+     "crypto_kem/POLARLAC-256/ref",
+     "crypto_sign/BiT-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT256-ePLAC256.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2S-BiT256-eZEN256": {
+    "deps": [
+     "crypto_kem/ZEN-256/ref",
+     "crypto_sign/BiT-256/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT256-eZEN256.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-K2K-PLAC512": {
+    "deps": [
+     "crypto_kem/POLARLAC-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512.txt",
+    "tier": "board",
+    "dep_keep": [
+     "kem_*",
+     "PKE_*",
+     "Encode_m",
+     "Decode_m",
+     "mq_poly_*",
+     "pack_c2_dbit",
+     "unpack_c2_dbit",
+     "poly_compress_c2",
+     "poly_decompress_c2",
+     "polyvec_decompress",
+     "polyvec_byte_decompress"
+    ],
+    "_note": "the K2K-PLAC twopke.c/twokem.c (two-ciphertext KEM) call PolarLAC internals, which must stay exported from the dependency object"
+   },
+   "CreTAKE-K2K-PLAC512Star": {
+    "deps": [
+     "crypto_kem/POLARLAC-512-Star/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512Star.txt",
+    "tier": "board",
+    "dep_keep": [
+     "kem_*",
+     "PKE_*",
+     "Encode_m",
+     "Decode_m",
+     "mq_poly_*",
+     "pack_c2_dbit",
+     "unpack_c2_dbit",
+     "poly_compress_c2",
+     "poly_decompress_c2",
+     "polyvec_decompress",
+     "polyvec_byte_decompress"
+    ],
+    "_note": "the K2K-PLAC twopke.c/twokem.c (two-ciphertext KEM) call PolarLAC internals, which must stay exported from the dependency object"
+   },
+   "CreTAKE-K2K-ZEN512": {
+    "deps": [
+     "crypto_kem/ZEN-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN512.txt",
+    "tier": "board"
+   },
+   "CreTAKE-K2S-PLAC512-BiT512": {
+    "deps": [
+     "crypto_kem/POLARLAC-512/ref",
+     "crypto_sign/BiT-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC512-BiT512.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-K2S-ZEN512-BiT512": {
+    "deps": [
+     "crypto_kem/ZEN-512/ref",
+     "crypto_sign/BiT-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN512-BiT512.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2K-BiT512-PLAC512": {
+    "deps": [
+     "crypto_kem/POLARLAC-512/ref",
+     "crypto_sign/BiT-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT512-PLAC512.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2K-BiT512-ZEN512": {
+    "deps": [
+     "crypto_kem/ZEN-512/ref",
+     "crypto_sign/BiT-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT512-ZEN512.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2S-BiT512-ePLAC512": {
+    "deps": [
+     "crypto_kem/POLARLAC-512/ref",
+     "crypto_sign/BiT-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT512-ePLAC512.txt",
+    "tier": "qemu"
+   },
+   "CreTAKE-S2S-BiT512-eZEN512": {
+    "deps": [
+     "crypto_kem/ZEN-512/ref",
+     "crypto_sign/BiT-512/ref"
+    ],
+    "kat": "Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT512-eZEN512.txt",
+    "tier": "qemu"
+   }
+  },
+  "m4": {
+   "status": "skip",
+   "reason": "no Cortex-M4 code in the package (Optimized_Implementation is AVX2); an m4 variant could later reuse crypto_kem/ZEN-*/m4 through deps"
+  }
  },
  "Aigis-Encplus": {
   "tier": "board",
@@ -237,6 +539,29 @@
      "BWKEM_C512_USE_ICCS_AUXFUNC": ""
     }
    }
+  },
+  "m4": {
+   "zip_dir": "Implementations/Additional_Implementation/ARM-performance-optimized",
+   "zip_exclude": [
+    "libopencm3",
+    "mupq",
+    "common",
+    "ldscripts",
+    "mk"
+   ],
+   "note": "pqm4-layout tree; m4fspeed is the only variant shipped per instance (ref/ and m4fstack/ are empty), with its own ICCS glue and SM3 M4 kernels; ntt.c initialises int32_t twiddle tables with 32-bit unsigned bit patterns (intended two's-complement wrap), -Wno-overflow silences the resulting warnings",
+   "instances": {
+    "BW_KEM_C128": {
+     "dir": "crypto_kem/bw-kem-128/m4fspeed"
+    },
+    "BW_KEM_C256": {
+     "dir": "crypto_kem/bw-kem-256/m4fspeed"
+    },
+    "BW_KEM_C512": {
+     "dir": "crypto_kem/bw-kem-512/m4fspeed"
+    }
+   },
+   "cflags": "-Wno-overflow"
   }
  },
  "CheetahKEM": {
@@ -269,7 +594,41 @@
  },
  "DTRU": {
   "tier": "board",
-  "_note": "official KATs are generated without PK_PACK_OPT (the Makefile's KAT_KEM target)"
+  "_note": "official KATs are generated without PK_PACK_OPT (the Makefile's KAT_KEM target)",
+  "m4": {
+   "zip_dir": "Implementations and Test_Vectors/Implementations/Additional_Implementation/KEM-DTRU-ARM-Optimized",
+   "zip_exclude": [
+    "common",
+    "mk",
+    "ldscripts",
+    "libopencm3",
+    "mupq"
+   ],
+   "note": "pqm4-layout tree (KEM-DTRU-ARM-Optimized); m4fspeed per instance with Cortex-M4 NTT/basemul assembly and its own ICCS glue; its Test_Vectors/*_SPEED.txt equal the official KAT files (PK_PACK_OPT=0, as for ref)",
+   "instances": {
+    "DTRU-648": {
+     "dir": "crypto_kem/dtru-648/m4fspeed"
+    },
+    "DTRU-768": {
+     "dir": "crypto_kem/dtru-768/m4fspeed"
+    },
+    "DTRU-1024": {
+     "dir": "crypto_kem/dtru-1024/m4fspeed"
+    },
+    "DTRU-1536": {
+     "dir": "crypto_kem/dtru-1536/m4fspeed"
+    },
+    "DTRU-2048": {
+     "dir": "crypto_kem/dtru-2048/m4fspeed"
+    },
+    "DTRU-Light": {
+     "dir": "crypto_kem/dtru-light/m4fspeed"
+    },
+    "DTRU-Prime": {
+     "dir": "crypto_kem/dtru-prime/m4fspeed"
+    }
+   }
+  }
  },
  "FLIT": {
   "tier": "board",
@@ -444,6 +803,37 @@
     "status": "unsupported",
     "reason": "static data exceeds the 4 MB QEMU RAM"
    }
+  },
+  "m4": {
+   "zip_dir": "Implementations/Additional_Implementations/Cortex_M4",
+   "zip_exclude": [],
+   "note": "per-instance dirs with Makefile.board (SCABBARD_USE_ASM_MUL=1 selects the mult_*.s Toom/schoolbook kernels); board_*.c are the submitter's bare-metal apps (define main, stripped), crypto_kem.c a pqm4 API wrapper around the ICCS glue; indcpa_keypair draws its seeds through randombytes(), so the tree's common/randombytes.{c,h} (a wrapper over the ICCS DRNG, same call sequence as the reference) is copied in",
+   "defines": {
+    "SCABBARD_USE_ASM_MUL": "1"
+   },
+   "exclude_files": [
+    "crypto_kem.c",
+    "common/hal-stm32f4.c",
+    "common/hal.h",
+    "common/syscalls.c"
+   ],
+   "instances": {
+    "scabbard128": {
+     "dir": "scabbard/scabbard128"
+    },
+    "scabbard256": {
+     "dir": "scabbard/scabbard256"
+    },
+    "scabbard512": {
+     "dir": "scabbard/scabbard512",
+     "status": "unsupported",
+     "reason": "static data exceeds the board's 640 KB SRAM and the 4 MB QEMU RAM (same as the reference code)"
+    }
+   },
+   "copy_dirs": [
+    ".",
+    "@M4_Implementation/common"
+   ]
   }
  },
  "NEV": {
@@ -573,7 +963,41 @@
    "api.c",
    "kex.c",
    "kex.h"
-  ]
+  ],
+  "m4": {
+   "zip_dir": "Implementations/Additional_Implementations/Cortex_M4",
+   "zip_exclude": [
+    "common",
+    "libopencm3",
+    "mupq"
+   ],
+   "note": "one pqm4-style tree per instance; the scheme sources differ from Reference_Implementation in 13 files (poly/ntt/indcpa/minal/params), glue KEM_lwekemNNN.c as in ref; api.c excluded as for ref; the Cortex_M4 minal.c of lwekem128/256 defines MINAL_BETA 0 where the reference (and the official KAT) uses the value above, which only changes the message code constants: the sed rule restores the reference value so the ciphertexts match the KAT (without it pk/sk/ss still match and only the compressed v part of ct differs)",
+   "instances": {
+    "lwekem128": {
+     "dir": "lwekem128/crypto_kem/Rudraksh2/Rudraksh2",
+     "sed": [
+      [
+       "minal.c",
+       "^#define MINAL_BETA 0$",
+       "#define MINAL_BETA 220"
+      ]
+     ]
+    },
+    "lwekem256": {
+     "dir": "lwekem256/crypto_kem/Rudraksh2/Rudraksh2",
+     "sed": [
+      [
+       "minal.c",
+       "^#define MINAL_BETA 0$",
+       "#define MINAL_BETA 220"
+      ]
+     ]
+    },
+    "lwekem512": {
+     "dir": "lwekem512/crypto_kem/Rudraksh2/Rudraksh2"
+    }
+   }
+  }
  },
  "Scloudplus": {
   "tier": "qemu",
@@ -847,6 +1271,11 @@
      "BWKEM_C512_USE_ICCS_AUXFUNC": ""
     }
    }
+  },
+  "m4": {
+   "status": "skip",
+   "reason": "the submission's ARM_Cortex_M4 tree (密钥交换-AFS-KEX-ARM-参考实现版) is the reference C code in a pqm4/mupq harness: crypto_kex/afs-kex-*/ref is file-identical to Reference_Implementation except Makefile/params.h/api.h, no Cortex-M4-specific code",
+   "zip_dir": "Implementations and Test_Vectors/Implementations/Additional_Implementation/ARM_Cortex_M4"
   }
  },
  "MAMBA-NIKE": {

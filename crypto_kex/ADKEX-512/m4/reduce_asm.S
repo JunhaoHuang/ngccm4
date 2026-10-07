@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-512/m4/reduce_asm.S
+../../../crypto_kem/DKEM-512/m4/reduce_asm.S

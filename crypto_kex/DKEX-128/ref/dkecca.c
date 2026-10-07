@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-128/ref/dkecca.c
+../../../crypto_kem/DKEM-128/ref/dkecca.c

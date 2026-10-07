@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=SYDO
+ngcc_title=SYDO
+ngcc_instance=sydo_256s
+ngcc_instance_dir=Reference_Implementation/sydo_256s
+ngcc_zip_sha256=c4ae5b27a188612cd286a786179ce5461e6aca0b8599ba13b8d77b210a940adb
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_sydo_256s.txt
+copy_dirs=schemes/SYDO/Reference_Implementation/sydo_256s
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');lib/auxfunc.c (strip rule 'auxfunc\.[ch]');lib/auxfunc.h (strip rule 'auxfunc\.[ch]');lib/drng.c (strip rule 'drng\.[ch]');lib/drng.h (strip rule 'drng\.[ch]')

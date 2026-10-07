@@ -1,0 +1,13 @@
+importer_version=1
+ngcc_scheme=CreTAKE
+ngcc_title=CreTAKE
+ngcc_instance=CreTAKE-K2S-PLAC256-BiT256
+ngcc_instance_dir=Reference_Implementation/CreTAKE256/CreTAKE-K2S-PLAC256-BiT256
+impl=ref
+ngcc_zip_sha256=0b356074741bc20fa82132719e1678e001083b9746f5c4c582425b727b511741
+ngcc_category=KEX
+tier=qemu
+kat_file=Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC256-BiT256.txt
+copy_dirs=schemes/CreTAKE/Reference_Implementation/CreTAKE256/CreTAKE-K2S-PLAC256-BiT256
+deps=crypto_kem/POLARLAC-256/ref;crypto_sign/BiT-256/ref
+stripped=KAT_KEX.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');test_correctness.c (strip rule 'test.*\.c');test_efficiency.c (strip rule 'test.*\.c')

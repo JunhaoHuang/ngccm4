@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=cedrus-alpha
+ngcc_title=CEDRUSɑ
+ngcc_instance=CEDRUSALPHA-384s
+ngcc_instance_dir=Reference_Implementation/CEDRUSALPHA-384s
+ngcc_zip_sha256=b90559ca94bda0130420f91fa52eeb242063a57188c766037c1b234ec3af563b
+ngcc_category=SIG
+tier=board
+kat_file=Test_Vectors/KAT_SIG_CEDRUSALPHA-384s.txt
+copy_dirs=schemes/cedrus-alpha/Reference_Implementation/CEDRUSALPHA-384s
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

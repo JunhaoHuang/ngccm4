@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Mito
+ngcc_title=Mito
+ngcc_instance=Mito-1-512
+ngcc_instance_dir=Reference_Implementation/Mito-1-512
+ngcc_zip_sha256=ee11788a3e8bf8653d18ade6580c47a331b91e7eac3e31a5a6750a4b4cfb827b
+ngcc_category=KEM
+tier=qemu
+kat_file=
+copy_dirs=schemes/Mito/Reference_Implementation/Mito-1-512
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

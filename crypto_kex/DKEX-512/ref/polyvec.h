@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-512/ref/polyvec.h
+../../../crypto_kem/DKEM-512/ref/polyvec.h

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Polar-KEM
+ngcc_title=Polar-KEM
+ngcc_instance=PolarKEM-512
+ngcc_instance_dir=Reference_Implementation/PolarKEM-512
+ngcc_zip_sha256=3ae9d4f1a717fb473e76447014d585cd5d14fe38728f02b1a044cc6a2d03e16d
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_PolarKEM-512.txt
+copy_dirs=schemes/Polar-KEM/Reference_Implementation/PolarKEM-512
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-128/ref/verify.c
+../../../crypto_kem/DKEM-128/ref/verify.c

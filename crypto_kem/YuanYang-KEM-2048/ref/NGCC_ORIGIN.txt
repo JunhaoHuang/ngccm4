@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=YuanYang.KEM
+ngcc_title=YuanYang.KEM
+ngcc_instance=yuanyang-2048
+ngcc_instance_dir=Reference_Implementation/yuanyang-2048
+ngcc_zip_sha256=fe1bf3d78272bb79048e7d456819160324c6140206798cb77a22c2babcfdcf4a
+ngcc_category=KEM
+tier=board
+kat_file=
+copy_dirs=schemes/YuanYang.KEM/Reference_Implementation/yuanyang-2048
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

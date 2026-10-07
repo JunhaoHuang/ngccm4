@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=TRIKE
+ngcc_title=TRIKE
+ngcc_instance=TRIKE-9
+ngcc_instance_dir=Reference_Implementation/TRIKE-9
+ngcc_zip_sha256=03956a13fde3d402513bfcf9942f2b04fd23e98b01a3dc52b48938b9c89fe4d6
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_TRIKE-9.txt
+copy_dirs=schemes/TRIKE/Reference_Implementation/TRIKE-9
+stripped=ICCS/auxfunc.c (strip rule 'auxfunc\.[ch]');ICCS/auxfunc.h (strip rule 'auxfunc\.[ch]');ICCS/drng.c (strip rule 'drng\.[ch]');ICCS/drng.h (strip rule 'drng\.[ch]')

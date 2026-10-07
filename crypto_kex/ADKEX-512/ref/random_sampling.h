@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-512/ref/random_sampling.h
+../../../crypto_kem/DKEM-512/ref/random_sampling.h

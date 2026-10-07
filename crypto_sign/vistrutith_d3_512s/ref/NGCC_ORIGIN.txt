@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Chinith
+ngcc_title=Chinith
+ngcc_instance=vistrutith_d3_512s
+ngcc_instance_dir=Reference_Implementation/vistrutith_d3_512s
+ngcc_zip_sha256=4d31ba3fe8718f59901b7efdf01b4179912ef8e04f58b4b6dbba84186f002283
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_vistrutith_d3_512s.txt
+copy_dirs=schemes/Chinith/Reference_Implementation/vistrutith_d3_512s
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');vistrutith_d3_512s_bench.c (strip rule '.*_bench.*\.c');vistrutith_d3_512s_test.c (strip rule '.*_test\.c')

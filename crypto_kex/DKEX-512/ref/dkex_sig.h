@@ -4,7 +4,7 @@
 /*
 DKEX (KEX + SIG) — backend-agnostic SIG adapter.
 DKEX-512 default backend: ML-DSA-87 (FIPS 204 Cat 5, 256-bit classical).
-This caps long-term authenticity at 256-bit; ephemeral KEX (DKE-512)
+This caps long-term authenticity at 256-bit; ephemeral KEX (DKEM-512)
 remains 512-bit. No standard PQ SIG exceeds Cat 5 today.
 */
 

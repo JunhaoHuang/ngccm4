@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=AFS-KEX
+ngcc_title=AFS-KEX
+ngcc_instance=AFS_KEX_C512
+ngcc_instance_dir=Reference_Implementation/AFS_KEX_C512
+ngcc_zip_sha256=7d902107b74870e512c84da82c6bfb386633ca864ddc7df2f7b0b183511f983a
+ngcc_category=KEX
+tier=board
+kat_file=Test_Vectors/KAT_KEX_AFS_KEX_C512.txt
+copy_dirs=schemes/AFS-KEX/Reference_Implementation/AFS_KEX_C512
+stripped=KAT_KEX.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');randombytes_api.c (strip rule 'randombytes_api\.c')

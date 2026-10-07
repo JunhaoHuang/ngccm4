@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=OPS_Digital_Signature_Algorithm
+ngcc_title=OPS Digital Signature Algorithm
+ngcc_instance=OPSsig-512
+ngcc_instance_dir=Reference_Implementation/OPSsig-512
+ngcc_zip_sha256=02322c6792259231ab8eb3cc094be32be02a1b9b6b1d7c86b0029c37b0f04d09
+ngcc_category=SIG
+tier=qemu
+kat_file=
+copy_dirs=schemes/OPS_Digital_Signature_Algorithm/Reference_Implementation/OPSsig-512
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');test_OPSsig.c (strip rule 'test.*\.c');test_mem_OPSsig.c (strip rule 'test.*\.c');test_ntt.c (strip rule 'test.*\.c');test_ntt_260602.c (strip rule 'test.*\.c');test_speed_OPSsig.c (strip rule 'test.*\.c');test_static_mem_OPSsig.c (strip rule 'test.*\.c');test_vectors-260602.c (strip rule 'test.*\.c')

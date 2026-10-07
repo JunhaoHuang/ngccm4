@@ -1,0 +1,13 @@
+importer_version=1
+ngcc_scheme=DTRU
+ngcc_title=DTRU
+ngcc_instance=DTRU-1024
+ngcc_instance_dir=M4_Implementation/crypto_kem/dtru-1024/m4fspeed
+ngcc_m4_zip_dir=Implementations and Test_Vectors/Implementations/Additional_Implementation/KEM-DTRU-ARM-Optimized
+impl=m4
+ngcc_zip_sha256=ed443d6a9e2e6c50e4956e9b30ce078ae0598a8846962d04b9894cac0816527b
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_DTRU-1024.txt
+copy_dirs=schemes/DTRU/M4_Implementation/crypto_kem/dtru-1024/m4fspeed
+stripped=auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

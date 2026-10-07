@@ -1,0 +1,13 @@
+importer_version=1
+ngcc_scheme=CreTAKE
+ngcc_title=CreTAKE
+ngcc_instance=CreTAKE-K2K-PLAC512
+ngcc_instance_dir=Reference_Implementation/CreTAKE512/CreTAKE-K2K-PLAC512
+impl=ref
+ngcc_zip_sha256=0b356074741bc20fa82132719e1678e001083b9746f5c4c582425b727b511741
+ngcc_category=KEX
+tier=board
+kat_file=Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512.txt
+copy_dirs=schemes/CreTAKE/Reference_Implementation/CreTAKE512/CreTAKE-K2K-PLAC512
+deps=crypto_kem/POLARLAC-512/ref
+stripped=KAT_KEX.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');test_correctness.c (strip rule 'test.*\.c');test_efficiency.c (strip rule 'test.*\.c')

@@ -18,7 +18,21 @@ as a flat directory that the mk/ build system can discover:
     shim header when the scheme names its header differently);
   * instance-selecting defines go into ngcc_config.h, which mk/scheme.mk
     force-includes; per-implementation compiler flags go into config.mk;
-  * NGCC_ORIGIN.txt records provenance, ngcc_tier.txt the expected platform.
+  * NGCC_ORIGIN.txt records provenance, ngcc_tier.txt the expected platform;
+  * a manifest "deps" list (other implementations of this tree, e.g.
+    crypto_kem/POLARLAC-128/ref) becomes IMPL_DEPS_<impl> in config.mk: the
+    build links those implementations into this one, reduced to their public
+    API (see mk/scheme.mk). Used for protocol submissions such as CreTAKE whose
+    package only wraps other submissions; only the protocol layer is copied.
+
+Submitter-provided Cortex-M4 implementations are imported the same way into
+
+    crypto_<family>/<instance>/m4/
+
+from a manifest "m4" block (see tools/ngcc_manifest.json "_comment"). Their
+sources live in the submission zip, not in the mirror's Reference_Implementation
+tree: run tools/extract_ngcc_m4.py first, which unpacks the configured zip
+sub-directory into NGCC/schemes/<folder>/M4_Implementation/.
 
 Usage:
     python3 tools/import_ngcc.py [--ngcc-root NGCC] [--only NAME ...]
@@ -213,10 +227,44 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+M4_SUBDIR = "M4_Implementation"
+# Keys of a manifest entry that describe the reference import only and must not
+# leak into the configuration of the m4 implementation.
+M4_INHERIT_SKIP = {"instances", "copy_dirs", "m4", "variants", "only_instances", "skip_instances",
+                   "status", "reason", "tier", "_note"}
+M4_BLOCK_KEYS = {"instances", "zip_dir", "zip_exclude", "note", "_note"}
+
+
+def m4_effective_cfg(scheme_cfg: dict, inst_cfg: dict, m4_cfg: dict, m4_inst_cfg: dict) -> tuple[dict, dict]:
+    """Configuration of an m4 job: scheme-level rules (minus reference-only keys), overlaid with the
+    scheme's m4 block; instance-level: the reference instance's defines, overlaid with the m4 instance."""
+    eff_scheme = {k: v for k, v in scheme_cfg.items() if k not in M4_INHERIT_SKIP}
+    for k, v in m4_cfg.items():
+        if k in M4_BLOCK_KEYS:
+            continue
+        eff_scheme[k] = merged(eff_scheme, {k: v}, k, None) if k in eff_scheme else v
+    eff_inst = {}
+    if inst_cfg.get("defines"):
+        eff_inst["defines"] = dict(inst_cfg["defines"])
+    if inst_cfg.get("name"):
+        eff_inst["name"] = inst_cfg["name"]
+    for k, v in m4_inst_cfg.items():
+        if k == "dir":
+            continue
+        eff_inst[k] = merged(eff_inst, {k: v}, k, None) if k in eff_inst else v
+    return eff_scheme, eff_inst
+
+
 class Job:
-    def __init__(self, scheme: dict, inst: dict, scheme_cfg: dict, inst_cfg: dict, variant: dict | None):
+    def __init__(self, scheme: dict, inst: dict, scheme_cfg: dict, inst_cfg: dict, variant: dict | None,
+                 impl: str = "ref", m4_dir: str | None = None, m4_block: dict | None = None):
         self.scheme = scheme
         self.inst = inst
+        self.impl = impl
+        self.m4_dir = m4_dir
+        self.m4_block = m4_block or {}
+        if impl == "m4":
+            scheme_cfg, inst_cfg = m4_effective_cfg(scheme_cfg, inst_cfg, self.m4_block, (self.m4_block.get("instances") or {}).get(inst["name"], {}))
         self.scheme_cfg = scheme_cfg
         self.inst_cfg = inst_cfg
         self.variant = variant or {}
@@ -227,6 +275,13 @@ class Job:
         self.name = sanitize_name(base_name)
         self.family_dir = FAMILY_DIR[self.category]
         self.tier = self.variant.get("tier") or inst_cfg.get("tier") or scheme_cfg.get("tier", "board")
+
+    @property
+    def inst_rel_dir(self) -> str:
+        """Instance source directory, relative to NGCC/schemes/<folder>/."""
+        if self.impl == "m4":
+            return f"{M4_SUBDIR}/{self.m4_dir}"
+        return self.inst["dir"]
 
     def cfg(self, key: str, default):
         value = merged(self.scheme_cfg, self.inst_cfg, key, default)
@@ -243,11 +298,12 @@ class Job:
 
     @property
     def dest(self) -> Path:
-        return Path(self.family_dir) / self.name / "ref"
+        return Path(self.family_dir) / self.name / self.impl
 
     @property
     def label(self) -> str:
-        return f"{self.scheme['folder']}/{self.inst['name']}" + (f" [{self.variant.get('suffix')}]" if self.variant else "")
+        return (f"{self.scheme['folder']}/{self.inst['name']}" + (f" [{self.variant.get('suffix')}]" if self.variant else "")
+                + (" (m4)" if self.impl == "m4" else ""))
 
 
 def resolve_copy_dirs(ngcc_root: Path, scheme_folder: str, inst_dir: Path, copy_dirs: list[str]) -> list[Path]:
@@ -262,9 +318,10 @@ def resolve_copy_dirs(ngcc_root: Path, scheme_folder: str, inst_dir: Path, copy_
 
 def run_job(job: Job, ngcc_root: Path, repo: Path, args) -> tuple[bool, str]:
     scheme_folder = job.scheme["folder"]
-    inst_dir = ngcc_root / "schemes" / scheme_folder / job.inst["dir"]
+    inst_dir = ngcc_root / "schemes" / scheme_folder / job.inst_rel_dir
     if not inst_dir.is_dir():
-        return False, f"instance dir missing: {inst_dir}"
+        hint = " (run tools/extract_ngcc_m4.py first)" if job.impl == "m4" else ""
+        return False, f"instance dir missing: {inst_dir}{hint}"
 
     dest = repo / job.dest
     marker = dest / "NGCC_ORIGIN.txt"
@@ -377,7 +434,7 @@ def run_job(job: Job, ngcc_root: Path, repo: Path, args) -> tuple[bool, str]:
     write_text(dest / "ngcc_config.h", "\n".join(lines) + "\n")
 
     # config.mk: per-implementation make variables.
-    impl_name = f"{job.family_dir}_{job.name}_ref"
+    impl_name = f"{job.family_dir}_{job.name}_{job.impl}"
     mk_lines = ["# generated by tools/import_ngcc.py"]
     cflags = job.cfg("cflags", "")
     if cflags:
@@ -385,6 +442,16 @@ def run_job(job: Job, ngcc_root: Path, repo: Path, args) -> tuple[bool, str]:
     exclude_common = job.cfg("exclude_common", [])
     if exclude_common:
         mk_lines.append(f"IMPL_EXCLUDE_COMMON_{impl_name} := {' '.join(exclude_common)}")
+    deps = job.cfg("deps", [])
+    if deps:
+        for dep in deps:
+            if not (repo / dep).is_dir():
+                shutil.rmtree(dest)
+                return False, f"dependency implementation missing: {dep}"
+        mk_lines.append(f"IMPL_DEPS_{impl_name} := {' '.join(deps)}")
+        dep_keep = job.cfg("dep_keep", [])
+        if dep_keep:
+            mk_lines.append(f"IMPL_DEP_KEEP_{impl_name} := {' '.join(dep_keep)}")
     if len(mk_lines) > 1:
         write_text(dest / "config.mk", "\n".join(mk_lines) + "\n")
 
@@ -419,14 +486,18 @@ def run_job(job: Job, ngcc_root: Path, repo: Path, args) -> tuple[bool, str]:
         f"ngcc_scheme={scheme_folder}",
         f"ngcc_title={job.scheme.get('title', '')}",
         f"ngcc_instance={job.inst['name']}",
-        f"ngcc_instance_dir={job.inst['dir']}",
+        f"ngcc_instance_dir={job.inst_rel_dir}",
+        f"impl={job.impl}",
         f"ngcc_zip_sha256={job.scheme.get('zip_sha256', '')}",
         f"ngcc_category={job.category}",
         f"tier={job.tier}",
         f"kat_file={'Test_Vectors/' + kat_name if kat_path.exists() else ''}",
         f"copy_dirs={';'.join(str(d.relative_to(ngcc_root)) for d in copy_dirs)}",
+        f"deps={';'.join(job.cfg('deps', []))}",
         "stripped=" + ";".join(stripped),
     ]
+    if job.impl == "m4":
+        origin.insert(5, f"ngcc_m4_zip_dir={job.m4_block.get('zip_dir', '')}")
     write_text(dest / "NGCC_ORIGIN.txt", "\n".join(origin) + "\n")
     write_text(dest / "ngcc_tier.txt", job.tier + "\n")
 
@@ -454,7 +525,7 @@ def build_jobs(manifest: dict, schemes: list[dict], args) -> tuple[list[Job], li
         skip_instances = set(cfg.get("skip_instances", []))
         only_instances = cfg.get("only_instances")
         for inst in scheme["instances"]:
-            if inst["name"] in skip_instances:
+            if inst["name"] in skip_instances or inst.get("component"):
                 continue
             if only_instances and inst["name"] not in only_instances:
                 continue
@@ -468,9 +539,27 @@ def build_jobs(manifest: dict, schemes: list[dict], args) -> tuple[list[Job], li
                     jobs.append(Job(scheme, inst, cfg, inst_cfg, variant))
             else:
                 jobs.append(Job(scheme, inst, cfg, inst_cfg, None))
+            # Submitter-provided Cortex-M4 implementation of the same instance.
+            m4_block = cfg.get("m4") or {}
+            if m4_block.get("status") in ("skip", "unsupported"):
+                if inst is scheme["instances"][0]:
+                    notes.append(f"{m4_block['status']} {folder} (m4): {m4_block.get('reason', '')}")
+                continue
+            m4_inst = (m4_block.get("instances") or {}).get(inst["name"])
+            if m4_inst and m4_inst.get("status") not in ("skip", "unsupported"):
+                m4_variants = m4_inst.get("variants")
+                if m4_variants:
+                    for variant in m4_variants:
+                        jobs.append(Job(scheme, inst, cfg, inst_cfg, variant, impl="m4", m4_dir=m4_inst["dir"], m4_block=m4_block))
+                else:
+                    jobs.append(Job(scheme, inst, cfg, inst_cfg, None, impl="m4", m4_dir=m4_inst["dir"], m4_block=m4_block))
+            elif m4_inst:
+                notes.append(f"{m4_inst['status']} {folder}/{inst['name']} (m4): {m4_inst.get('reason', '')}")
     if args.only:
         wanted = set(args.only)
         jobs = [j for j in jobs if j.scheme["folder"] in wanted or j.inst["name"] in wanted or j.name in wanted]
+    if getattr(args, "impl", None):
+        jobs = [j for j in jobs if j.impl == args.impl]
     return jobs, notes
 
 
@@ -480,6 +569,7 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--manifest", default=None, help="curated manifest (default: tools/ngcc_manifest.json)")
     parser.add_argument("--only", nargs="*", default=None, help="scheme folders or instance names to import")
     parser.add_argument("--family", choices=("kem", "kex", "sign"), default=None)
+    parser.add_argument("--impl", choices=("ref", "m4"), default=None, help="only import this implementation kind")
     parser.add_argument("--list", action="store_true", help="list what would be imported and exit")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--force", action="store_true", help="replace directories not generated by the importer")
@@ -506,7 +596,7 @@ def main(argv: list[str]) -> int:
         print(f"{len(jobs)} instances")
         return 0
 
-    if args.prune and not args.only and not args.family:
+    if args.prune and not args.only and not args.family and not args.impl:
         wanted = {str(job.dest) for job in jobs}
         for family_dir in FAMILY_DIR.values():
             for marker in sorted((repo / family_dir).glob("*/*/NGCC_ORIGIN.txt")):

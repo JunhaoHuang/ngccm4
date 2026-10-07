@@ -74,8 +74,10 @@ window.NGCCM4_DATA = {
       "folder": "Aigis-Encplus",
       "instance": "Aigis-Enc+-I",
       "pub_date": "2026-09-20 11:42",
+      "spec": "specs/Aigis-Encplus.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：Aigis-Enc+.pdf",
       "title": "Aigis-Enc+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560842975268864.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Enc%2B.zip"
      },
      "notes": [],
@@ -164,8 +166,10 @@ window.NGCCM4_DATA = {
       "folder": "Aigis-Encplus",
       "instance": "Aigis-Enc+-II",
       "pub_date": "2026-09-20 11:42",
+      "spec": "specs/Aigis-Encplus.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：Aigis-Enc+.pdf",
       "title": "Aigis-Enc+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560842975268864.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Enc%2B.zip"
      },
      "notes": [],
@@ -254,8 +258,10 @@ window.NGCCM4_DATA = {
       "folder": "Aigis-Encplus",
       "instance": "Aigis-Enc+-III",
       "pub_date": "2026-09-20 11:42",
+      "spec": "specs/Aigis-Encplus.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：Aigis-Enc+.pdf",
       "title": "Aigis-Enc+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560842975268864.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Enc%2B.zip"
      },
      "notes": [],
@@ -344,8 +350,10 @@ window.NGCCM4_DATA = {
       "folder": "Amoeba",
       "instance": "Amoeba-1152",
       "pub_date": "2026-09-20 11:41",
+      "spec": "specs/Amoeba.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Amoeba",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843117875200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Amoeba.zip"
      },
      "notes": [],
@@ -434,8 +442,10 @@ window.NGCCM4_DATA = {
       "folder": "Amoeba",
       "instance": "Amoeba-1728",
       "pub_date": "2026-09-20 11:41",
+      "spec": "specs/Amoeba.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Amoeba",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843117875200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Amoeba.zip"
      },
      "notes": [],
@@ -524,8 +534,10 @@ window.NGCCM4_DATA = {
       "folder": "Amoeba",
       "instance": "Amoeba-2304",
       "pub_date": "2026-09-20 11:41",
+      "spec": "specs/Amoeba.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Amoeba",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843117875200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Amoeba.zip"
      },
      "notes": [],
@@ -614,8 +626,10 @@ window.NGCCM4_DATA = {
       "folder": "Amoeba",
       "instance": "Amoeba-576",
       "pub_date": "2026-09-20 11:41",
+      "spec": "specs/Amoeba.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Amoeba",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843117875200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Amoeba.zip"
      },
      "notes": [],
@@ -704,8 +718,10 @@ window.NGCCM4_DATA = {
       "folder": "Amoeba",
       "instance": "Amoeba-864",
       "pub_date": "2026-09-20 11:41",
+      "spec": "specs/Amoeba.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Amoeba",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843117875200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Amoeba.zip"
      },
      "notes": [],
@@ -794,8 +810,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Loong",
       "instance": "BAG-Loong-128",
       "pub_date": "2026-09-20 11:40",
+      "spec": "specs/BAG-Loong.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Loong",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843247898624.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Loong.zip"
      },
      "notes": [],
@@ -858,8 +876,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Loong",
       "instance": "BAG-Loong-256",
       "pub_date": "2026-09-20 11:40",
+      "spec": "specs/BAG-Loong.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Loong",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843247898624.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Loong.zip"
      },
      "notes": [],
@@ -912,8 +932,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Loong",
       "instance": "BAG-Loong-384",
       "pub_date": "2026-09-20 11:40",
+      "spec": "specs/BAG-Loong.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Loong",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843247898624.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Loong.zip"
      },
      "notes": [],
@@ -966,8 +988,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Loong",
       "instance": "BAG-Loong-512",
       "pub_date": "2026-09-20 11:40",
+      "spec": "specs/BAG-Loong.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Loong",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843247898624.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Loong.zip"
      },
      "notes": [],
@@ -983,6 +1007,98 @@ window.NGCCM4_DATA = {
      },
      "stack": null,
      "status_text": "not run: same as BAG-Loong-256",
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 32316,
+      "total": 34216
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 636490,
+       "count": 10,
+       "max": 636641,
+       "median": 636486,
+       "min": 636278
+      },
+      "encaps": {
+       "avg": 566247,
+       "count": 10,
+       "max": 566398,
+       "median": 566244,
+       "min": 566035
+      },
+      "keypair": {
+       "avg": 511536,
+       "count": 10,
+       "max": 511702,
+       "median": 511546,
+       "min": 511338
+      }
+     },
+     "cycles_total": 1714273,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_BW_KEM_C128_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/WBK2RG2XR5VZVITNS53TVFJDBGER7T7P/",
+      "folder": "BW-KEM",
+      "instance": "BW_KEM_C128",
+      "pub_date": "2026-09-20 11:25",
+      "spec": "specs/BW-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "BW-KEM",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "BW_KEM_C128",
+     "sizes": {
+      "ct": 768,
+      "kat_path": "schemes/BW-KEM/Test_Vectors/KAT_KEM_BW_KEM_C128.txt",
+      "pk": 784,
+      "sk": 1585,
+      "source": "kat_raw",
+      "ss": 16
+     },
+     "stack": {
+      "decaps": 11064,
+      "encaps": 10304,
+      "keypair": 7696
+     },
+     "status_text": null,
      "tier": "board"
     },
     {
@@ -1052,8 +1168,10 @@ window.NGCCM4_DATA = {
       "folder": "BW-KEM",
       "instance": "BW_KEM_C128",
       "pub_date": "2026-09-20 11:25",
+      "spec": "specs/BW-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BW-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843877044224.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip"
      },
      "notes": [],
@@ -1071,6 +1189,98 @@ window.NGCCM4_DATA = {
       "decaps": 10016,
       "encaps": 9280,
       "keypair": 6672
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 43232,
+      "total": 45132
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 1323715,
+       "count": 10,
+       "max": 1366363,
+       "median": 1305610,
+       "min": 1305363
+      },
+      "encaps": {
+       "avg": 1178252,
+       "count": 10,
+       "max": 1220896,
+       "median": 1160143,
+       "min": 1159896
+      },
+      "keypair": {
+       "avg": 1152950,
+       "count": 10,
+       "max": 1195633,
+       "median": 1134784,
+       "min": 1134593
+      }
+     },
+     "cycles_total": 3654917,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_BW_KEM_C256_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/WBK2RG2XR5VZVITNS53TVFJDBGER7T7P/",
+      "folder": "BW-KEM",
+      "instance": "BW_KEM_C256",
+      "pub_date": "2026-09-20 11:25",
+      "spec": "specs/BW-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "BW-KEM",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "BW_KEM_C256",
+     "sizes": {
+      "ct": 1440,
+      "kat_path": "schemes/BW-KEM/Test_Vectors/KAT_KEM_BW_KEM_C256.txt",
+      "pk": 1568,
+      "sk": 3169,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 22772,
+      "encaps": 21364,
+      "keypair": 17692
      },
      "status_text": null,
      "tier": "board"
@@ -1142,8 +1352,10 @@ window.NGCCM4_DATA = {
       "folder": "BW-KEM",
       "instance": "BW_KEM_C256",
       "pub_date": "2026-09-20 11:25",
+      "spec": "specs/BW-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BW-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843877044224.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip"
      },
      "notes": [],
@@ -1161,6 +1373,98 @@ window.NGCCM4_DATA = {
       "decaps": 20464,
       "encaps": 19072,
       "keypair": 15568
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 46576,
+      "total": 48476
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 4058190,
+       "count": 10,
+       "max": 4058591,
+       "median": 4058259,
+       "min": 4057670
+      },
+      "encaps": {
+       "avg": 3638871,
+       "count": 10,
+       "max": 3639322,
+       "median": 3638915,
+       "min": 3638403
+      },
+      "keypair": {
+       "avg": 3575921,
+       "count": 10,
+       "max": 3576396,
+       "median": 3575900,
+       "min": 3575439
+      }
+     },
+     "cycles_total": 11272982,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_BW_KEM_C512_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/WBK2RG2XR5VZVITNS53TVFJDBGER7T7P/",
+      "folder": "BW-KEM",
+      "instance": "BW_KEM_C512",
+      "pub_date": "2026-09-20 11:25",
+      "spec": "specs/BW-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "BW-KEM",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "BW_KEM_C512",
+     "sizes": {
+      "ct": 2944,
+      "kat_path": "schemes/BW-KEM/Test_Vectors/KAT_KEM_BW_KEM_C512.txt",
+      "pk": 3136,
+      "sk": 6337,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "decaps": 45428,
+      "encaps": 42548,
+      "keypair": 35228
      },
      "status_text": null,
      "tier": "board"
@@ -1232,8 +1536,10 @@ window.NGCCM4_DATA = {
       "folder": "BW-KEM",
       "instance": "BW_KEM_C512",
       "pub_date": "2026-09-20 11:25",
+      "spec": "specs/BW-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BW-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843877044224.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BW-KEM.zip"
      },
      "notes": [],
@@ -1322,8 +1628,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-KEM",
       "instance": "COMPASS-KEM-128",
       "pub_date": "2026-09-20 11:22",
+      "spec": "specs/COMPASS-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "COMPASS-KEM算法文本(en).pdf",
       "title": "COMPASS-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844283891712.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-KEM.zip"
      },
      "notes": [],
@@ -1413,8 +1721,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-KEM",
       "instance": "COMPASS-KEM-256",
       "pub_date": "2026-09-20 11:22",
+      "spec": "specs/COMPASS-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "COMPASS-KEM算法文本(en).pdf",
       "title": "COMPASS-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844283891712.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-KEM.zip"
      },
      "notes": [],
@@ -1504,8 +1814,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-KEM",
       "instance": "COMPASS-KEM-384",
       "pub_date": "2026-09-20 11:22",
+      "spec": "specs/COMPASS-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "COMPASS-KEM算法文本(en).pdf",
       "title": "COMPASS-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844283891712.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-KEM.zip"
      },
      "notes": [],
@@ -1595,8 +1907,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-KEM",
       "instance": "COMPASS-KEM-512",
       "pub_date": "2026-09-20 11:22",
+      "spec": "specs/COMPASS-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "COMPASS-KEM算法文本(en).pdf",
       "title": "COMPASS-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844283891712.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-KEM.zip"
      },
      "notes": [],
@@ -1686,8 +2000,10 @@ window.NGCCM4_DATA = {
       "folder": "CheetahKEM",
       "instance": "Cheetah128",
       "pub_date": "2026-09-20 11:24",
+      "spec": "specs/CheetahKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "cheetah_kem_en.pdf",
       "title": "CheetahKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844002873344.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CheetahKEM.zip"
      },
      "notes": [],
@@ -1776,8 +2092,10 @@ window.NGCCM4_DATA = {
       "folder": "CheetahKEM",
       "instance": "Cheetah256",
       "pub_date": "2026-09-20 11:24",
+      "spec": "specs/CheetahKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "cheetah_kem_en.pdf",
       "title": "CheetahKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844002873344.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CheetahKEM.zip"
      },
      "notes": [],
@@ -1866,8 +2184,10 @@ window.NGCCM4_DATA = {
       "folder": "CheetahKEM",
       "instance": "Cheetah384",
       "pub_date": "2026-09-20 11:24",
+      "spec": "specs/CheetahKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "cheetah_kem_en.pdf",
       "title": "CheetahKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844002873344.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CheetahKEM.zip"
      },
      "notes": [],
@@ -1956,8 +2276,10 @@ window.NGCCM4_DATA = {
       "folder": "CheetahKEM",
       "instance": "Cheetah512",
       "pub_date": "2026-09-20 11:24",
+      "spec": "specs/CheetahKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "cheetah_kem_en.pdf",
       "title": "CheetahKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844002873344.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CheetahKEM.zip"
      },
      "notes": [],
@@ -2021,7 +2343,7 @@ window.NGCCM4_DATA = {
      "failure_kind": null,
      "family": "crypto_kem",
      "hand_ported": true,
-     "id": "crypto_kem_DKE-128_m4",
+     "id": "crypto_kem_DKEM-128_m4",
      "impl": "m4",
      "kat": {
       "caveat": null,
@@ -2046,13 +2368,15 @@ window.NGCCM4_DATA = {
       "folder": "DKEM",
       "instance": "DKEM-128",
       "pub_date": "2026-09-20 11:20",
+      "spec": "specs/DKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
       "title": "DKEM (Ding Key Encapsulation)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip"
      },
      "notes": [],
      "run_status": "measured",
-     "scheme": "DKE-128",
+     "scheme": "DKEM-128",
      "sizes": {
       "ct": 800,
       "kat_path": "schemes/DKEM/Test_Vectors/KAT_KEM_DKEM-128.txt",
@@ -2111,7 +2435,7 @@ window.NGCCM4_DATA = {
      "failure_kind": null,
      "family": "crypto_kem",
      "hand_ported": true,
-     "id": "crypto_kem_DKE-128_ref",
+     "id": "crypto_kem_DKEM-128_ref",
      "impl": "ref",
      "kat": {
       "caveat": null,
@@ -2136,13 +2460,15 @@ window.NGCCM4_DATA = {
       "folder": "DKEM",
       "instance": "DKEM-128",
       "pub_date": "2026-09-20 11:20",
+      "spec": "specs/DKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
       "title": "DKEM (Ding Key Encapsulation)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip"
      },
      "notes": [],
      "run_status": "measured",
-     "scheme": "DKE-128",
+     "scheme": "DKEM-128",
      "sizes": {
       "ct": 800,
       "kat_path": "schemes/DKEM/Test_Vectors/KAT_KEM_DKEM-128.txt",
@@ -2201,7 +2527,7 @@ window.NGCCM4_DATA = {
      "failure_kind": null,
      "family": "crypto_kem",
      "hand_ported": true,
-     "id": "crypto_kem_DKE-256_m4",
+     "id": "crypto_kem_DKEM-256_m4",
      "impl": "m4",
      "kat": {
       "caveat": null,
@@ -2226,13 +2552,15 @@ window.NGCCM4_DATA = {
       "folder": "DKEM",
       "instance": "DKEM-256",
       "pub_date": "2026-09-20 11:20",
+      "spec": "specs/DKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
       "title": "DKEM (Ding Key Encapsulation)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip"
      },
      "notes": [],
      "run_status": "measured",
-     "scheme": "DKE-256",
+     "scheme": "DKEM-256",
      "sizes": {
       "ct": 1600,
       "kat_path": "schemes/DKEM/Test_Vectors/KAT_KEM_DKEM-256.txt",
@@ -2291,7 +2619,7 @@ window.NGCCM4_DATA = {
      "failure_kind": null,
      "family": "crypto_kem",
      "hand_ported": true,
-     "id": "crypto_kem_DKE-256_ref",
+     "id": "crypto_kem_DKEM-256_ref",
      "impl": "ref",
      "kat": {
       "caveat": null,
@@ -2316,13 +2644,15 @@ window.NGCCM4_DATA = {
       "folder": "DKEM",
       "instance": "DKEM-256",
       "pub_date": "2026-09-20 11:20",
+      "spec": "specs/DKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
       "title": "DKEM (Ding Key Encapsulation)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip"
      },
      "notes": [],
      "run_status": "measured",
-     "scheme": "DKE-256",
+     "scheme": "DKEM-256",
      "sizes": {
       "ct": 1600,
       "kat_path": "schemes/DKEM/Test_Vectors/KAT_KEM_DKEM-256.txt",
@@ -2381,7 +2711,7 @@ window.NGCCM4_DATA = {
      "failure_kind": null,
      "family": "crypto_kem",
      "hand_ported": true,
-     "id": "crypto_kem_DKE-512_m4",
+     "id": "crypto_kem_DKEM-512_m4",
      "impl": "m4",
      "kat": {
       "caveat": null,
@@ -2406,13 +2736,15 @@ window.NGCCM4_DATA = {
       "folder": "DKEM",
       "instance": "DKEM-512",
       "pub_date": "2026-09-20 11:20",
+      "spec": "specs/DKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
       "title": "DKEM (Ding Key Encapsulation)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip"
      },
      "notes": [],
      "run_status": "measured",
-     "scheme": "DKE-512",
+     "scheme": "DKEM-512",
      "sizes": {
       "ct": 3136,
       "kat_path": "schemes/DKEM/Test_Vectors/KAT_KEM_DKEM-512.txt",
@@ -2471,7 +2803,7 @@ window.NGCCM4_DATA = {
      "failure_kind": null,
      "family": "crypto_kem",
      "hand_ported": true,
-     "id": "crypto_kem_DKE-512_ref",
+     "id": "crypto_kem_DKEM-512_ref",
      "impl": "ref",
      "kat": {
       "caveat": null,
@@ -2496,13 +2828,15 @@ window.NGCCM4_DATA = {
       "folder": "DKEM",
       "instance": "DKEM-512",
       "pub_date": "2026-09-20 11:20",
+      "spec": "specs/DKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
       "title": "DKEM (Ding Key Encapsulation)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844552327168.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEM.zip"
      },
      "notes": [],
      "run_status": "measured",
-     "scheme": "DKE-512",
+     "scheme": "DKEM-512",
      "sizes": {
       "ct": 3136,
       "kat_path": "schemes/DKEM/Test_Vectors/KAT_KEM_DKEM-512.txt",
@@ -2515,6 +2849,98 @@ window.NGCCM4_DATA = {
       "decaps": 40640,
       "encaps": 37276,
       "keypair": 30536
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 2176,
+      "source": "report",
+      "text": 155212,
+      "total": 157936
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 861844,
+       "count": 10,
+       "max": 861845,
+       "median": 861844,
+       "min": 861844
+      },
+      "encaps": {
+       "avg": 436536,
+       "count": 10,
+       "max": 436581,
+       "median": 436543,
+       "min": 436432
+      },
+      "keypair": {
+       "avg": 647516,
+       "count": 10,
+       "max": 647524,
+       "median": 647513,
+       "min": 647513
+      }
+     },
+     "cycles_total": 1945896,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-1024_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "256",
+      "param_set": "DTRU-1024",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-1024",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-1024",
+     "sizes": {
+      "ct": 1280,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-1024.txt",
+      "pk": 1536,
+      "sk": 2080,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 15468,
+      "encaps": 14060,
+      "keypair": 12372
      },
      "status_text": null,
      "tier": "board"
@@ -2586,8 +3012,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-1024",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -2605,6 +3033,98 @@ window.NGCCM4_DATA = {
       "decaps": 15320,
       "encaps": 13912,
       "keypair": 12240
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 4736,
+      "source": "report",
+      "text": 35040,
+      "total": 40324
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 1102484,
+       "count": 10,
+       "max": 1102584,
+       "median": 1102473,
+       "min": 1102473
+      },
+      "encaps": {
+       "avg": 568558,
+       "count": 10,
+       "max": 568579,
+       "median": 568579,
+       "min": 568369
+      },
+      "keypair": {
+       "avg": 694632,
+       "count": 10,
+       "max": 694662,
+       "median": 694629,
+       "min": 694624
+      }
+     },
+     "cycles_total": 2365674,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-1536_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 384,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "384",
+      "param_set": "DTRU-1536",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-1536",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-1536",
+     "sizes": {
+      "ct": 1920,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-1536.txt",
+      "pk": 2304,
+      "sk": 3136,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "decaps": 22224,
+      "encaps": 20088,
+      "keypair": 17392
      },
      "status_text": null,
      "tier": "board"
@@ -2676,8 +3196,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-1536",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -2695,6 +3217,98 @@ window.NGCCM4_DATA = {
       "decaps": 22224,
       "encaps": 20088,
       "keypair": 17416
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 2176,
+      "source": "report",
+      "text": 278640,
+      "total": 281364
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 3022657,
+       "count": 10,
+       "max": 3022749,
+       "median": 3022638,
+       "min": 3022638
+      },
+      "encaps": {
+       "avg": 1530924,
+       "count": 10,
+       "max": 1530978,
+       "median": 1530939,
+       "min": 1530714
+      },
+      "keypair": {
+       "avg": 1881218,
+       "count": 10,
+       "max": 1881223,
+       "median": 1881222,
+       "min": 1881212
+      }
+     },
+     "cycles_total": 6434799,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-2048_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "512",
+      "param_set": "DTRU-2048",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-2048",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-2048",
+     "sizes": {
+      "ct": 2560,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-2048.txt",
+      "pk": 3072,
+      "sk": 3904,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "decaps": 29472,
+      "encaps": 26712,
+      "keypair": 23992
      },
      "status_text": null,
      "tier": "board"
@@ -2766,8 +3380,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-2048",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -2785,6 +3401,98 @@ window.NGCCM4_DATA = {
       "decaps": 29472,
       "encaps": 26712,
       "keypair": 23956
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1688,
+      "source": "report",
+      "text": 31148,
+      "total": 33384
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 605125,
+       "count": 10,
+       "max": 605159,
+       "median": 605121,
+       "min": 605121
+      },
+      "encaps": {
+       "avg": 303707,
+       "count": 10,
+       "max": 303727,
+       "median": 303727,
+       "min": 303524
+      },
+      "keypair": {
+       "avg": 693234,
+       "count": 10,
+       "max": 693242,
+       "median": 693231,
+       "min": 693231
+      }
+     },
+     "cycles_total": 1602066,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-648_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "128",
+      "param_set": "DTRU-648",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-648",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-648",
+     "sizes": {
+      "ct": 729,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-648.txt",
+      "pk": 972,
+      "sk": 1328,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 9604,
+      "encaps": 8740,
+      "keypair": 8560
      },
      "status_text": null,
      "tier": "board"
@@ -2856,8 +3564,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-648",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -2875,6 +3585,98 @@ window.NGCCM4_DATA = {
       "decaps": 9760,
       "encaps": 8896,
       "keypair": 8608
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 4736,
+      "source": "report",
+      "text": 56060,
+      "total": 61344
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 590774,
+       "count": 10,
+       "max": 590774,
+       "median": 590774,
+       "min": 590774
+      },
+      "encaps": {
+       "avg": 313858,
+       "count": 10,
+       "max": 313878,
+       "median": 313878,
+       "min": 313676
+      },
+      "keypair": {
+       "avg": 387608,
+       "count": 10,
+       "max": 387616,
+       "median": 387605,
+       "min": 387605
+      }
+     },
+     "cycles_total": 1292240,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-768_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 192,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "192",
+      "param_set": "DTRU-768",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-768",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-768",
+     "sizes": {
+      "ct": 960,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-768.txt",
+      "pk": 1152,
+      "sk": 1568,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 12460,
+      "encaps": 11364,
+      "keypair": 9884
      },
      "status_text": null,
      "tier": "board"
@@ -2946,8 +3748,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-768",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -2965,6 +3769,98 @@ window.NGCCM4_DATA = {
       "decaps": 11760,
       "encaps": 10664,
       "keypair": 9136
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 2376,
+      "source": "report",
+      "text": 49100,
+      "total": 52024
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 330851,
+       "count": 10,
+       "max": 330851,
+       "median": 330851,
+       "min": 330851
+      },
+      "encaps": {
+       "avg": 162827,
+       "count": 10,
+       "max": 162841,
+       "median": 162841,
+       "min": 162702
+      },
+      "keypair": {
+       "avg": 213954,
+       "count": 10,
+       "max": 213954,
+       "median": 213954,
+       "min": 213952
+      }
+     },
+     "cycles_total": 707632,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-Light_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "128",
+      "param_set": "DTRU-Light",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-Light",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-Light",
+     "sizes": {
+      "ct": 512,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-Light.txt",
+      "pk": 640,
+      "sk": 864,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 7432,
+      "encaps": 6776,
+      "keypair": 5692
      },
      "status_text": null,
      "tier": "board"
@@ -3036,8 +3932,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-Light",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -3055,6 +3953,98 @@ window.NGCCM4_DATA = {
       "decaps": 7432,
       "encaps": 6776,
       "keypair": 5632
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 10552,
+      "source": "report",
+      "text": 821956,
+      "total": 833056
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 1340384,
+       "count": 10,
+       "max": 1340415,
+       "median": 1340380,
+       "min": 1340380
+      },
+      "encaps": {
+       "avg": 651964,
+       "count": 10,
+       "max": 652007,
+       "median": 651970,
+       "min": 651868
+      },
+      "keypair": {
+       "avg": 250210820,
+       "count": 10,
+       "max": 250210832,
+       "median": 250210828,
+       "min": 250210779
+      }
+     },
+     "cycles_total": 252203168,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_DTRU-Prime_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": "DTRU spec §1.4: DTRU-648 and DTRU-Light are 128-bit, DTRU-768 192-bit, DTRU-1024 256-bit, DTRU-1536 384-bit, DTRU-2048 512-bit; DTRU-Prime is an alternative 256-bit instantiation",
+      "label": "256",
+      "param_set": "DTRU-Prime",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/7OIHLWTGECH3FYCUM3BEBJDAHMMLZRZK/",
+      "folder": "DTRU",
+      "instance": "DTRU-Prime",
+      "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
+      "title": "DTRU",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "DTRU-Prime",
+     "sizes": {
+      "ct": 1359,
+      "kat_path": "schemes/DTRU/Test_Vectors/KAT_KEM_DTRU-Prime.txt",
+      "pk": 1495,
+      "sk": 1935,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 43332,
+      "encaps": 41780,
+      "keypair": 39452
      },
      "status_text": null,
      "tier": "board"
@@ -3126,8 +4116,10 @@ window.NGCCM4_DATA = {
       "folder": "DTRU",
       "instance": "DTRU-Prime",
       "pub_date": "2026-09-20 11:19",
+      "spec": "specs/DTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "DTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844682350592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DTRU.zip"
      },
      "notes": [],
@@ -3216,8 +4208,10 @@ window.NGCCM4_DATA = {
       "folder": "FLIT",
       "instance": "FLIT128_REF",
       "pub_date": "2026-09-20 11:18",
+      "spec": "specs/FLIT.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specification.pdf",
       "title": "FLIT",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844812374016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/FLIT.zip"
      },
      "notes": [],
@@ -3306,8 +4300,10 @@ window.NGCCM4_DATA = {
       "folder": "FLIT",
       "instance": "FLIT256_REF",
       "pub_date": "2026-09-20 11:18",
+      "spec": "specs/FLIT.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specification.pdf",
       "title": "FLIT",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844812374016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/FLIT.zip"
      },
      "notes": [],
@@ -3396,8 +4392,10 @@ window.NGCCM4_DATA = {
       "folder": "FLIT",
       "instance": "FLIT512_REF",
       "pub_date": "2026-09-20 11:18",
+      "spec": "specs/FLIT.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specification.pdf",
       "title": "FLIT",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844812374016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/FLIT.zip"
      },
      "notes": [],
@@ -3454,8 +4452,10 @@ window.NGCCM4_DATA = {
       "folder": "HARE",
       "instance": "HARE-128-kr",
       "pub_date": "2026-09-20 11:17",
+      "spec": "specs/HARE.pdf",
+      "spec_extra": [],
+      "spec_file": "HARE算法文档.pdf",
       "title": "HARE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844942397440.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HARE.zip"
      },
      "notes": [],
@@ -3508,8 +4508,10 @@ window.NGCCM4_DATA = {
       "folder": "HARE",
       "instance": "HARE-256-kr",
       "pub_date": "2026-09-20 11:17",
+      "spec": "specs/HARE.pdf",
+      "spec_extra": [],
+      "spec_file": "HARE算法文档.pdf",
       "title": "HARE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844942397440.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HARE.zip"
      },
      "notes": [],
@@ -3562,8 +4564,10 @@ window.NGCCM4_DATA = {
       "folder": "HARE",
       "instance": "HARE-384-kr",
       "pub_date": "2026-09-20 11:17",
+      "spec": "specs/HARE.pdf",
+      "spec_extra": [],
+      "spec_file": "HARE算法文档.pdf",
       "title": "HARE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844942397440.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HARE.zip"
      },
      "notes": [],
@@ -3616,8 +4620,10 @@ window.NGCCM4_DATA = {
       "folder": "HARE",
       "instance": "HARE-512-kr",
       "pub_date": "2026-09-20 11:17",
+      "spec": "specs/HARE.pdf",
+      "spec_extra": [],
+      "spec_file": "HARE算法文档.pdf",
       "title": "HARE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844942397440.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HARE.zip"
      },
      "notes": [],
@@ -3702,8 +4708,10 @@ window.NGCCM4_DATA = {
       "folder": "NSS-HQC",
       "instance": "HQC-128",
       "pub_date": "2026-09-20 10:43",
+      "spec": "specs/NSS-HQC.pdf",
+      "spec_extra": [],
+      "spec_file": "NSS-HQC算法文本.pdf",
       "title": "NSS-HQC",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863191814144.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NSS-HQC.zip"
      },
      "notes": [],
@@ -3792,8 +4800,10 @@ window.NGCCM4_DATA = {
       "folder": "NSS-HQC",
       "instance": "HQC-256",
       "pub_date": "2026-09-20 10:43",
+      "spec": "specs/NSS-HQC.pdf",
+      "spec_extra": [],
+      "spec_file": "NSS-HQC算法文本.pdf",
       "title": "NSS-HQC",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863191814144.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NSS-HQC.zip"
      },
      "notes": [],
@@ -3877,8 +4887,10 @@ window.NGCCM4_DATA = {
       "folder": "NSS-HQC",
       "instance": "HQC-384",
       "pub_date": "2026-09-20 10:43",
+      "spec": "specs/NSS-HQC.pdf",
+      "spec_extra": [],
+      "spec_file": "NSS-HQC算法文本.pdf",
       "title": "NSS-HQC",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863191814144.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NSS-HQC.zip"
      },
      "notes": [],
@@ -3937,8 +4949,10 @@ window.NGCCM4_DATA = {
       "folder": "NSS-HQC",
       "instance": "HQC-512",
       "pub_date": "2026-09-20 10:43",
+      "spec": "specs/NSS-HQC.pdf",
+      "spec_extra": [],
+      "spec_file": "NSS-HQC算法文本.pdf",
       "title": "NSS-HQC",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863191814144.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NSS-HQC.zip"
      },
      "notes": [
@@ -3993,8 +5007,10 @@ window.NGCCM4_DATA = {
       "folder": "LoongKEM",
       "instance": "Loong128",
       "pub_date": "2026-09-20 11:15",
+      "spec": "specs/LoongKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "loong_kem_en.pdf",
       "title": "LoongKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853666549760.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/LoongKEM.zip"
      },
      "notes": [],
@@ -4047,8 +5063,10 @@ window.NGCCM4_DATA = {
       "folder": "LoongKEM",
       "instance": "Loong256",
       "pub_date": "2026-09-20 11:15",
+      "spec": "specs/LoongKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "loong_kem_en.pdf",
       "title": "LoongKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853666549760.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/LoongKEM.zip"
      },
      "notes": [],
@@ -4101,8 +5119,10 @@ window.NGCCM4_DATA = {
       "folder": "LoongKEM",
       "instance": "Loong384",
       "pub_date": "2026-09-20 11:15",
+      "spec": "specs/LoongKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "loong_kem_en.pdf",
       "title": "LoongKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853666549760.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/LoongKEM.zip"
      },
      "notes": [],
@@ -4155,8 +5175,10 @@ window.NGCCM4_DATA = {
       "folder": "LoongKEM",
       "instance": "Loong512",
       "pub_date": "2026-09-20 11:15",
+      "spec": "specs/LoongKEM.pdf",
+      "spec_extra": [],
+      "spec_file": "loong_kem_en.pdf",
       "title": "LoongKEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853666549760.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/LoongKEM.zip"
      },
      "notes": [],
@@ -4241,8 +5263,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SHAKE__Lore-L1",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4332,8 +5356,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SHAKE__Lore-L2",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4423,8 +5449,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SHAKE__Lore-L3",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4514,8 +5542,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SHAKE__Lore-L4",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4605,8 +5635,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SM3__Lore-L1",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4696,8 +5728,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SM3__Lore-L2",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4787,8 +5821,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SM3__Lore-L3",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4878,8 +5914,10 @@ window.NGCCM4_DATA = {
       "folder": "Lore",
       "instance": "Lore-SM3__Lore-L4",
       "pub_date": "2026-09-20 11:14",
+      "spec": "specs/Lore.pdf",
+      "spec_extra": [],
+      "spec_file": "Lore算法文本.pdf",
       "title": "Lore",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853788184576.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lore.zip"
      },
      "notes": [],
@@ -4969,8 +6007,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-Viper",
       "instance": "MAMBA-Viper-128",
       "pub_date": "2026-09-20 10:50",
+      "spec": "specs/MAMBA-Viper.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_Viper_Doc.pdf",
       "title": "MAMBA-Viper",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560854052425728.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Viper.zip"
      },
      "notes": [],
@@ -5059,8 +6099,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-Viper",
       "instance": "MAMBA-Viper-192",
       "pub_date": "2026-09-20 10:50",
+      "spec": "specs/MAMBA-Viper.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_Viper_Doc.pdf",
       "title": "MAMBA-Viper",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560854052425728.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Viper.zip"
      },
      "notes": [],
@@ -5149,8 +6191,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-Viper",
       "instance": "MAMBA-Viper-256",
       "pub_date": "2026-09-20 10:50",
+      "spec": "specs/MAMBA-Viper.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_Viper_Doc.pdf",
       "title": "MAMBA-Viper",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560854052425728.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Viper.zip"
      },
      "notes": [],
@@ -5239,8 +6283,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-Viper",
       "instance": "MAMBA-Viper-384",
       "pub_date": "2026-09-20 10:50",
+      "spec": "specs/MAMBA-Viper.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_Viper_Doc.pdf",
       "title": "MAMBA-Viper",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560854052425728.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Viper.zip"
      },
      "notes": [],
@@ -5329,8 +6375,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-Viper",
       "instance": "MAMBA-Viper-512",
       "pub_date": "2026-09-20 10:50",
+      "spec": "specs/MAMBA-Viper.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_Viper_Doc.pdf",
       "title": "MAMBA-Viper",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560854052425728.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Viper.zip"
      },
      "notes": [],
@@ -5419,8 +6467,10 @@ window.NGCCM4_DATA = {
       "folder": "Mithril",
       "instance": "Mithril-128",
       "pub_date": "2026-09-20 10:48",
+      "spec": "specs/Mithril.pdf",
+      "spec_extra": [],
+      "spec_file": "Mithril.pdf",
       "title": "Mithril",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862650748928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mithril.zip"
      },
      "notes": [],
@@ -5509,8 +6559,10 @@ window.NGCCM4_DATA = {
       "folder": "Mithril",
       "instance": "Mithril-256",
       "pub_date": "2026-09-20 10:48",
+      "spec": "specs/Mithril.pdf",
+      "spec_extra": [],
+      "spec_file": "Mithril.pdf",
       "title": "Mithril",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862650748928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mithril.zip"
      },
      "notes": [],
@@ -5599,8 +6651,10 @@ window.NGCCM4_DATA = {
       "folder": "Mithril",
       "instance": "Mithril-512",
       "pub_date": "2026-09-20 10:48",
+      "spec": "specs/Mithril.pdf",
+      "spec_extra": [],
+      "spec_file": "Mithril.pdf",
       "title": "Mithril",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862650748928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mithril.zip"
      },
      "notes": [],
@@ -5657,8 +6711,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-1-128",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -5711,8 +6767,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-1-256",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -5765,8 +6823,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-1-512",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -5819,8 +6879,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-1-E-128",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -5873,8 +6935,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-1-E-256",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -5927,8 +6991,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-1-E-512",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -5981,8 +7047,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-2-E-128",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -6035,8 +7103,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-2-E-256",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -6089,8 +7159,10 @@ window.NGCCM4_DATA = {
       "folder": "Mito",
       "instance": "Mito-2-E-512",
       "pub_date": "2026-09-20 10:47",
+      "spec": "specs/Mito.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm Specification.pdf",
       "title": "Mito",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862776578048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Mito.zip"
      },
      "notes": [],
@@ -6175,8 +7247,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-C1",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6265,8 +7339,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-C1-c",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6355,8 +7431,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-C2",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6445,8 +7523,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-C2-c",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6535,8 +7615,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-C3",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6625,8 +7707,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-C3-c",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6715,8 +7799,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-D1",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6805,8 +7891,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-D2",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6895,8 +7983,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-D3",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -6985,8 +8075,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-R1",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -7075,8 +8167,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-R2",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -7165,8 +8259,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV",
       "instance": "NEV-R3",
       "pub_date": "2026-09-20 10:45",
+      "spec": "specs/NEV.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本：NEV.pdf",
       "title": "NEV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863040819200.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV.zip"
      },
      "notes": [],
@@ -7255,8 +8351,10 @@ window.NGCCM4_DATA = {
       "folder": "NTRE",
       "instance": "NTRE-128",
       "pub_date": "2026-09-20 10:42",
+      "spec": "specs/NTRE.pdf",
+      "spec_extra": [],
+      "spec_file": "NTRE.KEM-Documentation.pdf",
       "title": "NTRE Key Encapsulation Mechanism",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863326031872.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NTRE.zip"
      },
      "notes": [],
@@ -7345,8 +8443,10 @@ window.NGCCM4_DATA = {
       "folder": "NTRE",
       "instance": "NTRE-256",
       "pub_date": "2026-09-20 10:42",
+      "spec": "specs/NTRE.pdf",
+      "spec_extra": [],
+      "spec_file": "NTRE.KEM-Documentation.pdf",
       "title": "NTRE Key Encapsulation Mechanism",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863326031872.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NTRE.zip"
      },
      "notes": [],
@@ -7435,8 +8535,10 @@ window.NGCCM4_DATA = {
       "folder": "NTRE",
       "instance": "NTRE-512",
       "pub_date": "2026-09-20 10:42",
+      "spec": "specs/NTRE.pdf",
+      "spec_extra": [],
+      "spec_file": "NTRE.KEM-Documentation.pdf",
       "title": "NTRE Key Encapsulation Mechanism",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560863326031872.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NTRE.zip"
      },
      "notes": [],
@@ -7525,8 +8627,10 @@ window.NGCCM4_DATA = {
       "folder": "OAEP-NTRU",
       "instance": "OAEP-NTRU-1296",
       "pub_date": "2026-09-20 10:41",
+      "spec": "specs/OAEP-NTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "2算法文本（OAEP-NTRU）.pdf",
       "title": "OAEP-NTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560871911772160.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OAEP-NTRU.zip"
      },
      "notes": [],
@@ -7615,8 +8719,10 @@ window.NGCCM4_DATA = {
       "folder": "OAEP-NTRU",
       "instance": "OAEP-NTRU-2592",
       "pub_date": "2026-09-20 10:41",
+      "spec": "specs/OAEP-NTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "2算法文本（OAEP-NTRU）.pdf",
       "title": "OAEP-NTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560871911772160.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OAEP-NTRU.zip"
      },
      "notes": [],
@@ -7705,8 +8811,10 @@ window.NGCCM4_DATA = {
       "folder": "OAEP-NTRU",
       "instance": "OAEP-NTRU-648",
       "pub_date": "2026-09-20 10:41",
+      "spec": "specs/OAEP-NTRU.pdf",
+      "spec_extra": [],
+      "spec_file": "2算法文本（OAEP-NTRU）.pdf",
       "title": "OAEP-NTRU",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560871911772160.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OAEP-NTRU.zip"
      },
      "notes": [],
@@ -7724,6 +8832,466 @@ window.NGCCM4_DATA = {
       "decaps": 9152,
       "encaps": 7248,
       "keypair": 7968
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1624,
+      "source": "report",
+      "text": 41260,
+      "total": 43432
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 911593,
+       "count": 10,
+       "max": 911687,
+       "median": 911591,
+       "min": 911538
+      },
+      "encaps": {
+       "avg": 672278,
+       "count": 10,
+       "max": 672312,
+       "median": 672279,
+       "min": 672246
+      },
+      "keypair": {
+       "avg": 523908,
+       "count": 10,
+       "max": 523974,
+       "median": 523909,
+       "min": 523810
+      }
+     },
+     "cycles_total": 2107779,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_POLARLAC-128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
+      "folder": "PolarLAC",
+      "instance": "POLARLAC-128",
+      "pub_date": "2026-09-20 10:35",
+      "spec": "specs/PolarLAC.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本.pdf",
+      "title": "PolarLAC",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "POLARLAC-128",
+     "sizes": {
+      "ct": 640,
+      "kat_path": "schemes/PolarLAC/Test_Vectors/Reference_Implementation/x86/KAT_KEM_POLARLAC-128.txt",
+      "pk": 530,
+      "sk": 1570,
+      "source": "kat_raw",
+      "ss": 16
+     },
+     "stack": {
+      "decaps": 12896,
+      "encaps": 12408,
+      "keypair": 10600
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1880,
+      "source": "report",
+      "text": 47728,
+      "total": 50156
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 1856130,
+       "count": 10,
+       "max": 1950442,
+       "median": 1845664,
+       "min": 1845593
+      },
+      "encaps": {
+       "avg": 1329464,
+       "count": 10,
+       "max": 1423741,
+       "median": 1318989,
+       "min": 1318944
+      },
+      "keypair": {
+       "avg": 1010300,
+       "count": 10,
+       "max": 1104571,
+       "median": 999840,
+       "min": 999767
+      }
+     },
+     "cycles_total": 4195894,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_POLARLAC-256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
+      "folder": "PolarLAC",
+      "instance": "POLARLAC-256",
+      "pub_date": "2026-09-20 10:35",
+      "spec": "specs/PolarLAC.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本.pdf",
+      "title": "PolarLAC",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "POLARLAC-256",
+     "sizes": {
+      "ct": 1280,
+      "kat_path": "schemes/PolarLAC/Test_Vectors/Reference_Implementation/x86/KAT_KEM_POLARLAC-256.txt",
+      "pk": 1060,
+      "sk": 3140,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 25120,
+      "encaps": 21816,
+      "keypair": 19384
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 2392,
+      "source": "report",
+      "text": 61372,
+      "total": 64312
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 4967224,
+       "count": 10,
+       "max": 4967269,
+       "median": 4967240,
+       "min": 4967142
+      },
+      "encaps": {
+       "avg": 3679561,
+       "count": 10,
+       "max": 3679623,
+       "median": 3679560,
+       "min": 3679486
+      },
+      "keypair": {
+       "avg": 2805974,
+       "count": 10,
+       "max": 3061636,
+       "median": 2777598,
+       "min": 2777429
+      }
+     },
+     "cycles_total": 11452759,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_POLARLAC-512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
+      "folder": "PolarLAC",
+      "instance": "POLARLAC-512",
+      "pub_date": "2026-09-20 10:35",
+      "spec": "specs/PolarLAC.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本.pdf",
+      "title": "PolarLAC",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "POLARLAC-512",
+     "sizes": {
+      "ct": 2560,
+      "kat_path": "schemes/PolarLAC/Test_Vectors/Reference_Implementation/x86/KAT_KEM_POLARLAC-512.txt",
+      "pk": 2116,
+      "sk": 6276,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "decaps": 49816,
+      "encaps": 42240,
+      "keypair": 37248
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 2392,
+      "source": "report",
+      "text": 68268,
+      "total": 71208
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 6462042,
+       "count": 10,
+       "max": 6462221,
+       "median": 6462062,
+       "min": 6461827
+      },
+      "encaps": {
+       "avg": 4966468,
+       "count": 10,
+       "max": 4966808,
+       "median": 4966446,
+       "min": 4966219
+      },
+      "keypair": {
+       "avg": 3693121,
+       "count": 10,
+       "max": 3693345,
+       "median": 3693122,
+       "min": 3692911
+      }
+     },
+     "cycles_total": 15121631,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_POLARLAC-512-Star_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
+      "folder": "PolarLAC",
+      "instance": "POLARLAC-512-Star",
+      "pub_date": "2026-09-20 10:35",
+      "spec": "specs/PolarLAC.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本.pdf",
+      "title": "PolarLAC",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "POLARLAC-512-Star",
+     "sizes": {
+      "ct": 2970,
+      "kat_path": "schemes/PolarLAC/Test_Vectors/Reference_Implementation/x86/KAT_KEM_POLARLAC-512-Star.txt",
+      "pk": 2522,
+      "sk": 6682,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "decaps": 52608,
+      "encaps": 49296,
+      "keypair": 40216
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1624,
+      "source": "report",
+      "text": 41324,
+      "total": 43496
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 880254,
+       "count": 10,
+       "max": 925369,
+       "median": 875244,
+       "min": 875197
+      },
+      "encaps": {
+       "avg": 644130,
+       "count": 10,
+       "max": 689244,
+       "median": 639118,
+       "min": 639110
+      },
+      "keypair": {
+       "avg": 495404,
+       "count": 10,
+       "max": 495459,
+       "median": 495410,
+       "min": 495260
+      }
+     },
+     "cycles_total": 2019788,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_POLARLAC-Light_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": "PolarLAC spec Table 2-3: lightweight set recommended where refined-BKZ estimates suffice (core-SVP 121.6 / refined BKZ 143.8 classical bits); no explicit bit claim",
+      "label": "128",
+      "param_set": "Light",
+      "source": "spec",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
+      "folder": "PolarLAC",
+      "instance": "POLARLAC-Light",
+      "pub_date": "2026-09-20 10:35",
+      "spec": "specs/PolarLAC.pdf",
+      "spec_extra": [],
+      "spec_file": "算法文本.pdf",
+      "title": "PolarLAC",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "POLARLAC-Light",
+     "sizes": {
+      "ct": 608,
+      "kat_path": "schemes/PolarLAC/Test_Vectors/Reference_Implementation/x86/KAT_KEM_POLARLAC-Light.txt",
+      "pk": 530,
+      "sk": 1570,
+      "source": "kat_raw",
+      "ss": 16
+     },
+     "stack": {
+      "decaps": 12864,
+      "encaps": 11864,
+      "keypair": 10056
      },
      "status_text": null,
      "tier": "board"
@@ -7795,8 +9363,10 @@ window.NGCCM4_DATA = {
       "folder": "Polar-KEM",
       "instance": "PolarKEM-128",
       "pub_date": "2026-09-20 10:38",
+      "spec": "specs/Polar-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "polarkem-spec.pdf",
       "title": "Polar-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872041795584.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Polar-KEM.zip"
      },
      "notes": [],
@@ -7885,8 +9455,10 @@ window.NGCCM4_DATA = {
       "folder": "Polar-KEM",
       "instance": "PolarKEM-256",
       "pub_date": "2026-09-20 10:38",
+      "spec": "specs/Polar-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "polarkem-spec.pdf",
       "title": "Polar-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872041795584.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Polar-KEM.zip"
      },
      "notes": [],
@@ -7975,8 +9547,10 @@ window.NGCCM4_DATA = {
       "folder": "Polar-KEM",
       "instance": "PolarKEM-512",
       "pub_date": "2026-09-20 10:38",
+      "spec": "specs/Polar-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "polarkem-spec.pdf",
       "title": "Polar-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872041795584.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Polar-KEM.zip"
      },
      "notes": [],
@@ -8033,8 +9607,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-128",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8087,8 +9663,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-128",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8141,8 +9719,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-128",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8195,8 +9775,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-192",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8249,8 +9831,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-192",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8303,8 +9887,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-192",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8357,8 +9943,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-256",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8411,8 +9999,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-256",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8465,8 +10055,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-256",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8519,8 +10111,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-384",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8573,8 +10167,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-384",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8627,8 +10223,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-384",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8681,8 +10279,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-512",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8735,8 +10335,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-512",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8789,8 +10391,10 @@ window.NGCCM4_DATA = {
       "folder": "Scloudplus",
       "instance": "Scloudplus-512",
       "pub_date": "2026-09-20 10:31",
+      "spec": "specs/Scloudplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Scloud+算法文本.pdf",
       "title": "Scloud+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881269264384.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Scloud%2B.zip"
      },
      "notes": [],
@@ -8875,8 +10479,10 @@ window.NGCCM4_DATA = {
       "folder": "TRIKE",
       "instance": "TRIKE-2",
       "pub_date": "2026-09-20 10:30",
+      "spec": "specs/TRIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "TRIKE算法文档.pdf",
       "title": "TRIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881424453632.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRIKE.zip"
      },
      "notes": [],
@@ -8965,8 +10571,10 @@ window.NGCCM4_DATA = {
       "folder": "TRIKE",
       "instance": "TRIKE-5",
       "pub_date": "2026-09-20 10:30",
+      "spec": "specs/TRIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "TRIKE算法文档.pdf",
       "title": "TRIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881424453632.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRIKE.zip"
      },
      "notes": [],
@@ -9023,8 +10631,10 @@ window.NGCCM4_DATA = {
       "folder": "TRIKE",
       "instance": "TRIKE-7",
       "pub_date": "2026-09-20 10:30",
+      "spec": "specs/TRIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "TRIKE算法文档.pdf",
       "title": "TRIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881424453632.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRIKE.zip"
      },
      "notes": [],
@@ -9077,8 +10687,10 @@ window.NGCCM4_DATA = {
       "folder": "TRIKE",
       "instance": "TRIKE-9",
       "pub_date": "2026-09-20 10:30",
+      "spec": "specs/TRIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "TRIKE算法文档.pdf",
       "title": "TRIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881424453632.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRIKE.zip"
      },
      "notes": [],
@@ -9131,8 +10743,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEM",
       "instance": "TriQ-KEM-128",
       "pub_date": "2026-09-20 10:29",
+      "spec": "specs/TriQ-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881558671360.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEM.zip"
      },
      "notes": [],
@@ -9185,8 +10799,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEM",
       "instance": "TriQ-KEM-256",
       "pub_date": "2026-09-20 10:29",
+      "spec": "specs/TriQ-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881558671360.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEM.zip"
      },
      "notes": [],
@@ -9239,8 +10855,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEM",
       "instance": "TriQ-KEM-384",
       "pub_date": "2026-09-20 10:29",
+      "spec": "specs/TriQ-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881558671360.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEM.zip"
      },
      "notes": [],
@@ -9293,8 +10911,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEM",
       "instance": "TriQ-KEM-512",
       "pub_date": "2026-09-20 10:29",
+      "spec": "specs/TriQ-KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881558671360.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEM.zip"
      },
      "notes": [],
@@ -9379,8 +10999,10 @@ window.NGCCM4_DATA = {
       "folder": "Weaver",
       "instance": "WeaverKEM-128",
       "pub_date": "2026-09-20 10:28",
+      "spec": "specs/Weaver.pdf",
+      "spec_extra": [],
+      "spec_file": "Weaver算法设计说明书.pdf",
       "title": "Weaver",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890312183808.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Weaver.zip"
      },
      "notes": [],
@@ -9469,8 +11091,10 @@ window.NGCCM4_DATA = {
       "folder": "Weaver",
       "instance": "WeaverKEM-256",
       "pub_date": "2026-09-20 10:28",
+      "spec": "specs/Weaver.pdf",
+      "spec_extra": [],
+      "spec_file": "Weaver算法设计说明书.pdf",
       "title": "Weaver",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890312183808.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Weaver.zip"
      },
      "notes": [],
@@ -9559,8 +11183,10 @@ window.NGCCM4_DATA = {
       "folder": "Weaver",
       "instance": "WeaverKEM-512",
       "pub_date": "2026-09-20 10:28",
+      "spec": "specs/Weaver.pdf",
+      "spec_extra": [],
+      "spec_file": "Weaver算法设计说明书.pdf",
       "title": "Weaver",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890312183808.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Weaver.zip"
      },
      "notes": [],
@@ -9649,8 +11275,10 @@ window.NGCCM4_DATA = {
       "folder": "YuanYang.KEM",
       "instance": "yuanyang-1024",
       "pub_date": "2026-09-20 10:27",
+      "spec": "specs/YuanYang.KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "YuanYang.KEM算法文本.pdf",
       "title": "YuanYang.KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890442207232.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.KEM.zip"
      },
      "notes": [],
@@ -9740,8 +11368,10 @@ window.NGCCM4_DATA = {
       "folder": "YuanYang.KEM",
       "instance": "yuanyang-2048",
       "pub_date": "2026-09-20 10:27",
+      "spec": "specs/YuanYang.KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "YuanYang.KEM算法文本.pdf",
       "title": "YuanYang.KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890442207232.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.KEM.zip"
      },
      "notes": [],
@@ -9831,8 +11461,10 @@ window.NGCCM4_DATA = {
       "folder": "YuanYang.KEM",
       "instance": "yuanyang-512",
       "pub_date": "2026-09-20 10:27",
+      "spec": "specs/YuanYang.KEM.pdf",
+      "spec_extra": [],
+      "spec_file": "YuanYang.KEM算法文本.pdf",
       "title": "YuanYang.KEM",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890442207232.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.KEM.zip"
      },
      "notes": [],
@@ -9922,8 +11554,10 @@ window.NGCCM4_DATA = {
       "folder": "ZEN",
       "instance": "ZEN_128",
       "pub_date": "2026-09-20 10:25",
+      "spec": "specs/ZEN.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm_specifications.pdf",
       "title": "ZEN",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip"
      },
      "notes": [],
@@ -10012,8 +11646,10 @@ window.NGCCM4_DATA = {
       "folder": "ZEN",
       "instance": "ZEN_128",
       "pub_date": "2026-09-20 10:25",
+      "spec": "specs/ZEN.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm_specifications.pdf",
       "title": "ZEN",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip"
      },
      "notes": [],
@@ -10102,8 +11738,10 @@ window.NGCCM4_DATA = {
       "folder": "ZEN",
       "instance": "ZEN_256",
       "pub_date": "2026-09-20 10:25",
+      "spec": "specs/ZEN.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm_specifications.pdf",
       "title": "ZEN",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip"
      },
      "notes": [],
@@ -10192,8 +11830,10 @@ window.NGCCM4_DATA = {
       "folder": "ZEN",
       "instance": "ZEN_256",
       "pub_date": "2026-09-20 10:25",
+      "spec": "specs/ZEN.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm_specifications.pdf",
       "title": "ZEN",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip"
      },
      "notes": [],
@@ -10282,8 +11922,10 @@ window.NGCCM4_DATA = {
       "folder": "ZEN",
       "instance": "ZEN_512",
       "pub_date": "2026-09-20 10:25",
+      "spec": "specs/ZEN.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm_specifications.pdf",
       "title": "ZEN",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip"
      },
      "notes": [],
@@ -10372,8 +12014,10 @@ window.NGCCM4_DATA = {
       "folder": "ZEN",
       "instance": "ZEN_512",
       "pub_date": "2026-09-20 10:25",
+      "spec": "specs/ZEN.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm_specifications.pdf",
       "title": "ZEN",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560890563842048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ZEN.zip"
      },
      "notes": [],
@@ -10462,8 +12106,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Piglet",
       "instance": "bag_piglet_128",
       "pub_date": "2026-09-20 11:29",
+      "spec": "specs/BAG-Piglet.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Piglet",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843373727744.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Piglet.zip"
      },
      "notes": [],
@@ -10552,8 +12198,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Piglet",
       "instance": "bag_piglet_256",
       "pub_date": "2026-09-20 11:29",
+      "spec": "specs/BAG-Piglet.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Piglet",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843373727744.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Piglet.zip"
      },
      "notes": [],
@@ -10642,8 +12290,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Piglet",
       "instance": "bag_piglet_384",
       "pub_date": "2026-09-20 11:29",
+      "spec": "specs/BAG-Piglet.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Piglet",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843373727744.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Piglet.zip"
      },
      "notes": [],
@@ -10732,8 +12382,10 @@ window.NGCCM4_DATA = {
       "folder": "BAG-Piglet",
       "instance": "bag_piglet_512",
       "pub_date": "2026-09-20 11:29",
+      "spec": "specs/BAG-Piglet.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BAG-Piglet",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843373727744.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BAG-Piglet.zip"
      },
      "notes": [],
@@ -10748,6 +12400,98 @@ window.NGCCM4_DATA = {
       "ss": 64
      },
      "stack": null,
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 24476,
+      "total": 26376
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 6804860,
+       "count": 10,
+       "max": 6805431,
+       "median": 6804848,
+       "min": 6804322
+      },
+      "encaps": {
+       "avg": 6617542,
+       "count": 10,
+       "max": 6618074,
+       "median": 6617530,
+       "min": 6617004
+      },
+      "keypair": {
+       "avg": 6593881,
+       "count": 10,
+       "max": 6594478,
+       "median": 6593858,
+       "min": 6593283
+      }
+     },
+     "cycles_total": 20016283,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_lwekem128_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A35C2JZDLERYJNKGAUECZ73T5Y64LCPT/",
+      "folder": "Rudraksh2",
+      "instance": "lwekem128",
+      "pub_date": "2026-09-20 10:32",
+      "spec": "specs/Rudraksh2.pdf",
+      "spec_extra": [],
+      "spec_file": "rudraksh2.pdf",
+      "title": "Rudraksh2",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "lwekem128",
+     "sizes": {
+      "ct": 912,
+      "kat_path": "schemes/Rudraksh2/Test_Vectors/KAT_KEM_lwekem128.txt",
+      "pk": 880,
+      "sk": 1776,
+      "source": "kat_raw",
+      "ss": 16
+     },
+     "stack": {
+      "decaps": 3788,
+      "encaps": 3772,
+      "keypair": 3592
+     },
      "status_text": null,
      "tier": "board"
     },
@@ -10818,8 +12562,10 @@ window.NGCCM4_DATA = {
       "folder": "Rudraksh2",
       "instance": "lwekem128",
       "pub_date": "2026-09-20 10:32",
+      "spec": "specs/Rudraksh2.pdf",
+      "spec_extra": [],
+      "spec_file": "rudraksh2.pdf",
       "title": "Rudraksh2",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881139240960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip"
      },
      "notes": [],
@@ -10837,6 +12583,98 @@ window.NGCCM4_DATA = {
       "decaps": 19412,
       "encaps": 17448,
       "keypair": 15956
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 26776,
+      "total": 28676
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 13693861,
+       "count": 10,
+       "max": 13694739,
+       "median": 13693611,
+       "min": 13693307
+      },
+      "encaps": {
+       "avg": 13282096,
+       "count": 10,
+       "max": 13282939,
+       "median": 13281859,
+       "min": 13281517
+      },
+      "keypair": {
+       "avg": 13180480,
+       "count": 10,
+       "max": 13181387,
+       "median": 13180225,
+       "min": 13179937
+      }
+     },
+     "cycles_total": 40156437,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_lwekem256_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A35C2JZDLERYJNKGAUECZ73T5Y64LCPT/",
+      "folder": "Rudraksh2",
+      "instance": "lwekem256",
+      "pub_date": "2026-09-20 10:32",
+      "spec": "specs/Rudraksh2.pdf",
+      "spec_extra": [],
+      "spec_file": "rudraksh2.pdf",
+      "title": "Rudraksh2",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "lwekem256",
+     "sizes": {
+      "ct": 1728,
+      "kat_path": "schemes/Rudraksh2/Test_Vectors/KAT_KEM_lwekem256.txt",
+      "pk": 1760,
+      "sk": 3552,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 6940,
+      "encaps": 6940,
+      "keypair": 6828
      },
      "status_text": null,
      "tier": "board"
@@ -10908,8 +12746,10 @@ window.NGCCM4_DATA = {
       "folder": "Rudraksh2",
       "instance": "lwekem256",
       "pub_date": "2026-09-20 10:32",
+      "spec": "specs/Rudraksh2.pdf",
+      "spec_extra": [],
+      "spec_file": "rudraksh2.pdf",
       "title": "Rudraksh2",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881139240960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip"
      },
      "notes": [],
@@ -10927,6 +12767,98 @@ window.NGCCM4_DATA = {
       "decaps": 38052,
       "encaps": 34548,
       "keypair": 31348
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 26924,
+      "total": 28824
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 39351879,
+       "count": 10,
+       "max": 39352273,
+       "median": 39351964,
+       "min": 39351439
+      },
+      "encaps": {
+       "avg": 38560023,
+       "count": 10,
+       "max": 38560420,
+       "median": 38560125,
+       "min": 38559578
+      },
+      "keypair": {
+       "avg": 38617721,
+       "count": 10,
+       "max": 38618115,
+       "median": 38617796,
+       "min": 38617292
+      }
+     },
+     "cycles_total": 116529623,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_lwekem512_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A35C2JZDLERYJNKGAUECZ73T5Y64LCPT/",
+      "folder": "Rudraksh2",
+      "instance": "lwekem512",
+      "pub_date": "2026-09-20 10:32",
+      "spec": "specs/Rudraksh2.pdf",
+      "spec_extra": [],
+      "spec_file": "rudraksh2.pdf",
+      "title": "Rudraksh2",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "lwekem512",
+     "sizes": {
+      "ct": 3552,
+      "kat_path": "schemes/Rudraksh2/Test_Vectors/KAT_KEM_lwekem512.txt",
+      "pk": 3392,
+      "sk": 6848,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "decaps": 13340,
+      "encaps": 13380,
+      "keypair": 13204
      },
      "status_text": null,
      "tier": "board"
@@ -10998,8 +12930,10 @@ window.NGCCM4_DATA = {
       "folder": "Rudraksh2",
       "instance": "lwekem512",
       "pub_date": "2026-09-20 10:32",
+      "spec": "specs/Rudraksh2.pdf",
+      "spec_extra": [],
+      "spec_file": "rudraksh2.pdf",
       "title": "Rudraksh2",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881139240960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rudraksh2.zip"
      },
      "notes": [],
@@ -11056,8 +12990,10 @@ window.NGCCM4_DATA = {
       "folder": "QUBE",
       "instance": "qube-128",
       "pub_date": "2026-09-20 10:33",
+      "spec": "specs/QUBE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "QUBE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881000828928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QUBE.zip"
      },
      "notes": [
@@ -11112,8 +13048,10 @@ window.NGCCM4_DATA = {
       "folder": "QUBE",
       "instance": "qube-192",
       "pub_date": "2026-09-20 10:33",
+      "spec": "specs/QUBE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "QUBE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881000828928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QUBE.zip"
      },
      "notes": [],
@@ -11167,8 +13105,10 @@ window.NGCCM4_DATA = {
       "folder": "QUBE",
       "instance": "qube-256",
       "pub_date": "2026-09-20 10:33",
+      "spec": "specs/QUBE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "QUBE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881000828928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QUBE.zip"
      },
      "notes": [
@@ -11223,8 +13163,10 @@ window.NGCCM4_DATA = {
       "folder": "QUBE",
       "instance": "qube-384",
       "pub_date": "2026-09-20 10:33",
+      "spec": "specs/QUBE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "QUBE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881000828928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QUBE.zip"
      },
      "notes": [
@@ -11279,8 +13221,10 @@ window.NGCCM4_DATA = {
       "folder": "QUBE",
       "instance": "qube-512",
       "pub_date": "2026-09-20 10:33",
+      "spec": "specs/QUBE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "QUBE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881000828928.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QUBE.zip"
      },
      "notes": [
@@ -11299,6 +13243,98 @@ window.NGCCM4_DATA = {
      "stack": null,
      "status_text": null,
      "tier": "qemu"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 26764,
+      "total": 28664
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 1673250,
+       "count": 10,
+       "max": 1673282,
+       "median": 1673246,
+       "min": 1673246
+      },
+      "encaps": {
+       "avg": 1647748,
+       "count": 10,
+       "max": 1647782,
+       "median": 1647744,
+       "min": 1647743
+      },
+      "keypair": {
+       "avg": 1569653,
+       "count": 10,
+       "max": 1569697,
+       "median": 1569655,
+       "min": 1569590
+      }
+     },
+     "cycles_total": 4890651,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_scabbard128_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/4KFYAFY5ZWKVT2D47LSNZP2LKIHBGPV7/",
+      "folder": "MORNING-Scabbard",
+      "instance": "scabbard128",
+      "pub_date": "2026-09-20 10:46",
+      "spec": "specs/MORNING-Scabbard.pdf",
+      "spec_extra": [],
+      "spec_file": "scabbard.pdf",
+      "title": "MORNING-Scabbard",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-Scabbard.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "scabbard128",
+     "sizes": {
+      "ct": 760,
+      "kat_path": "schemes/MORNING-Scabbard/Test_Vectors/KAT_KEM_scabbard128.txt",
+      "pk": 736,
+      "sk": 1056,
+      "source": "kat_raw",
+      "ss": 16
+     },
+     "stack": {
+      "decaps": 2020,
+      "encaps": 2012,
+      "keypair": 1388
+     },
+     "status_text": null,
+     "tier": "board"
     },
     {
      "category": "kem",
@@ -11367,8 +13403,10 @@ window.NGCCM4_DATA = {
       "folder": "MORNING-Scabbard",
       "instance": "scabbard128",
       "pub_date": "2026-09-20 10:46",
+      "spec": "specs/MORNING-Scabbard.pdf",
+      "spec_extra": [],
+      "spec_file": "scabbard.pdf",
       "title": "MORNING-Scabbard",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862906601472.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-Scabbard.zip"
      },
      "notes": [],
@@ -11386,6 +13424,98 @@ window.NGCCM4_DATA = {
       "decaps": 19172,
       "encaps": 18412,
       "keypair": 16956
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kem",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 35784,
+      "total": 37684
+     },
+     "completed_ops": [],
+     "cycles": {
+      "decaps": {
+       "avg": 3515319,
+       "count": 10,
+       "max": 3515354,
+       "median": 3515315,
+       "min": 3515315
+      },
+      "encaps": {
+       "avg": 3414872,
+       "count": 10,
+       "max": 3414900,
+       "median": 3414861,
+       "min": 3414861
+      },
+      "keypair": {
+       "avg": 3198835,
+       "count": 10,
+       "max": 3198863,
+       "median": 3198824,
+       "min": 3198824
+      }
+     },
+     "cycles_total": 10129026,
+     "expected_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kem",
+     "hand_ported": false,
+     "id": "crypto_kem_scabbard256_m4",
+     "impl": "m4",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "keypair",
+      "encaps",
+      "decaps"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/4KFYAFY5ZWKVT2D47LSNZP2LKIHBGPV7/",
+      "folder": "MORNING-Scabbard",
+      "instance": "scabbard256",
+      "pub_date": "2026-09-20 10:46",
+      "spec": "specs/MORNING-Scabbard.pdf",
+      "spec_extra": [],
+      "spec_file": "scabbard.pdf",
+      "title": "MORNING-Scabbard",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-Scabbard.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "scabbard256",
+     "sizes": {
+      "ct": 1648,
+      "kat_path": "schemes/MORNING-Scabbard/Test_Vectors/KAT_KEM_scabbard256.txt",
+      "pk": 1616,
+      "sk": 2256,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "decaps": 3904,
+      "encaps": 3896,
+      "keypair": 2664
      },
      "status_text": null,
      "tier": "board"
@@ -11457,8 +13587,10 @@ window.NGCCM4_DATA = {
       "folder": "MORNING-Scabbard",
       "instance": "scabbard256",
       "pub_date": "2026-09-20 10:46",
+      "spec": "specs/MORNING-Scabbard.pdf",
+      "spec_extra": [],
+      "spec_file": "scabbard.pdf",
       "title": "MORNING-Scabbard",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862906601472.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-Scabbard.zip"
      },
      "notes": [],
@@ -11594,8 +13726,10 @@ window.NGCCM4_DATA = {
       "folder": "ADKEX",
       "instance": "ADKEX-128",
       "pub_date": "2026-09-20 10:18",
+      "spec": "specs/ADKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "ADKEX-Algorithm Specification.pdf",
       "title": "ADKEX (Authenticated Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip"
      },
      "notes": [],
@@ -11721,8 +13855,10 @@ window.NGCCM4_DATA = {
       "folder": "ADKEX",
       "instance": "ADKEX-128",
       "pub_date": "2026-09-20 10:18",
+      "spec": "specs/ADKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "ADKEX-Algorithm Specification.pdf",
       "title": "ADKEX (Authenticated Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip"
      },
      "notes": [],
@@ -11848,8 +13984,10 @@ window.NGCCM4_DATA = {
       "folder": "ADKEX",
       "instance": "ADKEX-256",
       "pub_date": "2026-09-20 10:18",
+      "spec": "specs/ADKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "ADKEX-Algorithm Specification.pdf",
       "title": "ADKEX (Authenticated Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip"
      },
      "notes": [],
@@ -11975,8 +14113,10 @@ window.NGCCM4_DATA = {
       "folder": "ADKEX",
       "instance": "ADKEX-256",
       "pub_date": "2026-09-20 10:18",
+      "spec": "specs/ADKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "ADKEX-Algorithm Specification.pdf",
       "title": "ADKEX (Authenticated Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip"
      },
      "notes": [],
@@ -12102,8 +14242,10 @@ window.NGCCM4_DATA = {
       "folder": "ADKEX",
       "instance": "ADKEX-512",
       "pub_date": "2026-09-20 10:18",
+      "spec": "specs/ADKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "ADKEX-Algorithm Specification.pdf",
       "title": "ADKEX (Authenticated Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip"
      },
      "notes": [],
@@ -12229,8 +14371,10 @@ window.NGCCM4_DATA = {
       "folder": "ADKEX",
       "instance": "ADKEX-512",
       "pub_date": "2026-09-20 10:18",
+      "spec": "specs/ADKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "ADKEX-Algorithm Specification.pdf",
       "title": "ADKEX (Authenticated Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625202810880.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ADKEX.zip"
      },
      "notes": [],
@@ -12374,8 +14518,10 @@ window.NGCCM4_DATA = {
       "folder": "AFS-KEX",
       "instance": "AFS_KEX_C128",
       "pub_date": "2026-09-20 10:17",
+      "spec": "specs/AFS-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications-AFS-KEX.pdf",
       "title": "AFS-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625362194432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/AFS-KEX.zip"
      },
      "notes": [],
@@ -12523,8 +14669,10 @@ window.NGCCM4_DATA = {
       "folder": "AFS-KEX",
       "instance": "AFS_KEX_C256",
       "pub_date": "2026-09-20 10:17",
+      "spec": "specs/AFS-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications-AFS-KEX.pdf",
       "title": "AFS-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625362194432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/AFS-KEX.zip"
      },
      "notes": [],
@@ -12672,8 +14820,10 @@ window.NGCCM4_DATA = {
       "folder": "AFS-KEX",
       "instance": "AFS_KEX_C512",
       "pub_date": "2026-09-20 10:17",
+      "spec": "specs/AFS-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications-AFS-KEX.pdf",
       "title": "AFS-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625362194432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/AFS-KEX.zip"
      },
      "notes": [],
@@ -12708,6 +14858,2475 @@ window.NGCCM4_DATA = {
      },
      "status_text": null,
      "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 1624,
+      "source": "report",
+      "text": 47764,
+      "total": 49936
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 1832404,
+       "count": 10,
+       "max": 1832492,
+       "median": 1832396,
+       "min": 1832325
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 524066,
+       "count": 10,
+       "max": 524132,
+       "median": 524067,
+       "min": 524015
+      },
+      "init_b": {
+       "avg": 524000,
+       "count": 10,
+       "max": 524036,
+       "median": 523997,
+       "min": 523958
+      },
+      "pass1": {
+       "avg": 1227781,
+       "count": 10,
+       "max": 1279352,
+       "median": 1222052,
+       "min": 1222015
+      },
+      "pass2": {
+       "avg": 2374873,
+       "count": 10,
+       "max": 2420715,
+       "median": 2363414,
+       "min": 2363376
+      }
+     },
+     "cycles_total": 6483475,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-PLAC128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-PLAC128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-PLAC128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC128.txt",
+      "msg_total": 2450,
+      "msgs": [
+       1170,
+       1280
+      ],
+      "passes": 2,
+      "pk_a": 530,
+      "pk_b": 530,
+      "sk_a": 1570,
+      "sk_b": 1570,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 21008,
+      "derive_b": 8,
+      "init_a": 10616,
+      "init_b": 10608,
+      "pass1": 15232,
+      "pass2": 17708
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 1880,
+      "source": "report",
+      "text": 54276,
+      "total": 56704
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 3957594,
+       "count": 10,
+       "max": 4041510,
+       "median": 3936642,
+       "min": 3936501
+      },
+      "derive_b": {
+       "avg": 587,
+       "count": 10,
+       "max": 587,
+       "median": 587,
+       "min": 587
+      },
+      "init_a": {
+       "avg": 999994,
+       "count": 10,
+       "max": 1000085,
+       "median": 1000014,
+       "min": 999825
+      },
+      "init_b": {
+       "avg": 999876,
+       "count": 10,
+       "max": 999929,
+       "median": 999877,
+       "min": 999825
+      },
+      "pass1": {
+       "avg": 2381035,
+       "count": 10,
+       "max": 2464821,
+       "median": 2360100,
+       "min": 2360045
+      },
+      "pass2": {
+       "avg": 4942356,
+       "count": 10,
+       "max": 4942537,
+       "median": 4942330,
+       "min": 4942265
+      }
+     },
+     "cycles_total": 13281442,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-PLAC256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-PLAC256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-PLAC256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC256.txt",
+      "msg_total": 4900,
+      "msgs": [
+       2340,
+       2560
+      ],
+      "passes": 2,
+      "pk_a": 1060,
+      "pk_b": 1060,
+      "sk_a": 3140,
+      "sk_b": 3140,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "derive_a": 41032,
+      "derive_b": 16,
+      "init_a": 19400,
+      "init_b": 19392,
+      "pass1": 27248,
+      "pass2": 33648
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 2392,
+      "source": "report",
+      "text": 69788,
+      "total": 72728
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 13435689,
+       "count": 10,
+       "max": 13435842,
+       "median": 13435680,
+       "min": 13435596
+      },
+      "derive_b": {
+       "avg": 1004,
+       "count": 10,
+       "max": 1004,
+       "median": 1004,
+       "min": 1004
+      },
+      "init_a": {
+       "avg": 2777832,
+       "count": 10,
+       "max": 2777956,
+       "median": 2777837,
+       "min": 2777587
+      },
+      "init_b": {
+       "avg": 2806025,
+       "count": 10,
+       "max": 3061660,
+       "median": 2777637,
+       "min": 2777525
+      },
+      "pass1": {
+       "avg": 6555154,
+       "count": 10,
+       "max": 6810819,
+       "median": 6526732,
+       "min": 6526646
+      },
+      "pass2": {
+       "avg": 13899356,
+       "count": 10,
+       "max": 14155171,
+       "median": 13870924,
+       "min": 13870779
+      }
+     },
+     "cycles_total": 39475060,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-PLAC512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-PLAC512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-PLAC512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512.txt",
+      "msg_total": 9284,
+      "msgs": [
+       4676,
+       4608
+      ],
+      "passes": 2,
+      "pk_a": 2116,
+      "pk_b": 2116,
+      "sk_a": 6276,
+      "sk_b": 6276,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": {
+      "derive_a": 102472,
+      "derive_b": 8,
+      "init_a": 37264,
+      "init_b": 37256,
+      "pass1": 52888,
+      "pass2": 79400
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 2392,
+      "source": "report",
+      "text": 76716,
+      "total": 79656
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 17569538,
+       "count": 10,
+       "max": 17570959,
+       "median": 17569552,
+       "min": 17568946
+      },
+      "derive_b": {
+       "avg": 1003,
+       "count": 10,
+       "max": 1003,
+       "median": 1003,
+       "min": 1003
+      },
+      "init_a": {
+       "avg": 3743569,
+       "count": 10,
+       "max": 3944640,
+       "median": 3693294,
+       "min": 3693041
+      },
+      "init_b": {
+       "avg": 3718094,
+       "count": 10,
+       "max": 3943856,
+       "median": 3693154,
+       "min": 3692634
+      },
+      "pass1": {
+       "avg": 8735107,
+       "count": 10,
+       "max": 8735828,
+       "median": 8735271,
+       "min": 8734315
+      },
+      "pass2": {
+       "avg": 18207166,
+       "count": 10,
+       "max": 18208179,
+       "median": 18207207,
+       "min": 18206321
+      }
+     },
+     "cycles_total": 51974477,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-PLAC512Star_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-PLAC512Star",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-PLAC512Star",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512Star.txt",
+      "msg_total": 10920,
+      "msgs": [
+       5492,
+       5428
+      ],
+      "passes": 2,
+      "pk_a": 2522,
+      "pk_b": 2522,
+      "sk_a": 6682,
+      "sk_b": 6682,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": {
+      "derive_a": 115520,
+      "derive_b": 8,
+      "init_a": 40232,
+      "init_b": 40224,
+      "pass1": 60352,
+      "pass2": 90960
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 43512,
+      "total": 45412
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 2931014,
+       "count": 10,
+       "max": 2952184,
+       "median": 2925722,
+       "min": 2925722
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 604114,
+       "count": 10,
+       "max": 741557,
+       "median": 582962,
+       "min": 582962
+      },
+      "init_b": {
+       "avg": 609244,
+       "count": 10,
+       "max": 715089,
+       "median": 596013,
+       "min": 582782
+      },
+      "pass1": {
+       "avg": 972527,
+       "count": 10,
+       "max": 993692,
+       "median": 967231,
+       "min": 967230
+      },
+      "pass2": {
+       "avg": 2177968,
+       "count": 10,
+       "max": 2178057,
+       "median": 2177948,
+       "min": 2177946
+      }
+     },
+     "cycles_total": 7295218,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-ZEN128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-ZEN128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-ZEN128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN128.txt",
+      "msg_total": 2151,
+      "msgs": [
+       1127,
+       1024
+      ],
+      "passes": 2,
+      "pk_a": 615,
+      "pk_b": 615,
+      "sk_a": 1303,
+      "sk_b": 1303,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 21672,
+      "derive_b": 8,
+      "init_a": 10000,
+      "init_b": 9992,
+      "pass1": 15184,
+      "pass2": 18128
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 51640,
+      "total": 53540
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 9132876,
+       "count": 10,
+       "max": 9309438,
+       "median": 9123597,
+       "min": 9030621
+      },
+      "derive_b": {
+       "avg": 587,
+       "count": 10,
+       "max": 587,
+       "median": 587,
+       "min": 587
+      },
+      "init_a": {
+       "avg": 1338011,
+       "count": 10,
+       "max": 1514610,
+       "median": 1328732,
+       "min": 1235610
+      },
+      "init_b": {
+       "avg": 1300661,
+       "count": 10,
+       "max": 1421482,
+       "median": 1282073,
+       "min": 1235603
+      },
+      "pass1": {
+       "avg": 1956413,
+       "count": 10,
+       "max": 2132990,
+       "median": 1947112,
+       "min": 1854173
+      },
+      "pass2": {
+       "avg": 5687312,
+       "count": 10,
+       "max": 5687498,
+       "median": 5687282,
+       "min": 5687282
+      }
+     },
+     "cycles_total": 19415860,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-ZEN256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-ZEN256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-ZEN256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN256.txt",
+      "msg_total": 4301,
+      "msgs": [
+       2253,
+       2048
+      ],
+      "passes": 2,
+      "pk_a": 1229,
+      "pk_b": 1229,
+      "sk_a": 2605,
+      "sk_b": 2605,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": {
+      "derive_a": 30992,
+      "derive_b": 16,
+      "init_a": 17624,
+      "init_b": 17616,
+      "pass1": 21672,
+      "pass2": 23564
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 71544,
+      "total": 73444
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 32410965,
+       "count": 10,
+       "max": 32667376,
+       "median": 32382478,
+       "min": 32097571
+      },
+      "derive_b": {
+       "avg": 1004,
+       "count": 10,
+       "max": 1004,
+       "median": 1004,
+       "min": 1004
+      },
+      "init_a": {
+       "avg": 4310602,
+       "count": 10,
+       "max": 5507218,
+       "median": 4082701,
+       "min": 3797783
+      },
+      "init_b": {
+       "avg": 4082661,
+       "count": 10,
+       "max": 4937382,
+       "median": 3940215,
+       "min": 3797746
+      },
+      "pass1": {
+       "avg": 5639457,
+       "count": 10,
+       "max": 5895869,
+       "median": 5610967,
+       "min": 5326067
+      },
+      "pass2": {
+       "avg": 19234968,
+       "count": 10,
+       "max": 19235064,
+       "median": 19234956,
+       "min": 19234953
+      }
+     },
+     "cycles_total": 65679657,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2K-ZEN512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2K-ZEN512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2K-ZEN512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN512.txt",
+      "msg_total": 8602,
+      "msgs": [
+       4506,
+       4096
+      ],
+      "passes": 2,
+      "pk_a": 2458,
+      "pk_b": 2458,
+      "sk_a": 5210,
+      "sk_b": 5210,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": {
+      "derive_a": 67680,
+      "derive_b": 8,
+      "init_a": 39392,
+      "init_b": 39384,
+      "pass1": 47392,
+      "pass2": 54104
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 952,
+      "data": 1624,
+      "source": "report",
+      "text": 57828,
+      "total": 60404
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 2635773,
+       "count": 10,
+       "max": 2681118,
+       "median": 2624120,
+       "min": 2623609
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 529742,
+       "count": 10,
+       "max": 581239,
+       "median": 524032,
+       "min": 523876
+      },
+      "init_b": {
+       "avg": 1110988,
+       "count": 10,
+       "max": 1111493,
+       "median": 1110920,
+       "min": 1110554
+      },
+      "pass1": {
+       "avg": 514891,
+       "count": 10,
+       "max": 514961,
+       "median": 514883,
+       "min": 514844
+      },
+      "pass2": {
+       "avg": 11266294,
+       "count": 10,
+       "max": 21135587,
+       "median": 8707668,
+       "min": 5833695
+      }
+     },
+     "cycles_total": 16058039,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2S-PLAC128-BiT128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2S-PLAC128-BiT128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2S-PLAC128-BiT128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC128-BiT128.txt",
+      "msg_total": 3314,
+      "msgs": [
+       530,
+       2784
+      ],
+      "passes": 2,
+      "pk_a": 530,
+      "pk_b": 1048,
+      "sk_a": 1570,
+      "sk_b": 1864,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 29504,
+      "derive_b": 8,
+      "init_a": 10608,
+      "init_b": 16220,
+      "pass1": 10600,
+      "pass2": 45736
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2S-PLAC256-BiT256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2S-PLAC256-BiT256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-K2S-PLAC256-BiT256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC256-BiT256.txt",
+      "msg_total": 7076,
+      "msgs": [
+       1060,
+       6016
+      ],
+      "passes": 2,
+      "pk_a": 1060,
+      "pk_b": 2144,
+      "sk_a": 3140,
+      "sk_b": 4160,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2S-PLAC512-BiT512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2S-PLAC512-BiT512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-K2S-PLAC512-BiT512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC512-BiT512.txt",
+      "msg_total": 13931,
+      "msgs": [
+       2116,
+       11815
+      ],
+      "passes": 2,
+      "pk_a": 2116,
+      "pk_b": 5056,
+      "sk_a": 6276,
+      "sk_b": 9024,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 952,
+      "data": 1352,
+      "source": "report",
+      "text": 56812,
+      "total": 59116
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 3678681,
+       "count": 10,
+       "max": 3681486,
+       "median": 3677725,
+       "min": 3677305
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 625265,
+       "count": 10,
+       "max": 741544,
+       "median": 609406,
+       "min": 582943
+      },
+      "init_b": {
+       "avg": 1110977,
+       "count": 10,
+       "max": 1111472,
+       "median": 1110928,
+       "min": 1110535
+      },
+      "pass1": {
+       "avg": 558140,
+       "count": 10,
+       "max": 576664,
+       "median": 550201,
+       "min": 550201
+      },
+      "pass2": {
+       "avg": 8009701,
+       "count": 10,
+       "max": 23936452,
+       "median": 4951426,
+       "min": 3541052
+      }
+     },
+     "cycles_total": 13983115,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2S-ZEN128-BiT128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2S-ZEN128-BiT128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-K2S-ZEN128-BiT128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN128-BiT128.txt",
+      "msg_total": 3143,
+      "msgs": [
+       615,
+       2528
+      ],
+      "passes": 2,
+      "pk_a": 615,
+      "pk_b": 1048,
+      "sk_a": 1303,
+      "sk_b": 1864,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 29328,
+      "derive_b": 8,
+      "init_a": 9992,
+      "init_b": 16220,
+      "pass1": 9968,
+      "pass2": 45480
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2S-ZEN256-BiT256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2S-ZEN256-BiT256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-K2S-ZEN256-BiT256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN256-BiT256.txt",
+      "msg_total": 6733,
+      "msgs": [
+       1229,
+       5504
+      ],
+      "passes": 2,
+      "pk_a": 1229,
+      "pk_b": 2144,
+      "sk_a": 2605,
+      "sk_b": 4160,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-K2S-ZEN512-BiT512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-K2S-ZEN512-BiT512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-K2S-ZEN512-BiT512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN512-BiT512.txt",
+      "msg_total": 13249,
+      "msgs": [
+       2458,
+       10791
+      ],
+      "passes": 2,
+      "pk_a": 2458,
+      "pk_b": 5056,
+      "sk_a": 5210,
+      "sk_b": 9024,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 952,
+      "data": 1624,
+      "source": "report",
+      "text": 60996,
+      "total": 63572
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 893168,
+       "count": 10,
+       "max": 893236,
+       "median": 893151,
+       "min": 893121
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 1111067,
+       "count": 10,
+       "max": 1111714,
+       "median": 1111025,
+       "min": 1110542
+      },
+      "init_b": {
+       "avg": 523915,
+       "count": 10,
+       "max": 523937,
+       "median": 523911,
+       "min": 523885
+      },
+      "pass1": {
+       "avg": 10543080,
+       "count": 10,
+       "max": 29688214,
+       "median": 7978859,
+       "min": 4837605
+      },
+      "pass2": {
+       "avg": 2986698,
+       "count": 10,
+       "max": 2988334,
+       "median": 2987582,
+       "min": 2983828
+      }
+     },
+     "cycles_total": 16058279,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2K-BiT128-PLAC128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2K-BiT128-PLAC128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-S2K-BiT128-PLAC128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT128-PLAC128.txt",
+      "msg_total": 3314,
+      "msgs": [
+       2674,
+       640
+      ],
+      "passes": 2,
+      "pk_a": 1048,
+      "pk_b": 530,
+      "sk_a": 1864,
+      "sk_b": 1570,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 20088,
+      "derive_b": 8,
+      "init_a": 16220,
+      "init_b": 10608,
+      "pass1": 43312,
+      "pass2": 27880
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 952,
+      "data": 1352,
+      "source": "report",
+      "text": 56876,
+      "total": 59180
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 1668495,
+       "count": 10,
+       "max": 1824612,
+       "median": 1652616,
+       "min": 1612922
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 1111061,
+       "count": 10,
+       "max": 1111607,
+       "median": 1111028,
+       "min": 1110548
+      },
+      "init_b": {
+       "avg": 622477,
+       "count": 10,
+       "max": 715090,
+       "median": 622476,
+       "min": 582783
+      },
+      "pass1": {
+       "avg": 11014612,
+       "count": 10,
+       "max": 31470927,
+       "median": 6281796,
+       "min": 4552011
+      },
+      "pass2": {
+       "avg": 3082802,
+       "count": 10,
+       "max": 3085175,
+       "median": 3081817,
+       "min": 3081029
+      }
+     },
+     "cycles_total": 17499798,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2K-BiT128-ZEN128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2K-BiT128-ZEN128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-S2K-BiT128-ZEN128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT128-ZEN128.txt",
+      "msg_total": 3143,
+      "msgs": [
+       2631,
+       512
+      ],
+      "passes": 2,
+      "pk_a": 1048,
+      "pk_b": 615,
+      "sk_a": 1864,
+      "sk_b": 1303,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 17592,
+      "derive_b": 8,
+      "init_a": 16220,
+      "init_b": 9992,
+      "pass1": 42944,
+      "pass2": 27880
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2K-BiT256-PLAC256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2K-BiT256-PLAC256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2K-BiT256-PLAC256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT256-PLAC256.txt",
+      "msg_total": 7076,
+      "msgs": [
+       5796,
+       1280
+      ],
+      "passes": 2,
+      "pk_a": 2144,
+      "pk_b": 1060,
+      "sk_a": 4160,
+      "sk_b": 3140,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2K-BiT256-ZEN256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2K-BiT256-ZEN256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2K-BiT256-ZEN256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT256-ZEN256.txt",
+      "msg_total": 6733,
+      "msgs": [
+       5709,
+       1024
+      ],
+      "passes": 2,
+      "pk_a": 2144,
+      "pk_b": 1229,
+      "sk_a": 4160,
+      "sk_b": 2605,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2K-BiT512-PLAC512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2K-BiT512-PLAC512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2K-BiT512-PLAC512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT512-PLAC512.txt",
+      "msg_total": 13931,
+      "msgs": [
+       11371,
+       2560
+      ],
+      "passes": 2,
+      "pk_a": 5056,
+      "pk_b": 2116,
+      "sk_a": 9024,
+      "sk_b": 6276,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2K-BiT512-ZEN512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2K-BiT512-ZEN512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2K-BiT512-ZEN512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT512-ZEN512.txt",
+      "msg_total": 13249,
+      "msgs": [
+       11201,
+       2048
+      ],
+      "passes": 2,
+      "pk_a": 5056,
+      "pk_b": 2458,
+      "sk_a": 9024,
+      "sk_b": 5210,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 952,
+      "data": 1624,
+      "source": "report",
+      "text": 60164,
+      "total": 62740
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 2214226,
+       "count": 10,
+       "max": 2268030,
+       "median": 2207936,
+       "min": 2207522
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 1111002,
+       "count": 10,
+       "max": 1111585,
+       "median": 1111074,
+       "min": 1110438
+      },
+      "init_b": {
+       "avg": 1116969,
+       "count": 10,
+       "max": 1171158,
+       "median": 1110978,
+       "min": 1110533
+      },
+      "pass1": {
+       "avg": 8891792,
+       "count": 10,
+       "max": 17136126,
+       "median": 8697246,
+       "min": 3179406
+      },
+      "pass2": {
+       "avg": 9473252,
+       "count": 10,
+       "max": 14376936,
+       "median": 9362810,
+       "min": 4698687
+      }
+     },
+     "cycles_total": 22807592,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2S-BiT128-ePLAC128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2S-BiT128-ePLAC128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-S2S-BiT128-ePLAC128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT128-ePLAC128.txt",
+      "msg_total": 4178,
+      "msgs": [
+       2034,
+       2144
+      ],
+      "passes": 2,
+      "pk_a": 1048,
+      "pk_b": 1048,
+      "sk_a": 1864,
+      "sk_b": 1864,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 32752,
+      "derive_b": 8,
+      "init_a": 16220,
+      "init_b": 16220,
+      "pass1": 43264,
+      "pass2": 45976
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": {
+      "bss": 952,
+      "data": 1352,
+      "source": "report",
+      "text": 56172,
+      "total": 58476
+     },
+     "completed_ops": [],
+     "cycles": {
+      "derive_a": {
+       "avg": 2955582,
+       "count": 10,
+       "max": 3007053,
+       "median": 2954278,
+       "min": 2927892
+      },
+      "derive_b": {
+       "avg": 351,
+       "count": 10,
+       "max": 351,
+       "median": 351,
+       "min": 351
+      },
+      "init_a": {
+       "avg": 1110997,
+       "count": 10,
+       "max": 1111586,
+       "median": 1111069,
+       "min": 1110432
+      },
+      "init_b": {
+       "avg": 1116973,
+       "count": 10,
+       "max": 1171152,
+       "median": 1110994,
+       "min": 1110531
+      },
+      "pass1": {
+       "avg": 8316734,
+       "count": 10,
+       "max": 20427524,
+       "median": 6007988,
+       "min": 4208426
+      },
+      "pass2": {
+       "avg": 9605527,
+       "count": 10,
+       "max": 22241254,
+       "median": 8470924,
+       "min": 4425031
+      }
+     },
+     "cycles_total": 23106164,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2S-BiT128-eZEN128_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 128,
+      "claim": null,
+      "label": "128",
+      "param_set": "128",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2S-BiT128-eZEN128",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "measured",
+     "scheme": "CreTAKE-S2S-BiT128-eZEN128",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT128-eZEN128.txt",
+      "msg_total": 4135,
+      "msgs": [
+       2119,
+       2016
+      ],
+      "passes": 2,
+      "pk_a": 1048,
+      "pk_b": 1048,
+      "sk_a": 1864,
+      "sk_b": 1864,
+      "source": "kat_raw",
+      "ss": 32
+     },
+     "stack": {
+      "derive_a": 32376,
+      "derive_b": 8,
+      "init_a": 16220,
+      "init_b": 16220,
+      "pass1": 42896,
+      "pass2": 45888
+     },
+     "status_text": null,
+     "tier": "board"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2S-BiT256-ePLAC256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2S-BiT256-ePLAC256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2S-BiT256-ePLAC256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT256-ePLAC256.txt",
+      "msg_total": 9252,
+      "msgs": [
+       4516,
+       4736
+      ],
+      "passes": 2,
+      "pk_a": 2144,
+      "pk_b": 2144,
+      "sk_a": 4160,
+      "sk_b": 4160,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2S-BiT256-eZEN256_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 256,
+      "claim": null,
+      "label": "256",
+      "param_set": "256",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2S-BiT256-eZEN256",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2S-BiT256-eZEN256",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT256-eZEN256.txt",
+      "msg_total": 9165,
+      "msgs": [
+       4685,
+       4480
+      ],
+      "passes": 2,
+      "pk_a": 2144,
+      "pk_b": 2144,
+      "sk_a": 4160,
+      "sk_b": 4160,
+      "source": "kat_raw",
+      "ss": 64
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2S-BiT512-ePLAC512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2S-BiT512-ePLAC512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2S-BiT512-ePLAC512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT512-ePLAC512.txt",
+      "msg_total": 18066,
+      "msgs": [
+       8811,
+       9255
+      ],
+      "passes": 2,
+      "pk_a": 5056,
+      "pk_b": 5056,
+      "sk_a": 9024,
+      "sk_b": 9024,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
+    },
+    {
+     "category": "kex",
+     "code": null,
+     "completed_ops": [],
+     "cycles": {},
+     "cycles_total": null,
+     "expected_ops": [
+      "init_a",
+      "init_b",
+      "pass1",
+      "pass2",
+      "derive_a",
+      "derive_b"
+     ],
+     "failure_kind": null,
+     "family": "crypto_kex",
+     "hand_ported": false,
+     "id": "crypto_kex_CreTAKE-S2S-BiT512-eZEN512_ref",
+     "impl": "ref",
+     "kat": {
+      "caveat": null,
+      "detail": "10 counts",
+      "status": "match"
+     },
+     "level": {
+      "bits": 512,
+      "claim": null,
+      "label": "512",
+      "param_set": "512",
+      "source": "name",
+      "variant": null
+     },
+     "measured_ops": [],
+     "ngcc": {
+      "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
+      "folder": "CreTAKE",
+      "instance": "CreTAKE-S2S-BiT512-eZEN512",
+      "pub_date": "2026-09-20 10:15",
+      "spec": "specs/CreTAKE.pdf",
+      "spec_extra": [],
+      "spec_file": "CreTAKE Algorithm specifications.pdf",
+      "title": "CreTAKE",
+      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
+     },
+     "notes": [],
+     "run_status": "not-run",
+     "scheme": "CreTAKE-S2S-BiT512-eZEN512",
+     "sizes": {
+      "kat_path": "schemes/CreTAKE/Test_Vectors/Reference_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT512-eZEN512.txt",
+      "msg_total": 17896,
+      "msgs": [
+       9153,
+       8743
+      ],
+      "passes": 2,
+      "pk_a": 5056,
+      "pk_b": 5056,
+      "sk_a": 9024,
+      "sk_b": 9024,
+      "source": "kat_raw",
+      "ss": 128
+     },
+     "stack": null,
+     "status_text": null,
+     "tier": "qemu"
     },
     {
      "category": "kex",
@@ -12812,8 +17431,10 @@ window.NGCCM4_DATA = {
       "folder": "DKEX",
       "instance": "DKEX-128",
       "pub_date": "2026-09-20 09:43",
+      "spec": "specs/DKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEX-Algorithm Specification.pdf",
       "title": "DKEX (Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip"
      },
      "notes": [],
@@ -12950,8 +17571,10 @@ window.NGCCM4_DATA = {
       "folder": "DKEX",
       "instance": "DKEX-128",
       "pub_date": "2026-09-20 09:43",
+      "spec": "specs/DKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEX-Algorithm Specification.pdf",
       "title": "DKEX (Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip"
      },
      "notes": [],
@@ -13088,8 +17711,10 @@ window.NGCCM4_DATA = {
       "folder": "DKEX",
       "instance": "DKEX-256",
       "pub_date": "2026-09-20 09:43",
+      "spec": "specs/DKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEX-Algorithm Specification.pdf",
       "title": "DKEX (Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip"
      },
      "notes": [],
@@ -13226,8 +17851,10 @@ window.NGCCM4_DATA = {
       "folder": "DKEX",
       "instance": "DKEX-256",
       "pub_date": "2026-09-20 09:43",
+      "spec": "specs/DKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEX-Algorithm Specification.pdf",
       "title": "DKEX (Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip"
      },
      "notes": [],
@@ -13364,8 +17991,10 @@ window.NGCCM4_DATA = {
       "folder": "DKEX",
       "instance": "DKEX-512",
       "pub_date": "2026-09-20 09:43",
+      "spec": "specs/DKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEX-Algorithm Specification.pdf",
       "title": "DKEX (Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip"
      },
      "notes": [],
@@ -13502,8 +18131,10 @@ window.NGCCM4_DATA = {
       "folder": "DKEX",
       "instance": "DKEX-512",
       "pub_date": "2026-09-20 09:43",
+      "spec": "specs/DKEX.pdf",
+      "spec_extra": [],
+      "spec_file": "DKEX-Algorithm Specification.pdf",
       "title": "DKEX (Ding Key Exchange)",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625651601408.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DKEX.zip"
      },
      "notes": [],
@@ -13622,8 +18253,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-NIKE",
       "instance": "MAMBA-NIKE-128",
       "pub_date": "2026-09-20 09:41",
+      "spec": "specs/MAMBA-NIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_NIKE.pdf",
       "title": "MAMBA-NIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625907453952.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
@@ -13738,8 +18371,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-NIKE",
       "instance": "MAMBA-NIKE-192",
       "pub_date": "2026-09-20 09:41",
+      "spec": "specs/MAMBA-NIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_NIKE.pdf",
       "title": "MAMBA-NIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625907453952.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
@@ -13854,8 +18489,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-NIKE",
       "instance": "MAMBA-NIKE-256",
       "pub_date": "2026-09-20 09:41",
+      "spec": "specs/MAMBA-NIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_NIKE.pdf",
       "title": "MAMBA-NIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625907453952.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
@@ -13928,8 +18565,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-NIKE",
       "instance": "MAMBA-NIKE-384",
       "pub_date": "2026-09-20 09:41",
+      "spec": "specs/MAMBA-NIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_NIKE.pdf",
       "title": "MAMBA-NIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625907453952.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
@@ -13990,8 +18629,10 @@ window.NGCCM4_DATA = {
       "folder": "MAMBA-NIKE",
       "instance": "MAMBA-NIKE-512",
       "pub_date": "2026-09-20 09:41",
+      "spec": "specs/MAMBA-NIKE.pdf",
+      "spec_extra": [],
+      "spec_file": "MAMBA_NIKE.pdf",
       "title": "MAMBA-NIKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625907453952.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
@@ -14109,8 +18750,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-C1",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14236,8 +18879,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-C1-c",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14363,8 +19008,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-C2",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14490,8 +19137,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-C2-c",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14617,8 +19266,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-C3",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14744,8 +19395,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-C3-c",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14871,8 +19524,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-R1",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -14998,8 +19653,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-R2",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -15125,8 +19782,10 @@ window.NGCCM4_DATA = {
       "folder": "NEV-AKE",
       "instance": "NEV-AKE-R3",
       "pub_date": "2026-09-20 09:40",
+      "spec": "specs/NEV-AKE.pdf",
+      "spec_extra": [],
+      "spec_file": "02-算法文本：NEV-AKE.pdf",
       "title": "NEV-AKE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626045865984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NEV-AKE.zip"
      },
      "notes": [],
@@ -15196,8 +19855,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEX",
       "instance": "TriQ-KEX-128",
       "pub_date": "2026-09-20 09:39",
+      "spec": "specs/TriQ-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626335272960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEX.zip"
      },
      "notes": [],
@@ -15260,8 +19921,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEX",
       "instance": "TriQ-KEX-256",
       "pub_date": "2026-09-20 09:39",
+      "spec": "specs/TriQ-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626335272960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEX.zip"
      },
      "notes": [],
@@ -15324,8 +19987,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEX",
       "instance": "TriQ-KEX-384",
       "pub_date": "2026-09-20 09:39",
+      "spec": "specs/TriQ-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626335272960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEX.zip"
      },
      "notes": [],
@@ -15388,8 +20053,10 @@ window.NGCCM4_DATA = {
       "folder": "TriQ-KEX",
       "instance": "TriQ-KEX-512",
       "pub_date": "2026-09-20 09:39",
+      "spec": "specs/TriQ-KEX.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TriQ-KEX",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626335272960.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TriQ-KEX.zip"
      },
      "notes": [],
@@ -15438,8 +20105,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 3400,
       "source": "report",
-      "text": 28064,
-      "total": 32012
+      "text": 28104,
+      "total": 32052
      },
      "completed_ops": [],
      "cycles": {},
@@ -15473,8 +20140,10 @@ window.NGCCM4_DATA = {
       "folder": "Aigis-Sigplus",
       "instance": "Aigis-Sig+-I",
       "pub_date": "2026-09-20 14:25",
+      "spec": "specs/Aigis-Sigplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Aigis-Sig+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101567126852161536.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Sig%2B.zip"
      },
      "notes": [
@@ -15492,7 +20161,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed none",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
@@ -15501,8 +20170,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 3400,
       "source": "report",
-      "text": 27840,
-      "total": 31788
+      "text": 27880,
+      "total": 31828
      },
      "completed_ops": [],
      "cycles": {},
@@ -15536,8 +20205,10 @@ window.NGCCM4_DATA = {
       "folder": "Aigis-Sigplus",
       "instance": "Aigis-Sig+-II",
       "pub_date": "2026-09-20 14:25",
+      "spec": "specs/Aigis-Sigplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Aigis-Sig+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101567126852161536.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Sig%2B.zip"
      },
      "notes": [
@@ -15555,7 +20226,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed none",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
@@ -15564,8 +20235,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 3400,
       "source": "report",
-      "text": 30788,
-      "total": 34736
+      "text": 30828,
+      "total": 34776
      },
      "completed_ops": [],
      "cycles": {},
@@ -15599,8 +20270,10 @@ window.NGCCM4_DATA = {
       "folder": "Aigis-Sigplus",
       "instance": "Aigis-Sig+-III",
       "pub_date": "2026-09-20 14:25",
+      "spec": "specs/Aigis-Sigplus.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Aigis-Sig+",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101567126852161536.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Aigis-Sig%2B.zip"
      },
      "notes": [
@@ -15618,7 +20291,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed none",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
@@ -15627,34 +20300,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 32168,
-      "total": 34068
+      "text": 32232,
+      "total": 34132
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 1110777,
-       "count": 1,
-       "max": 1110777,
-       "median": 1110777,
-       "min": 1110777
+       "avg": 1110919,
+       "count": 100,
+       "max": 1111820,
+       "median": 1110886,
+       "min": 1110077
       },
       "sign": {
-       "avg": 4451993,
-       "count": 1,
-       "max": 4451993,
-       "median": 4451993,
-       "min": 4451993
+       "avg": 7146161,
+       "count": 100,
+       "max": 29127347,
+       "median": 5603711,
+       "min": 2610268
       },
       "verify": {
-       "avg": 1279535,
-       "count": 1,
-       "max": 1279535,
-       "median": 1279535,
-       "min": 1279535
+       "avg": 1277109,
+       "count": 100,
+       "max": 1280326,
+       "median": 1276127,
+       "min": 1274928
       }
      },
-     "cycles_total": 6842305,
+     "cycles_total": 9534189,
      "expected_ops": [
       "keypair",
       "sign",
@@ -15688,8 +20361,10 @@ window.NGCCM4_DATA = {
       "folder": "BiT",
       "instance": "BiT-128",
       "pub_date": "2026-09-20 14:24",
+      "spec": "specs/BiT.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BIT: Bimodal Triangular distribution based lattice signatures",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076358926336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BiT.zip"
      },
      "notes": [],
@@ -15722,14 +20397,36 @@ window.NGCCM4_DATA = {
       "total": 36960
      },
      "completed_ops": [],
-     "cycles": {},
-     "cycles_total": null,
+     "cycles": {
+      "keypair": {
+       "avg": 3240002,
+       "count": 100,
+       "max": 3241057,
+       "median": 3240015,
+       "min": 3238931
+      },
+      "sign": {
+       "avg": 11291890,
+       "count": 100,
+       "max": 32451866,
+       "median": 10842100,
+       "min": 7977674
+      },
+      "verify": {
+       "avg": 3897262,
+       "count": 100,
+       "max": 3903472,
+       "median": 3896993,
+       "min": 3895946
+      }
+     },
+     "cycles_total": 18429154,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "hardfault",
+     "failure_kind": null,
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_BiT-256_ref",
@@ -15747,18 +20444,24 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": null
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair",
+      "sign",
+      "verify"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/U7FSJZ6KONWY36MQDOVDDB7IHHORNAJY/",
       "folder": "BiT",
       "instance": "BiT-256",
       "pub_date": "2026-09-20 14:24",
+      "spec": "specs/BiT.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BIT: Bimodal Triangular distribution based lattice signatures",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076358926336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BiT.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "measured",
      "scheme": "BiT-256",
      "sizes": {
       "kat_path": "schemes/BiT/Test_Vectors/KAT_SIG_BiT-256.txt",
@@ -15774,7 +20477,7 @@ window.NGCCM4_DATA = {
       "sign": 151392,
       "verify": 85552
      },
-     "status_text": "HardFault before the first output on 3 runs (pc=0xFFFFFFFE, lr inside main, stack at top of RAM): deterministic board failure, cause not identified",
+     "status_text": null,
      "tier": "qemu"
     },
     {
@@ -15783,34 +20486,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 40572,
-      "total": 42472
+      "text": 40636,
+      "total": 42536
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 3241013,
-       "count": 1,
-       "max": 3241013,
-       "median": 3241013,
-       "min": 3241013
+       "avg": 8502166,
+       "count": 100,
+       "max": 8503255,
+       "median": 8502150,
+       "min": 8501353
       },
       "sign": {
-       "avg": 16529919,
-       "count": 1,
-       "max": 16529919,
-       "median": 16529919,
-       "min": 16529919
+       "avg": 43346877,
+       "count": 100,
+       "max": 102210944,
+       "median": 42084297,
+       "min": 24952362
       },
       "verify": {
-       "avg": 3897742,
-       "count": 1,
-       "max": 3897742,
-       "median": 3897742,
-       "min": 3897742
+       "avg": 9560699,
+       "count": 100,
+       "max": 9565594,
+       "median": 9559378,
+       "min": 9559017
       }
      },
-     "cycles_total": 23668674,
+     "cycles_total": 61409742,
      "expected_ops": [
       "keypair",
       "sign",
@@ -15844,8 +20547,10 @@ window.NGCCM4_DATA = {
       "folder": "BiT",
       "instance": "BiT-512",
       "pub_date": "2026-09-20 14:24",
+      "spec": "specs/BiT.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "BIT: Bimodal Triangular distribution based lattice signatures",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076358926336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BiT.zip"
      },
      "notes": [],
@@ -15874,34 +20579,34 @@ window.NGCCM4_DATA = {
       "bss": 222280,
       "data": 1352,
       "source": "report",
-      "text": 23188,
-      "total": 246820
+      "text": 23604,
+      "total": 247236
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 30389521,
-       "count": 10,
-       "max": 38435590,
-       "median": 29495524,
-       "min": 29495299
+       "avg": 29840381,
+       "count": 26,
+       "max": 38436575,
+       "median": 29496596,
+       "min": 29496053
       },
       "sign": {
-       "avg": 1047821902,
-       "count": 10,
-       "max": 1047863048,
-       "median": 1047818119,
-       "min": 1047793782
+       "avg": 1047853797,
+       "count": 25,
+       "max": 1047904638,
+       "median": 1047851346,
+       "min": 1047798447
       },
       "verify": {
-       "avg": 32668643,
-       "count": 10,
-       "max": 32696186,
-       "median": 32673174,
-       "min": 32629359
+       "avg": 32678690,
+       "count": 25,
+       "max": 32732356,
+       "median": 32681112,
+       "min": 32629635
       }
      },
-     "cycles_total": 1110880066,
+     "cycles_total": 1110372868,
      "expected_ops": [
       "keypair",
       "sign",
@@ -15935,8 +20640,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrus-alpha",
       "instance": "CEDRUSALPHA-160f",
       "pub_date": "2026-09-20 14:22",
+      "spec": "specs/cedrus-alpha.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUSɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
      },
      "notes": [],
@@ -15965,40 +20672,40 @@ window.NGCCM4_DATA = {
       "bss": 351224,
       "data": 1352,
       "source": "report",
-      "text": 23232,
-      "total": 375808
+      "text": 23648,
+      "total": 376224
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 971181653,
-       "count": 3,
-       "max": 996126738,
-       "median": 958709273,
-       "min": 958708947
+       "avg": 977413898,
+       "count": 2,
+       "max": 996122634,
+       "median": 977413898,
+       "min": 958705163
       },
       "sign": {
-       "avg": 14239438927,
-       "count": 2,
-       "max": 14239500335,
-       "median": 14239438927,
-       "min": 14239377519
+       "avg": 14239261917,
+       "count": 1,
+       "max": 14239261917,
+       "median": 14239261917,
+       "min": 14239261917
       },
       "verify": {
-       "avg": 35261078,
-       "count": 2,
-       "max": 35324795,
-       "median": 35261078,
-       "min": 35197360
+       "avg": 35324803,
+       "count": 1,
+       "max": 35324803,
+       "median": 35324803,
+       "min": 35324803
       }
      },
-     "cycles_total": 15245881658,
+     "cycles_total": 15252000618,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "partial",
+     "failure_kind": null,
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_CEDRUSALPHA-160s_ref",
@@ -16026,13 +20733,13 @@ window.NGCCM4_DATA = {
       "folder": "cedrus-alpha",
       "instance": "CEDRUSALPHA-160s",
       "pub_date": "2026-09-20 14:22",
+      "spec": "specs/cedrus-alpha.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUSɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
      },
-     "notes": [
-      "partial: 2 complete iterations before the 45 min cap (included in the tables)"
-     ],
+     "notes": [],
      "run_status": "measured",
      "scheme": "CEDRUSALPHA-160s",
      "sizes": {
@@ -16049,7 +20756,7 @@ window.NGCCM4_DATA = {
       "sign": 2532,
       "verify": 2152
      },
-     "status_text": "partial: 2 complete iterations before the 45 min cap (included in the tables)",
+     "status_text": null,
      "tier": "board"
     },
     {
@@ -16087,8 +20794,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrus-alpha",
       "instance": "CEDRUSALPHA-256f",
       "pub_date": "2026-09-20 14:22",
+      "spec": "specs/cedrus-alpha.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUSɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
      },
      "notes": [],
@@ -16104,7 +20813,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "link failed on the board: overflowed by 444272 bytes (640 KB SRAM)",
+     "status_text": "link failed: image does not fit the 640 KB SRAM (RAM overflowed by 444,272 bytes); completed none",
      "tier": "board"
     },
     {
@@ -16142,8 +20851,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrus-alpha",
       "instance": "CEDRUSALPHA-256s",
       "pub_date": "2026-09-20 14:22",
+      "spec": "specs/cedrus-alpha.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUSɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
      },
      "notes": [],
@@ -16159,7 +20870,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "link failed on the board: overflowed by 1008624 bytes (640 KB SRAM)",
+     "status_text": "link failed: image does not fit the 640 KB SRAM (RAM overflowed by 1,008,624 bytes); completed none",
      "tier": "board"
     },
     {
@@ -16197,8 +20908,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrus-alpha",
       "instance": "CEDRUSALPHA-384s",
       "pub_date": "2026-09-20 14:22",
+      "spec": "specs/cedrus-alpha.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUSɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
      },
      "notes": [],
@@ -16214,7 +20927,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "link failed on the board: overflowed by 3259696 bytes (640 KB SRAM)",
+     "status_text": "link failed: image does not fit the 640 KB SRAM (RAM overflowed by 3,259,696 bytes); completed none",
      "tier": "board"
     },
     {
@@ -16223,34 +20936,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 23764,
-      "total": 25664
+      "text": 24196,
+      "total": 26096
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 26381781,
-       "count": 3,
-       "max": 26381868,
-       "median": 26381857,
-       "min": 26381617
+       "avg": 26381576,
+       "count": 29,
+       "max": 26382006,
+       "median": 26381541,
+       "min": 26381366
       },
       "sign": {
-       "avg": 935461821,
-       "count": 3,
-       "max": 936199981,
-       "median": 935655922,
-       "min": 934529561
+       "avg": 936484349,
+       "count": 29,
+       "max": 961474761,
+       "median": 934329676,
+       "min": 921218573
       },
       "verify": {
-       "avg": 28248522,
-       "count": 3,
-       "max": 28248534,
-       "median": 28248521,
-       "min": 28248512
+       "avg": 28248542,
+       "count": 28,
+       "max": 28248577,
+       "median": 28248542,
+       "min": 28248508
       }
      },
-     "cycles_total": 990092124,
+     "cycles_total": 991114467,
      "expected_ops": [
       "keypair",
       "sign",
@@ -16284,8 +20997,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-160f",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16314,34 +21029,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 23844,
-      "total": 25744
+      "text": 24276,
+      "total": 26176
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 1072896207,
-       "count": 1,
-       "max": 1072896207,
-       "median": 1072896207,
-       "min": 1072896207
+       "avg": 1073055296,
+       "count": 2,
+       "max": 1073061222,
+       "median": 1073055296,
+       "min": 1073049369
       },
       "sign": {
-       "avg": 16330935192,
+       "avg": 16333371754,
        "count": 1,
-       "max": 16330935192,
-       "median": 16330935192,
-       "min": 16330935192
+       "max": 16333371754,
+       "median": 16333371754,
+       "min": 16333371754
       },
       "verify": {
-       "avg": 38484394,
+       "avg": 38484518,
        "count": 1,
-       "max": 38484394,
-       "median": 38484394,
-       "min": 38484394
+       "max": 38484518,
+       "median": 38484518,
+       "min": 38484518
       }
      },
-     "cycles_total": 17442315793,
+     "cycles_total": 17444911568,
      "expected_ops": [
       "keypair",
       "sign",
@@ -16375,8 +21090,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-160s",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16405,34 +21122,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 23924,
-      "total": 25824
+      "text": 24356,
+      "total": 26256
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 85884559,
-       "count": 1,
-       "max": 85884559,
-       "median": 85884559,
-       "min": 85884559
+       "avg": 85874277,
+       "count": 12,
+       "max": 85877331,
+       "median": 85874037,
+       "min": 85871116
       },
       "sign": {
-       "avg": 2309175851,
-       "count": 1,
-       "max": 2309175851,
-       "median": 2309175851,
-       "min": 2309175851
+       "avg": 2313972804,
+       "count": 11,
+       "max": 2346587355,
+       "median": 2310525712,
+       "min": 2293383112
       },
       "verify": {
-       "avg": 39294815,
-       "count": 1,
-       "max": 39294815,
-       "median": 39294815,
-       "min": 39294815
+       "avg": 39294524,
+       "count": 11,
+       "max": 39294602,
+       "median": 39294515,
+       "min": 39294495
       }
      },
-     "cycles_total": 2434355225,
+     "cycles_total": 2439141605,
      "expected_ops": [
       "keypair",
       "sign",
@@ -16466,8 +21183,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-256f",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16496,34 +21215,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24192,
-      "total": 26092
+      "text": 24624,
+      "total": 26524
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 1788547401,
-       "count": 1,
-       "max": 1788547401,
-       "median": 1788547401,
-       "min": 1788547401
+       "avg": 1788334849,
+       "count": 2,
+       "max": 1788348465,
+       "median": 1788334849,
+       "min": 1788321233
       },
       "sign": {
-       "avg": 23594487433,
+       "avg": 23590832402,
        "count": 1,
-       "max": 23594487433,
-       "median": 23594487433,
-       "min": 23594487433
+       "max": 23590832402,
+       "median": 23590832402,
+       "min": 23590832402
       },
       "verify": {
-       "avg": 64913318,
+       "avg": 64913491,
        "count": 1,
-       "max": 64913318,
-       "median": 64913318,
-       "min": 64913318
+       "max": 64913491,
+       "median": 64913491,
+       "min": 64913491
       }
      },
-     "cycles_total": 25447948152,
+     "cycles_total": 25444080742,
      "expected_ops": [
       "keypair",
       "sign",
@@ -16557,8 +21276,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-256s",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16587,34 +21308,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24320,
-      "total": 26220
+      "text": 24752,
+      "total": 26652
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 1242856149,
-       "count": 1,
-       "max": 1242856149,
-       "median": 1242856149,
-       "min": 1242856149
+       "avg": 1242464466,
+       "count": 2,
+       "max": 1242464481,
+       "median": 1242464466,
+       "min": 1242464450
       },
       "sign": {
-       "avg": 23044042357,
+       "avg": 23037277573,
        "count": 1,
-       "max": 23044042357,
-       "median": 23044042357,
-       "min": 23044042357
+       "max": 23037277573,
+       "median": 23037277573,
+       "min": 23037277573
       },
       "verify": {
-       "avg": 238627297,
+       "avg": 238557068,
        "count": 1,
-       "max": 238627297,
-       "median": 238627297,
-       "min": 238627297
+       "max": 238557068,
+       "median": 238557068,
+       "min": 238557068
       }
      },
-     "cycles_total": 24525525803,
+     "cycles_total": 24518299107,
      "expected_ops": [
       "keypair",
       "sign",
@@ -16648,8 +21369,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-384f",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16678,8 +21401,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25140,
-      "total": 27040
+      "text": 25180,
+      "total": 27080
      },
      "completed_ops": [],
      "cycles": {
@@ -16739,8 +21462,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-384s",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16765,8 +21490,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24628,
-      "total": 26528
+      "text": 25060,
+      "total": 26960
      },
      "completed_ops": [],
      "cycles": {
@@ -16826,8 +21551,10 @@ window.NGCCM4_DATA = {
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-512f",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
@@ -16852,11 +21579,21 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25172,
-      "total": 27072
+      "text": 25212,
+      "total": 27112
      },
-     "completed_ops": [],
-     "cycles": {},
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 13338356862,
+       "count": 1,
+       "max": 13338356862,
+       "median": 13338356862,
+       "min": 13338356862
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
@@ -16881,18 +21618,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UFWXT6DHJ56SDI6DD3NJ6JK2PFIXCMXD/",
       "folder": "cedrusplusc",
       "instance": "CEDRUSC-512s",
       "pub_date": "2026-09-20 14:23",
+      "spec": "specs/cedrusplusc.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "CEDRUS+C",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076497338368.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus%2Bc.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "CEDRUSC-512s",
      "sizes": {
       "kat_path": "schemes/cedrusplusc/Test_Vectors/KAT_SIG_CEDRUSC-512s.txt",
@@ -16904,7 +21645,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap): no operation completed",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "board"
     },
     {
@@ -16913,34 +21654,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28348,
-      "total": 30248
+      "text": 28388,
+      "total": 30288
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 3102210,
-       "count": 1,
-       "max": 3102210,
-       "median": 3102210,
-       "min": 3102210
+       "avg": 3087428,
+       "count": 7,
+       "max": 3105297,
+       "median": 3075876,
+       "min": 3075380
       },
       "sign": {
-       "avg": 12832580,
-       "count": 1,
-       "max": 12832580,
-       "median": 12832580,
-       "min": 12832580
+       "avg": 7531017,
+       "count": 6,
+       "max": 12832448,
+       "median": 7264080,
+       "min": 4873993
       },
       "verify": {
-       "avg": 3254567,
-       "count": 1,
-       "max": 3254567,
-       "median": 3254567,
-       "min": 3254567
+       "avg": 3237881,
+       "count": 6,
+       "max": 3254507,
+       "median": 3230964,
+       "min": 3228194
       }
      },
-     "cycles_total": 19189357,
+     "cycles_total": 13856326,
      "expected_ops": [
       "keypair",
       "sign",
@@ -16974,8 +21715,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-SIG",
       "instance": "COMPASS-SIG-128",
       "pub_date": "2026-09-20 14:20",
+      "spec": "specs/COMPASS-SIG.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "COMPASS-SIG",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076912574464.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-SIG.zip"
      },
      "notes": [],
@@ -17000,34 +21743,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28376,
-      "total": 30276
+      "text": 28384,
+      "total": 30284
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 11129257,
-       "count": 1,
-       "max": 11129257,
-       "median": 11129257,
-       "min": 11129257
+       "avg": 11078151,
+       "count": 2,
+       "max": 11129537,
+       "median": 11078151,
+       "min": 11026765
       },
       "sign": {
-       "avg": 43272047,
+       "avg": 43272523,
        "count": 1,
-       "max": 43272047,
-       "median": 43272047,
-       "min": 43272047
+       "max": 43272523,
+       "median": 43272523,
+       "min": 43272523
       },
       "verify": {
-       "avg": 11239184,
+       "avg": 11239450,
        "count": 1,
-       "max": 11239184,
-       "median": 11239184,
-       "min": 11239184
+       "max": 11239450,
+       "median": 11239450,
+       "min": 11239450
       }
      },
-     "cycles_total": 65640488,
+     "cycles_total": 65590124,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17061,8 +21804,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-SIG",
       "instance": "COMPASS-SIG-256",
       "pub_date": "2026-09-20 14:20",
+      "spec": "specs/COMPASS-SIG.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "COMPASS-SIG",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076912574464.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-SIG.zip"
      },
      "notes": [],
@@ -17087,34 +21832,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29872,
-      "total": 31772
+      "text": 29912,
+      "total": 31812
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 11129257,
-       "count": 1,
-       "max": 11129257,
-       "median": 11129257,
-       "min": 11129257
+       "avg": 8926069,
+       "count": 3,
+       "max": 8942392,
+       "median": 8921536,
+       "min": 8914278
       },
       "sign": {
-       "avg": 43272048,
-       "count": 1,
-       "max": 43272048,
-       "median": 43272048,
-       "min": 43272048
+       "avg": 21624941,
+       "count": 2,
+       "max": 29876468,
+       "median": 21624941,
+       "min": 13373414
       },
       "verify": {
-       "avg": 11239184,
-       "count": 1,
-       "max": 11239184,
-       "median": 11239184,
-       "min": 11239184
+       "avg": 8959728,
+       "count": 2,
+       "max": 8975271,
+       "median": 8959728,
+       "min": 8944184
       }
      },
-     "cycles_total": 65640489,
+     "cycles_total": 39510738,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17148,8 +21893,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-SIG",
       "instance": "COMPASS-SIG-384",
       "pub_date": "2026-09-20 14:20",
+      "spec": "specs/COMPASS-SIG.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "COMPASS-SIG",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076912574464.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-SIG.zip"
      },
      "notes": [],
@@ -17174,34 +21921,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29548,
-      "total": 31448
+      "text": 29588,
+      "total": 31488
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 8942434,
-       "count": 1,
-       "max": 8942434,
-       "median": 8942434,
-       "min": 8942434
+       "avg": 13668232,
+       "count": 2,
+       "max": 13686930,
+       "median": 13668232,
+       "min": 13649533
       },
       "sign": {
-       "avg": 29876614,
-       "count": 1,
-       "max": 29876614,
-       "median": 29876614,
-       "min": 29876614
+       "avg": 22296978,
+       "count": 2,
+       "max": 24977406,
+       "median": 22296978,
+       "min": 19616551
       },
       "verify": {
-       "avg": 8975156,
+       "avg": 13784142,
        "count": 1,
-       "max": 8975156,
-       "median": 8975156,
-       "min": 8975156
+       "max": 13784142,
+       "median": 13784142,
+       "min": 13784142
       }
      },
-     "cycles_total": 47794204,
+     "cycles_total": 49749352,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17235,8 +21982,10 @@ window.NGCCM4_DATA = {
       "folder": "COMPASS-SIG",
       "instance": "COMPASS-SIG-512",
       "pub_date": "2026-09-20 14:20",
+      "spec": "specs/COMPASS-SIG.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "COMPASS-SIG",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076912574464.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/COMPASS-SIG.zip"
      },
      "notes": [],
@@ -17261,34 +22010,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 50908,
-      "total": 52808
+      "text": 50948,
+      "total": 52848
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 13686911,
-       "count": 1,
-       "max": 13686911,
-       "median": 13686911,
-       "min": 13686911
+       "avg": 3729566,
+       "count": 100,
+       "max": 12298222,
+       "median": 3292036,
+       "min": 2005346
       },
       "sign": {
-       "avg": 19616586,
-       "count": 1,
-       "max": 19616586,
-       "median": 19616586,
-       "min": 19616586
+       "avg": 43507147,
+       "count": 100,
+       "max": 214911522,
+       "median": 32839375,
+       "min": 9023610
       },
       "verify": {
-       "avg": 13784239,
-       "count": 1,
-       "max": 13784239,
-       "median": 13784239,
-       "min": 13784239
+       "avg": 1111466,
+       "count": 100,
+       "max": 1111547,
+       "median": 1111475,
+       "min": 1111394
       }
      },
-     "cycles_total": 47087736,
+     "cycles_total": 48348179,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17322,8 +22071,10 @@ window.NGCCM4_DATA = {
       "folder": "DARTS",
       "instance": "DARTS128",
       "pub_date": "2026-09-20 14:18",
+      "spec": "specs/DARTS.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specification.pdf",
       "title": "DARTS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077176815616.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DARTS.zip"
      },
      "notes": [],
@@ -17338,7 +22089,11 @@ window.NGCCM4_DATA = {
       "sk": 1536,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 31268,
+      "sign": 93264,
+      "verify": 38080
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -17348,34 +22103,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 52972,
-      "total": 54872
+      "text": 53012,
+      "total": 54912
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 2867064,
-       "count": 2,
-       "max": 3731835,
-       "median": 2867064,
-       "min": 2002294
+       "avg": 4390489,
+       "count": 100,
+       "max": 19735413,
+       "median": 3732646,
+       "min": 3732422
       },
       "sign": {
-       "avg": 15722278,
-       "count": 1,
-       "max": 15722278,
-       "median": 15722278,
-       "min": 15722278
+       "avg": 71853515,
+       "count": 100,
+       "max": 278252315,
+       "median": 54949606,
+       "min": 15644054
       },
       "verify": {
-       "avg": 2532136,
-       "count": 1,
-       "max": 2532136,
-       "median": 2532136,
-       "min": 2532136
+       "avg": 2514307,
+       "count": 100,
+       "max": 2532306,
+       "median": 2510672,
+       "min": 2510416
       }
      },
-     "cycles_total": 21121478,
+     "cycles_total": 78758311,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17409,8 +22164,10 @@ window.NGCCM4_DATA = {
       "folder": "DARTS",
       "instance": "DARTS256",
       "pub_date": "2026-09-20 14:18",
+      "spec": "specs/DARTS.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specification.pdf",
       "title": "DARTS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077176815616.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DARTS.zip"
      },
      "notes": [],
@@ -17425,7 +22182,11 @@ window.NGCCM4_DATA = {
       "sk": 2880,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 53676,
+      "sign": 143359,
+      "verify": 65232
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -17435,34 +22196,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 59160,
-      "total": 61060
+      "text": 59168,
+      "total": 61068
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 7616856,
-       "count": 1,
-       "max": 7616856,
-       "median": 7616856,
-       "min": 7616856
+       "avg": 7616986,
+       "count": 100,
+       "max": 7617537,
+       "median": 7616982,
+       "min": 7616380
       },
       "sign": {
-       "avg": 30817521,
-       "count": 1,
-       "max": 30817521,
-       "median": 30817521,
-       "min": 30817521
+       "avg": 96009897,
+       "count": 100,
+       "max": 371196412,
+       "median": 82477830,
+       "min": 30757864
       },
       "verify": {
-       "avg": 4666363,
-       "count": 1,
-       "max": 4666363,
-       "median": 4666363,
-       "min": 4666363
+       "avg": 4666824,
+       "count": 100,
+       "max": 4687980,
+       "median": 4666400,
+       "min": 4666129
       }
      },
-     "cycles_total": 43100740,
+     "cycles_total": 108293707,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17496,8 +22257,10 @@ window.NGCCM4_DATA = {
       "folder": "DARTS",
       "instance": "DARTS512",
       "pub_date": "2026-09-20 14:18",
+      "spec": "specs/DARTS.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specification.pdf",
       "title": "DARTS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077176815616.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DARTS.zip"
      },
      "notes": [],
@@ -17512,7 +22275,11 @@ window.NGCCM4_DATA = {
       "sk": 6016,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 107108,
+      "sign": 288688,
+      "verify": 129908
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -17522,34 +22289,34 @@ window.NGCCM4_DATA = {
       "bss": 4644,
       "data": 1360,
       "source": "report",
-      "text": 80128,
-      "total": 86132
+      "text": 80168,
+      "total": 86172
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 7616856,
-       "count": 1,
-       "max": 7616856,
-       "median": 7616856,
-       "min": 7616856
+       "avg": 187373220,
+       "count": 10,
+       "max": 187446170,
+       "median": 187372025,
+       "min": 187300106
       },
       "sign": {
-       "avg": 30817522,
-       "count": 1,
-       "max": 30817522,
-       "median": 30817522,
-       "min": 30817522
+       "avg": 41901922,
+       "count": 10,
+       "max": 167763038,
+       "median": 29978972,
+       "min": 7705237
       },
       "verify": {
-       "avg": 4666363,
-       "count": 1,
-       "max": 4666363,
-       "median": 4666363,
-       "min": 4666363
+       "avg": 4414115,
+       "count": 10,
+       "max": 4415060,
+       "median": 4414004,
+       "min": 4412938
       }
      },
-     "cycles_total": 43100741,
+     "cycles_total": 233689257,
      "expected_ops": [
       "keypair",
       "sign",
@@ -17583,8 +22350,10 @@ window.NGCCM4_DATA = {
       "folder": "Facto-DSA",
       "instance": "Facto-DSA-128",
       "pub_date": "2026-09-20 14:16",
+      "spec": "specs/Facto-DSA.pdf",
+      "spec_extra": [],
+      "spec_file": "algorithm-specification-facto-dsa.pdf",
       "title": "Facto-DSA",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077457833984.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Facto-DSA.zip"
      },
      "notes": [],
@@ -17599,7 +22368,11 @@ window.NGCCM4_DATA = {
       "sk": 3094,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 1480,
+      "sign": 8416,
+      "verify": 720
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -17609,19 +22382,19 @@ window.NGCCM4_DATA = {
       "bss": 820,
       "data": 1352,
       "source": "report",
-      "text": 575540,
-      "total": 577712
+      "text": 575580,
+      "total": 577752
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 95117502,
+       "avg": 95118171,
        "count": 1,
-       "max": 95117502,
-       "median": 95117502,
-       "min": 95117502
+       "max": 95118171,
+       "median": 95118171,
+       "min": 95118171
       }
      },
      "cycles_total": null,
@@ -17656,8 +22429,10 @@ window.NGCCM4_DATA = {
       "folder": "Galas_Signature",
       "instance": "Galas-160F",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
@@ -17673,21 +22448,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 95118171,
+       "count": 1,
+       "max": 95118171,
+       "median": 95118171,
+       "min": 95118171
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-160S_ref",
@@ -17705,18 +22496,22 @@ window.NGCCM4_DATA = {
       "source": "spec",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-160S",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-160S",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-160S.txt",
@@ -17728,21 +22523,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 257717696,
+       "count": 1,
+       "max": 257717696,
+       "median": 257717696,
+       "min": 257717696
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-256F_ref",
@@ -17760,18 +22571,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-256F",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-256F",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-256F.txt",
@@ -17783,21 +22598,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 257717696,
+       "count": 1,
+       "max": 257717696,
+       "median": 257717696,
+       "min": 257717696
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-256S_ref",
@@ -17815,18 +22646,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-256S",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-256S",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-256S.txt",
@@ -17838,21 +22673,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 652694881,
+       "count": 1,
+       "max": 652694881,
+       "median": 652694881,
+       "min": 652694881
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-384F_ref",
@@ -17870,18 +22721,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-384F",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-384F",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-384F.txt",
@@ -17893,21 +22748,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 652694881,
+       "count": 1,
+       "max": 652694881,
+       "median": 652694881,
+       "min": 652694881
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-384S_ref",
@@ -17925,18 +22796,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-384S",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-384S",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-384S.txt",
@@ -17948,21 +22823,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 1287100570,
+       "count": 1,
+       "max": 1287100570,
+       "median": 1287100570,
+       "min": 1287100570
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-512F_ref",
@@ -17980,18 +22871,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-512F",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-512F",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-512F.txt",
@@ -18003,21 +22898,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 820,
+      "data": 1352,
+      "source": "report",
+      "text": 575580,
+      "total": 577752
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 1287100570,
+       "count": 1,
+       "max": 1287100570,
+       "median": 1287100570,
+       "min": 1287100570
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Galas-512S_ref",
@@ -18035,18 +22946,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/3FJV2IP2L5BFKAPR364ISD45Z7UJBJUY/",
       "folder": "Galas_Signature",
       "instance": "Galas-512S",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/Galas_Signature.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Galas Signature Scheme",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077713686528.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Galas%20Signature.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Galas-512S",
      "sizes": {
       "kat_path": "schemes/Galas_Signature/Test_Vectors/KAT_SIG_Galas-512S.txt",
@@ -18058,7 +22973,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -18067,34 +22982,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 111592,
-      "total": 113492
+      "text": 111632,
+      "total": 113532
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 9959671,
-       "count": 1,
-       "max": 9959671,
-       "median": 9959671,
-       "min": 9959671
+       "avg": 32302878,
+       "count": 10,
+       "max": 78221350,
+       "median": 29188208,
+       "min": 9959630
       },
       "sign": {
-       "avg": 1064536738,
-       "count": 1,
-       "max": 1064536738,
-       "median": 1064536738,
-       "min": 1064536738
+       "avg": 1075409455,
+       "count": 10,
+       "max": 1111533113,
+       "median": 1072391600,
+       "min": 1062054376
       },
       "verify": {
-       "avg": 655181324,
-       "count": 1,
-       "max": 655181324,
-       "median": 655181324,
-       "min": 655181324
+       "avg": 655110622,
+       "count": 10,
+       "max": 655155539,
+       "median": 655112650,
+       "min": 655059869
       }
      },
-     "cycles_total": 1729677733,
+     "cycles_total": 1762822955,
      "expected_ops": [
       "keypair",
       "sign",
@@ -18128,8 +23043,15 @@ window.NGCCM4_DATA = {
       "folder": "GreatWall",
       "instance": "GreatWall128f",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
@@ -18144,7 +23066,11 @@ window.NGCCM4_DATA = {
       "sk": 36,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 1120,
+      "sign": 77820,
+      "verify": 77760
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -18154,19 +23080,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 110904,
-      "total": 112804
+      "text": 110912,
+      "total": 112812
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 9959575,
+       "avg": 9959523,
        "count": 1,
-       "max": 9959575,
-       "median": 9959575,
-       "min": 9959575
+       "max": 9959523,
+       "median": 9959523,
+       "min": 9959523
       }
      },
      "cycles_total": null,
@@ -18201,8 +23127,15 @@ window.NGCCM4_DATA = {
       "folder": "GreatWall",
       "instance": "GreatWall128s",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
@@ -18218,7 +23151,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -18227,19 +23160,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 165720,
-      "total": 167620
+      "text": 165760,
+      "total": 167660
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 9959575,
+       "avg": 143703103,
        "count": 1,
-       "max": 9959575,
-       "median": 9959575,
-       "min": 9959575
+       "max": 143703103,
+       "median": 143703103,
+       "min": 143703103
       }
      },
      "cycles_total": null,
@@ -18274,8 +23207,15 @@ window.NGCCM4_DATA = {
       "folder": "GreatWall",
       "instance": "GreatWall192f",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
@@ -18291,21 +23231,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 165896,
+      "total": 167796
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 143707761,
+       "count": 1,
+       "max": 143707761,
+       "median": 143707761,
+       "min": 143707761
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_GreatWall192s_ref",
@@ -18323,18 +23279,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/5IGQ6ZDNGTS7TSTFXE3PFVHHJL7BM2LJ/",
       "folder": "GreatWall",
       "instance": "GreatWall192s",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "GreatWall192s",
      "sizes": {
       "kat_path": "schemes/GreatWall/Test_Vectors/KAT_SIG_GreatWall192s.txt",
@@ -18346,7 +23311,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -18355,19 +23320,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 201232,
-      "total": 203132
+      "text": 201272,
+      "total": 203172
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 416834301,
+       "avg": 416832056,
        "count": 1,
-       "max": 416834301,
-       "median": 416834301,
-       "min": 416834301
+       "max": 416832056,
+       "median": 416832056,
+       "min": 416832056
       }
      },
      "cycles_total": null,
@@ -18402,8 +23367,15 @@ window.NGCCM4_DATA = {
       "folder": "GreatWall",
       "instance": "GreatWall256f",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
@@ -18419,21 +23391,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 201440,
+      "total": 203340
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 416832056,
+       "count": 1,
+       "max": 416832056,
+       "median": 416832056,
+       "min": 416832056
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_GreatWall256s_ref",
@@ -18451,18 +23439,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/5IGQ6ZDNGTS7TSTFXE3PFVHHJL7BM2LJ/",
       "folder": "GreatWall",
       "instance": "GreatWall256s",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "GreatWall256s",
      "sizes": {
       "kat_path": "schemes/GreatWall/Test_Vectors/KAT_SIG_GreatWall256s.txt",
@@ -18474,21 +23471,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 361052,
+      "total": 362952
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 259112548,
+       "count": 1,
+       "max": 259112548,
+       "median": 259112548,
+       "min": 259112548
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_GreatWall512f_ref",
@@ -18506,18 +23519,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/5IGQ6ZDNGTS7TSTFXE3PFVHHJL7BM2LJ/",
       "folder": "GreatWall",
       "instance": "GreatWall512f",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "GreatWall512f",
      "sizes": {
       "kat_path": "schemes/GreatWall/Test_Vectors/KAT_SIG_GreatWall512f.txt",
@@ -18529,21 +23551,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 362156,
+      "total": 364056
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 259113028,
+       "count": 1,
+       "max": 259113028,
+       "median": 259113028,
+       "min": 259113028
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_GreatWall512s_ref",
@@ -18561,18 +23599,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/5IGQ6ZDNGTS7TSTFXE3PFVHHJL7BM2LJ/",
       "folder": "GreatWall",
       "instance": "GreatWall512s",
       "pub_date": "2026-09-20 14:14",
+      "spec": "specs/GreatWall.pdf",
+      "spec_extra": [
+       {
+        "file": "Clarification4GreatWall.pdf",
+        "href": "specs/GreatWall-clarification4greatwall.pdf"
+       }
+      ],
+      "spec_file": "The GreatWall Signature Scheme.pdf",
       "title": "GreatWall Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077852098560.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/GreatWall.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "GreatWall512s",
      "sizes": {
       "kat_path": "schemes/GreatWall/Test_Vectors/KAT_SIG_GreatWall512s.txt",
@@ -18584,7 +23631,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -18593,40 +23640,44 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 432880,
-      "total": 435332
+      "text": 432920,
+      "total": 435372
      },
-     "completed_ops": [],
+     "completed_ops": [
+      "keypair",
+      "sign",
+      "verify"
+     ],
      "cycles": {
       "keypair": {
-       "avg": 73326575,
-       "count": 1,
-       "max": 73326575,
-       "median": 73326575,
-       "min": 73326575
+       "avg": 73331864,
+       "count": 9,
+       "max": 73344572,
+       "median": 73329827,
+       "min": 73321808
       },
       "sign": {
-       "avg": 1699797995,
-       "count": 1,
-       "max": 1699797995,
-       "median": 1699797995,
-       "min": 1699797995
+       "avg": 1697507334,
+       "count": 9,
+       "max": 1701331706,
+       "median": 1697527009,
+       "min": 1694770129
       },
       "verify": {
-       "avg": 1534507088,
-       "count": 1,
-       "max": 1534507088,
-       "median": 1534507088,
-       "min": 1534507088
+       "avg": 1534998209,
+       "count": 8,
+       "max": 1535508029,
+       "median": 1535022314,
+       "min": 1534537905
       }
      },
-     "cycles_total": 3307631658,
+     "cycles_total": 3305837407,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": null,
+     "failure_kind": "timeout",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Lynxer-160f_ref",
@@ -18654,11 +23705,15 @@ window.NGCCM4_DATA = {
       "folder": "Lynxer",
       "instance": "Lynxer-160f",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
-     "notes": [],
+     "notes": [
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
+     ],
      "run_status": "measured",
      "scheme": "Lynxer-160f",
      "sizes": {
@@ -18670,8 +23725,12 @@ window.NGCCM4_DATA = {
       "sk": 40,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": null,
+     "stack": {
+      "keypair": 133388,
+      "sign": 145364,
+      "verify": 145324
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -18680,19 +23739,19 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 432912,
-      "total": 435364
+      "text": 432920,
+      "total": 435372
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 73326571,
+       "avg": 73326643,
        "count": 1,
-       "max": 73326571,
-       "median": 73326571,
-       "min": 73326571
+       "max": 73326643,
+       "median": 73326643,
+       "min": 73326643
       }
      },
      "cycles_total": null,
@@ -18727,8 +23786,10 @@ window.NGCCM4_DATA = {
       "folder": "Lynxer",
       "instance": "Lynxer-160s",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
@@ -18744,7 +23805,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -18753,19 +23814,19 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 433312,
-      "total": 435764
+      "text": 433352,
+      "total": 435804
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 338062880,
+       "avg": 338062972,
        "count": 1,
-       "max": 338062880,
-       "median": 338062880,
-       "min": 338062880
+       "max": 338062972,
+       "median": 338062972,
+       "min": 338062972
       }
      },
      "cycles_total": null,
@@ -18800,8 +23861,10 @@ window.NGCCM4_DATA = {
       "folder": "Lynxer",
       "instance": "Lynxer-256f",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
@@ -18817,21 +23880,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 433352,
+      "total": 435804
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 338062970,
+       "count": 1,
+       "max": 338062970,
+       "median": 338062970,
+       "min": 338062970
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Lynxer-256s_ref",
@@ -18849,18 +23928,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A3VK2RZD6XCJB5YBKZN2OSDSYMSVFUL6/",
       "folder": "Lynxer",
       "instance": "Lynxer-256s",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Lynxer-256s",
      "sizes": {
       "kat_path": "schemes/Lynxer/Test_Vectors/KAT_SIG_Lynxer-256s.txt",
@@ -18872,7 +23955,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -18881,19 +23964,19 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 435064,
-      "total": 437516
+      "text": 435104,
+      "total": 437556
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 1399758982,
+       "avg": 1399759857,
        "count": 1,
-       "max": 1399758982,
-       "median": 1399758982,
-       "min": 1399758982
+       "max": 1399759857,
+       "median": 1399759857,
+       "min": 1399759857
       }
      },
      "cycles_total": null,
@@ -18928,8 +24011,10 @@ window.NGCCM4_DATA = {
       "folder": "Lynxer",
       "instance": "Lynxer-384f",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
@@ -18945,21 +24030,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 435104,
+      "total": 437556
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 1399761162,
+       "count": 1,
+       "max": 1399761162,
+       "median": 1399761162,
+       "min": 1399761162
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Lynxer-384s_ref",
@@ -18977,18 +24078,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A3VK2RZD6XCJB5YBKZN2OSDSYMSVFUL6/",
       "folder": "Lynxer",
       "instance": "Lynxer-384s",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Lynxer-384s",
      "sizes": {
       "kat_path": "schemes/Lynxer/Test_Vectors/KAT_SIG_Lynxer-384s.txt",
@@ -19000,7 +24105,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -19009,19 +24114,19 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 434696,
-      "total": 437148
+      "text": 434736,
+      "total": 437188
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 4033218601,
+       "avg": 4033216824,
        "count": 1,
-       "max": 4033218601,
-       "median": 4033218601,
-       "min": 4033218601
+       "max": 4033216824,
+       "median": 4033216824,
+       "min": 4033216824
       }
      },
      "cycles_total": null,
@@ -19030,7 +24135,7 @@ window.NGCCM4_DATA = {
       "sign",
       "verify"
      ],
-     "failure_kind": "timeout",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Lynxer-512f_ref",
@@ -19056,8 +24161,10 @@ window.NGCCM4_DATA = {
       "folder": "Lynxer",
       "instance": "Lynxer-512f",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
@@ -19073,21 +24180,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 434736,
+      "total": 437188
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 4032268784,
+       "count": 1,
+       "max": 4032268784,
+       "median": 4032268784,
+       "min": 4032268784
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Lynxer-512s_ref",
@@ -19105,18 +24228,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/A3VK2RZD6XCJB5YBKZN2OSDSYMSVFUL6/",
       "folder": "Lynxer",
       "instance": "Lynxer-512s",
       "pub_date": "2026-09-20 14:13",
+      "spec": "specs/Lynxer.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Lynxer",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077990510592.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Lynxer.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Lynxer-512s",
      "sizes": {
       "kat_path": "schemes/Lynxer/Test_Vectors/KAT_SIG_Lynxer-512s.txt",
@@ -19128,7 +24255,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -19137,34 +24264,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31932,
-      "total": 33832
+      "text": 31972,
+      "total": 33872
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 5265610,
-       "count": 1,
-       "max": 5265610,
-       "median": 5265610,
-       "min": 5265610
+       "avg": 5245244,
+       "count": 10,
+       "max": 5402890,
+       "median": 5197408,
+       "min": 5128733
       },
       "sign": {
-       "avg": 9072526,
-       "count": 1,
-       "max": 9072526,
-       "median": 9072526,
-       "min": 9072526
+       "avg": 7002778,
+       "count": 10,
+       "max": 9091051,
+       "median": 6484926,
+       "min": 6470976
       },
       "verify": {
-       "avg": 5415382,
-       "count": 1,
-       "max": 5415382,
-       "median": 5415382,
-       "min": 5415382
+       "avg": 5415734,
+       "count": 10,
+       "max": 5418857,
+       "median": 5415378,
+       "min": 5415278
       }
      },
-     "cycles_total": 19753518,
+     "cycles_total": 17663756,
      "expected_ops": [
       "keypair",
       "sign",
@@ -19198,8 +24325,10 @@ window.NGCCM4_DATA = {
       "folder": "OPS_Digital_Signature_Algorithm",
       "instance": "OPSsig-128",
       "pub_date": "2026-09-20 14:10",
+      "spec": "specs/OPS_Digital_Signature_Algorithm.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "OPS Digital Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086848880640.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OPS%20Digital%20Signature%20Algorithm.zip"
      },
      "notes": [],
@@ -19214,7 +24343,11 @@ window.NGCCM4_DATA = {
       "sk": 3840,
       "source": "ngcc_results"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 52000,
+      "sign": 98100,
+      "verify": 50060
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -19224,34 +24357,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 32660,
-      "total": 34560
+      "text": 32668,
+      "total": 34568
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 8334741,
-       "count": 1,
-       "max": 8334741,
-       "median": 8334741,
-       "min": 8334741
+       "avg": 8464126,
+       "count": 10,
+       "max": 8639529,
+       "median": 8448978,
+       "min": 8334625
       },
       "sign": {
-       "avg": 14466726,
-       "count": 1,
-       "max": 14466726,
-       "median": 14466726,
-       "min": 14466726
+       "avg": 12532176,
+       "count": 10,
+       "max": 14522076,
+       "median": 12537410,
+       "min": 10582126
       },
       "verify": {
-       "avg": 8729554,
-       "count": 1,
-       "max": 8729554,
-       "median": 8729554,
-       "min": 8729554
+       "avg": 8729674,
+       "count": 10,
+       "max": 8729794,
+       "median": 8729693,
+       "min": 8729509
       }
      },
-     "cycles_total": 31531021,
+     "cycles_total": 29725976,
      "expected_ops": [
       "keypair",
       "sign",
@@ -19285,8 +24418,10 @@ window.NGCCM4_DATA = {
       "folder": "OPS_Digital_Signature_Algorithm",
       "instance": "OPSsig-256",
       "pub_date": "2026-09-20 14:10",
+      "spec": "specs/OPS_Digital_Signature_Algorithm.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "OPS Digital Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086848880640.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OPS%20Digital%20Signature%20Algorithm.zip"
      },
      "notes": [],
@@ -19301,7 +24436,11 @@ window.NGCCM4_DATA = {
       "sk": 5056,
       "source": "ngcc_results"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 76576,
+      "sign": 152132,
+      "verify": 74080
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -19311,34 +24450,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 35072,
-      "total": 36972
+      "text": 35112,
+      "total": 37012
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 8334741,
-       "count": 1,
-       "max": 8334741,
-       "median": 8334741,
-       "min": 8334741
+       "avg": 16884093,
+       "count": 10,
+       "max": 17020652,
+       "median": 16884206,
+       "min": 16611262
       },
       "sign": {
-       "avg": 14466726,
-       "count": 1,
-       "max": 14466726,
-       "median": 14466726,
-       "min": 14466726
+       "avg": 31524592,
+       "count": 10,
+       "max": 42796151,
+       "median": 33310560,
+       "min": 23963608
       },
       "verify": {
-       "avg": 8729554,
-       "count": 1,
-       "max": 8729554,
-       "median": 8729554,
-       "min": 8729554
+       "avg": 17572613,
+       "count": 10,
+       "max": 17572842,
+       "median": 17572615,
+       "min": 17572408
       }
      },
-     "cycles_total": 31531021,
+     "cycles_total": 65981298,
      "expected_ops": [
       "keypair",
       "sign",
@@ -19372,8 +24511,10 @@ window.NGCCM4_DATA = {
       "folder": "OPS_Digital_Signature_Algorithm",
       "instance": "OPSsig-512",
       "pub_date": "2026-09-20 14:10",
+      "spec": "specs/OPS_Digital_Signature_Algorithm.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "OPS Digital Signature Algorithm",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086848880640.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/OPS%20Digital%20Signature%20Algorithm.zip"
      },
      "notes": [],
@@ -19388,7 +24529,11 @@ window.NGCCM4_DATA = {
       "sk": 9920,
       "source": "ngcc_results"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 152460,
+      "sign": 302756,
+      "verify": 145996
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -19398,34 +24543,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 9544,
       "source": "report",
-      "text": 29880,
-      "total": 39972
+      "text": 29920,
+      "total": 40012
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 16747169,
-       "count": 1,
-       "max": 16747169,
-       "median": 16747169,
-       "min": 16747169
+       "avg": 2736771,
+       "count": 10,
+       "max": 2736818,
+       "median": 2736780,
+       "min": 2736651
       },
       "sign": {
-       "avg": 42796097,
-       "count": 1,
-       "max": 42796097,
-       "median": 42796097,
-       "min": 42796097
+       "avg": 10170476,
+       "count": 10,
+       "max": 20968190,
+       "median": 10227936,
+       "min": 5179851
       },
       "verify": {
-       "avg": 17572784,
-       "count": 1,
-       "max": 17572784,
-       "median": 17572784,
-       "min": 17572784
+       "avg": 3523112,
+       "count": 10,
+       "max": 3523231,
+       "median": 3523134,
+       "min": 3522877
       }
      },
-     "cycles_total": 77116050,
+     "cycles_total": 16430359,
      "expected_ops": [
       "keypair",
       "sign",
@@ -19459,8 +24604,10 @@ window.NGCCM4_DATA = {
       "folder": "Octarine",
       "instance": "Octarine-128",
       "pub_date": "2026-09-20 14:11",
+      "spec": "specs/Octarine.pdf",
+      "spec_extra": [],
+      "spec_file": "Octarine.pdf",
       "title": "Octarine",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078258946048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Octarine.zip"
      },
      "notes": [],
@@ -19475,7 +24622,11 @@ window.NGCCM4_DATA = {
       "sk": 2432,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 47168,
+      "sign": 68456,
+      "verify": 68352
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -19485,34 +24636,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 17736,
       "source": "report",
-      "text": 30896,
-      "total": 49180
+      "text": 30936,
+      "total": 49220
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 2736643,
-       "count": 1,
-       "max": 2736643,
-       "median": 2736643,
-       "min": 2736643
+       "avg": 5490906,
+       "count": 10,
+       "max": 5490938,
+       "median": 5490898,
+       "min": 5490868
       },
       "sign": {
-       "avg": 13400771,
-       "count": 1,
-       "max": 13400771,
-       "median": 13400771,
-       "min": 13400771
+       "avg": 16308351,
+       "count": 10,
+       "max": 29957847,
+       "median": 15190834,
+       "min": 10272652
       },
       "verify": {
-       "avg": 3523095,
-       "count": 1,
-       "max": 3523095,
-       "median": 3523095,
-       "min": 3523095
+       "avg": 6912264,
+       "count": 10,
+       "max": 6912644,
+       "median": 6912216,
+       "min": 6912057
       }
      },
-     "cycles_total": 19660509,
+     "cycles_total": 28711521,
      "expected_ops": [
       "keypair",
       "sign",
@@ -19546,8 +24697,10 @@ window.NGCCM4_DATA = {
       "folder": "Octarine",
       "instance": "Octarine-256",
       "pub_date": "2026-09-20 14:11",
+      "spec": "specs/Octarine.pdf",
+      "spec_extra": [],
+      "spec_file": "Octarine.pdf",
       "title": "Octarine",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078258946048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Octarine.zip"
      },
      "notes": [],
@@ -19562,7 +24715,11 @@ window.NGCCM4_DATA = {
       "sk": 4608,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 85048,
+      "sign": 126512,
+      "verify": 114992
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -19572,34 +24729,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 17736,
       "source": "report",
-      "text": 31680,
-      "total": 49964
+      "text": 31720,
+      "total": 50004
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 5490806,
-       "count": 1,
-       "max": 5490806,
-       "median": 5490806,
-       "min": 5490806
+       "avg": 14703579,
+       "count": 10,
+       "max": 14703608,
+       "median": 14703605,
+       "min": 14703414
       },
       "sign": {
-       "avg": 29957519,
-       "count": 1,
-       "max": 29957519,
-       "median": 29957519,
-       "min": 29957519
+       "avg": 72583670,
+       "count": 10,
+       "max": 147999987,
+       "median": 54586394,
+       "min": 26632337
       },
       "verify": {
-       "avg": 6912166,
-       "count": 1,
-       "max": 6912166,
-       "median": 6912166,
-       "min": 6912166
+       "avg": 17903499,
+       "count": 10,
+       "max": 17904110,
+       "median": 17903460,
+       "min": 17902980
       }
      },
-     "cycles_total": 42360491,
+     "cycles_total": 105190748,
      "expected_ops": [
       "keypair",
       "sign",
@@ -19633,8 +24790,10 @@ window.NGCCM4_DATA = {
       "folder": "Octarine",
       "instance": "Octarine-512",
       "pub_date": "2026-09-20 14:11",
+      "spec": "specs/Octarine.pdf",
+      "spec_extra": [],
+      "spec_file": "Octarine.pdf",
       "title": "Octarine",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078258946048.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Octarine.zip"
      },
      "notes": [],
@@ -19649,7 +24808,11 @@ window.NGCCM4_DATA = {
       "sk": 11776,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 198548,
+      "sign": 287624,
+      "verify": 253760
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -19659,40 +24822,44 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 30336,
-      "total": 32236
+      "text": 30376,
+      "total": 32276
      },
-     "completed_ops": [],
+     "completed_ops": [
+      "keypair",
+      "sign",
+      "verify"
+     ],
      "cycles": {
       "keypair": {
-       "avg": 90889828,
-       "count": 2,
-       "max": 167076328,
-       "median": 90889828,
-       "min": 14703327
+       "avg": 167075797,
+       "count": 9,
+       "max": 167075808,
+       "median": 167075803,
+       "min": 167075767
       },
       "sign": {
-       "avg": 3162565308,
-       "count": 1,
-       "max": 3162565308,
-       "median": 3162565308,
-       "min": 3162565308
+       "avg": 3145775354,
+       "count": 8,
+       "max": 3162566459,
+       "median": 3140728876,
+       "min": 3134853281
       },
       "verify": {
-       "avg": 87922311,
-       "count": 1,
-       "max": 87922311,
-       "median": 87922311,
-       "min": 87922311
+       "avg": 87920062,
+       "count": 8,
+       "max": 87947436,
+       "median": 87922648,
+       "min": 87899097
       }
      },
-     "cycles_total": 3341377447,
+     "cycles_total": 3400771213,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": null,
+     "failure_kind": "timeout",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Phoenix-SHAKE-128f_ref",
@@ -19720,12 +24887,20 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-128f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
-      "host build of the reference code reports different sizes: sig_max 13670 (shown: benchmarked binary (QEMU testvectors dump))"
+      "host build of the reference code reports different sizes: sig_max 13670 (shown: benchmarked binary (QEMU testvectors dump))",
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
      ],
      "run_status": "measured",
      "scheme": "Phoenix-SHAKE-128f",
@@ -19738,8 +24913,12 @@ window.NGCCM4_DATA = {
       "sk": 64,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": null,
+     "stack": {
+      "keypair": 3904,
+      "sign": 4916,
+      "verify": 5896
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -19748,18 +24927,28 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 32144,
-      "total": 34044
+      "text": 32152,
+      "total": 34052
      },
-     "completed_ops": [],
-     "cycles": {},
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 5390332108,
+       "count": 1,
+       "max": 5390332108,
+       "median": 5390332108,
+       "min": 5390332108
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "hardfault",
+     "failure_kind": "timeout",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Phoenix-SHAKE-128s_ref",
@@ -19777,20 +24966,29 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/M3XAI6VRCGWEXYF5YOYXWH25JFDYAWVZ/",
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-128s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
       "host build of the reference code reports different sizes: sig_max 6258 (shown: benchmarked binary (QEMU testvectors dump))"
      ],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Phoenix-SHAKE-128s",
      "sizes": {
       "kat_path": "schemes/Phoenix/Test_Vectors/KAT_SIG_Phoenix-SHAKE-128s.txt",
@@ -19801,8 +24999,12 @@ window.NGCCM4_DATA = {
       "sk": 64,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": "HardFault before the first output on 3 runs (pc=0xFFFFFFFE, lr inside main, stack at top of RAM): deterministic board failure, cause not identified",
+     "stack": {
+      "keypair": 3492,
+      "sign": 4468,
+      "verify": 5048
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -19811,40 +25013,44 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 30856,
-      "total": 32756
+      "text": 30864,
+      "total": 32764
      },
-     "completed_ops": [],
+     "completed_ops": [
+      "keypair",
+      "sign",
+      "verify"
+     ],
      "cycles": {
       "keypair": {
-       "avg": 244523609,
-       "count": 1,
-       "max": 244523609,
-       "median": 244523609,
-       "min": 244523609
+       "avg": 244522735,
+       "count": 6,
+       "max": 244522768,
+       "median": 244522726,
+       "min": 244522713
       },
       "sign": {
-       "avg": 4767289879,
-       "count": 1,
-       "max": 4767289879,
-       "median": 4767289879,
-       "min": 4767289879
+       "avg": 4777758536,
+       "count": 5,
+       "max": 4802777133,
+       "median": 4769680562,
+       "min": 4767269529
       },
       "verify": {
-       "avg": 129154773,
-       "count": 1,
-       "max": 129154773,
-       "median": 129154773,
-       "min": 129154773
+       "avg": 129139432,
+       "count": 5,
+       "max": 129227860,
+       "median": 129154088,
+       "min": 128958751
       }
      },
-     "cycles_total": 5140968261,
+     "cycles_total": 5151420703,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": null,
+     "failure_kind": "timeout",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Phoenix-SHAKE-192f_ref",
@@ -19872,12 +25078,20 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-192f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
-      "host build of the reference code reports different sizes: sig_max 30766 (shown: benchmarked binary (QEMU testvectors dump))"
+      "host build of the reference code reports different sizes: sig_max 30766 (shown: benchmarked binary (QEMU testvectors dump))",
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
      ],
      "run_status": "measured",
      "scheme": "Phoenix-SHAKE-192f",
@@ -19890,8 +25104,12 @@ window.NGCCM4_DATA = {
       "sk": 96,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": null,
+     "stack": {
+      "keypair": 5796,
+      "sign": 6764,
+      "verify": 9288
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -19900,19 +25118,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31208,
-      "total": 33108
+      "text": 31248,
+      "total": 33148
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 9168629911,
+       "avg": 9168625483,
        "count": 1,
-       "max": 9168629911,
-       "median": 9168629911,
-       "min": 9168629911
+       "max": 9168625483,
+       "median": 9168625483,
+       "min": 9168625483
       }
      },
      "cycles_total": null,
@@ -19947,8 +25165,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-192s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -19965,8 +25190,12 @@ window.NGCCM4_DATA = {
       "sk": 96,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "stack": {
+      "keypair": 4484,
+      "sign": 6156,
+      "verify": 7304
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -19975,22 +25204,38 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31024,
-      "total": 32924
+      "text": 31064,
+      "total": 32964
      },
      "completed_ops": [
-      "keypair"
+      "keypair",
+      "sign",
+      "verify"
      ],
      "cycles": {
       "keypair": {
-       "avg": 496172765,
-       "count": 1,
-       "max": 496172765,
-       "median": 496172765,
-       "min": 496172765
+       "avg": 496173410,
+       "count": 3,
+       "max": 496173427,
+       "median": 496173412,
+       "min": 496173391
+      },
+      "sign": {
+       "avg": 9263536224,
+       "count": 2,
+       "max": 9263605397,
+       "median": 9263536224,
+       "min": 9263467051
+      },
+      "verify": {
+       "avg": 252755502,
+       "count": 2,
+       "max": 252756894,
+       "median": 252755502,
+       "min": 252754110
       }
      },
-     "cycles_total": null,
+     "cycles_total": 10012465136,
      "expected_ops": [
       "keypair",
       "sign",
@@ -20015,21 +25260,31 @@ window.NGCCM4_DATA = {
       "variant": "f"
      },
      "measured_ops": [
-      "keypair"
+      "keypair",
+      "sign",
+      "verify"
      ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/M3XAI6VRCGWEXYF5YOYXWH25JFDYAWVZ/",
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-256f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
-      "host build of the reference code reports different sizes: sig_max 44906 (shown: benchmarked binary (QEMU testvectors dump))"
+      "host build of the reference code reports different sizes: sig_max 44906 (shown: benchmarked binary (QEMU testvectors dump))",
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
      ],
-     "run_status": "partial",
+     "run_status": "measured",
      "scheme": "Phoenix-SHAKE-256f",
      "sizes": {
       "kat_path": "schemes/Phoenix/Test_Vectors/KAT_SIG_Phoenix-SHAKE-256f.txt",
@@ -20040,8 +25295,12 @@ window.NGCCM4_DATA = {
       "sk": 128,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "stack": {
+      "keypair": 7004,
+      "sign": 10124,
+      "verify": 14856
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -20050,19 +25309,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31280,
-      "total": 33180
+      "text": 31320,
+      "total": 33220
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 6547266454,
+       "avg": 6547264459,
        "count": 1,
-       "max": 6547266454,
-       "median": 6547266454,
-       "min": 6547266454
+       "max": 6547264459,
+       "median": 6547264459,
+       "min": 6547264459
       }
      },
      "cycles_total": null,
@@ -20097,8 +25356,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-256s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20116,7 +25382,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -20125,19 +25391,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31512,
-      "total": 33412
+      "text": 31552,
+      "total": 33452
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 1087789849,
+       "avg": 1087795706,
        "count": 1,
-       "max": 1087789849,
-       "median": 1087789849,
-       "min": 1087789849
+       "max": 1087795706,
+       "median": 1087795706,
+       "min": 1087795706
       }
      },
      "cycles_total": null,
@@ -20172,8 +25438,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-384f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20191,7 +25464,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -20200,11 +25473,21 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31544,
-      "total": 33444
+      "text": 31584,
+      "total": 33484
      },
-     "completed_ops": [],
-     "cycles": {},
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 10700223326,
+       "count": 1,
+       "max": 10700223326,
+       "median": 10700223326,
+       "min": 10700223326
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
@@ -20229,20 +25512,29 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/M3XAI6VRCGWEXYF5YOYXWH25JFDYAWVZ/",
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-384s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
       "host build of the reference code reports different sizes: sig_max 54726 (shown: benchmarked binary (QEMU testvectors dump))"
      ],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "Phoenix-SHAKE-384s",
      "sizes": {
       "kat_path": "schemes/Phoenix/Test_Vectors/KAT_SIG_Phoenix-SHAKE-384s.txt",
@@ -20254,7 +25546,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap): no operation completed",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -20263,19 +25555,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31584,
-      "total": 33484
+      "text": 31624,
+      "total": 33524
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 4039890575,
+       "avg": 4039808013,
        "count": 1,
-       "max": 4039890575,
-       "median": 4039890575,
-       "min": 4039890575
+       "max": 4039808013,
+       "median": 4039808013,
+       "min": 4039808013
       }
      },
      "cycles_total": null,
@@ -20310,8 +25602,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-512f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20329,7 +25628,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -20338,8 +25637,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31512,
-      "total": 33412
+      "text": 31552,
+      "total": 33452
      },
      "completed_ops": [],
      "cycles": {},
@@ -20373,8 +25672,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SHAKE-512s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20392,7 +25698,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap): no operation completed",
+     "status_text": "timeout: no '#' within the capture limit; completed none",
      "tier": "qemu"
     },
     {
@@ -20401,34 +25707,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28016,
-      "total": 29916
+      "text": 28056,
+      "total": 29956
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 36201798,
-       "count": 1,
-       "max": 36201798,
-       "median": 36201798,
-       "min": 36201798
+       "avg": 36206577,
+       "count": 10,
+       "max": 36206605,
+       "median": 36206566,
+       "min": 36206564
       },
       "sign": {
-       "avg": 712708497,
-       "count": 1,
-       "max": 712708497,
-       "median": 712708497,
-       "min": 712708497
+       "avg": 721074344,
+       "count": 10,
+       "max": 740437683,
+       "median": 716504772,
+       "min": 706244070
       },
       "verify": {
-       "avg": 20168994,
-       "count": 1,
-       "max": 20168994,
-       "median": 20168994,
-       "min": 20168994
+       "avg": 20173302,
+       "count": 10,
+       "max": 20182647,
+       "median": 20176753,
+       "min": 20152627
       }
      },
-     "cycles_total": 769079289,
+     "cycles_total": 777454223,
      "expected_ops": [
       "keypair",
       "sign",
@@ -20462,8 +25768,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-128f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20480,7 +25793,11 @@ window.NGCCM4_DATA = {
       "sk": 64,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 4556,
+      "sign": 4996,
+      "verify": 6172
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -20490,22 +25807,38 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29364,
-      "total": 31264
+      "text": 29372,
+      "total": 31272
      },
      "completed_ops": [
-      "keypair"
+      "keypair",
+      "sign",
+      "verify"
      ],
      "cycles": {
       "keypair": {
-       "avg": 1152652182,
+       "avg": 1152185496,
+       "count": 2,
+       "max": 1152186885,
+       "median": 1152185496,
+       "min": 1152184108
+      },
+      "sign": {
+       "avg": 14359963669,
        "count": 1,
-       "max": 1152652182,
-       "median": 1152652182,
-       "min": 1152652182
+       "max": 14359963669,
+       "median": 14359963669,
+       "min": 14359963669
+      },
+      "verify": {
+       "avg": 46484862,
+       "count": 1,
+       "max": 46484862,
+       "median": 46484862,
+       "min": 46484862
       }
      },
-     "cycles_total": null,
+     "cycles_total": 15558634027,
      "expected_ops": [
       "keypair",
       "sign",
@@ -20530,21 +25863,31 @@ window.NGCCM4_DATA = {
       "variant": "s"
      },
      "measured_ops": [
-      "keypair"
+      "keypair",
+      "sign",
+      "verify"
      ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/M3XAI6VRCGWEXYF5YOYXWH25JFDYAWVZ/",
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-128s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
-      "host build of the reference code reports different sizes: sig_max 6258 (shown: benchmarked binary (QEMU testvectors dump))"
+      "host build of the reference code reports different sizes: sig_max 6258 (shown: benchmarked binary (QEMU testvectors dump))",
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
      ],
-     "run_status": "partial",
+     "run_status": "measured",
      "scheme": "Phoenix-SM3-128s",
      "sizes": {
       "kat_path": "schemes/Phoenix/Test_Vectors/KAT_SIG_Phoenix-SM3-128s.txt",
@@ -20555,8 +25898,12 @@ window.NGCCM4_DATA = {
       "sk": 64,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "stack": {
+      "keypair": 3764,
+      "sign": 4548,
+      "verify": 5204
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -20565,34 +25912,34 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28584,
-      "total": 30484
+      "text": 28624,
+      "total": 30524
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 96848326,
-       "count": 1,
-       "max": 96848326,
-       "median": 96848326,
-       "min": 96848326
+       "avg": 96865197,
+       "count": 10,
+       "max": 96865208,
+       "median": 96865201,
+       "min": 96865169
       },
       "sign": {
-       "avg": 1909065643,
-       "count": 1,
-       "max": 1909065643,
-       "median": 1909065643,
-       "min": 1909065643
+       "avg": 1918834508,
+       "count": 10,
+       "max": 1949640821,
+       "median": 1914864306,
+       "min": 1909358967
       },
       "verify": {
-       "avg": 50888265,
-       "count": 1,
-       "max": 50888265,
-       "median": 50888265,
-       "min": 50888265
+       "avg": 50922622,
+       "count": 10,
+       "max": 50953427,
+       "median": 50934184,
+       "min": 50886198
       }
      },
-     "cycles_total": 2056802234,
+     "cycles_total": 2066622327,
      "expected_ops": [
       "keypair",
       "sign",
@@ -20626,8 +25973,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-192f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20644,7 +25998,11 @@ window.NGCCM4_DATA = {
       "sk": 96,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 7116,
+      "sign": 6852,
+      "verify": 9644
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -20654,19 +26012,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28988,
-      "total": 30888
+      "text": 28996,
+      "total": 30896
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 3618655838,
+       "avg": 3618287627,
        "count": 1,
-       "max": 3618655838,
-       "median": 3618655838,
-       "min": 3618655838
+       "max": 3618287627,
+       "median": 3618287627,
+       "min": 3618287627
       }
      },
      "cycles_total": null,
@@ -20701,8 +26059,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-192s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20720,8 +26085,12 @@ window.NGCCM4_DATA = {
       "sk": 96,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "stack": {
+      "keypair": 5132,
+      "sign": 6244,
+      "verify": 7660
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -20730,40 +26099,44 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28820,
-      "total": 30720
+      "text": 28860,
+      "total": 30760
      },
-     "completed_ops": [],
+     "completed_ops": [
+      "keypair",
+      "sign",
+      "verify"
+     ],
      "cycles": {
       "keypair": {
-       "avg": 191753234,
-       "count": 1,
-       "max": 191753234,
-       "median": 191753234,
-       "min": 191753234
+       "avg": 191724496,
+       "count": 8,
+       "max": 191727172,
+       "median": 191724912,
+       "min": 191720270
       },
       "sign": {
-       "avg": 3684704824,
-       "count": 1,
-       "max": 3684704824,
-       "median": 3684704824,
-       "min": 3684704824
+       "avg": 3725466782,
+       "count": 7,
+       "max": 3879029639,
+       "median": 3684240749,
+       "min": 3651846204
       },
       "verify": {
-       "avg": 97338868,
-       "count": 1,
-       "max": 97338868,
-       "median": 97338868,
-       "min": 97338868
+       "avg": 97376406,
+       "count": 7,
+       "max": 97410991,
+       "median": 97392747,
+       "min": 97307230
       }
      },
-     "cycles_total": 3973796926,
+     "cycles_total": 4014567684,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": null,
+     "failure_kind": "timeout",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_Phoenix-SM3-256f_ref",
@@ -20791,12 +26164,20 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-256f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
-      "host build of the reference code reports different sizes: sig_max 44906 (shown: benchmarked binary (QEMU testvectors dump))"
+      "host build of the reference code reports different sizes: sig_max 44906 (shown: benchmarked binary (QEMU testvectors dump))",
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
      ],
      "run_status": "measured",
      "scheme": "Phoenix-SM3-256f",
@@ -20809,8 +26190,12 @@ window.NGCCM4_DATA = {
       "sk": 128,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": null,
+     "stack": {
+      "keypair": 8940,
+      "sign": 10204,
+      "verify": 15164
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -20819,19 +26204,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29120,
-      "total": 31020
+      "text": 29128,
+      "total": 31028
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 2524714166,
+       "avg": 2524703071,
        "count": 1,
-       "max": 2524714166,
-       "median": 2524714166,
-       "min": 2524714166
+       "max": 2524703071,
+       "median": 2524703071,
+       "min": 2524703071
       }
      },
      "cycles_total": null,
@@ -20866,8 +26251,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-256s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -20884,8 +26276,12 @@ window.NGCCM4_DATA = {
       "sk": 128,
       "source": "kat_raw"
      },
-     "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "stack": {
+      "keypair": 6964,
+      "sign": 7468,
+      "verify": 9900
+     },
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -20894,22 +26290,38 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29452,
-      "total": 31352
+      "text": 29492,
+      "total": 31392
      },
      "completed_ops": [
-      "keypair"
+      "keypair",
+      "sign",
+      "verify"
      ],
      "cycles": {
       "keypair": {
-       "avg": 406241591,
-       "count": 1,
-       "max": 406241591,
-       "median": 406241591,
-       "min": 406241591
+       "avg": 406241657,
+       "count": 3,
+       "max": 406241689,
+       "median": 406241645,
+       "min": 406241638
+      },
+      "sign": {
+       "avg": 12318526801,
+       "count": 2,
+       "max": 12333077897,
+       "median": 12318526801,
+       "min": 12303975705
+      },
+      "verify": {
+       "avg": 220092910,
+       "count": 2,
+       "max": 220171287,
+       "median": 220092910,
+       "min": 220014532
       }
      },
-     "cycles_total": null,
+     "cycles_total": 12944861368,
      "expected_ops": [
       "keypair",
       "sign",
@@ -20934,22 +26346,32 @@ window.NGCCM4_DATA = {
       "variant": "f"
      },
      "measured_ops": [
-      "keypair"
+      "keypair",
+      "sign",
+      "verify"
      ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/M3XAI6VRCGWEXYF5YOYXWH25JFDYAWVZ/",
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-384f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
       "host build of the reference code reports different sizes: sig_max 88442 (shown: benchmarked binary (QEMU testvectors dump))",
-      "official KAT file reports different sizes: sig_max 88058 (shown: benchmarked binary (QEMU testvectors dump))"
+      "official KAT file reports different sizes: sig_max 88058 (shown: benchmarked binary (QEMU testvectors dump))",
+      "timeout: no '#' within the capture limit; completed keypair, sign, verify"
      ],
-     "run_status": "partial",
+     "run_status": "measured",
      "scheme": "Phoenix-SM3-384f",
      "sizes": {
       "kat_path": "schemes/Phoenix/Test_Vectors/KAT_SIG_Phoenix-SM3-384f.txt",
@@ -20961,7 +26383,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair, sign, verify",
      "tier": "qemu"
     },
     {
@@ -20970,8 +26392,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29464,
-      "total": 31364
+      "text": 29504,
+      "total": 31404
      },
      "completed_ops": [
       "keypair"
@@ -21017,8 +26439,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-384s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -21045,19 +26474,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29544,
-      "total": 31444
+      "text": 29584,
+      "total": 31484
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 809617459,
+       "avg": 809693749,
        "count": 1,
-       "max": 809617459,
-       "median": 809617459,
-       "min": 809617459
+       "max": 809693749,
+       "median": 809693749,
+       "min": 809693749
       }
      },
      "cycles_total": null,
@@ -21092,8 +26521,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-512f",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -21111,7 +26547,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "timeout (10 min cap, 1 iteration): completed keypair; the remaining operation(s) exceed the cap",
+     "status_text": "timeout: no '#' within the capture limit; completed keypair",
      "tier": "qemu"
     },
     {
@@ -21120,8 +26556,8 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 29448,
-      "total": 31348
+      "text": 29488,
+      "total": 31388
      },
      "completed_ops": [
       "keypair"
@@ -21167,8 +26603,15 @@ window.NGCCM4_DATA = {
       "folder": "Phoenix",
       "instance": "Phoenix-SM3-512s",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/Phoenix.pdf",
+      "spec_extra": [
+       {
+        "file": "Phoenix specifications Addition.pdf",
+        "href": "specs/Phoenix-phoenix-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Phoenix specifications.pdf",
       "title": "Phoenix",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087113121792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Phoenix.zip"
      },
      "notes": [
@@ -21195,34 +26638,34 @@ window.NGCCM4_DATA = {
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 26604,
-      "total": 28516
+      "text": 26644,
+      "total": 28556
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 872217,
-       "count": 1,
-       "max": 872217,
-       "median": 872217,
-       "min": 872217
+       "avg": 873376,
+       "count": 10,
+       "max": 875243,
+       "median": 873858,
+       "min": 870810
       },
       "sign": {
-       "avg": 60662841,
-       "count": 1,
-       "max": 60662841,
-       "median": 60662841,
-       "min": 60662841
+       "avg": 60671509,
+       "count": 10,
+       "max": 60697534,
+       "median": 60669538,
+       "min": 60652255
       },
       "verify": {
-       "avg": 24885993,
-       "count": 1,
-       "max": 24885993,
-       "median": 24885993,
-       "min": 24885993
+       "avg": 24891160,
+       "count": 10,
+       "max": 24901535,
+       "median": 24890647,
+       "min": 24884073
       }
      },
-     "cycles_total": 86421051,
+     "cycles_total": 86436045,
      "expected_ops": [
       "keypair",
       "sign",
@@ -21256,8 +26699,10 @@ window.NGCCM4_DATA = {
       "folder": "QingLuan",
       "instance": "QingLuan-128",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/QingLuan.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Qing Luan",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087243145216.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QingLuan.zip"
      },
      "notes": [],
@@ -21272,7 +26717,11 @@ window.NGCCM4_DATA = {
       "sk": 32,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 1384,
+      "sign": 2280,
+      "verify": 1892
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -21282,19 +26731,19 @@ window.NGCCM4_DATA = {
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 26960,
-      "total": 28872
+      "text": 26968,
+      "total": 28880
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 4391738,
+       "avg": 4392220,
        "count": 1,
-       "max": 4391738,
-       "median": 4391738,
-       "min": 4391738
+       "max": 4392220,
+       "median": 4392220,
+       "min": 4392220
       }
      },
      "cycles_total": null,
@@ -21329,8 +26778,10 @@ window.NGCCM4_DATA = {
       "folder": "QingLuan",
       "instance": "QingLuan-256",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/QingLuan.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Qing Luan",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087243145216.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QingLuan.zip"
      },
      "notes": [],
@@ -21346,7 +26797,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -21355,19 +26806,19 @@ window.NGCCM4_DATA = {
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 26660,
-      "total": 28572
+      "text": 26700,
+      "total": 28612
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 7010120,
-       "count": 2,
-       "max": 9628502,
-       "median": 7010120,
-       "min": 4391738
+       "avg": 9629512,
+       "count": 1,
+       "max": 9629512,
+       "median": 9629512,
+       "min": 9629512
       }
      },
      "cycles_total": null,
@@ -21402,8 +26853,10 @@ window.NGCCM4_DATA = {
       "folder": "QingLuan",
       "instance": "QingLuan-384",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/QingLuan.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Qing Luan",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087243145216.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QingLuan.zip"
      },
      "notes": [],
@@ -21419,7 +26872,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -21428,19 +26881,19 @@ window.NGCCM4_DATA = {
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 26708,
-      "total": 28620
+      "text": 26748,
+      "total": 28660
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 21151109,
+       "avg": 21149312,
        "count": 1,
-       "max": 21151109,
-       "median": 21151109,
-       "min": 21151109
+       "max": 21149312,
+       "median": 21149312,
+       "min": 21149312
       }
      },
      "cycles_total": null,
@@ -21475,8 +26928,10 @@ window.NGCCM4_DATA = {
       "folder": "QingLuan",
       "instance": "QingLuan-512",
       "pub_date": "2026-09-20 14:08",
+      "spec": "specs/QingLuan.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Qing Luan",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087243145216.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QingLuan.zip"
      },
      "notes": [],
@@ -21492,7 +26947,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -21501,19 +26956,19 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 137212,
-      "total": 139664
+      "text": 137252,
+      "total": 139704
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 45890526,
+       "avg": 45888924,
        "count": 1,
-       "max": 45890526,
-       "median": 45890526,
-       "min": 45890526
+       "max": 45888924,
+       "median": 45888924,
+       "min": 45888924
       }
      },
      "cycles_total": null,
@@ -21548,8 +27003,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-160f",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21565,7 +27027,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -21574,19 +27036,19 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 137212,
-      "total": 139664
+      "text": 137252,
+      "total": 139704
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 45889875,
+       "avg": 45888272,
        "count": 1,
-       "max": 45889875,
-       "median": 45889875,
-       "min": 45889875
+       "max": 45888272,
+       "median": 45888272,
+       "min": 45888272
       }
      },
      "cycles_total": null,
@@ -21621,8 +27083,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-160s",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21638,7 +27107,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -21647,8 +27116,8 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 137244,
-      "total": 139696
+      "text": 137284,
+      "total": 139736
      },
      "completed_ops": [],
      "cycles": {},
@@ -21682,8 +27151,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-256f",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21699,12 +27175,18 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed none",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 137284,
+      "total": 139736
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -21713,7 +27195,7 @@ window.NGCCM4_DATA = {
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ReSolveD-alpha-256s_ref",
@@ -21737,8 +27219,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-256s",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21754,7 +27243,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
@@ -21763,8 +27252,8 @@ window.NGCCM4_DATA = {
       "bss": 1100,
       "data": 1352,
       "source": "report",
-      "text": 137236,
-      "total": 139688
+      "text": 137276,
+      "total": 139728
      },
      "completed_ops": [],
      "cycles": {},
@@ -21798,8 +27287,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-384f",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21815,12 +27311,18 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed none",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 137276,
+      "total": 139728
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -21829,7 +27331,7 @@ window.NGCCM4_DATA = {
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ReSolveD-alpha-384s_ref",
@@ -21853,8 +27355,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-384s",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21870,12 +27379,18 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 137292,
+      "total": 139744
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -21884,7 +27399,7 @@ window.NGCCM4_DATA = {
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ReSolveD-alpha-512f_ref",
@@ -21908,8 +27423,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-512f",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21925,12 +27447,18 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
+     "code": {
+      "bss": 1100,
+      "data": 1352,
+      "source": "report",
+      "text": 137284,
+      "total": 139736
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -21939,7 +27467,7 @@ window.NGCCM4_DATA = {
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ReSolveD-alpha-512s_ref",
@@ -21963,8 +27491,15 @@ window.NGCCM4_DATA = {
       "folder": "ReSolveD-alpha",
       "instance": "ReSolveD-alpha-512s",
       "pub_date": "2026-09-20 14:07",
+      "spec": "specs/ReSolveD-alpha.pdf",
+      "spec_extra": [
+       {
+        "file": "Algorithm specifications Addition.pdf",
+        "href": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf"
+       }
+      ],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "ReSolveD-ɑ",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561087368974336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/ReSolveD-alpha.zip"
      },
      "notes": [],
@@ -21980,7 +27515,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed none",
      "tier": "qemu"
     },
     {
@@ -22018,8 +27553,10 @@ window.NGCCM4_DATA = {
       "folder": "Sigurd",
       "instance": "Sigurd128_REF",
       "pub_date": "2026-09-20 14:05",
+      "spec": "specs/Sigurd.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Sigurd",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096235732992.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Sigurd.zip"
      },
      "notes": [
@@ -22037,7 +27574,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "link failed on the board: overflowed by 71348 bytes (640 KB SRAM)",
+     "status_text": "link failed: image does not fit the 640 KB SRAM (RAM overflowed by 71,348 bytes); completed none",
      "tier": "qemu"
     },
     {
@@ -22075,8 +27612,10 @@ window.NGCCM4_DATA = {
       "folder": "Sigurd",
       "instance": "Sigurd256_REF",
       "pub_date": "2026-09-20 14:05",
+      "spec": "specs/Sigurd.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Sigurd",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096235732992.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Sigurd.zip"
      },
      "notes": [
@@ -22095,7 +27634,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "link failed on the board: overflowed by 137820 bytes (640 KB SRAM)",
+     "status_text": "link failed: image does not fit the 640 KB SRAM (RAM overflowed by 137,820 bytes); completed none",
      "tier": "qemu"
     },
     {
@@ -22133,8 +27672,10 @@ window.NGCCM4_DATA = {
       "folder": "Sigurd",
       "instance": "Sigurd512_REF",
       "pub_date": "2026-09-20 14:05",
+      "spec": "specs/Sigurd.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Sigurd",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096235732992.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Sigurd.zip"
      },
      "notes": [
@@ -22152,7 +27693,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "link failed on the board: overflowed by 1061584 bytes (640 KB SRAM)",
+     "status_text": "link failed: image does not fit the 640 KB SRAM (RAM overflowed by 1,061,584 bytes); completed none",
      "tier": "qemu"
     },
     {
@@ -22161,19 +27702,19 @@ window.NGCCM4_DATA = {
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 39220,
-      "total": 41120
+      "text": 39260,
+      "total": 41160
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 65519798,
+       "avg": 65520018,
        "count": 1,
-       "max": 65519798,
-       "median": 65519798,
-       "min": 65519798
+       "max": 65520018,
+       "median": 65520018,
+       "min": 65520018
       }
      },
      "cycles_total": null,
@@ -22208,8 +27749,10 @@ window.NGCCM4_DATA = {
       "folder": "TRINE",
       "instance": "TRINE-128-ShortSig",
       "pub_date": "2026-09-20 14:00",
+      "spec": "specs/TRINE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TRINE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip"
      },
      "notes": [
@@ -22227,12 +27770,18 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 39124,
+      "total": 41024
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -22241,7 +27790,7 @@ window.NGCCM4_DATA = {
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "timeout",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_TRINE-128-balanced_ref",
@@ -22265,8 +27814,10 @@ window.NGCCM4_DATA = {
       "folder": "TRINE",
       "instance": "TRINE-128-balanced",
       "pub_date": "2026-09-20 14:00",
+      "spec": "specs/TRINE.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TRINE",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip"
      },
      "notes": [],
@@ -22282,7 +27833,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "timeout: no '#' within the capture limit; completed none",
      "tier": "qemu"
     },
     {
@@ -22291,34 +27842,34 @@ window.NGCCM4_DATA = {
       "bss": 4452,
       "data": 1384,
       "source": "report",
-      "text": 35536,
-      "total": 41372
+      "text": 35576,
+      "total": 41412
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 63946654,
-       "count": 1,
-       "max": 63946654,
-       "median": 63946654,
-       "min": 63946654
+       "avg": 63947231,
+       "count": 10,
+       "max": 63949763,
+       "median": 63948029,
+       "min": 63943944
       },
       "sign": {
-       "avg": 85190689,
-       "count": 1,
-       "max": 85190689,
-       "median": 85190689,
-       "min": 85190689
+       "avg": 85191075,
+       "count": 10,
+       "max": 85193310,
+       "median": 85191894,
+       "min": 85187958
       },
       "verify": {
-       "avg": 71586779,
-       "count": 1,
-       "max": 71586779,
-       "median": 71586779,
-       "min": 71586779
+       "avg": 71587964,
+       "count": 10,
+       "max": 71590466,
+       "median": 71588784,
+       "min": 71584771
       }
      },
-     "cycles_total": 220724122,
+     "cycles_total": 220726270,
      "expected_ops": [
       "keypair",
       "sign",
@@ -22352,8 +27903,10 @@ window.NGCCM4_DATA = {
       "folder": "TSUOV",
       "instance": "TSUOV_128",
       "pub_date": "2026-09-20 13:59",
+      "spec": "specs/TSUOV.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TSUOV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105597419520.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TSUOV.zip"
      },
      "notes": [
@@ -22370,7 +27923,11 @@ window.NGCCM4_DATA = {
       "sk": 32,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 16040,
+      "sign": 62832,
+      "verify": 22256
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -22380,8 +27937,8 @@ window.NGCCM4_DATA = {
       "bss": 11948,
       "data": 1384,
       "source": "report",
-      "text": 34836,
-      "total": 48168
+      "text": 34844,
+      "total": 48176
      },
      "completed_ops": [],
      "cycles": {
@@ -22441,8 +27998,10 @@ window.NGCCM4_DATA = {
       "folder": "TSUOV",
       "instance": "TSUOV_256",
       "pub_date": "2026-09-20 13:59",
+      "spec": "specs/TSUOV.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TSUOV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105597419520.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TSUOV.zip"
      },
      "notes": [
@@ -22459,7 +28018,11 @@ window.NGCCM4_DATA = {
       "sk": 64,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 56396,
+      "sign": 84776,
+      "verify": 79732
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -22469,8 +28032,8 @@ window.NGCCM4_DATA = {
       "bss": 126116,
       "data": 1384,
       "source": "report",
-      "text": 34852,
-      "total": 162352
+      "text": 34892,
+      "total": 162392
      },
      "completed_ops": [
       "keypair"
@@ -22516,8 +28079,10 @@ window.NGCCM4_DATA = {
       "folder": "TSUOV",
       "instance": "TSUOV_512",
       "pub_date": "2026-09-20 13:59",
+      "spec": "specs/TSUOV.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "TSUOV",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105597419520.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TSUOV.zip"
      },
      "notes": [
@@ -22544,34 +28109,34 @@ window.NGCCM4_DATA = {
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 33404,
-      "total": 35708
+      "text": 33444,
+      "total": 35748
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 7000537,
-       "count": 1,
-       "max": 7000537,
-       "median": 7000537,
-       "min": 7000537
+       "avg": 7000482,
+       "count": 10,
+       "max": 7000517,
+       "median": 7000478,
+       "min": 7000368
       },
       "sign": {
-       "avg": 48933756,
-       "count": 1,
-       "max": 48933756,
-       "median": 48933756,
-       "min": 48933756
+       "avg": 29138598,
+       "count": 10,
+       "max": 78940454,
+       "median": 15694846,
+       "min": 11480167
       },
       "verify": {
-       "avg": 7448013,
-       "count": 1,
-       "max": 7448013,
-       "median": 7448013,
-       "min": 7448013
+       "avg": 7448162,
+       "count": 10,
+       "max": 7448382,
+       "median": 7448172,
+       "min": 7447853
       }
      },
-     "cycles_total": 63382306,
+     "cycles_total": 43587242,
      "expected_ops": [
       "keypair",
       "sign",
@@ -22605,8 +28170,10 @@ window.NGCCM4_DATA = {
       "folder": "MORNING-ATLAS",
       "instance": "lwrdsa128",
       "pub_date": "2026-09-20 14:12",
+      "spec": "specs/MORNING-ATLAS.pdf",
+      "spec_extra": [],
+      "spec_file": "DSA_ATLAS_Specification.pdf",
       "title": "MORNING-ATLAS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078120534016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-ATLAS.zip"
      },
      "notes": [],
@@ -22621,7 +28188,11 @@ window.NGCCM4_DATA = {
       "sk": 2128,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 55700,
+      "sign": 102940,
+      "verify": 61892
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -22631,34 +28202,34 @@ window.NGCCM4_DATA = {
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 33356,
-      "total": 35660
+      "text": 33364,
+      "total": 35668
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 16585645,
-       "count": 1,
-       "max": 16585645,
-       "median": 16585645,
-       "min": 16585645
+       "avg": 16585881,
+       "count": 10,
+       "max": 16585898,
+       "median": 16585896,
+       "min": 16585747
       },
       "sign": {
-       "avg": 43434022,
-       "count": 1,
-       "max": 43434022,
-       "median": 43434022,
-       "min": 43434022
+       "avg": 40637430,
+       "count": 10,
+       "max": 61097998,
+       "median": 38651511,
+       "min": 25766906
       },
       "verify": {
-       "avg": 17379556,
-       "count": 1,
-       "max": 17379556,
-       "median": 17379556,
-       "min": 17379556
+       "avg": 17379323,
+       "count": 10,
+       "max": 17379699,
+       "median": 17379408,
+       "min": 17378693
       }
      },
-     "cycles_total": 77399223,
+     "cycles_total": 74602634,
      "expected_ops": [
       "keypair",
       "sign",
@@ -22692,8 +28263,10 @@ window.NGCCM4_DATA = {
       "folder": "MORNING-ATLAS",
       "instance": "lwrdsa192",
       "pub_date": "2026-09-20 14:12",
+      "spec": "specs/MORNING-ATLAS.pdf",
+      "spec_extra": [],
+      "spec_file": "DSA_ATLAS_Specification.pdf",
       "title": "MORNING-ATLAS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078120534016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-ATLAS.zip"
      },
      "notes": [],
@@ -22708,7 +28281,11 @@ window.NGCCM4_DATA = {
       "sk": 3152,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 104852,
+      "sign": 174620,
+      "verify": 113092
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -22718,34 +28295,34 @@ window.NGCCM4_DATA = {
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 30440,
-      "total": 32744
+      "text": 30480,
+      "total": 32784
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 14211612,
-       "count": 2,
-       "max": 16585645,
-       "median": 14211612,
-       "min": 11837580
+       "avg": 11837055,
+       "count": 10,
+       "max": 11837390,
+       "median": 11837146,
+       "min": 11836458
       },
       "sign": {
-       "avg": 31171407,
-       "count": 1,
-       "max": 31171407,
-       "median": 31171407,
-       "min": 31171407
+       "avg": 34940925,
+       "count": 10,
+       "max": 52165228,
+       "median": 32297738,
+       "min": 22366066
       },
       "verify": {
-       "avg": 12792115,
-       "count": 1,
-       "max": 12792115,
-       "median": 12792115,
-       "min": 12792115
+       "avg": 12791817,
+       "count": 10,
+       "max": 12791981,
+       "median": 12791822,
+       "min": 12791693
       }
      },
-     "cycles_total": 58175134,
+     "cycles_total": 59569797,
      "expected_ops": [
       "keypair",
       "sign",
@@ -22779,8 +28356,10 @@ window.NGCCM4_DATA = {
       "folder": "MORNING-ATLAS",
       "instance": "lwrdsa256",
       "pub_date": "2026-09-20 14:12",
+      "spec": "specs/MORNING-ATLAS.pdf",
+      "spec_extra": [],
+      "spec_file": "DSA_ATLAS_Specification.pdf",
       "title": "MORNING-ATLAS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078120534016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-ATLAS.zip"
      },
      "notes": [],
@@ -22795,7 +28374,11 @@ window.NGCCM4_DATA = {
       "sk": 4016,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 109980,
+      "sign": 199204,
+      "verify": 121292
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -22805,34 +28388,34 @@ window.NGCCM4_DATA = {
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 35512,
-      "total": 37816
+      "text": 35520,
+      "total": 37824
      },
      "completed_ops": [],
      "cycles": {
       "keypair": {
-       "avg": 83687090,
-       "count": 1,
-       "max": 83687090,
-       "median": 83687090,
-       "min": 83687090
+       "avg": 83694157,
+       "count": 10,
+       "max": 83694917,
+       "median": 83694172,
+       "min": 83693390
       },
       "sign": {
-       "avg": 190563583,
-       "count": 1,
-       "max": 190563583,
-       "median": 190563583,
-       "min": 190563583
+       "avg": 229665145,
+       "count": 10,
+       "max": 482517279,
+       "median": 190857728,
+       "min": 190562864
       },
       "verify": {
-       "avg": 93561609,
-       "count": 1,
-       "max": 93561609,
-       "median": 93561609,
-       "min": 93561609
+       "avg": 93570334,
+       "count": 10,
+       "max": 93570640,
+       "median": 93570318,
+       "min": 93570151
       }
      },
-     "cycles_total": 367812282,
+     "cycles_total": 406929636,
      "expected_ops": [
       "keypair",
       "sign",
@@ -22866,8 +28449,10 @@ window.NGCCM4_DATA = {
       "folder": "MORNING-ATLAS",
       "instance": "lwrdsa512",
       "pub_date": "2026-09-20 14:12",
+      "spec": "specs/MORNING-ATLAS.pdf",
+      "spec_extra": [],
+      "spec_file": "DSA_ATLAS_Specification.pdf",
       "title": "MORNING-ATLAS",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561078120534016.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-ATLAS.zip"
      },
      "notes": [],
@@ -22882,7 +28467,11 @@ window.NGCCM4_DATA = {
       "sk": 7920,
       "source": "kat_raw"
      },
-     "stack": null,
+     "stack": {
+      "keypair": 251284,
+      "sign": 429492,
+      "verify": 273748
+     },
      "status_text": null,
      "tier": "qemu"
     },
@@ -22892,19 +28481,19 @@ window.NGCCM4_DATA = {
       "bss": 39564,
       "data": 1480,
       "source": "report",
-      "text": 82948,
-      "total": 123992
+      "text": 82988,
+      "total": 124032
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 22280,
+       "avg": 22283,
        "count": 1,
-       "max": 22280,
-       "median": 22280,
-       "min": 22280
+       "max": 22283,
+       "median": 22283,
+       "min": 22283
       }
      },
      "cycles_total": null,
@@ -22939,8 +28528,10 @@ window.NGCCM4_DATA = {
       "folder": "Chinith",
       "instance": "sm4th_d3_128f_loose",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
@@ -22956,7 +28547,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -22965,19 +28556,19 @@ window.NGCCM4_DATA = {
       "bss": 58012,
       "data": 1504,
       "source": "report",
-      "text": 103804,
-      "total": 163320
+      "text": 103844,
+      "total": 163360
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 22277,
+       "avg": 22279,
        "count": 1,
-       "max": 22277,
-       "median": 22277,
-       "min": 22277
+       "max": 22279,
+       "median": 22279,
+       "min": 22279
       }
      },
      "cycles_total": null,
@@ -23012,8 +28603,10 @@ window.NGCCM4_DATA = {
       "folder": "Chinith",
       "instance": "sm4th_d3_128f_tight",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
@@ -23029,21 +28622,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 39564,
+      "data": 1480,
+      "source": "report",
+      "text": 82988,
+      "total": 124032
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 22283,
+       "count": 1,
+       "max": 22283,
+       "median": 22283,
+       "min": 22283
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sm4th_d3_128s_loose_ref",
@@ -23061,18 +28670,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "sm4th_d3_128s_loose",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sm4th_d3_128s_loose",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_sm4th_d3_128s_loose.txt",
@@ -23084,21 +28697,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 58012,
+      "data": 1504,
+      "source": "report",
+      "text": 103844,
+      "total": 163360
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 22279,
+       "count": 1,
+       "max": 22279,
+       "median": 22279,
+       "min": 22279
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sm4th_d3_128s_tight_ref",
@@ -23116,18 +28745,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "sm4th_d3_128s_tight",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sm4th_d3_128s_tight",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_sm4th_d3_128s_tight.txt",
@@ -23139,7 +28772,7 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -23148,19 +28781,19 @@ window.NGCCM4_DATA = {
       "bss": 8804,
       "data": 1480,
       "source": "report",
-      "text": 73412,
-      "total": 83696
+      "text": 73452,
+      "total": 83736
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 22312,
+       "avg": 22319,
        "count": 1,
-       "max": 22312,
-       "median": 22312,
-       "min": 22312
+       "max": 22319,
+       "median": 22319,
+       "min": 22319
       }
      },
      "cycles_total": null,
@@ -23195,8 +28828,10 @@ window.NGCCM4_DATA = {
       "folder": "Chinith",
       "instance": "sm4th_em_d2_128f_loose",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
@@ -23212,21 +28847,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 12900,
+      "data": 1504,
+      "source": "report",
+      "text": 84908,
+      "total": 99312
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 22313,
+       "count": 1,
+       "max": 22313,
+       "median": 22313,
+       "min": 22313
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sm4th_em_d2_128f_tight_ref",
@@ -23244,18 +28895,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "sm4th_em_d2_128f_tight",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sm4th_em_d2_128f_tight",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_sm4th_em_d2_128f_tight.txt",
@@ -23267,21 +28922,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 8804,
+      "data": 1480,
+      "source": "report",
+      "text": 73452,
+      "total": 83736
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 22319,
+       "count": 1,
+       "max": 22319,
+       "median": 22319,
+       "min": 22319
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sm4th_em_d2_128s_loose_ref",
@@ -23299,18 +28970,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "sm4th_em_d2_128s_loose",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sm4th_em_d2_128s_loose",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_sm4th_em_d2_128s_loose.txt",
@@ -23322,21 +28997,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 12900,
+      "data": 1504,
+      "source": "report",
+      "text": 84908,
+      "total": 99312
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 22313,
+       "count": 1,
+       "max": 22313,
+       "median": 22313,
+       "min": 22313
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sm4th_em_d2_128s_tight_ref",
@@ -23354,18 +29045,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "sm4th_em_d2_128s_tight",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sm4th_em_d2_128s_tight",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_sm4th_em_d2_128s_tight.txt",
@@ -23377,7 +29072,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
@@ -23386,19 +29081,19 @@ window.NGCCM4_DATA = {
       "bss": 133168,
       "data": 1364,
       "source": "report",
-      "text": 81528,
-      "total": 216060
+      "text": 81560,
+      "total": 216092
      },
      "completed_ops": [
       "keypair"
      ],
      "cycles": {
       "keypair": {
-       "avg": 3438831,
+       "avg": 3438763,
        "count": 1,
-       "max": 3438831,
-       "median": 3438831,
-       "min": 3438831
+       "max": 3438763,
+       "median": 3438763,
+       "min": 3438763
       }
      },
      "cycles_total": null,
@@ -23433,8 +29128,15 @@ window.NGCCM4_DATA = {
       "folder": "SYDO",
       "instance": "sydo_160f",
       "pub_date": "2026-09-20 14:01",
+      "spec": "specs/SYDO.pdf",
+      "spec_extra": [
+       {
+        "file": "2-Algorithm specifications-Appendix-B.pdf",
+        "href": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf"
+       }
+      ],
+      "spec_file": "2-Algorithm specifications.pdf",
       "title": "SYDO",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip"
      },
      "notes": [],
@@ -23450,21 +29152,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "HardFault on the board (imprecise bus error = heap grows past the 640 KB SRAM); completed keypair",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 133168,
+      "data": 1364,
+      "source": "report",
+      "text": 81560,
+      "total": 216092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 3438684,
+       "count": 1,
+       "max": 3438684,
+       "median": 3438684,
+       "min": 3438684
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sydo_160s_ref",
@@ -23482,18 +29200,27 @@ window.NGCCM4_DATA = {
       "source": "spec",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F43FXLI3CJE33FWEIS6NUFNDL4VVJUUL/",
       "folder": "SYDO",
       "instance": "sydo_160s",
       "pub_date": "2026-09-20 14:01",
+      "spec": "specs/SYDO.pdf",
+      "spec_extra": [
+       {
+        "file": "2-Algorithm specifications-Appendix-B.pdf",
+        "href": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf"
+       }
+      ],
+      "spec_file": "2-Algorithm specifications.pdf",
       "title": "SYDO",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sydo_160s",
      "sizes": {
       "kat_path": "schemes/SYDO/Test_Vectors/KAT_SIG_sydo_160s.txt",
@@ -23505,21 +29232,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 133168,
+      "data": 1364,
+      "source": "report",
+      "text": 81560,
+      "total": 216092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 5686140,
+       "count": 1,
+       "max": 5686140,
+       "median": 5686140,
+       "min": 5686140
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sydo_256f_ref",
@@ -23537,18 +29280,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F43FXLI3CJE33FWEIS6NUFNDL4VVJUUL/",
       "folder": "SYDO",
       "instance": "sydo_256f",
       "pub_date": "2026-09-20 14:01",
+      "spec": "specs/SYDO.pdf",
+      "spec_extra": [
+       {
+        "file": "2-Algorithm specifications-Appendix-B.pdf",
+        "href": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf"
+       }
+      ],
+      "spec_file": "2-Algorithm specifications.pdf",
       "title": "SYDO",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sydo_256f",
      "sizes": {
       "kat_path": "schemes/SYDO/Test_Vectors/KAT_SIG_sydo_256f.txt",
@@ -23560,21 +29312,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 133168,
+      "data": 1364,
+      "source": "report",
+      "text": 81560,
+      "total": 216092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 5686064,
+       "count": 1,
+       "max": 5686064,
+       "median": 5686064,
+       "min": 5686064
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sydo_256s_ref",
@@ -23592,18 +29360,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F43FXLI3CJE33FWEIS6NUFNDL4VVJUUL/",
       "folder": "SYDO",
       "instance": "sydo_256s",
       "pub_date": "2026-09-20 14:01",
+      "spec": "specs/SYDO.pdf",
+      "spec_extra": [
+       {
+        "file": "2-Algorithm specifications-Appendix-B.pdf",
+        "href": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf"
+       }
+      ],
+      "spec_file": "2-Algorithm specifications.pdf",
       "title": "SYDO",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sydo_256s",
      "sizes": {
       "kat_path": "schemes/SYDO/Test_Vectors/KAT_SIG_sydo_256s.txt",
@@ -23615,21 +29392,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 133168,
+      "data": 1364,
+      "source": "report",
+      "text": 81560,
+      "total": 216092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 2547369,
+       "count": 1,
+       "max": 2547369,
+       "median": 2547369,
+       "min": 2547369
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sydo_512f_ref",
@@ -23647,18 +29440,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F43FXLI3CJE33FWEIS6NUFNDL4VVJUUL/",
       "folder": "SYDO",
       "instance": "sydo_512f",
       "pub_date": "2026-09-20 14:01",
+      "spec": "specs/SYDO.pdf",
+      "spec_extra": [
+       {
+        "file": "2-Algorithm specifications-Appendix-B.pdf",
+        "href": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf"
+       }
+      ],
+      "spec_file": "2-Algorithm specifications.pdf",
       "title": "SYDO",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sydo_512f",
      "sizes": {
       "kat_path": "schemes/SYDO/Test_Vectors/KAT_SIG_sydo_512f.txt",
@@ -23670,21 +29472,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 133168,
+      "data": 1364,
+      "source": "report",
+      "text": 81560,
+      "total": 216092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 2539024,
+       "count": 1,
+       "max": 2539024,
+       "median": 2539024,
+       "min": 2539024
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_sydo_512s_ref",
@@ -23702,18 +29520,27 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/F43FXLI3CJE33FWEIS6NUFNDL4VVJUUL/",
       "folder": "SYDO",
       "instance": "sydo_512s",
       "pub_date": "2026-09-20 14:01",
+      "spec": "specs/SYDO.pdf",
+      "spec_extra": [
+       {
+        "file": "2-Algorithm specifications-Appendix-B.pdf",
+        "href": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf"
+       }
+      ],
+      "spec_file": "2-Algorithm specifications.pdf",
       "title": "SYDO",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105194766336.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SYDO.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "sydo_512s",
      "sizes": {
       "kat_path": "schemes/SYDO/Test_Vectors/KAT_SIG_sydo_512s.txt",
@@ -23725,21 +29552,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 16996,
+      "data": 1448,
+      "source": "report",
+      "text": 135176,
+      "total": 153620
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 153692,
+       "count": 1,
+       "max": 153692,
+       "median": 153692,
+       "min": 153692
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ublockith_d3_256f_ref",
@@ -23757,18 +29600,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "ublockith_d3_256f",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "ublockith_d3_256f",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_ublockith_d3_256f.txt",
@@ -23780,21 +29627,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 16988,
+      "data": 1448,
+      "source": "report",
+      "text": 132776,
+      "total": 151212
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 153692,
+       "count": 1,
+       "max": 153692,
+       "median": 153692,
+       "min": 153692
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ublockith_d3_256s_ref",
@@ -23812,18 +29675,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "ublockith_d3_256s",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "ublockith_d3_256s",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_ublockith_d3_256s.txt",
@@ -23835,21 +29702,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 16996,
+      "data": 1448,
+      "source": "report",
+      "text": 134920,
+      "total": 153364
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 153777,
+       "count": 1,
+       "max": 153777,
+       "median": 153777,
+       "min": 153777
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ublockith_em_d3_256f_ref",
@@ -23867,18 +29750,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "ublockith_em_d3_256f",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "ublockith_em_d3_256f",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_ublockith_em_d3_256f.txt",
@@ -23890,21 +29777,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 16996,
+      "data": 1448,
+      "source": "report",
+      "text": 134920,
+      "total": 153364
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 153777,
+       "count": 1,
+       "max": 153777,
+       "median": 153777,
+       "min": 153777
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_ublockith_em_d3_256s_ref",
@@ -23922,18 +29825,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "ublockith_em_d3_256s",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "ublockith_em_d3_256s",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_ublockith_em_d3_256s.txt",
@@ -23945,21 +29852,37 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 8804,
+      "data": 1448,
+      "source": "report",
+      "text": 177840,
+      "total": 188092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 44756,
+       "count": 1,
+       "max": 44756,
+       "median": 44756,
+       "min": 44756
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_vistrutith_d3_512f_ref",
@@ -23977,18 +29900,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "f"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "vistrutith_d3_512f",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "vistrutith_d3_512f",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_vistrutith_d3_512f.txt",
@@ -24000,21 +29927,37 @@ window.NGCCM4_DATA = {
       "source": "kat_raw"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     },
     {
      "category": "sig",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 8804,
+      "data": 1448,
+      "source": "report",
+      "text": 177840,
+      "total": 188092
+     },
+     "completed_ops": [
+      "keypair"
+     ],
+     "cycles": {
+      "keypair": {
+       "avg": 44756,
+       "count": 1,
+       "max": 44756,
+       "median": 44756,
+       "min": 44756
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "keypair",
       "sign",
       "verify"
      ],
-     "failure_kind": "ram-qemu-evidence",
+     "failure_kind": "hardfault",
      "family": "crypto_sign",
      "hand_ported": false,
      "id": "crypto_sign_vistrutith_d3_512s_ref",
@@ -24032,18 +29975,22 @@ window.NGCCM4_DATA = {
       "source": "name",
       "variant": "s"
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "keypair"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/UBKP5VIJTAKEWQGN7R6C2UZ7OGW2XYRB/",
       "folder": "Chinith",
       "instance": "vistrutith_d3_512s",
       "pub_date": "2026-09-20 14:21",
+      "spec": "specs/Chinith.pdf",
+      "spec_extra": [],
+      "spec_file": "Algorithm specifications.pdf",
       "title": "Chinith",
-      "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076774162432.html",
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Chinith.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "vistrutith_d3_512s",
      "sizes": {
       "kat_path": "schemes/Chinith/Test_Vectors/KAT_SIG_vistrutith_d3_512s.txt",
@@ -24055,7 +30002,7 @@ window.NGCCM4_DATA = {
       "source": "ngcc_results"
      },
      "stack": null,
-     "status_text": "not run on the board: needed more than 4 MiB of RAM in the QEMU KAT run (board has 640 KB)",
+     "status_text": "HardFault on the board (heap or stack beyond the 640 KB SRAM); completed keypair",
      "tier": "qemu"
     }
    ],
@@ -24077,50 +30024,52 @@ window.NGCCM4_DATA = {
    "KEM/KEX: the 147 board-tier implementations (the 153 QEMU-tier ones do not fit the board).",
    "Signatures: every crypto_sign implementation that links for the board was attempted (1 iteration, 10 min cap); the status table lists each one that did not complete and why.",
    "Iterations per operation (\"count\" column): 10 for most KEM/KEX schemes; 3 for Lore, Mithril, bag_piglet, lwekem, TRIKE-5 and CEDRUSC-160f; 1 for all other signature schemes. Timing is deterministic on this board for constant-time code (DTRU-648: min/max within 0.005%); schemes with rejection sampling vary by ~1% between iterations, so a single-iteration row is one sample of that distribution.",
-   "Code size is `arm-none-eabi-size` of the speed ELF (.text/.data/.bss include the benchmark driver and HAL)."
+   "Code size is `arm-none-eabi-size` of the speed ELF (.text/.data/.bss include the benchmark driver and HAL).",
+   "Signature schemes re-measured 2026-10-06/07 in several runs: 23 schemes (Aigis-Sig, BiT, CEDRUSALPHA-160*, CEDRUSC, COMPASS-SIG, DARTS) at NGCC_ITERATIONS=100; the remaining 98 at NGCC_ITERATIONS=10 (the 'count' column gives the iterations actually completed). Per-target capture caps: 30 min for the 100-iteration run and the first 10-iteration run, 5 min for the final 44 schemes (QingLuan, ReSolveD, Sigurd, TRINE, TSUOV, lwrdsa, Chinith-family, SYDO, ...); where a shorter-capped rerun timed out without adding anything, the earlier run's figures and status were kept. Targets whose status line says 'timeout' did not finish all operations within the cap; 'completed <ops>' lists the operations that were measured.",
+   "2026-10-07: added the submitters' Cortex-M4 ports (BW-KEM, DTRU, MORNING-Scabbard, Rudraksh2 as <scheme>/m4), the PolarLAC reference sets and the 13 board-tier CreTAKE sets (NGCC_ITERATIONS=10, speed and stack; all 66 targets completed)."
   ],
   "counts": {
    "by_category": {
-    "kem": 146,
-    "kex": 33,
+    "kem": 166,
+    "kex": 58,
     "sig": 121
    },
    "by_status": {
     "kem.failed": 6,
-    "kem.measured": 98,
+    "kem.measured": 118,
     "kem.not-run": 41,
     "kem.partial": 1,
     "kex.failed": 2,
-    "kex.measured": 27,
-    "kex.not-run": 4,
-    "sig.failed": 51,
-    "sig.measured": 39,
-    "sig.partial": 31
+    "kex.measured": 40,
+    "kex.not-run": 16,
+    "sig.failed": 17,
+    "sig.measured": 43,
+    "sig.partial": 61
    },
    "by_tier": {
-    "kem.board": 105,
+    "kem.board": 125,
     "kem.qemu": 41,
-    "kex.board": 29,
-    "kex.qemu": 4,
+    "kex.board": 42,
+    "kex.qemu": 16,
     "sig.board": 13,
     "sig.qemu": 108
    },
-   "implementations": 300,
+   "implementations": 345,
    "kat": {
-    "match": 230,
+    "match": 275,
     "mismatch": 20,
     "not-checked": 31,
     "run-failed": 18,
     "timeout": 1
    },
-   "unsupported_instances": 131
+   "unsupported_instances": 101
   },
   "footnotes": [
    "10 instances listed in schemes.json are components of another submission (CreTAKE's BiT/ZEN/POLARLAC building blocks, benchmarked under their own submissions) and are not counted: CreTAKE/BiT-128, CreTAKE/BiT-256, CreTAKE/BiT-512, CreTAKE/POLARLAC-128, CreTAKE/POLARLAC-256, CreTAKE/POLARLAC-512, CreTAKE/POLARLAC-512-Star, CreTAKE/ZEN_128, CreTAKE/ZEN_256, CreTAKE/ZEN_512"
   ],
-  "generated_on": "2026-10-06",
+  "generated_on": "2026-10-07",
   "generator": "tools/make_site_data.py",
-  "git_rev": "63c152b",
+  "git_rev": "2afcdd4",
   "kat_notes": [
    "qube-128/256/384/512 and Phoenix-SM3 (10). The submissions' own reference code, built on the host, reproduces our QEMU output byte for byte and does not reproduce their published test-vector files. These are inconsistencies inside the submission packages.",
    "lwrdsa-128/192/256/512. The wrapper reports a signature length of CRYPTO_BYTES plus the message length but never writes those trailing bytes, so both the KAT file and our output end in uninitialized memory. The real signature bytes match in every count.",
@@ -24131,7 +30080,7 @@ window.NGCCM4_DATA = {
   "ngcc": {
    "fetched": [
     "2026-09-22",
-    "2026-09-23"
+    "2026-10-06"
    ],
    "instances": 409,
    "schemes": 84,
@@ -24160,7 +30109,6 @@ window.NGCCM4_DATA = {
    "crypto_sign_Aigis-Sig-I_ref",
    "crypto_sign_Aigis-Sig-II_ref",
    "crypto_sign_Aigis-Sig-III_ref",
-   "crypto_sign_BiT-256_ref",
    "crypto_sign_CEDRUSALPHA-256f_ref",
    "crypto_sign_CEDRUSALPHA-256s_ref",
    "crypto_sign_CEDRUSALPHA-384s_ref",
@@ -24189,16 +30137,13 @@ window.NGCCM4_DATA = {
    "crypto_sign_Lynxer-512s_ref",
    "crypto_sign_Phoenix-SHAKE-128s_ref",
    "crypto_sign_Phoenix-SHAKE-192s_ref",
-   "crypto_sign_Phoenix-SHAKE-256f_ref",
    "crypto_sign_Phoenix-SHAKE-256s_ref",
    "crypto_sign_Phoenix-SHAKE-384f_ref",
    "crypto_sign_Phoenix-SHAKE-384s_ref",
    "crypto_sign_Phoenix-SHAKE-512f_ref",
    "crypto_sign_Phoenix-SHAKE-512s_ref",
-   "crypto_sign_Phoenix-SM3-128s_ref",
    "crypto_sign_Phoenix-SM3-192s_ref",
    "crypto_sign_Phoenix-SM3-256s_ref",
-   "crypto_sign_Phoenix-SM3-384f_ref",
    "crypto_sign_Phoenix-SM3-384s_ref",
    "crypto_sign_Phoenix-SM3-512f_ref",
    "crypto_sign_Phoenix-SM3-512s_ref",
@@ -24240,6 +30185,7 @@ window.NGCCM4_DATA = {
    "crypto_sign_vistrutith_d3_512f_ref",
    "crypto_sign_vistrutith_d3_512s_ref"
   ],
+  "pending": [],
   "qemu_tier": [
    "crypto_kem_HARE-128-kr_ref",
    "crypto_kem_HARE-256-kr_ref",
@@ -24282,6 +30228,18 @@ window.NGCCM4_DATA = {
    "crypto_kem_qube-256_ref",
    "crypto_kem_qube-384_ref",
    "crypto_kem_qube-512_ref",
+   "crypto_kex_CreTAKE-K2S-PLAC256-BiT256_ref",
+   "crypto_kex_CreTAKE-K2S-PLAC512-BiT512_ref",
+   "crypto_kex_CreTAKE-K2S-ZEN256-BiT256_ref",
+   "crypto_kex_CreTAKE-K2S-ZEN512-BiT512_ref",
+   "crypto_kex_CreTAKE-S2K-BiT256-PLAC256_ref",
+   "crypto_kex_CreTAKE-S2K-BiT256-ZEN256_ref",
+   "crypto_kex_CreTAKE-S2K-BiT512-PLAC512_ref",
+   "crypto_kex_CreTAKE-S2K-BiT512-ZEN512_ref",
+   "crypto_kex_CreTAKE-S2S-BiT256-ePLAC256_ref",
+   "crypto_kex_CreTAKE-S2S-BiT256-eZEN256_ref",
+   "crypto_kex_CreTAKE-S2S-BiT512-ePLAC512_ref",
+   "crypto_kex_CreTAKE-S2S-BiT512-eZEN512_ref",
    "crypto_kex_TriQ-KEX-128_ref",
    "crypto_kex_TriQ-KEX-256_ref",
    "crypto_kex_TriQ-KEX-384_ref",
@@ -24305,8 +30263,10 @@ window.NGCCM4_DATA = {
      "folder": "BIKE_MLThre",
      "instance": "BIKE_MLThre",
      "pub_date": "2026-09-20 11:28",
+     "spec": "specs/BIKE_MLThre.pdf",
+     "spec_extra": [],
+     "spec_file": "BIKE_MLThre.pdf",
      "title": "BIKE-MLThre",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843495362560.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BIKE_MLThre.zip"
     },
     "notes": [],
@@ -24341,8 +30301,10 @@ window.NGCCM4_DATA = {
      "folder": "BRA",
      "instance": "BRA-128",
      "pub_date": "2026-09-20 11:27",
+     "spec": "specs/BRA.pdf",
+     "spec_extra": [],
+     "spec_file": "BRA-Documentation.pdf",
      "title": "BRA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843625385984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRA.zip"
     },
     "notes": [],
@@ -24378,8 +30340,10 @@ window.NGCCM4_DATA = {
      "folder": "BRA",
      "instance": "BRA-256",
      "pub_date": "2026-09-20 11:27",
+     "spec": "specs/BRA.pdf",
+     "spec_extra": [],
+     "spec_file": "BRA-Documentation.pdf",
      "title": "BRA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843625385984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRA.zip"
     },
     "notes": [],
@@ -24415,8 +30379,10 @@ window.NGCCM4_DATA = {
      "folder": "BRA",
      "instance": "BRA-512",
      "pub_date": "2026-09-20 11:27",
+     "spec": "specs/BRA.pdf",
+     "spec_extra": [],
+     "spec_file": "BRA-Documentation.pdf",
      "title": "BRA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843625385984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRA.zip"
     },
     "notes": [],
@@ -24452,8 +30418,10 @@ window.NGCCM4_DATA = {
      "folder": "BRQC",
      "instance": "BRQC-128",
      "pub_date": "2026-09-20 11:26",
+     "spec": "specs/BRQC.pdf",
+     "spec_extra": [],
+     "spec_file": "BRQC-Documentation.pdf",
      "title": "BRQC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843751215104.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRQC.zip"
     },
     "notes": [],
@@ -24489,8 +30457,10 @@ window.NGCCM4_DATA = {
      "folder": "BRQC",
      "instance": "BRQC-256",
      "pub_date": "2026-09-20 11:26",
+     "spec": "specs/BRQC.pdf",
+     "spec_extra": [],
+     "spec_file": "BRQC-Documentation.pdf",
      "title": "BRQC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843751215104.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRQC.zip"
     },
     "notes": [],
@@ -24526,8 +30496,10 @@ window.NGCCM4_DATA = {
      "folder": "BRQC",
      "instance": "BRQC-512",
      "pub_date": "2026-09-20 11:26",
+     "spec": "specs/BRQC.pdf",
+     "spec_extra": [],
+     "spec_file": "BRQC-Documentation.pdf",
      "title": "BRQC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560843751215104.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/BRQC.zip"
     },
     "notes": [],
@@ -24563,8 +30535,10 @@ window.NGCCM4_DATA = {
      "folder": "C-Multi-UR-AG",
      "instance": "CMultiURAG-128",
      "pub_date": "2026-09-20 11:23",
+     "spec": "specs/C-Multi-UR-AG.pdf",
+     "spec_extra": [],
+     "spec_file": "C-Multi-UR-AG-Documentation.pdf",
      "title": "C-Multi-UR-AG",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844149673984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/C-Multi-UR-AG.zip"
     },
     "notes": [],
@@ -24600,8 +30574,10 @@ window.NGCCM4_DATA = {
      "folder": "C-Multi-UR-AG",
      "instance": "CMultiURAG-256",
      "pub_date": "2026-09-20 11:23",
+     "spec": "specs/C-Multi-UR-AG.pdf",
+     "spec_extra": [],
+     "spec_file": "C-Multi-UR-AG-Documentation.pdf",
      "title": "C-Multi-UR-AG",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844149673984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/C-Multi-UR-AG.zip"
     },
     "notes": [],
@@ -24637,8 +30613,10 @@ window.NGCCM4_DATA = {
      "folder": "C-Multi-UR-AG",
      "instance": "CMultiURAG-512",
      "pub_date": "2026-09-20 11:23",
+     "spec": "specs/C-Multi-UR-AG.pdf",
+     "spec_extra": [],
+     "spec_file": "C-Multi-UR-AG-Documentation.pdf",
      "title": "C-Multi-UR-AG",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844149673984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/C-Multi-UR-AG.zip"
     },
     "notes": [],
@@ -24674,8 +30652,10 @@ window.NGCCM4_DATA = {
      "folder": "CTL",
      "instance": "CTL-257-512",
      "pub_date": "2026-09-20 11:21",
+     "spec": "specs/CTL.pdf",
+     "spec_extra": [],
+     "spec_file": "逐光算法文本-英文.pdf",
      "title": "CTL Algorithm",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844426498048.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CTL.zip"
     },
     "notes": [],
@@ -24711,8 +30691,10 @@ window.NGCCM4_DATA = {
      "folder": "CTL",
      "instance": "CTL-3329-2048",
      "pub_date": "2026-09-20 11:21",
+     "spec": "specs/CTL.pdf",
+     "spec_extra": [],
+     "spec_file": "逐光算法文本-英文.pdf",
      "title": "CTL Algorithm",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844426498048.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CTL.zip"
     },
     "notes": [],
@@ -24748,8 +30730,10 @@ window.NGCCM4_DATA = {
      "folder": "CTL",
      "instance": "CTL-769-1024",
      "pub_date": "2026-09-20 11:21",
+     "spec": "specs/CTL.pdf",
+     "spec_extra": [],
+     "spec_file": "逐光算法文本-英文.pdf",
      "title": "CTL Algorithm",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560844426498048.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CTL.zip"
     },
     "notes": [],
@@ -24785,8 +30769,10 @@ window.NGCCM4_DATA = {
      "folder": "HEP-QC",
      "instance": "HEP-QC",
      "pub_date": "2026-09-20 11:16",
+     "spec": "specs/HEP-QC.pdf",
+     "spec_extra": [],
+     "spec_file": "算法文本.pdf",
      "title": "Hybrid Equivalent Punctured and Quasi-Cyclic",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853532332032.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/HEP-QC.zip"
     },
     "notes": [],
@@ -24821,8 +30807,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-128",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -24858,8 +30846,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-192",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -24895,8 +30885,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-256",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -24932,8 +30924,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-384",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -24969,8 +30963,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-512",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -25006,8 +31002,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-CC-128",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -25043,8 +31041,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-CC-192",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -25080,8 +31080,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-CC-256",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -25117,8 +31119,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-CC-384",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -25154,8 +31158,10 @@ window.NGCCM4_DATA = {
      "folder": "MAMBA-Frost",
      "instance": "MAMBA-Frost-CC-512",
      "pub_date": "2026-09-20 11:13",
+     "spec": "specs/MAMBA-Frost.pdf",
+     "spec_extra": [],
+     "spec_file": "MAMBA_Frost_Doc.pdf",
      "title": "MAMBA-Frost",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560853918208000.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-Frost.zip"
     },
     "notes": [],
@@ -25191,8 +31197,10 @@ window.NGCCM4_DATA = {
      "folder": "MORNING-Scabbard",
      "instance": "scabbard512",
      "pub_date": "2026-09-20 10:46",
+     "spec": "specs/MORNING-Scabbard.pdf",
+     "spec_extra": [],
+     "spec_file": "scabbard.pdf",
      "title": "MORNING-Scabbard",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560862906601472.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MORNING-Scabbard.zip"
     },
     "notes": [],
@@ -25213,191 +31221,6 @@ window.NGCCM4_DATA = {
    },
    {
     "category": "kem",
-    "folder": "PolarLAC",
-    "instance": "POLARLAC-128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
-     "folder": "PolarLAC",
-     "instance": "POLARLAC-128",
-     "pub_date": "2026-09-20 10:35",
-     "title": "PolarLAC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872180207616.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:35",
-    "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)",
-    "reason_scope": "scheme",
-    "scheme": "POLARLAC-128",
-    "sizes": {
-     "ct": 640,
-     "kat_path": "schemes/PolarLAC/Test_Vectors/Optimized_Implementation/ARM/KAT_KEM_POLARLAC-128.txt",
-     "pk": 530,
-     "results_path": "results/PolarLAC/POLARLAC-128.json",
-     "sk": 1570,
-     "source": "ngcc_results",
-     "ss": 16
-    },
-    "title": "PolarLAC"
-   },
-   {
-    "category": "kem",
-    "folder": "PolarLAC",
-    "instance": "POLARLAC-256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
-     "folder": "PolarLAC",
-     "instance": "POLARLAC-256",
-     "pub_date": "2026-09-20 10:35",
-     "title": "PolarLAC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872180207616.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:35",
-    "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)",
-    "reason_scope": "scheme",
-    "scheme": "POLARLAC-256",
-    "sizes": {
-     "ct": 1280,
-     "kat_path": "schemes/PolarLAC/Test_Vectors/Optimized_Implementation/ARM/KAT_KEM_POLARLAC-256.txt",
-     "pk": 1060,
-     "results_path": "results/PolarLAC/POLARLAC-256.json",
-     "sk": 3140,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "PolarLAC"
-   },
-   {
-    "category": "kem",
-    "folder": "PolarLAC",
-    "instance": "POLARLAC-512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
-     "folder": "PolarLAC",
-     "instance": "POLARLAC-512",
-     "pub_date": "2026-09-20 10:35",
-     "title": "PolarLAC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872180207616.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:35",
-    "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)",
-    "reason_scope": "scheme",
-    "scheme": "POLARLAC-512",
-    "sizes": {
-     "ct": 2560,
-     "kat_path": "schemes/PolarLAC/Test_Vectors/Optimized_Implementation/ARM/KAT_KEM_POLARLAC-512.txt",
-     "pk": 2116,
-     "results_path": "results/PolarLAC/POLARLAC-512.json",
-     "sk": 6276,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "PolarLAC"
-   },
-   {
-    "category": "kem",
-    "folder": "PolarLAC",
-    "instance": "POLARLAC-512-Star",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
-     "folder": "PolarLAC",
-     "instance": "POLARLAC-512-Star",
-     "pub_date": "2026-09-20 10:35",
-     "title": "PolarLAC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872180207616.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:35",
-    "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)",
-    "reason_scope": "scheme",
-    "scheme": "POLARLAC-512-Star",
-    "sizes": {
-     "ct": 2970,
-     "kat_path": "schemes/PolarLAC/Test_Vectors/Optimized_Implementation/ARM/KAT_KEM_POLARLAC-512-Star.txt",
-     "pk": 2522,
-     "results_path": "results/PolarLAC/POLARLAC-512-Star.json",
-     "sk": 6682,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "PolarLAC"
-   },
-   {
-    "category": "kem",
-    "folder": "PolarLAC",
-    "instance": "POLARLAC-Light",
-    "level": {
-     "bits": 128,
-     "claim": "PolarLAC spec Table 2-3: lightweight set recommended where refined-BKZ estimates suffice (core-SVP 121.6 / refined BKZ 143.8 classical bits); no explicit bit claim",
-     "label": "128",
-     "param_set": "Light",
-     "source": "spec",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/VWVCIBQ3M7NQOWU25P7SY3XK3PCAJT4X/",
-     "folder": "PolarLAC",
-     "instance": "POLARLAC-Light",
-     "pub_date": "2026-09-20 10:35",
-     "title": "PolarLAC",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872180207616.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/PolarLAC.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:35",
-    "reason": "only the AVX2 optimized tree is shipped as reference (unguarded __uint128_t, ntt_avx2.c)",
-    "reason_scope": "scheme",
-    "scheme": "POLARLAC-Light",
-    "sizes": {
-     "ct": 608,
-     "kat_path": "schemes/PolarLAC/Test_Vectors/Optimized_Implementation/ARM/KAT_KEM_POLARLAC-Light.txt",
-     "pk": 530,
-     "results_path": "results/PolarLAC/POLARLAC-Light.json",
-     "sk": 1570,
-     "source": "ngcc_results",
-     "ss": 16
-    },
-    "title": "PolarLAC"
-   },
-   {
-    "category": "kem",
     "folder": "QIMEN-PIKE",
     "instance": "QIMEN-PIKE",
     "level": {
@@ -25413,8 +31236,10 @@ window.NGCCM4_DATA = {
      "folder": "QIMEN-PIKE",
      "instance": "QIMEN-PIKE",
      "pub_date": "2026-09-20 10:34",
+     "spec": "specs/QIMEN-PIKE.pdf",
+     "spec_extra": [],
+     "spec_file": "2-算法文本(英文) .pdf",
      "title": "QIMEN-PIKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872306036736.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QIMEN-PIKE.zip"
     },
     "notes": [],
@@ -25449,8 +31274,10 @@ window.NGCCM4_DATA = {
      "folder": "QCTM",
      "instance": "QCTM128",
      "pub_date": "2026-09-20 10:33",
+     "spec": "specs/QCTM.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm_Text_en.pdf",
      "title": "Quasi-Cyclic Twisted McEliece Key Encapsulation Mechanism",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872431865856.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QCTM.zip"
     },
     "notes": [],
@@ -25486,8 +31313,10 @@ window.NGCCM4_DATA = {
      "folder": "QCTM",
      "instance": "QCTM256",
      "pub_date": "2026-09-20 10:33",
+     "spec": "specs/QCTM.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm_Text_en.pdf",
      "title": "Quasi-Cyclic Twisted McEliece Key Encapsulation Mechanism",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872431865856.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QCTM.zip"
     },
     "notes": [],
@@ -25523,8 +31352,10 @@ window.NGCCM4_DATA = {
      "folder": "QCTM",
      "instance": "QCTM512",
      "pub_date": "2026-09-20 10:33",
+     "spec": "specs/QCTM.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm_Text_en.pdf",
      "title": "Quasi-Cyclic Twisted McEliece Key Encapsulation Mechanism",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560872431865856.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/QCTM.zip"
     },
     "notes": [],
@@ -25559,8 +31390,10 @@ window.NGCCM4_DATA = {
      "folder": "UVW-KEM",
      "instance": "UVW_KEM_128",
      "pub_date": "2026-09-20 10:28",
+     "spec": "specs/UVW-KEM.pdf",
+     "spec_extra": [],
+     "spec_file": "UVW-KEM.pdf",
      "title": "UVW Key Encapsulation Mechanism",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881697083392.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW-KEM.zip"
     },
     "notes": [],
@@ -25596,8 +31429,10 @@ window.NGCCM4_DATA = {
      "folder": "UVW-KEM",
      "instance": "UVW_KEM_256",
      "pub_date": "2026-09-20 10:28",
+     "spec": "specs/UVW-KEM.pdf",
+     "spec_extra": [],
+     "spec_file": "UVW-KEM.pdf",
      "title": "UVW Key Encapsulation Mechanism",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881697083392.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW-KEM.zip"
     },
     "notes": [],
@@ -25633,8 +31468,10 @@ window.NGCCM4_DATA = {
      "folder": "UVW-KEM",
      "instance": "UVW_KEM_512",
      "pub_date": "2026-09-20 10:28",
+     "spec": "specs/UVW-KEM.pdf",
+     "spec_extra": [],
+     "spec_file": "UVW-KEM.pdf",
      "title": "UVW Key Encapsulation Mechanism",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560881697083392.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW-KEM.zip"
     },
     "notes": [],
@@ -25654,1131 +31491,6 @@ window.NGCCM4_DATA = {
    },
    {
     "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-PLAC128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-PLAC128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-PLAC128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC128.txt",
-     "msg_max": 2450,
-     "msg_total": 2450,
-     "msgs": [
-      1170,
-      1280
-     ],
-     "passes": 2,
-     "pk_a": 530,
-     "pk_b": 530,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-PLAC128.json",
-     "sk_a": 1570,
-     "sk_b": 1570,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-PLAC256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-PLAC256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-PLAC256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC256.txt",
-     "msg_max": 4900,
-     "msg_total": 4900,
-     "msgs": [
-      2340,
-      2560
-     ],
-     "passes": 2,
-     "pk_a": 1060,
-     "pk_b": 1060,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-PLAC256.json",
-     "sk_a": 3140,
-     "sk_b": 3140,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-PLAC512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-PLAC512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-PLAC512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512.txt",
-     "msg_max": 9284,
-     "msg_total": 9284,
-     "msgs": [
-      4676,
-      4608
-     ],
-     "passes": 2,
-     "pk_a": 2116,
-     "pk_b": 2116,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-PLAC512.json",
-     "sk_a": 6276,
-     "sk_b": 6276,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-PLAC512Star",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-PLAC512Star",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-PLAC512Star",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-PLAC512Star.txt",
-     "msg_max": 10920,
-     "msg_total": 10920,
-     "msgs": [
-      5492,
-      5428
-     ],
-     "passes": 2,
-     "pk_a": 2522,
-     "pk_b": 2522,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-PLAC512Star.json",
-     "sk_a": 6682,
-     "sk_b": 6682,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-ZEN128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-ZEN128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-ZEN128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN128.txt",
-     "msg_max": 2151,
-     "msg_total": 2151,
-     "msgs": [
-      1127,
-      1024
-     ],
-     "passes": 2,
-     "pk_a": 615,
-     "pk_b": 615,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-ZEN128.json",
-     "sk_a": 1303,
-     "sk_b": 1303,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-ZEN256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-ZEN256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-ZEN256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN256.txt",
-     "msg_max": 4301,
-     "msg_total": 4301,
-     "msgs": [
-      2253,
-      2048
-     ],
-     "passes": 2,
-     "pk_a": 1229,
-     "pk_b": 1229,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-ZEN256.json",
-     "sk_a": 2605,
-     "sk_b": 2605,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2K-ZEN512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2K-ZEN512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2K-ZEN512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2K-ZEN512.txt",
-     "msg_max": 8602,
-     "msg_total": 8602,
-     "msgs": [
-      4506,
-      4096
-     ],
-     "passes": 2,
-     "pk_a": 2458,
-     "pk_b": 2458,
-     "results_path": "results/CreTAKE/CreTAKE-K2K-ZEN512.json",
-     "sk_a": 5210,
-     "sk_b": 5210,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2S-PLAC128-BiT128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2S-PLAC128-BiT128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2S-PLAC128-BiT128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC128-BiT128.txt",
-     "msg_max": 3314,
-     "msg_total": 3314,
-     "msgs": [
-      530,
-      2784
-     ],
-     "passes": 2,
-     "pk_a": 1048,
-     "pk_b": 1048,
-     "results_path": "results/CreTAKE/CreTAKE-K2S-PLAC128-BiT128.json",
-     "sk_a": 1864,
-     "sk_b": 1864,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2S-PLAC256-BiT256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2S-PLAC256-BiT256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2S-PLAC256-BiT256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC256-BiT256.txt",
-     "msg_max": 7076,
-     "msg_total": 7076,
-     "msgs": [
-      1060,
-      6016
-     ],
-     "passes": 2,
-     "pk_a": 2144,
-     "pk_b": 2144,
-     "results_path": "results/CreTAKE/CreTAKE-K2S-PLAC256-BiT256.json",
-     "sk_a": 4160,
-     "sk_b": 4160,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2S-PLAC512-BiT512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2S-PLAC512-BiT512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2S-PLAC512-BiT512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2S-PLAC512-BiT512.txt",
-     "msg_max": 13931,
-     "msg_total": 13931,
-     "msgs": [
-      2116,
-      11815
-     ],
-     "passes": 2,
-     "pk_a": 5056,
-     "pk_b": 5056,
-     "results_path": "results/CreTAKE/CreTAKE-K2S-PLAC512-BiT512.json",
-     "sk_a": 9024,
-     "sk_b": 9024,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2S-ZEN128-BiT128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2S-ZEN128-BiT128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2S-ZEN128-BiT128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN128-BiT128.txt",
-     "msg_max": 3143,
-     "msg_total": 3143,
-     "msgs": [
-      615,
-      2528
-     ],
-     "passes": 2,
-     "pk_a": 1048,
-     "pk_b": 1048,
-     "results_path": "results/CreTAKE/CreTAKE-K2S-ZEN128-BiT128.json",
-     "sk_a": 1864,
-     "sk_b": 1864,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2S-ZEN256-BiT256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2S-ZEN256-BiT256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2S-ZEN256-BiT256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN256-BiT256.txt",
-     "msg_max": 6733,
-     "msg_total": 6733,
-     "msgs": [
-      1229,
-      5504
-     ],
-     "passes": 2,
-     "pk_a": 2144,
-     "pk_b": 2144,
-     "results_path": "results/CreTAKE/CreTAKE-K2S-ZEN256-BiT256.json",
-     "sk_a": 4160,
-     "sk_b": 4160,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-K2S-ZEN512-BiT512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-K2S-ZEN512-BiT512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-K2S-ZEN512-BiT512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-K2S-ZEN512-BiT512.txt",
-     "msg_max": 13249,
-     "msg_total": 13249,
-     "msgs": [
-      2458,
-      10791
-     ],
-     "passes": 2,
-     "pk_a": 5056,
-     "pk_b": 5056,
-     "results_path": "results/CreTAKE/CreTAKE-K2S-ZEN512-BiT512.json",
-     "sk_a": 9024,
-     "sk_b": 9024,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2K-BiT128-PLAC128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2K-BiT128-PLAC128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2K-BiT128-PLAC128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT128-PLAC128.txt",
-     "msg_max": 3314,
-     "msg_total": 3314,
-     "msgs": [
-      2674,
-      640
-     ],
-     "passes": 2,
-     "pk_a": 1048,
-     "pk_b": 1048,
-     "results_path": "results/CreTAKE/CreTAKE-S2K-BiT128-PLAC128.json",
-     "sk_a": 1864,
-     "sk_b": 1864,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2K-BiT128-ZEN128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2K-BiT128-ZEN128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2K-BiT128-ZEN128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT128-ZEN128.txt",
-     "msg_max": 3143,
-     "msg_total": 3143,
-     "msgs": [
-      2631,
-      512
-     ],
-     "passes": 2,
-     "pk_a": 1048,
-     "pk_b": 1048,
-     "results_path": "results/CreTAKE/CreTAKE-S2K-BiT128-ZEN128.json",
-     "sk_a": 1864,
-     "sk_b": 1864,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2K-BiT256-PLAC256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2K-BiT256-PLAC256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2K-BiT256-PLAC256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT256-PLAC256.txt",
-     "msg_max": 7076,
-     "msg_total": 7076,
-     "msgs": [
-      5796,
-      1280
-     ],
-     "passes": 2,
-     "pk_a": 2144,
-     "pk_b": 2144,
-     "results_path": "results/CreTAKE/CreTAKE-S2K-BiT256-PLAC256.json",
-     "sk_a": 4160,
-     "sk_b": 4160,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2K-BiT256-ZEN256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2K-BiT256-ZEN256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2K-BiT256-ZEN256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT256-ZEN256.txt",
-     "msg_max": 6733,
-     "msg_total": 6733,
-     "msgs": [
-      5709,
-      1024
-     ],
-     "passes": 2,
-     "pk_a": 2144,
-     "pk_b": 2144,
-     "results_path": "results/CreTAKE/CreTAKE-S2K-BiT256-ZEN256.json",
-     "sk_a": 4160,
-     "sk_b": 4160,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2K-BiT512-PLAC512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2K-BiT512-PLAC512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2K-BiT512-PLAC512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT512-PLAC512.txt",
-     "msg_max": 13931,
-     "msg_total": 13931,
-     "msgs": [
-      11371,
-      2560
-     ],
-     "passes": 2,
-     "pk_a": 5056,
-     "pk_b": 5056,
-     "results_path": "results/CreTAKE/CreTAKE-S2K-BiT512-PLAC512.json",
-     "sk_a": 9024,
-     "sk_b": 9024,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2K-BiT512-ZEN512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2K-BiT512-ZEN512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2K-BiT512-ZEN512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2K-BiT512-ZEN512.txt",
-     "msg_max": 13249,
-     "msg_total": 13249,
-     "msgs": [
-      11201,
-      2048
-     ],
-     "passes": 2,
-     "pk_a": 5056,
-     "pk_b": 5056,
-     "results_path": "results/CreTAKE/CreTAKE-S2K-BiT512-ZEN512.json",
-     "sk_a": 9024,
-     "sk_b": 9024,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2S-BiT128-ePLAC128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2S-BiT128-ePLAC128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2S-BiT128-ePLAC128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT128-ePLAC128.txt",
-     "msg_max": 4178,
-     "msg_total": 4178,
-     "msgs": [
-      2034,
-      2144
-     ],
-     "passes": 2,
-     "pk_a": 1048,
-     "pk_b": 1048,
-     "results_path": "results/CreTAKE/CreTAKE-S2S-BiT128-ePLAC128.json",
-     "sk_a": 1864,
-     "sk_b": 1864,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2S-BiT128-eZEN128",
-    "level": {
-     "bits": 128,
-     "claim": null,
-     "label": "128",
-     "param_set": "128",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2S-BiT128-eZEN128",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2S-BiT128-eZEN128",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT128-eZEN128.txt",
-     "msg_max": 4135,
-     "msg_total": 4135,
-     "msgs": [
-      2119,
-      2016
-     ],
-     "passes": 2,
-     "pk_a": 1048,
-     "pk_b": 1048,
-     "results_path": "results/CreTAKE/CreTAKE-S2S-BiT128-eZEN128.json",
-     "sk_a": 1864,
-     "sk_b": 1864,
-     "source": "ngcc_results",
-     "ss": 32
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2S-BiT256-ePLAC256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2S-BiT256-ePLAC256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2S-BiT256-ePLAC256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT256-ePLAC256.txt",
-     "msg_max": 9252,
-     "msg_total": 9252,
-     "msgs": [
-      4516,
-      4736
-     ],
-     "passes": 2,
-     "pk_a": 2144,
-     "pk_b": 2144,
-     "results_path": "results/CreTAKE/CreTAKE-S2S-BiT256-ePLAC256.json",
-     "sk_a": 4160,
-     "sk_b": 4160,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2S-BiT256-eZEN256",
-    "level": {
-     "bits": 256,
-     "claim": null,
-     "label": "256",
-     "param_set": "256",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2S-BiT256-eZEN256",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2S-BiT256-eZEN256",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT256-eZEN256.txt",
-     "msg_max": 9165,
-     "msg_total": 9165,
-     "msgs": [
-      4685,
-      4480
-     ],
-     "passes": 2,
-     "pk_a": 2144,
-     "pk_b": 2144,
-     "results_path": "results/CreTAKE/CreTAKE-S2S-BiT256-eZEN256.json",
-     "sk_a": 4160,
-     "sk_b": 4160,
-     "source": "ngcc_results",
-     "ss": 64
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2S-BiT512-ePLAC512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2S-BiT512-ePLAC512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2S-BiT512-ePLAC512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT512-ePLAC512.txt",
-     "msg_max": 18066,
-     "msg_total": 18066,
-     "msgs": [
-      8811,
-      9255
-     ],
-     "passes": 2,
-     "pk_a": 5056,
-     "pk_b": 5056,
-     "results_path": "results/CreTAKE/CreTAKE-S2S-BiT512-ePLAC512.json",
-     "sk_a": 9024,
-     "sk_b": 9024,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
-    "folder": "CreTAKE",
-    "instance": "CreTAKE-S2S-BiT512-eZEN512",
-    "level": {
-     "bits": 512,
-     "claim": null,
-     "label": "512",
-     "param_set": "512",
-     "source": "name",
-     "variant": null
-    },
-    "ngcc": {
-     "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/MIGUBFHREZ7R2KKULIIKQEU23BVFG3BX/",
-     "folder": "CreTAKE",
-     "instance": "CreTAKE-S2S-BiT512-eZEN512",
-     "pub_date": "2026-09-20 10:15",
-     "title": "CreTAKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625517383680.html",
-     "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CreTAKE.zip"
-    },
-    "notes": [],
-    "pub_date": "2026-09-20 10:15",
-    "reason": "KEM and signature cores collide on fips202.*/poly.*/params.h; asymmetric key lengths (tier-2 follow-up)",
-    "reason_scope": "scheme",
-    "scheme": "CreTAKE-S2S-BiT512-eZEN512",
-    "sizes": {
-     "kat_path": "schemes/CreTAKE/Test_Vectors/Optimized_Test_Vector/KAT_KEX_CreTAKE-S2S-BiT512-eZEN512.txt",
-     "msg_max": 17896,
-     "msg_total": 17896,
-     "msgs": [
-      9153,
-      8743
-     ],
-     "passes": 2,
-     "pk_a": 5056,
-     "pk_b": 5056,
-     "results_path": "results/CreTAKE/CreTAKE-S2S-BiT512-eZEN512.json",
-     "sk_a": 9024,
-     "sk_b": 9024,
-     "source": "ngcc_results",
-     "ss": 128
-    },
-    "title": "CreTAKE"
-   },
-   {
-    "category": "kex",
     "folder": "Loom",
     "instance": "LoomKEX-128",
     "level": {
@@ -26794,13 +31506,15 @@ window.NGCCM4_DATA = {
      "folder": "Loom",
      "instance": "LoomKEX-128",
      "pub_date": "2026-09-20 09:42",
+     "spec": "specs/Loom.pdf",
+     "spec_extra": [],
+     "spec_file": "Loom算法设计说明书.pdf",
      "title": "Loom",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625773236224.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Loom.zip"
     },
     "notes": [],
     "pub_date": "2026-09-20 09:42",
-    "reason": "kem/ and sig/ trees collide on poly.c/polyvec.c/reduce.c symbols; __int128",
+    "reason": "LOOM-AKE is a protocol over Weaver KEM and SHUTTLE signatures (same shape as CreTAKE: per instance kem/, sig/ and a loom/ protocol layer), but it cannot link the implementations in this tree: (1) SHUTTLE is not imported (its Gaussian sampler, irs.c/approx_*.h/sampler_u.c, uses GNU __int128 fixed-point kernels on ~70 lines, unavailable on 32-bit ARM), and Loom's long-term keys and all four passes use SHUTTLE (PKa/PKb are SHUTTLE public keys, 1264 B); (2) Loom's kem/ is a modified Weaver, not the submitted one: crypto_kem_dec is replaced by crypto_kem_dec_rigid with a ciphertext tag (kem_cpaf.c), and cbd.c/msgenc.c differ by hundreds of lines with extra invq tables, so crypto_kem/WeaverKEM-*/ref is not a drop-in dependency. Importable once SHUTTLE has a 32-bit port, with Loom's own kem/ copied as a private dependency.",
     "reason_scope": "scheme",
     "scheme": "LoomKEX-128",
     "sizes": {
@@ -26841,13 +31555,15 @@ window.NGCCM4_DATA = {
      "folder": "Loom",
      "instance": "LoomKEX-256",
      "pub_date": "2026-09-20 09:42",
+     "spec": "specs/Loom.pdf",
+     "spec_extra": [],
+     "spec_file": "Loom算法设计说明书.pdf",
      "title": "Loom",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625773236224.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Loom.zip"
     },
     "notes": [],
     "pub_date": "2026-09-20 09:42",
-    "reason": "kem/ and sig/ trees collide on poly.c/polyvec.c/reduce.c symbols; __int128",
+    "reason": "LOOM-AKE is a protocol over Weaver KEM and SHUTTLE signatures (same shape as CreTAKE: per instance kem/, sig/ and a loom/ protocol layer), but it cannot link the implementations in this tree: (1) SHUTTLE is not imported (its Gaussian sampler, irs.c/approx_*.h/sampler_u.c, uses GNU __int128 fixed-point kernels on ~70 lines, unavailable on 32-bit ARM), and Loom's long-term keys and all four passes use SHUTTLE (PKa/PKb are SHUTTLE public keys, 1264 B); (2) Loom's kem/ is a modified Weaver, not the submitted one: crypto_kem_dec is replaced by crypto_kem_dec_rigid with a ciphertext tag (kem_cpaf.c), and cbd.c/msgenc.c differ by hundreds of lines with extra invq tables, so crypto_kem/WeaverKEM-*/ref is not a drop-in dependency. Importable once SHUTTLE has a 32-bit port, with Loom's own kem/ copied as a private dependency.",
     "reason_scope": "scheme",
     "scheme": "LoomKEX-256",
     "sizes": {
@@ -26888,13 +31604,15 @@ window.NGCCM4_DATA = {
      "folder": "Loom",
      "instance": "LoomKEX-512",
      "pub_date": "2026-09-20 09:42",
+     "spec": "specs/Loom.pdf",
+     "spec_extra": [],
+     "spec_file": "Loom算法设计说明书.pdf",
      "title": "Loom",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560625773236224.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Loom.zip"
     },
     "notes": [],
     "pub_date": "2026-09-20 09:42",
-    "reason": "kem/ and sig/ trees collide on poly.c/polyvec.c/reduce.c symbols; __int128",
+    "reason": "LOOM-AKE is a protocol over Weaver KEM and SHUTTLE signatures (same shape as CreTAKE: per instance kem/, sig/ and a loom/ protocol layer), but it cannot link the implementations in this tree: (1) SHUTTLE is not imported (its Gaussian sampler, irs.c/approx_*.h/sampler_u.c, uses GNU __int128 fixed-point kernels on ~70 lines, unavailable on 32-bit ARM), and Loom's long-term keys and all four passes use SHUTTLE (PKa/PKb are SHUTTLE public keys, 1264 B); (2) Loom's kem/ is a modified Weaver, not the submitted one: crypto_kem_dec is replaced by crypto_kem_dec_rigid with a ciphertext tag (kem_cpaf.c), and cbd.c/msgenc.c differ by hundreds of lines with extra invq tables, so crypto_kem/WeaverKEM-*/ref is not a drop-in dependency. Importable once SHUTTLE has a 32-bit port, with Loom's own kem/ copied as a private dependency.",
     "reason_scope": "scheme",
     "scheme": "LoomKEX-512",
     "sizes": {
@@ -26935,8 +31653,10 @@ window.NGCCM4_DATA = {
      "folder": "NIIKE",
      "instance": "NIIKE",
      "pub_date": "2026-09-20 09:39",
+     "spec": "specs/NIIKE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "NIIKE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101560626184278016.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/NIIKE.zip"
     },
     "notes": [],
@@ -26974,8 +31694,10 @@ window.NGCCM4_DATA = {
      "folder": "cedrus-alpha",
      "instance": "CEDRUSALPHA-384f",
      "pub_date": "2026-09-20 14:22",
+     "spec": "specs/cedrus-alpha.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "CEDRUSɑ",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
     },
     "notes": [],
@@ -27011,8 +31733,10 @@ window.NGCCM4_DATA = {
      "folder": "cedrus-alpha",
      "instance": "CEDRUSALPHA-512f",
      "pub_date": "2026-09-20 14:22",
+     "spec": "specs/cedrus-alpha.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "CEDRUSɑ",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
     },
     "notes": [],
@@ -27048,8 +31772,10 @@ window.NGCCM4_DATA = {
      "folder": "cedrus-alpha",
      "instance": "CEDRUSALPHA-512s",
      "pub_date": "2026-09-20 14:22",
+     "spec": "specs/cedrus-alpha.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "CEDRUSɑ",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561076644139008.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/cedrus-%CE%B1.zip"
     },
     "notes": [],
@@ -27085,8 +31811,10 @@ window.NGCCM4_DATA = {
      "folder": "CS",
      "instance": "CS-128",
      "pub_date": "2026-09-20 14:19",
+     "spec": "specs/CS.pdf",
+     "spec_extra": [],
+     "spec_file": "CS.pdf",
      "title": "CS",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077046792192.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CS.zip"
     },
     "notes": [],
@@ -27122,8 +31850,10 @@ window.NGCCM4_DATA = {
      "folder": "CS",
      "instance": "CS-256",
      "pub_date": "2026-09-20 14:19",
+     "spec": "specs/CS.pdf",
+     "spec_extra": [],
+     "spec_file": "CS.pdf",
      "title": "CS",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077046792192.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CS.zip"
     },
     "notes": [],
@@ -27159,8 +31889,10 @@ window.NGCCM4_DATA = {
      "folder": "CS",
      "instance": "CS-512",
      "pub_date": "2026-09-20 14:19",
+     "spec": "specs/CS.pdf",
+     "spec_extra": [],
+     "spec_file": "CS.pdf",
      "title": "CS",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077046792192.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/CS.zip"
     },
     "notes": [],
@@ -27196,8 +31928,10 @@ window.NGCCM4_DATA = {
      "folder": "DOVE",
      "instance": "DOVE_classic_ref",
      "pub_date": "2026-09-20 14:17",
+     "spec": "specs/DOVE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "DOVE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077311033344.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DOVE.zip"
     },
     "notes": [],
@@ -27232,8 +31966,10 @@ window.NGCCM4_DATA = {
      "folder": "DOVE",
      "instance": "DOVE_pkc_skc_ref",
      "pub_date": "2026-09-20 14:17",
+     "spec": "specs/DOVE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "DOVE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077311033344.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/DOVE.zip"
     },
     "notes": [],
@@ -27268,8 +32004,10 @@ window.NGCCM4_DATA = {
      "folder": "Facto-DSA",
      "instance": "Facto-DSA-256",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Facto-DSA.pdf",
+     "spec_extra": [],
+     "spec_file": "algorithm-specification-facto-dsa.pdf",
      "title": "Facto-DSA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077457833984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Facto-DSA.zip"
     },
     "notes": [],
@@ -27305,8 +32043,10 @@ window.NGCCM4_DATA = {
      "folder": "Facto-DSA",
      "instance": "Facto-DSA-512",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Facto-DSA.pdf",
+     "spec_extra": [],
+     "spec_file": "algorithm-specification-facto-dsa.pdf",
      "title": "Facto-DSA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077457833984.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Facto-DSA.zip"
     },
     "notes": [],
@@ -27341,8 +32081,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-160f",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27378,8 +32120,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-160s",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27415,8 +32159,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-256f",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27452,8 +32198,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-256s",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27489,8 +32237,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-384f",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27526,8 +32276,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-384s",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27563,8 +32315,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-512f",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27600,8 +32354,10 @@ window.NGCCM4_DATA = {
      "folder": "Flextree",
      "instance": "Flextree-512s",
      "pub_date": "2026-09-20 14:16",
+     "spec": "specs/Flextree.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "FlexTree",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561077587857408.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Flextree.zip"
     },
     "notes": [],
@@ -27637,8 +32393,15 @@ window.NGCCM4_DATA = {
      "folder": "Origami",
      "instance": "Origami-128",
      "pub_date": "2026-09-20 14:09",
+     "spec": "specs/Origami.pdf",
+     "spec_extra": [
+      {
+       "file": "Origami Algorithm specifications Appendix.pdf",
+       "href": "specs/Origami-origami-algorithm-specifications-appendix.pdf"
+      }
+     ],
+     "spec_file": "Origami Algorithm specifications.pdf",
      "title": "Origami",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086978904064.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Origami.zip"
     },
     "notes": [],
@@ -27674,8 +32437,15 @@ window.NGCCM4_DATA = {
      "folder": "Origami",
      "instance": "Origami-256",
      "pub_date": "2026-09-20 14:09",
+     "spec": "specs/Origami.pdf",
+     "spec_extra": [
+      {
+       "file": "Origami Algorithm specifications Appendix.pdf",
+       "href": "specs/Origami-origami-algorithm-specifications-appendix.pdf"
+      }
+     ],
+     "spec_file": "Origami Algorithm specifications.pdf",
      "title": "Origami",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086978904064.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Origami.zip"
     },
     "notes": [],
@@ -27711,8 +32481,15 @@ window.NGCCM4_DATA = {
      "folder": "Origami",
      "instance": "Origami-384",
      "pub_date": "2026-09-20 14:09",
+     "spec": "specs/Origami.pdf",
+     "spec_extra": [
+      {
+       "file": "Origami Algorithm specifications Appendix.pdf",
+       "href": "specs/Origami-origami-algorithm-specifications-appendix.pdf"
+      }
+     ],
+     "spec_file": "Origami Algorithm specifications.pdf",
      "title": "Origami",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086978904064.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Origami.zip"
     },
     "notes": [],
@@ -27748,8 +32525,15 @@ window.NGCCM4_DATA = {
      "folder": "Origami",
      "instance": "Origami-512",
      "pub_date": "2026-09-20 14:09",
+     "spec": "specs/Origami.pdf",
+     "spec_extra": [
+      {
+       "file": "Origami Algorithm specifications Appendix.pdf",
+       "href": "specs/Origami-origami-algorithm-specifications-appendix.pdf"
+      }
+     ],
+     "spec_file": "Origami Algorithm specifications.pdf",
      "title": "Origami",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561086978904064.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Origami.zip"
     },
     "notes": [],
@@ -27785,8 +32569,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SHAKE__Rhyme-SHAKE-128",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -27824,8 +32610,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SHAKE__Rhyme-SHAKE-256",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [],
@@ -27861,8 +32649,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SHAKE__Rhyme-SHAKE-384",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -27900,8 +32690,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SHAKE__Rhyme-SHAKE-512",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -27939,8 +32731,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SM3__Rhyme-SM3-128",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -27978,8 +32772,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SM3__Rhyme-SM3-256",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -28017,8 +32813,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SM3__Rhyme-SM3-384",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -28056,8 +32854,10 @@ window.NGCCM4_DATA = {
      "folder": "Rhyme",
      "instance": "Rhyme-SM3__Rhyme-SM3-512",
      "pub_date": "2026-09-20 14:06",
+     "spec": "specs/Rhyme.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "Rhyme",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561095950520320.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Rhyme.zip"
     },
     "notes": [
@@ -28095,8 +32895,10 @@ window.NGCCM4_DATA = {
      "folder": "shuttle",
      "instance": "SHUTTLE-128",
      "pub_date": "2026-09-20 14:05",
+     "spec": "specs/shuttle.pdf",
+     "spec_extra": [],
+     "spec_file": "Shuttle 算法设计文档（V4）.pdf",
      "title": "Shuttle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096101515264.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/shuttle.zip"
     },
     "notes": [],
@@ -28132,8 +32934,10 @@ window.NGCCM4_DATA = {
      "folder": "shuttle",
      "instance": "SHUTTLE-256",
      "pub_date": "2026-09-20 14:05",
+     "spec": "specs/shuttle.pdf",
+     "spec_extra": [],
+     "spec_file": "Shuttle 算法设计文档（V4）.pdf",
      "title": "Shuttle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096101515264.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/shuttle.zip"
     },
     "notes": [],
@@ -28169,8 +32973,10 @@ window.NGCCM4_DATA = {
      "folder": "shuttle",
      "instance": "SHUTTLE-512",
      "pub_date": "2026-09-20 14:05",
+     "spec": "specs/shuttle.pdf",
+     "spec_extra": [],
+     "spec_file": "Shuttle 算法设计文档（V4）.pdf",
      "title": "Shuttle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096101515264.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/shuttle.zip"
     },
     "notes": [],
@@ -28206,8 +33012,10 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D-push12",
      "instance": "sqisign2d_lvl1",
      "pub_date": "2026-09-20 14:03",
+     "spec": "specs/SQIsign2D-push12.pdf",
+     "spec_extra": [],
+     "spec_file": "算法本文.pdf",
      "title": "SQIsign2D-push1/2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096483196928.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D-push12.zip"
     },
     "notes": [],
@@ -28243,8 +33051,10 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D-push12",
      "instance": "sqisign2d_lvl2",
      "pub_date": "2026-09-20 14:03",
+     "spec": "specs/SQIsign2D-push12.pdf",
+     "spec_extra": [],
+     "spec_file": "算法本文.pdf",
      "title": "SQIsign2D-push1/2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096483196928.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D-push12.zip"
     },
     "notes": [],
@@ -28280,8 +33090,10 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D-push12",
      "instance": "sqisign2d_lvl3",
      "pub_date": "2026-09-20 14:03",
+     "spec": "specs/SQIsign2D-push12.pdf",
+     "spec_extra": [],
+     "spec_file": "算法本文.pdf",
      "title": "SQIsign2D-push1/2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096483196928.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D-push12.zip"
     },
     "notes": [],
@@ -28317,8 +33129,10 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D-push12",
      "instance": "sqisign2d_lvl4",
      "pub_date": "2026-09-20 14:03",
+     "spec": "specs/SQIsign2D-push12.pdf",
+     "spec_extra": [],
+     "spec_file": "算法本文.pdf",
      "title": "SQIsign2D-push1/2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096483196928.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D-push12.zip"
     },
     "notes": [],
@@ -28354,8 +33168,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level1-eff",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28390,8 +33211,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level1-sec",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28426,8 +33254,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level2-eff",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28462,8 +33297,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level2-sec",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28498,8 +33340,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level3-eff",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28534,8 +33383,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level3-sec",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28570,8 +33426,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level5-eff",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28606,8 +33469,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsign2D2",
      "instance": "SQISign2Dsquare-Level5-sec",
      "pub_date": "2026-09-20 14:04",
+     "spec": "specs/SQIsign2D2.pdf",
+     "spec_extra": [
+      {
+       "file": "SQISign Algorithm specifications Addition.pdf",
+       "href": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf"
+      }
+     ],
+     "spec_file": "SQISign2D2 Algorithm specifications.pdf",
      "title": "SQIsign2D2",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096361562112.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsign2D2.zip"
     },
     "notes": [],
@@ -28642,8 +33512,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsignTriangle",
      "instance": "SQIsignTriangle_lvl1",
      "pub_date": "2026-09-20 14:02",
+     "spec": "specs/SQIsignTriangle.pdf",
+     "spec_extra": [
+      {
+       "file": "SQIsignTriangle_Parameter_Sets_Note.pdf",
+       "href": "specs/SQIsignTriangle-sqisigntriangle-parameter-sets-note.pdf"
+      }
+     ],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "SQIsignTriangle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096613220352.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsignTriangle.zip"
     },
     "notes": [],
@@ -28679,8 +33556,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsignTriangle",
      "instance": "SQIsignTriangle_lvl2",
      "pub_date": "2026-09-20 14:02",
+     "spec": "specs/SQIsignTriangle.pdf",
+     "spec_extra": [
+      {
+       "file": "SQIsignTriangle_Parameter_Sets_Note.pdf",
+       "href": "specs/SQIsignTriangle-sqisigntriangle-parameter-sets-note.pdf"
+      }
+     ],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "SQIsignTriangle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096613220352.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsignTriangle.zip"
     },
     "notes": [],
@@ -28716,8 +33600,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsignTriangle",
      "instance": "SQIsignTriangle_lvl5",
      "pub_date": "2026-09-20 14:02",
+     "spec": "specs/SQIsignTriangle.pdf",
+     "spec_extra": [
+      {
+       "file": "SQIsignTriangle_Parameter_Sets_Note.pdf",
+       "href": "specs/SQIsignTriangle-sqisigntriangle-parameter-sets-note.pdf"
+      }
+     ],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "SQIsignTriangle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096613220352.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsignTriangle.zip"
     },
     "notes": [],
@@ -28753,8 +33644,15 @@ window.NGCCM4_DATA = {
      "folder": "SQIsignTriangle",
      "instance": "SQIsignTriangle_lvl6",
      "pub_date": "2026-09-20 14:02",
+     "spec": "specs/SQIsignTriangle.pdf",
+     "spec_extra": [
+      {
+       "file": "SQIsignTriangle_Parameter_Sets_Note.pdf",
+       "href": "specs/SQIsignTriangle-sqisigntriangle-parameter-sets-note.pdf"
+      }
+     ],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "SQIsignTriangle",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561096613220352.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/SQIsignTriangle.zip"
     },
     "notes": [],
@@ -28790,8 +33688,10 @@ window.NGCCM4_DATA = {
      "folder": "Tins",
      "instance": "Tins128",
      "pub_date": "2026-09-20 14:01",
+     "spec": "specs/Tins.pdf",
+     "spec_extra": [],
+     "spec_file": "tins.pdf",
      "title": "Tins",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101868758013939712.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Tins.zip"
     },
     "notes": [],
@@ -28827,8 +33727,10 @@ window.NGCCM4_DATA = {
      "folder": "Tins",
      "instance": "Tins256",
      "pub_date": "2026-09-20 14:01",
+     "spec": "specs/Tins.pdf",
+     "spec_extra": [],
+     "spec_file": "tins.pdf",
      "title": "Tins",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101868758013939712.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Tins.zip"
     },
     "notes": [],
@@ -28864,8 +33766,10 @@ window.NGCCM4_DATA = {
      "folder": "Tins",
      "instance": "Tins512",
      "pub_date": "2026-09-20 14:01",
+     "spec": "specs/Tins.pdf",
+     "spec_extra": [],
+     "spec_file": "tins.pdf",
      "title": "Tins",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101868758013939712.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/Tins.zip"
     },
     "notes": [],
@@ -28901,8 +33805,10 @@ window.NGCCM4_DATA = {
      "folder": "TRINE",
      "instance": "TRINE-256-ShortSig",
      "pub_date": "2026-09-20 14:00",
+     "spec": "specs/TRINE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "TRINE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip"
     },
     "notes": [
@@ -28940,8 +33846,10 @@ window.NGCCM4_DATA = {
      "folder": "TRINE",
      "instance": "TRINE-256-balanced",
      "pub_date": "2026-09-20 14:00",
+     "spec": "specs/TRINE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "TRINE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip"
     },
     "notes": [
@@ -28979,8 +33887,10 @@ window.NGCCM4_DATA = {
      "folder": "TRINE",
      "instance": "TRINE-512-ShortSig",
      "pub_date": "2026-09-20 14:00",
+     "spec": "specs/TRINE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "TRINE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip"
     },
     "notes": [
@@ -29018,8 +33928,10 @@ window.NGCCM4_DATA = {
      "folder": "TRINE",
      "instance": "TRINE-512-balanced",
      "pub_date": "2026-09-20 14:00",
+     "spec": "specs/TRINE.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "TRINE",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105463201792.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/TRINE.zip"
     },
     "notes": [
@@ -29057,8 +33969,10 @@ window.NGCCM4_DATA = {
      "folder": "UVW_signature",
      "instance": "UVW-128",
      "pub_date": "2026-09-20 13:58",
+     "spec": "specs/UVW_signature.pdf",
+     "spec_extra": [],
+     "spec_file": "UVW Signature Scheme.pdf",
      "title": "UVW signature",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105735831552.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW%20signature.zip"
     },
     "notes": [],
@@ -29093,8 +34007,10 @@ window.NGCCM4_DATA = {
      "folder": "UVW_signature",
      "instance": "UVW-256",
      "pub_date": "2026-09-20 13:58",
+     "spec": "specs/UVW_signature.pdf",
+     "spec_extra": [],
+     "spec_file": "UVW Signature Scheme.pdf",
      "title": "UVW signature",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105735831552.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW%20signature.zip"
     },
     "notes": [],
@@ -29129,8 +34045,10 @@ window.NGCCM4_DATA = {
      "folder": "UVW_signature",
      "instance": "UVW-512",
      "pub_date": "2026-09-20 13:58",
+     "spec": "specs/UVW_signature.pdf",
+     "spec_extra": [],
+     "spec_file": "UVW Signature Scheme.pdf",
      "title": "UVW signature",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561105735831552.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/UVW%20signature.zip"
     },
     "notes": [],
@@ -29165,8 +34083,10 @@ window.NGCCM4_DATA = {
      "folder": "VDOO",
      "instance": "VDOO-128",
      "pub_date": "2026-09-20 13:54",
+     "spec": "specs/VDOO.pdf",
+     "spec_extra": [],
+     "spec_file": "VDOO-Specifications.pdf",
      "title": "VDOO: Vinegar-Diagonal-Oil-Oil",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114325766144.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/VDOO.zip"
     },
     "notes": [],
@@ -29202,8 +34122,10 @@ window.NGCCM4_DATA = {
      "folder": "VDOO",
      "instance": "VDOO-256",
      "pub_date": "2026-09-20 13:54",
+     "spec": "specs/VDOO.pdf",
+     "spec_extra": [],
+     "spec_file": "VDOO-Specifications.pdf",
      "title": "VDOO: Vinegar-Diagonal-Oil-Oil",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114325766144.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/VDOO.zip"
     },
     "notes": [],
@@ -29238,8 +34160,10 @@ window.NGCCM4_DATA = {
      "folder": "VDOO",
      "instance": "VDOO-512",
      "pub_date": "2026-09-20 13:54",
+     "spec": "specs/VDOO.pdf",
+     "spec_extra": [],
+     "spec_file": "VDOO-Specifications.pdf",
      "title": "VDOO: Vinegar-Diagonal-Oil-Oil",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114325766144.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/VDOO.zip"
     },
     "notes": [],
@@ -29274,8 +34198,10 @@ window.NGCCM4_DATA = {
      "folder": "YuanYang.DSA",
      "instance": "yuanyang-1024",
      "pub_date": "2026-09-20 13:43",
+     "spec": "specs/YuanYang.DSA.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "YuanYang.DSA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114459983872.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.DSA.zip"
     },
     "notes": [],
@@ -29311,8 +34237,10 @@ window.NGCCM4_DATA = {
      "folder": "YuanYang.DSA",
      "instance": "yuanyang-2048",
      "pub_date": "2026-09-20 13:43",
+     "spec": "specs/YuanYang.DSA.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "YuanYang.DSA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114459983872.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.DSA.zip"
     },
     "notes": [],
@@ -29348,8 +34276,10 @@ window.NGCCM4_DATA = {
      "folder": "YuanYang.DSA",
      "instance": "yuanyang-512",
      "pub_date": "2026-09-20 13:43",
+     "spec": "specs/YuanYang.DSA.pdf",
+     "spec_extra": [],
+     "spec_file": "Algorithm specifications.pdf",
      "title": "YuanYang.DSA",
-     "url": "https://www.niccs.org.cn/niccs/Round1Additional/pc/content/content_2101561114459983872.html",
      "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/YuanYang.DSA.zip"
     },
     "notes": [],

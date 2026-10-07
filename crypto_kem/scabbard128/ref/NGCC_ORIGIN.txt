@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=MORNING-Scabbard
+ngcc_title=MORNING-Scabbard
+ngcc_instance=scabbard128
+ngcc_instance_dir=Reference_Implementation/scabbard128
+ngcc_zip_sha256=fdb6749116bddbb8a86074b9ab6f5f55d37540b92e3964906dede0b09c7faf4b
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_scabbard128.txt
+copy_dirs=schemes/MORNING-Scabbard/Reference_Implementation/scabbard128
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

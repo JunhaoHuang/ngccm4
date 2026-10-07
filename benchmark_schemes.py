@@ -4,12 +4,14 @@
 Examples:
     python3 benchmark_schemes.py
     python3 benchmark_schemes.py all
-    python3 benchmark_schemes.py PLATFORM=mps2-an386 DKE-128 DKE-256
+    python3 benchmark_schemes.py PLATFORM=mps2-an386 DKEM-128 DKEM-256
     python3 benchmark_schemes.py PLATFORM=mps2-an386 ADKEX-128 --apps speed
-    python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 DKE-256
-    python3 benchmark_schemes.py PLATFORM=stm32f4discovery DKE-128 --runs 3
-    python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKE-512 USE_SM3_ASM=1 -j8
+    python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKEM-128 DKEM-256
+    python3 benchmark_schemes.py PLATFORM=stm32f4discovery DKEM-128 --runs 3
+    python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi DKEM-512 USE_SM3_ASM=1 -j8
     python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --family kem,kex --apps speed
+    python3 benchmark_schemes.py --family sign --skip Galas-512S,crypto_sign/%/ref   # on top of mk/skip.mk
+    python3 benchmark_schemes.py --no-skip Tins128                                   # ignore the skip list
 
 Supported platforms are mps2-an386, nucleo-l4r5zi, and stm32f4discovery.
 The mps2-an386 runner uses make qemu-run. Hardware runners build each target,
@@ -174,6 +176,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, str, list[str], lis
             "(aliases: sig, crypto_kem, crypto_kex, crypto_sign, all). Default: all three."
         ),
     )
+    build_schemes.add_skip_arguments(parser)
     parser.add_argument("-j", "--jobs", default="1", help="Forwarded make parallelism.")
     parser.add_argument(
         "--timeout",
@@ -775,6 +778,8 @@ def main(argv: list[str]) -> int:
     implementations = build_schemes.filter_by_tier(implementations, tier)
     families = build_schemes.normalize_families(args.families)
     implementations = build_schemes.filter_by_family(implementations, families)
+    implementations, skipped = build_schemes.apply_skip_list(root, implementations, args, make_vars)
+    build_schemes.report_skipped(skipped)
     if not implementations:
         print("error: no matching implementations found", file=sys.stderr)
         return 1

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Mithril
+ngcc_title=Mithril
+ngcc_instance=Mithril-256
+ngcc_instance_dir=Reference_Implementation/Mithril-256
+ngcc_zip_sha256=9fed68e7923c6bc9ede072183f7d3983058f88deec5534e779ed2200ee4f7f9f
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_Mithril-256.txt
+copy_dirs=schemes/Mithril/Reference_Implementation/Mithril-256
+stripped=utils/auxfunc.c (strip rule 'auxfunc\.[ch]');utils/auxfunc.h (strip rule 'auxfunc\.[ch]');utils/drng.c (strip rule 'drng\.[ch]');utils/drng.h (strip rule 'drng\.[ch]')

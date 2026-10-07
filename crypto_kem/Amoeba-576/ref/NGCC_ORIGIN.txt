@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Amoeba
+ngcc_title=Amoeba
+ngcc_instance=Amoeba-576
+ngcc_instance_dir=Reference_Implementation/Amoeba-576
+ngcc_zip_sha256=719c438a30cccd72c9d83da4b5150fee0c55351f2c13e7a66fd61bf653ca5c24
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_Amoeba128.txt
+copy_dirs=schemes/Amoeba/Reference_Implementation/Amoeba-576/src/api;schemes/Amoeba/Reference_Implementation/Amoeba-576/src/backend;schemes/Amoeba/Reference_Implementation/Amoeba-576/src/symmetric
+stripped=symmetric/auxfunc.c (strip rule 'auxfunc\.[ch]');symmetric/auxfunc.h (strip rule 'auxfunc\.[ch]');symmetric/drng.c (strip rule 'drng\.[ch]');symmetric/drng.h (strip rule 'drng\.[ch]')

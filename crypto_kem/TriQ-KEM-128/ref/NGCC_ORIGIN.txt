@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=TriQ-KEM
+ngcc_title=TriQ-KEM
+ngcc_instance=TriQ-KEM-128
+ngcc_instance_dir=Reference_Implementation/TriQ-KEM-128
+ngcc_zip_sha256=1e4b96e7a849c95b4a6511c5739be9e0b4adf19b00195c2c0ce14f66be316876
+ngcc_category=KEM
+tier=qemu
+kat_file=Test_Vectors/KAT_KEM_TriQ-KEM-128.txt
+copy_dirs=schemes/TriQ-KEM/Reference_Implementation/TriQ-KEM-128
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

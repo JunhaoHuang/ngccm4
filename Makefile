@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-.PHONY: all clean help libclean list schemes qemu-run platform-sync
+.PHONY: all clean help libclean list list-skipped schemes qemu-run platform-sync
 
 include mk/config.mk
 include mk/$(PLATFORM).mk
@@ -37,10 +37,14 @@ platform-sync:
 list schemes:
 	@printf '%s\n' $(SCHEMES)
 
+list-skipped:
+	@printf '%s\n' $(SKIPPED_IMPLS)
+
 help:
 	@printf 'Usage: make [all|<output-stem>] [PLATFORM=<platform>] [FAMILY=<family>] [SCHEME=<scheme>] [IMPLEMENTATION=<impl>] [APP=<name>]\n'
-	@printf 'Example shorthand target: make crypto_kem_DKE-128_ref_test\n'
+	@printf 'Example shorthand target: make crypto_kem_DKEM-128_ref_test\n'
 	@printf 'Supported platforms: %s\n' "$(SUPPORTED_PLATFORMS)"
+	@printf 'Skip list: mk/skip.mk (SKIP_SCHEMES, SKIP_IMPLS); SKIP="name family/scheme/impl ..." adds, NOSKIP=1 ignores it, make list-skipped shows it (%s skipped now)\n' "$(words $(SKIPPED_IMPLS))"
 	@printf 'Supported families: %s\n' "$(SUPPORTED_FAMILIES)"
 	@printf 'Available implementations:\n'
 	@printf '  %s\n' $(SCHEMES)

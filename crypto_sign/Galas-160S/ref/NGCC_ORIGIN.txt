@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Galas_Signature
+ngcc_title=Galas Signature Scheme
+ngcc_instance=Galas-160S
+ngcc_instance_dir=Reference_Implementation/Galas-160S
+ngcc_zip_sha256=98d57af868fa10d74b2c0656e565aa14a42ff902646d6fc440ffb7355b75342c
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_Galas-160S.txt
+copy_dirs=schemes/Galas_Signature/Reference_Implementation/Galas-160S
+stripped=galas/test_all_instances.c (strip rule 'test.*\.c');galas/test_bavc.c (strip rule 'test.*\.c');galas/test_bf.c (strip rule 'test.*\.c');galas/test_gf2n.c (strip rule 'test.*\.c');galas/test_owf.c (strip rule 'test.*\.c');galas/test_qs.c (strip rule 'test.*\.c');galas/test_qs_full.c (strip rule 'test.*\.c');galas/test_qsgadgets.c (strip rule 'test.*\.c');galas/test_ro.c (strip rule 'test.*\.c');galas/test_sig_keygen.c (strip rule 'test.*\.c');galas/test_sig_roundtrip.c (strip rule 'test.*\.c');galas/test_uh.c (strip rule 'test.*\.c');galas/test_vole.c (strip rule 'test.*\.c');galas/test_xof.c (strip rule 'test.*\.c');ngcc/KAT_SIG.c (strip rule 'KAT_.*\.c');ngcc/auxfunc.c (strip rule 'auxfunc\.[ch]');ngcc/auxfunc.h (strip rule 'auxfunc\.[ch]');ngcc/bench.c (strip rule 'bench.*\.c');ngcc/drng.c (strip rule 'drng\.[ch]');ngcc/drng.h (strip rule 'drng\.[ch]');ngcc/kat_gen.c (strip rule 'kat_gen\.c');ngcc/verify_kat.c (strip rule 'verify_kat.*\.c')

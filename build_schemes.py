@@ -4,9 +4,11 @@
 Usage:
     python3 build_schemes.py
     python3 build_schemes.py all
-    python3 build_schemes.py PLATFORM=mps2-an386 DKE-128 DKE-512
-    python3 build_schemes.py PLATFORM=nucleo-l4r5zi DKE-128 USE_SM3_ASM=1 -j8
-    python3 build_schemes.py PLATFORM=stm32f4discovery DKE-128 DKE-512
+    python3 build_schemes.py PLATFORM=mps2-an386 DKEM-128 DKEM-512
+    python3 build_schemes.py PLATFORM=nucleo-l4r5zi DKEM-128 USE_SM3_ASM=1 -j8
+    python3 build_schemes.py PLATFORM=stm32f4discovery DKEM-128 DKEM-512
+    python3 build_schemes.py --skip scabbard512 --skip crypto_sign/%/ref   # on top of mk/skip.mk
+    python3 build_schemes.py --no-skip Tins128                             # ignore the skip list
 
 The script mirrors the implementation/app discovery used by mk/scheme.mk:
 implementations are directories containing the family entry source, and apps
@@ -17,6 +19,8 @@ from __future__ import annotations
 
 import argparse
 import os
+import fnmatch
+import re
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -92,6 +96,114 @@ def filter_by_tier(implementations: list["Implementation"], tier: str) -> list["
     return [impl for impl in implementations if impl.tier == tier]
 
 
+# --------------------------------------------------------------------------- skip list
+# Mirrors mk/scheme.mk: mk/skip.mk defines SKIP_SCHEMES (scheme names) and
+# SKIP_IMPLS (family/scheme/impl paths, % wildcards); SKIP="..." adds tokens
+# (a slash marks an implementation pattern); NOSKIP=1 disables everything.
+
+DEFAULT_SKIP_FILE = "mk/skip.mk"
+_SKIP_ASSIGN_RE = re.compile(r"^\s*(SKIP_SCHEMES|SKIP_IMPLS)\s*(\+=|:=|\?=|=)\s*(.*)$")
+
+
+def load_skip_file(path: Path) -> tuple[list[str], list[str]]:
+    """Parse the SKIP_SCHEMES / SKIP_IMPLS assignments of a makefile fragment (no make expansion)."""
+    schemes: list[str] = []
+    impls: list[str] = []
+    if not path.is_file():
+        return schemes, impls
+    logical: list[str] = []
+    pending = ""
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.split("#", 1)[0].rstrip()
+        if line.endswith("\\"):
+            pending += line[:-1] + " "
+            continue
+        logical.append(pending + line)
+        pending = ""
+    if pending:
+        logical.append(pending)
+    for line in logical:
+        m = _SKIP_ASSIGN_RE.match(line)
+        if not m:
+            continue
+        var, op, value = m.groups()
+        target = schemes if var == "SKIP_SCHEMES" else impls
+        if op in (":=", "=", "?="):
+            target.clear()
+        target.extend(value.split())
+    return schemes, impls
+
+
+def split_skip_tokens(tokens: list[str]) -> tuple[list[str], list[str]]:
+    """SKIP="..." / --skip tokens: with a slash -> implementation pattern, otherwise a scheme name."""
+    schemes: list[str] = []
+    impls: list[str] = []
+    for token in tokens:
+        for item in re.split(r"[,\s]+", token.strip()):
+            if not item:
+                continue
+            (impls if "/" in item else schemes).append(item)
+    return schemes, impls
+
+
+def _impl_pattern_matches(pattern: str, impl_path: str) -> bool:
+    return fnmatch.fnmatchcase(impl_path, pattern.replace("%", "*"))
+
+
+def filter_skipped(
+    implementations: list["Implementation"], skip_schemes: list[str], skip_impls: list[str]
+) -> tuple[list["Implementation"], list["Implementation"]]:
+    kept: list[Implementation] = []
+    skipped: list[Implementation] = []
+    scheme_set = set(skip_schemes)
+    for impl in implementations:
+        path = f"{impl.family}/{impl.scheme}/{impl.name}"
+        if impl.scheme in scheme_set or any(_impl_pattern_matches(p, path) for p in skip_impls):
+            skipped.append(impl)
+        else:
+            kept.append(impl)
+    return kept, skipped
+
+
+def add_skip_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--skip",
+        action="append",
+        metavar="NAME[,NAME...]",
+        default=None,
+        help="Additionally skip these scheme names or family/scheme/impl patterns (%% or * wildcards); repeatable. Same as make SKIP=...",
+    )
+    parser.add_argument("--no-skip", action="store_true", help="Ignore the skip list (mk/skip.mk and --skip). Same as make NOSKIP=1.")
+    parser.add_argument("--skip-file", default=DEFAULT_SKIP_FILE, metavar="PATH", help="Makefile fragment with SKIP_SCHEMES / SKIP_IMPLS.")
+
+
+def apply_skip_list(
+    root: Path, implementations: list["Implementation"], args: argparse.Namespace, make_vars: list[str]
+) -> tuple[list["Implementation"], list["Implementation"]]:
+    """Drop skipped implementations and add the make variables that make the build system agree."""
+    # SKIP=/NOSKIP=/SKIP_MK= given as make variables on the driver command line are honoured too.
+    cli_skip = [v.split("=", 1)[1] for v in make_vars if v.startswith("SKIP=")]
+    no_skip = args.no_skip or any(v == "NOSKIP=1" for v in make_vars)
+    skip_file = next((v.split("=", 1)[1] for v in make_vars if v.startswith("SKIP_MK=")), args.skip_file)
+    if no_skip:
+        if "NOSKIP=1" not in make_vars:
+            make_vars.append("NOSKIP=1")
+        return implementations, []
+    schemes, impls = load_skip_file(root / skip_file)
+    extra_schemes, extra_impls = split_skip_tokens((args.skip or []) + cli_skip)
+    if args.skip:
+        extra = " ".join(extra_schemes + extra_impls)
+        make_vars[:] = [v for v in make_vars if not v.startswith("SKIP=")] + [f"SKIP={extra}"]
+    if skip_file != DEFAULT_SKIP_FILE and not any(v.startswith("SKIP_MK=") for v in make_vars):
+        make_vars.append(f"SKIP_MK={skip_file}")
+    return filter_skipped(implementations, schemes + extra_schemes, impls + extra_impls)
+
+
+def report_skipped(skipped: list["Implementation"]) -> None:
+    if skipped:
+        print(f"Skipped by the skip list: {len(skipped)} implementation(s) ({', '.join(impl.stem for impl in skipped[:8])}{' ...' if len(skipped) > 8 else ''})")
+
+
 def parse_supported_platforms(root: Path) -> set[str]:
     config = root / "mk" / "config.mk"
     platforms: set[str] = set()
@@ -151,7 +263,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, str, list[str], lis
     parser.add_argument(
         "schemes",
         nargs="*",
-        help="Scheme names to build, for example DKE-128 DKE-256. Use 'all' or omit schemes to build all discovered schemes.",
+        help="Scheme names to build, for example DKEM-128 DKEM-256. Use 'all' or omit schemes to build all discovered schemes.",
     )
     parser.add_argument(
         "-j",
@@ -190,6 +302,7 @@ def parse_args(argv: list[str]) -> tuple[argparse.Namespace, str, list[str], lis
         default=None,
         help="Only build these scheme categories, comma-separated or repeated: kem, kex, sign (aliases: sig, crypto_kem, crypto_kex, crypto_sign, all).",
     )
+    add_skip_arguments(parser)
 
     platform = ""
     make_vars: list[str] = []
@@ -254,7 +367,9 @@ def main(argv: list[str]) -> int:
     families = normalize_families(args.families)
     implementations = filter_by_tier(discover_implementations(root, requested_schemes), args.tier)
     implementations = filter_by_family(implementations, families)
-    discovered_schemes = {impl.scheme for impl in implementations}
+    implementations, skipped = apply_skip_list(root, implementations, args, make_vars)
+    report_skipped(skipped)
+    discovered_schemes = {impl.scheme for impl in implementations} | {impl.scheme for impl in skipped}
     missing_schemes = sorted(requested_schemes - discovered_schemes)
 
     if missing_schemes:

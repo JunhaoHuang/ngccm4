@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=COMPASS-SIG
+ngcc_title=COMPASS-SIG
+ngcc_instance=COMPASS-SIG-512
+ngcc_instance_dir=Reference_Implementation/COMPASS-SIG-512
+ngcc_zip_sha256=ce88066506fe9b58c300b3ca51462c7a8350484d88ad5b8a9c9f17b5152ca820
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_COMPASS-SIG-512.txt
+copy_dirs=schemes/COMPASS-SIG/Reference_Implementation/COMPASS-SIG-512
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

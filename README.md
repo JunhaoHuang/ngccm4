@@ -62,7 +62,7 @@ If you do not need hardware flashing, `openocd` can be omitted.
 		- SM3 for xof and drng, required by ICCS
 		- SHA3 for better comparison with NIST's variants of PQC schemes.
 	- crypto_kem: Key Encapsulation Mechanism schemes
-		- DKE
+		- DKEM
 		- ZEN: NTRU-based KEM
 	- crypto_sign: Digital Signature schemes
 	- crypto_kex: Key Exchange schemes
@@ -360,6 +360,96 @@ directories; edit the manifest rather than the imported sources.
 Imported schemes are built with `USE_KECCAK=0` (the default): many ship their
 own `fips202.c`, which would clash with `common/fips202.c`.
 
+### Submitters' Cortex-M4 implementations
+
+Nine NGCC packages ship their own Cortex-M4 code. Four of them (DKEM, DKEX,
+ADKEX, ZEN) are the origin of the hand-ported `<scheme>/m4` directories in this
+repository; AFS-KEX's "ARM" tree is the reference C code in a pqm4 harness. The
+remaining four are imported into `crypto_kem/<instance>/m4/` by the same
+importer, driven by an `m4` block in the manifest:
+
+| submission | zip sub-directory | instances | notes |
+| --- | --- | --- | --- |
+| BW-KEM | `Implementations/Additional_Implementation/ARM-performance-optimized` | BW_KEM_C128/256/512 (`m4fspeed`) | NTT/basemul assembly, SM3 M4 kernels |
+| DTRU | `Implementations and Test_Vectors/Implementations/Additional_Implementation/KEM-DTRU-ARM-Optimized` | all seven DTRU sets (`m4fspeed`) | NTT/base-inversion assembly |
+| MORNING-Scabbard | `Implementations/Additional_Implementations/Cortex_M4` | scabbard128/256 | Toom/schoolbook multiplication in assembly (`SCABBARD_USE_ASM_MUL=1`); scabbard512 is too large for the board, as for `ref` |
+| Rudraksh2 | `Implementations/Additional_Implementations/Cortex_M4` | lwekem128/256/512 | plain C, no assembly (on the board it runs at the same speed as `ref`, within 0.5 %); the package's `minal.c` for 128/256 sets `MINAL_BETA 0` where the reference uses 220, the importer restores the reference value so the KATs match |
+
+The mirror keeps only `Reference_Implementation/` of each package, so the M4
+trees are unpacked from the original zips first:
+
+```bash
+# zips go to NGCC/tmp/<zip_name> (zip_url and zip_sha256 are in NGCC/schemes.json)
+python3 tools/extract_ngcc_m4.py            # -> NGCC/schemes/<folder>/M4_Implementation/
+python3 tools/import_ngcc.py --impl m4      # -> crypto_kem/<instance>/m4/
+```
+
+The m4 import inherits the scheme-level rules and the instance's defines of the
+reference import; `NGCC_ORIGIN.txt` records `impl=m4` and the zip
+sub-directory. All fifteen imported m4 implementations build for the board and
+match the official KAT files on QEMU.
+
+### Skip list
+
+`mk/skip.mk` names implementations that the build system and the drivers
+(`build_schemes.py`, `benchmark_schemes.py`, `kat_check.py`) leave out, for
+example schemes known to hard-fault on the board or to take hours:
+
+```make
+SKIP_SCHEMES += scabbard512 Tins128          # every family / implementation of these schemes
+SKIP_IMPLS   += crypto_sign/Galas-512S/ref   # family/scheme/implementation, make % wildcards allowed
+```
+
+`mk/scheme.mk` includes the file automatically, so `make`, `make list` and the
+shorthand targets no longer see those implementations (`make list-skipped`
+prints them). The same rules apply on the command line:
+
+```bash
+make SKIP="scabbard512 crypto_kem/%/m4"           # add to the skip list for this invocation
+make NOSKIP=1 crypto_kem_scabbard512_ref_speed    # ignore the skip list
+python3 benchmark_schemes.py --skip scabbard512 --skip crypto_sign/%/ref
+python3 build_schemes.py --no-skip Tins128
+python3 kat_check.py --skip-file mk/skip-qemu.mk  # another fragment with the same syntax
+```
+
+The drivers parse the fragment themselves and forward `SKIP=`, `NOSKIP=1` and
+`SKIP_MK=` to make, so both sides always agree. Skipping does not remove
+anything: the directories stay, and the benchmark site still lists the
+implementations (with their previous results, or as "not yet run").
+
+### Implementations that link other implementations
+
+Some submissions are protocols built on other submissions. CreTAKE, for
+example, is an authenticated key exchange whose package wraps copies of the
+PolarLAC, ZEN and BiT reference code; its 25 instances only differ in the
+protocol layer and in which KEM/signature pair they use. Such schemes are
+imported protocol-layer only and link the implementations already in this
+tree:
+
+```make
+# crypto_kex/CreTAKE-K2S-PLAC128-BiT128/ref/config.mk (generated from the manifest "deps" list)
+IMPL_DEPS_crypto_kex_CreTAKE-K2S-PLAC128-BiT128_ref := crypto_kem/POLARLAC-128/ref crypto_sign/BiT-128/ref
+```
+
+For every dependency, `mk/scheme.mk` compiles the dependency's own sources
+with its usual flags, partially links them into one relocatable object
+(`obj/<impl>/deps/<dep>.o`) and keeps only its public API global
+(`IMPL_DEP_KEEP_<impl>`, default `kem_* sig_* pke_* PKE_* kex_*`), so two
+dependencies that both define `poly_add` or `shake128` can be linked into the
+same ELF. Dependencies are built even when the current `make` selection does
+not include them. The protocol sources include the dependency headers by
+relative path (`../../../crypto_kem/POLARLAC-128/ref/params.h`, rewritten from
+the package's `../../Common/primitives/...` by a manifest sed rule). The KEM
+and signature backends themselves are benchmarked under their own names; the
+package's copies are not imported.
+
+All 25 CreTAKE instances build for the board and reproduce the official KAT
+files on QEMU; the ones using BiT-256/512 are QEMU tier because those BiT sets
+fault on the board. Fixing them exposed an ICCS-API gap in the hand-ported
+ZEN glue, which did not write the output lengths of `kem_keygen`, `kem_enc`
+and `kem_dec` (our drivers pre-fill them, CreTAKE relies on them); all six ZEN
+glue files now do.
+
 ### Family drivers
 
 All three families share the same five apps, so every scheme is measured the
@@ -397,7 +487,7 @@ The board results are published as a static site at
 It shows the three categories (KEM, key exchange, signatures) on separate tabs
 with every column sortable (cycles per operation, code size, stack usage, key
 sizes with proportional bars, KAT status, security level normalised to
-128/192/256/384/512 bits, a link to the submission on the NGCC site), a report of every
+128/192/256/384/512 bits, a link to the submission's specification PDF), a report of every
 scheme without a complete board benchmark and why, and the measurement
 conditions.
 
@@ -407,7 +497,8 @@ generated from the gitignored `Out/` directory and the NGCC mirror:
 ```bash
 python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed   # Out/benchmark_speed_nucleo-l4r5zi.{csv,md}
 python3 kat_check.py --md Out/kat_summary.md                        # Out/kat_summary.md, Out/kat_raw/
-python3 tools/fetch_ngcc_links.py                                  # tools/ngcc_links.json (only when the NGCC list changes)
+python3 tools/collect_ngcc_specs.py                                # docs/specs/*.pdf + tools/ngcc_specs.json (specification PDFs)
+python3 tools/fetch_ngcc_links.py                                  # tools/ngcc_links.json (zip + comment URLs; only when the NGCC list changes)
 python3 tools/make_site_data.py --ngcc-root NGCC                 # docs/data/benchmark.json, docs/data/data.js
 git add docs && git commit -m "site: regenerate benchmark data"
 ```
@@ -415,10 +506,14 @@ git add docs && git commit -m "site: regenerate benchmark data"
 The generator reads the speed CSV and Markdown report (including the
 hand-written target status table and code-size tables), `Out/benchmark_sizes/`,
 the stack logs in `Out/benchmark_raw/`, `Out/kat_summary.md`, `Out/kat_raw/`,
-`tools/ngcc_manifest.json`, `tools/ngcc_links.json` (the official NGCC web
-page, zip and public-comment thread of every submission, scraped from the
-NGCC candidate list by `tools/fetch_ngcc_links.py` and linked from every row)
-and `NGCC/{schemes.json,schemes/*/Test_Vectors,results}`.
+`tools/ngcc_manifest.json`, `tools/ngcc_specs.json` (which PDF under each
+submission's `Specification/` is the algorithm specification; written by
+`tools/collect_ngcc_specs.py`, which also copies those PDFs and their addenda
+into `docs/specs/` so every row links to a specification served by the site
+itself rather than to the NGCC web site), `tools/ngcc_links.json` (submission
+zip and public-comment URLs, from `tools/fetch_ngcc_links.py`, shown in the row
+details as additional information) and
+`NGCC/{schemes.json,schemes/*/Test_Vectors,results}`.
 Key sizes are taken from the benchmarked binary's testvectors dump when one
 exists, then from the NGCC host results, then from the official KAT file. The
 generator exits non-zero when an implementation cannot be mapped to an NGCC

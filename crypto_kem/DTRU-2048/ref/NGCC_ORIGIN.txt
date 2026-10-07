@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=DTRU
+ngcc_title=DTRU
+ngcc_instance=DTRU-2048
+ngcc_instance_dir=Reference_Implementation/DTRU-2048
+ngcc_zip_sha256=ed443d6a9e2e6c50e4956e9b30ce078ae0598a8846962d04b9894cac0816527b
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_DTRU-2048.txt
+copy_dirs=schemes/DTRU/Reference_Implementation/DTRU-2048
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');test_bw.c (strip rule 'test.*\.c');test_correctness.c (strip rule 'test.*\.c');test_speed.c (strip rule 'test.*\.c');test_storage.c (strip rule 'test.*\.c')

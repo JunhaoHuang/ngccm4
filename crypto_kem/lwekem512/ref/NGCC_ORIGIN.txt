@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Rudraksh2
+ngcc_title=Rudraksh2
+ngcc_instance=lwekem512
+ngcc_instance_dir=Reference_Implementation/lwekem512
+ngcc_zip_sha256=569d526cf7abe38393f69a4513686fa86a0c3b3033cc225b84cc107b20b17b98
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_lwekem512.txt
+copy_dirs=schemes/Rudraksh2/Reference_Implementation/lwekem512
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');api.c (manifest exclude 'api.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');kex.c (manifest exclude 'kex.c');kex.h (manifest exclude 'kex.h')

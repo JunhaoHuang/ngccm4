@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Octarine
+ngcc_title=Octarine
+ngcc_instance=Octarine-128
+ngcc_instance_dir=Reference_Implementation/Octarine-128
+ngcc_zip_sha256=7044d22735d39f902df35dd7d8d77c850cd296c81517e8c19134a2f9d006655a
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_Octarine-128.txt
+copy_dirs=schemes/Octarine/Reference_Implementation/Octarine-128
+stripped=sign_test.c (strip rule '.*_test\.c');utils/auxfunc.c (strip rule 'auxfunc\.[ch]');utils/auxfunc.h (strip rule 'auxfunc\.[ch]');utils/drng.c (strip rule 'drng\.[ch]');utils/drng.h (strip rule 'drng\.[ch]')

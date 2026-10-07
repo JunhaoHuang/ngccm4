@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=MORNING-ATLAS
+ngcc_title=MORNING-ATLAS
+ngcc_instance=lwrdsa512
+ngcc_instance_dir=Reference_Implementation/lwrdsa512
+ngcc_zip_sha256=c796b106a7d43b2b3d6110ec2be426aa321cc7336f39a2cc027b2d6e8b4cc8c1
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_lwrdsa512.txt
+copy_dirs=schemes/MORNING-ATLAS/Reference_Implementation/lwrdsa512
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

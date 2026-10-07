@@ -1,0 +1,13 @@
+importer_version=1
+ngcc_scheme=MORNING-Scabbard
+ngcc_title=MORNING-Scabbard
+ngcc_instance=scabbard128
+ngcc_instance_dir=M4_Implementation/scabbard/scabbard128
+ngcc_m4_zip_dir=Implementations/Additional_Implementations/Cortex_M4
+impl=m4
+ngcc_zip_sha256=fdb6749116bddbb8a86074b9ab6f5f55d37540b92e3964906dede0b09c7faf4b
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_scabbard128.txt
+copy_dirs=schemes/MORNING-Scabbard/M4_Implementation/scabbard/scabbard128;schemes/MORNING-Scabbard/M4_Implementation/common
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');board_speed.c (defines main());board_stack.c (defines main());board_test.c (strip rule '.*_test\.c');crypto_kem.c (manifest exclude 'crypto_kem.c');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');common/hal-stm32f4.c (manifest exclude 'common/hal-stm32f4.c');common/hal.h (manifest exclude 'common/hal.h');common/syscalls.c (manifest exclude 'common/syscalls.c')

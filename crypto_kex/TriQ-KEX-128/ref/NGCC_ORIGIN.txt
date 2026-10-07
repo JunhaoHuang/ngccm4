@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=TriQ-KEX
+ngcc_title=TriQ-KEX
+ngcc_instance=TriQ-KEX-128
+ngcc_instance_dir=Reference_Implementation/TriQ-KEX-128
+ngcc_zip_sha256=dde9bf3e8d75fc3df53bcbcacaba4faed39272b8ef2f1ac199ae0128d327b505
+ngcc_category=KEX
+tier=qemu
+kat_file=Test_Vectors/KAT_KEX_TriQ-KEX-128.txt
+copy_dirs=schemes/TriQ-KEX/Reference_Implementation/TriQ-KEX-128
+stripped=KAT_KEX.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=QingLuan
+ngcc_title=Qing Luan
+ngcc_instance=QingLuan-384
+ngcc_instance_dir=Reference_Implementation/QingLuan-384
+ngcc_zip_sha256=2eb8f3ed205eb7c7e8b3108a997b59643d1aa5579035b8093b4ddbe051a48007
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_QingLuan-384.txt
+copy_dirs=schemes/QingLuan/Reference_Implementation/QingLuan-384
+stripped=api_pkc/KAT_SIG.c (strip rule 'KAT_.*\.c');api_pkc/auxfunc.c (strip rule 'auxfunc\.[ch]');api_pkc/auxfunc.h (strip rule 'auxfunc\.[ch]');api_pkc/drng.c (strip rule 'drng\.[ch]');api_pkc/drng.h (strip rule 'drng\.[ch]');api_pkc/kat_verify.c (strip rule 'kat_verify\.c');include/hash.h (manifest exclude 'include/hash.h');src/hash.c (manifest exclude 'src/hash.c');src/selftest.c (manifest exclude 'src/selftest.c');src/utils.c (manifest exclude 'src/utils.c')

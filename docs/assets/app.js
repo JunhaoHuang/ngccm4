@@ -22,9 +22,10 @@
   const inlineCode = (s) => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
 
   const CATS = { kem: "KEM", kex: "Key exchange", sig: "Signatures" };
-  const STATUS_ORDER = { measured: 0, partial: 1, failed: 2, "not-run": 3 };
-  const STATUS_LABEL = { measured: "measured", partial: "partial", failed: "failed", "not-run": "not run" };
-  const STATUS_CLASS = { measured: "good", partial: "warning", failed: "critical", "not-run": "neutral" };
+  const STATUS_ORDER = { measured: 0, partial: 1, failed: 2, pending: 3, "not-run": 4 };
+  const STATUS_LABEL = { measured: "measured", partial: "partial", failed: "failed", pending: "not yet run", "not-run": "not run" };
+  const STATUS_CLASS = { measured: "good", partial: "warning", failed: "critical", pending: "neutral", "not-run": "neutral" };
+  const STATUS_HINT = { pending: "board-tier implementation that has not been benchmarked yet", "not-run": "QEMU-tier implementation: not attempted on the board" };
   const KAT_ORDER = { match: 0, mismatch: 1, "run-failed": 2, timeout: 3, "not-checked": 4 };
   const KAT_CLASS = { match: "good", mismatch: "serious", "run-failed": "critical", timeout: "critical", "not-checked": "neutral" };
   const FAILURE_LABEL = {
@@ -94,7 +95,7 @@
       return n !== undefined && n !== null ? `not applicable: ${n}-pass scheme` : "not applicable";
     }
     if (row.status_text) return "not measured: " + row.status_text;
-    return row.run_status === "not-run" ? "not run on the board (QEMU-tier implementation)" : "not measured";
+    return row.run_status === "not-run" ? "not run on the board (QEMU-tier implementation)" : row.run_status === "pending" ? "not benchmarked yet" : "not measured";
   }
   function cycleTitle(row, op) {
     const c = row.cycles[op];
@@ -197,11 +198,11 @@
     parts.push(LEVEL_SOURCE[lv.source] || "source unknown");
     return el("span", { title: parts.join("; "), text: lv.label });
   }
-  // external link to the submission's page on the NGCC site (stops the row-toggle click)
+  // link to the submission's algorithm specification, a PDF served from this site (stops the row-toggle click)
   function ngccLink(ngcc, text) {
-    if (!ngcc || !ngcc.url) return null;
-    return el("a", { class: "ext" + (text ? " ext-text" : ""), href: ngcc.url, target: "_blank", rel: "noopener",
-      title: `open ${ngcc.title} on the NGCC site`, text: text || "\u2197",
+    if (!ngcc || !ngcc.spec) return null;
+    return el("a", { class: "ext" + (text ? " ext-text" : ""), href: ngcc.spec, target: "_blank", rel: "noopener",
+      title: `${ngcc.title}: algorithm specification (PDF${ngcc.spec_file ? ", " + ngcc.spec_file : ""})`, text: text || "\u2197",
       onclick: (e) => e.stopPropagation() });
   }
   function schemeCell(r) {
@@ -212,7 +213,7 @@
     const td = el("td", { class: (col.type === "num" ? "num" : "") + (col.bar ? " bar-cell" : "") + (col.sticky ? " sticky" : "") + " col-" + col.group });
     if (col.type === "str") td.textContent = v;
     else if (col.type === "level") td.append(levelCell(v));
-    else if (col.type === "status") td.append(badge(STATUS_CLASS[v], STATUS_LABEL[v], row.status_text || (v === "not-run" ? "QEMU-tier implementation: not attempted on the board" : "all operations measured")));
+    else if (col.type === "status") td.append(badge(STATUS_CLASS[v], STATUS_LABEL[v], row.status_text || STATUS_HINT[v] || "all operations measured"));
     else if (col.type === "kat") td.append(badge(KAT_CLASS[v] || "neutral", v, row.kat.caveat || row.kat.detail || "no KAT check recorded"));
     else {
       td.title = col.title ? col.title(row) : "";
@@ -228,17 +229,19 @@
     const c = DATA.categories[row.category];
     const sections = [];
     const about = el("div", null, [el("h4", { text: "Submission" }), el("div", { html:
-      (row.ngcc.url ? `<a class="ext-text" href="${esc(row.ngcc.url)}" target="_blank" rel="noopener" title="open on the NGCC site"><b>${esc(row.ngcc.title)}</b> \u2197</a>` : `<b>${esc(row.ngcc.title)}</b>`) +
+      (row.ngcc.spec ? `<a class="ext-text" href="${esc(row.ngcc.spec)}" target="_blank" rel="noopener" title="algorithm specification (PDF)"><b>${esc(row.ngcc.title)}</b> \u2197</a>` : `<b>${esc(row.ngcc.title)}</b>`) +
       ` &middot; instance <code>${esc(row.ngcc.instance)}</code>` +
       (row.ngcc.pub_date ? ` &middot; published ${esc(row.ngcc.pub_date)}` : "") +
-      (row.ngcc.zip_url ? ` &middot; <a href="${esc(row.ngcc.zip_url)}" rel="noopener">submission zip</a>` : "") +
-      (row.ngcc.comments_url ? ` &middot; <a href="${esc(row.ngcc.comments_url)}" target="_blank" rel="noopener">public comments</a>` : "") +
+      (row.ngcc.spec ? ` &middot; <a href="${esc(row.ngcc.spec)}" target="_blank" rel="noopener">specification (PDF)</a>` : "") +
+      (row.ngcc.spec_extra || []).map((x) => ` &middot; <a href="${esc(x.href)}" target="_blank" rel="noopener" title="${esc(x.file)}">${esc(x.file.replace(/\.pdf$/i, ""))}</a>`).join("") +
+      (row.ngcc.zip_url ? ` &middot; <a href="${esc(row.ngcc.zip_url)}" rel="noopener" title="original submission package (NGCC download)">submission zip</a>` : "") +
+      (row.ngcc.comments_url ? ` &middot; <a href="${esc(row.ngcc.comments_url)}" target="_blank" rel="noopener" title="public-comment thread on the NGCC mailing list">public comments</a>` : "") +
       `<br>Directory <code>${esc(row.family)}/${esc(row.scheme)}/${esc(row.impl)}</code> &middot; tier <b>${esc(row.tier)}</b>` +
       (row.hand_ported ? " &middot; hand-ported" : " &middot; imported reference code") })]);
     sections.push(about);
     const st = el("div", null, [el("h4", { text: "Board run" })]);
     st.append(el("div", null, [badge(STATUS_CLASS[row.run_status], STATUS_LABEL[row.run_status]), " ",
-      el("span", { class: "note", text: row.status_text || (row.run_status === "measured" ? "every operation completed" : row.run_status === "not-run" ? "QEMU-tier implementation: not attempted on the board" : "") })]));
+      el("span", { class: "note", text: row.status_text || (row.run_status === "measured" ? "every operation completed" : STATUS_HINT[row.run_status] || "") })]));
     if (row.failure_kind) st.append(el("div", { class: "note", text: "Category: " + (FAILURE_LABEL[row.failure_kind] || row.failure_kind) }));
     if (Object.keys(row.cycles).length) {
       const t = el("table", null, el("tr", null, [el("th", { text: "op" }), ...["avg", "median", "min", "max", "count"].map((k) => el("th", { text: k, style: "text-align:right" }))]));
@@ -323,10 +326,10 @@
     for (const impl of ["ref", "m4"]) {
       const n = rows.filter((r) => r.impl === impl).length;
       if (!n) continue;
-      implBox.append(chip(`${impl} (${n})`, state.impl.has(impl), () => { toggle(state.impl, impl); render(); }, impl === "m4" ? "hand-optimised Cortex-M4 implementation" : "reference C implementation"));
+      implBox.append(chip(`${impl} (${n})`, state.impl.has(impl), () => { toggle(state.impl, impl); render(); }, impl === "m4" ? "Cortex-M4 optimised implementation: the submitter's own M4 port imported from the NGCC package, or a hand-written port (DKEM, ZEN, DKEX, ADKEX)" : "reference C implementation"));
     }
     const stBox = $("#status-chips"); stBox.innerHTML = "";
-    for (const s of ["measured", "partial", "failed", "not-run"]) {
+    for (const s of ["measured", "partial", "failed", "pending", "not-run"]) {
       const n = rows.filter((r) => r.run_status === s).length;
       if (!n) continue;
       stBox.append(chip(`${STATUS_LABEL[s]} (${n})`, state.status.has(s), () => { toggle(state.status, s); render(); }));
@@ -426,7 +429,7 @@
     const qemu = nb.qemu_tier.map((id) => rowsById[id]);
     const unsup = nb.unsupported;
     panel.append(el("h2", { text: "Implementations without a complete board benchmark" }),
-      el("p", { class: "section-intro", html: `Three groups, from closest to furthest from a measurement: <b>${failed.length}</b> implementations were attempted on the board but did not complete every operation, <b>${qemu.length}</b> imported KEM/KEX implementations were classified as QEMU-only and never flashed, and <b>${unsup.length}</b> NGCC instances were never imported into ngccm4. Key sizes are shown wherever a KAT file or host result exists, so size comparisons stay possible.` }));
+      el("p", { class: "section-intro", html: `From closest to furthest from a measurement: <b>${failed.length}</b> implementations were attempted on the board but did not complete every operation${(nb.pending || []).length ? `, <b>${nb.pending.length}</b> board-tier implementations are waiting for their first benchmark run` : ""}, <b>${qemu.length}</b> imported KEM/KEX implementations were classified as QEMU-only and never flashed, and <b>${unsup.length}</b> NGCC instances were never imported into ngccm4. Key sizes are shown wherever a KAT file or host result exists, so size comparisons stay possible.` }));
 
     // ---- group 1: board failures and partial runs
     panel.append(el("h2", { text: `1. Attempted on the board, incomplete (${failed.length})` }),
@@ -451,6 +454,24 @@
         { key: "sk", label: "sk", type: "num", bar: "sizes", get: (r) => r.sizes ? (r.sizes.sk !== undefined ? r.sizes.sk : r.sizes.sk_b) : null },
         { key: "reason", label: "Reason", type: "str", wrap: true, get: (r) => r.status_text || "" },
       ], rows, "scheme"));
+      panel.append(d);
+    }
+
+    // ---- group 1b: board-tier implementations without a benchmark run yet
+    const pending = (nb.pending || []).map((id) => rowsById[id]);
+    if (pending.length) {
+      panel.append(el("h2", { text: `1b. Not benchmarked yet (${pending.length})` }),
+        el("p", { class: "section-intro", text: "Board-tier implementations that were added after the last benchmark run (typically the submitters' Cortex-M4 ports imported from the NGCC packages). They build for the board and, where a KAT column is shown, pass the official test vectors on QEMU; cycle counts will appear after the next benchmark_schemes.py run." }));
+      const d = el("details", { class: "group", open: "" }, el("summary", null, ["pending board run", el("span", { class: "meta", text: `${pending.length} implementation${pending.length === 1 ? "" : "s"}` })]));
+      d.append(miniTable([
+        { key: "cat", label: "Category", type: "str", get: (r) => CATS[r.category] },
+        { key: "scheme", label: "Scheme", type: "str", get: (r) => r.scheme, render: (r) => schemeCell(r) },
+        { key: "impl", label: "Impl", type: "str", get: (r) => r.impl },
+        { key: "level", label: "Level", type: "level", get: (r) => r.level },
+        { key: "kat", label: "KAT", type: "kat", get: (r) => r.kat.status, render: (r, v) => badge(KAT_CLASS[v] || "neutral", v, r.kat.detail) },
+        { key: "code", label: "flash+ram", type: "num", get: (r) => r.code ? r.code.total : null, title: (r) => r.code ? "code size of the speed ELF (bytes)" : "not linked yet" },
+        ...sizeMini(pending[0].category),
+      ], pending, "scheme"));
       panel.append(d);
     }
 
@@ -502,16 +523,16 @@
       <ul>
         <li><b>Cycles</b>: choose average, median, minimum or maximum in the toolbar. The row details list all four plus the iteration count. "total" is the sum of the averages and is only shown when every operation completed.</li>
         <li><b>Sizes</b>: bytes of public key, secret key and ciphertext (KEM), signature (SIG, the largest over the ten KAT counts) or per-pass messages (KEX). The preferred source is the benchmarked binary itself (its testvectors output on QEMU), then a host build of the same reference code, then the submission's official KAT file. Where sources disagree the row details say so.</li>
-        <li><b>Scheme</b>: click the name for details; the \u2197 next to it opens the submission's page on the NGCC site (tools/ngcc_links.json).</li>
+        <li><b>Scheme</b>: click the name for details; the \u2197 next to it opens the submission's algorithm specification, a PDF copied from the NGCC package and served from this site (docs/specs/, tools/ngcc_specs.json). Addenda, the original submission zip and the public-comment thread are linked from the row details.</li>
         <li><b>Level</b>: the submitter's claimed classical security, normalised to one of 128, 192, 256, 384 or 512 bits. Where the instance name carries the number it is taken from the name; otherwise (parameter-set names such as <code>n=1024</code>, <code>L2</code>, <code>C1</code>, <code>I</code>, or the <code>160</code> hash-based sets) it is taken from the submission's specification. Hover a level to see the original parameter-set name and the exact claim. A dash means the submission states no level.</li>
-        <li><b>Status</b>: <i>measured</i> (every operation timed), <i>partial</i> (some operations timed before a timeout or fault), <i>failed</i> (attempted on the board, nothing timed), <i>not run</i> (QEMU-tier KEM/KEX, never flashed). By default the tables show measured and partial rows; enable the other chips to include the rest, which still carry sizes and code size.</li>
+        <li><b>Status</b>: <i>measured</i> (every operation timed), <i>partial</i> (some operations timed before a timeout or fault), <i>failed</i> (attempted on the board, nothing timed), <i>not yet run</i> (board-tier implementation added after the last benchmark run), <i>not run</i> (QEMU-tier KEM/KEX, never flashed). By default the tables show measured and partial rows; enable the other chips to include the rest, which still carry sizes and code size.</li>
         <li><b>KAT</b>: result of <code>kat_check.py</code> on QEMU (mps2-an386) against the official test vectors.</li>
         <li><b>Bars</b> are scaled to the largest visible value of each column, so filtering rescales them. Use the log scale when a few huge values flatten the rest.</li>
       </ul>
       <h2>KAT check notes</h2>
       <ul>${(m.kat_notes || []).map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
       <h2>Coverage</h2>
-      <p>${counts.implementations} implementations (${counts.by_category.kem} KEM, ${counts.by_category.kex} KEX, ${counts.by_category.sig} SIG) from ${m.ngcc.schemes} NGCC Round-1 submissions with ${m.ngcc.instances} parameter sets (${counts.unsupported_instances} never imported). Submission packages were fetched from <a href="${esc(m.ngcc.source || "#")}" rel="noopener">the NGCC site</a>${m.ngcc.fetched && m.ngcc.fetched.length ? ` between ${esc(m.ngcc.fetched[0])} and ${esc(m.ngcc.fetched[1])}` : ""}.</p>
+      <p>${counts.implementations} implementations (${counts.by_category.kem} KEM, ${counts.by_category.kex} KEX, ${counts.by_category.sig} SIG) from ${m.ngcc.schemes} NGCC Round-1 submissions with ${m.ngcc.instances} parameter sets (${counts.unsupported_instances} never imported). Submission packages were fetched from the NGCC candidate list${m.ngcc.fetched && m.ngcc.fetched.length ? ` between ${esc(m.ngcc.fetched[0])} and ${esc(m.ngcc.fetched[1])}` : ""}.</p>
       <h2>Reproducing</h2>
       <pre>git clone --recursive https://github.com/JunhaoHuang/ngccm4.git
 python3 benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed      # all board-tier schemes
@@ -530,7 +551,7 @@ python3 tools/make_site_data.py --ngcc-root NGCC                    # regenerate
       [c.implementations, "implementations"],
       [measured("measured"), "fully measured"],
       [measured("partial"), "partially measured"],
-      [measured("failed") + measured("not-run"), "no board result"],
+      [measured("failed") + measured("not-run") + measured("pending"), "no board result"],
       [c.unsupported_instances, "NGCC instances not imported"],
       [m.ngcc.schemes, "NGCC submissions"],
     ];

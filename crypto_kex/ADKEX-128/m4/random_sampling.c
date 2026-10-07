@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-128/m4/random_sampling.c
+../../../crypto_kem/DKEM-128/m4/random_sampling.c

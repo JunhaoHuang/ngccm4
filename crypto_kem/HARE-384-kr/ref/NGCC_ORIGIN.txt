@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=HARE
+ngcc_title=HARE
+ngcc_instance=HARE-384-kr
+ngcc_instance_dir=Reference_Implementation/Reference_Implementation/HARE-384
+ngcc_zip_sha256=718bb70eee268550fcef2a82e8eb9879c51ecfdbaefd6bfe2157e7639ffc8557
+ngcc_category=KEM
+tier=qemu
+kat_file=Test_Vectors/KAT_KEM_HARE-384-kr.txt
+copy_dirs=schemes/HARE/Reference_Implementation/Reference_Implementation/HARE-384/kr;schemes/HARE/Reference_Implementation/_shared/hare_core/common;schemes/HARE/Reference_Implementation/_shared/hare_core/ref
+stripped=

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=BW-KEM
+ngcc_title=BW-KEM
+ngcc_instance=BW_KEM_C512
+ngcc_instance_dir=Reference_Implementation/BW_KEM_C512
+ngcc_zip_sha256=a1f8a079df7d55576209f45fcf00afd700fc60c0b18d758d572585ccea594ae3
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_BW_KEM_C512.txt
+copy_dirs=schemes/BW-KEM/Reference_Implementation/BW_KEM_C512
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');randombytes_api.c (strip rule 'randombytes_api\.c');test_speed.c (strip rule 'test.*\.c')

@@ -1,0 +1,1133 @@
+{
+ "ADKEX": {
+  "title": "ADKEX (Authenticated Ding Key Exchange)",
+  "spec": {
+   "file": "ADKEX-Algorithm Specification.pdf",
+   "asset": "specs/ADKEX.pdf",
+   "bytes": 400805,
+   "sha256": "ab64a177d72a862713835b8f14c72fad1dbde6082b514198d9d684e68605344e"
+  },
+  "extra": [],
+  "basic_information": [
+   "ADKEX-Appendix A - Basic Algorithm Information.pdf"
+  ]
+ },
+ "AFS-KEX": {
+  "title": "AFS-KEX",
+  "spec": {
+   "file": "Algorithm specifications-AFS-KEX.pdf",
+   "asset": "specs/AFS-KEX.pdf",
+   "bytes": 1647267,
+   "sha256": "b8a384d451491b332240b7783421e964b89eeca21aa58aa184e8d6d09942df6a"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information-AFS-KEX.pdf"
+  ]
+ },
+ "Aigis-Encplus": {
+  "title": "Aigis-Enc+",
+  "spec": {
+   "file": "02-算法文本：Aigis-Enc+.pdf",
+   "asset": "specs/Aigis-Encplus.pdf",
+   "bytes": 1319314,
+   "sha256": "27e4b81bedaffa1a57cc2e2fe9518f3ddefcbdaa6a883463caf8a88196c43ceb"
+  },
+  "extra": [],
+  "basic_information": [
+   "01-算法基本信息：Aigis-Enc+.PDF"
+  ]
+ },
+ "Aigis-Sigplus": {
+  "title": "Aigis-Sig+",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Aigis-Sigplus.pdf",
+   "bytes": 1448215,
+   "sha256": "6e6d2e07524f2d3bd489ef1e1a0db75cfaf3c9ffb66f048f2e46283e1c3a1781"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "Amoeba": {
+  "title": "Amoeba",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Amoeba.pdf",
+   "bytes": 605386,
+   "sha256": "ffca61c5470298f3a173b76a8ead43299a04d990b0bbb913397f910285d4d247"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "BAG-Loong": {
+  "title": "BAG-Loong",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/BAG-Loong.pdf",
+   "bytes": 458719,
+   "sha256": "f72e55878826e6ff36d99ec0d9422cd34c568fafdd5dc560ea2fa222e4c47276"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "BAG-Piglet": {
+  "title": "BAG-Piglet",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/BAG-Piglet.pdf",
+   "bytes": 214927,
+   "sha256": "f38c754a6609d5f23024452b505fd85b8a6c05eb2932a42c17b19a98f17b00d6"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "BIKE_MLThre": {
+  "title": "BIKE-MLThre",
+  "spec": {
+   "file": "BIKE_MLThre.pdf",
+   "asset": "specs/BIKE_MLThre.pdf",
+   "bytes": 1429220,
+   "sha256": "f3d1145190beef22e065bdefaf32a48a26ef03a4822a4b3d45e0703ffb871479"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "BiT": {
+  "title": "BIT: Bimodal Triangular distribution based lattice signatures",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/BiT.pdf",
+   "bytes": 624928,
+   "sha256": "28e942ee1baa7b686271420d56bea370c65891b4b57ef4045424f8a52dd0ccca"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "BRA": {
+  "title": "BRA",
+  "spec": {
+   "file": "BRA-Documentation.pdf",
+   "asset": "specs/BRA.pdf",
+   "bytes": 302300,
+   "sha256": "518571ac0ff1875580d82ee37a9b4923099a5c88294a5e9c5082bf92f435e75a"
+  },
+  "extra": [],
+  "basic_information": [
+   "BRA-Basic Algorithm Information.pdf"
+  ]
+ },
+ "BRQC": {
+  "title": "BRQC",
+  "spec": {
+   "file": "BRQC-Documentation.pdf",
+   "asset": "specs/BRQC.pdf",
+   "bytes": 295302,
+   "sha256": "b8bb52c2386ae1418200ff6c0c164bc61af81409057633223889ebf185be549c"
+  },
+  "extra": [],
+  "basic_information": [
+   "BRQC-Basic Algorithm Information.pdf"
+  ]
+ },
+ "BW-KEM": {
+  "title": "BW-KEM",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/BW-KEM.pdf",
+   "bytes": 964640,
+   "sha256": "1e052730d0c4f1578c46f23abd37f4adbb32b988b914054077ea551817d5383b"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "C-Multi-UR-AG": {
+  "title": "C-Multi-UR-AG",
+  "spec": {
+   "file": "C-Multi-UR-AG-Documentation.pdf",
+   "asset": "specs/C-Multi-UR-AG.pdf",
+   "bytes": 534453,
+   "sha256": "0403360e812a6fea88cc35f2ad38594fbd943c7835a5c05cde86e1afacb0d365"
+  },
+  "extra": [],
+  "basic_information": [
+   "C-Multi-UR-AG-Basic Algorithm Information.pdf"
+  ]
+ },
+ "cedrus-alpha": {
+  "title": "CEDRUSɑ",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/cedrus-alpha.pdf",
+   "bytes": 621372,
+   "sha256": "7be965ae53188beec23ca4543743402509e2ae1880630b19ab1dbd29b4d70e03"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息-英文.pdf"
+  ]
+ },
+ "cedrusplusc": {
+  "title": "CEDRUS+C",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/cedrusplusc.pdf",
+   "bytes": 637571,
+   "sha256": "5ec5d9151e0208584e24af71c331d712995da452f1e4b75d4956aecf8da55b4b"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息-英文.pdf"
+  ]
+ },
+ "CheetahKEM": {
+  "title": "CheetahKEM",
+  "spec": {
+   "file": "cheetah_kem_en.pdf",
+   "asset": "specs/CheetahKEM.pdf",
+   "bytes": 400391,
+   "sha256": "add344a14702806e5c31b425039c0bed354ae073c18bd4c8686821595bdfcc6a"
+  },
+  "extra": [],
+  "basic_information": []
+ },
+ "Chinith": {
+  "title": "Chinith",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Chinith.pdf",
+   "bytes": 1452369,
+   "sha256": "08c260fac74bc6c52b4c652406ea4019b94985dcf75533d02d5e935c2f86688c"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "COMPASS-KEM": {
+  "title": "COMPASS-KEM",
+  "spec": {
+   "file": "COMPASS-KEM算法文本(en).pdf",
+   "asset": "specs/COMPASS-KEM.pdf",
+   "bytes": 430484,
+   "sha256": "40a280535ac4ef6bc698540893fb3cb210a70866e25112d15e7c6c0355b03572"
+  },
+  "extra": [],
+  "basic_information": [
+   "COMPASS-KEM算法信息(en).pdf"
+  ]
+ },
+ "COMPASS-SIG": {
+  "title": "COMPASS-SIG",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/COMPASS-SIG.pdf",
+   "bytes": 444179,
+   "sha256": "1c470d770556b00d45a0bda2808841046326b3e980fe122a7e72c0ca461604c5"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "CreTAKE": {
+  "title": "CreTAKE",
+  "spec": {
+   "file": "CreTAKE Algorithm specifications.pdf",
+   "asset": "specs/CreTAKE.pdf",
+   "bytes": 278239,
+   "sha256": "0395a8c6b9603b2faf951c66f2be02b293e5a662c130290d86c3754559ee07de"
+  },
+  "extra": [],
+  "basic_information": [
+   "CreTAKE Basic information.pdf"
+  ]
+ },
+ "CS": {
+  "title": "CS",
+  "spec": {
+   "file": "CS.pdf",
+   "asset": "specs/CS.pdf",
+   "bytes": 276498,
+   "sha256": "72c16669b2c90fa15e28f76d72335e1e3341393afd50df20264b91333f913d3f"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "CTL": {
+  "title": "CTL Algorithm",
+  "spec": {
+   "file": "逐光算法文本-英文.pdf",
+   "asset": "specs/CTL.pdf",
+   "bytes": 1287538,
+   "sha256": "4c238acfde7488d52fa73a00116c414a8440ce11190f9e9c651ce10f7a754b9a"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息-英文.pdf"
+  ]
+ },
+ "DARTS": {
+  "title": "DARTS",
+  "spec": {
+   "file": "Algorithm specification.pdf",
+   "asset": "specs/DARTS.pdf",
+   "bytes": 409578,
+   "sha256": "90d799912125b9a34d1f804beb7219d659d31e6a6e1cdbe190604d7374b36672"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "DKEM": {
+  "title": "DKEM (Ding Key Encapsulation)",
+  "spec": {
+   "file": "DKEM-PKCKEM-380333-Algorithm Specification.pdf",
+   "asset": "specs/DKEM.pdf",
+   "bytes": 445958,
+   "sha256": "48f99e665f81162e2f6c0f1233a1b6d5a74d06c04a84880009ddbeb1e8c6e396"
+  },
+  "extra": [],
+  "basic_information": [
+   "DKEM-PKCKEM-380333-Appendix A - Basic Algorithm Information.pdf"
+  ]
+ },
+ "DKEX": {
+  "title": "DKEX (Ding Key Exchange)",
+  "spec": {
+   "file": "DKEX-Algorithm Specification.pdf",
+   "asset": "specs/DKEX.pdf",
+   "bytes": 389412,
+   "sha256": "3de5d1db42cfb2af59e317729489b9f5a117763fca84fcaab51538ffd53a6de5"
+  },
+  "extra": [],
+  "basic_information": [
+   "DKEX-Appendix A - Basic Algorithm Information.pdf"
+  ]
+ },
+ "DOVE": {
+  "title": "DOVE",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/DOVE.pdf",
+   "bytes": 623942,
+   "sha256": "c76b7b8263ef94e17b9c1821b6d8087cb3125b493ce655b4eddbabfa5f19e729"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "DTRU": {
+  "title": "DTRU",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/DTRU.pdf",
+   "bytes": 525655,
+   "sha256": "f4eeb4a34df64cfde756bfe71e938279f60214245e84e2664665eb446e33e8a5"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "Facto-DSA": {
+  "title": "Facto-DSA",
+  "spec": {
+   "file": "algorithm-specification-facto-dsa.pdf",
+   "asset": "specs/Facto-DSA.pdf",
+   "bytes": 469028,
+   "sha256": "0bb0e5a31bfa29dd2d63bfff56051a50e8126abcf9d92665442077664461762b"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Information.pdf"
+  ]
+ },
+ "Flextree": {
+  "title": "FlexTree",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Flextree.pdf",
+   "bytes": 746941,
+   "sha256": "9d1e19cff59d9d8eb17729f07c7a9c2e2d9c45acaa408078dffb12eb56a99917"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息-英文.pdf"
+  ]
+ },
+ "FLIT": {
+  "title": "FLIT",
+  "spec": {
+   "file": "Algorithm specification.pdf",
+   "asset": "specs/FLIT.pdf",
+   "bytes": 466891,
+   "sha256": "47e1fee04a6e766174245f656ca49ea6b566aacbe2bd7f16daf1942f0400b13b"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Information.pdf"
+  ]
+ },
+ "Galas_Signature": {
+  "title": "Galas Signature Scheme",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Galas_Signature.pdf",
+   "bytes": 684923,
+   "sha256": "95d66ea845f96eadd68900db95a0554a6b106dce4c26d972aab33f5eb09c7c19"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "GreatWall": {
+  "title": "GreatWall Signature Algorithm",
+  "spec": {
+   "file": "The GreatWall Signature Scheme.pdf",
+   "asset": "specs/GreatWall.pdf",
+   "bytes": 719584,
+   "sha256": "257488d91153ec3164d987d261a7205935e9cf4259a1c1b0624fbfbb25428b38"
+  },
+  "extra": [
+   {
+    "file": "Clarification4GreatWall.pdf",
+    "asset": "specs/GreatWall-clarification4greatwall.pdf",
+    "bytes": 71450,
+    "sha256": "c2bf9d34fa8d36a939bbb4272d9dd9f90a076d7c646daaef9e7b229f4c614436"
+   }
+  ],
+  "basic_information": [
+   "GreatWall_NGCC ICCS_基本信息（中英签字版）.pdf"
+  ]
+ },
+ "HARE": {
+  "title": "HARE",
+  "spec": {
+   "file": "HARE算法文档.pdf",
+   "asset": "specs/HARE.pdf",
+   "bytes": 543023,
+   "sha256": "a2242e0dbfcfbf101629e49f75f7b12866f7a3186384adb3642da7f95e5122a9"
+  },
+  "extra": [],
+  "basic_information": []
+ },
+ "HEP-QC": {
+  "title": "Hybrid Equivalent Punctured and Quasi-Cyclic",
+  "spec": {
+   "file": "算法文本.pdf",
+   "asset": "specs/HEP-QC.pdf",
+   "bytes": 598486,
+   "sha256": "ebfdf7a5e695d3320b521bf4aa7149bb79ba9c6e25e860f431b90c67b02823f8"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息-英文.pdf"
+  ]
+ },
+ "Loom": {
+  "title": "Loom",
+  "spec": {
+   "file": "Loom算法设计说明书.pdf",
+   "asset": "specs/Loom.pdf",
+   "bytes": 720093,
+   "sha256": "8a77fae093d869f907409d4055cacdd7a9bb899aa693341b069467828c3ec02d"
+  },
+  "extra": [],
+  "basic_information": [
+   "AKE基本信息表英文.pdf"
+  ]
+ },
+ "LoongKEM": {
+  "title": "LoongKEM",
+  "spec": {
+   "file": "loong_kem_en.pdf",
+   "asset": "specs/LoongKEM.pdf",
+   "bytes": 496701,
+   "sha256": "d8a66fd551ccb1edd911352c73df462b0bcf8720ba58ac8a3542f59ef45538dd"
+  },
+  "extra": [],
+  "basic_information": []
+ },
+ "Lore": {
+  "title": "Lore",
+  "spec": {
+   "file": "Lore算法文本.pdf",
+   "asset": "specs/Lore.pdf",
+   "bytes": 503433,
+   "sha256": "185adb545b785ef6805a64aa9c70e1e68aca4dd705aebc8e11c3c302987e0b48"
+  },
+  "extra": [],
+  "basic_information": [
+   "Lore算法信息.pdf"
+  ]
+ },
+ "Lynxer": {
+  "title": "Lynxer",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Lynxer.pdf",
+   "bytes": 1222093,
+   "sha256": "45c8bb056141e5b314d0bbdc398d2d66ffa8c4ed6fe4a49e46793379d244c859"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.PDF"
+  ]
+ },
+ "MAMBA-Frost": {
+  "title": "MAMBA-Frost",
+  "spec": {
+   "file": "MAMBA_Frost_Doc.pdf",
+   "asset": "specs/MAMBA-Frost.pdf",
+   "bytes": 1004209,
+   "sha256": "2dec9ef65180e7fbbaa90315124fe8dc055dffa34b86e45c33c2782bbd7ca020"
+  },
+  "extra": [],
+  "basic_information": [
+   "Appendix A.pdf"
+  ]
+ },
+ "MAMBA-NIKE": {
+  "title": "MAMBA-NIKE",
+  "spec": {
+   "file": "MAMBA_NIKE.pdf",
+   "asset": "specs/MAMBA-NIKE.pdf",
+   "bytes": 898869,
+   "sha256": "b8d4e2223bd94e0562c091fdd7ce7cfea26bf4e134ef0f6ca66bc554f14564dd"
+  },
+  "extra": [],
+  "basic_information": [
+   "Appendix A-filled.pdf"
+  ]
+ },
+ "MAMBA-Viper": {
+  "title": "MAMBA-Viper",
+  "spec": {
+   "file": "MAMBA_Viper_Doc.pdf",
+   "asset": "specs/MAMBA-Viper.pdf",
+   "bytes": 991813,
+   "sha256": "020064eb0845d860be1f7911637f9a9e3e11b7378285189668563cc04f22c004"
+  },
+  "extra": [],
+  "basic_information": [
+   "Appendix A.pdf"
+  ]
+ },
+ "Mithril": {
+  "title": "Mithril",
+  "spec": {
+   "file": "Mithril.pdf",
+   "asset": "specs/Mithril.pdf",
+   "bytes": 856146,
+   "sha256": "38456688b3cf48cc5aad111498a532df4f7001c04c7a4b63d9eed588c057abce"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "Mito": {
+  "title": "Mito",
+  "spec": {
+   "file": "Algorithm Specification.pdf",
+   "asset": "specs/Mito.pdf",
+   "bytes": 708682,
+   "sha256": "3cebe02a77c5ed7bd9ebf86a3b493d1f71ca630ef746570910ce775998392a5c"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "MORNING-ATLAS": {
+  "title": "MORNING-ATLAS",
+  "spec": {
+   "file": "DSA_ATLAS_Specification.pdf",
+   "asset": "specs/MORNING-ATLAS.pdf",
+   "bytes": 954018,
+   "sha256": "c00d819aa437bda46e3a517a129e70a17b998ec5026568a38af0715f81927942"
+  },
+  "extra": [],
+  "basic_information": [
+   "basic_information.pdf"
+  ]
+ },
+ "MORNING-Scabbard": {
+  "title": "MORNING-Scabbard",
+  "spec": {
+   "file": "scabbard.pdf",
+   "asset": "specs/MORNING-Scabbard.pdf",
+   "bytes": 499637,
+   "sha256": "e4c1e414687c69e8a6b68ac0f2acd063378ff9883b9ddc15f122157b49897f4d"
+  },
+  "extra": [],
+  "basic_information": [
+   "basic_information.pdf"
+  ]
+ },
+ "NEV": {
+  "title": "NEV",
+  "spec": {
+   "file": "算法文本：NEV.pdf",
+   "asset": "specs/NEV.pdf",
+   "bytes": 1401690,
+   "sha256": "ca0cece798971b08609d86df9ee7c514d8c99caf0f5f330d8667fce863bcd44a"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息：NEV.PDF"
+  ]
+ },
+ "NEV-AKE": {
+  "title": "NEV-AKE",
+  "spec": {
+   "file": "02-算法文本：NEV-AKE.pdf",
+   "asset": "specs/NEV-AKE.pdf",
+   "bytes": 1382419,
+   "sha256": "2580621b8253d395a090ed1e90f3574c5ce482d2d3e21bea79e58d7b4a212547"
+  },
+  "extra": [],
+  "basic_information": [
+   "01-算法基本信息：NEV-AKE.PDF"
+  ]
+ },
+ "NIIKE": {
+  "title": "NIIKE",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/NIIKE.pdf",
+   "bytes": 308513,
+   "sha256": "66e6531aec35c7715205b2df54c79349a129e65ec9fb8f26b32840936db70555"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "NSS-HQC": {
+  "title": "NSS-HQC",
+  "spec": {
+   "file": "NSS-HQC算法文本.pdf",
+   "asset": "specs/NSS-HQC.pdf",
+   "bytes": 523526,
+   "sha256": "e993a0ad7b87be444a0a2381c98eb8ffe9fa75d53f34e5141add21a1c5ef2dde"
+  },
+  "extra": [],
+  "basic_information": [
+   "附录A-算法基本信息-英文版.pdf"
+  ]
+ },
+ "NTRE": {
+  "title": "NTRE Key Encapsulation Mechanism",
+  "spec": {
+   "file": "NTRE.KEM-Documentation.pdf",
+   "asset": "specs/NTRE.pdf",
+   "bytes": 338300,
+   "sha256": "af7a09a5633b494a67347bf518babf1f03ed90786e7d075a25869edd575a0003"
+  },
+  "extra": [],
+  "basic_information": [
+   "NTRE.KEM-Basic Algorithm Information.pdf"
+  ]
+ },
+ "OAEP-NTRU": {
+  "title": "OAEP-NTRU",
+  "spec": {
+   "file": "2算法文本（OAEP-NTRU）.pdf",
+   "asset": "specs/OAEP-NTRU.pdf",
+   "bytes": 392417,
+   "sha256": "cde9de6e14fad324e5133b196a40e00ef394806d06e4101da42de79f8f0689b6"
+  },
+  "extra": [],
+  "basic_information": [
+   "1 Basic Algorithm Information (OAEP-NTRU)-英文签名版本.pdf"
+  ]
+ },
+ "Octarine": {
+  "title": "Octarine",
+  "spec": {
+   "file": "Octarine.pdf",
+   "asset": "specs/Octarine.pdf",
+   "bytes": 901663,
+   "sha256": "b88fbdd019beb8f0ae85c1554b48c87a42c5447b39171ce559ae30988c1bf09f"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "OPS_Digital_Signature_Algorithm": {
+  "title": "OPS Digital Signature Algorithm",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/OPS_Digital_Signature_Algorithm.pdf",
+   "bytes": 426496,
+   "sha256": "1b5dc50ff728b2698bda90928251bae4e6cac4e138c82359f6f263cb6914078f"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "Origami": {
+  "title": "Origami",
+  "spec": {
+   "file": "Origami Algorithm specifications.pdf",
+   "asset": "specs/Origami.pdf",
+   "bytes": 827665,
+   "sha256": "436569f46829f076141ec52a118b80d5eb8f0a99acbeb627d49e02fa9680e6b3"
+  },
+  "extra": [
+   {
+    "file": "Origami Algorithm specifications Appendix.pdf",
+    "asset": "specs/Origami-origami-algorithm-specifications-appendix.pdf",
+    "bytes": 202604,
+    "sha256": "fc3e123d5e2c93c5a8a9328bc9112526a67004c15a19be45a1f7c879d7c3d426"
+   }
+  ],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "Phoenix": {
+  "title": "Phoenix",
+  "spec": {
+   "file": "Phoenix specifications.pdf",
+   "asset": "specs/Phoenix.pdf",
+   "bytes": 793955,
+   "sha256": "c9c9f4f6572fffafec246742fff577de3e09a42c0ce67012494c0360103d0e45"
+  },
+  "extra": [
+   {
+    "file": "Phoenix specifications Addition.pdf",
+    "asset": "specs/Phoenix-phoenix-specifications-addition.pdf",
+    "bytes": 44751,
+    "sha256": "ec298d7b7d461fae559a95969fc81d0339e9ef4a58ba5defe786488278841646"
+   }
+  ],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "Polar-KEM": {
+  "title": "Polar-KEM",
+  "spec": {
+   "file": "polarkem-spec.pdf",
+   "asset": "specs/Polar-KEM.pdf",
+   "bytes": 252705,
+   "sha256": "7234eb7b8e71a38a97d0f6f637aa3e72d6363faad6affde77d574124b8ba6e78"
+  },
+  "extra": [],
+  "basic_information": [
+   "PolarKEM_01_Basic_Algorithm_Information.pdf"
+  ]
+ },
+ "PolarLAC": {
+  "title": "PolarLAC",
+  "spec": {
+   "file": "算法文本.pdf",
+   "asset": "specs/PolarLAC.pdf",
+   "bytes": 1355275,
+   "sha256": "aba16100f0e5c49d54e1811c672d90c4d837200116e5a312625f8473b6d40eca"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息.pdf"
+  ]
+ },
+ "QCTM": {
+  "title": "Quasi-Cyclic Twisted McEliece Key Encapsulation Mechanism",
+  "spec": {
+   "file": "Algorithm_Text_en.pdf",
+   "asset": "specs/QCTM.pdf",
+   "bytes": 599405,
+   "sha256": "dec99d7b20f338bddd2049d95b64db91704a52f1e5aa8ca7083060858550e330"
+  },
+  "extra": [],
+  "basic_information": [
+   "Algorithm_Basic_Information_en.pdf"
+  ]
+ },
+ "QIMEN-PIKE": {
+  "title": "QIMEN-PIKE",
+  "spec": {
+   "file": "2-算法文本(英文) .pdf",
+   "asset": "specs/QIMEN-PIKE.pdf",
+   "bytes": 1578178,
+   "sha256": "fffc590f932655b26dd6e8affbd2dfa65238c9d874922f5f8665352539d43f94"
+  },
+  "extra": [],
+  "basic_information": [
+   "1-算法基本信息.pdf"
+  ]
+ },
+ "QingLuan": {
+  "title": "Qing Luan",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/QingLuan.pdf",
+   "bytes": 539329,
+   "sha256": "85edd9c2b0025cae82e4c9160f2286365279ce18bfde062d3586f17b4994f4bd"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "QUBE": {
+  "title": "QUBE",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/QUBE.pdf",
+   "bytes": 652048,
+   "sha256": "c56c14e58dba6065beb555cfe71f046061d912bed3a8b521389d0c09807b9f48"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "ReSolveD-alpha": {
+  "title": "ReSolveD-ɑ",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/ReSolveD-alpha.pdf",
+   "bytes": 1199725,
+   "sha256": "d4433c4960f2d87114b60f61f7781bf718a24c0adfb72c8bc8882f5889aa5b38"
+  },
+  "extra": [
+   {
+    "file": "Algorithm specifications Addition.pdf",
+    "asset": "specs/ReSolveD-alpha-algorithm-specifications-addition.pdf",
+    "bytes": 205206,
+    "sha256": "e8d45bd69772f8c735a83792f5cf6aeaeedc6565f5d28eec5d949bd9f127bf08"
+   }
+  ],
+  "basic_information": [
+   "Basic information.PDF"
+  ]
+ },
+ "Rhyme": {
+  "title": "Rhyme",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Rhyme.pdf",
+   "bytes": 678625,
+   "sha256": "63856b909f8f767dc2f4fc37351907fe2c8239ccdbb3aedda975b017dddeb5a3"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "Rudraksh2": {
+  "title": "Rudraksh2",
+  "spec": {
+   "file": "rudraksh2.pdf",
+   "asset": "specs/Rudraksh2.pdf",
+   "bytes": 482040,
+   "sha256": "f1f8fd50fcc49e71d34ade4f42b0c6cf3355eba16fb9d7f2594bd157f63c2acb"
+  },
+  "extra": [],
+  "basic_information": [
+   "basic_information.pdf"
+  ]
+ },
+ "Scloudplus": {
+  "title": "Scloud+",
+  "spec": {
+   "file": "Scloud+算法文本.pdf",
+   "asset": "specs/Scloudplus.pdf",
+   "bytes": 339791,
+   "sha256": "4e0af1cdadb13ec91e111f0d237e56fc31c5e9f9f7b093e25c45cb0666c02da9"
+  },
+  "extra": [],
+  "basic_information": []
+ },
+ "shuttle": {
+  "title": "Shuttle",
+  "spec": {
+   "file": "Shuttle 算法设计文档（V4）.pdf",
+   "asset": "specs/shuttle.pdf",
+   "bytes": 1019287,
+   "sha256": "881145de9832bc55cc5a27a61fff2a213c625c20c2c1ada60c32825ad8a95893"
+  },
+  "extra": [],
+  "basic_information": [
+   "签名基本信息表英文版.pdf"
+  ]
+ },
+ "Sigurd": {
+  "title": "Sigurd",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/Sigurd.pdf",
+   "bytes": 599661,
+   "sha256": "70aeb12841582857947e4bef3766a34b1013f6d63dce2d5184b7a04b67dfb974"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "SQIsign2D-push12": {
+  "title": "SQIsign2D-push1/2",
+  "spec": {
+   "file": "算法本文.pdf",
+   "asset": "specs/SQIsign2D-push12.pdf",
+   "bytes": 817378,
+   "sha256": "1363945ff198e9ca48e7a7dbe39d488c590580d746c56b7f10e30d51f86059f6"
+  },
+  "extra": [],
+  "basic_information": [
+   "算法基本信息.pdf"
+  ]
+ },
+ "SQIsign2D2": {
+  "title": "SQIsign2D2",
+  "spec": {
+   "file": "SQISign2D2 Algorithm specifications.pdf",
+   "asset": "specs/SQIsign2D2.pdf",
+   "bytes": 1206964,
+   "sha256": "598139da24c326890600ced289c41e621e7df5f1612ef3c1c699e620e33fb1ec"
+  },
+  "extra": [
+   {
+    "file": "SQISign Algorithm specifications Addition.pdf",
+    "asset": "specs/SQIsign2D2-sqisign-algorithm-specifications-addition.pdf",
+    "bytes": 144321,
+    "sha256": "2fb445bb132a53cd4611dc4f592716b0afb6e5b907089e3039b158528c0f292e"
+   }
+  ],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "SQIsignTriangle": {
+  "title": "SQIsignTriangle",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/SQIsignTriangle.pdf",
+   "bytes": 368496,
+   "sha256": "e9376de36257c2f4d1dcbb4864feb2849835fba7331b2e3dc8daae00fbe3d98c"
+  },
+  "extra": [
+   {
+    "file": "SQIsignTriangle_Parameter_Sets_Note.pdf",
+    "asset": "specs/SQIsignTriangle-sqisigntriangle-parameter-sets-note.pdf",
+    "bytes": 107617,
+    "sha256": "922867f1ebb5c5cbfb8845836411d1fe3c290710abdef31f3f9cbaea0fa13d3f"
+   }
+  ],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "SYDO": {
+  "title": "SYDO",
+  "spec": {
+   "file": "2-Algorithm specifications.pdf",
+   "asset": "specs/SYDO.pdf",
+   "bytes": 1072458,
+   "sha256": "6638dd2b9fb696128f655c9da93fcf4c329925c83a599e3604adbf26af0f37ab"
+  },
+  "extra": [
+   {
+    "file": "2-Algorithm specifications-Appendix-B.pdf",
+    "asset": "specs/SYDO-2-algorithm-specifications-appendix-b.pdf",
+    "bytes": 110326,
+    "sha256": "b0e28e5039ce2ee531f443b938fb88ef6b9cfa26cb5b4b38768454e467d50bcf"
+   }
+  ],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "Tins": {
+  "title": "Tins",
+  "spec": {
+   "file": "tins.pdf",
+   "asset": "specs/Tins.pdf",
+   "bytes": 559535,
+   "sha256": "1bbb2b72999d5f7b46e52f94ea4b4fbda4ee2212f2ed35b8d3f030fcaddfbf7a"
+  },
+  "extra": [],
+  "basic_information": [
+   "Appendix A Basic Algorithm Information.pdf"
+  ]
+ },
+ "TRIKE": {
+  "title": "TRIKE",
+  "spec": {
+   "file": "TRIKE算法文档.pdf",
+   "asset": "specs/TRIKE.pdf",
+   "bytes": 970800,
+   "sha256": "9258ff7264bb3bb78c02da0bf4b915f7087c8711a8ccd67e1d14a1ac2b32b407"
+  },
+  "extra": [],
+  "basic_information": []
+ },
+ "TRINE": {
+  "title": "TRINE",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/TRINE.pdf",
+   "bytes": 393425,
+   "sha256": "dbd62aefe11d21091e9e04f387b9918aff1e63a1b9bde009387840aa33728259"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "TriQ-KEM": {
+  "title": "TriQ-KEM",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/TriQ-KEM.pdf",
+   "bytes": 915349,
+   "sha256": "6ee698b0a37243ffc334bbc44c19bbcb1b818fe33cf62d02f85a5ac7f1568fd1"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "TriQ-KEX": {
+  "title": "TriQ-KEX",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/TriQ-KEX.pdf",
+   "bytes": 390258,
+   "sha256": "04b7cfff9dcaffd1677ecd01785aad10fa048b0473ec707831dc9e56d20ab6c9"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "TSUOV": {
+  "title": "TSUOV",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/TSUOV.pdf",
+   "bytes": 465807,
+   "sha256": "17b2cb0d43a3f45c59fe79f2819bb6dcdc988fdc1a9776a40054d27761f5697a"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "UVW-KEM": {
+  "title": "UVW Key Encapsulation Mechanism",
+  "spec": {
+   "file": "UVW-KEM.pdf",
+   "asset": "specs/UVW-KEM.pdf",
+   "bytes": 374528,
+   "sha256": "70e1e62f41ead04e9a74eddd851b4fcd05cf2afe3f5667590f2f89062f011356"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "UVW_signature": {
+  "title": "UVW signature",
+  "spec": {
+   "file": "UVW Signature Scheme.pdf",
+   "asset": "specs/UVW_signature.pdf",
+   "bytes": 401698,
+   "sha256": "e4e28d0dfaa84c1c8d0494b73abfee7de78bfde31adfa521f532f797eb77992c"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic Algorithm Information.pdf"
+  ]
+ },
+ "VDOO": {
+  "title": "VDOO: Vinegar-Diagonal-Oil-Oil",
+  "spec": {
+   "file": "VDOO-Specifications.pdf",
+   "asset": "specs/VDOO.pdf",
+   "bytes": 690449,
+   "sha256": "eb22504626a5d02191b7790061de0ffa499eeb6b1d19d99cf5b87d3e28696ab0"
+  },
+  "extra": [],
+  "basic_information": [
+   "basic_information.pdf"
+  ]
+ },
+ "Weaver": {
+  "title": "Weaver",
+  "spec": {
+   "file": "Weaver算法设计说明书.pdf",
+   "asset": "specs/Weaver.pdf",
+   "bytes": 680921,
+   "sha256": "d9fa03f683dfc65656a3e12606d1d0094c92bf8010eed807a1c6fc05b10b21af"
+  },
+  "extra": [],
+  "basic_information": [
+   "KEM基本信息表英文.pdf"
+  ]
+ },
+ "YuanYang.DSA": {
+  "title": "YuanYang.DSA",
+  "spec": {
+   "file": "Algorithm specifications.pdf",
+   "asset": "specs/YuanYang.DSA.pdf",
+   "bytes": 1039489,
+   "sha256": "30242db5485dd4284b360d5bd6d126a63df985154e10fafb70f5773e0d7a3e47"
+  },
+  "extra": [],
+  "basic_information": [
+   "Basic information.pdf"
+  ]
+ },
+ "YuanYang.KEM": {
+  "title": "YuanYang.KEM",
+  "spec": {
+   "file": "YuanYang.KEM算法文本.pdf",
+   "asset": "specs/YuanYang.KEM.pdf",
+   "bytes": 884262,
+   "sha256": "b56b0bf869ec3f11bc1cd3b4388bccdc5f8c16187a638d3e5fa8e0d8d54cec50"
+  },
+  "extra": [],
+  "basic_information": [
+   "YuanYang.KEM算法基本信息.pdf"
+  ]
+ },
+ "ZEN": {
+  "title": "ZEN",
+  "spec": {
+   "file": "Algorithm_specifications.pdf",
+   "asset": "specs/ZEN.pdf",
+   "bytes": 240531,
+   "sha256": "03cdcd8e084d272989e4a7b8b814b10015c2ee4fd6c5d530e2a27c6a930ba714"
+  },
+  "extra": [],
+  "basic_information": [
+   "Appendix_A_Basic_Information.pdf"
+  ]
+ }
+}

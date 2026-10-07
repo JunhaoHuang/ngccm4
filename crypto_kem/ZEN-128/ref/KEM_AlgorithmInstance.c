@@ -54,6 +54,9 @@ int kem_keygen_derand(
 	unsigned char *sk, unsigned long long *sk_len_bytes,
 	const unsigned char *seed)
 {
+	/* ICCS API: report the output lengths (needed by callers such as CreTAKE). */
+	*pk_len_bytes = kem_get_pk_len_bytes();
+	*sk_len_bytes = kem_get_sk_len_bytes();
 	unsigned int i;
 
 	pke_keygen_derand(pk, sk, seed);
@@ -75,6 +78,9 @@ int kem_keygen(
 	unsigned char *pk, unsigned long long *pk_len_bytes,
 	unsigned char *sk, unsigned long long *sk_len_bytes)
 {
+	/* ICCS API: report the output lengths (needed by callers such as CreTAKE). */
+	*pk_len_bytes = kem_get_pk_len_bytes();
+	*sk_len_bytes = kem_get_sk_len_bytes();
 	unsigned int i;
 
 	pke_keygen(pk, sk);
@@ -97,6 +103,9 @@ int kem_enc(
 	unsigned char *ss, unsigned long long *ss_len_bytes,
 	unsigned char *ct, unsigned long long *ct_len_bytes)
 {
+	/* ICCS API: report the output lengths (needed by callers such as CreTAKE). */
+	*ss_len_bytes = kem_get_ss_len_bytes();
+	*ct_len_bytes = kem_get_ct_len_bytes();
 	uint8_t buf[ZEN_INDCPA_MSG_LEN_BYTES + 2 * ZEN_SYM_LEN_BYTES];
 	uint8_t kr[2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES];
 #ifdef USE_KECCAK
@@ -122,6 +131,8 @@ int kem_dec(
 	unsigned char *ct, unsigned long long ct_len_bytes,
 	unsigned char *ss, unsigned long long *ss_len_bytes)
 {
+	/* ICCS API: report the output lengths (needed by callers such as CreTAKE). */
+	*ss_len_bytes = kem_get_ss_len_bytes();
 	unsigned int i, mask;
 	uint8_t buf[ZEN_INDCPA_MSG_LEN_BYTES + ZEN_SYM_LEN_BYTES];
 	uint8_t kr[2 * ZEN_SYM_LEN_BYTES + SEED_LEN_BYTES];

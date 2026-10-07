@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=Facto-DSA
+ngcc_title=Facto-DSA
+ngcc_instance=Facto-DSA-128
+ngcc_instance_dir=Reference_Implementation/Facto-DSA-128
+ngcc_zip_sha256=b3de38fcc2d92ce83290d17cb250dde61f95d3326a49ada36fad3c578f2fc509
+ngcc_category=SIG
+tier=qemu
+kat_file=Test_Vectors/KAT_SIG_Facto-DSA-128.txt
+copy_dirs=schemes/Facto-DSA/Reference_Implementation/Facto-DSA-128
+stripped=KAT_SIG.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]');run_benchmarks.c (strip rule '.*_bench.*\.c');test.c (strip rule 'test.*\.c')

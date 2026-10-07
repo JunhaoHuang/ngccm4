@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-512/ref/poly.c
+../../../crypto_kem/DKEM-512/ref/poly.c

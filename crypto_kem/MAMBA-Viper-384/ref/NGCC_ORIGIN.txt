@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=MAMBA-Viper
+ngcc_title=MAMBA-Viper
+ngcc_instance=MAMBA-Viper-384
+ngcc_instance_dir=Reference_Implementation/MAMBA-Viper-384
+ngcc_zip_sha256=cdf52bb77066664f74eb44872d5ab1785c22df194e50c603120432a169c61f4c
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_MAMBA-Viper-384.txt
+copy_dirs=schemes/MAMBA-Viper/Reference_Implementation/MAMBA-Viper-384
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=COMPASS-KEM
+ngcc_title=COMPASS-KEM
+ngcc_instance=COMPASS-KEM-256
+ngcc_instance_dir=Reference_Implementation/COMPASS-KEM-256
+ngcc_zip_sha256=8fc838488ac0849d4c6afd161f8b9742c7a8b9a330bc3b79df70ced7e2d1d5e2
+ngcc_category=KEM
+tier=board
+kat_file=
+copy_dirs=schemes/COMPASS-KEM/Reference_Implementation/COMPASS-KEM-256
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=BAG-Loong
+ngcc_title=BAG-Loong
+ngcc_instance=BAG-Loong-256
+ngcc_instance_dir=Reference_Implementation/Loong-Block-ms-256
+ngcc_zip_sha256=2795fd57d3d00791652256362b4a21982116d3aad1fb63633dac923e0e76e05b
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_BAG-Loong-256.txt
+copy_dirs=schemes/BAG-Loong/Reference_Implementation/Loong-Block-ms-256
+stripped=lib/api_pkc/auxfunc.c (strip rule 'auxfunc\.[ch]');lib/api_pkc/auxfunc.h (strip rule 'auxfunc\.[ch]');lib/api_pkc/drng.c (strip rule 'drng\.[ch]');lib/api_pkc/drng.h (strip rule 'drng\.[ch]')

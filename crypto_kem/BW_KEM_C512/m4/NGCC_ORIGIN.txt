@@ -1,0 +1,13 @@
+importer_version=1
+ngcc_scheme=BW-KEM
+ngcc_title=BW-KEM
+ngcc_instance=BW_KEM_C512
+ngcc_instance_dir=M4_Implementation/crypto_kem/bw-kem-512/m4fspeed
+ngcc_m4_zip_dir=Implementations/Additional_Implementation/ARM-performance-optimized
+impl=m4
+ngcc_zip_sha256=a1f8a079df7d55576209f45fcf00afd700fc60c0b18d758d572585ccea594ae3
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_BW_KEM_C512.txt
+copy_dirs=schemes/BW-KEM/M4_Implementation/crypto_kem/bw-kem-512/m4fspeed
+stripped=auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

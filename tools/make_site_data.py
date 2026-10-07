@@ -13,7 +13,9 @@ Inputs (all read-only):
   NGCC/schemes.json, schemes/*/Test_Vectors/KAT_*.txt, results/*/*.json
                                         NGCC candidate list, official KAT files
                                         (key sizes), host-side observed sizes
-  tools/ngcc_links.json                 official NGCC web page per submission
+  tools/ngcc_specs.json, docs/specs/    algorithm-specification PDFs served by the site
+                                        (written by tools/collect_ngcc_specs.py)
+  tools/ngcc_links.json                 submission zip + public-comment URLs per title
                                         (written by tools/fetch_ngcc_links.py)
 
 Outputs:
@@ -63,7 +65,7 @@ SIZE_FIELDS = {
 # Hand-ported directories (no NGCC_ORIGIN.txt): dir prefix -> (NGCC folder, instance name pattern)
 HAND_PORTED = {
     "ZEN": ("ZEN", "ZEN_{n}"),
-    "DKE": ("DKEM", "DKEM-{n}"),
+    "DKEM": ("DKEM", "DKEM-{n}"),
     "DKEX": ("DKEX", "DKEX-{n}"),
     "ADKEX": ("ADKEX", "ADKEX-{n}"),
 }
@@ -95,19 +97,37 @@ def warn(msg: str) -> None:
 
 # --------------------------------------------------------------------------- inputs
 
+SPECS_FILE = ROOT / "tools" / "ngcc_specs.json"
 LINKS_FILE = ROOT / "tools" / "ngcc_links.json"
 
 
 def load_ngcc_links() -> dict[str, dict]:
-    """Official NGCC page / zip / comment-thread URLs per submission title (tools/fetch_ngcc_links.py)."""
+    """Submission zip and public-comment thread URLs per submission title (tools/fetch_ngcc_links.py).
+    Shown as additional information only; the primary link of every row is the specification PDF."""
     if not LINKS_FILE.exists():
-        print(f"warning: {LINKS_FILE} missing; run tools/fetch_ngcc_links.py (no NGCC links in the site)", file=sys.stderr)
+        print(f"warning: {LINKS_FILE} missing; run tools/fetch_ngcc_links.py (rows will have no zip/comment links)", file=sys.stderr)
         return {}
     return json.loads(LINKS_FILE.read_text(encoding="utf-8"))
 
 
-def ngcc_ref(scheme_json: dict, folder: str, instance: str, links: dict[str, dict]) -> dict:
-    """The per-row pointer to the NGCC submission, including its official web page."""
+def load_ngcc_specs(docs: Path) -> dict[str, dict]:
+    """Algorithm-specification PDFs published under docs/specs/ (tools/collect_ngcc_specs.py), per folder."""
+    if not SPECS_FILE.exists():
+        print(f"warning: {SPECS_FILE} missing; run tools/collect_ngcc_specs.py (rows will have no specification link)", file=sys.stderr)
+        return {}
+    specs = json.loads(SPECS_FILE.read_text(encoding="utf-8"))
+    missing = [e["spec"]["asset"] for e in specs.values() if e.get("spec") and not (docs / e["spec"]["asset"]).is_file()]
+    if missing:
+        print(f"warning: {len(missing)} specification PDF(s) listed in {SPECS_FILE.name} are missing under {docs}: "
+              + ", ".join(missing[:5]) + (" ..." if len(missing) > 5 else ""), file=sys.stderr)
+    return specs
+
+
+def ngcc_ref(scheme_json: dict, folder: str, instance: str, specs: dict[str, dict], links: dict[str, dict]) -> dict:
+    """The per-row pointer to the NGCC submission: its specification PDF served from the site (primary link)
+    plus the submission zip and public-comment thread URLs as additional information."""
+    entry = specs.get(folder, {})
+    spec = entry.get("spec") or {}
     title = scheme_json.get("title", folder)
     link = links.get(title, {})
     return {
@@ -115,7 +135,9 @@ def ngcc_ref(scheme_json: dict, folder: str, instance: str, links: dict[str, dic
         "instance": instance,
         "title": title,
         "pub_date": scheme_json.get("pub_date"),
-        "url": link.get("page"),
+        "spec": spec.get("asset"),
+        "spec_file": spec.get("file"),
+        "spec_extra": [{"href": e["asset"], "file": e["file"]} for e in entry.get("extra", [])],
         "zip_url": link.get("zip"),
         "comments_url": link.get("comments"),
     }
@@ -132,7 +154,7 @@ def load_manifest() -> dict:
     return {k: v for k, v in data.items() if k != "_comment"}
 
 
-def load_rows(schemes: dict, links: dict[str, dict]) -> "OrderedDict[str, dict]":
+def load_rows(schemes: dict, specs: dict[str, dict], links: dict[str, dict]) -> "OrderedDict[str, dict]":
     rows: OrderedDict[str, dict] = OrderedDict()
     for impl in build_schemes.discover_implementations(ROOT, set()):
         origin = kat_check.read_origin(impl)
@@ -158,7 +180,7 @@ def load_rows(schemes: dict, links: dict[str, dict]) -> "OrderedDict[str, dict]"
             "impl": impl.name,
             "tier": impl.tier,
             "hand_ported": not bool(origin),
-            "ngcc": ngcc_ref(scheme_json, folder, instance, links),
+            "ngcc": ngcc_ref(scheme_json, folder, instance, specs, links),
             "_impl": impl,
             "_origin": origin,
             "cycles": {},
@@ -715,12 +737,12 @@ def security_level(name: str, defines: dict | None) -> dict:
     return _level(None, variant=variant, param_set="-", source="none", claim=None)
 
 
-def check_links(rows: list[dict], links: dict[str, dict], strict: bool) -> None:
-    missing = sorted({r["ngcc"]["title"] for r in rows if not r["ngcc"].get("url")})
+def check_specs(rows: list[dict], specs: dict[str, dict], strict: bool) -> None:
+    missing = sorted({r["ngcc"]["title"] for r in rows if not r["ngcc"].get("spec")})
     if missing:
-        msg = (f"{len(missing)} submission(s) without an official NGCC page link "
-               f"(run tools/fetch_ngcc_links.py): {', '.join(missing)}")
-        if strict and links:
+        msg = (f"{len(missing)} submission(s) without a specification PDF "
+               f"(run tools/collect_ngcc_specs.py): {', '.join(missing)}")
+        if strict and specs:
             raise SystemExit("error: " + msg)
         print("warning: " + msg, file=sys.stderr)
 
@@ -764,14 +786,16 @@ def finish_row(row: dict, status_text: str | None) -> None:
         row["run_status"] = "partial"
     elif status_text:
         row["run_status"] = "failed"
+    elif row["tier"] == "qemu" and row["family"] != "crypto_sign":
+        row["run_status"] = "not-run"      # QEMU-only KEM/KEX: never flashed by design
     else:
-        row["run_status"] = "not-run"
+        row["run_status"] = "pending"      # board-tier implementation that has not been benchmarked yet
     row["cycles_total"] = sum(row["cycles"][op]["avg"] for op in ops) if row["run_status"] == "measured" else None
     if status_text and row["run_status"] == "measured":
         row["notes"].append(status_text)
 
 
-def build_not_benchmarked(schemes: dict, manifest: dict, rows: dict, ngcc_root: Path, kat_raw: Path, links: dict[str, dict]) -> tuple[dict, list[str]]:
+def build_not_benchmarked(schemes: dict, manifest: dict, rows: dict, ngcc_root: Path, kat_raw: Path, specs: dict[str, dict], links: dict[str, dict]) -> tuple[dict, list[str]]:
     unsupported: list[dict] = []
     footnotes: list[str] = []
     imported = {(r["ngcc"]["folder"], r["ngcc"]["instance"]) for r in rows.values()}
@@ -811,7 +835,7 @@ def build_not_benchmarked(schemes: dict, manifest: dict, rows: dict, ngcc_root: 
                 "reason_scope": scope,
                 "pub_date": scheme.get("pub_date"),
                 "level": security_level(name, inst_rule.get("defines") if isinstance(inst_rule, dict) else None),
-                "ngcc": ngcc_ref(scheme, folder, name, links),
+                "ngcc": ngcc_ref(scheme, folder, name, specs, links),
                 "category_name": category,
                 "scheme": name,
                 "notes": [],
@@ -854,8 +878,9 @@ def main(argv: list[str]) -> int:
 
     schemes = load_schemes_json(ngcc_root)
     manifest = load_manifest()
+    specs = load_ngcc_specs(args.docs)
     links = load_ngcc_links()
-    rows = load_rows(schemes, links)
+    rows = load_rows(schemes, specs, links)
     cycles = parse_speed_csv(csv_path, args.platform)
     conditions, status, code_md = parse_md(md_path)
     code_files = code_from_size_files(out_dir / "benchmark_sizes", rows)
@@ -886,9 +911,9 @@ def main(argv: list[str]) -> int:
             row["kat"] = {"status": kat["status"], "detail": kat["detail"], "caveat": caveat}
         finish_row(row, status.get(stem))
 
-    not_bench, footnotes = build_not_benchmarked(schemes, manifest, rows, ngcc_root, kat_raw, links)
+    not_bench, footnotes = build_not_benchmarked(schemes, manifest, rows, ngcc_root, kat_raw, specs, links)
     check_levels(list(rows.values()) + not_bench["unsupported"], args.strict)
-    check_links(list(rows.values()) + not_bench["unsupported"], links, args.strict)
+    check_specs(list(rows.values()) + not_bench["unsupported"], specs, args.strict)
 
     # ---- accounting / assertions
     by_status = Counter((r["category"], r["run_status"]) for r in rows.values())
@@ -909,9 +934,13 @@ def main(argv: list[str]) -> int:
         problems.append("NGCC folders not covered: " + ", ".join(sorted(set(schemes["by_folder"]) - folders_covered)))
     if not_bench["unaccounted"]:
         problems.append("instances neither imported nor marked unsupported: " + ", ".join(not_bench["unaccounted"]))
-    for r in rows.values():
-        if r["run_status"] == "not-run" and (r["tier"] != "qemu" or r["family"] == "crypto_sign"):
-            problems.append(f"{r['id']}: not-run but tier={r['tier']} family={r['family']}")
+    pending = sorted(r["id"] for r in rows.values() if r["run_status"] == "pending")
+    if pending:
+        msg = f"{len(pending)} board-tier implementation(s) not benchmarked yet (run benchmark_schemes.py): " + ", ".join(pending)
+        if args.strict:
+            problems.append(msg)
+        else:
+            warn(msg)
     no_sizes = [r["id"] for r in rows.values() if not r.get("sizes")]
     if no_sizes:
         msg = f"{len(no_sizes)} implementations without key sizes: " + ", ".join(no_sizes)
@@ -925,7 +954,7 @@ def main(argv: list[str]) -> int:
 
     print("implementations:", len(rows))
     for cat in ("kem", "kex", "sig"):
-        line = {s: by_status.get((cat, s), 0) for s in ("measured", "partial", "failed", "not-run")}
+        line = {s: by_status.get((cat, s), 0) for s in ("measured", "partial", "failed", "not-run", "pending")}
         print(f"  {cat}: {line}  tiers={{board: {by_tier.get((cat, 'board'), 0)}, qemu: {by_tier.get((cat, 'qemu'), 0)}}}")
     print("csv targets:", len(cycles), " status rows:", len(status), " overlap:", len(set(cycles) & set(status)))
     print("code size rows:", sum(1 for r in rows.values() if r["code"]), " stack rows:", len(stack), f"(skipped {stack_skipped} raw files without a directory)")
@@ -985,6 +1014,7 @@ def main(argv: list[str]) -> int:
         "not_benchmarked": {
             "unsupported": not_bench["unsupported"],
             "qemu_tier": [r["id"] for r in rows.values() if r["run_status"] == "not-run"],
+            "pending": [r["id"] for r in rows.values() if r["run_status"] == "pending"],
             "failed": [r["id"] for r in rows.values() if r["run_status"] in ("failed", "partial")],
         },
     }

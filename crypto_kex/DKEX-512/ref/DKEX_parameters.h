@@ -8,7 +8,7 @@ Sizes are stated in BITS.
 SIG primitive: ML-DSA-87 (Cat 5, 256-bit classical). No standard PQ
 signature reaches 512-bit classical / >=256-bit quantum (see qna.txt §3),
 so the composite long-term authenticity is capped at 256-bit. The
-ephemeral DKE-512 KEX still provides 512-bit forward secrecy.
+ephemeral DKEM-512 KEX still provides 512-bit forward secrecy.
 */
 #include "parameters.h"
 #include "dkex_sig.h"

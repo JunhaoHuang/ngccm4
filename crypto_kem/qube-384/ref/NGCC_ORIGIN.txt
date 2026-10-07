@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=QUBE
+ngcc_title=QUBE
+ngcc_instance=qube-384
+ngcc_instance_dir=Reference_Implementation/qube-384
+ngcc_zip_sha256=f5eedd8a4bf786cd5a56a21f2c7ad5cf3307939a1bf0aeca5041920067880396
+ngcc_category=KEM
+tier=qemu
+kat_file=
+copy_dirs=schemes/QUBE/Reference_Implementation/qube-384
+stripped=lib/api_pkc/auxfunc.c (strip rule 'auxfunc\.[ch]');lib/api_pkc/auxfunc.h (strip rule 'auxfunc\.[ch]');lib/api_pkc/drng.c (strip rule 'drng\.[ch]');lib/api_pkc/drng.h (strip rule 'drng\.[ch]')

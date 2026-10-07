@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-128/m4/fastinvntt.S
+../../../crypto_kem/DKEM-128/m4/fastinvntt.S

@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=FLIT
+ngcc_title=FLIT
+ngcc_instance=FLIT256_REF
+ngcc_instance_dir=Reference_Implementation/FLIT256
+ngcc_zip_sha256=6c560f434b347fbac8334f55b9ba2838cb1cf885d5aa25e95acb66ed6c6de0fe
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_FLIT256_REF.txt
+copy_dirs=schemes/FLIT/Reference_Implementation/FLIT256
+stripped=KAT_KEM.c (strip rule 'KAT_.*\.c');auxfunc.c (strip rule 'auxfunc\.[ch]');auxfunc.h (strip rule 'auxfunc\.[ch]');drng.c (strip rule 'drng\.[ch]');drng.h (strip rule 'drng\.[ch]')

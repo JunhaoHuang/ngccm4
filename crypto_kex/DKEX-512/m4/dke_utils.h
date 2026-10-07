@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-512/m4/dke_utils.h
+../../../crypto_kem/DKEM-512/m4/dke_utils.h

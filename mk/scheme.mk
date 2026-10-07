@@ -27,6 +27,25 @@ $(basename $(notdir $(call family_app_sources,$(1))))
 endef
 
 IMPLS := $(sort $(foreach family,$(SUPPORTED_FAMILIES),$(patsubst %/,%,$(dir $(wildcard $(family)/*/*/$(call family_entry,$(family)))))))
+ALL_IMPLS := $(IMPLS)
+
+# Skip list: mk/skip.mk (SKIP_SCHEMES, SKIP_IMPLS) plus SKIP="..." from the
+# command line; NOSKIP=1 disables it. See mk/skip.mk for the syntax.
+SKIP_MK ?= mk/skip.mk
+-include $(SKIP_MK)
+SKIP ?=
+NOSKIP ?= 0
+SKIP_SCHEMES += $(foreach s,$(SKIP),$(if $(findstring /,$(s)),,$(s)))
+SKIP_IMPLS += $(foreach s,$(SKIP),$(if $(findstring /,$(s)),$(s),))
+SKIP_SCHEMES := $(sort $(strip $(SKIP_SCHEMES)))
+SKIP_IMPLS := $(sort $(strip $(SKIP_IMPLS)))
+SKIPPED_IMPLS := $(sort $(filter $(SKIP_IMPLS),$(IMPLS)) \
+	$(foreach impl,$(IMPLS),$(if $(filter $(SKIP_SCHEMES),$(call scheme_of_impl,$(impl))),$(impl))))
+ifneq ($(NOSKIP),1)
+IMPLS := $(filter-out $(SKIPPED_IMPLS),$(IMPLS))
+else
+SKIPPED_IMPLS :=
+endif
 
 ifneq ($(strip $(FAMILY)),)
 IMPLS := $(filter $(FAMILY)/%,$(IMPLS))
@@ -79,9 +98,30 @@ endef
 #   IMPL_CFLAGS_<impl_name>         extra compiler flags for the implementation sources
 #   IMPL_EXCLUDE_COMMON_<impl_name> common/ sources to leave out of the archive
 #   IMPL_EXCLUDE_SRC_<impl_name>    implementation sources (full relative paths) to leave out
+#   IMPL_DEPS_<impl_name>           other implementations linked into this one (see below)
+#   IMPL_DEP_KEEP_<impl_name>       exported symbol patterns of those dependencies
 # They are included here, before any rule is generated, so that the variables
 # are visible when define_impl is expanded.
--include $(foreach impl,$(IMPLS),$(impl)/config.mk) $(foreach impl,$(IMPLS),mk/$(call impl_name,$(impl)).mk)
+-include $(foreach impl,$(ALL_IMPLS),$(impl)/config.mk) $(foreach impl,$(ALL_IMPLS),mk/$(call impl_name,$(impl)).mk)
+
+# Implementation dependencies (IMPL_DEPS_<impl_name> in config.mk): other
+# implementations of this tree, e.g. crypto_kem/POLARLAC-128/ref, whose sources
+# are compiled as usual, partially linked into one relocatable object per
+# dependency and reduced to their public API (IMPL_DEP_KEEP_<impl_name>,
+# default kem_* sig_* pke_* kex_*) with objcopy, so that two dependencies with
+# the same internal symbol names (poly_*, shake128, ...) can be linked into one
+# protocol implementation. Dependencies are built even when they are not part
+# of the current selection.
+define impl_deps
+$(strip $(IMPL_DEPS_$(call impl_name,$(1))))
+endef
+DEP_IMPLS := $(sort $(foreach impl,$(IMPLS),$(call impl_deps,$(impl))))
+MISSING_DEPS := $(filter-out $(ALL_IMPLS),$(DEP_IMPLS))
+ifneq ($(strip $(MISSING_DEPS)),)
+$(error IMPL_DEPS refer to implementations that do not exist: $(MISSING_DEPS))
+endif
+BUILD_IMPLS := $(sort $(IMPLS) $(DEP_IMPLS))
+DEFAULT_DEP_KEEP := kem_* sig_* pke_* PKE_* kex_*
 
 define available_apps_for_impl
 $(call family_available_apps,$(call family_of_impl,$(1)))
@@ -150,6 +190,24 @@ define lib_objects
 $(foreach src,$(call impl_lib_sources,$(1)),$(call obj_from_src,$(1),$(2),$(src)))
 endef
 
+# Objects of an implementation's own sources only (no common/ or platform code).
+define impl_own_objects
+$(foreach src,$(call impl_sources,$(1)),$(call obj_from_src,$(1),$(2),$(src)))
+endef
+
+# $(1)=implementation, $(2)=profile, $(3)=dependency implementation
+define dep_object
+obj/$(call profile_dir,$(2))$(call impl_name,$(1))/deps/$(call impl_name,$(3)).o
+endef
+
+define dep_objects
+$(foreach dep,$(call impl_deps,$(1)),$(call dep_object,$(1),$(2),$(dep)))
+endef
+
+define dep_keep_flags
+$(foreach sym,$(or $(strip $(IMPL_DEP_KEEP_$(call impl_name,$(1)))),$(DEFAULT_DEP_KEEP)),-G '$(sym)')
+endef
+
 define app_source
 $(call family_of_impl,$(1))/$(2).c
 endef
@@ -190,6 +248,10 @@ define elf_libraries
 $(call elf_library,$(1),$(2)) $(call mldsa_lib_target,$(1))
 endef
 
+define elf_dep_objects
+$(call dep_objects,$(1),$(if $(filter hashing,$(2)),hashprof,normal))
+endef
+
 define lib_cppflags
 $(if $(filter hashprof,$(2)),-DHASHING_PROFILE)
 endef
@@ -219,11 +281,13 @@ $(foreach src,$(call impl_lib_sources,$(1)),$(eval $(call obj_from_src,$(1),hash
 
 $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call app_object,$(1),$(app)): $(call app_source,$(1),$(app)) $(COMPILEDEPS) | platform-sync ; @printf '  CC      $(call app_source,$(1),$(app))\n'; $(Q)mkdir -p $$(@D); $(Q)$(CC) $(CPPFLAGS) $(call impl_cppflags,$(1)) $(CFLAGS) $(call impl_c_cppflags,$(1)) $(call include_flags_for_impl,$(1)) -c $(call app_source,$(1),$(app)) -o $$@))
 
-$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)): $(call app_object,$(1),$(app)) $(call elf_libraries,$(1),$(app)) $(LIBDEPS) $(LDSCRIPT) | platform-sync))
+$(foreach dep,$(call impl_deps,$(1)),$(foreach prof,normal hashprof,$(eval $(call dep_object,$(1),$(prof),$(dep)): $(call impl_own_objects,$(dep),$(prof)) $(wildcard $(1)/config.mk) | platform-sync ; @printf '  DEP     $(dep) -> $$@\n'; $(Q)mkdir -p $$(@D); $(Q)$(CROSS_PREFIX)-ld -r -o $$@.tmp $$(filter %.o,$$^); $(Q)$(OBJCOPY) -w $(call dep_keep_flags,$(1)) $$@.tmp $$@; $(Q)rm -f $$@.tmp)))
+
+$(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)): $(call app_object,$(1),$(app)) $(call elf_dep_objects,$(1),$(app)) $(call elf_libraries,$(1),$(app)) $(LIBDEPS) $(LDSCRIPT) | platform-sync))
 $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call elf_target,$(1),$(app)):
 	@printf '  LD      $$@\n'
 	$(Q)mkdir -p $$(@D)
-	$(Q)$(LD) $(CFLAGS) $(call app_object,$(1),$(app)) $(LDFLAGS) -Wl,--start-group $(call elf_libraries,$(1),$(app)) $(LDLIBS) -Wl,--end-group -o $$@
+	$(Q)$(LD) $(CFLAGS) $(call app_object,$(1),$(app)) $(call elf_dep_objects,$(1),$(app)) $(LDFLAGS) -Wl,--start-group $(call elf_libraries,$(1),$(app)) $(LDLIBS) -Wl,--end-group -o $$@
 	@printf '  SIZE    $$@\n'
 	$(Q)$(SIZE) $$@))
 
@@ -234,4 +298,4 @@ $(foreach app,$(call selected_apps_for_impl,$(1)),$(eval $(call bin_target,$(1),
 
 endef
 
-$(foreach impl,$(IMPLS),$(eval $(call define_impl,$(impl))))
+$(foreach impl,$(BUILD_IMPLS),$(eval $(call define_impl,$(impl))))

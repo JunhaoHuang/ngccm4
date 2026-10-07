@@ -1,1 +1,1 @@
-../../../crypto_kem/DKE-512/m4/verify.c
+../../../crypto_kem/DKEM-512/m4/verify.c

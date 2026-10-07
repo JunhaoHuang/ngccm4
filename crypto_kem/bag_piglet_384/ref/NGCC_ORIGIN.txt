@@ -1,0 +1,11 @@
+importer_version=1
+ngcc_scheme=BAG-Piglet
+ngcc_title=BAG-Piglet
+ngcc_instance=bag_piglet_384
+ngcc_instance_dir=Reference_Implementation/bag_piglet384
+ngcc_zip_sha256=31afe1f2f4e97ad77929d7855c7d9011d69755049d155c09be9339bc99b1d405
+ngcc_category=KEM
+tier=board
+kat_file=Test_Vectors/KAT_KEM_bag_piglet_384.txt
+copy_dirs=schemes/BAG-Piglet/Reference_Implementation/bag_piglet384
+stripped=lib/api_pkc/auxfunc.c (strip rule 'auxfunc\.[ch]');lib/api_pkc/auxfunc.h (strip rule 'auxfunc\.[ch]');lib/api_pkc/drng.c (strip rule 'drng\.[ch]');lib/api_pkc/drng.h (strip rule 'drng\.[ch]');src/kat/KAT_KEM.c (strip rule 'KAT_.*\.c')
