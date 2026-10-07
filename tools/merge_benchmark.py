@@ -128,10 +128,14 @@ def log_blocks(log: Path | None) -> dict[str, str]:
 def failure_text(target: str, run_status: str | None, block: str, raw_dir: Path, measured_ops: list[str], family: str) -> str | None:
     """Status line for a target that did not measure every operation, or None when it is complete."""
     expected = FAMILY_OPS.get(family)
+    raw = raw_dir / f"{target}.run1.txt"
+    raw_text = raw.read_text(encoding="utf-8", errors="replace") if raw.is_file() else ""
+    # The HardFault handler prints the done marker, so the driver reports such a target as "ok".
+    faulted = "hardfault" in raw_text.lower()
     complete = run_status in (None, "ok") and expected is not None and all(op in measured_ops for op in expected)
     if expected is None:  # kex: variable pass count, trust the driver status
         complete = run_status in (None, "ok") and bool(measured_ops)
-    if complete:
+    if complete and not faulted:
         return None
     done = ", ".join(op for op in (expected or measured_ops) if op in measured_ops) or "none"
     m = re.search(r"region `?ram'? overflowed by ([\d,]+) bytes", block)
@@ -141,9 +145,7 @@ def failure_text(target: str, run_status: str | None, block: str, raw_dir: Path,
         return "link failed: image does not fit the 640 KB SRAM; completed none"
     if "collect2: error" in block or re.search(r"make.*Error \d", block):
         return "build failed on the board toolchain (see the run log); completed none"
-    raw = raw_dir / f"{target}.run1.txt"
-    raw_text = raw.read_text(encoding="utf-8", errors="replace") if raw.is_file() else ""
-    if "HardFault" in raw_text or "hardfault" in raw_text.lower():
+    if faulted:
         return f"HardFault on the board (heap or stack beyond the 640 KB SRAM); completed {done}"
     if run_status == "timeout" or "timed out waiting" in raw_text:
         return f"timeout: no '#' within the capture limit; completed {done}"

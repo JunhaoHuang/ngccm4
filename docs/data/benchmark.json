@@ -13,34 +13,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 27592,
-      "total": 29492
+      "text": 28012,
+      "total": 29912
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1182446,
-       "count": 10,
-       "max": 1187966,
-       "median": 1182239,
-       "min": 1178526
+       "avg": 1182878,
+       "count": 100,
+       "max": 1191735,
+       "median": 1183976,
+       "min": 1169431
       },
       "encaps": {
-       "avg": 945063,
-       "count": 10,
-       "max": 950580,
-       "median": 944859,
-       "min": 941140
+       "avg": 945495,
+       "count": 100,
+       "max": 954352,
+       "median": 946582,
+       "min": 932049
       },
       "keypair": {
-       "avg": 671254,
-       "count": 10,
-       "max": 676788,
-       "median": 670996,
-       "min": 667348
+       "avg": 671696,
+       "count": 100,
+       "max": 680554,
+       "median": 672792,
+       "min": 658251
       }
      },
-     "cycles_total": 2798763,
+     "cycles_total": 2800069,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -105,34 +105,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 34640,
-      "total": 36540
+      "text": 35060,
+      "total": 36960
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2437724,
-       "count": 10,
-       "max": 2448074,
-       "median": 2438550,
-       "min": 2429308
+       "avg": 2437985,
+       "count": 100,
+       "max": 2457718,
+       "median": 2438726,
+       "min": 2429130
       },
       "encaps": {
-       "avg": 1865930,
-       "count": 10,
-       "max": 1876252,
-       "median": 1866768,
-       "min": 1857487
+       "avg": 1866200,
+       "count": 100,
+       "max": 1885934,
+       "median": 1866966,
+       "min": 1857346
       },
       "keypair": {
-       "avg": 1211138,
-       "count": 10,
-       "max": 1221466,
-       "median": 1211956,
-       "min": 1202701
+       "avg": 1211412,
+       "count": 100,
+       "max": 1231149,
+       "median": 1212175,
+       "min": 1202560
       }
      },
-     "cycles_total": 5514792,
+     "cycles_total": 5515597,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -197,34 +197,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 42888,
-      "total": 44788
+      "text": 43308,
+      "total": 45208
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 5615245,
-       "count": 10,
-       "max": 5625863,
-       "median": 5615954,
-       "min": 5606394
+       "avg": 5613987,
+       "count": 100,
+       "max": 5635523,
+       "median": 5616144,
+       "min": 5606228
       },
       "encaps": {
-       "avg": 4229750,
-       "count": 10,
-       "max": 4240373,
-       "median": 4230464,
-       "min": 4220942
+       "avg": 4228493,
+       "count": 100,
+       "max": 4250070,
+       "median": 4230633,
+       "min": 4220697
       },
       "keypair": {
-       "avg": 2738659,
-       "count": 10,
-       "max": 2749287,
-       "median": 2739368,
-       "min": 2729820
+       "avg": 2737408,
+       "count": 100,
+       "max": 2758953,
+       "median": 2739518,
+       "min": 2729616
       }
      },
-     "cycles_total": 12583654,
+     "cycles_total": 12579888,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -289,34 +289,34 @@
       "bss": 548,
       "data": 4192,
       "source": "report",
-      "text": 43512,
-      "total": 48252
+      "text": 43932,
+      "total": 48672
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3528338,
-       "count": 10,
-       "max": 3548120,
-       "median": 3517288,
-       "min": 3513790
+       "avg": 3532876,
+       "count": 100,
+       "max": 3549413,
+       "median": 3546054,
+       "min": 3512621
       },
       "encaps": {
-       "avg": 2697476,
-       "count": 10,
-       "max": 2717057,
-       "median": 2685654,
-       "min": 2683315
+       "avg": 2702088,
+       "count": 100,
+       "max": 2717869,
+       "median": 2715620,
+       "min": 2682703
       },
       "keypair": {
-       "avg": 1749373,
-       "count": 10,
-       "max": 1768948,
-       "median": 1736723,
-       "min": 1736094
+       "avg": 1754213,
+       "count": 100,
+       "max": 1769448,
+       "median": 1768406,
+       "min": 1735660
       }
      },
-     "cycles_total": 7975187,
+     "cycles_total": 7989177,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -381,34 +381,34 @@
       "bss": 548,
       "data": 4192,
       "source": "report",
-      "text": 43772,
-      "total": 48512
+      "text": 44192,
+      "total": 48932
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 5492216,
-       "count": 10,
-       "max": 5505385,
-       "median": 5504132,
-       "min": 5472196
+       "avg": 5491639,
+       "count": 100,
+       "max": 5507606,
+       "median": 5504174,
+       "min": 5469964
       },
       "encaps": {
-       "avg": 4174484,
-       "count": 10,
-       "max": 4187449,
-       "median": 4186803,
-       "min": 4154873
+       "avg": 4173992,
+       "count": 100,
+       "max": 4189056,
+       "median": 4186594,
+       "min": 4152999
       },
       "keypair": {
-       "avg": 2687465,
-       "count": 10,
-       "max": 2701092,
-       "median": 2699703,
-       "min": 2667955
+       "avg": 2687110,
+       "count": 100,
+       "max": 2701202,
+       "median": 2699954,
+       "min": 2667305
       }
      },
-     "cycles_total": 12354165,
+     "cycles_total": 12352741,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -473,34 +473,34 @@
       "bss": 548,
       "data": 4192,
       "source": "report",
-      "text": 44016,
-      "total": 48756
+      "text": 44436,
+      "total": 49176
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 7459186,
-       "count": 10,
-       "max": 7474336,
-       "median": 7471275,
-       "min": 7438335
+       "avg": 7459005,
+       "count": 100,
+       "max": 7474741,
+       "median": 7471153,
+       "min": 7437577
       },
       "encaps": {
-       "avg": 5646539,
-       "count": 10,
-       "max": 5660822,
-       "median": 5658986,
-       "min": 5625851
+       "avg": 5646505,
+       "count": 100,
+       "max": 5661564,
+       "median": 5658806,
+       "min": 5625539
       },
       "keypair": {
-       "avg": 3603445,
-       "count": 10,
-       "max": 3617180,
-       "median": 3616102,
-       "min": 3583736
+       "avg": 3603511,
+       "count": 100,
+       "max": 3617376,
+       "median": 3616192,
+       "min": 3582841
       }
      },
-     "cycles_total": 16709170,
+     "cycles_total": 16709021,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -565,34 +565,34 @@
       "bss": 548,
       "data": 4192,
       "source": "report",
-      "text": 43396,
-      "total": 48136
+      "text": 43816,
+      "total": 48556
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1901833,
-       "count": 10,
-       "max": 1913832,
-       "median": 1910696,
-       "min": 1878289
+       "avg": 1896407,
+       "count": 100,
+       "max": 1914200,
+       "median": 1910395,
+       "min": 1876540
       },
       "encaps": {
-       "avg": 1508790,
-       "count": 10,
-       "max": 1519791,
-       "median": 1518002,
-       "min": 1485562
+       "avg": 1503374,
+       "count": 100,
+       "max": 1520045,
+       "median": 1517764,
+       "min": 1484501
       },
       "keypair": {
-       "avg": 980185,
-       "count": 10,
-       "max": 989905,
-       "median": 989730,
-       "min": 957753
+       "avg": 974756,
+       "count": 100,
+       "max": 990478,
+       "median": 989587,
+       "min": 957225
       }
      },
-     "cycles_total": 4390808,
+     "cycles_total": 4374537,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -657,34 +657,34 @@
       "bss": 548,
       "data": 4192,
       "source": "report",
-      "text": 42480,
-      "total": 47220
+      "text": 42900,
+      "total": 47640
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2737568,
-       "count": 10,
-       "max": 2755094,
-       "median": 2738274,
-       "min": 2720130
+       "avg": 2739018,
+       "count": 100,
+       "max": 2756111,
+       "median": 2752453,
+       "min": 2718594
       },
       "encaps": {
-       "avg": 2150216,
-       "count": 10,
-       "max": 2167123,
-       "median": 2150680,
-       "min": 2133078
+       "avg": 2151689,
+       "count": 100,
+       "max": 2167931,
+       "median": 2165466,
+       "min": 2132112
       },
       "keypair": {
-       "avg": 1370157,
-       "count": 10,
-       "max": 1386573,
-       "median": 1370152,
-       "min": 1353755
+       "avg": 1371799,
+       "count": 100,
+       "max": 1386988,
+       "median": 1386002,
+       "min": 1353551
       }
      },
-     "cycles_total": 6257941,
+     "cycles_total": 6262506,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -749,8 +749,8 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 40160,
-      "total": 42060
+      "text": 40580,
+      "total": 42480
      },
      "completed_ops": [],
      "cycles": {
@@ -840,9 +840,9 @@
      "code": {
       "bss": 548,
       "data": 1352,
-      "source": "size-file",
-      "text": 40992,
-      "total": 42892
+      "source": "report",
+      "text": 41412,
+      "total": 43312
      },
      "completed_ops": [],
      "cycles": {},
@@ -899,7 +899,13 @@
     },
     {
      "category": "kem",
-     "code": null,
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 41604,
+      "total": 43504
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -955,7 +961,13 @@
     },
     {
      "category": "kem",
-     "code": null,
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 41476,
+      "total": 43376
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -1107,34 +1119,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24872,
-      "total": 26772
+      "text": 25292,
+      "total": 27192
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1105903,
-       "count": 10,
-       "max": 1106025,
-       "median": 1105898,
-       "min": 1105701
+       "avg": 1107107,
+       "count": 100,
+       "max": 1166056,
+       "median": 1105904,
+       "min": 1105550
       },
       "encaps": {
-       "avg": 875074,
-       "count": 10,
-       "max": 875221,
-       "median": 875066,
-       "min": 874858
+       "avg": 876280,
+       "count": 100,
+       "max": 935224,
+       "median": 875074,
+       "min": 874699
       },
       "keypair": {
-       "avg": 716592,
-       "count": 10,
-       "max": 716759,
-       "median": 716604,
-       "min": 716395
+       "avg": 717811,
+       "count": 100,
+       "max": 776756,
+       "median": 716607,
+       "min": 716233
       }
      },
-     "cycles_total": 2697569,
+     "cycles_total": 2701198,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1291,34 +1303,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 36360,
-      "total": 38260
+      "text": 36784,
+      "total": 38684
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2417055,
-       "count": 10,
-       "max": 2459757,
-       "median": 2398956,
-       "min": 2398677
+       "avg": 2408108,
+       "count": 100,
+       "max": 2460088,
+       "median": 2399114,
+       "min": 2398024
       },
       "encaps": {
-       "avg": 1876647,
-       "count": 10,
-       "max": 1919313,
-       "median": 1858544,
-       "min": 1858274
+       "avg": 1867708,
+       "count": 100,
+       "max": 1919689,
+       "median": 1858719,
+       "min": 1857586
       },
       "keypair": {
-       "avg": 1687562,
-       "count": 10,
-       "max": 1730227,
-       "median": 1669389,
-       "min": 1669227
+       "avg": 1678623,
+       "count": 100,
+       "max": 1730571,
+       "median": 1669652,
+       "min": 1668523
       }
      },
-     "cycles_total": 5981264,
+     "cycles_total": 5954439,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1475,34 +1487,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 36880,
-      "total": 38780
+      "text": 37304,
+      "total": 39204
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 6744982,
-       "count": 10,
-       "max": 6745445,
-       "median": 6745062,
-       "min": 6744475
+       "avg": 6746903,
+       "count": 100,
+       "max": 6938026,
+       "median": 6744988,
+       "min": 6743666
       },
       "encaps": {
-       "avg": 5435315,
-       "count": 10,
-       "max": 5435780,
-       "median": 5435380,
-       "min": 5434813
+       "avg": 5437263,
+       "count": 100,
+       "max": 5628351,
+       "median": 5435339,
+       "min": 5434071
       },
       "keypair": {
-       "avg": 4990583,
-       "count": 10,
-       "max": 4991024,
-       "median": 4990565,
-       "min": 4990099
+       "avg": 4992477,
+       "count": 100,
+       "max": 5183572,
+       "median": 4990564,
+       "min": 4989269
       }
      },
-     "cycles_total": 17170880,
+     "cycles_total": 17176643,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1567,34 +1579,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25960,
-      "total": 27860
+      "text": 26380,
+      "total": 28280
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3656306,
-       "count": 10,
-       "max": 3656580,
-       "median": 3656296,
-       "min": 3656139
+       "avg": 3656320,
+       "count": 100,
+       "max": 3656888,
+       "median": 3656302,
+       "min": 3655970
       },
       "encaps": {
-       "avg": 3469675,
-       "count": 10,
-       "max": 3469950,
+       "avg": 3469685,
+       "count": 100,
+       "max": 3470253,
        "median": 3469666,
-       "min": 3469503
+       "min": 3469339
       },
       "keypair": {
-       "avg": 3294310,
-       "count": 10,
-       "max": 3294626,
-       "median": 3294293,
-       "min": 3294142
+       "avg": 3294332,
+       "count": 100,
+       "max": 3294902,
+       "median": 3294328,
+       "min": 3293984
       }
      },
-     "cycles_total": 10420291,
+     "cycles_total": 10420337,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1660,34 +1672,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 26340,
-      "total": 28240
+      "text": 26760,
+      "total": 28660
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 13124655,
-       "count": 10,
-       "max": 13125240,
-       "median": 13124586,
-       "min": 13124329
+       "avg": 13124811,
+       "count": 100,
+       "max": 13125684,
+       "median": 13124827,
+       "min": 13123736
       },
       "encaps": {
-       "avg": 12809029,
-       "count": 10,
-       "max": 12809611,
-       "median": 12808978,
-       "min": 12808666
+       "avg": 12809181,
+       "count": 100,
+       "max": 12810056,
+       "median": 12809183,
+       "min": 12808106
       },
       "keypair": {
-       "avg": 12524266,
-       "count": 10,
-       "max": 12524801,
-       "median": 12524176,
-       "min": 12523946
+       "avg": 12524412,
+       "count": 100,
+       "max": 12525250,
+       "median": 12524436,
+       "min": 12523322
       }
      },
-     "cycles_total": 38457950,
+     "cycles_total": 38458404,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1753,34 +1765,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 27728,
-      "total": 29628
+      "text": 28148,
+      "total": 30048
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 9482839,
-       "count": 10,
-       "max": 9483792,
-       "median": 9482738,
-       "min": 9482055
+       "avg": 9482598,
+       "count": 100,
+       "max": 9483753,
+       "median": 9482472,
+       "min": 9481647
       },
       "encaps": {
-       "avg": 8779714,
-       "count": 10,
-       "max": 8780704,
-       "median": 8779614,
-       "min": 8778894
+       "avg": 8779473,
+       "count": 100,
+       "max": 8780672,
+       "median": 8779349,
+       "min": 8778483
       },
       "keypair": {
-       "avg": 8125114,
-       "count": 10,
-       "max": 8126073,
-       "median": 8125020,
-       "min": 8124338
+       "avg": 8124889,
+       "count": 100,
+       "max": 8126047,
+       "median": 8124765,
+       "min": 8123941
       }
      },
-     "cycles_total": 26387667,
+     "cycles_total": 26386960,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1846,34 +1858,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28044,
-      "total": 29944
+      "text": 28464,
+      "total": 30364
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 15709189,
-       "count": 10,
-       "max": 15710257,
-       "median": 15709273,
-       "min": 15707406
+       "avg": 15708881,
+       "count": 100,
+       "max": 15711128,
+       "median": 15708917,
+       "min": 15707070
       },
       "encaps": {
-       "avg": 14819527,
-       "count": 10,
-       "max": 14820596,
-       "median": 14819613,
-       "min": 14817745
+       "avg": 14819224,
+       "count": 100,
+       "max": 14821474,
+       "median": 14819265,
+       "min": 14817418
       },
       "keypair": {
-       "avg": 13992686,
-       "count": 10,
-       "max": 13993718,
-       "median": 13992773,
-       "min": 13990852
+       "avg": 13992413,
+       "count": 100,
+       "max": 13994578,
+       "median": 13992456,
+       "min": 13990647
       }
      },
-     "cycles_total": 44521402,
+     "cycles_total": 44520518,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -1939,34 +1951,34 @@
       "bss": 548,
       "data": 1864,
       "source": "report",
-      "text": 29168,
-      "total": 31580
+      "text": 29588,
+      "total": 32000
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1620577,
-       "count": 10,
-       "max": 1620688,
-       "median": 1620598,
-       "min": 1620379
+       "avg": 1620553,
+       "count": 100,
+       "max": 1620847,
+       "median": 1620548,
+       "min": 1620372
       },
       "encaps": {
-       "avg": 1270065,
-       "count": 10,
-       "max": 1270172,
-       "median": 1270082,
-       "min": 1269863
+       "avg": 1270035,
+       "count": 100,
+       "max": 1270290,
+       "median": 1270038,
+       "min": 1269855
       },
       "keypair": {
-       "avg": 851358,
-       "count": 10,
-       "max": 851479,
-       "median": 851367,
-       "min": 851171
+       "avg": 851347,
+       "count": 100,
+       "max": 851604,
+       "median": 851338,
+       "min": 851170
       }
      },
-     "cycles_total": 3742000,
+     "cycles_total": 3741935,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2031,34 +2043,34 @@
       "bss": 548,
       "data": 1864,
       "source": "report",
-      "text": 29484,
-      "total": 31896
+      "text": 29904,
+      "total": 32316
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3584616,
-       "count": 10,
-       "max": 3584743,
-       "median": 3584616,
-       "min": 3584484
+       "avg": 3584573,
+       "count": 100,
+       "max": 3585059,
+       "median": 3584586,
+       "min": 3584230
       },
       "encaps": {
-       "avg": 2875585,
-       "count": 10,
-       "max": 2875711,
-       "median": 2875599,
-       "min": 2875415
+       "avg": 2875537,
+       "count": 100,
+       "max": 2875995,
+       "median": 2875552,
+       "min": 2875161
       },
       "keypair": {
-       "avg": 2225047,
-       "count": 10,
-       "max": 2225142,
-       "median": 2225059,
-       "min": 2224892
+       "avg": 2225014,
+       "count": 100,
+       "max": 2225477,
+       "median": 2225029,
+       "min": 2224637
       }
      },
-     "cycles_total": 8685248,
+     "cycles_total": 8685124,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2123,34 +2135,34 @@
       "bss": 548,
       "data": 1864,
       "source": "report",
-      "text": 29872,
-      "total": 32284
+      "text": 30292,
+      "total": 32704
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 7894627,
-       "count": 10,
-       "max": 7895096,
-       "median": 7894610,
-       "min": 7894232
+       "avg": 7894472,
+       "count": 100,
+       "max": 7895099,
+       "median": 7894457,
+       "min": 7893922
       },
       "encaps": {
-       "avg": 6723402,
-       "count": 10,
-       "max": 6723885,
-       "median": 6723401,
-       "min": 6722982
+       "avg": 6723256,
+       "count": 100,
+       "max": 6723886,
+       "median": 6723255,
+       "min": 6722671
       },
       "keypair": {
-       "avg": 5786058,
-       "count": 10,
-       "max": 5786542,
-       "median": 5786038,
-       "min": 5785633
+       "avg": 5785914,
+       "count": 100,
+       "max": 5786545,
+       "median": 5785912,
+       "min": 5785326
       }
      },
-     "cycles_total": 20404087,
+     "cycles_total": 20403642,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2215,34 +2227,34 @@
       "bss": 548,
       "data": 1864,
       "source": "report",
-      "text": 29884,
-      "total": 32296
+      "text": 30304,
+      "total": 32716
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 12100858,
-       "count": 10,
-       "max": 12101493,
-       "median": 12100937,
-       "min": 12100266
+       "avg": 12100902,
+       "count": 100,
+       "max": 12101779,
+       "median": 12100925,
+       "min": 12099828
       },
       "encaps": {
-       "avg": 10517860,
-       "count": 10,
-       "max": 10518465,
-       "median": 10517956,
-       "min": 10517317
+       "avg": 10517908,
+       "count": 100,
+       "max": 10518788,
+       "median": 10517915,
+       "min": 10516797
       },
       "keypair": {
-       "avg": 9380781,
-       "count": 10,
-       "max": 9381424,
-       "median": 9380864,
-       "min": 9380232
+       "avg": 9380821,
+       "count": 100,
+       "max": 9381671,
+       "median": 9380845,
+       "min": 9379749
       }
      },
-     "cycles_total": 31999499,
+     "cycles_total": 31999631,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2307,34 +2319,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 35012,
-      "total": 36912
+      "text": 35432,
+      "total": 37332
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 442332,
-       "count": 10,
-       "max": 442573,
-       "median": 442448,
-       "min": 441948
+       "avg": 442225,
+       "count": 100,
+       "max": 442695,
+       "median": 442231,
+       "min": 441567
       },
       "encaps": {
-       "avg": 413847,
-       "count": 10,
-       "max": 414087,
-       "median": 413963,
-       "min": 413463
+       "avg": 413736,
+       "count": 100,
+       "max": 414205,
+       "median": 413742,
+       "min": 413078
       },
       "keypair": {
-       "avg": 365756,
-       "count": 10,
-       "max": 366002,
-       "median": 365878,
-       "min": 365329
+       "avg": 365657,
+       "count": 100,
+       "max": 366125,
+       "median": 365660,
+       "min": 364995
       }
      },
-     "cycles_total": 1221935,
+     "cycles_total": 1221618,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2399,34 +2411,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 23560,
-      "total": 25460
+      "text": 23980,
+      "total": 25880
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 942736,
-       "count": 10,
-       "max": 942917,
-       "median": 942824,
-       "min": 942428
+       "avg": 942644,
+       "count": 100,
+       "max": 942988,
+       "median": 942648,
+       "min": 942151
       },
       "encaps": {
-       "avg": 751984,
-       "count": 10,
-       "max": 752161,
-       "median": 752068,
-       "min": 751673
+       "avg": 751892,
+       "count": 100,
+       "max": 752235,
+       "median": 751888,
+       "min": 751401
       },
       "keypair": {
-       "avg": 593485,
-       "count": 10,
-       "max": 593672,
-       "median": 593580,
-       "min": 593125
+       "avg": 593401,
+       "count": 100,
+       "max": 593748,
+       "median": 593400,
+       "min": 592912
       }
      },
-     "cycles_total": 2288205,
+     "cycles_total": 2287937,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2491,34 +2503,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 35848,
-      "total": 37748
+      "text": 36268,
+      "total": 38168
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1227557,
-       "count": 10,
-       "max": 1228329,
-       "median": 1227440,
-       "min": 1227169
+       "avg": 1227246,
+       "count": 100,
+       "max": 1228285,
+       "median": 1227202,
+       "min": 1226377
       },
       "encaps": {
-       "avg": 1177120,
-       "count": 10,
-       "max": 1177892,
-       "median": 1177001,
-       "min": 1176732
+       "avg": 1176804,
+       "count": 100,
+       "max": 1177844,
+       "median": 1176772,
+       "min": 1175936
       },
       "keypair": {
-       "avg": 1125131,
-       "count": 10,
-       "max": 1125880,
-       "median": 1125000,
-       "min": 1124739
+       "avg": 1124815,
+       "count": 100,
+       "max": 1125821,
+       "median": 1124758,
+       "min": 1123915
       }
      },
-     "cycles_total": 3529808,
+     "cycles_total": 3528865,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2583,34 +2595,34 @@
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 24552,
-      "total": 26856
+      "text": 24972,
+      "total": 27276
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2190338,
-       "count": 10,
-       "max": 2190906,
-       "median": 2190282,
-       "min": 2190042
+       "avg": 2190169,
+       "count": 100,
+       "max": 2190923,
+       "median": 2190118,
+       "min": 2189580
       },
       "encaps": {
-       "avg": 1875599,
-       "count": 10,
-       "max": 1876166,
-       "median": 1875562,
-       "min": 1875302
+       "avg": 1875426,
+       "count": 100,
+       "max": 1876183,
+       "median": 1875380,
+       "min": 1874798
       },
       "keypair": {
-       "avg": 1679216,
-       "count": 10,
-       "max": 1679793,
-       "median": 1679169,
-       "min": 1678929
+       "avg": 1679062,
+       "count": 100,
+       "max": 1679818,
+       "median": 1679002,
+       "min": 1678435
       }
      },
-     "cycles_total": 5745153,
+     "cycles_total": 5744657,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2675,34 +2687,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 37544,
-      "total": 39444
+      "text": 37964,
+      "total": 39864
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3780021,
-       "count": 10,
-       "max": 3780444,
-       "median": 3779982,
-       "min": 3779702
+       "avg": 3780090,
+       "count": 100,
+       "max": 3780759,
+       "median": 3780096,
+       "min": 3779406
       },
       "encaps": {
-       "avg": 3617910,
-       "count": 10,
-       "max": 3618358,
-       "median": 3617860,
-       "min": 3617580
+       "avg": 3617960,
+       "count": 100,
+       "max": 3618664,
+       "median": 3617980,
+       "min": 3617312
       },
       "keypair": {
-       "avg": 3422816,
-       "count": 10,
-       "max": 3423241,
-       "median": 3422804,
-       "min": 3422492
+       "avg": 3422898,
+       "count": 100,
+       "max": 3423569,
+       "median": 3422906,
+       "min": 3422215
       }
      },
-     "cycles_total": 10820747,
+     "cycles_total": 10820948,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2767,34 +2779,34 @@
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 28576,
-      "total": 30880
+      "text": 28996,
+      "total": 31300
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 5873847,
-       "count": 10,
-       "max": 5874270,
-       "median": 5873810,
-       "min": 5873527
+       "avg": 5873808,
+       "count": 100,
+       "max": 5874473,
+       "median": 5873807,
+       "min": 5873119
       },
       "encaps": {
-       "avg": 5118012,
-       "count": 10,
-       "max": 5118464,
-       "median": 5117984,
-       "min": 5117680
+       "avg": 5117963,
+       "count": 100,
+       "max": 5118628,
+       "median": 5117962,
+       "min": 5117311
       },
       "keypair": {
-       "avg": 4714752,
-       "count": 10,
-       "max": 4715166,
-       "median": 4714726,
-       "min": 4714416
+       "avg": 4714729,
+       "count": 100,
+       "max": 4715436,
+       "median": 4714761,
+       "min": 4714041
       }
      },
-     "cycles_total": 15706611,
+     "cycles_total": 15706500,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -2951,34 +2963,34 @@
       "bss": 548,
       "data": 1872,
       "source": "report",
-      "text": 29628,
-      "total": 32048
+      "text": 30048,
+      "total": 32468
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1717781,
-       "count": 10,
-       "max": 1717783,
-       "median": 1717781,
-       "min": 1717781
+       "avg": 1717783,
+       "count": 100,
+       "max": 1717822,
+       "median": 1717778,
+       "min": 1717778
       },
       "encaps": {
-       "avg": 864588,
-       "count": 10,
-       "max": 864600,
-       "median": 864599,
-       "min": 864493
+       "avg": 864596,
+       "count": 100,
+       "max": 864636,
+       "median": 864595,
+       "min": 864495
       },
       "keypair": {
-       "avg": 1141107,
-       "count": 10,
-       "max": 1141136,
-       "median": 1141100,
-       "min": 1141100
+       "avg": 1141113,
+       "count": 100,
+       "max": 1141158,
+       "median": 1141108,
+       "min": 1141108
       }
      },
-     "cycles_total": 3723476,
+     "cycles_total": 3723492,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -3135,34 +3147,34 @@
       "bss": 548,
       "data": 3152,
       "source": "report",
-      "text": 28304,
-      "total": 32004
+      "text": 28724,
+      "total": 32424
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2714312,
-       "count": 10,
+       "avg": 2714309,
+       "count": 100,
        "max": 2714345,
-       "median": 2714304,
-       "min": 2714304
+       "median": 2714302,
+       "min": 2714301
       },
       "encaps": {
-       "avg": 1374478,
-       "count": 10,
-       "max": 1374488,
-       "median": 1374488,
-       "min": 1374388
+       "avg": 1374498,
+       "count": 100,
+       "max": 1374538,
+       "median": 1374496,
+       "min": 1374392
       },
       "keypair": {
-       "avg": 1500526,
-       "count": 10,
-       "max": 1500534,
-       "median": 1500522,
-       "min": 1500522
+       "avg": 1500536,
+       "count": 100,
+       "max": 1500580,
+       "median": 1500531,
+       "min": 1500530
       }
      },
-     "cycles_total": 5589316,
+     "cycles_total": 5589343,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -3319,34 +3331,34 @@
       "bss": 548,
       "data": 1872,
       "source": "report",
-      "text": 34920,
-      "total": 37340
+      "text": 35340,
+      "total": 37760
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 4036361,
-       "count": 10,
-       "max": 4036448,
-       "median": 4036338,
-       "min": 4036338
+       "avg": 4036339,
+       "count": 100,
+       "max": 4036445,
+       "median": 4036334,
+       "min": 4035918
       },
       "encaps": {
-       "avg": 2037684,
-       "count": 10,
-       "max": 2037730,
-       "median": 2037692,
-       "min": 2037579
+       "avg": 2037699,
+       "count": 100,
+       "max": 2037736,
+       "median": 2037695,
+       "min": 2037570
       },
       "keypair": {
-       "avg": 3006524,
-       "count": 10,
-       "max": 3006553,
-       "median": 3006524,
-       "min": 3006513
+       "avg": 3006528,
+       "count": 100,
+       "max": 3006569,
+       "median": 3006517,
+       "min": 3006517
       }
      },
-     "cycles_total": 9080569,
+     "cycles_total": 9080566,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -3503,34 +3515,34 @@
       "bss": 548,
       "data": 1840,
       "source": "report",
-      "text": 29456,
-      "total": 31844
+      "text": 29876,
+      "total": 32264
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1126552,
-       "count": 10,
-       "max": 1126586,
-       "median": 1126548,
-       "min": 1126548
+       "avg": 1126547,
+       "count": 100,
+       "max": 1126584,
+       "median": 1126544,
+       "min": 1126544
       },
       "encaps": {
-       "avg": 564404,
-       "count": 10,
-       "max": 564424,
-       "median": 564424,
-       "min": 564222
+       "avg": 564434,
+       "count": 100,
+       "max": 564475,
+       "median": 564435,
+       "min": 564234
       },
       "keypair": {
-       "avg": 954027,
-       "count": 10,
-       "max": 954036,
-       "median": 954024,
-       "min": 954024
+       "avg": 954034,
+       "count": 100,
+       "max": 954103,
+       "median": 954030,
+       "min": 954030
       }
      },
-     "cycles_total": 2644983,
+     "cycles_total": 2645015,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -3687,34 +3699,34 @@
       "bss": 548,
       "data": 3152,
       "source": "report",
-      "text": 27604,
-      "total": 31304
+      "text": 28024,
+      "total": 31724
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1351250,
-       "count": 10,
-       "max": 1351250,
-       "median": 1351250,
-       "min": 1351250
+       "avg": 1351251,
+       "count": 100,
+       "max": 1351289,
+       "median": 1351248,
+       "min": 1351248
       },
       "encaps": {
-       "avg": 694107,
-       "count": 10,
-       "max": 694117,
-       "median": 694117,
-       "min": 694016
+       "avg": 694108,
+       "count": 100,
+       "max": 694146,
+       "median": 694107,
+       "min": 694017
       },
       "keypair": {
-       "avg": 817133,
-       "count": 10,
-       "max": 817141,
-       "median": 817130,
-       "min": 817130
+       "avg": 817132,
+       "count": 100,
+       "max": 817170,
+       "median": 817129,
+       "min": 817129
       }
      },
-     "cycles_total": 2862490,
+     "cycles_total": 2862491,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -3871,34 +3883,34 @@
       "bss": 548,
       "data": 1864,
       "source": "report",
-      "text": 26920,
-      "total": 29332
+      "text": 27340,
+      "total": 29752
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
        "avg": 739362,
-       "count": 10,
-       "max": 739362,
-       "median": 739362,
-       "min": 739362
+       "count": 100,
+       "max": 739399,
+       "median": 739360,
+       "min": 739360
       },
       "encaps": {
-       "avg": 367082,
-       "count": 10,
-       "max": 367097,
-       "median": 367096,
-       "min": 366959
+       "avg": 367100,
+       "count": 100,
+       "max": 367139,
+       "median": 367101,
+       "min": 366964
       },
       "keypair": {
-       "avg": 400414,
-       "count": 10,
-       "max": 400414,
-       "median": 400414,
-       "min": 400414
+       "avg": 400420,
+       "count": 100,
+       "max": 400458,
+       "median": 400419,
+       "min": 400419
       }
      },
-     "cycles_total": 1506858,
+     "cycles_total": 1506882,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -4055,34 +4067,34 @@
       "bss": 548,
       "data": 7488,
       "source": "report",
-      "text": 29628,
-      "total": 37664
+      "text": 30048,
+      "total": 38084
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2263763,
-       "count": 10,
-       "max": 2263800,
-       "median": 2263759,
-       "min": 2263759
+       "avg": 2263757,
+       "count": 100,
+       "max": 2263795,
+       "median": 2263752,
+       "min": 2263752
       },
       "encaps": {
-       "avg": 1113645,
-       "count": 10,
-       "max": 1113663,
-       "median": 1113663,
-       "min": 1113487
+       "avg": 1113654,
+       "count": 100,
+       "max": 1113697,
+       "median": 1113653,
+       "min": 1113478
       },
       "keypair": {
-       "avg": 250672509,
-       "count": 10,
-       "max": 250672520,
-       "median": 250672511,
-       "min": 250672473
+       "avg": 250672508,
+       "count": 100,
+       "max": 250672526,
+       "median": 250672510,
+       "min": 250672469
       }
      },
-     "cycles_total": 254049917,
+     "cycles_total": 254049919,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -4147,34 +4159,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 31608,
-      "total": 33508
+      "text": 32028,
+      "total": 33928
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 746867,
-       "count": 10,
-       "max": 747048,
-       "median": 746898,
-       "min": 746621
+       "avg": 746823,
+       "count": 100,
+       "max": 747164,
+       "median": 746832,
+       "min": 746497
       },
       "encaps": {
-       "avg": 445311,
-       "count": 10,
-       "max": 445381,
-       "median": 445312,
-       "min": 445264
+       "avg": 445292,
+       "count": 100,
+       "max": 445368,
+       "median": 445293,
+       "min": 445241
       },
       "keypair": {
-       "avg": 463963,
-       "count": 10,
-       "max": 588690,
-       "median": 430124,
-       "min": 428071
+       "avg": 462781,
+       "count": 100,
+       "max": 655552,
+       "median": 431158,
+       "min": 427141
       }
      },
-     "cycles_total": 1656141,
+     "cycles_total": 1654896,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -4239,34 +4251,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 32564,
-      "total": 34464
+      "text": 32984,
+      "total": 34884
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1626638,
-       "count": 10,
-       "max": 1626766,
-       "median": 1626680,
-       "min": 1626348
+       "avg": 1626716,
+       "count": 100,
+       "max": 1627156,
+       "median": 1626706,
+       "min": 1626363
       },
       "encaps": {
-       "avg": 968299,
-       "count": 10,
-       "max": 968338,
-       "median": 968310,
-       "min": 968181
+       "avg": 968309,
+       "count": 100,
+       "max": 968466,
+       "median": 968308,
+       "min": 968190
       },
       "keypair": {
-       "avg": 1139838,
-       "count": 10,
-       "max": 1254844,
-       "median": 1131466,
-       "min": 1089517
+       "avg": 1173460,
+       "count": 100,
+       "max": 1827452,
+       "median": 1092428,
+       "min": 1088295
       }
      },
-     "cycles_total": 3734775,
+     "cycles_total": 3768485,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -4331,34 +4343,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 34216,
-      "total": 36116
+      "text": 34636,
+      "total": 36536
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 4957505,
-       "count": 10,
-       "max": 4958066,
-       "median": 4957574,
-       "min": 4956987
+       "avg": 4957620,
+       "count": 100,
+       "max": 4958472,
+       "median": 4957622,
+       "min": 4956975
       },
       "encaps": {
-       "avg": 2936332,
-       "count": 10,
-       "max": 2936611,
-       "median": 2936338,
-       "min": 2936062
+       "avg": 2936334,
+       "count": 100,
+       "max": 2936819,
+       "median": 2936324,
+       "min": 2935982
       },
       "keypair": {
-       "avg": 4696493,
-       "count": 10,
-       "max": 4996338,
-       "median": 4675744,
-       "min": 4568323
+       "avg": 4781591,
+       "count": 100,
+       "max": 6041332,
+       "median": 4773076,
+       "min": 4561815
       }
      },
-     "cycles_total": 12590330,
+     "cycles_total": 12675545,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -4647,8 +4659,8 @@
       "bss": 5424,
       "data": 1352,
       "source": "report",
-      "text": 33296,
-      "total": 40072
+      "text": 33712,
+      "total": 40488
      },
      "completed_ops": [],
      "cycles": {
@@ -4739,8 +4751,8 @@
       "bss": 5424,
       "data": 1352,
       "source": "report",
-      "text": 30200,
-      "total": 36976
+      "text": 30616,
+      "total": 37392
      },
      "completed_ops": [],
      "cycles": {
@@ -4831,8 +4843,8 @@
       "bss": 5424,
       "data": 1352,
       "source": "report",
-      "text": 30608,
-      "total": 37384
+      "text": 31032,
+      "total": 37808
      },
      "completed_ops": [
       "keypair",
@@ -4840,18 +4852,18 @@
      ],
      "cycles": {
       "encaps": {
-       "avg": 795777914,
+       "avg": 795777939,
        "count": 1,
-       "max": 795777914,
-       "median": 795777914,
-       "min": 795777914
+       "max": 795777939,
+       "median": 795777939,
+       "min": 795777939
       },
       "keypair": {
-       "avg": 429512603,
+       "avg": 429512647,
        "count": 1,
-       "max": 429512603,
-       "median": 429512603,
-       "min": 429512603
+       "max": 429512647,
+       "median": 429512647,
+       "min": 429512647
       }
      },
      "cycles_total": null,
@@ -4860,7 +4872,7 @@
       "encaps",
       "decaps"
      ],
-     "failure_kind": "partial",
+     "failure_kind": "hardfault",
      "family": "crypto_kem",
      "hand_ported": false,
      "id": "crypto_kem_HQC-384_ref",
@@ -4905,7 +4917,7 @@
       "ss": 48
      },
      "stack": null,
-     "status_text": "partial: keypair/encaps measured (1 iteration), decaps never returns on the board",
+     "status_text": "HardFault on the board in decaps (keypair/encaps measured, 1 iteration; heap or stack beyond the 640 KB SRAM); completed keypair, encaps",
      "tier": "board"
     },
     {
@@ -4914,8 +4926,8 @@
       "bss": 5424,
       "data": 1352,
       "source": "report",
-      "text": 30664,
-      "total": 37440
+      "text": 31088,
+      "total": 37864
      },
      "completed_ops": [],
      "cycles": {},
@@ -5202,34 +5214,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 28472,
-      "total": 30628
+      "text": 28904,
+      "total": 31060
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2986065,
-       "count": 3,
-       "max": 2986101,
-       "median": 2986062,
-       "min": 2986033
+       "avg": 2986092,
+       "count": 100,
+       "max": 2986477,
+       "median": 2986076,
+       "min": 2985891
       },
       "encaps": {
-       "avg": 2249420,
-       "count": 3,
-       "max": 2249444,
-       "median": 2249421,
-       "min": 2249395
+       "avg": 2249451,
+       "count": 100,
+       "max": 2249706,
+       "median": 2249446,
+       "min": 2249270
       },
       "keypair": {
-       "avg": 1156698,
-       "count": 3,
-       "max": 1156760,
-       "median": 1156710,
-       "min": 1156625
+       "avg": 1156656,
+       "count": 100,
+       "max": 1156859,
+       "median": 1156662,
+       "min": 1156471
       }
      },
-     "cycles_total": 6392183,
+     "cycles_total": 6392199,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5295,34 +5307,34 @@
       "bss": 552,
       "data": 1608,
       "source": "report",
-      "text": 33568,
-      "total": 35728
+      "text": 33992,
+      "total": 36152
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 8441911,
-       "count": 3,
-       "max": 8446420,
-       "median": 8443295,
-       "min": 8436018
+       "avg": 8444612,
+       "count": 100,
+       "max": 8479474,
+       "median": 8445024,
+       "min": 8409379
       },
       "encaps": {
-       "avg": 17368718,
-       "count": 3,
-       "max": 39048147,
-       "median": 6529701,
-       "min": 6528307
+       "avg": 6854393,
+       "count": 100,
+       "max": 39048145,
+       "median": 6529276,
+       "min": 6526829
       },
       "keypair": {
-       "avg": 4439348,
-       "count": 3,
-       "max": 4439418,
-       "median": 4439393,
-       "min": 4439233
+       "avg": 4439454,
+       "count": 100,
+       "max": 4439978,
+       "median": 4439452,
+       "min": 4439046
       }
      },
-     "cycles_total": 30249977,
+     "cycles_total": 19738459,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5388,34 +5400,34 @@
       "bss": 552,
       "data": 1608,
       "source": "report",
-      "text": 34304,
-      "total": 36464
+      "text": 34728,
+      "total": 36888
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 15268769,
-       "count": 3,
-       "max": 15276538,
-       "median": 15266253,
-       "min": 15263516
+       "avg": 15269711,
+       "count": 100,
+       "max": 15282818,
+       "median": 15269544,
+       "min": 15255767
       },
       "encaps": {
-       "avg": 16728125,
-       "count": 3,
-       "max": 24820843,
-       "median": 12682144,
-       "min": 12681388
+       "avg": 12803029,
+       "count": 100,
+       "max": 24820845,
+       "median": 12681652,
+       "min": 12680281
       },
       "keypair": {
-       "avg": 9656928,
-       "count": 3,
-       "max": 9657131,
-       "median": 9656902,
-       "min": 9656750
+       "avg": 9656637,
+       "count": 100,
+       "max": 9657189,
+       "median": 9656690,
+       "min": 9655928
       }
      },
-     "cycles_total": 41653822,
+     "cycles_total": 37729377,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5481,34 +5493,34 @@
       "bss": 552,
       "data": 1608,
       "source": "report",
-      "text": 35112,
-      "total": 37272
+      "text": 35536,
+      "total": 37696
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 29922157,
-       "count": 3,
-       "max": 29930791,
-       "median": 29923983,
-       "min": 29911697
+       "avg": 29918758,
+       "count": 100,
+       "max": 29948405,
+       "median": 29918482,
+       "min": 29885503
       },
       "encaps": {
-       "avg": 42045841,
-       "count": 3,
-       "max": 77207436,
-       "median": 24465946,
-       "min": 24464142
+       "avg": 24992238,
+       "count": 100,
+       "max": 77207444,
+       "median": 24464934,
+       "min": 24462397
       },
       "keypair": {
-       "avg": 18537294,
-       "count": 3,
-       "max": 18537529,
-       "median": 18537366,
-       "min": 18536988
+       "avg": 18537214,
+       "count": 100,
+       "max": 18537869,
+       "median": 18537253,
+       "min": 18536389
       }
      },
-     "cycles_total": 90505292,
+     "cycles_total": 73448210,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5574,34 +5586,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 26120,
-      "total": 28276
+      "text": 26548,
+      "total": 28704
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2630315,
-       "count": 3,
-       "max": 2630346,
-       "median": 2630333,
-       "min": 2630266
+       "avg": 2630345,
+       "count": 100,
+       "max": 2630715,
+       "median": 2630334,
+       "min": 2630112
       },
       "encaps": {
-       "avg": 1929974,
-       "count": 3,
-       "max": 1930023,
-       "median": 1930010,
-       "min": 1929889
+       "avg": 1930001,
+       "count": 100,
+       "max": 1930247,
+       "median": 1929994,
+       "min": 1929836
       },
       "keypair": {
-       "avg": 1092914,
-       "count": 3,
-       "max": 1093045,
-       "median": 1092918,
-       "min": 1092778
+       "avg": 1092937,
+       "count": 100,
+       "max": 1093118,
+       "median": 1092930,
+       "min": 1092757
       }
      },
-     "cycles_total": 5653203,
+     "cycles_total": 5653283,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5667,34 +5679,34 @@
       "bss": 552,
       "data": 1608,
       "source": "report",
-      "text": 31212,
-      "total": 33372
+      "text": 31640,
+      "total": 33800
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 8167688,
-       "count": 3,
-       "max": 8171847,
-       "median": 8169253,
-       "min": 8161965
+       "avg": 8170292,
+       "count": 100,
+       "max": 8202265,
+       "median": 8171053,
+       "min": 8135157
       },
       "encaps": {
-       "avg": 17130173,
-       "count": 3,
-       "max": 38809769,
-       "median": 6290820,
-       "min": 6289930
+       "avg": 6615932,
+       "count": 100,
+       "max": 38809764,
+       "median": 6290782,
+       "min": 6288337
       },
       "keypair": {
-       "avg": 4537468,
-       "count": 3,
-       "max": 4537536,
-       "median": 4537465,
-       "min": 4537402
+       "avg": 4537505,
+       "count": 100,
+       "max": 4537984,
+       "median": 4537492,
+       "min": 4537015
       }
      },
-     "cycles_total": 29835329,
+     "cycles_total": 19323729,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5760,34 +5772,34 @@
       "bss": 552,
       "data": 1608,
       "source": "report",
-      "text": 31948,
-      "total": 34108
+      "text": 32376,
+      "total": 34536
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 15164691,
-       "count": 3,
-       "max": 15172118,
-       "median": 15162593,
-       "min": 15159361
+       "avg": 15165797,
+       "count": 100,
+       "max": 15179334,
+       "median": 15165362,
+       "min": 15151498
       },
       "encaps": {
-       "avg": 16658804,
-       "count": 3,
-       "max": 24751708,
-       "median": 12612669,
-       "min": 12612036
+       "avg": 12733717,
+       "count": 100,
+       "max": 24751706,
+       "median": 12612326,
+       "min": 12611046
       },
       "keypair": {
-       "avg": 10044721,
-       "count": 3,
-       "max": 10044842,
-       "median": 10044686,
-       "min": 10044636
+       "avg": 10044758,
+       "count": 100,
+       "max": 10045284,
+       "median": 10044770,
+       "min": 10044192
       }
      },
-     "cycles_total": 41868216,
+     "cycles_total": 37944272,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5853,34 +5865,34 @@
       "bss": 552,
       "data": 1608,
       "source": "report",
-      "text": 32756,
-      "total": 34916
+      "text": 33184,
+      "total": 35344
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 32337426,
-       "count": 3,
-       "max": 32345115,
-       "median": 32339841,
-       "min": 32327322
+       "avg": 32333916,
+       "count": 100,
+       "max": 32364902,
+       "median": 32333330,
+       "min": 32299551
       },
       "encaps": {
-       "avg": 44515775,
-       "count": 3,
-       "max": 79677711,
-       "median": 26935161,
-       "min": 26934453
+       "avg": 27462212,
+       "count": 100,
+       "max": 79677721,
+       "median": 26934902,
+       "min": 26932011
       },
       "keypair": {
-       "avg": 21675867,
-       "count": 3,
-       "max": 21676014,
-       "median": 21676001,
-       "min": 21675586
+       "avg": 21675736,
+       "count": 100,
+       "max": 21676483,
+       "median": 21675767,
+       "min": 21674940
       }
      },
-     "cycles_total": 98529068,
+     "cycles_total": 81471864,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -5946,34 +5958,34 @@
       "bss": 844,
       "data": 1352,
       "source": "report",
-      "text": 29000,
-      "total": 31196
+      "text": 29420,
+      "total": 31616
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2191042,
-       "count": 10,
-       "max": 2197976,
-       "median": 2192373,
-       "min": 2183457
+       "avg": 2189268,
+       "count": 100,
+       "max": 2198007,
+       "median": 2189472,
+       "min": 2175280
       },
       "encaps": {
-       "avg": 1693408,
-       "count": 10,
-       "max": 1700020,
-       "median": 1694196,
-       "min": 1686749
+       "avg": 1691774,
+       "count": 100,
+       "max": 1700038,
+       "median": 1691978,
+       "min": 1679991
       },
       "keypair": {
-       "avg": 1087609,
-       "count": 10,
-       "max": 1087652,
-       "median": 1087611,
-       "min": 1087547
+       "avg": 1087636,
+       "count": 100,
+       "max": 1087675,
+       "median": 1087634,
+       "min": 1087567
       }
      },
-     "cycles_total": 4972059,
+     "cycles_total": 4968678,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6038,34 +6050,34 @@
       "bss": 844,
       "data": 1352,
       "source": "report",
-      "text": 29528,
-      "total": 31724
+      "text": 29948,
+      "total": 32144
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3981145,
-       "count": 10,
-       "max": 3994285,
-       "median": 3979450,
-       "min": 3973486
+       "avg": 3982022,
+       "count": 100,
+       "max": 3994300,
+       "median": 3982190,
+       "min": 3967731
       },
       "encaps": {
-       "avg": 3255893,
-       "count": 10,
-       "max": 3267687,
-       "median": 3254808,
-       "min": 3250841
+       "avg": 3256824,
+       "count": 100,
+       "max": 3267699,
+       "median": 3257196,
+       "min": 3243055
       },
       "keypair": {
-       "avg": 2370928,
-       "count": 10,
-       "max": 2370970,
-       "median": 2370919,
-       "min": 2370918
+       "avg": 2370949,
+       "count": 100,
+       "max": 2370986,
+       "median": 2370943,
+       "min": 2370943
       }
      },
-     "cycles_total": 9607966,
+     "cycles_total": 9609795,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6130,34 +6142,34 @@
       "bss": 844,
       "data": 1352,
       "source": "report",
-      "text": 28924,
-      "total": 31120
+      "text": 29344,
+      "total": 31540
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 6199775,
-       "count": 10,
-       "max": 6207261,
-       "median": 6200922,
-       "min": 6192361
+       "avg": 6200757,
+       "count": 100,
+       "max": 6218685,
+       "median": 6201134,
+       "min": 6189987
       },
       "encaps": {
-       "avg": 5256450,
-       "count": 10,
-       "max": 5261812,
-       "median": 5257325,
-       "min": 5250364
+       "avg": 5256908,
+       "count": 100,
+       "max": 5272301,
+       "median": 5257184,
+       "min": 5247669
       },
       "keypair": {
-       "avg": 4109659,
-       "count": 10,
-       "max": 4109686,
-       "median": 4109657,
-       "min": 4109639
+       "avg": 4109614,
+       "count": 100,
+       "max": 4109653,
+       "median": 4109603,
+       "min": 4109603
       }
      },
-     "cycles_total": 15565884,
+     "cycles_total": 15567279,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6222,34 +6234,34 @@
       "bss": 844,
       "data": 1352,
       "source": "report",
-      "text": 29556,
-      "total": 31752
+      "text": 29976,
+      "total": 32172
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 15898265,
-       "count": 10,
-       "max": 15909437,
-       "median": 15896812,
-       "min": 15886481
+       "avg": 15900362,
+       "count": 100,
+       "max": 15921432,
+       "median": 15900440,
+       "min": 15883077
       },
       "encaps": {
-       "avg": 14299123,
-       "count": 10,
-       "max": 14309275,
-       "median": 14297950,
-       "min": 14289443
+       "avg": 14300952,
+       "count": 100,
+       "max": 14320634,
+       "median": 14301329,
+       "min": 14284579
       },
       "keypair": {
-       "avg": 12380199,
-       "count": 10,
-       "max": 12380214,
-       "median": 12380208,
-       "min": 12380172
+       "avg": 12380035,
+       "count": 100,
+       "max": 12380057,
+       "median": 12380045,
+       "min": 12380007
       }
      },
-     "cycles_total": 42577587,
+     "cycles_total": 42581349,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6314,34 +6326,34 @@
       "bss": 844,
       "data": 1352,
       "source": "report",
-      "text": 29548,
-      "total": 31744
+      "text": 29968,
+      "total": 32164
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 24756389,
-       "count": 10,
-       "max": 24763739,
-       "median": 24757694,
-       "min": 24746258
+       "avg": 24751074,
+       "count": 100,
+       "max": 24769823,
+       "median": 24752831,
+       "min": 24727811
       },
       "encaps": {
-       "avg": 22713695,
-       "count": 10,
-       "max": 22720275,
-       "median": 22715567,
-       "min": 22703317
+       "avg": 22709010,
+       "count": 100,
+       "max": 22725358,
+       "median": 22710220,
+       "min": 22687708
       },
       "keypair": {
-       "avg": 20274015,
-       "count": 10,
-       "max": 20274148,
-       "median": 20274001,
-       "min": 20273998
+       "avg": 20273907,
+       "count": 100,
+       "max": 20274050,
+       "median": 20273899,
+       "min": 20273895
       }
      },
-     "cycles_total": 67744099,
+     "cycles_total": 67733991,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6406,34 +6418,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25100,
-      "total": 27000
+      "text": 25520,
+      "total": 27420
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2384928,
-       "count": 3,
-       "max": 2384928,
-       "median": 2384928,
-       "min": 2384928
+       "avg": 2384934,
+       "count": 100,
+       "max": 2384969,
+       "median": 2384929,
+       "min": 2384929
       },
       "encaps": {
-       "avg": 2081993,
-       "count": 3,
-       "max": 2082018,
-       "median": 2081980,
-       "min": 2081980
+       "avg": 2081984,
+       "count": 100,
+       "max": 2082019,
+       "median": 2081979,
+       "min": 2081978
       },
       "keypair": {
-       "avg": 1787926,
-       "count": 3,
-       "max": 1787972,
-       "median": 1787972,
-       "min": 1787835
+       "avg": 1787977,
+       "count": 100,
+       "max": 1788017,
+       "median": 1787975,
+       "min": 1787834
       }
      },
-     "cycles_total": 6254847,
+     "cycles_total": 6254895,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6498,34 +6510,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25512,
-      "total": 27412
+      "text": 25940,
+      "total": 27840
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 7450600,
-       "count": 3,
-       "max": 7450613,
-       "median": 7450612,
-       "min": 7450574
+       "avg": 7450593,
+       "count": 100,
+       "max": 7450617,
+       "median": 7450577,
+       "min": 7450576
       },
       "encaps": {
-       "avg": 6364984,
-       "count": 3,
+       "avg": 6364983,
+       "count": 100,
        "max": 6365010,
-       "median": 6364971,
-       "min": 6364971
+       "median": 6364969,
+       "min": 6364969
       },
       "keypair": {
-       "avg": 5300045,
-       "count": 3,
-       "max": 5300060,
-       "median": 5300060,
-       "min": 5300014
+       "avg": 5300076,
+       "count": 100,
+       "max": 5300114,
+       "median": 5300065,
+       "min": 5300024
       }
      },
-     "cycles_total": 19115629,
+     "cycles_total": 19115652,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -6590,34 +6602,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25600,
-      "total": 27500
+      "text": 26024,
+      "total": 27924
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 26197462,
-       "count": 3,
-       "max": 26197464,
-       "median": 26197462,
-       "min": 26197461
+       "avg": 26197482,
+       "count": 100,
+       "max": 26197507,
+       "median": 26197466,
+       "min": 26197460
       },
       "encaps": {
-       "avg": 22110232,
-       "count": 3,
-       "max": 22110233,
-       "median": 22110232,
+       "avg": 22110249,
+       "count": 100,
+       "max": 22110276,
+       "median": 22110234,
        "min": 22110230
       },
       "keypair": {
-       "avg": 18080058,
-       "count": 3,
-       "max": 18080129,
-       "median": 18080127,
-       "min": 18079918
+       "avg": 18080101,
+       "count": 100,
+       "max": 18080140,
+       "median": 18080099,
+       "min": 18079925
       }
      },
-     "cycles_total": 66387752,
+     "cycles_total": 66387832,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7186,34 +7198,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 25492,
-      "total": 27648
+      "text": 25912,
+      "total": 28068
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 413935,
-       "count": 10,
-       "max": 413956,
-       "median": 413938,
-       "min": 413911
+       "avg": 413945,
+       "count": 100,
+       "max": 414003,
+       "median": 413944,
+       "min": 413894
       },
       "encaps": {
-       "avg": 296148,
-       "count": 10,
-       "max": 296169,
-       "median": 296151,
-       "min": 296124
+       "avg": 296158,
+       "count": 100,
+       "max": 296216,
+       "median": 296154,
+       "min": 296108
       },
       "keypair": {
-       "avg": 346468,
-       "count": 10,
-       "max": 346474,
-       "median": 346474,
-       "min": 346410
+       "avg": 346486,
+       "count": 100,
+       "max": 346523,
+       "median": 346486,
+       "min": 346424
       }
      },
-     "cycles_total": 1056551,
+     "cycles_total": 1056589,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7278,34 +7290,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 24964,
-      "total": 27120
+      "text": 25384,
+      "total": 27540
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 466191,
-       "count": 10,
-       "max": 466191,
-       "median": 466191,
-       "min": 466191
+       "avg": 466194,
+       "count": 100,
+       "max": 466194,
+       "median": 466194,
+       "min": 466194
       },
       "encaps": {
        "avg": 285688,
-       "count": 10,
+       "count": 100,
        "max": 285688,
        "median": 285688,
        "min": 285688
       },
       "keypair": {
-       "avg": 346465,
-       "count": 10,
-       "max": 346471,
-       "median": 346471,
-       "min": 346409
+       "avg": 346488,
+       "count": 100,
+       "max": 346527,
+       "median": 346487,
+       "min": 346424
       }
      },
-     "cycles_total": 1098344,
+     "cycles_total": 1098370,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7370,34 +7382,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 33652,
-      "total": 35808
+      "text": 34072,
+      "total": 36228
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 953122,
-       "count": 10,
-       "max": 953177,
-       "median": 953118,
-       "min": 953069
+       "avg": 953117,
+       "count": 100,
+       "max": 953226,
+       "median": 953112,
+       "min": 953067
       },
       "encaps": {
-       "avg": 647500,
-       "count": 10,
-       "max": 647555,
-       "median": 647496,
+       "avg": 647498,
+       "count": 100,
+       "max": 647609,
+       "median": 647492,
        "min": 647447
       },
       "keypair": {
-       "avg": 837192,
-       "count": 10,
-       "max": 837228,
-       "median": 837188,
-       "min": 837188
+       "avg": 837184,
+       "count": 100,
+       "max": 837223,
+       "median": 837182,
+       "min": 837182
       }
      },
-     "cycles_total": 2437814,
+     "cycles_total": 2437799,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7462,34 +7474,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 33116,
-      "total": 35272
+      "text": 33536,
+      "total": 35692
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1063223,
-       "count": 10,
-       "max": 1063254,
-       "median": 1063220,
-       "min": 1063220
+       "avg": 1063216,
+       "count": 100,
+       "max": 1063252,
+       "median": 1063213,
+       "min": 1063213
       },
       "encaps": {
-       "avg": 632108,
-       "count": 10,
-       "max": 632108,
-       "median": 632108,
-       "min": 632108
+       "avg": 632103,
+       "count": 100,
+       "max": 632140,
+       "median": 632102,
+       "min": 632100
       },
       "keypair": {
-       "avg": 837200,
-       "count": 10,
-       "max": 837200,
-       "median": 837200,
-       "min": 837199
+       "avg": 837187,
+       "count": 100,
+       "max": 837228,
+       "median": 837186,
+       "min": 837185
       }
      },
-     "cycles_total": 2532531,
+     "cycles_total": 2532506,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7554,34 +7566,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 45396,
-      "total": 47552
+      "text": 45816,
+      "total": 47972
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2213441,
-       "count": 10,
-       "max": 2213496,
-       "median": 2213451,
-       "min": 2213370
+       "avg": 2213443,
+       "count": 100,
+       "max": 2213562,
+       "median": 2213440,
+       "min": 2213353
       },
       "encaps": {
-       "avg": 1551774,
-       "count": 10,
-       "max": 1551821,
-       "median": 1551780,
-       "min": 1551695
+       "avg": 1551764,
+       "count": 100,
+       "max": 1551887,
+       "median": 1551757,
+       "min": 1551676
       },
       "keypair": {
-       "avg": 2536950,
-       "count": 10,
-       "max": 2536992,
-       "median": 2536941,
-       "min": 2536941
+       "avg": 2536952,
+       "count": 100,
+       "max": 2536997,
+       "median": 2536946,
+       "min": 2536946
       }
      },
-     "cycles_total": 6302165,
+     "cycles_total": 6302159,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7646,34 +7658,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 44764,
-      "total": 46920
+      "text": 45184,
+      "total": 47340
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2406038,
-       "count": 10,
-       "max": 2406070,
-       "median": 2406030,
-       "min": 2406029
+       "avg": 2406036,
+       "count": 100,
+       "max": 2406071,
+       "median": 2406031,
+       "min": 2406030
       },
       "encaps": {
        "avg": 1493452,
-       "count": 10,
-       "max": 1493482,
-       "median": 1493444,
-       "min": 1493443
+       "count": 100,
+       "max": 1493488,
+       "median": 1493448,
+       "min": 1493448
       },
       "keypair": {
-       "avg": 2536953,
-       "count": 10,
-       "max": 2537002,
-       "median": 2536948,
-       "min": 2536948
+       "avg": 2536958,
+       "count": 100,
+       "max": 2537001,
+       "median": 2536952,
+       "min": 2536951
       }
      },
-     "cycles_total": 6436443,
+     "cycles_total": 6436446,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7738,34 +7750,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 24488,
-      "total": 26644
+      "text": 24908,
+      "total": 27064
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 537026,
-       "count": 10,
-       "max": 537026,
-       "median": 537026,
-       "min": 537026
+       "avg": 537023,
+       "count": 100,
+       "max": 537062,
+       "median": 537022,
+       "min": 537022
       },
       "encaps": {
-       "avg": 447168,
-       "count": 10,
-       "max": 447202,
-       "median": 447164,
-       "min": 447164
+       "avg": 447160,
+       "count": 100,
+       "max": 447199,
+       "median": 447159,
+       "min": 447159
       },
       "keypair": {
-       "avg": 472127,
-       "count": 10,
-       "max": 472134,
-       "median": 472134,
-       "min": 472068
+       "avg": 472126,
+       "count": 100,
+       "max": 472164,
+       "median": 472125,
+       "min": 472064
       }
      },
-     "cycles_total": 1456321,
+     "cycles_total": 1456309,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7830,34 +7842,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 30992,
-      "total": 33148
+      "text": 31412,
+      "total": 33568
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 978156,
-       "count": 10,
-       "max": 978191,
-       "median": 978152,
-       "min": 978152
+       "avg": 978164,
+       "count": 100,
+       "max": 978202,
+       "median": 978161,
+       "min": 978161
       },
       "encaps": {
-       "avg": 733585,
-       "count": 10,
-       "max": 733585,
-       "median": 733585,
-       "min": 733585
+       "avg": 733594,
+       "count": 100,
+       "max": 733632,
+       "median": 733592,
+       "min": 733592
       },
       "keypair": {
-       "avg": 851713,
-       "count": 10,
-       "max": 851713,
+       "avg": 851715,
+       "count": 100,
+       "max": 851754,
        "median": 851713,
-       "min": 851712
+       "min": 851713
       }
      },
-     "cycles_total": 2563454,
+     "cycles_total": 2563473,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -7922,34 +7934,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 40920,
-      "total": 43076
+      "text": 41340,
+      "total": 43496
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2228045,
-       "count": 10,
-       "max": 2228045,
-       "median": 2228045,
-       "min": 2228045
+       "avg": 2228055,
+       "count": 100,
+       "max": 2228093,
+       "median": 2228051,
+       "min": 2228050
       },
       "encaps": {
-       "avg": 1736631,
-       "count": 10,
-       "max": 1736659,
-       "median": 1736624,
-       "min": 1736624
+       "avg": 1736627,
+       "count": 100,
+       "max": 1736664,
+       "median": 1736623,
+       "min": 1736623
       },
       "keypair": {
        "avg": 2386036,
-       "count": 10,
-       "max": 2386177,
-       "median": 2386016,
-       "min": 2386016
+       "count": 100,
+       "max": 2386188,
+       "median": 2386029,
+       "min": 2386028
       }
      },
-     "cycles_total": 6350712,
+     "cycles_total": 6350718,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8014,34 +8026,34 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 28752,
-      "total": 30780
+      "text": 29172,
+      "total": 31200
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 440303,
-       "count": 10,
-       "max": 440303,
-       "median": 440303,
-       "min": 440303
+       "avg": 440297,
+       "count": 100,
+       "max": 440334,
+       "median": 440295,
+       "min": 440295
       },
       "encaps": {
-       "avg": 324803,
-       "count": 10,
-       "max": 324803,
-       "median": 324803,
-       "min": 324803
+       "avg": 324794,
+       "count": 100,
+       "max": 324832,
+       "median": 324794,
+       "min": 324794
       },
       "keypair": {
-       "avg": 400700,
-       "count": 10,
-       "max": 400706,
-       "median": 400706,
-       "min": 400642
+       "avg": 400692,
+       "count": 100,
+       "max": 400733,
+       "median": 400692,
+       "min": 400632
       }
      },
-     "cycles_total": 1165806,
+     "cycles_total": 1165783,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8106,34 +8118,34 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 41116,
-      "total": 43144
+      "text": 41536,
+      "total": 43564
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 944053,
-       "count": 10,
-       "max": 944090,
-       "median": 944049,
-       "min": 944049
+       "avg": 944044,
+       "count": 100,
+       "max": 944082,
+       "median": 944042,
+       "min": 944042
       },
       "encaps": {
-       "avg": 635008,
-       "count": 10,
-       "max": 635008,
-       "median": 635008,
-       "min": 635008
+       "avg": 635001,
+       "count": 100,
+       "max": 635040,
+       "median": 635000,
+       "min": 635000
       },
       "keypair": {
-       "avg": 962304,
-       "count": 10,
-       "max": 962304,
-       "median": 962304,
-       "min": 962303
+       "avg": 962299,
+       "count": 100,
+       "max": 962337,
+       "median": 962297,
+       "min": 962297
       }
      },
-     "cycles_total": 2541365,
+     "cycles_total": 2541344,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8198,34 +8210,34 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 49124,
-      "total": 51152
+      "text": 49544,
+      "total": 51572
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2310650,
-       "count": 10,
-       "max": 2310732,
-       "median": 2310645,
-       "min": 2310579
+       "avg": 2310652,
+       "count": 100,
+       "max": 2310787,
+       "median": 2310652,
+       "min": 2310571
       },
       "encaps": {
-       "avg": 1631472,
-       "count": 10,
-       "max": 1631559,
-       "median": 1631468,
-       "min": 1631405
+       "avg": 1631478,
+       "count": 100,
+       "max": 1631625,
+       "median": 1631470,
+       "min": 1631398
       },
       "keypair": {
-       "avg": 2695867,
-       "count": 10,
-       "max": 2695961,
-       "median": 2695870,
-       "min": 2695799
+       "avg": 2695861,
+       "count": 100,
+       "max": 2696041,
+       "median": 2695868,
+       "min": 2695697
       }
      },
-     "cycles_total": 6637989,
+     "cycles_total": 6637991,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8290,34 +8302,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24604,
-      "total": 26504
+      "text": 25024,
+      "total": 26924
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 398243,
-       "count": 10,
-       "max": 398269,
-       "median": 398242,
-       "min": 398204
+       "avg": 398249,
+       "count": 100,
+       "max": 398326,
+       "median": 398248,
+       "min": 398201
       },
       "encaps": {
-       "avg": 311866,
-       "count": 10,
-       "max": 311892,
-       "median": 311864,
-       "min": 311827
+       "avg": 311874,
+       "count": 100,
+       "max": 311927,
+       "median": 311874,
+       "min": 311826
       },
       "keypair": {
-       "avg": 357167,
-       "count": 10,
-       "max": 357174,
-       "median": 357174,
-       "min": 357107
+       "avg": 357189,
+       "count": 100,
+       "max": 357230,
+       "median": 357189,
+       "min": 357123
       }
      },
-     "cycles_total": 1067276,
+     "cycles_total": 1067312,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8382,34 +8394,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25404,
-      "total": 27304
+      "text": 25824,
+      "total": 27724
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 773712,
-       "count": 10,
-       "max": 773766,
-       "median": 773716,
-       "min": 773636
+       "avg": 773720,
+       "count": 100,
+       "max": 773799,
+       "median": 773720,
+       "min": 773646
       },
       "encaps": {
-       "avg": 590037,
-       "count": 10,
-       "max": 590092,
-       "median": 590042,
+       "avg": 590041,
+       "count": 100,
+       "max": 590106,
+       "median": 590041,
        "min": 589963
       },
       "keypair": {
-       "avg": 658127,
-       "count": 10,
-       "max": 658174,
-       "median": 658138,
-       "min": 657996
+       "avg": 658126,
+       "count": 100,
+       "max": 658166,
+       "median": 658126,
+       "min": 657983
       }
      },
-     "cycles_total": 2021876,
+     "cycles_total": 2021887,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8474,34 +8486,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25768,
-      "total": 27668
+      "text": 26188,
+      "total": 28088
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1724463,
-       "count": 10,
-       "max": 1724589,
-       "median": 1724454,
-       "min": 1724387
+       "avg": 1724466,
+       "count": 100,
+       "max": 1724630,
+       "median": 1724461,
+       "min": 1724295
       },
       "encaps": {
-       "avg": 1314711,
-       "count": 10,
-       "max": 1314832,
-       "median": 1314697,
-       "min": 1314631
+       "avg": 1314715,
+       "count": 100,
+       "max": 1314887,
+       "median": 1314710,
+       "min": 1314581
       },
       "keypair": {
        "avg": 1346334,
-       "count": 10,
-       "max": 1346373,
-       "median": 1346335,
-       "min": 1346285
+       "count": 100,
+       "max": 1346372,
+       "median": 1346332,
+       "min": 1346291
       }
      },
-     "cycles_total": 4385508,
+     "cycles_total": 4385515,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8566,34 +8578,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 30844,
-      "total": 32744
+      "text": 31264,
+      "total": 33164
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1124753,
-       "count": 10,
-       "max": 1124753,
+       "avg": 1124755,
+       "count": 100,
+       "max": 1124794,
        "median": 1124753,
        "min": 1124753
       },
       "encaps": {
-       "avg": 1083789,
-       "count": 10,
-       "max": 1083833,
-       "median": 1083793,
-       "min": 1083716
+       "avg": 1083786,
+       "count": 100,
+       "max": 1083831,
+       "median": 1083783,
+       "min": 1083709
       },
       "keypair": {
-       "avg": 1168606,
-       "count": 10,
-       "max": 1168701,
-       "median": 1168590,
-       "min": 1168590
+       "avg": 1168597,
+       "count": 100,
+       "max": 1168704,
+       "median": 1168592,
+       "min": 1168592
       }
      },
-     "cycles_total": 3377148,
+     "cycles_total": 3377138,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8658,34 +8670,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 33240,
-      "total": 35140
+      "text": 33660,
+      "total": 35560
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2753789,
-       "count": 10,
-       "max": 2753789,
+       "avg": 2753794,
+       "count": 100,
+       "max": 2753831,
        "median": 2753789,
        "min": 2753789
       },
       "encaps": {
-       "avg": 2601960,
-       "count": 10,
-       "max": 2601970,
-       "median": 2601959,
-       "min": 2601959
+       "avg": 2601963,
+       "count": 100,
+       "max": 2602004,
+       "median": 2601956,
+       "min": 2601956
       },
       "keypair": {
-       "avg": 2512815,
-       "count": 10,
-       "max": 2512851,
-       "median": 2512801,
-       "min": 2512768
+       "avg": 2512804,
+       "count": 100,
+       "max": 2512854,
+       "median": 2512796,
+       "min": 2512766
       }
      },
-     "cycles_total": 7868564,
+     "cycles_total": 7868561,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -8750,34 +8762,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 28196,
-      "total": 30096
+      "text": 28616,
+      "total": 30516
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 405790,
-       "count": 10,
-       "max": 405790,
-       "median": 405790,
-       "min": 405790
+       "avg": 405802,
+       "count": 100,
+       "max": 405839,
+       "median": 405801,
+       "min": 405799
       },
       "encaps": {
-       "avg": 335748,
-       "count": 10,
-       "max": 335757,
-       "median": 335757,
-       "min": 335667
+       "avg": 335772,
+       "count": 100,
+       "max": 335810,
+       "median": 335772,
+       "min": 335679
       },
       "keypair": {
-       "avg": 406082,
-       "count": 10,
-       "max": 406086,
-       "median": 406081,
-       "min": 406081
+       "avg": 406092,
+       "count": 100,
+       "max": 406130,
+       "median": 406090,
+       "min": 406089
       }
      },
-     "cycles_total": 1147620,
+     "cycles_total": 1147666,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -9302,34 +9314,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24436,
-      "total": 26336
+      "text": 24856,
+      "total": 26756
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2262256,
-       "count": 10,
-       "max": 2262341,
-       "median": 2262262,
-       "min": 2262168
+       "avg": 2262235,
+       "count": 100,
+       "max": 2262322,
+       "median": 2262236,
+       "min": 2262145
       },
       "encaps": {
-       "avg": 1128630,
-       "count": 10,
-       "max": 1128720,
-       "median": 1128639,
-       "min": 1128546
+       "avg": 1128601,
+       "count": 100,
+       "max": 1128709,
+       "median": 1128601,
+       "min": 1128519
       },
       "keypair": {
-       "avg": 311984,
-       "count": 10,
-       "max": 311990,
-       "median": 311990,
-       "min": 311929
+       "avg": 311992,
+       "count": 100,
+       "max": 312031,
+       "median": 311992,
+       "min": 311933
       }
      },
-     "cycles_total": 3702870,
+     "cycles_total": 3702828,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -9394,34 +9406,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24852,
-      "total": 26752
+      "text": 25272,
+      "total": 27172
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3102292,
-       "count": 10,
-       "max": 3102369,
-       "median": 3102316,
-       "min": 3102166
+       "avg": 3102239,
+       "count": 100,
+       "max": 3102377,
+       "median": 3102238,
+       "min": 3102100
       },
       "encaps": {
-       "avg": 1531510,
-       "count": 10,
-       "max": 1531572,
-       "median": 1531536,
-       "min": 1531396
+       "avg": 1531463,
+       "count": 100,
+       "max": 1531609,
+       "median": 1531466,
+       "min": 1531354
       },
       "keypair": {
-       "avg": 607899,
-       "count": 10,
-       "max": 607934,
-       "median": 607893,
-       "min": 607831
+       "avg": 607897,
+       "count": 100,
+       "max": 607935,
+       "median": 607896,
+       "min": 607837
       }
      },
-     "cycles_total": 5241701,
+     "cycles_total": 5241599,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -9486,34 +9498,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25436,
-      "total": 27336
+      "text": 25856,
+      "total": 27756
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 6087601,
-       "count": 10,
-       "max": 6087731,
-       "median": 6087616,
-       "min": 6087378
+       "avg": 6087571,
+       "count": 100,
+       "max": 6087794,
+       "median": 6087570,
+       "min": 6087344
       },
       "encaps": {
-       "avg": 2998020,
-       "count": 10,
-       "max": 2998180,
-       "median": 2998023,
-       "min": 2997863
+       "avg": 2998004,
+       "count": 100,
+       "max": 2998184,
+       "median": 2998002,
+       "min": 2997820
       },
       "keypair": {
-       "avg": 1199706,
-       "count": 10,
-       "max": 1199712,
-       "median": 1199712,
-       "min": 1199653
+       "avg": 1199715,
+       "count": 100,
+       "max": 1199754,
+       "median": 1199714,
+       "min": 1199647
       }
      },
-     "cycles_total": 10285327,
+     "cycles_total": 10285290,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -10418,8 +10430,8 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 37684,
-      "total": 39584
+      "text": 38104,
+      "total": 40004
      },
      "completed_ops": [],
      "cycles": {
@@ -10510,8 +10522,8 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 39068,
-      "total": 40968
+      "text": 39488,
+      "total": 41388
      },
      "completed_ops": [],
      "cycles": {
@@ -10598,7 +10610,13 @@
     },
     {
      "category": "kem",
-     "code": null,
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 40424,
+      "total": 42324
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -10607,7 +10625,7 @@
       "encaps",
       "decaps"
      ],
-     "failure_kind": "too-slow",
+     "failure_kind": "timeout",
      "family": "crypto_kem",
      "hand_ported": false,
      "id": "crypto_kem_TRIKE-7_ref",
@@ -10649,12 +10667,18 @@
       "ss": 64
      },
      "stack": null,
-     "status_text": "not run: too slow for the board run (TRIKE-5 needs ~13 min per iteration; QEMU shows ~4x that)",
+     "status_text": "timeout: too slow for the board run (TRIKE-5 needs ~13 min per iteration; no output within the 30 min cap); completed none",
      "tier": "board"
     },
     {
      "category": "kem",
-     "code": null,
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 40568,
+      "total": 42468
+     },
      "completed_ops": [],
      "cycles": {},
      "cycles_total": null,
@@ -10663,7 +10687,7 @@
       "encaps",
       "decaps"
      ],
-     "failure_kind": "too-slow",
+     "failure_kind": "timeout",
      "family": "crypto_kem",
      "hand_ported": false,
      "id": "crypto_kem_TRIKE-9_ref",
@@ -10705,7 +10729,7 @@
       "ss": 64
      },
      "stack": null,
-     "status_text": "not run: too slow for the board run (same as TRIKE-7)",
+     "status_text": "timeout: too slow for the board run (same as TRIKE-7; no output within the 30 min cap); completed none",
      "tier": "board"
     },
     {
@@ -10938,34 +10962,34 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 31000,
-      "total": 33028
+      "text": 31420,
+      "total": 33448
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1730641,
-       "count": 10,
-       "max": 1730998,
-       "median": 1730614,
-       "min": 1730230
+       "avg": 1730598,
+       "count": 100,
+       "max": 1731304,
+       "median": 1730610,
+       "min": 1729933
       },
       "encaps": {
-       "avg": 1546402,
-       "count": 10,
-       "max": 1546798,
-       "median": 1546376,
-       "min": 1545989
+       "avg": 1546356,
+       "count": 100,
+       "max": 1547064,
+       "median": 1546374,
+       "min": 1545653
       },
       "keypair": {
-       "avg": 1323885,
-       "count": 10,
-       "max": 1324185,
-       "median": 1323854,
-       "min": 1323550
+       "avg": 1323822,
+       "count": 100,
+       "max": 1324516,
+       "median": 1323830,
+       "min": 1323260
       }
      },
-     "cycles_total": 4600928,
+     "cycles_total": 4600776,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11030,34 +11054,34 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 35416,
-      "total": 37444
+      "text": 35836,
+      "total": 37864
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2812636,
-       "count": 10,
-       "max": 2813593,
-       "median": 2812660,
-       "min": 2812053
+       "avg": 2812900,
+       "count": 100,
+       "max": 2814225,
+       "median": 2812847,
+       "min": 2811880
       },
       "encaps": {
-       "avg": 2497907,
-       "count": 10,
-       "max": 2498896,
-       "median": 2497928,
-       "min": 2497321
+       "avg": 2498163,
+       "count": 100,
+       "max": 2499488,
+       "median": 2498122,
+       "min": 2497144
       },
       "keypair": {
-       "avg": 2087536,
-       "count": 10,
-       "max": 2088725,
-       "median": 2087513,
-       "min": 2086570
+       "avg": 2087512,
+       "count": 100,
+       "max": 2088730,
+       "median": 2087568,
+       "min": 2086153
       }
      },
-     "cycles_total": 7398079,
+     "cycles_total": 7398575,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11122,34 +11146,34 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 46220,
-      "total": 48376
+      "text": 46640,
+      "total": 48796
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 8099795,
-       "count": 10,
-       "max": 8101015,
-       "median": 8099730,
-       "min": 8098819
+       "avg": 8099215,
+       "count": 100,
+       "max": 8101638,
+       "median": 8099242,
+       "min": 8095902
       },
       "encaps": {
-       "avg": 7252668,
-       "count": 10,
-       "max": 7253850,
-       "median": 7252638,
-       "min": 7251691
+       "avg": 7252164,
+       "count": 100,
+       "max": 7254548,
+       "median": 7252172,
+       "min": 7248853
       },
       "keypair": {
-       "avg": 6103220,
-       "count": 10,
-       "max": 6104490,
-       "median": 6103018,
-       "min": 6102629
+       "avg": 6103257,
+       "count": 100,
+       "max": 6104592,
+       "median": 6103274,
+       "min": 6101435
       }
      },
-     "cycles_total": 21455683,
+     "cycles_total": 21454636,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11214,34 +11238,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 51352,
-      "total": 53252
+      "text": 51772,
+      "total": 53672
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 4280287,
-       "count": 10,
-       "max": 4281006,
-       "median": 4280376,
-       "min": 4279146
+       "avg": 4280267,
+       "count": 100,
+       "max": 4281320,
+       "median": 4280262,
+       "min": 4279153
       },
       "encaps": {
-       "avg": 2428028,
-       "count": 10,
-       "max": 2428359,
-       "median": 2428043,
-       "min": 2427562
+       "avg": 2427990,
+       "count": 100,
+       "max": 2428672,
+       "median": 2428002,
+       "min": 2427299
       },
       "keypair": {
-       "avg": 4552498,
-       "count": 10,
-       "max": 4655829,
-       "median": 4526725,
-       "min": 4525780
+       "avg": 4638766,
+       "count": 100,
+       "max": 5426165,
+       "median": 4528396,
+       "min": 4525102
       }
      },
-     "cycles_total": 11260813,
+     "cycles_total": 11347023,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11307,34 +11331,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 60184,
-      "total": 62084
+      "text": 60604,
+      "total": 62504
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 14813737,
-       "count": 10,
-       "max": 14813950,
-       "median": 14813720,
-       "min": 14813560
+       "avg": 14813693,
+       "count": 100,
+       "max": 14814201,
+       "median": 14813724,
+       "min": 14813225
       },
       "encaps": {
-       "avg": 10747732,
-       "count": 10,
-       "max": 10747996,
-       "median": 10747772,
-       "min": 10747396
+       "avg": 10747705,
+       "count": 100,
+       "max": 10748250,
+       "median": 10747727,
+       "min": 10747210
       },
       "keypair": {
-       "avg": 8541199,
-       "count": 10,
-       "max": 9072631,
-       "median": 8440594,
-       "min": 8311899
+       "avg": 8562821,
+       "count": 100,
+       "max": 10083501,
+       "median": 8317194,
+       "min": 8312452
       }
      },
-     "cycles_total": 34102668,
+     "cycles_total": 34124219,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11400,34 +11424,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 48064,
-      "total": 49964
+      "text": 48484,
+      "total": 50384
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3634481,
-       "count": 10,
-       "max": 3635313,
-       "median": 3634530,
-       "min": 3633705
+       "avg": 3634291,
+       "count": 100,
+       "max": 3635286,
+       "median": 3634302,
+       "min": 3633335
       },
       "encaps": {
-       "avg": 2744238,
-       "count": 10,
-       "max": 2744708,
-       "median": 2744203,
-       "min": 2743554
+       "avg": 2744084,
+       "count": 100,
+       "max": 2744707,
+       "median": 2744068,
+       "min": 2743395
       },
       "keypair": {
-       "avg": 2014185,
-       "count": 10,
-       "max": 2139609,
-       "median": 2001186,
-       "min": 1991279
+       "avg": 2039295,
+       "count": 100,
+       "max": 2376377,
+       "median": 1992534,
+       "min": 1990363
       }
      },
-     "cycles_total": 8392904,
+     "cycles_total": 8417670,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11493,34 +11517,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 48852,
-      "total": 50752
+      "text": 49272,
+      "total": 51172
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 419132,
-       "count": 10,
-       "max": 419132,
-       "median": 419132,
-       "min": 419132
+       "avg": 419139,
+       "count": 100,
+       "max": 419178,
+       "median": 419138,
+       "min": 419138
       },
       "encaps": {
-       "avg": 270099,
-       "count": 10,
-       "max": 270105,
+       "avg": 270106,
+       "count": 100,
+       "max": 270148,
        "median": 270105,
-       "min": 270043
+       "min": 270045
       },
       "keypair": {
-       "avg": 350272,
-       "count": 10,
-       "max": 466441,
-       "median": 327544,
-       "min": 314915
+       "avg": 341192,
+       "count": 100,
+       "max": 516959,
+       "median": 314966,
+       "min": 314926
       }
      },
-     "cycles_total": 1039503,
+     "cycles_total": 1030437,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11585,34 +11609,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 39748,
-      "total": 41648
+      "text": 40168,
+      "total": 42068
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 1287782,
-       "count": 10,
-       "max": 1287782,
-       "median": 1287782,
-       "min": 1287781
+       "avg": 1287796,
+       "count": 100,
+       "max": 1287833,
+       "median": 1287793,
+       "min": 1287792
       },
       "encaps": {
-       "avg": 387066,
-       "count": 10,
-       "max": 387073,
-       "median": 387072,
-       "min": 387010
+       "avg": 387081,
+       "count": 100,
+       "max": 387132,
+       "median": 387079,
+       "min": 387017
       },
       "keypair": {
-       "avg": 619612,
-       "count": 10,
-       "max": 741332,
-       "median": 595797,
-       "min": 582566
+       "avg": 610111,
+       "count": 100,
+       "max": 794293,
+       "median": 582596,
+       "min": 582589
       }
      },
-     "cycles_total": 2294460,
+     "cycles_total": 2284988,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11677,34 +11701,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 57796,
-      "total": 59696
+      "text": 58216,
+      "total": 60116
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 644067,
-       "count": 10,
-       "max": 644067,
-       "median": 644067,
-       "min": 644067
+       "avg": 644078,
+       "count": 100,
+       "max": 644115,
+       "median": 644077,
+       "min": 644077
       },
       "encaps": {
-       "avg": 310199,
-       "count": 10,
-       "max": 310199,
-       "median": 310199,
-       "min": 310199
+       "avg": 310209,
+       "count": 100,
+       "max": 310246,
+       "median": 310209,
+       "min": 310209
       },
       "keypair": {
-       "avg": 767883,
-       "count": 10,
-       "max": 940362,
-       "median": 713424,
-       "min": 668044
+       "avg": 761540,
+       "count": 100,
+       "max": 1212615,
+       "median": 668062,
+       "min": 668055
       }
      },
-     "cycles_total": 1722149,
+     "cycles_total": 1715827,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11769,34 +11793,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 47576,
-      "total": 49476
+      "text": 47996,
+      "total": 49896
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 3935442,
-       "count": 10,
-       "max": 3935473,
-       "median": 3935435,
-       "min": 3935435
+       "avg": 3935436,
+       "count": 100,
+       "max": 3935466,
+       "median": 3935426,
+       "min": 3935426
       },
       "encaps": {
-       "avg": 628689,
-       "count": 10,
-       "max": 628689,
-       "median": 628689,
-       "min": 628688
+       "avg": 628683,
+       "count": 100,
+       "max": 628722,
+       "median": 628681,
+       "min": 628681
       },
       "keypair": {
-       "avg": 1337476,
-       "count": 10,
-       "max": 1514096,
-       "median": 1281708,
-       "min": 1235238
+       "avg": 1330965,
+       "count": 100,
+       "max": 1792864,
+       "median": 1235273,
+       "min": 1235236
       }
      },
-     "cycles_total": 5901607,
+     "cycles_total": 5895084,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11861,34 +11885,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 73984,
-      "total": 75884
+      "text": 74404,
+      "total": 76304
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
        "avg": 1681143,
-       "count": 10,
-       "max": 1681178,
+       "count": 100,
+       "max": 1681179,
        "median": 1681139,
        "min": 1681139
       },
       "encaps": {
-       "avg": 901855,
-       "count": 10,
-       "max": 901855,
-       "median": 901855,
-       "min": 901855
+       "avg": 901858,
+       "count": 100,
+       "max": 901908,
+       "median": 901857,
+       "min": 901854
       },
       "keypair": {
-       "avg": 2050944,
-       "count": 10,
-       "max": 2444008,
-       "median": 1882543,
-       "min": 1882466
+       "avg": 2070588,
+       "count": 100,
+       "max": 3286329,
+       "median": 1882500,
+       "min": 1882463
       }
      },
-     "cycles_total": 4633942,
+     "cycles_total": 4653589,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -11953,34 +11977,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 67520,
-      "total": 69420
+      "text": 67940,
+      "total": 69840
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 13929905,
-       "count": 10,
-       "max": 13929915,
+       "avg": 13929907,
+       "count": 100,
+       "max": 13929916,
        "median": 13929913,
-       "min": 13929873
+       "min": 13929874
       },
       "encaps": {
-       "avg": 1666856,
-       "count": 10,
-       "max": 1666887,
-       "median": 1666848,
-       "min": 1666848
+       "avg": 1666855,
+       "count": 100,
+       "max": 1666892,
+       "median": 1666849,
+       "min": 1666849
       },
       "keypair": {
-       "avg": 3967857,
-       "count": 10,
-       "max": 4366701,
-       "median": 3796960,
-       "min": 3796903
+       "avg": 3987789,
+       "count": 100,
+       "max": 5221405,
+       "median": 3796935,
+       "min": 3796896
       }
      },
-     "cycles_total": 19564618,
+     "cycles_total": 19584551,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -12045,34 +12069,34 @@
       "bss": 1172,
       "data": 1352,
       "source": "report",
-      "text": 35492,
-      "total": 38016
+      "text": 35924,
+      "total": 38448
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 90184675,
-       "count": 3,
-       "max": 90250124,
-       "median": 90221168,
-       "min": 90082732
+       "avg": 89986271,
+       "count": 100,
+       "max": 90738589,
+       "median": 89998326,
+       "min": 89097029
       },
       "encaps": {
-       "avg": 33763874,
-       "count": 3,
-       "max": 33917119,
-       "median": 33723597,
-       "min": 33650906
+       "avg": 33671936,
+       "count": 100,
+       "max": 34197824,
+       "median": 33676468,
+       "min": 33276564
       },
       "keypair": {
-       "avg": 10049251,
-       "count": 3,
-       "max": 10142305,
-       "median": 10038487,
-       "min": 9966960
+       "avg": 9972660,
+       "count": 100,
+       "max": 10314010,
+       "median": 9961669,
+       "min": 9631802
       }
      },
-     "cycles_total": 133997800,
+     "cycles_total": 133630867,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -12137,8 +12161,8 @@
       "bss": 1300,
       "data": 1352,
       "source": "report",
-      "text": 35776,
-      "total": 38428
+      "text": 36208,
+      "total": 38860
      },
      "completed_ops": [],
      "cycles": {
@@ -12229,8 +12253,8 @@
       "bss": 1396,
       "data": 1352,
       "source": "report",
-      "text": 36240,
-      "total": 38988
+      "text": 36656,
+      "total": 39404
      },
      "completed_ops": [],
      "cycles": {
@@ -12321,8 +12345,8 @@
       "bss": 1508,
       "data": 1352,
       "source": "report",
-      "text": 37672,
-      "total": 40532
+      "text": 38096,
+      "total": 40956
      },
      "completed_ops": [],
      "cycles": {
@@ -12501,34 +12525,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 24084,
-      "total": 25984
+      "text": 24512,
+      "total": 26412
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 6792809,
-       "count": 3,
-       "max": 6792978,
-       "median": 6792806,
-       "min": 6792642
+       "avg": 6792665,
+       "count": 100,
+       "max": 6793806,
+       "median": 6792614,
+       "min": 6791812
       },
       "encaps": {
-       "avg": 6601268,
-       "count": 3,
-       "max": 6601462,
-       "median": 6601291,
-       "min": 6601050
+       "avg": 6601111,
+       "count": 100,
+       "max": 6602288,
+       "median": 6601064,
+       "min": 6600295
       },
       "keypair": {
-       "avg": 6570611,
-       "count": 3,
-       "max": 6570842,
-       "median": 6570673,
-       "min": 6570318
+       "avg": 6570527,
+       "count": 100,
+       "max": 6571669,
+       "median": 6570468,
+       "min": 6569681
       }
      },
-     "cycles_total": 19964688,
+     "cycles_total": 19964303,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -12685,34 +12709,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25580,
-      "total": 27480
+      "text": 26000,
+      "total": 27900
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 13701545,
-       "count": 3,
-       "max": 13702115,
-       "median": 13701279,
-       "min": 13701240
+       "avg": 13701855,
+       "count": 100,
+       "max": 13703444,
+       "median": 13701834,
+       "min": 13700319
       },
       "encaps": {
-       "avg": 13280046,
-       "count": 3,
-       "max": 13280603,
-       "median": 13279805,
-       "min": 13279729
+       "avg": 13280342,
+       "count": 100,
+       "max": 13281933,
+       "median": 13280341,
+       "min": 13278842
       },
       "keypair": {
-       "avg": 13165879,
-       "count": 3,
-       "max": 13166253,
-       "median": 13165735,
-       "min": 13165649
+       "avg": 13166221,
+       "count": 100,
+       "max": 13167734,
+       "median": 13166207,
+       "min": 13164759
       }
      },
-     "cycles_total": 40147470,
+     "cycles_total": 40148418,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -12869,34 +12893,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 26732,
-      "total": 28632
+      "text": 27152,
+      "total": 29052
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 39483346,
-       "count": 3,
-       "max": 39483393,
-       "median": 39483387,
-       "min": 39483257
+       "avg": 39483385,
+       "count": 100,
+       "max": 39484366,
+       "median": 39483344,
+       "min": 39482486
       },
       "encaps": {
-       "avg": 38657355,
-       "count": 3,
-       "max": 38657402,
-       "median": 38657397,
-       "min": 38657266
+       "avg": 38657396,
+       "count": 100,
+       "max": 38658412,
+       "median": 38657364,
+       "min": 38656536
       },
       "keypair": {
-       "avg": 38584382,
-       "count": 3,
-       "max": 38584463,
-       "median": 38584459,
-       "min": 38584223
+       "avg": 38584425,
+       "count": 100,
+       "max": 38585400,
+       "median": 38584374,
+       "min": 38583526
       }
      },
-     "cycles_total": 116725083,
+     "cycles_total": 116725206,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -13342,34 +13366,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 23668,
-      "total": 25568
+      "text": 24088,
+      "total": 25988
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 2984789,
-       "count": 10,
-       "max": 2984812,
-       "median": 2984774,
-       "min": 2984774
+       "avg": 2985077,
+       "count": 100,
+       "max": 2985109,
+       "median": 2985069,
+       "min": 2985069
       },
       "encaps": {
-       "avg": 2828500,
-       "count": 10,
-       "max": 2828534,
-       "median": 2828496,
-       "min": 2828496
+       "avg": 2828803,
+       "count": 100,
+       "max": 2828837,
+       "median": 2828798,
+       "min": 2828798
       },
       "keypair": {
-       "avg": 2631373,
-       "count": 10,
-       "max": 2631380,
-       "median": 2631380,
-       "min": 2631313
+       "avg": 2631684,
+       "count": 100,
+       "max": 2631727,
+       "median": 2631679,
+       "min": 2631614
       }
      },
-     "cycles_total": 8444662,
+     "cycles_total": 8445564,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -13526,34 +13550,34 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 22812,
-      "total": 24712
+      "text": 23232,
+      "total": 25132
      },
      "completed_ops": [],
      "cycles": {
       "decaps": {
-       "avg": 9089485,
-       "count": 10,
-       "max": 9089502,
-       "median": 9089498,
-       "min": 9089462
+       "avg": 9089692,
+       "count": 100,
+       "max": 9089713,
+       "median": 9089708,
+       "min": 9089672
       },
       "encaps": {
-       "avg": 8462272,
-       "count": 10,
-       "max": 8462296,
-       "median": 8462256,
-       "min": 8462255
+       "avg": 8462489,
+       "count": 100,
+       "max": 8462512,
+       "median": 8462506,
+       "min": 8462467
       },
       "keypair": {
-       "avg": 7739242,
-       "count": 10,
-       "max": 7739263,
-       "median": 7739242,
-       "min": 7739223
+       "avg": 7739459,
+       "count": 100,
+       "max": 7739482,
+       "median": 7739441,
+       "min": 7739441
       }
      },
-     "cycles_total": 25290999,
+     "cycles_total": 25291640,
      "expected_ops": [
       "keypair",
       "encaps",
@@ -13638,55 +13662,55 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 36800,
-      "total": 38700
+      "text": 37156,
+      "total": 39056
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 567676,
-       "count": 10,
-       "max": 568016,
-       "median": 567626,
-       "min": 567317
+       "avg": 567652,
+       "count": 100,
+       "max": 568142,
+       "median": 567644,
+       "min": 567172
       },
       "derive_b": {
-       "avg": 5224,
-       "count": 10,
+       "avg": 5222,
+       "count": 100,
        "max": 5225,
-       "median": 5224,
-       "min": 5223
+       "median": 5222,
+       "min": 5222
       },
       "init_a": {
-       "avg": 86,
-       "count": 10,
-       "max": 86,
-       "median": 86,
-       "min": 86
+       "avg": 85,
+       "count": 100,
+       "max": 85,
+       "median": 85,
+       "min": 85
       },
       "init_b": {
-       "avg": 365814,
-       "count": 10,
-       "max": 366263,
-       "median": 365752,
-       "min": 365585
+       "avg": 365720,
+       "count": 100,
+       "max": 366288,
+       "median": 365710,
+       "min": 365307
       },
       "pass1": {
-       "avg": 773848,
-       "count": 10,
-       "max": 774559,
-       "median": 773752,
-       "min": 773403
+       "avg": 773722,
+       "count": 100,
+       "max": 774619,
+       "median": 773718,
+       "min": 773188
       },
       "pass2": {
-       "avg": 976385,
-       "count": 10,
-       "max": 977095,
-       "median": 976289,
-       "min": 975940
+       "avg": 976271,
+       "count": 100,
+       "max": 977168,
+       "median": 976280,
+       "min": 975737
       }
      },
-     "cycles_total": 2689033,
+     "cycles_total": 2688672,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -13767,55 +13791,55 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 25344,
-      "total": 27244
+      "text": 25700,
+      "total": 27600
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 1068123,
-       "count": 10,
-       "max": 1068374,
-       "median": 1068080,
-       "min": 1067865
+       "avg": 1068082,
+       "count": 100,
+       "max": 1068500,
+       "median": 1068064,
+       "min": 1067723
       },
       "derive_b": {
-       "avg": 5225,
-       "count": 10,
+       "avg": 5223,
+       "count": 100,
        "max": 5225,
-       "median": 5225,
-       "min": 5225
+       "median": 5223,
+       "min": 5223
       },
       "init_a": {
-       "avg": 86,
-       "count": 10,
-       "max": 86,
-       "median": 86,
-       "min": 86
+       "avg": 85,
+       "count": 100,
+       "max": 85,
+       "median": 85,
+       "min": 85
       },
       "init_b": {
-       "avg": 593560,
-       "count": 10,
-       "max": 593906,
-       "median": 593527,
-       "min": 593380
+       "avg": 593470,
+       "count": 100,
+       "max": 593911,
+       "median": 593462,
+       "min": 593168
       },
       "pass1": {
-       "avg": 1339772,
-       "count": 10,
-       "max": 1340304,
-       "median": 1339689,
-       "min": 1339414
+       "avg": 1339626,
+       "count": 100,
+       "max": 1340306,
+       "median": 1339610,
+       "min": 1339213
       },
       "pass2": {
-       "avg": 1814979,
-       "count": 10,
-       "max": 1815519,
-       "median": 1814904,
-       "min": 1814629
+       "avg": 1814846,
+       "count": 100,
+       "max": 1815524,
+       "median": 1814836,
+       "min": 1814444
       }
      },
-     "cycles_total": 4821745,
+     "cycles_total": 4821332,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -13896,55 +13920,55 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 37632,
-      "total": 39532
+      "text": 37988,
+      "total": 39888
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 1467786,
-       "count": 10,
-       "max": 1468201,
-       "median": 1467748,
-       "min": 1467359
+       "avg": 1467733,
+       "count": 100,
+       "max": 1468979,
+       "median": 1467708,
+       "min": 1466792
       },
       "derive_b": {
-       "avg": 5225,
-       "count": 10,
-       "max": 5225,
-       "median": 5225,
-       "min": 5225
+       "avg": 5224,
+       "count": 100,
+       "max": 5224,
+       "median": 5224,
+       "min": 5222
       },
       "init_a": {
-       "avg": 86,
-       "count": 10,
-       "max": 86,
-       "median": 86,
-       "min": 86
+       "avg": 85,
+       "count": 100,
+       "max": 85,
+       "median": 85,
+       "min": 85
       },
       "init_b": {
-       "avg": 1124898,
-       "count": 10,
-       "max": 1125651,
-       "median": 1124938,
-       "min": 1124252
+       "avg": 1124997,
+       "count": 100,
+       "max": 1126011,
+       "median": 1125019,
+       "min": 1123976
       },
       "pass1": {
-       "avg": 2296934,
-       "count": 10,
-       "max": 2297598,
-       "median": 2296960,
-       "min": 2296187
+       "avg": 2296979,
+       "count": 100,
+       "max": 2298289,
+       "median": 2296980,
+       "min": 2295481
       },
       "pass2": {
-       "avg": 2639441,
-       "count": 10,
-       "max": 2640144,
-       "median": 2639460,
-       "min": 2638704
+       "avg": 2639525,
+       "count": 100,
+       "max": 2640849,
+       "median": 2639518,
+       "min": 2638014
       }
      },
-     "cycles_total": 7534370,
+     "cycles_total": 7534543,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -14025,55 +14049,55 @@
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 26300,
-      "total": 28604
+      "text": 26720,
+      "total": 29024
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 2430717,
-       "count": 10,
-       "max": 2431048,
-       "median": 2430718,
-       "min": 2430403
+       "avg": 2430612,
+       "count": 100,
+       "max": 2431489,
+       "median": 2430634,
+       "min": 2429820
       },
       "derive_b": {
        "avg": 5224,
-       "count": 10,
+       "count": 100,
        "max": 5224,
        "median": 5224,
-       "min": 5224
+       "min": 5222
       },
       "init_a": {
-       "avg": 86,
-       "count": 10,
-       "max": 86,
-       "median": 86,
-       "min": 86
+       "avg": 85,
+       "count": 100,
+       "max": 85,
+       "median": 85,
+       "min": 85
       },
       "init_b": {
-       "avg": 1679176,
-       "count": 10,
-       "max": 1679699,
-       "median": 1679208,
-       "min": 1678639
+       "avg": 1679173,
+       "count": 100,
+       "max": 1679959,
+       "median": 1679195,
+       "min": 1678332
       },
       "pass1": {
-       "avg": 3549854,
-       "count": 10,
-       "max": 3550443,
-       "median": 3549882,
-       "min": 3549272
+       "avg": 3549725,
+       "count": 100,
+       "max": 3550577,
+       "median": 3549768,
+       "min": 3548413
       },
       "pass2": {
-       "avg": 4301071,
-       "count": 10,
-       "max": 4301625,
-       "median": 4301103,
-       "min": 4300467
+       "avg": 4300966,
+       "count": 100,
+       "max": 4301817,
+       "median": 4301008,
+       "min": 4299653
       }
      },
-     "cycles_total": 11966128,
+     "cycles_total": 11965785,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -14154,55 +14178,55 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 39332,
-      "total": 41232
+      "text": 39752,
+      "total": 41652
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 4776634,
-       "count": 10,
-       "max": 4776888,
-       "median": 4776684,
-       "min": 4776335
+       "avg": 4776706,
+       "count": 100,
+       "max": 4777385,
+       "median": 4776718,
+       "min": 4776113
       },
       "derive_b": {
-       "avg": 20285,
-       "count": 10,
-       "max": 20285,
-       "median": 20285,
-       "min": 20284
+       "avg": 20287,
+       "count": 100,
+       "max": 20287,
+       "median": 20287,
+       "min": 20287
       },
       "init_a": {
-       "avg": 86,
-       "count": 10,
-       "max": 86,
-       "median": 86,
-       "min": 86
+       "avg": 85,
+       "count": 100,
+       "max": 85,
+       "median": 85,
+       "min": 85
       },
       "init_b": {
-       "avg": 3422793,
-       "count": 10,
-       "max": 3423229,
-       "median": 3422806,
-       "min": 3422233
+       "avg": 3422813,
+       "count": 100,
+       "max": 3423603,
+       "median": 3422818,
+       "min": 3421817
       },
       "pass1": {
-       "avg": 7037494,
-       "count": 10,
-       "max": 7037968,
-       "median": 7037518,
-       "min": 7036961
+       "avg": 7037577,
+       "count": 100,
+       "max": 7038699,
+       "median": 7037536,
+       "min": 7036152
       },
       "pass2": {
-       "avg": 8373745,
-       "count": 10,
-       "max": 8374240,
-       "median": 8373750,
-       "min": 8373204
+       "avg": 8373792,
+       "count": 100,
+       "max": 8374872,
+       "median": 8373780,
+       "min": 8372319
       }
      },
-     "cycles_total": 23631037,
+     "cycles_total": 23631260,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -14283,55 +14307,55 @@
       "bss": 952,
       "data": 1352,
       "source": "report",
-      "text": 30368,
-      "total": 32672
+      "text": 30788,
+      "total": 33092
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 6870518,
-       "count": 10,
-       "max": 6870775,
-       "median": 6870560,
-       "min": 6870195
+       "avg": 6870541,
+       "count": 100,
+       "max": 6871207,
+       "median": 6870565,
+       "min": 6869900
       },
       "derive_b": {
        "avg": 20286,
-       "count": 10,
-       "max": 20286,
+       "count": 100,
+       "max": 20325,
        "median": 20286,
        "min": 20286
       },
       "init_a": {
-       "avg": 86,
-       "count": 10,
-       "max": 86,
-       "median": 86,
-       "min": 86
+       "avg": 85,
+       "count": 100,
+       "max": 85,
+       "median": 85,
+       "min": 85
       },
       "init_b": {
-       "avg": 4714749,
-       "count": 10,
-       "max": 4715193,
-       "median": 4714770,
-       "min": 4714159
+       "avg": 4714718,
+       "count": 100,
+       "max": 4715509,
+       "median": 4714715,
+       "min": 4713723
       },
       "pass1": {
-       "avg": 9829598,
-       "count": 10,
-       "max": 9830113,
-       "median": 9829620,
-       "min": 9829078
+       "avg": 9829595,
+       "count": 100,
+       "max": 9830698,
+       "median": 9829568,
+       "min": 9828162
       },
       "pass2": {
-       "avg": 11967734,
-       "count": 10,
-       "max": 11968203,
-       "median": 11967746,
-       "min": 11967182
+       "avg": 11967732,
+       "count": 100,
+       "max": 11968797,
+       "median": 11967700,
+       "min": 11966300
       }
      },
-     "cycles_total": 33402971,
+     "cycles_total": 33402957,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -14412,69 +14436,69 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 27948,
-      "total": 29848
+      "text": 28304,
+      "total": 30204
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 136,
-       "count": 10,
-       "max": 136,
-       "median": 136,
-       "min": 136
+       "avg": 135,
+       "count": 100,
+       "max": 135,
+       "median": 135,
+       "min": 135
       },
       "derive_b": {
-       "avg": 132,
-       "count": 10,
-       "max": 132,
-       "median": 132,
-       "min": 132
+       "avg": 131,
+       "count": 100,
+       "max": 131,
+       "median": 131,
+       "min": 131
       },
       "init_a": {
-       "avg": 1512305,
-       "count": 10,
-       "max": 1620753,
-       "median": 1500412,
-       "min": 1499635
+       "avg": 1507510,
+       "count": 100,
+       "max": 1620782,
+       "median": 1500403,
+       "min": 1499638
       },
       "init_b": {
-       "avg": 1512286,
-       "count": 10,
-       "max": 1620295,
-       "median": 1500271,
-       "min": 1499933
+       "avg": 1505089,
+       "count": 100,
+       "max": 1620621,
+       "median": 1500351,
+       "min": 1499361
       },
       "pass1": {
-       "avg": 881080,
-       "count": 10,
-       "max": 935121,
-       "median": 875070,
-       "min": 874901
+       "avg": 877482,
+       "count": 100,
+       "max": 935247,
+       "median": 875114,
+       "min": 874617
       },
       "pass2": {
-       "avg": 1999311,
-       "count": 10,
-       "max": 2047483,
-       "median": 1987420,
-       "min": 1986779
+       "avg": 1993304,
+       "count": 100,
+       "max": 2047716,
+       "median": 1987362,
+       "min": 1986664
       },
       "pass3": {
-       "avg": 1863205,
-       "count": 10,
-       "max": 1911380,
-       "median": 1851273,
-       "min": 1850684
+       "avg": 1857198,
+       "count": 100,
+       "max": 1911451,
+       "median": 1851234,
+       "min": 1850546
       },
       "pass4": {
-       "avg": 744996,
-       "count": 10,
-       "max": 799219,
-       "median": 739048,
-       "min": 738660
+       "avg": 742593,
+       "count": 100,
+       "max": 799228,
+       "median": 739043,
+       "min": 738656
       }
      },
-     "cycles_total": 8513451,
+     "cycles_total": 8483442,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -14563,69 +14587,69 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 39568,
-      "total": 41468
+      "text": 39992,
+      "total": 41892
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
        "avg": 145,
-       "count": 10,
+       "count": 100,
        "max": 145,
        "median": 145,
        "min": 145
       },
       "derive_b": {
-       "avg": 141,
-       "count": 10,
-       "max": 141,
-       "median": 141,
-       "min": 141
+       "avg": 140,
+       "count": 100,
+       "max": 140,
+       "median": 140,
+       "min": 140
       },
       "init_a": {
-       "avg": 3478152,
-       "count": 10,
-       "max": 3574443,
-       "median": 3454305,
-       "min": 3453449
+       "avg": 3467947,
+       "count": 100,
+       "max": 3696480,
+       "median": 3453624,
+       "min": 3451576
       },
       "init_b": {
-       "avg": 3465309,
-       "count": 10,
-       "max": 3574670,
-       "median": 3453175,
-       "min": 3452544
+       "avg": 3465548,
+       "count": 100,
+       "max": 3575602,
+       "median": 3453495,
+       "min": 3452164
       },
       "pass1": {
-       "avg": 1864659,
-       "count": 10,
-       "max": 1919344,
-       "median": 1858584,
-       "min": 1858268
+       "avg": 1864807,
+       "count": 100,
+       "max": 1919827,
+       "median": 1858770,
+       "min": 1858115
       },
       "pass2": {
-       "avg": 4292397,
-       "count": 10,
-       "max": 4335067,
-       "median": 4274491,
-       "min": 4274064
+       "avg": 4287485,
+       "count": 100,
+       "max": 4455929,
+       "median": 4274299,
+       "min": 4272991
       },
       "pass3": {
-       "avg": 4139369,
-       "count": 10,
-       "max": 4181989,
-       "median": 4121465,
-       "min": 4121074
+       "avg": 4134425,
+       "count": 100,
+       "max": 4302851,
+       "median": 4121221,
+       "min": 4119966
       },
       "pass4": {
-       "avg": 1717920,
-       "count": 10,
-       "max": 1766079,
-       "median": 1705991,
-       "min": 1705563
+       "avg": 1712806,
+       "count": 100,
+       "max": 1827073,
+       "median": 1705645,
+       "min": 1704621
       }
      },
-     "cycles_total": 18958092,
+     "cycles_total": 18933303,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -14714,69 +14738,69 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 40592,
-      "total": 42492
+      "text": 41016,
+      "total": 42916
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 190,
-       "count": 10,
+       "avg": 189,
+       "count": 100,
        "max": 190,
-       "median": 190,
-       "min": 190
+       "median": 189,
+       "min": 189
       },
       "derive_b": {
-       "avg": 186,
-       "count": 10,
-       "max": 186,
-       "median": 186,
-       "min": 186
+       "avg": 185,
+       "count": 100,
+       "max": 185,
+       "median": 185,
+       "min": 185
       },
       "init_a": {
-       "avg": 10196149,
-       "count": 10,
-       "max": 10198941,
-       "median": 10196209,
-       "min": 10194298
+       "avg": 10196380,
+       "count": 100,
+       "max": 10198863,
+       "median": 10196364,
+       "min": 10194090
       },
       "init_b": {
-       "avg": 10196244,
-       "count": 10,
-       "max": 10197273,
-       "median": 10196460,
-       "min": 10194552
+       "avg": 10196270,
+       "count": 100,
+       "max": 10198394,
+       "median": 10196340,
+       "min": 10194150
       },
       "pass1": {
-       "avg": 5435384,
-       "count": 10,
-       "max": 5435887,
-       "median": 5435494,
-       "min": 5434557
+       "avg": 5435406,
+       "count": 100,
+       "max": 5436473,
+       "median": 5435436,
+       "min": 5434384
       },
       "pass2": {
-       "avg": 12226319,
-       "count": 10,
-       "max": 12227896,
-       "median": 12226230,
-       "min": 12225230
+       "avg": 12226467,
+       "count": 100,
+       "max": 12227829,
+       "median": 12226418,
+       "min": 12225121
       },
       "pass3": {
-       "avg": 11840015,
-       "count": 10,
-       "max": 11841584,
-       "median": 11839914,
-       "min": 11838988
+       "avg": 11840154,
+       "count": 100,
+       "max": 11841507,
+       "median": 11840124,
+       "min": 11838776
       },
       "pass4": {
-       "avg": 5048861,
-       "count": 10,
-       "max": 5050260,
-       "median": 5048880,
-       "min": 5047958
+       "avg": 5048973,
+       "count": 100,
+       "max": 5050215,
+       "median": 5048955,
+       "min": 5047850
       }
      },
-     "cycles_total": 54943348,
+     "cycles_total": 54944024,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -17334,62 +17358,62 @@
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 50680,
-      "total": 52592
+      "text": 51096,
+      "total": 53008
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 5217,
-       "count": 10,
-       "max": 5217,
-       "median": 5217,
-       "min": 5217
+       "avg": 5216,
+       "count": 100,
+       "max": 5216,
+       "median": 5216,
+       "min": 5216
       },
       "derive_b": {
-       "avg": 3111094,
-       "count": 10,
-       "max": 3111379,
-       "median": 3111010,
-       "min": 3110893
+       "avg": 3111072,
+       "count": 100,
+       "max": 3111563,
+       "median": 3111073,
+       "min": 3110591
       },
       "init_a": {
-       "avg": 2961594,
-       "count": 10,
-       "max": 2974343,
-       "median": 2963698,
-       "min": 2932099
+       "avg": 2961462,
+       "count": 100,
+       "max": 3016635,
+       "median": 2963788,
+       "min": 2889967
       },
       "init_b": {
-       "avg": 2957463,
-       "count": 10,
-       "max": 2995382,
-       "median": 2953232,
-       "min": 2932104
+       "avg": 2957662,
+       "count": 100,
+       "max": 3016715,
+       "median": 2953322,
+       "min": 2868835
       },
       "pass1": {
-       "avg": 365771,
-       "count": 10,
-       "max": 366041,
-       "median": 365778,
-       "min": 365434
+       "avg": 365893,
+       "count": 100,
+       "max": 366388,
+       "median": 365892,
+       "min": 365350
       },
       "pass2": {
-       "avg": 11066515,
-       "count": 10,
-       "max": 19225785,
-       "median": 9984577,
-       "min": 5045839
+       "avg": 11253632,
+       "count": 100,
+       "max": 42991170,
+       "median": 9097853,
+       "min": 5045455
       },
       "pass3": {
-       "avg": 13904006,
-       "count": 10,
-       "max": 29049186,
-       "median": 10188150,
-       "min": 7781010
+       "avg": 13799806,
+       "count": 100,
+       "max": 52562120,
+       "median": 11200410,
+       "min": 7780973
       }
      },
-     "cycles_total": 34371660,
+     "cycles_total": 34454743,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -17474,62 +17498,62 @@
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 38904,
-      "total": 40816
+      "text": 39256,
+      "total": 41168
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 5217,
-       "count": 10,
-       "max": 5217,
-       "median": 5217,
-       "min": 5217
+       "avg": 5216,
+       "count": 100,
+       "max": 5216,
+       "median": 5216,
+       "min": 5215
       },
       "derive_b": {
-       "avg": 3111082,
-       "count": 10,
-       "max": 3111343,
-       "median": 3111008,
-       "min": 3110848
+       "avg": 3111069,
+       "count": 100,
+       "max": 3111564,
+       "median": 3111062,
+       "min": 3110630
       },
       "init_a": {
-       "avg": 2961608,
-       "count": 10,
-       "max": 2974393,
-       "median": 2963740,
-       "min": 2932058
+       "avg": 2961457,
+       "count": 100,
+       "max": 3016629,
+       "median": 2963786,
+       "min": 2889930
       },
       "init_b": {
-       "avg": 2957455,
-       "count": 10,
-       "max": 2995381,
-       "median": 2953214,
-       "min": 2932064
+       "avg": 2957659,
+       "count": 100,
+       "max": 3016710,
+       "median": 2953326,
+       "min": 2868839
       },
       "pass1": {
-       "avg": 593541,
-       "count": 10,
-       "max": 593752,
-       "median": 593547,
-       "min": 593264
+       "avg": 593621,
+       "count": 100,
+       "max": 593980,
+       "median": 593622,
+       "min": 593231
       },
       "pass2": {
-       "avg": 11404921,
-       "count": 10,
-       "max": 19564139,
-       "median": 10322976,
-       "min": 5384243
+       "avg": 11592014,
+       "count": 100,
+       "max": 43329644,
+       "median": 9436207,
+       "min": 5383975
       },
       "pass3": {
-       "avg": 14065822,
-       "count": 10,
-       "max": 29211001,
-       "median": 10350000,
-       "min": 7942785
+       "avg": 13961645,
+       "count": 100,
+       "max": 52724057,
+       "median": 11362244,
+       "min": 7942760
       }
      },
-     "cycles_total": 35099646,
+     "cycles_total": 35182681,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -17614,62 +17638,62 @@
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 51320,
-      "total": 53232
+      "text": 51736,
+      "total": 53648
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
        "avg": 5216,
-       "count": 10,
-       "max": 5216,
+       "count": 100,
+       "max": 5217,
        "median": 5216,
        "min": 5216
       },
       "derive_b": {
-       "avg": 8837018,
-       "count": 10,
-       "max": 8837245,
-       "median": 8837012,
-       "min": 8836799
+       "avg": 8837048,
+       "count": 100,
+       "max": 8837510,
+       "median": 8837041,
+       "min": 8836681
       },
       "init_a": {
-       "avg": 8726270,
-       "count": 10,
-       "max": 8802356,
-       "median": 8728354,
-       "min": 8654492
+       "avg": 8701025,
+       "count": 100,
+       "max": 8802364,
+       "median": 8696898,
+       "min": 8591217
       },
       "init_b": {
-       "avg": 8701064,
-       "count": 10,
-       "max": 8739145,
-       "median": 8707404,
-       "min": 8612428
+       "avg": 8699563,
+       "count": 100,
+       "max": 8802406,
+       "median": 8696874,
+       "min": 8570144
       },
       "pass1": {
-       "avg": 1127612,
-       "count": 10,
-       "max": 1128112,
-       "median": 1127600,
-       "min": 1127003
+       "avg": 1127929,
+       "count": 100,
+       "max": 1129000,
+       "median": 1127912,
+       "min": 1126949
       },
       "pass2": {
-       "avg": 17843056,
-       "count": 10,
-       "max": 37394361,
-       "median": 15897816,
-       "min": 12829151
+       "avg": 21648017,
+       "count": 100,
+       "max": 63542259,
+       "median": 19468352,
+       "min": 12828757
       },
       "pass3": {
-       "avg": 24849587,
-       "count": 10,
-       "max": 33341315,
-       "median": 23619245,
-       "min": 20548916
+       "avg": 29181827,
+       "count": 100,
+       "max": 77362815,
+       "median": 26692395,
+       "min": 20548818
       }
      },
-     "cycles_total": 70089823,
+     "cycles_total": 78200625,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -17754,62 +17778,62 @@
       "bss": 964,
       "data": 1352,
       "source": "report",
-      "text": 39728,
-      "total": 42044
+      "text": 40088,
+      "total": 42404
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
        "avg": 5216,
-       "count": 10,
+       "count": 100,
        "max": 5216,
        "median": 5216,
        "min": 5216
       },
       "derive_b": {
-       "avg": 8837024,
-       "count": 10,
-       "max": 8837214,
-       "median": 8837037,
-       "min": 8836806
+       "avg": 8837047,
+       "count": 100,
+       "max": 8837528,
+       "median": 8837030,
+       "min": 8836684
       },
       "init_a": {
-       "avg": 8726275,
-       "count": 10,
-       "max": 8802386,
-       "median": 8728333,
-       "min": 8654497
+       "avg": 8701027,
+       "count": 100,
+       "max": 8802363,
+       "median": 8696902,
+       "min": 8591222
       },
       "init_b": {
-       "avg": 8701076,
-       "count": 10,
-       "max": 8739158,
-       "median": 8707391,
-       "min": 8612429
+       "avg": 8699563,
+       "count": 100,
+       "max": 8802406,
+       "median": 8696854,
+       "min": 8570108
       },
       "pass1": {
-       "avg": 1681739,
-       "count": 10,
-       "max": 1682130,
-       "median": 1681719,
-       "min": 1681262
+       "avg": 1681971,
+       "count": 100,
+       "max": 1682730,
+       "median": 1681982,
+       "min": 1681210
       },
       "pass2": {
-       "avg": 18541765,
-       "count": 10,
-       "max": 38093166,
-       "median": 16596634,
-       "min": 13527894
+       "avg": 22346695,
+       "count": 100,
+       "max": 64241224,
+       "median": 20167107,
+       "min": 13527611
       },
       "pass3": {
-       "avg": 25113051,
-       "count": 10,
-       "max": 33604790,
-       "median": 23882702,
-       "min": 20812372
+       "avg": 29445299,
+       "count": 100,
+       "max": 77626316,
+       "median": 26955861,
+       "min": 20812278
       }
      },
-     "cycles_total": 71606146,
+     "cycles_total": 79716818,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -17894,62 +17918,62 @@
       "bss": 560,
       "data": 1352,
       "source": "report",
-      "text": 49416,
-      "total": 51328
+      "text": 49832,
+      "total": 51744
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 15793,
-       "count": 10,
+       "avg": 15792,
+       "count": 100,
        "max": 15793,
-       "median": 15793,
-       "min": 15793
+       "median": 15792,
+       "min": 15792
       },
       "derive_b": {
-       "avg": 8848346,
-       "count": 10,
-       "max": 8848491,
-       "median": 8848344,
-       "min": 8848237
+       "avg": 8848358,
+       "count": 100,
+       "max": 8848705,
+       "median": 8848356,
+       "min": 8847970
       },
       "init_a": {
-       "avg": 8726283,
-       "count": 10,
-       "max": 8802370,
-       "median": 8728340,
-       "min": 8654499
+       "avg": 8701034,
+       "count": 100,
+       "max": 8802378,
+       "median": 8696903,
+       "min": 8591181
       },
       "init_b": {
-       "avg": 8701073,
-       "count": 10,
-       "max": 8739110,
-       "median": 8707392,
-       "min": 8612431
+       "avg": 8699572,
+       "count": 100,
+       "max": 8802416,
+       "median": 8696872,
+       "min": 8570149
       },
       "pass1": {
-       "avg": 3422820,
-       "count": 10,
-       "max": 3423282,
-       "median": 3422793,
-       "min": 3422380
+       "avg": 3422881,
+       "count": 100,
+       "max": 3423681,
+       "median": 3422816,
+       "min": 3422022
       },
       "pass2": {
-       "avg": 22321735,
-       "count": 10,
-       "max": 34721412,
-       "median": 21685800,
-       "min": 15796524
+       "avg": 24555138,
+       "count": 100,
+       "max": 70053641,
+       "median": 21939684,
+       "min": 15795589
       },
       "pass3": {
-       "avg": 33127811,
-       "count": 10,
-       "max": 71863664,
-       "median": 30406028,
-       "min": 21202274
+       "avg": 30487450,
+       "count": 100,
+       "max": 73154798,
+       "median": 27094731,
+       "min": 21201865
       }
      },
-     "cycles_total": 85163861,
+     "cycles_total": 84730225,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18034,62 +18058,62 @@
       "bss": 964,
       "data": 1352,
       "source": "report",
-      "text": 40496,
-      "total": 42812
+      "text": 40920,
+      "total": 43236
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 15792,
-       "count": 10,
-       "max": 15792,
-       "median": 15792,
-       "min": 15791
+       "avg": 15793,
+       "count": 100,
+       "max": 15794,
+       "median": 15793,
+       "min": 15793
       },
       "derive_b": {
-       "avg": 8848344,
-       "count": 10,
-       "max": 8848501,
-       "median": 8848344,
-       "min": 8848217
+       "avg": 8848354,
+       "count": 100,
+       "max": 8848702,
+       "median": 8848346,
+       "min": 8847982
       },
       "init_a": {
-       "avg": 8726288,
-       "count": 10,
-       "max": 8802381,
-       "median": 8728348,
-       "min": 8654492
+       "avg": 8701030,
+       "count": 100,
+       "max": 8802372,
+       "median": 8696888,
+       "min": 8591181
       },
       "init_b": {
-       "avg": 8701057,
-       "count": 10,
-       "max": 8739141,
-       "median": 8707364,
-       "min": 8612424
+       "avg": 8699569,
+       "count": 100,
+       "max": 8802416,
+       "median": 8696844,
+       "min": 8570151
       },
       "pass1": {
-       "avg": 4714751,
-       "count": 10,
-       "max": 4715241,
-       "median": 4714711,
-       "min": 4714304
+       "avg": 4714825,
+       "count": 100,
+       "max": 4715627,
+       "median": 4714768,
+       "min": 4713999
       },
       "pass2": {
-       "avg": 23821841,
-       "count": 10,
-       "max": 36221541,
-       "median": 23185900,
-       "min": 17296611
+       "avg": 26055240,
+       "count": 100,
+       "max": 71553664,
+       "median": 23439750,
+       "min": 17295696
       },
       "pass3": {
-       "avg": 33721570,
-       "count": 10,
-       "max": 72457535,
-       "median": 30999777,
-       "min": 21795971
+       "avg": 31081159,
+       "count": 100,
+       "max": 73748429,
+       "median": 27688465,
+       "min": 21795586
       }
      },
-     "cycles_total": 88549643,
+     "cycles_total": 88115970,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18174,48 +18198,48 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 36688,
-      "total": 38588
+      "text": 37112,
+      "total": 39012
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 26030,
-       "count": 10,
-       "max": 26030,
-       "median": 26030,
-       "min": 26030
+       "avg": 26029,
+       "count": 100,
+       "max": 26029,
+       "median": 26029,
+       "min": 26029
       },
       "derive_b": {
-       "avg": 12229724,
-       "count": 10,
-       "max": 12229756,
-       "median": 12229735,
-       "min": 12229655
+       "avg": 12229927,
+       "count": 100,
+       "max": 12229999,
+       "median": 12229929,
+       "min": 12229842
       },
       "init_a": {
-       "avg": 11756379,
-       "count": 10,
-       "max": 11756418,
-       "median": 11756376,
-       "min": 11756353
+       "avg": 11756578,
+       "count": 100,
+       "max": 11756648,
+       "median": 11756582,
+       "min": 11756512
       },
       "init_b": {
-       "avg": 11756185,
-       "count": 10,
-       "max": 11756218,
-       "median": 11756184,
-       "min": 11756146
+       "avg": 11756390,
+       "count": 100,
+       "max": 11756458,
+       "median": 11756394,
+       "min": 11756318
       },
       "pass1": {
-       "avg": 24028642,
-       "count": 10,
-       "max": 24028705,
-       "median": 24028638,
-       "min": 24028584
+       "avg": 24029012,
+       "count": 100,
+       "max": 24029119,
+       "median": 24029014,
+       "min": 24028893
       }
      },
-     "cycles_total": 59796960,
+     "cycles_total": 59797936,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18292,48 +18316,48 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 36752,
-      "total": 38652
+      "text": 37176,
+      "total": 39076
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 26030,
-       "count": 10,
-       "max": 26030,
-       "median": 26030,
-       "min": 26030
+       "avg": 26029,
+       "count": 100,
+       "max": 26029,
+       "median": 26029,
+       "min": 26029
       },
       "derive_b": {
-       "avg": 12251980,
-       "count": 10,
-       "max": 12252012,
-       "median": 12251983,
-       "min": 12251950
+       "avg": 12252179,
+       "count": 100,
+       "max": 12252226,
+       "median": 12252181,
+       "min": 12252119
       },
       "init_a": {
-       "avg": 11780992,
-       "count": 10,
-       "max": 11781027,
-       "median": 11780990,
-       "min": 11780954
+       "avg": 11781204,
+       "count": 100,
+       "max": 11781269,
+       "median": 11781204,
+       "min": 11781138
       },
       "init_b": {
-       "avg": 11780806,
-       "count": 10,
-       "max": 11780846,
-       "median": 11780810,
-       "min": 11780771
+       "avg": 11781009,
+       "count": 100,
+       "max": 11781058,
+       "median": 11781013,
+       "min": 11780941
       },
       "pass1": {
-       "avg": 24077366,
-       "count": 10,
-       "max": 24077419,
-       "median": 24077366,
-       "min": 24077314
+       "avg": 24077775,
+       "count": 100,
+       "max": 24077878,
+       "median": 24077771,
+       "min": 24077664
       }
      },
-     "cycles_total": 59917174,
+     "cycles_total": 59918196,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18410,48 +18434,48 @@
       "bss": 548,
       "data": 1352,
       "source": "report",
-      "text": 36944,
-      "total": 38844
+      "text": 37368,
+      "total": 39268
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 26030,
-       "count": 10,
-       "max": 26030,
-       "median": 26030,
-       "min": 26030
+       "avg": 26029,
+       "count": 100,
+       "max": 26029,
+       "median": 26029,
+       "min": 26029
       },
       "derive_b": {
-       "avg": 12251989,
-       "count": 10,
-       "max": 12252033,
-       "median": 12251985,
-       "min": 12251947
+       "avg": 12252172,
+       "count": 100,
+       "max": 12252224,
+       "median": 12252174,
+       "min": 12252100
       },
       "init_a": {
-       "avg": 11884256,
-       "count": 10,
-       "max": 11884304,
-       "median": 11884267,
-       "min": 11884203
+       "avg": 11884468,
+       "count": 100,
+       "max": 11884517,
+       "median": 11884472,
+       "min": 11884391
       },
       "init_b": {
-       "avg": 11884078,
-       "count": 10,
-       "max": 11884108,
-       "median": 11884076,
-       "min": 11884032
+       "avg": 11884273,
+       "count": 100,
+       "max": 11884324,
+       "median": 11884274,
+       "min": 11884206
       },
       "pass1": {
-       "avg": 24180617,
-       "count": 10,
-       "max": 24180680,
-       "median": 24180612,
-       "min": 24180554
+       "avg": 24181026,
+       "count": 100,
+       "max": 24181128,
+       "median": 24181028,
+       "min": 24180950
       }
      },
-     "cycles_total": 60226970,
+     "cycles_total": 60227968,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18527,12 +18551,30 @@
      "code": {
       "bss": 548,
       "data": 1352,
-      "source": "size-file",
-      "text": 36816,
-      "total": 38716
+      "source": "report",
+      "text": 37240,
+      "total": 39140
      },
-     "completed_ops": [],
-     "cycles": {},
+     "completed_ops": [
+      "init_a",
+      "init_b"
+     ],
+     "cycles": {
+      "init_a": {
+       "avg": 29542063,
+       "count": 1,
+       "max": 29542063,
+       "median": 29542063,
+       "min": 29542063
+      },
+      "init_b": {
+       "avg": 29541767,
+       "count": 1,
+       "max": 29541767,
+       "median": 29541767,
+       "min": 29541767
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "init_a",
@@ -18541,7 +18583,7 @@
       "derive_a",
       "derive_b"
      ],
-     "failure_kind": "hangs",
+     "failure_kind": "hardfault",
      "family": "crypto_kex",
      "hand_ported": false,
      "id": "crypto_kex_MAMBA-NIKE-384_ref",
@@ -18559,7 +18601,10 @@
       "source": "name",
       "variant": null
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "init_a",
+      "init_b"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/75NMUIOPYDJXY5WRYIBQ6FET6Z57UMPG/",
       "folder": "MAMBA-NIKE",
@@ -18572,7 +18617,7 @@
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "MAMBA-NIKE-384",
      "sizes": {
       "kat_path": "schemes/MAMBA-NIKE/Test_Vectors/KAT_KEX_MAMBA-NIKE-384.txt",
@@ -18589,14 +18634,38 @@
       "ss": 48
      },
      "stack": null,
-     "status_text": "not run: hangs on the board at the first iteration (MAMBA-NIKE-128/192/256 take ~1 min each)",
+     "status_text": "HardFault on the board at the first pass (init_a/init_b measured, 1 iteration; heap or stack beyond the 640 KB SRAM; MAMBA-NIKE-128/192/256 run); completed init_a, init_b",
      "tier": "board"
     },
     {
      "category": "kex",
-     "code": null,
-     "completed_ops": [],
-     "cycles": {},
+     "code": {
+      "bss": 548,
+      "data": 1352,
+      "source": "report",
+      "text": 37368,
+      "total": 39268
+     },
+     "completed_ops": [
+      "init_a",
+      "init_b"
+     ],
+     "cycles": {
+      "init_a": {
+       "avg": 29696049,
+       "count": 1,
+       "max": 29696049,
+       "median": 29696049,
+       "min": 29696049
+      },
+      "init_b": {
+       "avg": 29695599,
+       "count": 1,
+       "max": 29695599,
+       "median": 29695599,
+       "min": 29695599
+      }
+     },
      "cycles_total": null,
      "expected_ops": [
       "init_a",
@@ -18605,7 +18674,7 @@
       "derive_a",
       "derive_b"
      ],
-     "failure_kind": "other",
+     "failure_kind": "hardfault",
      "family": "crypto_kex",
      "hand_ported": false,
      "id": "crypto_kex_MAMBA-NIKE-512_ref",
@@ -18623,7 +18692,10 @@
       "source": "name",
       "variant": null
      },
-     "measured_ops": [],
+     "measured_ops": [
+      "init_a",
+      "init_b"
+     ],
      "ngcc": {
       "comments_url": "https://list.niccs.org.cn/archives/list/pkcforum@list.niccs.org.cn/thread/75NMUIOPYDJXY5WRYIBQ6FET6Z57UMPG/",
       "folder": "MAMBA-NIKE",
@@ -18636,7 +18708,7 @@
       "zip_url": "https://www.niccs.org.cn/niccs/Proposal/Public-Key%20Cryptographic%20Algorithms/Round%201%20candidates/MAMBA-NIKE.zip"
      },
      "notes": [],
-     "run_status": "failed",
+     "run_status": "partial",
      "scheme": "MAMBA-NIKE-512",
      "sizes": {
       "kat_path": "schemes/MAMBA-NIKE/Test_Vectors/KAT_KEX_MAMBA-NIKE-512.txt",
@@ -18653,7 +18725,7 @@
       "ss": 64
      },
      "stack": null,
-     "status_text": "not run: same as MAMBA-NIKE-384",
+     "status_text": "HardFault on the board at the first pass (init_a/init_b measured, 1 iteration; heap or stack beyond the 640 KB SRAM; same as MAMBA-NIKE-384); completed init_a, init_b",
      "tier": "board"
     },
     {
@@ -18662,55 +18734,55 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 29100,
-      "total": 31256
+      "text": 29520,
+      "total": 31676
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 782651,
-       "count": 10,
-       "max": 782675,
+       "avg": 782656,
+       "count": 100,
+       "max": 782722,
        "median": 782654,
-       "min": 782630
+       "min": 782614
       },
       "derive_b": {
-       "avg": 132,
-       "count": 10,
-       "max": 132,
-       "median": 132,
-       "min": 132
+       "avg": 131,
+       "count": 100,
+       "max": 131,
+       "median": 131,
+       "min": 131
       },
       "init_a": {
-       "avg": 332316,
-       "count": 10,
-       "max": 332334,
-       "median": 332334,
-       "min": 332156
+       "avg": 332347,
+       "count": 100,
+       "max": 332390,
+       "median": 332348,
+       "min": 332168
       },
       "init_b": {
-       "avg": 331000,
-       "count": 10,
-       "max": 331000,
-       "median": 331000,
-       "min": 331000
+       "avg": 331018,
+       "count": 100,
+       "max": 331057,
+       "median": 331017,
+       "min": 331017
       },
       "pass1": {
-       "avg": 594722,
-       "count": 10,
-       "max": 594753,
-       "median": 594717,
-       "min": 594699
+       "avg": 594751,
+       "count": 100,
+       "max": 594824,
+       "median": 594752,
+       "min": 594707
       },
       "pass2": {
-       "avg": 1170485,
-       "count": 10,
-       "max": 1170557,
-       "median": 1170477,
-       "min": 1170414
+       "avg": 1170507,
+       "count": 100,
+       "max": 1170613,
+       "median": 1170505,
+       "min": 1170415
       }
      },
-     "cycles_total": 3211306,
+     "cycles_total": 3211410,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18791,55 +18863,55 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 29228,
-      "total": 31384
+      "text": 29648,
+      "total": 31804
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 814578,
-       "count": 10,
+       "avg": 814574,
+       "count": 100,
        "max": 814613,
-       "median": 814574,
-       "min": 814574
+       "median": 814572,
+       "min": 814572
       },
       "derive_b": {
-       "avg": 132,
-       "count": 10,
-       "max": 132,
-       "median": 132,
-       "min": 132
+       "avg": 131,
+       "count": 100,
+       "max": 131,
+       "median": 131,
+       "min": 131
       },
       "init_a": {
-       "avg": 332259,
-       "count": 10,
-       "max": 332277,
-       "median": 332277,
-       "min": 332097
+       "avg": 332286,
+       "count": 100,
+       "max": 332335,
+       "median": 332286,
+       "min": 332108
       },
       "init_b": {
-       "avg": 331001,
-       "count": 10,
-       "max": 331001,
-       "median": 331001,
-       "min": 331001
+       "avg": 331015,
+       "count": 100,
+       "max": 331052,
+       "median": 331015,
+       "min": 331015
       },
       "pass1": {
-       "avg": 583842,
-       "count": 10,
-       "max": 583842,
-       "median": 583842,
-       "min": 583842
+       "avg": 583863,
+       "count": 100,
+       "max": 583902,
+       "median": 583861,
+       "min": 583861
       },
       "pass2": {
-       "avg": 1192207,
-       "count": 10,
-       "max": 1192317,
-       "median": 1192199,
-       "min": 1192181
+       "avg": 1192234,
+       "count": 100,
+       "max": 1192348,
+       "median": 1192234,
+       "min": 1192189
       }
      },
-     "cycles_total": 3254019,
+     "cycles_total": 3254103,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -18920,55 +18992,55 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 35372,
-      "total": 37528
+      "text": 35728,
+      "total": 37884
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 1721240,
-       "count": 10,
-       "max": 1721286,
-       "median": 1721246,
-       "min": 1721196
+       "avg": 1721256,
+       "count": 100,
+       "max": 1721324,
+       "median": 1721256,
+       "min": 1721189
       },
       "derive_b": {
-       "avg": 141,
-       "count": 10,
-       "max": 141,
-       "median": 141,
-       "min": 141
+       "avg": 140,
+       "count": 100,
+       "max": 140,
+       "median": 140,
+       "min": 140
       },
       "init_a": {
-       "avg": 801785,
-       "count": 10,
-       "max": 801803,
-       "median": 801803,
-       "min": 801626
+       "avg": 801805,
+       "count": 100,
+       "max": 801845,
+       "median": 801805,
+       "min": 801624
       },
       "init_b": {
-       "avg": 799322,
-       "count": 10,
-       "max": 799357,
-       "median": 799318,
-       "min": 799318
+       "avg": 799317,
+       "count": 100,
+       "max": 799354,
+       "median": 799315,
+       "min": 799315
       },
       "pass1": {
-       "avg": 1372315,
-       "count": 10,
-       "max": 1372357,
-       "median": 1372320,
-       "min": 1372275
+       "avg": 1372335,
+       "count": 100,
+       "max": 1372421,
+       "median": 1372327,
+       "min": 1372273
       },
       "pass2": {
-       "avg": 2517930,
-       "count": 10,
-       "max": 2518025,
-       "median": 2517926,
-       "min": 2517845
+       "avg": 2517961,
+       "count": 100,
+       "max": 2518153,
+       "median": 2517952,
+       "min": 2517853
       }
      },
-     "cycles_total": 7212733,
+     "cycles_total": 7212814,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -19049,55 +19121,55 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 35436,
-      "total": 37592
+      "text": 35856,
+      "total": 38012
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 1794603,
-       "count": 10,
-       "max": 1794603,
-       "median": 1794603,
-       "min": 1794602
+       "avg": 1794612,
+       "count": 100,
+       "max": 1794649,
+       "median": 1794608,
+       "min": 1794608
       },
       "derive_b": {
-       "avg": 141,
-       "count": 10,
-       "max": 141,
-       "median": 141,
-       "min": 141
+       "avg": 140,
+       "count": 100,
+       "max": 140,
+       "median": 140,
+       "min": 140
       },
       "init_a": {
-       "avg": 801647,
-       "count": 10,
-       "max": 801665,
-       "median": 801665,
-       "min": 801484
+       "avg": 801659,
+       "count": 100,
+       "max": 801711,
+       "median": 801659,
+       "min": 801482
       },
       "init_b": {
-       "avg": 799308,
-       "count": 10,
-       "max": 799308,
-       "median": 799308,
-       "min": 799307
+       "avg": 799305,
+       "count": 100,
+       "max": 799342,
+       "median": 799303,
+       "min": 799303
       },
       "pass1": {
-       "avg": 1356106,
-       "count": 10,
-       "max": 1356137,
-       "median": 1356099,
-       "min": 1356099
+       "avg": 1356095,
+       "count": 100,
+       "max": 1356133,
+       "median": 1356091,
+       "min": 1356091
       },
       "pass2": {
-       "avg": 2576318,
-       "count": 10,
-       "max": 2576397,
-       "median": 2576317,
-       "min": 2576272
+       "avg": 2576339,
+       "count": 100,
+       "max": 2576452,
+       "median": 2576336,
+       "min": 2576273
       }
      },
-     "cycles_total": 7328123,
+     "cycles_total": 7328150,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -19178,55 +19250,55 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 49680,
-      "total": 51836
+      "text": 50036,
+      "total": 52192
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 4714682,
-       "count": 10,
-       "max": 4714754,
-       "median": 4714678,
-       "min": 4714601
+       "avg": 4714681,
+       "count": 100,
+       "max": 4714802,
+       "median": 4714675,
+       "min": 4714576
       },
       "derive_b": {
-       "avg": 181,
-       "count": 10,
-       "max": 181,
-       "median": 181,
-       "min": 181
+       "avg": 180,
+       "count": 100,
+       "max": 180,
+       "median": 180,
+       "min": 180
       },
       "init_a": {
-       "avg": 2354440,
-       "count": 10,
-       "max": 2354494,
-       "median": 2354456,
-       "min": 2354262
+       "avg": 2354458,
+       "count": 100,
+       "max": 2354495,
+       "median": 2354454,
+       "min": 2354255
       },
       "init_b": {
-       "avg": 2349717,
-       "count": 10,
-       "max": 2349750,
-       "median": 2349709,
-       "min": 2349709
+       "avg": 2349713,
+       "count": 100,
+       "max": 2349749,
+       "median": 2349707,
+       "min": 2349707
       },
       "pass1": {
-       "avg": 3634551,
-       "count": 10,
-       "max": 3634639,
-       "median": 3634544,
-       "min": 3634466
+       "avg": 3634536,
+       "count": 100,
+       "max": 3634661,
+       "median": 3634535,
+       "min": 3634436
       },
       "pass2": {
-       "avg": 6457856,
-       "count": 10,
-       "max": 6458014,
-       "median": 6457851,
-       "min": 6457750
+       "avg": 6457882,
+       "count": 100,
+       "max": 6463292,
+       "median": 6457831,
+       "min": 6457624
       }
      },
-     "cycles_total": 19511427,
+     "cycles_total": 19511450,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -19307,55 +19379,55 @@
       "bss": 548,
       "data": 1608,
       "source": "report",
-      "text": 49744,
-      "total": 51900
+      "text": 50164,
+      "total": 52320
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 4758591,
-       "count": 10,
-       "max": 4758626,
-       "median": 4758583,
-       "min": 4758583
+       "avg": 4758615,
+       "count": 100,
+       "max": 4758648,
+       "median": 4758605,
+       "min": 4758605
       },
       "derive_b": {
-       "avg": 181,
-       "count": 10,
+       "avg": 180,
+       "count": 100,
        "max": 181,
-       "median": 181,
-       "min": 181
+       "median": 180,
+       "min": 180
       },
       "init_a": {
-       "avg": 2354168,
-       "count": 10,
-       "max": 2354222,
-       "median": 2354184,
-       "min": 2353991
+       "avg": 2354194,
+       "count": 100,
+       "max": 2354240,
+       "median": 2354190,
+       "min": 2353993
       },
       "init_b": {
-       "avg": 2349709,
-       "count": 10,
-       "max": 2349740,
-       "median": 2349701,
-       "min": 2349701
+       "avg": 2349715,
+       "count": 100,
+       "max": 2349750,
+       "median": 2349709,
+       "min": 2349709
       },
       "pass1": {
-       "avg": 3575302,
-       "count": 10,
-       "max": 3575334,
-       "median": 3575294,
-       "min": 3575294
+       "avg": 3575320,
+       "count": 100,
+       "max": 3575353,
+       "median": 3575311,
+       "min": 3575311
       },
       "pass2": {
-       "avg": 6444172,
-       "count": 10,
-       "max": 6444247,
-       "median": 6444174,
-       "min": 6444056
+       "avg": 6444248,
+       "count": 100,
+       "max": 6449554,
+       "median": 6444194,
+       "min": 6444086
       }
      },
-     "cycles_total": 19482123,
+     "cycles_total": 19482272,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -19436,55 +19508,55 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 32572,
-      "total": 34600
+      "text": 32928,
+      "total": 34956
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 828147,
-       "count": 10,
-       "max": 828147,
-       "median": 828147,
-       "min": 828147
+       "avg": 828158,
+       "count": 100,
+       "max": 828196,
+       "median": 828157,
+       "min": 828157
       },
       "derive_b": {
-       "avg": 132,
-       "count": 10,
-       "max": 132,
-       "median": 132,
-       "min": 132
+       "avg": 131,
+       "count": 100,
+       "max": 131,
+       "median": 131,
+       "min": 131
       },
       "init_a": {
-       "avg": 384448,
-       "count": 10,
-       "max": 384500,
-       "median": 384462,
-       "min": 384282
+       "avg": 384467,
+       "count": 100,
+       "max": 384508,
+       "median": 384468,
+       "min": 384288
       },
       "init_b": {
-       "avg": 383031,
-       "count": 10,
-       "max": 383064,
-       "median": 383027,
-       "min": 383027
+       "avg": 383032,
+       "count": 100,
+       "max": 383070,
+       "median": 383031,
+       "min": 383031
       },
       "pass1": {
-       "avg": 672785,
-       "count": 10,
-       "max": 672785,
-       "median": 672785,
-       "min": 672785
+       "avg": 672798,
+       "count": 100,
+       "max": 672837,
+       "median": 672796,
+       "min": 672796
       },
       "pass2": {
-       "avg": 1268052,
-       "count": 10,
-       "max": 1268149,
-       "median": 1268041,
-       "min": 1268041
+       "avg": 1268066,
+       "count": 100,
+       "max": 1268170,
+       "median": 1268062,
+       "min": 1268062
       }
      },
-     "cycles_total": 3536595,
+     "cycles_total": 3536652,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -19565,55 +19637,55 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 42732,
-      "total": 44760
+      "text": 43088,
+      "total": 45116
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 1758802,
-       "count": 10,
-       "max": 1758802,
-       "median": 1758802,
-       "min": 1758802
+       "avg": 1758816,
+       "count": 100,
+       "max": 1758852,
+       "median": 1758813,
+       "min": 1758813
       },
       "derive_b": {
-       "avg": 141,
-       "count": 10,
-       "max": 141,
-       "median": 141,
-       "min": 141
+       "avg": 140,
+       "count": 100,
+       "max": 140,
+       "median": 140,
+       "min": 140
       },
       "init_a": {
-       "avg": 922745,
-       "count": 10,
-       "max": 922795,
-       "median": 922756,
-       "min": 922568
+       "avg": 922754,
+       "count": 100,
+       "max": 922793,
+       "median": 922753,
+       "min": 922569
       },
       "init_b": {
-       "avg": 920066,
-       "count": 10,
-       "max": 920099,
+       "avg": 920060,
+       "count": 100,
+       "max": 920100,
        "median": 920058,
        "min": 920058
       },
       "pass1": {
-       "avg": 1475406,
-       "count": 10,
-       "max": 1475406,
-       "median": 1475406,
-       "min": 1475406
+       "avg": 1475416,
+       "count": 100,
+       "max": 1475454,
+       "median": 1475412,
+       "min": 1475412
       },
       "pass2": {
-       "avg": 2514912,
-       "count": 10,
-       "max": 2515009,
-       "median": 2514901,
-       "min": 2514901
+       "avg": 2514926,
+       "count": 100,
+       "max": 2515027,
+       "median": 2514918,
+       "min": 2514918
       }
      },
-     "cycles_total": 7592072,
+     "cycles_total": 7592112,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -19694,55 +19766,55 @@
       "bss": 548,
       "data": 1480,
       "source": "report",
-      "text": 53904,
-      "total": 55932
+      "text": 54324,
+      "total": 56352
      },
      "completed_ops": [],
      "cycles": {
       "derive_a": {
-       "avg": 5002515,
-       "count": 10,
-       "max": 5002584,
-       "median": 5002508,
-       "min": 5002431
+       "avg": 5002516,
+       "count": 100,
+       "max": 5002634,
+       "median": 5002513,
+       "min": 5002417
       },
       "derive_b": {
-       "avg": 181,
-       "count": 10,
-       "max": 181,
-       "median": 181,
-       "min": 181
+       "avg": 180,
+       "count": 100,
+       "max": 180,
+       "median": 180,
+       "min": 180
       },
       "init_a": {
-       "avg": 2495603,
-       "count": 10,
-       "max": 2495677,
-       "median": 2495628,
-       "min": 2495394
+       "avg": 2495618,
+       "count": 100,
+       "max": 2495846,
+       "median": 2495621,
+       "min": 2495405
       },
       "init_b": {
-       "avg": 2490437,
-       "count": 10,
-       "max": 2490507,
-       "median": 2490436,
-       "min": 2490382
+       "avg": 2490444,
+       "count": 100,
+       "max": 2490615,
+       "median": 2490435,
+       "min": 2490309
       },
       "pass1": {
-       "avg": 3836456,
-       "count": 10,
-       "max": 3836582,
-       "median": 3836444,
-       "min": 3836366
+       "avg": 3836445,
+       "count": 100,
+       "max": 3836662,
+       "median": 3836439,
+       "min": 3836284
       },
       "pass2": {
-       "avg": 6803406,
-       "count": 10,
-       "max": 6803522,
+       "avg": 6803434,
+       "count": 100,
+       "max": 6808804,
        "median": 6803380,
-       "min": 6803338
+       "min": 6803193
       }
      },
-     "cycles_total": 20628598,
+     "cycles_total": 20628637,
      "expected_ops": [
       "init_a",
       "init_b",
@@ -30018,15 +30090,16 @@
  "meta": {
   "board": "STM32L4R5ZI (Nucleo-L4R5ZI, Cortex-M4, 640 KB SRAM, 2 MB flash)",
   "conditions": [
-   "Measured 2026-10-01 to 2026-10-03 with `benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed`.",
+   "Measured 2026-10-01 to 2026-10-07 with `benchmark_schemes.py PLATFORM=nucleo-l4r5zi --apps speed`.",
    "Clock: HSI16 (16 MHz), 0 flash wait states, I/D caches on; cycle counts from DWT.",
    "Compiler: arm-none-eabi-gcc 13.2.1, `-O3`, SM3 compression in assembly (USE_SM3_ASM=1), SM3 DRNG.",
    "KEM/KEX: the 147 board-tier implementations (the 153 QEMU-tier ones do not fit the board).",
    "Signatures: every crypto_sign implementation that links for the board was attempted (1 iteration, 10 min cap); the status table lists each one that did not complete and why.",
-   "Iterations per operation (\"count\" column): 10 for most KEM/KEX schemes; 3 for Lore, Mithril, bag_piglet, lwekem, TRIKE-5 and CEDRUSC-160f; 1 for all other signature schemes. Timing is deterministic on this board for constant-time code (DTRU-648: min/max within 0.005%); schemes with rejection sampling vary by ~1% between iterations, so a single-iteration row is one sample of that distribution.",
+   "Iterations per operation (\"count\" column): 100 for most KEM/KEX schemes (see the 2026-10-05/06 note below); 10 for the submitter m4 ports, PolarLAC, CreTAKE, BAG-Loong-128, HQC-128/256 and TRIKE-2; 3 for bag_piglet_256/384/512 and TRIKE-5; signature iterations as described in the notes below. Timing is deterministic on this board for constant-time code (DTRU-648: min/max within 0.005%); schemes with rejection sampling vary by ~1% between iterations, so a single-iteration row is one sample of that distribution.",
    "Code size is `arm-none-eabi-size` of the speed ELF (.text/.data/.bss include the benchmark driver and HAL).",
    "Signature schemes re-measured 2026-10-06/07 in several runs: 23 schemes (Aigis-Sig, BiT, CEDRUSALPHA-160*, CEDRUSC, COMPASS-SIG, DARTS) at NGCC_ITERATIONS=100; the remaining 98 at NGCC_ITERATIONS=10 (the 'count' column gives the iterations actually completed). Per-target capture caps: 30 min for the 100-iteration run and the first 10-iteration run, 5 min for the final 44 schemes (QingLuan, ReSolveD, Sigurd, TRINE, TSUOV, lwrdsa, Chinith-family, SYDO, ...); where a shorter-capped rerun timed out without adding anything, the earlier run's figures and status were kept. Targets whose status line says 'timeout' did not finish all operations within the cap; 'completed <ops>' lists the operations that were measured.",
-   "2026-10-07: added the submitters' Cortex-M4 ports (BW-KEM, DTRU, MORNING-Scabbard, Rudraksh2 as <scheme>/m4), the PolarLAC reference sets and the 13 board-tier CreTAKE sets (NGCC_ITERATIONS=10, speed and stack; all 66 targets completed)."
+   "2026-10-07: added the submitters' Cortex-M4 ports (BW-KEM, DTRU, MORNING-Scabbard, Rudraksh2 as <scheme>/m4), the PolarLAC reference sets and the 13 board-tier CreTAKE sets (NGCC_ITERATIONS=10, speed and stack; all 66 targets completed).",
+   "2026-10-05/06: all 108 board-tier KEM/KEX reference and hand-ported m4 sets (plus BiT, DARTS) re-measured at NGCC_ITERATIONS=100 with the speed and stack apps (run output in benchmark_summary.{csv,md}; the 'count' column is 100 for these rows). The 2026-10-01..03 10-iteration figures remain only where the 100-iteration run did not finish within its 30 min cap (BAG-Loong-128, HQC-128/256, TRIKE-2/5, bag_piglet_256/384/512) and for the imported submitter m4 ports, PolarLAC and CreTAKE sets measured 2026-10-07 at 10 iterations. The HQC-384 and MAMBA-NIKE-384/512 raw logs show a HardFault (not a hang) after the listed operations."
   ],
   "counts": {
    "by_category": {
@@ -30039,9 +30112,9 @@
     "kem.measured": 118,
     "kem.not-run": 41,
     "kem.partial": 1,
-    "kex.failed": 2,
     "kex.measured": 40,
     "kex.not-run": 16,
+    "kex.partial": 2,
     "sig.failed": 17,
     "sig.measured": 43,
     "sig.partial": 61
@@ -30069,7 +30142,7 @@
   ],
   "generated_on": "2026-10-07",
   "generator": "tools/make_site_data.py",
-  "git_rev": "2afcdd4",
+  "git_rev": "5b8ab34",
   "kat_notes": [
    "qube-128/256/384/512 and Phoenix-SM3 (10). The submissions' own reference code, built on the host, reproduces our QEMU output byte for byte and does not reproduce their published test-vector files. These are inconsistencies inside the submission packages.",
    "lwrdsa-128/192/256/512. The wrapper reports a signature length of CRYPTO_BYTES plus the message length but never writes those trailing bytes, so both the KAT file and our output end in uninitialized memory. The real signature bytes match in every count.",
